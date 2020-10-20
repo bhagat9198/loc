@@ -129,10 +129,9 @@
 	width:18%;
 	background: none;
 	float: left;
-	height: 400px;
 	overflow: auto;
 	scrollbar-3dlight-color: blueviolet;
-	margin-left: 5%;
+
 }
 
 .menu>ul>li>ul>li a {
@@ -195,6 +194,14 @@
 /* ––––––––––––––––––––––––––––––––––––––––––––––––––
 Mobile style's
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media only screen and (min-width: 961px){
+	.menu>ul>li>ul>li {
+
+		height: 400px;
+		margin-left: 5%;
+	}
+	
+}
 
 @media only screen and (max-width: 959px) {
 	.desktopmenu{
