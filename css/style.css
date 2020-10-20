@@ -35,7 +35,7 @@ body {
   font-size: 14px;
   margin: 0;
   color: #465541;
-  overflow-x: hidden;
+  overflow:scroll:;
 }
 
 h1 {
