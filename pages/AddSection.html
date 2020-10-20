@@ -38,6 +38,45 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+<style>
+    p{
+        font-size: xx-small;
+        text-align: justify;
+        word-wrap:break-word;
+
+    }
+    label{
+        word-wrap:break-word;
+        text-overflow: clip;
+    }
+    label:before {
+        content: url("https://cdn1.iconfinder.com/data/icons/windows8_icons_iconpharm/26/unchecked_checkbox.png");
+        position: absolute;
+        z-index: 100;
+       
+    }
+
+    :checked+label:before {
+        content: url("https://cdn1.iconfinder.com/data/icons/windows8_icons_iconpharm/26/checked_checkbox.png");
+    }
+
+    input[type=checkbox] {
+        display: none;
+
+    }
+
+    /*pure cosmetics:*/
+    img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+
+    }
+
+    label {
+        margin: 5px;
+    }
+</style>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
     style="overflow: scroll;">
@@ -815,6 +854,190 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="row" id="displayproducts" style="display: none;">
+                                                <div class="col-lg-12">
+                                                    <div class="left-area">
+                                                        <h4 class="heading">Select Products to be added</h4>
+                                                         
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div id="geniustable_filter" class="dataTables_filter" style="margin-left: 0%;">
+                                                        <p>Search:<input type="search"
+                                                                class="form-control form-control-sm" placeholder=""
+                                                                aria-controls="geniustable"></label>
+                                                     </div>
+                                                     
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <input type="checkbox" id="myCheckbox1" />
+                                                    <label for="myCheckbox1">
+                                                        <img
+                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox2" />
+                                                    <label for="myCheckbox2">
+                                                        <img
+                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox3" />
+                                                    <label for="myCheckbox3">
+                                                        <img
+                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox4" />
+                                                    <label for="myCheckbox4">
+                                                        <img
+                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox5" />
+                                                    <label for="myCheckbox5">
+                                                        <img
+                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox6" />
+                                                    <label for="myCheckbox6">
+                                                        <img
+                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox7" />
+                                                    <label for="myCheckbox7">
+                                                        <img
+                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                            <p>Prod2</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox8" />
+                                                    <label for="myCheckbox8">
+                                                        <img
+                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
+                                                            <p style="text-align: justify;text-justify: inter-word;">Red Velvet </p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox9" />
+                                                    <label for="myCheckbox9">
+                                                        <img
+                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                            <p>Prod5</p>
+                                                    </label>
+
+                                                    <input type="checkbox" id="myCheckbox1" />
+                                                    <label for="myCheckbox1">
+                                                        <img
+                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox2" />
+                                                    <label for="myCheckbox2">
+                                                        <img
+                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox3" />
+                                                    <label for="myCheckbox3">
+                                                        <img
+                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox4" />
+                                                    <label for="myCheckbox4">
+                                                        <img
+                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox5" />
+                                                    <label for="myCheckbox5">
+                                                        <img
+                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox6" />
+                                                    <label for="myCheckbox6">
+                                                        <img
+                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox7" />
+                                                    <label for="myCheckbox7">
+                                                        <img
+                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                            <p>Prod2</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox8" />
+                                                    <label for="myCheckbox8">
+                                                        <img
+                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
+                                                            <p style="text-align: justify;text-justify: inter-word;">Red Velvet </p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox9" />
+                                                    <label for="myCheckbox9">
+                                                        <img
+                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                            <p>Prod5</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox1" />
+                                                    <label for="myCheckbox1">
+                                                        <img
+                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox2" />
+                                                    <label for="myCheckbox2">
+                                                        <img
+                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox3" />
+                                                    <label for="myCheckbox3">
+                                                        <img
+                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox4" />
+                                                    <label for="myCheckbox4">
+                                                        <img
+                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox5" />
+                                                    <label for="myCheckbox5">
+                                                        <img
+                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox6" />
+                                                    <label for="myCheckbox6">
+                                                        <img
+                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                            <p>Prod1</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox7" />
+                                                    <label for="myCheckbox7">
+                                                        <img
+                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                            <p>Prod2</p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox8" />
+                                                    <label for="myCheckbox8">
+                                                        <img
+                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
+                                                            <p style="text-align: justify;text-justify: inter-word;">Red Velvet </p>
+                                                    </label>
+                                                    <input type="checkbox" id="myCheckbox9" />
+                                                    <label for="myCheckbox9">
+                                                        <img
+                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                            <p>Prod5</p>
+                                                    </label>
+
+
+                                                </div>
+                                            </div>
                                             <div class="card card-info" id="sectionBackground">
                                                 <div class="card-header">
                                                     <h3 class="card-title">Select Background Gradient Color</h3>
@@ -823,7 +1046,7 @@
                                                 <div class="card-body">
 
                                                     <div class="form-group">
-                                                        <label>Color -1</label>
+                                                        <h5 style="font-size: 1em;font-weight: 977;">Color -1</h5>
 
                                                         <div class="input-group my-colorpicker2">
                                                             <input type="text" class="form-control">
@@ -836,7 +1059,8 @@
                                                         <!-- /.input group -->
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Color -2</label>
+                                                        <h5 style="font-size: 1em;font-weight: 977;">Color -2</h5
+                                                            style="fon">
 
                                                         <div class="input-group my-colorpicker3">
                                                             <input type="text" class="form-control">
@@ -883,7 +1107,7 @@
                                                 <div class="col-lg-12">
 
                                                     <div class="left-area">
-                                                        <h4 class="heading">Animated Banner Size (<=100kb)< /h4>
+                                                        <h4 class="heading">Animated Banner Size (<=100kb)</h4>
                                                     </div>
                                                     <center> <input type='file' class="mybtn1"
                                                             onchange="readVideoURL(this);" /> </center>
@@ -1110,6 +1334,15 @@
         $('.cropme').simpleCropper();
     </script>
     <script>
+        document.getElementById("cat").addEventListener('change', function (e) {
+            var val = document.querySelector('#cat').value;
+            if(val=="Cakes"){
+            
+                document.getElementById("displayproducts").style.display = "block"
+            }else{
+                document.getElementById("displayproducts").style.display = "none"
+            }
+        })
         document.getElementById("sectiontype").addEventListener('change', function (e) {
 
             var val = document.querySelector('#sectiontype').value;
@@ -1122,12 +1355,14 @@
                     document.getElementById("sectionName").style.display = "none"
                     document.getElementById("sectionInput").style.display = "none"
                     document.getElementById("sectionBackground").style.display = "none"
+                    document.getElementById("displayproducts").style.display = "none"
                 } else {
                     document.getElementById("Banner-video").style.display = "block"
                     document.getElementById("Banner-Image").style.display = "none"
                     document.getElementById("sectionName").style.display = "none"
                     document.getElementById("sectionInput").style.display = "none"
                     document.getElementById("sectionBackground").style.display = "none"
+                    document.getElementById("displayproducts").style.display = "none"
                 }
 
 
@@ -1138,7 +1373,9 @@
                 document.getElementById("sectionName").style.display = "block"
                 document.getElementById("sectionInput").style.display = "block"
                 document.getElementById("sectionBackground").style.display = "block"
+                
             }
+         
 
         });
         $('.duallistbox').bootstrapDualListbox()
@@ -1150,7 +1387,7 @@
 
         $('.my-colorpicker2').on('colorpickerChange', function (event) {
             $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-            
+
         });
         $('.my-colorpicker3').colorpicker()
 
