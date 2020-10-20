@@ -69,21 +69,18 @@ h6 {
 }
 
 p {
-  font-size: 14px;
-  color: #465541;
-  line-height: 1.625;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  -ms-hyphens: auto;
-  font-family: "Open Sans", sans-serif;
-  hyphens: auto;
+
 }
 
 a {
   color: #143250;
   text-decoration: none;
 }
-
+.MainHeading{
+text-align: center;
+padding: 15px;
+font-weight: bold;
+}
 a,
 a:hover,
 a:focus,
@@ -118,7 +115,9 @@ select:focus {
   box-shadow: none;
   border: 1px solid #ddd;
 }
-
+{
+  color: r;
+}
 /*---------------------------
 ** Global style
 ---------------------------*/
@@ -468,7 +467,11 @@ textarea.input-field {
   background-color: transparent;
   border: 2px solid rgba(0, 0, 0, 0.1);
 }
+.addon{
+  font-size: 0.9em;
+  font-weight: 888;
 
+}
 .checkbox-inner input:checked~.checkmark {
   background-color: #1f224f;
 }
