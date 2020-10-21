@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Lake of Cakes | View Section</title>
+    <title>Lake of Cakes | View Sections</title>
 
     <!-- Font Awesome Icons -->
     <link href="../assets/plugins/fullside-menu/css/dark-side-style.css" rel="stylesheet" />
@@ -29,8 +29,9 @@
     <link href="../assets/css/product.css" rel="stylesheet" />
     <link href="../assets/css/jquery.Jcrop.css" rel="stylesheet" />
     <link href="../assets/css/Jcrop-style.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="../assets/plugins/summernote/summernote-bs4.css">
-    <!-- Google Font: Source Sans Pro -->
+
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -628,19 +629,22 @@
         <!-- Main content -->
         <section class="wrapper">
             <div class="content-wrapper">
-                <h3>All Products</h3>
+                <h3 style="padding:20px;">All Sections</h3>
                 <ul class="links" style="display: flex;list-style: none;">
                     <li style="padding: 10px;">
-                        <a href="https://lakeofcakes.com/admin">1.Section Name</a>
+                        <a href="https://lakeofcakes.com/admin">1. 4-Card Section</a>
                     </li>
-                    <li style="padding: 10px;"><a href="javascript:;">2.Flower</a></li>
+                    <li style="padding: 10px;"><a href="javascript:;">2. 6-Card Section </a></li>
                     <li style="padding: 10px;">
-                        <a href="https://lakeofcakes.com/admin/category">3.Combos</a>
+                        <a href="https://lakeofcakes.com/admin/category">3. Slider Section</a>
                     </li>
+                    <li style="padding: 10px;">
+                      <a href="https://lakeofcakes.com/admin/category">3. Banner Section</a>
+                  </li>
                 </ul>
                 <div class="product-area">
 
-                    <h4 class="MainHeading">Best Seller Cake(4-Card Section)</h4>
+                    <h4 class="MainHeading">Cakes</h4>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="mr-table allproduct">
@@ -652,28 +656,19 @@
 
                                 <div class="table-responsiv">
 
-                                    <table id="geniustable" class="table table-hover dt-responsive" cellspacing="0"
+                                    <table id="example1" class="table table-hover dt-responsive" cellspacing="0"
                                         width="100%">
                                         <div class="row btn-area">
                                        
-                                            <div class="col-sm-4">
+                                            <!-- <div class="col-sm-4">
                                                 <div id="geniustable_filter" class="dataTables_filter">
                                                     <label>Search:<input type="search"
                                                             class="form-control form-control-sm" placeholder=""
                                                             aria-controls="geniustable"></label>
                                                  </div>
                                                  
-                                            </div>
-                                            <div class ="col-sm-4">
-                                                <div class="float-right">
-                                                    <select class="custom-select" style="width: auto;" data-sortOrder>
-                                                        <option value="index"> Select </option>
-                                                      <option value="index"> Sort by Sub Category </option>
-                                                      <option value="sortData"> Sort by Child Category</option>
-                                                    </select>
-                                                    
-                                                  </div>
-                                            </div>
+                                            </div> -->
+
 
                                         </div>
                                         <thead>
@@ -719,7 +714,8 @@
                                                                 data-href="https://lakeofcakes.com/admin/products/delete/406"
                                                                 data-toggle="modal" data-target="#confirm-delete"
                                                                 class="delete"><i class="fas fa-trash-alt"></i>
-                                                                Delete</a></div>
+                                                                Delete</a>
+                                                              </div>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -734,25 +730,16 @@
                                                 <td style="">Cartoon Cakes</td>
                                                 <td style="">₹0</td>
                                                 <td style="">
-                                                    <div class="action-list"><select
-                                                            class="process select droplinks drop-success"
-                                                            style="display: none;">
-                                                            <option data-val="1"
-                                                                value="https://lakeofcakes.com/admin/products/status/406/1"
-                                                                selected="">Activated</option>&lt;<option data-val="0"
-                                                                value="https://lakeofcakes.com/admin/products/status/406/0">
-                                                                Deactivated</option>/select&gt;
-                                                        </select>
-                                                        <div class="nice-select process select droplinks drop-success"
-                                                            tabindex="0"><span class="current">Activated</span>
-                                                            <ul class="list">
-                                                                <li data-value="https://lakeofcakes.com/admin/products/status/406/1"
-                                                                    class="option selected">Activated</li>
-                                                                <li data-value="https://lakeofcakes.com/admin/products/status/406/0"
-                                                                    class="option">Deactivated</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                    
+                                                  <div class="action-list">
+                                                    <select
+                                                      class="process  drop-success"
+                                                      style="display: block;">
+                                                      <option data-val="1" value="" selected="">Activated</option>
+                                                          <option data-val="0"value="">Deactivated</option>
+                                                    </select>
+                                                
+                                                   </div>
                                                 </td>
                                                 <td style="">
                                                     <div class="godropdown"><button class="go-dropdown-toggle">
@@ -780,25 +767,15 @@
                                                 <td style="">Cartoon Cakes</td>
                                                 <td style="">₹0</td>
                                                 <td style="">
-                                                    <div class="action-list"><select
-                                                            class="process select droplinks drop-success"
-                                                            style="display: none;">
-                                                            <option data-val="1"
-                                                                value="https://lakeofcakes.com/admin/products/status/406/1"
-                                                                selected="">Activated</option>&lt;<option data-val="0"
-                                                                value="https://lakeofcakes.com/admin/products/status/406/0">
-                                                                Deactivated</option>/select&gt;
-                                                        </select>
-                                                        <div class="nice-select process select droplinks drop-success"
-                                                            tabindex="0"><span class="current">Activated</span>
-                                                            <ul class="list">
-                                                                <li data-value="https://lakeofcakes.com/admin/products/status/406/1"
-                                                                    class="option selected">Activated</li>
-                                                                <li data-value="https://lakeofcakes.com/admin/products/status/406/0"
-                                                                    class="option">Deactivated</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                  <div class="action-list">
+                                                    <select
+                                                      class="process  drop-success"
+                                                      style="display: block;">
+                                                      <option data-val="1" value="" selected="">Activated</option>
+                                                          <option data-val="0"value="">Deactivated</option>
+                                                    </select>
+                                                
+                                                   </div>
                                                 </td>
                                                 <td style="">
                                                     <div class="godropdown"><button class="go-dropdown-toggle">
@@ -820,34 +797,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-sm-12 col-md-7">
-                                <div class="dataTables_paginate paging_simple_numbers" id="geniustable_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled"
-                                            id="geniustable_previous"><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                        <li class="paginate_button page-item active"><a href="#"
-                                                aria-controls="geniustable" data-dt-idx="1" tabindex="0"
-                                                class="page-link">1</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                        <li class="paginate_button page-item disabled" id="geniustable_ellipsis"><a
-                                                href="#" aria-controls="geniustable" data-dt-idx="6" tabindex="0"
-                                                class="page-link">…</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="7" tabindex="0" class="page-link">16</a></li>
-                                        <li class="paginate_button page-item next" id="geniustable_next"><a href="#"
-                                                aria-controls="geniustable" data-dt-idx="8" tabindex="0"
-                                                class="page-link">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                     
                         </div>
                     </div>
                 </div>
@@ -865,27 +815,9 @@
 
                                 <div class="table-responsiv">
 
-                                    <table id="geniustable" class="table table-hover dt-responsive" cellspacing="0"
+                                    <table id="example2" class="table table-hover dt-responsive" cellspacing="0"
                                         width="100%">
-                                        <div class="row btn-area">
-                                            <div class="col-sm-4">
-                                                <div class="dataTables_length" id="geniustable_length"><label>Show
-                                                        Entries
-                                                        <select name="geniustable_length" aria-controls="geniustable"
-                                                            class="custom-select custom-select-sm form-control form-control-sm">
-                                                            <option value="10">10</option>
-                                                            <option value="25">25</option>
-                                                            <option value="50">50</option>
-                                                            <option value="100">100</option>
-                                                        </select></label></div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div id="geniustable_filter" class="dataTables_filter">
-                                                    <label>Search:<input type="search"
-                                                            class="form-control form-control-sm" placeholder=""
-                                                            aria-controls="geniustable"></label></div>
-                                            </div>
-                                        </div>
+                                     
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
@@ -909,25 +841,15 @@
                                                 <td style="">Cartoon Cakes</td>
                                                 <td style="">₹0</td>
                                                 <td style="">
-                                                    <div class="action-list"><select
-                                                            class="process select droplinks drop-success"
-                                                            style="display: none;">
-                                                            <option data-val="1"
-                                                                value="https://lakeofcakes.com/admin/products/status/406/1"
-                                                                selected="">Activated</option>&lt;<option data-val="0"
-                                                                value="https://lakeofcakes.com/admin/products/status/406/0">
-                                                                Deactivated</option>/select&gt;
-                                                        </select>
-                                                        <div class="nice-select process select droplinks drop-success"
-                                                            tabindex="0"><span class="current">Activated</span>
-                                                            <ul class="list">
-                                                                <li data-value="https://lakeofcakes.com/admin/products/status/406/1"
-                                                                    class="option selected">Activated</li>
-                                                                <li data-value="https://lakeofcakes.com/admin/products/status/406/0"
-                                                                    class="option">Deactivated</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                        <div class="action-list">
+                                                    <select
+                                                      class="process  drop-success"
+                                                      style="display: block;">
+                                                      <option data-val="1" value="" selected="">Activated</option>
+                                                          <option data-val="0"value="">Deactivated</option>
+                                                    </select>
+                                                
+                                                   </div>
                                                 </td>
                                                 <td style="">
                                                     <div class="godropdown"><button class="go-dropdown-toggle">
@@ -955,25 +877,15 @@
                                                 <td style="">Cartoon Cakes</td>
                                                 <td style="">₹0</td>
                                                 <td style="">
-                                                    <div class="action-list"><select
-                                                            class="process select droplinks drop-success"
-                                                            style="display: none;">
-                                                            <option data-val="1"
-                                                                value="https://lakeofcakes.com/admin/products/status/406/1"
-                                                                selected="">Activated</option>&lt;<option data-val="0"
-                                                                value="https://lakeofcakes.com/admin/products/status/406/0">
-                                                                Deactivated</option>/select&gt;
-                                                        </select>
-                                                        <div class="nice-select process select droplinks drop-success"
-                                                            tabindex="0"><span class="current">Activated</span>
-                                                            <ul class="list">
-                                                                <li data-value="https://lakeofcakes.com/admin/products/status/406/1"
-                                                                    class="option selected">Activated</li>
-                                                                <li data-value="https://lakeofcakes.com/admin/products/status/406/0"
-                                                                    class="option">Deactivated</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                        <div class="action-list">
+                                                    <select
+                                                      class="process  drop-success"
+                                                      style="display: block;">
+                                                      <option data-val="1" value="" selected="">Activated</option>
+                                                          <option data-val="0"value="">Deactivated</option>
+                                                    </select>
+                                                
+                                                   </div>
                                                 </td>
                                                 <td style="">
                                                     <div class="godropdown"><button class="go-dropdown-toggle">
@@ -1001,25 +913,15 @@
                                                 <td style="">Cartoon Cakes</td>
                                                 <td style="">₹0</td>
                                                 <td style="">
-                                                    <div class="action-list"><select
-                                                            class="process select droplinks drop-success"
-                                                            style="display: none;">
-                                                            <option data-val="1"
-                                                                value="https://lakeofcakes.com/admin/products/status/406/1"
-                                                                selected="">Activated</option>&lt;<option data-val="0"
-                                                                value="https://lakeofcakes.com/admin/products/status/406/0">
-                                                                Deactivated</option>/select&gt;
-                                                        </select>
-                                                        <div class="nice-select process select droplinks drop-success"
-                                                            tabindex="0"><span class="current">Activated</span>
-                                                            <ul class="list">
-                                                                <li data-value="https://lakeofcakes.com/admin/products/status/406/1"
-                                                                    class="option selected">Activated</li>
-                                                                <li data-value="https://lakeofcakes.com/admin/products/status/406/0"
-                                                                    class="option">Deactivated</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                        <div class="action-list">
+                                                    <select
+                                                      class="process  drop-success"
+                                                      style="display: block;">
+                                                      <option data-val="1" value="" selected="">Activated</option>
+                                                          <option data-val="0"value="">Deactivated</option>
+                                                    </select>
+                                                
+                                                   </div>
                                                 </td>
                                                 <td style="">
                                                     <div class="godropdown"><button class="go-dropdown-toggle">
@@ -1041,34 +943,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-sm-12 col-md-7">
-                                <div class="dataTables_paginate paging_simple_numbers" id="geniustable_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled"
-                                            id="geniustable_previous"><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                        <li class="paginate_button page-item active"><a href="#"
-                                                aria-controls="geniustable" data-dt-idx="1" tabindex="0"
-                                                class="page-link">1</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                        <li class="paginate_button page-item disabled" id="geniustable_ellipsis"><a
-                                                href="#" aria-controls="geniustable" data-dt-idx="6" tabindex="0"
-                                                class="page-link">…</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="geniustable"
-                                                data-dt-idx="7" tabindex="0" class="page-link">16</a></li>
-                                        <li class="paginate_button page-item next" id="geniustable_next"><a href="#"
-                                                aria-controls="geniustable" data-dt-idx="8" tabindex="0"
-                                                class="page-link">Next</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -1284,94 +1159,35 @@
     <script src="../assets/js/adminlte.min.js"></script>
     <!-- Summernote -->
     <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="../plugins/select2/js/select2.full.min.js"></script> -->
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+    <!-- InputMask -->
 
+    <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 
-    <script src="../assets/js/jquery.Jcrop.js"></script>
-    <script src="../assets/js/jquery.SimpleCropper.js"></script>
-    <!-- ChartJS -->
-    <script src="../assets/plugins/chart.js/Chart.min.js"></script>
+ 
+    
 
     <!-- PAGE SCRIPTS -->
     <!-- <script src="../assets/dist/js/pages/dashboard2.js"></script> -->
-    <script type="text/javascript">
-        // Gallery Section Insert
-        $(function () {
-            // Summernote
-            $('.textarea').summernote()
-        })
-
-        $(document).on('click', '.remove-img', function () {
-            var id = $(this).find('input[type=hidden]').val();
-            $('#galval' + id).remove();
-            $(this).parent().parent().remove();
-        });
-
-        $(document).on('click', '#prod_gallery', function () {
-            $('#uploadgallery').click();
-            $('.selected-image .row').html('');
-            $('#geniusform').find('.removegal').val(0);
-        });
 
 
-        $("#uploadgallery").change(function () {
-            var total_file = document.getElementById("uploadgallery").files.length;
-            for (var i = 0; i < total_file; i++) {
-                $('.selected-image .row').append('<div class="col-sm-6">' +
-                    '<div class="img gallery-img">' +
-                    '<span class="remove-img"><i class="fas fa-times"></i>' +
-                    '<input type="hidden" value="' + i + '">' +
-                    '</span>' +
-                    '<a href="' + URL.createObjectURL(event.target.files[i]) + '" target="_blank">' +
-                    '<img src="' + URL.createObjectURL(event.target.files[i]) + '" alt="gallery image">' +
-                    '</a>' +
-                    '</div>' +
-                    '</div> '
-                );
-                $('#geniusform').append('<input type="hidden" name="galval[]" id="galval' + i +
-                    '" class="removegal" value="' + i + '">')
-            }
 
-        });
-
-	// Gallery Section Insert Ends
-    </script>
-    <script>
-        $(document).off("change", ".amount").on("change", ".amount", function () {
-            var amount = Number($("input[name=original_price]").val());
-            var gst = Number($("input[name=gst]").val());
-            var gst_amount = Math.round(amount * gst / 100);
-            $("input[name=price]").val(gst_amount + amount);
-            console.log(amount);
-            console.log(gst);
-            console.log(gst_amount);
-        });
-
-
-        $(document).off("change", ".gstt").on("change", ".gstt", function () {
-            var amount = Number($("input[name=original_price]").val());
-            var gst = Number($("input[name=gst]").val());
-            var gst_amount = Math.round(amount * gst / 100);
-            $("input[name=price]").val(gst_amount + amount);
-            console.log(amount);
-            console.log(gst);
-            console.log(gst_amount);
-        });
-
-    </script>
-
-    <script type="text/javascript">
-        $('.cropme').simpleCropper();
-    </script>
+  
 
     <script>
-        document.getElementById("cat").addEventListener('change', function (e) {
-            var val = document.querySelector('#cat').value;
-            if (val.toUpperCase() == "Cakes".toUpperCase() || val.toUpperCase() == "Cake".toUpperCase()) {
-                document.getElementById("catAttributes").style.display = "block"
-            } else {
-                document.getElementById("catAttributes").style.display = "none"
-            }
 
+        $('#example2').DataTable({
+            "responsive": true,
+      "autoWidth": false,
+        });
+        $('#example1').DataTable({
+            "responsive": true,
+      "autoWidth": false,
         });
     </script>
 </body>
