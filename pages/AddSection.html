@@ -11,6 +11,9 @@
     <!-- Font Awesome Icons -->
 
     <!-- Theme style -->
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <link href="../css/plugins/fullside-menu/css/dark-side-style.css" rel="stylesheet" />
     <link href="../css/plugins/fullside-menu/waves.min.css" rel="stylesheet" />
@@ -39,29 +42,20 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <style>
-    p{
+    .productName {
         font-size: xx-small;
         text-align: justify;
-        word-wrap:break-word;
+        word-wrap: break-word;
 
     }
-    label{
-        word-wrap:break-word;
+
+    label {
+        word-wrap: break-word;
         text-overflow: clip;
-    }
-    label:before {
-        content: url("https://cdn1.iconfinder.com/data/icons/windows8_icons_iconpharm/26/unchecked_checkbox.png");
-        position: absolute;
-        z-index: 100;
-       
-    }
-
-    :checked+label:before {
-        content: url("https://cdn1.iconfinder.com/data/icons/windows8_icons_iconpharm/26/checked_checkbox.png");
     }
 
     input[type=checkbox] {
-        display: none;
+        display: block;
 
     }
 
@@ -854,186 +848,491 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="row" id="displayproducts" style="display: none;">
+                                            <div class="row" id="displayProduct" style="display:none">
                                                 <div class="col-lg-12">
                                                     <div class="left-area">
                                                         <h4 class="heading">Select Products to be added</h4>
-                                                         
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="col-sm-12">
-                                                    <div id="geniustable_filter" class="dataTables_filter" style="margin-left: 0%;">
-                                                        <p>Search:<input type="search"
-                                                                class="form-control form-control-sm" placeholder=""
-                                                                aria-controls="geniustable"></label>
-                                                     </div>
-                                                     
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <input type="checkbox" id="myCheckbox1" />
-                                                    <label for="myCheckbox1">
-                                                        <img
-                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox2" />
-                                                    <label for="myCheckbox2">
-                                                        <img
-                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox3" />
-                                                    <label for="myCheckbox3">
-                                                        <img
-                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox4" />
-                                                    <label for="myCheckbox4">
-                                                        <img
-                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox5" />
-                                                    <label for="myCheckbox5">
-                                                        <img
-                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox6" />
-                                                    <label for="myCheckbox6">
-                                                        <img
-                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox7" />
-                                                    <label for="myCheckbox7">
-                                                        <img
-                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
-                                                            <p>Prod2</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox8" />
-                                                    <label for="myCheckbox8">
-                                                        <img
-                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
-                                                            <p style="text-align: justify;text-justify: inter-word;">Red Velvet </p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox9" />
-                                                    <label for="myCheckbox9">
-                                                        <img
-                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
-                                                            <p>Prod5</p>
-                                                    </label>
 
-                                                    <input type="checkbox" id="myCheckbox1" />
-                                                    <label for="myCheckbox1">
-                                                        <img
-                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox2" />
-                                                    <label for="myCheckbox2">
-                                                        <img
-                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox3" />
-                                                    <label for="myCheckbox3">
-                                                        <img
-                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox4" />
-                                                    <label for="myCheckbox4">
-                                                        <img
-                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox5" />
-                                                    <label for="myCheckbox5">
-                                                        <img
-                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox6" />
-                                                    <label for="myCheckbox6">
-                                                        <img
-                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox7" />
-                                                    <label for="myCheckbox7">
-                                                        <img
-                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
-                                                            <p>Prod2</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox8" />
-                                                    <label for="myCheckbox8">
-                                                        <img
-                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
-                                                            <p style="text-align: justify;text-justify: inter-word;">Red Velvet </p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox9" />
-                                                    <label for="myCheckbox9">
-                                                        <img
-                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
-                                                            <p>Prod5</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox1" />
-                                                    <label for="myCheckbox1">
-                                                        <img
-                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox2" />
-                                                    <label for="myCheckbox2">
-                                                        <img
-                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox3" />
-                                                    <label for="myCheckbox3">
-                                                        <img
-                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox4" />
-                                                    <label for="myCheckbox4">
-                                                        <img
-                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox5" />
-                                                    <label for="myCheckbox5">
-                                                        <img
-                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox6" />
-                                                    <label for="myCheckbox6">
-                                                        <img
-                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
-                                                            <p>Prod1</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox7" />
-                                                    <label for="myCheckbox7">
-                                                        <img
-                                                            src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
-                                                            <p>Prod2</p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox8" />
-                                                    <label for="myCheckbox8">
-                                                        <img
-                                                            src="https://www.biggerbolderbaking.com/wp-content/uploads/2017/08/1C5A0056-500x500.jpg">
-                                                            <p style="text-align: justify;text-justify: inter-word;">Red Velvet </p>
-                                                    </label>
-                                                    <input type="checkbox" id="myCheckbox9" />
-                                                    <label for="myCheckbox9">
-                                                        <img
-                                                            src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
-                                                            <p>Prod5</p>
-                                                    </label>
+                                                    </div>
+
+                                                </div>
+                                          
+                                                <br>
+
+                                                <div class="col-lg-12">
+                                                    <table id="example2" class="table table-bordered table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Product Image</th>
+                                                                <th>Product Name</th>
+                                                                <th>Product Id</th>
+                                                                <th>Select</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <img
+                                                                        src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                                </td>
+                                                                <td>Prod 1
+                                                                </td>
+                                                                <td>Win 95+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td><img
+                                                                        src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                                </td>
+                                                                <td>Prod 22
+                                                                </td>
+                                                                <td>Win 95+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td><img
+                                                                        src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                                </td>
+                                                                <td>Prod 3
+                                                                </td>
+                                                                <td>Win 95+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td><img
+                                                                        src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                                </td>
+                                                                <td>PRod 4
+                                                                </td>
+                                                                <td>Win 98+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td><img
+                                                                        src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                                </td>
+                                                                <td>Prod 5</td>
+                                                                <td>Win XP SP2+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td><img
+                                                                        src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                                                </td>
+                                                                <td>AOL browser (AOL desktop)</td>
+                                                                <td>Win XP</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Firefox 1.0</td>
+                                                                <td>Win 98+ / OSX.2+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Firefox 1.5</td>
+                                                                <td>Win 98+ / OSX.2+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Firefox 2.0</td>
+                                                                <td>Win 98+ / OSX.2+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Firefox 3.0</td>
+                                                                <td>Win 2k+ / OSX.3+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Camino 1.0</td>
+                                                                <td>OSX.2+</td>
+                                                                <td><input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Camino 1.5</td>
+                                                                <td>OSX.3+</td>
+                                                                <td><input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Netscape 7.2</td>
+                                                                <td>Win 95+ / Mac OS 8.6-9.2</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Netscape Browser 8</td>
+                                                                <td>Win 98SE+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Netscape Navigator 9</td>
+                                                                <td>Win 98+ / OSX.2+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Mozilla 1.0</td>
+                                                                <td>Win 95+ / OSX.1+</td>
+                                                                <td>1</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Mozilla 1.1</td>
+                                                                <td>Win 95+ / OSX.1+</td>
+                                                                <td>1.1</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Mozilla 1.2</td>
+                                                                <td>Win 95+ / OSX.1+</td>
+                                                                <td>1.2</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Mozilla 1.3</td>
+                                                                <td>Win 95+ / OSX.1+</td>
+                                                                <td>1.3</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Mozilla 1.4</td>
+                                                                <td>Win 95+ / OSX.1+</td>
+                                                                <td>1.4</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Mozilla 1.5</td>
+                                                                <td>Win 95+ / OSX.1+</td>
+                                                                <td>1.5</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Mozilla 1.6</td>
+                                                                <td>Win 95+ / OSX.1+</td>
+                                                                <td>1.6</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Mozilla <input type="checkbox" id="myCheckbox2" />
+                                                                </td>
+                                                                <td>Win 98+ / OSX.1+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Mozilla <input type="checkbox" id="myCheckbox2" />
+                                                                </td>
+                                                                <td>Win 98+ / OSX.1+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Seamonkey 1.1</td>
+                                                                <td>Win 98+ / OSX.2+</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td> <img
+                                                                        src="https://www.thespruceeats.com/thmb/yaF0qY5648rH7Z2gcXfdzByzBg4=/2078x1442/filters:fill(auto,1)/GettyImages-126551741-3ca5347bbe0d46cea7bc2b71f40d2136.jpg  ">
+                                                                </td>
+                                                                <td>Epiphany 2.20</td>
+                                                                <td>Gnome</td>
+                                                                <td> <input type="checkbox" id="myCheckbox2" /></td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Webkit</td>
+                                                                <td>Safari 1.2</td>
+                                                                <td>OSX.3</td>
+                                                                <td>12</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Webkit</td>
+                                                                <td>Safari 1.3</td>
+                                                                <td>OSX.3</td>
+                                                                <td>312.8</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Webkit</td>
+                                                                <td>Safari 2.0</td>
+                                                                <td>OSX.4+</td>
+                                                                <td>419.3</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Webkit</td>
+                                                                <td>Safari 3.0</td>
+                                                                <td>OSX.4+</td>
+                                                                <td>522.1</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Webkit</td>
+                                                                <td>OmniWeb </td>
+                                                                <td>OSX.4+</td>
+                                                                <td>420</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Webkit</td>
+                                                                <td>iPod Touch / iPhone</td>
+                                                                <td>iPod</td>
+                                                                <td>420.1</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Webkit</td>
+                                                                <td>S60</td>
+                                                                <td>S60</td>
+                                                                <td>413</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Presto</td>
+                                                                <td>Opera 7.0</td>
+                                                                <td>Win 95+ / OSX.1+</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Presto</td>
+                                                                <td>Opera 7.5</td>
+                                                                <td>Win 95+ / OSX.2+</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Presto</td>
+                                                                <td>Opera 8.0</td>
+                                                                <td>Win 95+ / OSX.2+</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Presto</td>
+                                                                <td>Opera 8.5</td>
+                                                                <td>Win 95+ / OSX.2+</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Presto</td>
+                                                                <td>Opera 9.0</td>
+                                                                <td>Win 95+ / OSX.3+</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Presto</td>
+                                                                <td>Opera 9.2</td>
+                                                                <td>Win 88+ / OSX.3+</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Presto</td>
+                                                                <td>Opera 9.5</td>
+                                                                <td>Win 88+ / OSX.3+</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Presto</td>
+                                                                <td>Opera for Wii</td>
+                                                                <td>Wii</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Presto</td>
+                                                                <td>Nokia N800</td>
+                                                                <td>N800</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Presto</td>
+                                                                <td>Nintendo DS browser</td>
+                                                                <td>Nintendo DS</td>
+                                                                <td>8.5</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>KHTML</td>
+                                                                <td>Konqureror 3.1</td>
+                                                                <td>KDE 3.1</td>
+                                                                <td>3.1</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>KHTML</td>
+                                                                <td>Konqureror 3.3</td>
+                                                                <td>KDE 3.3</td>
+                                                                <td>3.3</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>KHTML</td>
+                                                                <td>Konqureror 3.5</td>
+                                                                <td>KDE 3.5</td>
+                                                                <td>3.5</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tasman</td>
+                                                                <td>Internet Explorer 4.5</td>
+                                                                <td>Mac OS 8-9</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tasman</td>
+                                                                <td>Internet Explorer 5.1</td>
+                                                                <td>Mac OS 7.6-9</td>
+                                                                <td>1</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Tasman</td>
+                                                                <td>Internet Explorer 5.2</td>
+                                                                <td>Mac OS 8-X</td>
+                                                                <td>1</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Misc</td>
+                                                                <td>NetFront 3.1</td>
+                                                                <td>Embedded devices</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Misc</td>
+                                                                <td>NetFront 3.4</td>
+                                                                <td>Embedded devices</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Misc</td>
+                                                                <td>Dillo 0.8</td>
+                                                                <td>Embedded devices</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Misc</td>
+                                                                <td>Links</td>
+                                                                <td>Text only</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Misc</td>
+                                                                <td>Lynx</td>
+                                                                <td>Text only</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Misc</td>
+                                                                <td>IE Mobile</td>
+                                                                <td>Windows Mobile 6</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Misc</td>
+                                                                <td>PSP browser</td>
+                                                                <td>PSP</td>
+                                                                <td>-</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Other browsers</td>
+                                                                <td>All others</td>
+                                                                <td>-</td>
+                                                                <td>-</td>
+                                                                <td>U</td>
+                                                            </tr>
+                                                        </tbody>
+
+                                                    </table>
+
 
 
                                                 </div>
@@ -1107,7 +1406,7 @@
                                                 <div class="col-lg-12">
 
                                                     <div class="left-area">
-                                                        <h4 class="heading">Animated Banner Size (<=100kb)</h4>
+                                                        <h4 class="heading">Animated Banner Size (<=100kb)< /h4>
                                                     </div>
                                                     <center> <input type='file' class="mybtn1"
                                                             onchange="readVideoURL(this);" /> </center>
@@ -1220,7 +1519,9 @@
     <script src="../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
     <!-- InputMask -->
 
-
+    <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 
     <script src="../js/load.js"></script>
     <!-- Custom Js-->
@@ -1336,11 +1637,11 @@
     <script>
         document.getElementById("cat").addEventListener('change', function (e) {
             var val = document.querySelector('#cat').value;
-            if(val=="Cakes"){
-            
-                document.getElementById("displayproducts").style.display = "block"
-            }else{
-                document.getElementById("displayproducts").style.display = "none"
+            if (val == "Cakes") {
+
+                document.getElementById("displayProduct").style.display = "block"
+            } else {
+                document.getElementById("displayProduct").style.display = "none"
             }
         })
         document.getElementById("sectiontype").addEventListener('change', function (e) {
@@ -1355,14 +1656,14 @@
                     document.getElementById("sectionName").style.display = "none"
                     document.getElementById("sectionInput").style.display = "none"
                     document.getElementById("sectionBackground").style.display = "none"
-                    document.getElementById("displayproducts").style.display = "none"
+                    document.getElementById("displayProduct").style.display = "none"
                 } else {
                     document.getElementById("Banner-video").style.display = "block"
                     document.getElementById("Banner-Image").style.display = "none"
                     document.getElementById("sectionName").style.display = "none"
                     document.getElementById("sectionInput").style.display = "none"
                     document.getElementById("sectionBackground").style.display = "none"
-                    document.getElementById("displayproducts").style.display = "none"
+                    document.getElementById("displayProduct").style.display = "none"
                 }
 
 
@@ -1373,9 +1674,9 @@
                 document.getElementById("sectionName").style.display = "block"
                 document.getElementById("sectionInput").style.display = "block"
                 document.getElementById("sectionBackground").style.display = "block"
-                
+
             }
-         
+
 
         });
         $('.duallistbox').bootstrapDualListbox()
@@ -1396,6 +1697,13 @@
         });
         $("input[data-bootstrap-switch]").each(function () {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        });
+        function displaycontrols(){
+            
+        }
+        $('#example2').DataTable({
+            "responsive": true,
+      "autoWidth": false,
         });
     </script>
 </body>
