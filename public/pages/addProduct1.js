@@ -1,8 +1,12 @@
 console.log("AddProduct1.js");
 
+const storageService = firebase.storage();
+const storageRef = storageService.ref();
+
 const addProduct = document.querySelector("#add-product");
 const productMainImgHandler = addProduct.querySelector("#product-main-image");
 const productSubImgsHandler = addProduct.querySelector("#product-sub-imgs");
+
 
 let mainImg, subImgs;
 
@@ -19,11 +23,11 @@ const addProductForm = (event) => {
     productTotalPrice,
     productDescription,
     productPolicy,
-    productMainImg,
-    productSubImgs;
+    productMainImg;
 
   let productTags = [];
   let productAddons = [];
+  let productSubImgs =[];
   let cakeWeights = [];
   let cakeShapes = [];
   let cakeFlavours = [];
@@ -113,10 +117,15 @@ const addProductForm = (event) => {
     }; 
   }
 
-  productMainImg = mainImg;
-  productSubImgs = subImgs;
+  productMainImg = mainImg.name;
+  // console.log(productMainImg);
+  productSubImgs = [...subImgs].map(img => img.name);
 
-  console.log(productMainImg);
+  // for(const img in subImgs) {
+  //   console.log(subImgs[img]);
+  //   console.log(img);
+  //   // productSubImgs.push(img.name);
+  // }
   console.log(productSubImgs);
 
   let wholeProduct = {
@@ -148,11 +157,14 @@ const addProductForm = (event) => {
   addProductRequest(wholeProduct) 
   .then((data) => {
     console.log(data);
+    console.log(data.id);
+    console.log(data[0]);
+
     addProduct.reset();
     addProduct.querySelector('.alert-success').textContent = 'Product Saved';
-    addProduct.querySelector('.alert-success').getElementsByClassName.display = "block";
+    addProduct.querySelector('.alert-success').style.display = "block";
     setTimeout(() => {
-      addProduct.querySelector('.alert-success').getElementsByClassName.display = "none";
+      addProduct.querySelector('.alert-success').style.display = "none";
     }, 3000);
   })
   .catch(error => {
@@ -160,9 +172,9 @@ const addProductForm = (event) => {
     console.log('error ', error.code);
     console.log('error ', error.details);
     addProduct.querySelector('.alert-danger').innerHTML =  error.message;
-    addProduct.querySelector('.alert-danger').getElementsByClassName.display = "block";
+    addProduct.querySelector('.alert-danger').style.display = "block";
     setTimeout(() => {
-      addProduct.querySelector('.alert-danger').getElementsByClassName.display = "none";
+      addProduct.querySelector('.alert-danger').style.display = "none";
     }, 3000);
   });
 
