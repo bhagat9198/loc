@@ -1,9 +1,22 @@
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+// const storage = require('firebase-storage');
+admin.initializeApp();
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+
+exports.addProductRequest = functions.https.onCall((data, context) => {
+  // console.log(data);
+  // console.log(data.category);
+  // if (!context.auth) {
+  //   throw new functions.https.HttpsError(
+  //     'unauthenticated', 
+  //     'only authenticated admin can add requests'
+  //   );
+  // const category = data.product.category;
+  // admin.firestore().collection(category).add(data.product);
+  return admin.firestore().collection('cakes').add(data);
+});
+
+
+
+
