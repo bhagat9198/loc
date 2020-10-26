@@ -20,11 +20,6 @@ exports.addProductRequest = functions.https.onCall(async(data, context) => {
   data.pid = pid;
   const doc = await admin.firestore().collection('cakes').add(data);
   const docData = await doc.get();
-  // const docId = await doc.getId();
-
-  return [id, docData];
+  return [pid, docData];
 });
 // show me place where had u fetch
-
-
-
