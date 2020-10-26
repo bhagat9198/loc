@@ -931,13 +931,13 @@
                               <div class="row mb-0 option-row">
                                 <div class="col-lg-5">
                                   <div class="custom-control custom-checkbox">
-                                    <h5 class="addon"><input type="checkbox" name="cake-shape" value="30"
+                                    <h5 class="addon"><input type="checkbox" name="cake-shape" value="Heart"
                                         class="addon">&nbsp;Heart</h5><br>
-                                    <h5 class="addon"><input type="checkbox" name="cake-shape" value="30"
+                                    <h5 class="addon"><input type="checkbox" name="cake-shape" value="Circle"
                                         class="addon">&nbsp;Circle</h5><br>
-                                    <h5 class="addon"><input type="checkbox" name="cake-shape" value="30"
+                                    <h5 class="addon"><input type="checkbox" name="cake-shape" value="Square"
                                         class="addon">&nbsp;Square</h5><br>
-                                    <h5 class="addon"><input type="checkbox" name="cake-shape" value="30"
+                                    <h5 class="addon"><input type="checkbox" name="cake-shape" value="Rectangle"
                                         class="addon">&nbsp;Rectangle</h5><br>
                                   </div>
                                 </div>
@@ -1092,7 +1092,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input name="product-mrp" step="100" type="number" class="input-field" placeholder="INR"
+                            <input name="product-mrp"  type="number" class="input-field" placeholder="INR"
                               min="0">
                           </div>
                         </div>
@@ -1109,7 +1109,7 @@
                           </div>
                           <div class="col-lg-12">
                             <input name="product-sp" type="number" class="input-field amount" placeholder="INR"
-                              step="150" min="0">
+                               min="0">
                           </div>
                         </div>
                         <div class="row" id="fff">
@@ -1129,9 +1129,9 @@
                               <h4 class="heading">
                                 Final Price
                               </h4>
-                              <!-- <p class="sub-heading">
+                              <p class="sub-heading">
                                 (LOC Price)
-                              </p> -->
+                              </p>
                             </div>
                           </div>
                           <div class="col-lg-12">
@@ -1179,14 +1179,16 @@
                             <div class="panel panel-body">
                               <div class="span4  text-center" id="landscape"
                                 style="width: 100%; height: 285px; border: 1px dashed #ddd; background: #f1f1f1;border-radius: 5px;">
-                               <input type='file' onchange="readURL(this);" />
+                                <input type='file' name="product-main-image" id="product-main-image"
+                                  onchange="readURL(this);" />
                                 <img id="putImage" src="../assets/images/logo.png" alt="your image" />
                               </div>
                             </div>
                           </div>
                         </div>
-                        
-                        <input type="file" name="gallery[]" class="hidden" id="uploadgallery" accept="image/*" multiple>
+
+                        <input type="file" name="product-sub-imgs" class="hidden" id="product-sub-imgs" accept="image/*"
+                          multiple>
                         <br>
                         <div class="row mb-4">
                           <div class="col-lg-12 mb-2">
@@ -1268,9 +1270,9 @@
                             </h4>
                           </div>
                         </div>
-                        <div class="card-body asd pad">
+                        <div class="card-body pad">
                           <div class="mb-3">
-                            <textarea class="textarea1" placeholder="Place some text here" name="product-desc"
+                            <textarea class="textarea1" placeholder="Place some text here"
                               style="width: 100%; height: 400px; font-size: 34px; line-height: 28px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                           </div>
 
@@ -1366,9 +1368,12 @@
   </footer>
   </div>
 
-  <DIV class="LOL">
-
-  </DIV>
+  <!-- <script src="/__/firebase/7.24.0/firebase-app.js"></script>
+  <script src="/__/firebase/7.24.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/7.24.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.24.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/7.24.0/firebase-functions.js"></script>
+  <script src="/__/firebase/init.js"></script> -->
   <!-- ./wrapper -->
 
   <!-- REQUIRED SCRIPTS -->
@@ -1425,19 +1430,11 @@
   <script type="text/javascript">
     // Gallery Section Insert
     $(function () {
-      // Summernote
       $('.textarea1').summernote();
       $('.textarea2').summernote();
-      
-      // var markupStr = $('.asd').eq(1).summernote('code');
-      // console.log(markupStr);
     })
-    function getnote(){
-      var getProductDesc = $('.textarea1').summernote('code');
-      var getPolicy = $('.textarea2').summernote('code');
 
-     
-    }
+
     $(document).on('click', '.remove-img', function () {
       var id = $(this).find('input[type=hidden]').val();
       $('#galval' + id).remove();
@@ -1445,14 +1442,13 @@
     });
 
     $(document).on('click', '#prod_gallery', function () {
-      $('#uploadgallery').click();
+      $('#product-sub-imgs').click();
       $('.selected-image .row').html('');
       $('#geniusform').find('.removegal').val(0);
     });
 
-
-    $("#uploadgallery").change(function () {
-      var total_file = document.getElementById("uploadgallery").files.length;
+    $("#product-sub-imgs").change(function () {
+      var total_file = document.getElementById("product-sub-imgs").files.length;
       for (var i = 0; i < total_file; i++) {
         $('.selected-image .row').append('<div class="col-sm-6">' +
           '<div class="img gallery-img">' +
@@ -1469,7 +1465,6 @@
         $('#geniusform').append('<input type="hidden" name="galval[]" id="galval' + i +
           '" class="removegal" value="' + i + '">')
       }
-
     });
 
     // Gallery Section Insert Ends
@@ -1498,9 +1493,7 @@
   </script>
 
   <script type="text/javascript">
-  //  var f = $('.cropme').simpleCropper();
-
-   
+    //  var f = $('.cropme').simpleCropper();
   </script>
 
   <script>
@@ -1513,20 +1506,45 @@
     //   }
     // });
     function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#putImage')
-                        .attr('src', e.target.result);
-                };
+        reader.onload = function (e) {
+          $('#putImage')
+            .attr('src', e.target.result);
+        };
 
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
   </script>
 
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+    authDomain: "lake-of-cakes.firebaseapp.com",
+    databaseURL: "https://lake-of-cakes.firebaseio.com",
+    projectId: "lake-of-cakes",
+    storageBucket: "lake-of-cakes.appspot.com",
+    messagingSenderId: "779843608951",
+    appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+    measurementId: "G-5ER0QF0FDW"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+  
   <script src="./AddProduct1.js"></script>
 </body>
 
