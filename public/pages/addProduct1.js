@@ -119,7 +119,7 @@ const addProductForm = (event) => {
 
   productMainImg = mainImg.name;
   // console.log(productMainImg);
-  productSubImgs = [...subImgs].map(img => img.name);
+  productSubImgs = "8";
 
   // for(const img in subImgs) {
   //   console.log(subImgs[img]);
