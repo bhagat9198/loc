@@ -139,6 +139,22 @@ select:focus {
   border: 0px;
 }
 
+.mybtn2 {
+  border-radius: 20px;
+  background-color: #1f224f;
+ 
+  text-align: center;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  display: inline-block;
+  -webkit-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  position: relative;
+  padding: 6px 15px;
+  border: 0px;
+}
 .mybtn1::after {
   position: absolute;
   content: " ";
@@ -164,7 +180,9 @@ select:focus {
 .editField{
   border-radius: 4px;
 }
-
+.categoryImage{
+  background-color:rgba(3, 2, 68, 0.9);
+}
 .mybtn1:hover::after {
   width: 100%;
   opacity: 1;
