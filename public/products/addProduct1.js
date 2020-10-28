@@ -232,7 +232,6 @@ const addProductForm = (event) => {
       
 
 
-
       addProduct.reset();
       addProduct.querySelector(".alert-success").textContent = "Product Saved";
       addProduct.querySelector(".alert-success").style.display = "block";
