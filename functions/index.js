@@ -33,4 +33,3 @@ exports.addProductRequest = functions.https.onCall(async(data, context) => {
   newFormMessage.set(data);
   return;
 });
-
