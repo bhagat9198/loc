@@ -1,12 +1,10 @@
 console.log("AddProduct1.js");
 
-const storageService = firebase.storage();
-const storageRef = storageService.ref();
+const db = firebase.firestore();
 
 const addProduct = document.querySelector("#add-product");
 const productMainImgHandler = addProduct.querySelector("#product-main-image");
 const productSubImgsHandler = addProduct.querySelector("#product-sub-imgs");
-
 
 let mainImg, subImgs;
 
@@ -27,7 +25,7 @@ const addProductForm = (event) => {
 
   let productTags = [];
   let productAddons = [];
-  let productSubImgs =[];
+  let productSubImgs = [];
   let cakeWeights = [];
   let cakeShapes = [];
   let cakeFlavours = [];
@@ -38,14 +36,14 @@ const addProductForm = (event) => {
   productCategory = addProduct["product-category"].value;
   productSubCategory = addProduct["product-sub-category"].value;
   productChildCategory = addProduct["product-child-category"].value;
-
+  console.log(productCategory);
   productMRP = addProduct["product-mrp"].value;
   productSP = addProduct["product-sp"].value;
   productGST = addProduct["product-gst"].value;
   productTotalPrice = addProduct["product-total-price"].value;
 
   addProduct
-    .querySelectorAll('input[name="product-addon"]')
+    .querySelectorAll('input[name="product-addon"]:checked')
     .forEach((addon) => {
       productAddons.push(addon.value);
     });
@@ -89,44 +87,46 @@ const addProductForm = (event) => {
         }
       });
 
-    addProduct.querySelectorAll('input[name="cake-shape"]').forEach(shape => {
-      if(shape.checked) {
-        if(shape.value === 'Heart') {
+    addProduct.querySelectorAll('input[name="cake-shape"]').forEach((shape) => {
+      if (shape.checked) {
+        if (shape.value === "Heart") {
           cakeShapes.push({
             shape: shape.value,
-            shapePrice: addProduct['cake-price-heart'].value
+            shapePrice: addProduct["cake-price-heart"].value,
           });
         } else {
           cakeShapes.push({
             shape: shape.value,
-            shapePrice: null
+            shapePrice: null,
           });
         }
       }
     });
 
-    addProduct.querySelectorAll('input[name="cake-flavour"]').forEach(flavour => {
-      cakeFlavours.push(flavour);
-    })
+    addProduct
+      .querySelectorAll('input[name="cake-flavour"]:checked')
+      .forEach((flavour) => {
+        cakeFlavours.push(flavour.value);
+      });
 
-    if( addProduct.querySelector('input[name="cake-type"]:checked')) {
+    if (addProduct.querySelector('input[name="cake-type"]:checked')) {
       cakeType = {
-        type: 'Eggless',
-        price: addProduct['cake-price-eggless'].value
-      }
-    }; 
+        type: "Eggless",
+        price: addProduct["cake-price-eggless"].value,
+      };
+    }
   }
 
-  productMainImg = mainImg.name;
-  // console.log(productMainImg);
-  productSubImgs = [...subImgs].map(img => img.name);
-
-  // for(const img in subImgs) {
-  //   console.log(subImgs[img]);
-  //   console.log(img);
-  //   // productSubImgs.push(img.name);
-  // }
-  console.log(productSubImgs);
+  if (mainImg) {
+    productMainImg = `cake_${Math.random()}_${mainImg.name}`;
+  } else {
+    productMainImg = "";
+  }
+  if (subImgs) {
+    productSubImgs = [...subImgs].map(
+      (img) => `cake_${Math.random()}_${img.name}`
+    );
+  }
 
   let wholeProduct = {
     name: productName,
@@ -143,41 +143,111 @@ const addProductForm = (event) => {
     policy: productPolicy,
     mainImg: productMainImg,
     subImgs: productSubImgs,
-    addons: productAddons
+    addons: productAddons,
+  };
+
+  if (productCategory === "Cake") {
+    wholeProduct.weights = cakeWeights || "";
+    wholeProduct.shapes = cakeShapes || "";
+    wholeProduct.type = cakeType || "";
+    wholeProduct.flavours = cakeFlavours || "";
   }
 
-  if(productCategory === "Cake") {
-    wholeProduct.weights = cakeWeights;
-    wholeProduct.shapes = cakeShapes;
-    wholeProduct.type = cakeType;
-    wholeProduct.flavours = cakeFlavours;
-  }
-
-  const addProductRequest = firebase.functions().httpsCallable('addProductRequest');
-  addProductRequest(wholeProduct) 
-  .then((data) => {
+  async function addProductFun(data) {
     console.log(data);
-    console.log(data.id);
-    console.log(data[0]);
+    console.log(data.category, typeof data.category);
+    let dataId, prodData;
+    await db
+      .collection(data.category)
+      .add(data)
+      .then((dataSaved) => {
+        // console.log(dataSaved.id);
+        dataId = dataSaved.id;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    return { dataId: dataId, prodData: data };
+  }
 
-    addProduct.reset();
-    addProduct.querySelector('.alert-success').textContent = 'Product Saved';
-    addProduct.querySelector('.alert-success').style.display = "block";
-    setTimeout(() => {
-      addProduct.querySelector('.alert-success').style.display = "none";
-    }, 3000);
-  })
-  .catch(error => {
-    console.log('error ', error.message);
-    console.log('error ', error.code);
-    console.log('error ', error.details);
-    addProduct.querySelector('.alert-danger').innerHTML =  error.message;
-    addProduct.querySelector('.alert-danger').style.display = "block";
-    setTimeout(() => {
-      addProduct.querySelector('.alert-danger').style.display = "none";
-    }, 3000);
-  });
+  addProductFun(wholeProduct)
+    .then(async (response) => {
+      console.log(response);
+      console.log(response.prodData.category);
+      // console.log(response.prodData.subImgs);
+      // console.log(typeof response.prodData.subImgs);
+      // console.log(typeof response.prodData.mainImg, response.prodData.mainImg);
+      // console.log(response.dataId);
+      // console.log(mainImg);
 
+      const storageService = firebase.storage();
+      if (mainImg) {
+        await storageService
+          .ref(
+            `${response.prodData.category}/${response.dataId}/${response.prodData.mainImg}`
+          )
+          .put(mainImg);
+      }
+      // console.log(subImgs);
+
+      async function uploadImg(id, name, img) {
+        await storageService
+          .ref(`${response.prodData.category}/${id}/${name}`)
+          .put(img);
+      }
+      let counter = -1;
+
+      async function upload() {
+        for (let img of subImgs) {
+          counter++;
+          console.log(img);
+          let name = [...response.prodData.subImgs][counter];
+          let id = response.dataId;
+          await uploadImg(id, name, img);
+        }
+      }
+
+      if (subImgs) {
+        upload();
+      }
+
+      async function addingImgUrl(imgPath) {
+        let imgUrl;
+        // console.log(imgPath);
+        await storageService
+          .ref(imgPath)
+          .getDownloadURL()
+          .then((url) => {
+            imgUrl = url;
+          })
+          .catch((err) => {
+            imgUrl = err;
+            // console.log(err);
+          });
+
+        console.log(imgUrl);
+        return imgUrl;
+      }
+
+      
+
+
+
+      addProduct.reset();
+      addProduct.querySelector(".alert-success").textContent = "Product Saved";
+      addProduct.querySelector(".alert-success").style.display = "block";
+      setTimeout(() => {
+        addProduct.querySelector(".alert-success").style.display = "none";
+      }, 5000);
+    })
+    .catch((error) => {
+      console.log(error);
+      addProduct.querySelector(".alert-danger").innerHTML = error.message;
+      addProduct.querySelector(".alert-danger").style.display = "block";
+      setTimeout(() => {
+        addProduct.querySelector(".alert-danger").style.display = "none";
+      }, 5000);
+    });
 };
 
 addProduct.addEventListener("submit", addProductForm);
@@ -186,49 +256,24 @@ const uploadMainImg = (e) => {
   mainImg = e.target.files[0];
   console.log(mainImg);
 };
-
 productMainImgHandler.addEventListener("change", uploadMainImg);
 
 const uploadSubImgs = (e) => {
   subImgs = e.target.files;
   console.log(subImgs);
 };
-
 productSubImgsHandler.addEventListener("change", uploadSubImgs);
 
-// Feature Section
+const calculate = (e) => {
+  console.log(e.target.value);
+};
 
-$("#product-tag-btn").on("click", function () {
-  $("#feature-section").append(
-    "" +
-      '<div class="feature-area">' +
-      '<span class="remove feature-remove"><i class="fas fa-times"></i></span>' +
-      '<div  class="row">' +
-      '<div class="col-lg-12">' +
-      '<input type="text" name="product-tag" class="input-field" placeholder="Enter Your Keyword">' +
-      "</div>" +
-      "</div>" +
-      "</div>" +
-      ""
-  );
-  // $(".cp").colorpicker();
-});
+addProduct.querySelector("#product-mrp").addEventListener("keyup", calculate);
+addProduct.querySelector("#product-sp").addEventListener("keyup", calculate);
+addProduct.querySelector("#product-gst").addEventListener("keyup", calculate);
 
-$(document).on("click", ".feature-remove", function () {
-  $(this.parentNode).remove();
-  // if (isEmpty($("#feature-section"))) {
-  //   $("#feature-section").append(
-  //     "" +
-  //       '<div class="feature-area">' +
-  //       '<span class="remove feature-remove"><i class="fas fa-times"></i></span>' +
-  //       '<div  class="row">' +
-  //       '<div class="col-lg-6">' +
-  //       '<input type="text" name="product-tag" class="input-field" placeholder="Enter Your Keyword">' +
-  //       "</div>" +
-  //       "</div>" +
-  //       "</div>" +
-  //       ""
-  //   );
-  //   // $(".cp").colorpicker();
-  // }
+addProduct.addEventListener("keypress", function (event) {
+  if (event.keyCode == 13) {
+    event.preventDefault();
+  }
 });
