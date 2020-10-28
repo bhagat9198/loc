@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Lake of Cakes | View Products</title>
+  <!-- Font Awesome Icons -->
+  <link href="../assets/plugins/fullside-menu/css/dark-side-style.css" rel="stylesheet" />
+  <link href="../assets/plugins/fullside-menu/waves.min.css" rel="stylesheet" />
+
+  <link href="../assets/css/plugin.css" rel="stylesheet" />
+
+  <link href="../assets/css/jquery.tagit.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/bootstrap-coloroicker.css">
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <link href="../assets/css/custom.css" rel="stylesheet" />
+  <link href="../assets/css/responsive.css" rel="stylesheet" />
+  <link href="../assets/css/common.css" rel="stylesheet" />
+  <link href="../assets/css/product.css" rel="stylesheet" />
+  <link href="../assets/css/jquery.Jcrop.css" rel="stylesheet" />
+  <link href="../assets/css/Jcrop-style.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/plugins/summernote/summernote-bs4.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="index3.html" class="nav-link">Home</a>
+        </li>
+
+      </ul>
+
+      <!-- SEARCH FORM -->
+      <!-- <form class="form-inline ml-3">
+              <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                  <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form> -->
+
+
+    </nav>
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-link" style="background-color:white;">
+        <img src="../assets/images/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
+        <span class="brand-text font-weight-bold" style="color: black;font-weight: bolder;">Lake of Cakes</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="../assets/images/CrossHex Png.png" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block">User@CrossHex</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                       with font-awesome or any other icon font library -->
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                  Home-Page
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right">2</span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/AddSlider.html" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p>Sliders</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p>
+                      Sections
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="pages/AddSection.html" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Add a Section</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>View Sections</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-list-alt"></i>
+                <p>
+                  Products
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right">2</span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/AddProduct.html" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p> Add a New Product</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/viewproduct.html" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p>View / Edit Products</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+                <p>
+                  Common
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Categories</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Cakes Flavour</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add-ons</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Footer</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Logo</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tree"></i>
+                <p>
+                  UI Elements
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/UI/general.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>General</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/icons.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Icons</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/buttons.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Buttons</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/sliders.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Sliders</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/modals.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Modals & Alerts</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/navbar.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Navbar & Tabs</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/timeline.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Timeline</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/ribbons.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ribbons</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                  Forms
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/forms/general.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>General Elements</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/forms/advanced.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Advanced Elements</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/forms/editors.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Editors</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/forms/validation.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Validation</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Tables
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/tables/simple.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Simple Tables</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/tables/data.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>DataTables</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/tables/jsgrid.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>jsGrid</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-header">EXAMPLES</li>
+            <li class="nav-item">
+              <a href="pages/calendar.html" class="nav-link">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>
+                  Calendar
+                  <span class="badge badge-info right">2</span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="pages/gallery.html" class="nav-link">
+                <i class="nav-icon far fa-image"></i>
+                <p>
+                  Gallery
+                </p>
+              </a>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-envelope"></i>
+                <p>
+                  Mailbox
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Inbox</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/mailbox/compose.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Compose</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Read</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Pages
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/examples/invoice.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Invoice</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/profile.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Profile</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/e-commerce.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>E-commerce</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/projects.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Projects</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/project-add.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Project Add</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/project-edit.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Project Edit</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/project-detail.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Project Detail</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/contacts.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Contacts</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-plus-square"></i>
+                <p>
+                  Extras
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/examples/login.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Login</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/register.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Register</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/forgot-password.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Forgot Password</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/recover-password.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Recover Password</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/lockscreen.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Lockscreen</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/legacy-user-menu.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Legacy User Menu</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/language-menu.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Language Menu</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/404.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Error 404</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/500.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Error 500</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/pace.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pace</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/blank.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Blank Page</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="starter.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Starter Page</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-header">MISCELLANEOUS</li>
+            <li class="nav-item">
+              <a href="https://adminlte.io/docs/3.0" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Documentation</p>
+              </a>
+            </li>
+            <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Level 1</p>
+              </a>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-circle"></i>
+                <p>
+                  Level 1
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Level 2</p>
+                  </a>
+                </li>
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Level 2
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Level 3</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Level 3</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Level 3</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Level 2</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Level 1</p>
+              </a>
+            </li>
+            <li class="nav-header">LABELS</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-circle text-danger"></i>
+                <p class="text">Important</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-circle text-warning"></i>
+                <p>Warning</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-circle text-info"></i>
+                <p>Informational</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+    <!-- Content Wrapper. Contains page content -->
+
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="wrapper">
+      <div class="content-wrapper">
+        <div class="container-fluid">
+
+          <div class="product-area">
+
+            <div class="add-product-content1 customar-details-area">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="product-description">
+                    <div class="body-area">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="user-image">
+                            <img src="https://lakeofcakes.com/assets/images/1601026722Mobile Logo (512x512).png"
+                              alt="No Image">
+
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="table-responsive show-table">
+                            <table class="table">
+                              <tr>
+                                <th>ID#</th>
+                                <td>22</td>
+                              </tr>
+                              <tr>
+                                <th>Name</th>
+                                <td>User</td>
+                              </tr>
+                              <tr>
+                                <th>Email</th>
+                                <td>user@gmail.com</td>
+                              </tr>
+                              <tr>
+                                <th>Phone</th>
+                                <td>34534534534</td>
+                              </tr>
+                              <tr>
+                                <th>Address</th>
+                                <td>Test Address</td>
+                              </tr>
+
+                            </table>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="table-responsive show-table">
+                            <table class="table">
+
+                              <tr>
+                                <th>City</th>
+                                <td>Test City</td>
+                              </tr>
+                              <tr>
+                                <th>Fax</th>
+                                <td>34534534534</td>
+                              </tr>
+                              <tr>
+                                <th>Zip Code</th>
+                                <td>1231</td>
+                              </tr>
+                              <tr>
+                                <th>Joined</th>
+                                <td>1 year ago</td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="order-table-wrap">
+                      <div class="order-details-table">
+                        <div class="mr-table">
+                          <h4 class="title" >Products Ordered</h4>
+                          <div class="table-responsive" style="padding: 20px;">
+                            <table id="example2" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                              <thead>
+                                <tr>
+                                  <th>Order ID</th>
+                                  <th>Purchase Date</th>
+                                  <th>Amount</th>
+                                  <th>Status</th>
+                                  <th></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <br>
+
+
+
+        </div>
+      </div>
+
+  </div>
+  </section>
+
+  <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2020 <a href="http://adminlte.io">CrossHex</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 2.0
+    </div>
+  </footer>
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- REQUIRED SCRIPTS -->
+  <!-- jQuery -->
+  <script src="../assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AdminLTE App -->
+  <script src="../assets/js/adminlte.js"></script>
+
+  <!-- OPTIONAL SCRIPTS -->
+  <script src="../assets/js/demo.js"></script>
+
+  <!-- PAGE PLUGINS -->
+  <!-- jQuery Mapael -->
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/vue.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jqueryui.min.js"></script>
+  <!-- Fullside-menu Js-->
+  <script src="../assets/js/waves.min.js"></script>
+
+  <script src="../assets/js/plugin.js"></script>
+  <script src="../assets/js/Chart.min.js"></script>
+  <script src="../assets/js/tag-it.js"></script>
+  <script src="../assets/js/nicEdit.js"></script>
+  <script src="../assets/js/bootstrap-colorpicker.min.js"></script>
+  <script src="../assets/js/notify.js"></script>
+  <script src="../assets/js/product.js"></script>
+  <script src="../assets/js/jquery.canvasjs.min.js"></script>
+
+  <script src="../assets/js/load.js"></script>
+  <!-- Custom Js-->
+  <script src="../assets/js/custom.js"></script>
+  <!-- AJAX Js-->
+  <script src="../assets/js/myscript.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../assets/js/adminlte.min.js"></script>
+  <!-- Summernote -->
+  <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
+  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="../plugins/select2/js/select2.full.min.js"></script> -->
+  <!-- Bootstrap4 Duallistbox -->
+  <script src="../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+  <!-- InputMask -->
+
+  <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+
+  <script src="../assets/js/vendors/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/vendors/vue.js"></script>
+  <script src="../assets/js/vendors/bootstrap.min.js"></script>
+  <script src="../assets/js/jqueryui.min.js"></script>
+
+
+  <!-- PAGE SCRIPTS -->
+  <!-- <script src="../assets/dist/js/pages/dashboard2.js"></script> -->
+
+
+
+
+
+  <script>
+
+    $('#example2').DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example1').DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  </script>
+</body>
+
+</html>
