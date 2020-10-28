@@ -154,8 +154,8 @@ const addProductForm = (event) => {
   }
 
   async function addProductFun(data) {
-    console.log(data);
-    console.log(data.category, typeof data.category);
+    // console.log(data);
+    // console.log(data.category, typeof data.category);
     let dataId, prodData;
     await db
       .collection(data.category)

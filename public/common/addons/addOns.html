@@ -626,8 +626,6 @@
     <!-- Main content -->
     <section class="wrapper">
       <div class="content-wrapper">
-
-
         <form id="addonForm">
           <div class="col-lg-12">
             <div class="add-product-content">
@@ -642,17 +640,14 @@
                         </div>
                         <div class="feature-tag-top-filds" id="feature-section">
                           <div class="feature-area">
-
                             <div class="row">
                               <div class="col-lg-12">
-                                <input type="text" name="features[]" class="input-field"
+                                <input type="text" name="addon-name" class="input-field"
                                   placeholder="Enter Your Add-On Name(Eg - PartyPooper) ">
-
                               </div>
                             </div>
                           </div>
                         </div>
-
                       </div>
                       <div class="row">
                         <div class="col-lg-12">
@@ -666,8 +661,7 @@
                           </div>
                         </div>
                         <div class="col-lg-12">
-                          <input name="original_price" type="number" class="input-field amount" placeholder="INR"
-                            step="150" required="" min="0">
+                          <input name="addon-sp" type="number" class="input-field amount" placeholder="INR" min="0">
                         </div>
                       </div>
                       <div class="row" id="fff">
@@ -677,7 +671,7 @@
                           </div>
                         </div>
                         <div class="col-lg-12">
-                          <input name="gst" type="text" class="input-field gstt" placeholder="Range (1-20)">
+                          <input name="addon-gst" type="text" class="input-field gstt" placeholder="Range (1-20)">
                         </div>
                       </div>
                       <div class="row">
@@ -692,38 +686,27 @@
                           </div>
                         </div>
                         <div class="col-lg-12">
-                          <input name="price" readonly="readonly" type="number" class="input-field " placeholder="INR"
-                            required="" min="0">
+                          <input name="addon-total-price" type="number" class="input-field " placeholder="INR" min="0">
                         </div>
                       </div>
-                      <div class="row"  id="Banner-Image">
-
+                      <div class="row" id="Banner-Image">
                         <div class="col-lg-12">
-
                           <div class="left-area" style="padding: 10px;">
                             <h4 class="heading">Addon Image</h4>
                           </div>
-                          <center> <input type='file' class="mybtn1" onchange="readURL(this);" /> </center>
+                          <center> <input type='file' name="addon-img" class="mybtn1" onchange="readURL(this);" /> </center>
                         </div>
-
-
                       </div>
                       <div class="row">
                         <div class="col-lg-12">
-
                           <center>
                             <div class="left-area span4 text-center" id=""
                               style="width:170px; height: 170px; border:1px dashed #ddd; background: #f1f1f1 ;">
-                              <!-- <a  class=" mybtn1"
-                                                                    > </a> -->
                               <i class="icofont-upload-alt"></i>
-
                               <img id="blah" src="../../assets/images/logo.png"
                                 style="width:170px;height: 170px;object-fit:cover ;" />
-
                             </div>
                           </center>
-
                         </div>
                       </div>
                       <div class="row">
@@ -749,9 +732,7 @@
                       <div class="row">
                         <div class="col-lg-12">
                           <div class="table-responsiv">
-
                             <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-
                               <thead>
                                 <tr>
                                   <th>Add-On Name</th>
@@ -759,15 +740,14 @@
                                   <th>Price</th>
                                   <th>Status</th>
                                   <th>Action</th>
-
                                 </tr>
                               </thead>
                               <tbody>
                                 <tr role="row" class="odd parent">
-                                  <td tabindex="0" >Cake</td>
-                                  <td ><img src="../../assets/images/logo.png"></td>
+                                  <td tabindex="0">Cake</td>
+                                  <td><img src="../../assets/images/logo.png"></td>
                                   <td>1000.0Rs</td>
-                                  <td >
+                                  <td>
                                     <div class="action-list">
                                       <select class="process  drop-success" style="display: block;">
                                         <option data-val="1" value="" selected="">Activated</option>
@@ -777,7 +757,7 @@
 
                                     </div>
                                   </td>
-                                  <td >
+                                  <td>
                                     <div class="godropdown"><button class="go-dropdown-toggle">
                                         Actions<i class="fas fa-chevron-down"></i></button>
                                       <div class="action-list" style="display: none;"><a
@@ -791,107 +771,7 @@
                                             Delete</a></div>
                                     </div>
                                   </td>
-
-
-
                                 </tr>
-                                <tr role="row" class="odd parent">
-                                  <td tabindex="0" >Flower</td>
-                                  <td ><img src="../../assets/images/logo.png"></td>
-                                  <td>1000.0Rs</td>
-                                  <td >
-                                    <div class="action-list">
-                                      <select class="process  drop-success" style="display: block;">
-                                        <option data-val="1" value="" selected="">Activated</option>
-                                        <option data-val="0" value="">
-                                          Deactivated</option>
-                                      </select>
-
-                                    </div>
-                                  </td>
-                                  <td >
-                                    <div class="godropdown"><button class="go-dropdown-toggle">
-                                        Actions<i class="fas fa-chevron-down"></i></button>
-                                      <div class="action-list" style="display: none;"><a
-                                          href="https://lakeofcakes.com/admin/products/edit/406">
-                                          <i class="fas fa-edit"></i>
-                                          Edit</a><a href="javascript" class="" data-toggle="modal"
-                                          data-target="#setgallery"><a href="javascript:;"
-                                            data-href="https://lakeofcakes.com/admin/products/delete/406"
-                                            data-toggle="modal" data-target="#confirm-delete" class="delete"><i
-                                              class="fas fa-trash-alt"></i>
-                                            Delete</a></div>
-                                    </div>
-                                  </td>
-
-
-
-                                </tr>
-                                <tr role="row" class="odd parent">
-                                  <td tabindex="0" style="">Combos</td>
-                                  <td style=""><img src="../../assets/images/logo.png"></td>
-                                  <td>1000.0Rs</td>
-                                  <td style="">
-                                    <div class="action-list">
-                                      <select class="process  drop-success" style="display: block;">
-                                        <option data-val="1" value="" selected="">Activated</option>
-                                        <option data-val="0" value="">
-                                          Deactivated</option>
-                                      </select>
-
-                                    </div>
-                                  </td>
-                                  <td style="">
-                                    <div class="godropdown"><button class="go-dropdown-toggle">
-                                        Actions<i class="fas fa-chevron-down"></i></button>
-                                      <div class="action-list" style="display: none;"><a
-                                          href="https://lakeofcakes.com/admin/products/edit/406">
-                                          <i class="fas fa-edit"></i>
-                                          Edit</a><a href="javascript" class="" data-toggle="modal"
-                                          data-target="#setgallery"><a href="javascript:;"
-                                            data-href="https://lakeofcakes.com/admin/products/delete/406"
-                                            data-toggle="modal" data-target="#confirm-delete" class="delete"><i
-                                              class="fas fa-trash-alt"></i>
-                                            Delete</a></div>
-                                    </div>
-                                  </td>
-
-
-
-                                </tr>
-                                <tr role="row" class="odd parent">
-                                  <td tabindex="0" style="">Aniversary</td>
-                                  <td style=""><img src="../../assets/images/logo.png"></td>
-                                  <td>1000.0Rs</td>
-                                  <td style="">
-                                    <div class="action-list">
-                                      <select class="process  drop-success" style="display: block;">
-                                        <option data-val="1" value="" selected="">Activated</option>
-                                        <option data-val="0" value="">
-                                          Deactivated</option>
-                                      </select>
-
-                                    </div>
-                                  </td>
-                                  <td style="">
-                                    <div class="godropdown"><button class="go-dropdown-toggle">
-                                        Actions<i class="fas fa-chevron-down"></i></button>
-                                      <div class="action-list" style="display: none;"><a
-                                          href="https://lakeofcakes.com/admin/products/edit/406">
-                                          <i class="fas fa-edit"></i>
-                                          Edit</a><a href="javascript" class="" data-toggle="modal"
-                                          data-target="#setgallery"><a href="javascript:;"
-                                            data-href="https://lakeofcakes.com/admin/products/delete/406"
-                                            data-toggle="modal" data-target="#confirm-delete" class="delete"><i
-                                              class="fas fa-trash-alt"></i>
-                                            Delete</a></div>
-                                    </div>
-                                  </td>
-
-
-
-                                </tr>
-
                               </tbody>
                             </table>
                           </div>
@@ -903,12 +783,7 @@
               </div>
             </div>
           </div>
-
-
-
       </div>
-
-
     </section>
     <!-- /.content -->
   </div>
