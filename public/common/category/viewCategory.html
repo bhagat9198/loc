@@ -6,30 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Lake of Cakes | Add Children-Category</title>
+    <title>Lake of Cakes | Add Sub-Category</title>
 
     <!-- Font Awesome Icons -->
-    <!-- <link href="../../assets/css/dark-side-style.css" rel="stylesheet" /> -->
-    <link href="../../assets/css/waves.min.css" rel="stylesheet" />
+    <!-- <link href="../assets/css/dark-side-style.css" rel="stylesheet" /> -->
+    <link href="../assets/css/waves.min.css" rel="stylesheet" />
 
-    <link href="../../assets/css/plugin.css" rel="stylesheet" />
+    <link href="../assets/css/plugin.css" rel="stylesheet" />
 
-    <link href="../../assets/css/jquery.tagit.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../assets/css/bootstrap-coloroicker.css">
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../assets/plugins/fontawesome-free/css/all.min.css">
+    <link href="../assets/css/jquery.tagit.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/bootstrap-coloroicker.css">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="../../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
-    <link href="../../assets/css/style.css" rel="stylesheet" />
-    <link href="../../assets/css/custom.css" rel="stylesheet" />
-    <link href="../../assets/css/responsive.css" rel="stylesheet" />
-    <link href="../../assets/css/common.css" rel="stylesheet" />
-    <link href="../../assets/css/product.css" rel="stylesheet" />
-    <link href="../../assets/css/jquery.Jcrop.css" rel="stylesheet" />
-    <link href="../../assets/css/Jcrop-style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../assets/plugins/summernote/summernote-bs4.css">
+    <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+    <link href="../assets/css/responsive.css" rel="stylesheet" />
+    <link href="../assets/css/common.css" rel="stylesheet" />
+    <link href="../assets/css/product.css" rel="stylesheet" />
+    <link href="../assets/css/jquery.Jcrop.css" rel="stylesheet" />
+    <link href="../assets/css/Jcrop-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/plugins/summernote/summernote-bs4.css">
 
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -72,7 +72,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link" style="background-color:white;">
-                <img src="../../assets/images/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                <img src="../assets/images/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
                 <span class="brand-text font-weight-bold" style="color: black;font-weight: bolder;">Lake of Cakes</span>
             </a>
@@ -82,7 +82,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="../../assets/images/CrossHex Png.png" class="img-circle elevation-2" alt="User Image">
+                        <img src="../assets/images/CrossHex Png.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">User@CrossHex</a>
@@ -630,108 +630,203 @@
         <!-- Main content -->
         <section class="wrapper">
             <div class="content-wrapper">
-
+                <h4 style="padding: 10px;font-weight: bold;">LOC Categories</h4>
 
                 <form id="geniusform" action="https://lakeofcakes.com/admin/products/store" method="POST"
                     enctype="multipart/form-data">
-
-
                     <div class="col-lg-12">
                         <div class="add-product-content">
-                            <h4 class="MainHeading">Children Categories</h4>
+                            <h4 class="MainHeading">All Main Categories</h4>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="product-description">
                                         <div class="body-area">
                                             <div class="row">
-
                                                 <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="left-area">
-                                                                <h4 class="heading">Category*</h4>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <select id="cat" name="category_id" required="">
-                                                                <option value="">Select Category</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/20">
-                                                                    Cakes</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/21">
-                                                                    flowers</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/22">
-                                                                    Combos</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/23">
-                                                                    Chocolate</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/24">
-                                                                    Birthday</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/25">
-                                                                    Anniversary</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/26">
-                                                                    Occasions</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/27">
-                                                                    Gifts</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="left-area">
-                                                                <h4 class="heading">Child Category*</h4>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <select id="childcat" name="childcategory_id">
-                                                                <option value="">Select Child Category</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/20"
-                                                                    value="20">Cakes By Name</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/21"
-                                                                    value="21">Cakes By Type</option>
-                                                                <option
-                                                                    data-href="https://lakeofcakes.com/admin/load/subcategories/22"
-                                                                    value="22">Cakes By OCcasion</option>
+                                                    <div class="table-responsiv">
 
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="featured-keyword-area">
-                                                        <div class="left-area">
-                                                            <h4 class="heading">Enter Children Category</h4>
-                                                        </div>
-                                                        <div class="feature-tag-top-filds" id="feature-section">
-                                                            <div class="feature-area">
+                                                        <table id="" class="table table-hover dt-responsive"
+                                                            cellspacing="0" width="100%">
 
-                                                                <div class="row">
-                                                                    <div class="col-lg-12">
-                                                                        <input type="text" name="features[]"
-                                                                            class="input-field"
-                                                                            placeholder="Eg: Cupcake, Red Velvet..">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Category Name</th>
+                                                                    <th>Image</th>
+                                                                    <th>Status</th>
+                                                                    <th>Action</th>
 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr role="row" class="odd parent">
+                                                                    <td tabindex="0" style="">Cake</td>
+                                                                    <td style=""><img src="../assets/images/logo.png">
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="action-list">
+                                                                            <select class="process  drop-success"
+                                                                                style="display: block;">
+                                                                                <option data-val="1" value=""
+                                                                                    selected="">Activated</option>
+                                                                                <option data-val="0" value="">
+                                                                                    Deactivated</option>
+                                                                            </select>
 
-                                                    </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="godropdown"><button
+                                                                                class="go-dropdown-toggle">
+                                                                                Actions<i
+                                                                                    class="fas fa-chevron-down"></i></button>
+                                                                            <div class="action-list"
+                                                                                style="display: none;"><a
+                                                                                    href="https://lakeofcakes.com/admin/products/edit/406">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                    Edit</a><a href="javascript"
+                                                                                    class="" data-toggle="modal"
+                                                                                    data-target="#setgallery"><a
+                                                                                        href="javascript:;"
+                                                                                        data-href="https://lakeofcakes.com/admin/products/delete/406"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#confirm-delete"
+                                                                                        class="delete"><i
+                                                                                            class="fas fa-trash-alt"></i>
+                                                                                        Delete</a></div>
+                                                                        </div>
+                                                                    </td>
 
-                                                    <div class="row">
-                                                        <div class="col-lg-12 text-center">
-                                                            <button class="addProductSubmit-btn" type="submit">Push
-                                                                Category</button>
-                                                        </div>
+
+
+                                                                </tr>
+                                                                <tr role="row" class="odd parent">
+                                                                    <td tabindex="0" style="">Flower</td>
+                                                                    <td style=""><img src="../assets/images/logo.png">
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="action-list">
+                                                                            <select class="process  drop-success"
+                                                                                style="display: block;">
+                                                                                <option data-val="1" value=""
+                                                                                    selected="">Activated</option>
+                                                                                <option data-val="0" value="">
+                                                                                    Deactivated</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="godropdown"><button
+                                                                                class="go-dropdown-toggle">
+                                                                                Actions<i
+                                                                                    class="fas fa-chevron-down"></i></button>
+                                                                            <div class="action-list"
+                                                                                style="display: none;"><a
+                                                                                    href="https://lakeofcakes.com/admin/products/edit/406">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                    Edit</a><a href="javascript"
+                                                                                    class="" data-toggle="modal"
+                                                                                    data-target="#setgallery"><a
+                                                                                        href="javascript:;"
+                                                                                        data-href="https://lakeofcakes.com/admin/products/delete/406"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#confirm-delete"
+                                                                                        class="delete"><i
+                                                                                            class="fas fa-trash-alt"></i>
+                                                                                        Delete</a></div>
+                                                                        </div>
+                                                                    </td>
+
+
+
+                                                                </tr>
+                                                                <tr role="row" class="odd parent">
+                                                                    <td tabindex="0" style="">Combos</td>
+                                                                    <td style=""><img src="../assets/images/logo.png">
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="action-list">
+                                                                            <select class="process  drop-success"
+                                                                                style="display: block;">
+                                                                                <option data-val="1" value=""
+                                                                                    selected="">Activated</option>
+                                                                                <option data-val="0" value="">
+                                                                                    Deactivated</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="godropdown"><button
+                                                                                class="go-dropdown-toggle">
+                                                                                Actions<i
+                                                                                    class="fas fa-chevron-down"></i></button>
+                                                                            <div class="action-list"
+                                                                                style="display: none;"><a
+                                                                                    href="https://lakeofcakes.com/admin/products/edit/406">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                    Edit</a><a href="javascript"
+                                                                                    class="" data-toggle="modal"
+                                                                                    data-target="#setgallery"><a
+                                                                                        href="javascript:;"
+                                                                                        data-href="https://lakeofcakes.com/admin/products/delete/406"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#confirm-delete"
+                                                                                        class="delete"><i
+                                                                                            class="fas fa-trash-alt"></i>
+                                                                                        Delete</a></div>
+                                                                        </div>
+                                                                    </td>
+
+
+
+                                                                </tr>
+                                                                <tr role="row" class="odd parent">
+                                                                    <td tabindex="0" style="">Aniversary</td>
+                                                                    <td style=""><img src="../assets/images/logo.png">
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="action-list">
+                                                                            <select class="process  drop-success"
+                                                                                style="display: block;">
+                                                                                <option data-val="1" value=""
+                                                                                    selected="">Activated</option>
+                                                                                <option data-val="0" value="">
+                                                                                    Deactivated</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="godropdown"><button
+                                                                                class="go-dropdown-toggle">
+                                                                                Actions<i
+                                                                                    class="fas fa-chevron-down"></i></button>
+                                                                            <div class="action-list"
+                                                                                style="display: none;"><a
+                                                                                    href="https://lakeofcakes.com/admin/products/edit/406">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                    Edit</a><a href="javascript"
+                                                                                    class="" data-toggle="modal"
+                                                                                    data-target="#setgallery"><a
+                                                                                        href="javascript:;"
+                                                                                        data-href="https://lakeofcakes.com/admin/products/delete/406"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#confirm-delete"
+                                                                                        class="delete"><i
+                                                                                            class="fas fa-trash-alt"></i>
+                                                                                        Delete</a></div>
+                                                                        </div>
+                                                                    </td>
+
+
+
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -742,7 +837,7 @@
                     <br>
                     <div class="col-lg-12">
                         <div class="add-product-content">
-                            <h4 class="MainHeading">All Children Categories</h4>
+                            <h4 class="MainHeading">All Sub Categories</h4>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="product-description">
@@ -752,6 +847,203 @@
                                                     <div class="table-responsiv">
 
                                                         <table id="example2" class="table table-hover dt-responsive"
+                                                            cellspacing="0" width="100%">
+
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Category Name</th>
+                                                                    <th>Child Category</th>
+                                                                    <th>Status</th>
+                                                                    <th>Action</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr role="row" class="odd parent">
+                                                                    <td tabindex="0" style="">Cake</td>
+                                                                    <td style="">By Name </td>
+                                                                    <td style="">
+                                                                        <div class="action-list">
+                                                                            <select class="process  drop-success"
+                                                                                style="display: block;">
+                                                                                <option data-val="1" value=""
+                                                                                    selected="">Activated</option>
+                                                                                <option data-val="0" value="">
+                                                                                    Deactivated</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="godropdown"><button
+                                                                                class="go-dropdown-toggle">
+                                                                                Actions<i
+                                                                                    class="fas fa-chevron-down"></i></button>
+                                                                            <div class="action-list"
+                                                                                style="display: none;"><a
+                                                                                    href="https://lakeofcakes.com/admin/products/edit/406">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                    Edit</a><a href="javascript"
+                                                                                    class="" data-toggle="modal"
+                                                                                    data-target="#setgallery"><a
+                                                                                        href="javascript:;"
+                                                                                        data-href="https://lakeofcakes.com/admin/products/delete/406"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#confirm-delete"
+                                                                                        class="delete"><i
+                                                                                            class="fas fa-trash-alt"></i>
+                                                                                        Delete</a></div>
+                                                                        </div>
+                                                                    </td>
+
+
+
+                                                                </tr>
+                                                                <tr role="row" class="odd parent">
+                                                                    <td tabindex="0" style="">Flower</td>
+                                                                    <td style="">By Type </td>
+                                                                    <td style="">
+                                                                        <div class="action-list">
+                                                                            <select class="process  drop-success"
+                                                                                style="display: block;">
+                                                                                <option data-val="1" value=""
+                                                                                    selected="">Activated</option>
+                                                                                <option data-val="0" value="">
+                                                                                    Deactivated</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="godropdown"><button
+                                                                                class="go-dropdown-toggle">
+                                                                                Actions<i
+                                                                                    class="fas fa-chevron-down"></i></button>
+                                                                            <div class="action-list"
+                                                                                style="display: none;"><a
+                                                                                    href="https://lakeofcakes.com/admin/products/edit/406">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                    Edit</a><a href="javascript"
+                                                                                    class="" data-toggle="modal"
+                                                                                    data-target="#setgallery"><a
+                                                                                        href="javascript:;"
+                                                                                        data-href="https://lakeofcakes.com/admin/products/delete/406"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#confirm-delete"
+                                                                                        class="delete"><i
+                                                                                            class="fas fa-trash-alt"></i>
+                                                                                        Delete</a></div>
+                                                                        </div>
+                                                                    </td>
+
+
+
+                                                                </tr>
+                                                                <tr role="row" class="odd parent">
+                                                                    <td tabindex="0" style="">Combos</td>
+                                                                    <td style="">By Flavour </td>
+                                                                    <td style="">
+                                                                        <div class="action-list">
+                                                                            <select class="process  drop-success"
+                                                                                style="display: block;">
+                                                                                <option data-val="1" value=""
+                                                                                    selected="">Activated</option>
+                                                                                <option data-val="0" value="">
+                                                                                    Deactivated</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="godropdown"><button
+                                                                                class="go-dropdown-toggle">
+                                                                                Actions<i
+                                                                                    class="fas fa-chevron-down"></i></button>
+                                                                            <div class="action-list"
+                                                                                style="display: none;"><a
+                                                                                    href="https://lakeofcakes.com/admin/products/edit/406">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                    Edit</a><a href="javascript"
+                                                                                    class="" data-toggle="modal"
+                                                                                    data-target="#setgallery"><a
+                                                                                        href="javascript:;"
+                                                                                        data-href="https://lakeofcakes.com/admin/products/delete/406"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#confirm-delete"
+                                                                                        class="delete"><i
+                                                                                            class="fas fa-trash-alt"></i>
+                                                                                        Delete</a></div>
+                                                                        </div>
+                                                                    </td>
+
+
+
+                                                                </tr>
+                                                                <tr role="row" class="odd parent">
+                                                                    <td tabindex="0" style="">Aniversary</td>
+                                                                    <td style="">By Name </td>
+                                                                    <td style="">
+                                                                        <div class="action-list">
+                                                                            <select class="process  drop-success"
+                                                                                style="display: block;">
+                                                                                <option data-val="1" value=""
+                                                                                    selected="">Activated</option>
+                                                                                <option data-val="0" value="">
+                                                                                    Deactivated</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </td>
+                                                                    <td style="">
+                                                                        <div class="godropdown"><button
+                                                                                class="go-dropdown-toggle">
+                                                                                Actions<i
+                                                                                    class="fas fa-chevron-down"></i></button>
+                                                                            <div class="action-list"
+                                                                                style="display: none;"><a
+                                                                                    href="https://lakeofcakes.com/admin/products/edit/406">
+                                                                                    <i class="fas fa-edit"></i>
+                                                                                    Edit</a><a href="javascript"
+                                                                                    class="" data-toggle="modal"
+                                                                                    data-target="#setgallery"><a
+                                                                                        href="javascript:;"
+                                                                                        data-href="https://lakeofcakes.com/admin/products/delete/406"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#confirm-delete"
+                                                                                        class="delete"><i
+                                                                                            class="fas fa-trash-alt"></i>
+                                                                                        Delete</a></div>
+                                                                        </div>
+                                                                    </td>
+
+
+
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-lg-12">
+                        <div class="add-product-content">
+                            <h4 class="MainHeading">All Child Categories</h4>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="product-description">
+                                        <div class="body-area">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="table-responsiv">
+
+                                                        <table id="example3" class="table table-hover dt-responsive"
                                                             cellspacing="0" width="100%">
 
                                                             <thead>
@@ -790,8 +1082,7 @@
                                                                                     href="https://lakeofcakes.com/admin/products/edit/406">
                                                                                     <i class="fas fa-edit"></i>
                                                                                     Edit</a><a href="javascript"
-                                                                                    class=""
-                                                                                    data-toggle="modal"
+                                                                                    class="" data-toggle="modal"
                                                                                     data-target="#setgallery"><a
                                                                                         href="javascript:;"
                                                                                         data-href="https://lakeofcakes.com/admin/products/delete/406"
@@ -832,8 +1123,7 @@
                                                                                     href="https://lakeofcakes.com/admin/products/edit/406">
                                                                                     <i class="fas fa-edit"></i>
                                                                                     Edit</a><a href="javascript"
-                                                                                    class=""
-                                                                                    data-toggle="modal"
+                                                                                    class="" data-toggle="modal"
                                                                                     data-target="#setgallery"><a
                                                                                         href="javascript:;"
                                                                                         data-href="https://lakeofcakes.com/admin/products/delete/406"
@@ -874,8 +1164,7 @@
                                                                                     href="https://lakeofcakes.com/admin/products/edit/406">
                                                                                     <i class="fas fa-edit"></i>
                                                                                     Edit</a><a href="javascript"
-                                                                                    class=""
-                                                                                    data-toggle="modal"
+                                                                                    class="" data-toggle="modal"
                                                                                     data-target="#setgallery"><a
                                                                                         href="javascript:;"
                                                                                         data-href="https://lakeofcakes.com/admin/products/delete/406"
@@ -917,8 +1206,7 @@
                                                                                     href="https://lakeofcakes.com/admin/products/edit/406">
                                                                                     <i class="fas fa-edit"></i>
                                                                                     Edit</a><a href="javascript"
-                                                                                    class=""
-                                                                                    data-toggle="modal"
+                                                                                    class="" data-toggle="modal"
                                                                                     data-target="#setgallery"><a
                                                                                         href="javascript:;"
                                                                                         data-href="https://lakeofcakes.com/admin/products/delete/406"
@@ -947,46 +1235,6 @@
                     </div>
 
 
-                    <div class="modal fade" id="setgallery" tabindex="-1" role="dialog" aria-labelledby="setgallery"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">Image Gallery</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="top-area">
-                                        <div class="row">
-                                            <div class="col-sm-6 text-right">
-                                                <div class="upload-img-btn">
-                                                    <label for="image-upload" id="prod_gallery"><i
-                                                            class="icofont-upload-alt"></i>Upload File</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <a href="javascript:;" class="upload-done" data-dismiss="modal"> <i
-                                                        class="fas fa-check"></i> Done</a>
-                                            </div>
-                                            <div class="col-sm-12 text-center">( <small>You can upload multiple
-                                                    Images.</small>
-                                                )</div>
-                                        </div>
-                                    </div>
-                                    <div class="gallery-images">
-                                        <div class="selected-image">
-                                            <div class="row">
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
             </div>
 
 
@@ -1014,63 +1262,88 @@
 
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
-    <script src="../../assets/plugins/jquery/jquery.min.js"></script>
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- overlayScrollbars -->
-    <script src="../../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../../assets/js/adminlte.js"></script>
+    <script src="../assets/js/adminlte.js"></script>
 
     <!-- OPTIONAL SCRIPTS -->
-    <script src="../../assets/js/demo.js"></script>
+    <script src="../assets/js/demo.js"></script>
 
     <!-- PAGE PLUGINS -->
     <!-- jQuery Mapael -->
 
-    <script src="../../assets/js/jquery-1.12.4.min.js"></script>
-    <script src="../../assets/js/vue.js"></script>
-    <script src="../../assets/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/jqueryui.min.js"></script>
+    <script src="../assets/js/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/vue.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jqueryui.min.js"></script>
     <!-- Fullside-menu Js-->
-    <script src="../../assets/js/jquery.slimscroll.min.js"></script>
-    <script src="../../assets/js/waves.min.js"></script>
+    <script src="../assets/js/jquery.slimscroll.min.js"></script>
+    <script src="../assets/js/waves.min.js"></script>
 
-    <script src="../../assets/js/plugin.js"></script>
-    <script src="../../assets/js/Chart.min.js"></script>
-    <script src="../../assets/js/tag-it.js"></script>
-    <script src="../../assets/js/nicEdit.js"></script>
-    <script src="../../assets/js/bootstrap-colorpicker.min.js"></script>
-    <script src="../../assets/js/notify.js"></script>
-    <script src="../../assets/js/product.js"></script>
-    <script src="../../assets/js/jquery.canvasjs.min.js"></script>
+    <script src="../assets/js/plugin.js"></script>
+    <script src="../assets/js/Chart.min.js"></script>
+    <script src="../assets/js/tag-it.js"></script>
+    <script src="../assets/js/nicEdit.js"></script>
+    <script src="../assets/js/bootstrap-colorpicker.min.js"></script>
+    <script src="../assets/js/notify.js"></script>
+    <script src="../assets/js/product.js"></script>
+    <script src="../assets/js/jquery.canvasjs.min.js"></script>
 
-    <script src="../../assets/js/load.js"></script>
+    <script src="../assets/js/load.js"></script>
     <!-- Custom Js-->
-    <script src="../../assets/js/custom.js"></script>
+    <script src="../assets/js/custom.js"></script>
     <!-- AJAX Js-->
-    <script src="../../assets/js/myscript.js"></script>
+    <script src="../assets/js/myscript.js"></script>
     <!-- AdminLTE App -->
-    <script src="../../assets/js/adminlte.min.js"></script>
+    <script src="../assets/js/adminlte.min.js"></script>
     <!-- Summernote -->
-    <script src="../../assets/plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
 
 
-    <script src="../../assets/js/jquery.Jcrop.js"></script>
-    <script src="../../assets/js/jquery.SimpleCropper.js"></script>
+    <script src="../assets/js/jquery.Jcrop.js"></script>
+    <script src="../assets/js/jquery.SimpleCropper.js"></script>
     <!-- ChartJS -->
-    <script src="../../assets/plugins/chart.js/Chart.min.js"></script>
+    <script src="../assets/plugins/chart.js/Chart.min.js"></script>
 
     <!-- PAGE SCRIPTS -->
-    <!-- <script src="../../assets/dist/js/pages/dashboard2.js"></script> -->
+    <!-- <script src="../assets/dist/js/pages/dashboard2.js"></script> -->
     <script type="text/javascript">
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        // Gallery Section Insert
         $('#example2').DataTable({
 
             "responsive": true,
             "autoWidth": false,
         });
+        $('#example3').DataTable({
 
+            "responsive": true,
+            "autoWidth": false,
+        });
+
+
+	// Gallery Section Insert Ends
     </script>
+
+
+
+
 </body>
 
 </html>
