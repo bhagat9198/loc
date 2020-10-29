@@ -62,6 +62,11 @@ async function displayRows(dd) {
                   <i class="fas fa-trash-alt"></i>
                   Delete
                 </a>
+                <a href="javascript:;"
+                data-toggle="modal" data-target="#gridSystemModal" class="dele">
+                <i class="fa fa-info"></i>
+                  Details
+                </a>
               </a>
             </div>
           </div>

@@ -144,6 +144,7 @@ const addProductForm = (event) => {
     mainImg: productMainImg,
     subImgs: productSubImgs,
     addons: productAddons,
+    isActivated: true
   };
 
   if (productCategory === "Cake") {

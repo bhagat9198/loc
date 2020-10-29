@@ -3,6 +3,8 @@ const db = firebase.firestore();
 const storageService = firebase.storage();
 
 const addonForm = document.querySelector("#addonForm");
+const addonsTbodyHTML = document.querySelector('.addons-tbody');
+
 let addonImg;
 let allAddonsData;
 
@@ -58,8 +60,20 @@ addonForm.querySelector('#addon-img').addEventListener('change', (e) => {
 })
 
 
+async function extractImgUrl(imgPath) {
+  let imgUrl;
+  await storageService.ref(imgPath).getDownloadURL().then(url => {
+    imgUrl = url;
+  })
+  .catch(error => {
+    console.log(error);
+  });
 
-const allAddonsDataFun = async () => {
+  return imgUrl;
+}
+
+
+const extractData = async () => {
   let allData;
   await db
     .collection("addons")
@@ -74,9 +88,46 @@ const allAddonsDataFun = async () => {
     return allData;
 }
 
-allAddonsDataFun().then(response => {
-  console.log(response);
-  response.forEach(doc => {
-    console.log(doc.data());
-  })
+extractData().then( async(response) => {
+  // console.log(response);
+  let tRows = '';
+  for(let doc of response) {
+    let docData = doc.data();
+    // console.log(docData);
+    let imgPath = await extractImgUrl(`addons/${doc.id}/${docData.img}`);
+    tRows += `
+    <tr role="row" class="odd parent">
+      <td tabindex="0">Cake</td>
+      <td><img src="${imgPath}"></td>
+      <td>${docData.price}</td>
+      <td>
+        <div class="action-list">
+          <select class="process  drop-success" style="display: block;">
+            <option data-val="1" value="true" selected>Activated</option>
+            <option data-val="0" value="false">Deactivated</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="godropdown">
+          <button class="go-dropdown-toggle"> Actions
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="action-list" style="display: none;">
+            <a href="#">
+              <i class="fas fa-edit"></i>
+              Edit
+            </a>
+            <a href="javascript:;" data-href="#" data-toggle="modal"
+              data-target="#confirm-delete" class="delete">
+              <i class="fas fa-trash-alt"></i>
+              Delete
+            </a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    `;
+  }
+  addonsTbodyHTML.innerHTML = tRows;
 })
