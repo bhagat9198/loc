@@ -621,8 +621,6 @@
     <!-- Main content -->
     <section class="wrapper">
       <div class="content-wrapper">
-
-
         <form id="add-product">
           <div class="row">
             <div class="col-lg-8">
@@ -1418,7 +1416,7 @@
     $(document).on('click', '#prod_gallery', function () {
       $('#product-sub-imgs').click();
       $('.selected-image .row').html('');
-      $('#geniusform').find('.removegal').val(0);
+      $('#add-product').find('.removegal').val(0);
     });
 
     $("#product-sub-imgs").change(function () {
@@ -1436,7 +1434,7 @@
           '</div> '
         );
 
-        $('#geniusform').append('<input type="hidden" name="galval[]" id="galval' + i +
+        $('#add-product').append('<input type="hidden" name="galval[]" id="galval' + i +
           '" class="removegal" value="' + i + '">')
       }
     });

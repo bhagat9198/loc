@@ -18,7 +18,7 @@ async function imgDisplay(imgPath) {
       // console.log(err);
     });
 
-  console.log(imgUrl);
+  // console.log(imgUrl);
   return imgUrl;
 }
 
@@ -30,8 +30,8 @@ async function displayRows(dd) {
     let id = d.id;
     let img = `Cake/${id}/${docData.mainImg}`;
     let imgUrl = await imgDisplay(img);
-    console.log(docData);
-    console.log(tRows);
+    // console.log(docData);
+    // console.log(tRows);
     tRows += `
     <tr role="row" class="odd parent">
         <td tabindex="0" >Prod Name<br><small>ID: ${docData.sno}</small></td>
@@ -74,7 +74,7 @@ async function displayRows(dd) {
       </tr>
     `;
   }
-  console.log(tRows);
+  // console.log(tRows);
   tbody.innerHTML = tRows;
 }
 
