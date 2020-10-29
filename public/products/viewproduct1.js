@@ -52,7 +52,7 @@ async function displayRows(dd) {
               Actions<i class="fas fa-chevron-down"></i>
             </button>
             <div class="action-list" style="display: none;">
-              <a href="./AddProduct.html">
+              <a href="./AddProduct.html"  data-toggle="modal" data-target="#editProductModal">
                 <i class="fas fa-edit"></i> Edit
               </a>
               <a href="javascript" class="set-gallery"
