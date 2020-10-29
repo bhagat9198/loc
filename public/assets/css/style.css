@@ -145,6 +145,10 @@ select:focus {
   width: 10%;
   
 }
+.userrating{
+  padding-left: 10px;
+  margin-top:-0.3% ;
+}
 .mybtn2 {
   border-radius: 20px;
   background-color: #1f224f;
@@ -464,7 +468,28 @@ textarea.input-field {
 .margin-top-minus-200 {
   margin-top: -200px;
 }
-
+.checked {
+  color: orange;
+}
+.reviewbody{
+  padding: 10px !important;
+  
+}
+.reviewBtn{
+  margin-top: 10px;
+  padding: 5px;
+}
+.searchBar{
+border: 1px solid black !important;
+border-radius: 50px;
+font-size: 15px;
+}
+.deleteBtn{
+  background-color: rgba(218, 28, 28, 0.6);
+  margin-top: 10px;
+  padding: 5px;
+  float: right;
+}
 .checkbox-inner {
   display: block;
   position: relative;
