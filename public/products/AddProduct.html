@@ -671,9 +671,9 @@
                           </div>
                           <div class="col-lg-12">
                             <select id="product-category" name="product-category">
-                              <option selected disabled value="">Select Category*</option>
+                              <!-- <option selected disabled value="">Select Category*</option>
                               <option value="Cake">Cake</option>
-                              <option value="Flower">Flower</option>
+                              <option value="Flower">Flower</option> -->
                             </select>
                           </div>
                         </div>
@@ -685,10 +685,10 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <select id="product-sub-category" name="product-sub-category">
-                              <option selected disabled value="">Select Sub Category*</option>
+                            <select id="product-sub-category" disabled name="product-sub-category">
+                              <!-- <option selected disabled value="">Select Sub Category*</option>
                               <option value="Sub Cakes">Sub Cakes</option>
-                              <option value="Sub flowers">Sub flowers </option>
+                              <option value="Sub flowers">Sub flowers </option> -->
                             </select>
                           </div>
                         </div>
@@ -701,10 +701,10 @@
                           </div>
 
                           <div class="col-lg-12">
-                            <select id="product-child-category" name="product-child-category">
-                              <option selected disabled value="">Select Sub Category</option>
+                            <select id="product-child-category" disabled name="product-child-category">
+                              <!-- <option selected disabled value="">Select Sub Category</option>
                               <option value="Child Cakes">Child Cakes</option>
-                              <option value="Child Flowers">Child Flowers </option>
+                              <option value="Child Flowers">Child Flowers </option> -->
                             </select>
                           </div>
                         </div>
@@ -1163,12 +1163,12 @@
                             </div>
                           </div>
 
-                          <div class="col-lg-12">
-                            <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 1"
+                          <div class="col-lg-12" id="all-addons">
+                            <!-- <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 1"
                                 class="addon">&nbsp;ADDON1</h5><br>
                             <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 2"
                                 class="addon">&nbsp;ADDON1</h5><br>
-                          </div>
+                          </div> -->
 
                         </div>
                         <div class="row">
@@ -1303,42 +1303,42 @@
         </form>
 
         <div class="modal fade" id="setgallery" tabindex="-1" role="dialog" aria-labelledby="setgallery"
-          aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Image Gallery</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="top-area">
-                  <div class="row">
-                    <div class="col-sm-6 text-right">
-                      <div class="upload-img-btn">
-                        <label for="image-upload" id="prod_gallery"><i class="icofont-upload-alt"></i>Upload
-                          File</label>
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalCenterTitle">Image Gallery</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="top-area">
+                        <div class="row">
+                          <div class="col-sm-6 text-right">
+                            <div class="upload-img-btn">
+                              <label for="image-upload" id="prod_gallery"><i class="icofont-upload-alt"></i>Upload
+                                File</label>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <a href="javascript:;" class="upload-done" data-dismiss="modal"> <i class="fas fa-check"></i>
+                              Done</a>
+                          </div>
+                          <div class="col-sm-12 text-center">( <small>You can upload multiple images at once.</small>
+                            )</div>
+                        </div>
+                      </div>
+                      <div class="gallery-images">
+                        <div class="selected-image">
+                          <div class="row">
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <a href="javascript:;" class="upload-done" data-dismiss="modal"> <i class="fas fa-check"></i>
-                        Done</a>
-                    </div>
-                    <div class="col-sm-12 text-center">( <small>You can upload multiple images at once.</small>
-                      )</div>
-                  </div>
-                </div>
-                <div class="gallery-images">
-                  <div class="selected-image">
-                    <div class="row">
-                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   </div>
@@ -1354,51 +1354,23 @@
   </footer>
   </div>
 
-
-  <!-- REQUIRED SCRIPTS -->
-  <!-- jQuery -->
   <script src="../assets/plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap -->
   <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- overlayScrollbars -->
-  <!-- <script src="../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
-  <!-- AdminLTE App -->
   <script src="../assets/js/adminlte.js"></script>
-
-  <!-- OPTIONAL SCRIPTS -->
   <script src="../assets/js/demo.js"></script>
-
-  <!-- PAGE PLUGINS -->
-  <!-- jQuery Mapael -->
-
-  <!-- <script src="../assets/js/jquery-1.12.4.min.js"></script>
-  <!-- <script src="../assets/js/vue.js"></script> -->
   <script src="../assets/js/bootstrap.min.js"></script>
   <script src="../assets/js/jqueryui.min.js"></script>
-  <!-- Fullside-menu Js-->
   <script src="../assets/js/jquery.slimscroll.min.js"></script>
   <script src="../assets/js/waves.min.js"></script>
-
   <script src="../assets/js/plugin.js"></script>
-  <!-- <script src="../assets/js/Chart.min.js"></script> -->
   <script src="../assets/js/tag-it.js"></script>
   <script src="../assets/js/nicEdit.js"></script>
   <script src="../assets/js/bootstrap-colorpicker.min.js"></script>
   <script src="../assets/js/notify.js"></script>
-  <!-- <script src="../assets/js/product.js"></script> -->
   <script src="../assets/js/jquery.canvasjs.min.js"></script>
-
   <script src="../assets/js/load.js"></script>
-  <!-- Custom Js-->
-  <!-- <script src="../assets/js/custom.js"></script> -->
-  <!-- AJAX Js-->
-  <!-- <script src="../assets/js/myscript.js"></script> -->
-  <!-- AdminLTE App -->
   <script src="../assets/js/adminlte.min.js"></script>
-  <!-- Summernote -->
   <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script> -->
-
-
   <script src="../assets/js/jquery.Jcrop.js"></script>
 
   <script type="text/javascript">
@@ -1439,7 +1411,7 @@
       }
     });
   </script>
-
+  
   <script>
     // Tags
     $("#product-tag-btn").on("click", function () {
@@ -1465,7 +1437,8 @@
   <script>
     document.getElementById("product-category").addEventListener('change', function (e) {
       var val = document.querySelector('#product-category').value;
-      if (val.toUpperCase() == "Cake".toUpperCase() || val.toUpperCase() == "Cake".toUpperCase()) {
+      console.log(val);
+      if (val.toUpperCase().substring('CAKE')) {
         document.getElementById("cake-attributes").style.display = "block"
       } else {
         document.getElementById("cake-attributes").style.display = "none"

@@ -5,8 +5,166 @@ const db = firebase.firestore();
 const addProduct = document.querySelector("#add-product");
 const productMainImgHandler = addProduct.querySelector("#product-main-image");
 const productSubImgsHandler = addProduct.querySelector("#product-sub-imgs");
+const productCategoryHTML = addProduct.querySelector("#product-category");
+const productSubCategoryHTML = addProduct.querySelector(
+  "#product-sub-category"
+);
+const productChildCategoryHTML = addProduct.querySelector(
+  "#product-child-category"
+);
+const allAddonsHTML = addProduct.querySelector('#all-addons');
 
 let mainImg, subImgs;
+let allCategories, choosenCategory;
+
+const displayCategories = (data) => {
+  let options = '<option selected disabled value="">Select Category*</option>';
+  data.map((doc) => {
+    let docData = doc.data();
+    // console.log(doc.id);
+    options += `
+    <option value="${doc.id}__${docData.name}">${docData.name}</option>
+    `;
+  });
+  productCategoryHTML.innerHTML = options;
+};
+
+const extractCategories = async () => {
+  let data;
+  await db
+    .collection("categories")
+    .get()
+    .then((snapshot) => {
+      let snapshotDocs = snapshot.docs;
+      data = snapshotDocs;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  return data;
+};
+
+extractCategories()
+  .then((response) => {
+    // console.log(response);
+    allCategories = response;
+    displayCategories(response);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+const displaySubCategory = async (data, elHTML) => {
+  // console.log(data);
+  let docId = data.substring(0, 20);
+  let docCat = data.substring(22);
+  let options =
+    '<option selected disabled value="">Select Sub Category*</option>';
+  let dbRef = await db.collection("categories").doc(docId)
+
+  dbRef.get().then((snapshot) => {
+      // console.log(snapshot.data());
+      let docData = snapshot.data();
+      docData.subCategory.map((sc) => {
+        // console.log(sc);
+        options += `
+        <option value="${docId}__${sc.id}__${sc.name}">${sc.name}</option>
+        `;
+      });
+      // console.log(options);
+      // console.log(elHTML);
+      elHTML.innerHTML = options;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  
+}
+
+productCategoryHTML.addEventListener("change", (e) => {
+  // console.log(e.target.value);
+  choosenCategory = e.target.value;
+  productSubCategoryHTML.disabled = false;
+  displaySubCategory(e.target.value, productSubCategoryHTML);
+});
+
+const displayChildCategory = async(data, elHTML) => {
+  let docId,scId;
+  // console.log(data);
+  docId = data.substring(0, 20);
+  // console.log(docId);
+  scId = data.substring(22, 41);
+  // console.log(scId);
+
+  let dbRef = await db.collection("categories").doc(docId)
+
+  dbRef.get().then((snapshot) => {
+      // console.log(snapshot.data());
+      let docData = snapshot.data();
+      let options = '<select id="product-child-category" disabled name="product-child-category">';
+      docData.subCategory.map((sc) => {
+        if(+sc.id === +scId) {
+          console.log(sc);
+          sc.childCategories.map(cc => {
+            // console.log(cc);
+            options += `
+            <option value="${docId}__${scId}__${cc.id}__${cc.name}">${cc.name}</option>
+            `;
+          })
+          
+        }
+      });
+      // console.log(options);
+      // console.log(elHTML);
+      elHTML.innerHTML = options;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+}
+
+productSubCategoryHTML.addEventListener("change", e => {
+  choosenCategory = e.target.value;
+  productChildCategoryHTML.disabled = false;
+  displayChildCategory(e.target.value, productChildCategoryHTML);
+});
+
+const displayAddons = data => {
+  let addon = '';
+  // console.log(data);
+  data.map(doc => {
+    let docData = doc.data();
+    // console.log(docData);
+    addon += `
+    <h5 class="addon"><input type="checkbox" name="product-addon" value="${doc.id}__${docData.name}" class="addon">&nbsp;${docData.name}</h5><br>
+    `;
+  });
+  allAddonsHTML.innerHTML = addon;
+}
+
+const extractAddons = async () => {
+  let addonsData;
+  await db.collection('addons').get().then(snapshot => {
+    let snapshotDocs = snapshot.docs;
+    addonsData = snapshotDocs;
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
+  return addonsData;
+};
+
+extractAddons()
+.then((response) => {
+  // console.log(response);
+  displayAddons(response);
+})
+.catch((error) => {
+  console.log(error);
+});
 
 const addProductForm = (event) => {
   event.preventDefault();
@@ -131,9 +289,12 @@ const addProductForm = (event) => {
   let wholeProduct = {
     name: productName,
     sno: productSno,
-    category: productCategory,
-    subCategory: productSubCategory,
-    childCategory: productChildCategory,
+    wholeCategory: productCategory,
+    wholeSubCategory: productSubCategory,
+    wholeChildCategory: productChildCategory,
+    category: productCategory.substring(22),
+    subCategory: productSubCategory.substring(43),
+    childCategory: productChildCategory.substring(63),
     mrp: productMRP,
     sp: productSP,
     gst: productGST,
@@ -144,7 +305,7 @@ const addProductForm = (event) => {
     mainImg: productMainImg,
     subImgs: productSubImgs,
     addons: productAddons,
-    isActivated: true
+    isActivated: true,
   };
 
   if (productCategory === "Cake") {
@@ -153,6 +314,11 @@ const addProductForm = (event) => {
     wholeProduct.type = cakeType || "";
     wholeProduct.flavours = cakeFlavours || "";
   }
+  console.log(wholeProduct);
+  let c = wholeProduct.wholeSubCategory.substring(43);
+  console.log(c);
+  let cc = wholeProduct.wholeChildCategory.substring(63);
+  console.log(cc);
 
   async function addProductFun(data) {
     // console.log(data);
@@ -229,9 +395,6 @@ const addProductForm = (event) => {
         console.log(imgUrl);
         return imgUrl;
       }
-
-      
-
 
       addProduct.reset();
       addProduct.querySelector(".alert-success").textContent = "Product Saved";

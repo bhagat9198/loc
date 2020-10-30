@@ -756,16 +756,9 @@
             </div>
           </div>
         </div>
-
-
-        
-
-
       </div>
-      <!-- Button trigger modal -->
 
-
-      <div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel">
+      <div id="details-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel">
         <div class="modal-dialog modal-lg .modal-dialog-scrollable " role="document">
           <div class="modal-content" style="width: 1000px;">
             <div class="modal-header">
@@ -776,29 +769,26 @@
             </div>
             <div class="modal-body">
               <div class="container-fluid">
-
                 <div class="row">
-
-                  <div class="col-lg-4 col-example"><strong>Name -</strong> Red Velvet</div>
-                  <div class="col-lg-4 "><strong>Price-</strong>400</div>
-                  <div class="col-lg-4 "><strong>GST -</strong>18%</div>
-
+                  <div class="col-lg-4 col-example"><strong>Name -</strong > <span class="prod-name-detail"></span> </div>
+                  <div class="col-lg-4 "><strong>Price-</strong><span class="prod-price-detail"></span></div>
+                  <div class="col-lg-4 "><strong>GST -</strong> <span class="prod-gst-detail"></span>%</div>
                 </div>
                 <br>
                 <div class="row">
-                  <div class="col-lg-4"><strong>Main Category - </strong>Cake</div>
-                  <div class="col-lg-4"><strong>Sub Category - </strong>By Name</div>
-                  <div class="col-lg-4"><strong>Child Category - </strong>CupCake</div>
+                  <div class="col-lg-4"><strong>Main Category - </strong><span class="prod-cat-detail"></span> </div>
+                  <div class="col-lg-4"><strong>Sub Category - </strong> <span class="prod-sub-cat-detail"></span></div>
+                  <div class="col-lg-4"><strong>Child Category - </strong> <span class="prod-child-cat-detail"></span></div>
                 </div>
                 <br>
                 <hr>
                 <div class="row">
-                  <div class="col-lg-6"><strong>Serial No.</strong> LOC361273168 </div>
+                  <div class="col-lg-6"><strong>Serial No.</strong> <span class="prod-sno-detail"></span></div>
 
                 </div>
                 <br>
                 <div class="row">
-                  <div class="col-lg-6"><strong>Tags -</strong>abc1 , abc2 </div>
+                  <div class="col-lg-6"><strong>Tags -</strong> <span class="prod-tags-detail"></span></div>
 
                 </div>
                 <br>
@@ -808,22 +798,7 @@
                       <h4>Description</h4>
                     </strong>
                     <br>
-                    <p>
-                      12 Red Roses
-                      Cellophane Packing
-                      Care Instructions
-
-                      When you get flowers, trim the stems.
-                      Cut 1-2 inches of the stems.
-                      Put flowers in a clean vase and pour water.
-                      Keep flowers away from direct sunlight.
-
-
-                      A beautiful bouquet of red roses is a delight for recipient. Red roses are symbolic of passion,
-                      this is a bunch with can convey your passionate emotions. Love, respect, admiration, honour and
-                      care are very well denoted with this simple yet most beuatiful bunch of roses. A bunch that can
-                      never go wrong, so order now to delight your dear one.
-                    </p>
+                    <div class="prod-des-detail"></div>
                   </div>
 
                 </div>
@@ -833,22 +808,7 @@
                       <h4>Privacy Policy</h4>
                     </strong>
                     <br>
-                    <p>
-                      12 Red Roses
-                      Cellophane Packing
-                      Care Instructions
-
-                      When you get flowers, trim the stems.
-                      Cut 1-2 inches of the stems.
-                      Put flowers in a clean vase and pour water.
-                      Keep flowers away from direct sunlight.
-
-
-                      A beautiful bouquet of red roses is a delight for recipient. Red roses are symbolic of passion,
-                      this is a bunch with can convey your passionate emotions. Love, respect, admiration, honour and
-                      care are very well denoted with this simple yet most beuatiful bunch of roses. A bunch that can
-                      never go wrong, so order now to delight your dear one.
-                    </p>
+                    <div class="prod-policy-detail"></div>
                   </div>
 
                 </div>
@@ -858,25 +818,14 @@
                       <h4>Gallery Images</h4>
                     </strong>
                     <br>
-                    <div class="row">
-                      <div class="col-lg-2">
-                        <img src="https://livforcake.com/wp-content/uploads/2017/07/black-forest-cake-thumb.jpg" alt="">
-                      </div>
-                      <div class="col-lg-2">
-                        <img src="https://livforcake.com/wp-content/uploads/2017/07/black-forest-cake-thumb.jpg" alt="">
-                      </div>
-                      <div class="col-lg-2">
-                        <img src="https://livforcake.com/wp-content/uploads/2017/07/black-forest-cake-thumb.jpg" alt="">
-                      </div>
-                      <div class="col-lg-2">
-                        <img src="https://livforcake.com/wp-content/uploads/2017/07/black-forest-cake-thumb.jpg" alt="">
-                      </div>
+                    <div class="row prod-img-detail">
+                      <!-- <div class="col-lg-2">
+                        <img src="" alt="">
+                      </div> -->
                     </div>
                   </div>
-
                 </div>
                 <hr>
-
               </div>
             </div>
             <div class="modal-footer">
@@ -886,6 +835,7 @@
           </div>
         </div>
       </div>
+
       <div id="editProductModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel2">
         <div class="modal-dialog modal-lg .modal-dialog-scrollable " role="document">
           <div class="modal-content" style="width: 1000px;">
@@ -903,7 +853,7 @@
                       <div class="row">
                         <div class="col-lg-12">
                           <div class="product-description">
-     
+                            <h4 class="MainHeading">Add A New Product</h4>
                             <div class="body-area">
                               <div class="alert alert-success validation" style="display: none;">
                                 <button type="button" class="close alert-close"><span>×</span></button>
@@ -921,7 +871,7 @@
                                     <p class="sub-heading"></p>
                                   </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-12 prod-name-edit">
                                   <input type="text" class="input-field" placeholder="Enter Product Name" name="product-name">
                                 </div>
                               </div>
@@ -932,8 +882,8 @@
                                     <h4 class="heading">Product Serial Number </h4>
                                   </div>
                                 </div>
-                                <div class="col-lg-12">
-                                  <input type="text" class="input-field" placeholder="Enter Product Sku" name="product-sno"
+                                <div class="col-lg-12 prod-sno-edit">
+                                  <input type="text" class="input-field" placeholder="Enter Product S.No" name="product-sno"
                                     value="LOC">
                                 </div>
                               </div>
@@ -945,10 +895,10 @@
                                   </div>
                                 </div>
                                 <div class="col-lg-12">
-                                  <select id="product-category" name="product-category">
-                                    <option selected disabled value="">Select Category*</option>
+                                  <select id="product-category" disabled name="product-category">
+                                    <!-- <option selected disabled value="">Select Category*</option>
                                     <option value="Cake">Cake</option>
-                                    <option value="Flower">Flower</option>
+                                    <option value="Flower">Flower</option> -->
                                   </select>
                                 </div>
                               </div>
@@ -961,9 +911,9 @@
                                 </div>
                                 <div class="col-lg-12">
                                   <select id="product-sub-category" name="product-sub-category">
-                                    <option selected disabled value="">Select Sub Category*</option>
+                                    <!-- <option selected disabled value="">Select Sub Category*</option>
                                     <option value="Sub Cakes">Sub Cakes</option>
-                                    <option value="Sub flowers">Sub flowers </option>
+                                    <option value="Sub flowers">Sub flowers </option> -->
                                   </select>
                                 </div>
                               </div>
@@ -977,9 +927,9 @@
       
                                 <div class="col-lg-12">
                                   <select id="product-child-category" name="product-child-category">
-                                    <option selected disabled value="">Select Sub Category</option>
+                                    <!-- <option selected disabled value="">Select Sub Category</option>
                                     <option value="Child Cakes">Child Cakes</option>
-                                    <option value="Child Flowers">Child Flowers </option>
+                                    <option value="Child Flowers">Child Flowers </option> -->
                                   </select>
                                 </div>
                               </div>
@@ -1438,12 +1388,12 @@
                                   </div>
                                 </div>
       
-                                <div class="col-lg-12">
-                                  <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 1"
+                                <div class="col-lg-12" id="all-addons">
+                                  <!-- <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 1"
                                       class="addon">&nbsp;ADDON1</h5><br>
                                   <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 2"
                                       class="addon">&nbsp;ADDON1</h5><br>
-                                </div>
+                                </div> -->
       
                               </div>
                               <div class="row">
@@ -1566,7 +1516,7 @@
                             </div>
                             <div class="row">
                               <div class="col-lg-12 text-center">
-                                <input class="addProductSubmit-btn" value="Edit Product" type="submit">
+                                <input class="addProductSubmit-btn" value="Add Product" type="submit">
                               </div>
                             </div>
                           </div>
@@ -1741,7 +1691,7 @@
   <script>
     document.getElementById("product-category").addEventListener('change', function (e) {
       var val = document.querySelector('#product-category').value;
-      if (val.toUpperCase() == "Cake".toUpperCase() || val.toUpperCase() == "Cake".toUpperCase()) {
+      if (val.toUpperCase().substring('CAKE')) {
         document.getElementById("cake-attributes").style.display = "block"
       } else {
         document.getElementById("cake-attributes").style.display = "none"
