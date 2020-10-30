@@ -475,6 +475,18 @@ textarea.input-field {
   padding: 10px !important;
   
 }
+
+td{
+  padding: 20px !important;
+  border: 1px groove black !important;
+  font-weight: 500;
+
+  text-align: center !important;
+}
+th{
+  text-align: center !important;
+  
+}
 .reviewBtn{
   margin-top: 10px;
   padding: 5px;
@@ -1242,12 +1254,14 @@ General Settings Area Start
 }
 
 .action-list a {
-  width: 95px;
+  width: 200px;
 }
 
 .action-list a i {
   margin-right: 4px;
   font-size: 12px;
+  text-align: center;
+  
 }
 
 .action-list .process {
