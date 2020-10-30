@@ -51,8 +51,7 @@ async function displayRows(dd) {
               <a href="" data-category="${docData.category}" data-id="${d.id}" onclick="editDetails(event)" data-toggle="modal" data-target="#editProductModal">
                 <i class="fas fa-edit"></i> Edit
               </a>
-              <a href="javascript" class="set-gallery"
-                data-toggle="modal" data-target="#setgallery">
+            
                 <a href="javascript:;"
                   data-toggle="modal" data-target="#confirm-delete" class="delete">
                   <i class="fas fa-trash-alt"></i>

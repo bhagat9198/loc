@@ -97,7 +97,7 @@ extractData().then( async(response) => {
     let imgPath = await extractImgUrl(`addons/${doc.id}/${docData.img}`);
     tRows += `
     <tr role="row" class="odd parent">
-      <td tabindex="0">Cake</td>
+      <td tabindex="0">${docData.name}</td>
       <td><img src="${imgPath}"></td>
       <td>${docData.price}</td>
       <td>
