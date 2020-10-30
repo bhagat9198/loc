@@ -797,10 +797,13 @@ a.btn-back {
   top: 100%;
   right: 0px;
   left: auto;
-  background: #fff;
+  justify-content: center;
+  background: rgb(200, 201, 154);
   z-index: 99;
   display: none;
-  min-width: 180px;
+  min-width: 210px;
+  padding: 0px;
+  margin-top: 1%;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.08);
   }
   .godropdown .action-list a{
@@ -811,6 +814,7 @@ a.btn-back {
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   transition: all 0.3s;
+  padding: 10px;
   }
   
   .godropdown .action-list a:focus{
