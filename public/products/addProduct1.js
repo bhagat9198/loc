@@ -105,7 +105,7 @@ const displayChildCategory = async(data, elHTML) => {
       let options = '<select id="product-child-category" disabled name="product-child-category">';
       docData.subCategory.map((sc) => {
         if(+sc.id === +scId) {
-          console.log(sc);
+          // console.log(sc);
           sc.childCategories.map(cc => {
             // console.log(cc);
             options += `
@@ -213,7 +213,7 @@ const addProductForm = (event) => {
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
 
-  if (productCategory === "Cake") {
+  if (productCategory.toUpperCase().includes('CAKE')) {
     addProduct
       .querySelectorAll('input[name="cake-weight"]')
       .forEach((weight) => {
@@ -308,20 +308,21 @@ const addProductForm = (event) => {
     isActivated: true,
   };
 
-  if (productCategory === "Cake") {
-    wholeProduct.weights = cakeWeights || "";
-    wholeProduct.shapes = cakeShapes || "";
-    wholeProduct.type = cakeType || "";
-    wholeProduct.flavours = cakeFlavours || "";
+  if (productCategory.toUpperCase().includes('CAKES')) {
+    wholeProduct.weights = cakeWeights || '';
+    wholeProduct.shapes = cakeShapes || '';
+    wholeProduct.type = cakeType  || '';
+    wholeProduct.flavours = cakeFlavours || '';
   }
+  
   console.log(wholeProduct);
   let c = wholeProduct.wholeSubCategory.substring(43);
-  console.log(c);
+  // console.log(c);
   let cc = wholeProduct.wholeChildCategory.substring(63);
-  console.log(cc);
+  // console.log(cc);
 
   async function addProductFun(data) {
-    // console.log(data);
+    console.log(data);
     // console.log(data.category, typeof data.category);
     let dataId, prodData;
     await db
@@ -339,8 +340,8 @@ const addProductForm = (event) => {
 
   addProductFun(wholeProduct)
     .then(async (response) => {
-      console.log(response);
-      console.log(response.prodData.category);
+      // console.log(response);
+      // console.log(response.prodData.category);
       // console.log(response.prodData.subImgs);
       // console.log(typeof response.prodData.subImgs);
       // console.log(typeof response.prodData.mainImg, response.prodData.mainImg);
@@ -367,7 +368,7 @@ const addProductForm = (event) => {
       async function upload() {
         for (let img of subImgs) {
           counter++;
-          console.log(img);
+          // console.log(img);
           let name = [...response.prodData.subImgs][counter];
           let id = response.dataId;
           await uploadImg(id, name, img);
@@ -428,7 +429,7 @@ const uploadSubImgs = (e) => {
 productSubImgsHandler.addEventListener("change", uploadSubImgs);
 
 const calculate = (e) => {
-  console.log(e.target.value);
+  // console.log(e.target.value);
 };
 
 addProduct.querySelector("#product-mrp").addEventListener("keyup", calculate);

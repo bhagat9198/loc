@@ -1437,8 +1437,8 @@
   <script>
     document.getElementById("product-category").addEventListener('change', function (e) {
       var val = document.querySelector('#product-category').value;
-      console.log(val);
-      if (val.toUpperCase().substring('CAKE')) {
+      // console.log(val);
+      if (val.toUpperCase().includes('CAKE')) {
         document.getElementById("cake-attributes").style.display = "block"
       } else {
         document.getElementById("cake-attributes").style.display = "none"
