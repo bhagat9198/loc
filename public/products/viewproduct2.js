@@ -1,6 +1,6 @@
 console.log("ViewProduct1.js");
 
-const tbody = document.querySelector("tbody");
+
 const storageService = firebase.storage();
 const db = firebase.firestore();
 
@@ -86,18 +86,111 @@ const extractData = async () => {
       });
     });
   console.log(allCategoriesNames);
+  const displayAllCat = document.querySelector("#displayAllCat");
   let tRows = "";
   for (let cat of allCategoriesNames) {
+    
+    displayAllCat.innerHTML+=`
+    <div class="product-area">
+    <h4 class="MainHeading">`+cat+`</h4>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="mr-table allproduct">
+          <div class="alert alert-success validation" style="display: none;">
+            <button type="button" class="close alert-close"><span>×</span></button>
+            <p class="text-left"></p>
+          </div>
+          <div class="table-responsiv">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+            <table id="myTable" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+              <div class="row btn-area">
+              </div>
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Image</th>
+                  <th>Sub-Category</th>
+                  <th>Child-Category</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Options</th>
+                </tr>
+              </thead>
+              <tbody id="tbody`+cat+`">
+
+
+                <!-- <tr role="row" class="odd parent">
+                  <td tabindex="0" >Prod Name<br><small>ID: 00000406</small></td>
+                  <td><img src="../assets/logo.png"></td>
+                  <td>Cakes by Design</td>
+                  <td>Cartoon Cakes</td>
+                  <td>₹0</td>
+                  <td>
+                    <div class="action-list"><select class="process  drop-success" style="display: block;">
+                        <option data-val="1" value="" selected="">Activated</option>
+                        <option data-val="0" value="">Deactivated</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td >
+                    <div class="godropdown">
+                      <button class="go-dropdown-toggle">
+                        Actions<i class="fas fa-chevron-down"></i>
+                      </button>
+                      <div class="action-list" style="display: none;">
+                        <a href="./AddProduct.html">
+                          <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a href="javascript" class="set-gallery"
+                          data-toggle="modal" data-target="#setgallery">
+                          <a href="javascript:;"
+                            data-toggle="modal" data-target="#confirm-delete" class="delete">
+                            <i class="fas fa-trash-alt"></i>
+                            Delete
+                          </a>
+                        </a>
+                      </div>
+                    </div>
+                  </td>
+                </tr> -->
+                <h4>Please wait Loading Products....</h4>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+        
+    `
+    const tbodys = document.querySelector("#tbody"+cat);
+    
+    if(cat=="cakes"){
+
+        await db
+        .collection(cat)
+        .get()
+        .then(async (snapshots) => {
+          let snapshotsDocs = snapshots.docs;
+          tRows += await displayRows(snapshotsDocs);
+        });
+        tbodys.innerHTML = tRows;
+    }
+    if(cat=="flowers"){
+
+        await db
+        .collection(cat)
+        .get()
+        .then(async (snapshots) => {
+          let snapshotsDocs = snapshots.docs;
+          tRows += await displayRows(snapshotsDocs);
+        });
+        tbodys.innerHTML = tRows;
+    }
     // console.log(cat);
-    await db
-      .collection(cat)
-      .get()
-      .then(async (snapshots) => {
-        let snapshotsDocs = snapshots.docs;
-        tRows += await displayRows(snapshotsDocs);
-      });
+    
   }
-  tbody.innerHTML = tRows;
+
 };
 extractData();
 
@@ -119,7 +212,7 @@ const optionDetailsHTML = document.querySelector(".option-details");
 
 async function extractImgUrl(imgPath) {
   let urlPath;
-  console.log(imgPath);
+
   await storageService
     .ref(imgPath)
     .getDownloadURL()
@@ -129,6 +222,7 @@ async function extractImgUrl(imgPath) {
     .catch((error) => {
       console.log(error);
     });
+    
   return urlPath;
 }
 
@@ -157,6 +251,7 @@ const extractDetails = async (e) => {
       console.log(allTags);
       pTagsHTML.innerHTML = allTags.join("   ");
       pSnoHTML.innerHTML = doc.sno;
+     
       pDescHTML.innerHTML = doc.descriptions;
       pPrivacyHTML.innerHTML = doc.policy;
       let imgsPath = [];
@@ -165,6 +260,7 @@ const extractDetails = async (e) => {
       );
       imgsPath.push(url);
       console.log(imgsPath);
+     
       for (let i of doc.subImgs) {
         console.log(i);
         url = await extractImgUrl(`${doc.category}/${snapshot.id}/${i}`);
@@ -432,7 +528,30 @@ const editDetails = async (e) => {
       await addons(doc.addons);
       // editProduct["product-main-image"].value = doc.mainImg;
       let mainImgSpanHTML = editProduct.querySelector("#main-img-span");
+      let galleryImages = document.querySelector("#galleryImagesDisp");
       // console.log(putImg);
+      $('#galleryImagesDisp').empty()
+      for( var i=0;i<doc.subImgs.length;i++){
+         
+        let sImgUrl = await extractImgUrl(
+            `${doc.category}/${snapshot.id}/${doc.subImgs[i]}`
+          
+          );
+            
+        galleryImages.innerHTML+=`
+        <div class="img gallery-img" id="images`+i+`" style="padding:5px">
+            <span class="remove-img2"><i class="fas fa-times" onclick=deleteImage("images`+i+`")></i>
+            <input type="hidden">
+            </span>
+            <a href="#" target="_blank">
+            <img src="${sImgUrl}" width="130"  style="object-ft:cover" alt="gallery image">;
+            </a>
+         </div>
+         
+        `
+
+        
+      }
       let mImgUrl = await extractImgUrl(
         `${doc.category}/${snapshot.id}/${doc.mainImg}`
       );
@@ -440,6 +559,11 @@ const editDetails = async (e) => {
       <img id="putImage" src="${mImgUrl}" alt=" image" />
       `;
       mainImgSpanHTML.innerHTML = mImg;
+      $('#productDesc').summernote('reset');
+      $('#productPolicy').summernote('reset');
+      $('#productDesc').summernote('editor.insertText', doc.descriptions.replace(/(<([^>]+)>)/g, ""));
+      $('#productPolicy').summernote('editor.insertText', doc.policy.replace(/(<([^>]+)>)/g, ""));
+    //   $('#productPolicy').val(doc.policy)
       let featureSectionHTML = editProduct.querySelector('#feature-section');
       let t = '';
       doc.tags.map(tag => {
@@ -711,6 +835,17 @@ const submitEditForm = event => {
       // }
 
       editProduct.reset();
+      showSnack();
+      function showSnack() {
+        // Get the snackbar DIV
+        var x = document.getElementById("snackbar");
+      
+        // Add the "show" class to DIV
+        x.className = "show";
+      
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+      }
       editProduct.querySelector(".alert-success").textContent = "Product Saved";
       editProduct.querySelector(".alert-success").style.display = "block";
       setTimeout(() => {
@@ -729,14 +864,24 @@ const submitEditForm = event => {
 }
 
 const uploadMainImg = (e) => {
+
   mainImg = e.target.files[0];
   console.log(mainImg);
-};
+
+  var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#putImage')
+            .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+}
 // productMainImgHandler.addEventListener("change", uploadMainImg);
 
 const uploadSubImgs = (e) => {
+    
   subImgs = e.target.files;
   console.log(subImgs);
+ 
 };
 
 

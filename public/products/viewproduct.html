@@ -637,8 +637,10 @@
               <a href="https://lakeofcakes.com/admin/category">3.Combos</a>
             </li>
           </ul>
+          <div id="displayAllCat">
 
-          <div class="product-area">
+          </div>
+          <!-- <div class="product-area">
             <h4 class="MainHeading">Cakes</h4>
             <div class="row">
               <div class="col-lg-12">
@@ -648,7 +650,8 @@
                     <p class="text-left"></p>
                   </div>
                   <div class="table-responsiv">
-                    <table id="example1" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+                    <table id="myTable" class="table table-hover dt-responsive" cellspacing="0" width="100%">
                       <div class="row btn-area">
                       </div>
                       <thead>
@@ -663,47 +666,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <!-- <tr role="row" class="odd parent">
-                          <td tabindex="0" >Prod Name<br><small>ID: 00000406</small></td>
-                          <td><img src="../assets/logo.png"></td>
-                          <td>Cakes by Design</td>
-                          <td>Cartoon Cakes</td>
-                          <td>₹0</td>
-                          <td>
-                            <div class="action-list"><select class="process  drop-success" style="display: block;">
-                                <option data-val="1" value="" selected="">Activated</option>
-                                <option data-val="0" value="">Deactivated</option>
-                              </select>
-                            </div>
-                          </td>
-                          <td >
-                            <div class="godropdown">
-                              <button class="go-dropdown-toggle">
-                                Actions<i class="fas fa-chevron-down"></i>
-                              </button>
-                              <div class="action-list" style="display: none;">
-                                <a href="./AddProduct.html">
-                                  <i class="fas fa-edit"></i> Edit
-                                </a>
-                                <a href="javascript" class="set-gallery"
-                                  data-toggle="modal" data-target="#setgallery">
-                                  <a href="javascript:;"
-                                    data-toggle="modal" data-target="#confirm-delete" class="delete">
-                                    <i class="fas fa-trash-alt"></i>
-                                    Delete
-                                  </a>
-                                </a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr> -->
+
+
+                   
+                        <h4>Please wait Loading Products....</h4>
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <br>
         </div>
 
@@ -913,11 +886,12 @@
                                   </div>
                                 </div>
                                 <div class="col-lg-12">
-                                  <!-- <select id="product-sub-category" onchange="displaySubCategory(this)" name="product-sub-category"> -->
-                                  <select id="product-sub-category" disabled name="product-sub-category">
+                                  <select id="product-sub-category" onchange="displaySubCategory(this)"
+                                    name="product-sub-category">
+                                    <!-- <select id="product-sub-category" disabled name="product-sub-category"> -->
                                     <!-- <option selected disabled value="">Select Sub Category*</option>
                                     <option value="Sub Cakes">Sub Cakes</option>
-                                    <option value="Sub flowers">Sub flowers </option> -->
+                                    <option value="Sub flowers">Sub flowers </option>  -->
                                   </select>
                                 </div>
                               </div>
@@ -930,7 +904,8 @@
                                 </div>
 
                                 <div class="col-lg-12">
-                                  <select id="product-child-category" onchange="displayChildCategory(this)" name="product-child-category">
+                                  <select id="product-child-category" onchange="displayChildCategory(this)"
+                                    name="product-child-category">
                                     <!-- <option selected disabled value="">Select Sub Category</option>
                                     <option value="Child Cakes">Child Cakes</option>
                                     <option value="Child Flowers">Child Flowers </option> -->
@@ -1418,8 +1393,8 @@
                                     <div class="panel panel-body">
                                       <div class="span4  text-center" id="landscape"
                                         style="width: 100%; height: 285px; border: 1px dashed #ddd; background: #f1f1f1;border-radius: 5px;">
-                                        <input type='file' onchange="uploadMainImg(event)" accept="image/*" name="product-main-image"
-                                          id="product-main-image" onchange="readURL(this);" />
+                                        <input type='file' onchange="uploadMainImg(event)" accept="image/*"
+                                          name="product-main-image" id="product-main-image" onchange="readURL(this);" />
                                         <span id="main-img-span">
                                           <!-- <img id="putImage" src="../assets/images/logo.png" alt=" image" /> -->
                                         </span>
@@ -1431,8 +1406,8 @@
                                   </div>
                                 </div>
 
-                                <input type="file" name="product-sub-imgs" class="hidden" id="product-sub-imgs" onchange="uploadSubImgs(event)"
-                                  accept="image/*" multiple>
+                                <input type="file" name="product-sub-imgs" class="hidden" id="product-sub-imgs"
+                                  onchange="uploadSubImgs(event)" accept="image/*" multiple>
                                 <br>
                                 <div class="row mb-4">
                                   <div class="col-lg-12 mb-2">
@@ -1442,11 +1417,37 @@
                                       </h4>
                                     </div>
                                   </div>
-                                  <div class="col-lg-12" style="padding: 50px;">
-                                    <a href="#" class="set-gallery" data-toggle="modal" data-target="#setgallery"
-                                      style="margin-left:20%">
-                                      <i class="icofont-plus"></i> Add More Images
-                                    </a>
+                                  <div class="col-lg-12" style="padding: 20px;">
+                                    <div class="top-area">
+                                      <div class="row">
+                                        <div class="col-sm-6 text-right">
+                                          <div class="upload-img-btn">
+                                            <label for="image-upload" id="prod_gallery"><i
+                                                class="icofont-upload-alt"></i>Upload
+                                              File</label>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                          <a href="javascript:;" class="upload-done" data-target=""
+                                            data-dismiss="modal"> <i class="fas fa-check"></i>
+                                            Done</a>
+                                        </div>
+                                        <div class="col-sm-12 text-center">( <small>You can upload multiple images at
+                                            once.</small>
+                                          )</div>
+                                      </div>
+                                    </div>
+                                    <div class="gallery-images">
+                                      <div class="selected-image">
+                                        <div class="row" id="galleryImagesDisp">
+
+
+
+                                        </div>
+                                      </div>
+
+                                    </div>
+
                                   </div>
                                 </div>
                               </div>
@@ -1508,7 +1509,7 @@
                                 </div>
                                 <div class="card-body pad">
                                   <div class="mb-3">
-                                    <textarea class="textarea1" placeholder="Place some text here"
+                                    <textarea class="textarea1" placeholder="Place some text here" id="productDesc"
                                       style="width: 100%; height: 400px; font-size: 34px; line-height: 28px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                   </div>
 
@@ -1524,15 +1525,17 @@
                                 </div>
                                 <div class="card-body pad">
                                   <div class="mb-3">
-                                    <textarea class="textarea2" placeholder="Place some text here"
+                                    <textarea class="textarea2" placeholder="Place some text here" id="productPolicy"
                                       style="width: 100%; height: 400px; font-size: 34px; line-height: 28px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                                   </div>
 
                                 </div>
                               </div>
+                              <div id="snackbar">Some text some message..</div>
                               <div class="row">
                                 <div class="col-lg-12 text-center">
-                                  <input class="addProductSubmit-btn" value="Add Product" onclick="submitEditForm(event)" type="submit">
+                                  <input class="addProductSubmit-btn" value="Update Product"
+                                    onclick="submitEditForm(event)" type="submit">
                                 </div>
                               </div>
                             </div>
@@ -1543,66 +1546,49 @@
                   </div>
               </form>
 
-              <div class="modal fade" id="setgallery" tabindex="-1" role="dialog" aria-labelledby="setgallery"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalCenterTitle">Image Gallery</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="top-area">
-                        <div class="row">
-                          <div class="col-sm-6 text-right">
-                            <div class="upload-img-btn">
-                              <label for="image-upload" id="prod_gallery"><i class="icofont-upload-alt"></i>Upload
-                                File</label>
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <a href="javascript:;" class="upload-done" data-dismiss="modal"> <i
-                                class="fas fa-check"></i>
-                              Done</a>
-                          </div>
-                          <div class="col-sm-12 text-center">( <small>You can upload multiple images at once.</small>
-                            )</div>
-                        </div>
-                      </div>
-                      <div class="gallery-images">
-                        <div class="selected-image">
-                          <div class="row">
-                            <div class="img gallery-img">
-                              <span class="remove-img"><i class="fas fa-times"></i>
-                                <input type="hidden">
-                              </span>
-                              <a href="#" target="_blank">
-                                <img src="../assets/images/logo.png" alt="gallery image">
-                              </a>
-                            </div>
-                            
-                          </div>
-                        </div>
-                        
-                      </div>
 
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
+        <!-- <div class="modal fade show" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-modal="true" style="padding-right: 16px; display: block;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+        
+          <div class="modal-header d-block text-center">
+            <h4 class="modal-title d-inline-block">Confirm Delete</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+          </div>
+        
+           
+              <div class="modal-body">
+                    <p class="text-center">You are about to delete this Product.</p>
+                    <p class="text-center">Do you want to proceed?</p>
+              </div>
+        
+              <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok" href="https://lakeofcakes.com/admin/products/delete/405">Delete</a>
+              </div>
+        
+            </div>
+          </div>
+        </div> -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default waves-effect waves-light" data-dismiss="modal">Close</button>
         </div>
       </div>
+
   </div>
   </div>
   </div>
   </section>
+
+
+
+
+
 
   <footer class="main-footer">
     <strong>Copyright &copy; 2020 <a href="#">CrossHex</a>.</strong>
@@ -1620,7 +1606,7 @@
   <script src="../assets/js/jquery-1.12.4.min.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
   <script src="../assets/js/jqueryui.min.js"></script>
-  <script src="../assets/js/waves.min.js"></script>
+  <!-- <script src="../assets/js/waves.min.js"></script> -->
   <script src="../assets/js/plugin.js"></script>
   <script src="../assets/js/Chart.min.js"></script>
   <script src="../assets/js/tag-it.js"></script>
@@ -1630,37 +1616,101 @@
   <script src="../assets/js/product.js"></script>
   <script src="../assets/js/jquery.canvasjs.min.js"></script>
   <script src="../assets/js/load.js"></script>
-  <script src="../assets/js/custom.js"></script>
-  <script src="../assets/js/myscript.js"></script>
+  <!-- <script src="../assets/js/custom.js"></script> -->
+  <!-- <script src="../assets/js/myscript.js"></script> -->
   <script src="../assets/js/adminlte.min.js"></script>
   <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-  <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <!-- <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script> -->
   <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
 
 
   <script>
-    $('#example2').DataTable({
-      "responsive": true,
-      "autoWidth": false,
+
+    function showSnack() {
+      // Get the snackbar DIV
+      var x = document.getElementById("snackbar");
+
+      // Add the "show" class to DIV
+      x.className = "show";
+
+      // After 3 seconds, remove the show class from DIV
+      setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    }
+    // $('#example2').DataTable({
+    //   "responsive": true,
+    //   "autoWidth": false,
+    // });
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    $(document).ready(function () {
+      $('#example1').DataTable();
+      $('.dataTables_length').addClass('bs-select');
     });
-    $('#example1').DataTable({
-      "responsive": true,
-      "autoWidth": false,
+    // $('#example1').DataTable({
+    //   "responsive": true,
+    //   "autoWidth": false,
+    // });
+    $(document).on('click', '.godropdown .go-dropdown-toggle', function () {
+      $('.godropdown .action-list').hide();
+      var $this = $(this);
+      $this.next('.action-list').toggle();
+
     });
+
+    $(document).on('click', function (e) {
+      var container = $(".godropdown");
+
+      // if the target of the click isn't the container nor a descendant of the container
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        container.find('.action-list').hide();
+      }
+    });
+
   </script>
 
   <script src="../assets/js/jquery.Jcrop.js"></script>
 
   <script type="text/javascript">
+    function hideModal() {
+
+      $('#setgallery').modal('hide')
+      $("#pageContent").css({ opacity: 1 });
+    }
     $(function () {
       $('.textarea1').summernote();
       $('.textarea2').summernote();
     })
 
     $(document).on('click', '.remove-img', function () {
+
+      var id = $(this).find('input[type=hidden]').val();
+      $('#galval' + id).remove();
+      $(this).parent().parent().remove();
+    });
+    $(document).on('click', '.remove-img', function () {
+
       var id = $(this).find('input[type=hidden]').val();
       $('#galval' + id).remove();
       $(this).parent().parent().remove();
@@ -1668,10 +1718,14 @@
 
     $(document).on('click', '#prod_gallery', function () {
       $('#product-sub-imgs').click();
-      $('.selected-image .row').html('');
+      // $('.selected-image .row').html('');
       $('#add-product').find('.removegal').val(0);
     });
+    function deleteImage(id) {
 
+      $('#' + id).remove();
+
+    }
     $("#product-sub-imgs").change(function () {
       var total_file = document.getElementById("product-sub-imgs").files.length;
       for (var i = 0; i < total_file; i++) {
@@ -1681,7 +1735,7 @@
           '<input type="hidden" value="' + i + '">' +
           '</span>' +
           '<a href="' + URL.createObjectURL(event.target.files[i]) + '" target="_blank">' +
-          '<img src="' + URL.createObjectURL(event.target.files[i]) + '" alt="gallery image">' +
+          '<img src="' + URL.createObjectURL(event.target.files[i]) + '" width="200" alt="gallery image">' +
           '</a>' +
           '</div>' +
           '</div> '
@@ -1726,6 +1780,7 @@
     });
 
     function readURL(input) {
+      alert(8)
       if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -1737,11 +1792,18 @@
     }
   </script>
 
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>\
+
+
+
+
+
+
+=-
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script> -->
   <script>
     var firebaseConfig = {
       apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
@@ -1754,10 +1816,10 @@
       measurementId: "G-5ER0QF0FDW"
     };
     firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+    // firebase.analytics();
   </script>
 
-  <script src="./viewproduct1.js"></script>
+  <script src="./viewproduct2.js"></script>
   <!-- <script src="./addProduct1.js"></script> -->
 </body>
 
