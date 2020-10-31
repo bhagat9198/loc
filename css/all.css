@@ -27065,16 +27065,17 @@ nav button {
 
 .product-details-page .right-area .product-info .product-price .price {
     display: inline-block;
-    font-size: 24px;
-    font-weight: 700;
-    color: #ff5500;
+    font-size: 27px;
+    font-weight: 740;
+    color: #000000;
     margin-bottom: 0px;
 }
 
 .product-details-page .right-area .product-info .product-price .price small {
     font-size: 18px;
     font-weight: 600;
-    color: rgba(20, 50, 80, 0.6);
+    padding: 5px;
+    color: rgba(7, 7, 7, 1);
 }
 
 .product-details-page .right-area .product-info .product-size {

@@ -10,7 +10,8 @@
 	background:#ffffff;
 	padding: 0px;
 
-}
+
+}x
 
 .menu img {
 	max-width: 100%;
@@ -78,16 +79,18 @@
 	padding-bottom: 10px;
 	padding-top: 10px;
 	display: block;
+	
 }
 
 .menu>ul>li:hover {
 	background: #f0f0f0;
+	color: pink;
 }
 
 .menu>ul>li>ul {
 	display: none;
 	width: 100%;
-	background: #f0f0f0;
+	background: #ffffff;
 	padding: 20px;
 	position: absolute;
 	z-index: 99;
@@ -174,6 +177,7 @@
 .menu>ul>li>ul>li>ul>li a {
 	border: 0;
 	font-size: 14px;
+	color: red;
 }
 
 .menu>ul>li>ul.normal-sub {
@@ -197,8 +201,9 @@ Mobile style's
 @media only screen and (min-width: 961px){
 	.menu>ul>li>ul>li {
 
-		height: 400px;
+		height: 300px;
 		margin-left: 5%;
+		
 	}
 	
 }
