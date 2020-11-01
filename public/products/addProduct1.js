@@ -3,7 +3,7 @@ console.log("AddProduct1.js");
 const db = firebase.firestore();
 
 const addProduct = document.querySelector("#add-product");
-const productMainImgHandler = addProduct.querySelector("#product-main-image");
+const   productMainImgHandler = addProduct.querySelector("#product-main-image");
 const productSubImgsHandler = addProduct.querySelector("#product-sub-imgs");
 const productCategoryHTML = addProduct.querySelector("#product-category");
 const productSubCategoryHTML = addProduct.querySelector(

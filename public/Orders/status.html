@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Lake of Cakes | All Ordes</title>
+
+  <!-- Font Awesome Icons -->
+  <!-- <link href="../assets/css/dark-side-style.css" rel="stylesheet" /> -->
+  <link href="../assets/css/waves.min.css" rel="stylesheet" />
+
+  <link href="../assets/css/plugin.css" rel="stylesheet" />
+
+  <link href="../assets/css/jquery.tagit.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/bootstrap-coloroicker.css">
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <link href="../assets/css/custom.css" rel="stylesheet" />
+  <link href="../assets/css/responsive.css" rel="stylesheet" />
+  <link href="../assets/css/common.css" rel="stylesheet" />
+  <link href="../assets/css/product.css" rel="stylesheet" />
+  <link href="../assets/css/jquery.Jcrop.css" rel="stylesheet" />
+  <link href="../assets/css/Jcrop-style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/plugins/summernote/summernote-bs4.css">
+
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<style>
+  .paragraph {
+    color: rgb(0, 0, 0) !important;
+    font-weight: 900 !important;
+  }
+
+  @media print {
+    .page {
+      border: initial;
+      border-radius: initial;
+      width: initial;
+      min-height: initial;
+      box-shadow: initial;
+      background: initial;
+      page-break-after: always;
+    }
+
+    table {
+      page-break-inside: auto;
+    }
+
+    tr.last-row {
+      background-color: rgb(209, 183, 32) !important;
+    }
+
+    tr.last-row>th,
+    tr.last-row>td {
+      background-color: unset !important;
+    }
+
+    div.page-break {
+      page-break-before: auto;
+    }
+  }
+
+  .gray {
+    color: #333;
+  }
+
+  .gray-ish {
+    color: #666;
+  }
+
+  .almost-gray {
+    color: #999;
+  }
+
+
+
+  div.container {
+    background-color: white;
+    border-radius: 10px;
+    height: 100%;
+    position: relative;
+    margin-top: 50px;
+  }
+
+  div.invoice-header {
+    background-color: rgb(216, 166, 29);
+    color: white;
+    border-bottom: 3px solid rgb(255, 77, 77);
+  }
+
+  div.invoice-header>div>p {
+    font-size: 1.2rem;
+    font-weight: 350;
+  }
+
+  div.invoice-header>div>h1 {
+    font-size: 4rem;
+  }
+
+  div.invoice-table {
+    border-top: 3px solid rgb(255, 77, 77);
+  }
+
+  div.invoice-table>table.table>thead,
+  div.invoice-table>table.table>thead.thead>tr,
+  div.invoice-table>table.table>thead.thead>tr>th {
+    border-top: none;
+  }
+
+  div.total-field {
+    position: relative;
+  }
+
+  h5.due-date {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+  }
+
+  div.sub-table {
+    border-left: 3px solid rgb(255, 77, 77);
+    padding-left: 0;
+  }
+
+  div.sub-table>table {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  tr.last-row {
+    margin-top: 25px;
+    background-color: #555;
+    color: white;
+    border-top: 3px solid rgb(255, 77, 77);
+  }
+
+  p.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding-top: 15px;
+    border-top: 3px solid red;
+  }
+</style>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="index3.html" class="nav-link">Home</a>
+        </li>
+
+      </ul>
+
+      <!-- SEARCH FORM -->
+      <!-- <form class="form-inline ml-3">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </form> -->
+
+
+    </nav>
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-link" style="background-color:white;">
+        <img src="../assets/images/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
+        <span class="brand-text font-weight-bold" style="color: black;font-weight: bolder;">Lake of Cakes</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="../assets/images/CrossHex Png.png" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block">User@CrossHex</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+            <li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link active">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                  Home-Page
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right">2</span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/AddSlider.html" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p>Sliders</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p>
+                      Sections
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="pages/AddSection.html" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Add a Section</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>View Sections</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-list-alt"></i>
+                <p>
+                  Products
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right">2</span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/AddProduct.html" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p> Add a New Product</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/viewproduct.html" class="nav-link">
+                    <i class="nav-icon far fa-circle text-info"></i>
+                    <p>View / Edit Products</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-pie"></i>
+                <p>
+                  Common
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Categories</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Cakes Flavour</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add-ons</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Footer</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Logo</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tree"></i>
+                <p>
+                  UI Elements
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/UI/general.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>General</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/icons.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Icons</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/buttons.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Buttons</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/sliders.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Sliders</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/modals.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Modals & Alerts</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/navbar.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Navbar & Tabs</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/timeline.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Timeline</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/UI/ribbons.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ribbons</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>
+                  Forms
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/forms/general.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>General Elements</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/forms/advanced.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Advanced Elements</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/forms/editors.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Editors</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/forms/validation.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Validation</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Tables
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/tables/simple.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Simple Tables</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/tables/data.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>DataTables</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/tables/jsgrid.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>jsGrid</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-header">EXAMPLES</li>
+            <li class="nav-item">
+              <a href="pages/calendar.html" class="nav-link">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>
+                  Calendar
+                  <span class="badge badge-info right">2</span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="pages/gallery.html" class="nav-link">
+                <i class="nav-icon far fa-image"></i>
+                <p>
+                  Gallery
+                </p>
+              </a>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-envelope"></i>
+                <p>
+                  Mailbox
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/mailbox/mailbox.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Inbox</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/mailbox/compose.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Compose</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/mailbox/read-mail.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Read</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Pages
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/examples/invoice.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Invoice</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/profile.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Profile</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/e-commerce.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>E-commerce</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/projects.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Projects</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/project-add.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Project Add</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/project-edit.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Project Edit</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/project-detail.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Project Detail</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/contacts.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Contacts</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-plus-square"></i>
+                <p>
+                  Extras
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="pages/examples/login.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Login</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/register.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Register</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/forgot-password.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Forgot Password</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/recover-password.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Recover Password</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/lockscreen.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Lockscreen</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/legacy-user-menu.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Legacy User Menu</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/language-menu.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Language Menu</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/404.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Error 404</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/500.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Error 500</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/pace.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pace</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="pages/examples/blank.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Blank Page</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="starter.html" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Starter Page</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-header">MISCELLANEOUS</li>
+            <li class="nav-item">
+              <a href="https://adminlte.io/docs/3.0" class="nav-link">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Documentation</p>
+              </a>
+            </li>
+            <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Level 1</p>
+              </a>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-circle"></i>
+                <p>
+                  Level 1
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Level 2</p>
+                  </a>
+                </li>
+                <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>
+                      Level 2
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Level 3</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Level 3</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Level 3</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Level 2</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="fas fa-circle nav-icon"></i>
+                <p>Level 1</p>
+              </a>
+            </li>
+            <li class="nav-header">LABELS</li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-circle text-danger"></i>
+                <p class="text">Important</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-circle text-warning"></i>
+                <p>Warning</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon far fa-circle text-info"></i>
+                <p>Informational</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+    <!-- Content Wrapper. Contains page content -->
+
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="wrapper">
+      <div class="content-wrapper">
+        <h4 style="padding: 10px;font-weight: bold;">Orders</h4>
+
+        <form id="geniusform" action="https://lakeofcakes.com/admin/products/store" method="POST"
+          enctype="multipart/form-data">
+          <div class="col-lg-12">
+            <div class="add-product-content">
+              <h4 class="MainHeading">Placed Orders</h4>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="product-description">
+                    <div class="body-area">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="table-responsiv">
+
+                            <table id="example2" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+
+                              <thead>
+                                <tr>
+                                  <th>Order Id</th>
+                                  <th>Quantity</th>
+                                  <th>Order Status</th>
+                                  <th>Total Cost</th>
+                                  <th>Order Details</th>
+                                  <th>Invoice</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr role="row" class="odd parent" style="">
+                                  <td tabindex="0" style="">C4REDLOC</td>
+                                  <td>
+                                    2
+                                  </td>
+                                  <td style="">
+                                    <p style="background-color: orange;color: white;border-radius: 20px;">Pending</p>
+                                  </td>
+                                  <td>100 Rs</td>
+                                  <td>
+                                    <div class="godropdown">
+                                      <button class="go-dropdown-toggle" data-toggle="modal"
+                                        data-target="#OrderDetailsModal">
+                                        Order Details
+                                      </button>
+
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <div class="godropdown">
+                                      <button class="go-dropdown-toggle">
+                                        Actions<i class="fas fa-chevron-down"></i>
+                                      </button>
+                                      <div class="action-list" style="display: none;width: 100%;">
+                                        <a href="./AddProduct.html" data-toggle="modal" data-target="#InvoiceModal">
+                                          <i class="fas fa-file-invoice"></i> View Invoice
+                                        </a>
+
+                                        <a href="javascript:;" data-toggle="modal" data-target="#confirm-delete"
+                                          class="delete">
+                                          <i class="fa fa-check"></i>
+                                          Complete Order
+                                        </a>
+                                        <a href="javascript:;" data-toggle="modal" data-target="#CoupenSystemModal"
+                                          class="dele">
+                                          <i class="fa fa-ban"></i>
+                                          Reject Order
+                                        </a>
+                                        </a>
+                                      </div>
+
+
+                                    </div>
+                          </div>
+                          </td>
+
+
+                          </tr>
+
+                          <tr role="row" class="odd parent" style="">
+                            <td tabindex="0" style="">C4REDLOC</td>
+                            <td>
+                              2
+                            </td>
+                            <td style="">
+                              <p style="background-color: rgb(70, 177, 27);color: white;border-radius: 20px;">Completed
+                              </p>
+                            </td>
+                            <td>100 Rs</td>
+                            <td>
+                              <div class="godropdown">
+                                <button class="go-dropdown-toggle" data-toggle="modal" data-target="#OrderDetailsModal">
+                                  Order Details
+                                </button>
+
+                              </div>
+                            </td>
+                            <td>
+                              <div class="godropdown">
+                                <button class="go-dropdown-toggle">
+                                  Actions<i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="action-list" style="display: none;width: 100%;">
+                                  <a href="./AddProduct.html" data-toggle="modal" data-target="#InvoiceModal">
+                                    <i class="fas fa-file-invoice"></i> View Invoice
+                                  </a>
+
+                                  <a href="javascript:;" data-toggle="modal" data-target="#confirm-delete"
+                                    class="delete">
+                                    <i class="fa fa-check"></i>
+                                    Complete Order
+                                  </a>
+                                  <a href="javascript:;" data-toggle="modal" data-target="#CoupenSystemModal"
+                                    class="dele">
+                                    <i class="fa fa-ban"></i>
+                                    Reject Order
+                                  </a>
+                                  </a>
+                                </div>
+
+
+                              </div>
+                        </div>
+                        </td>
+
+
+                        </tr>
+                        <tr role="row" class="odd parent" style="">
+                          <td tabindex="0" style="">C4REDLOC</td>
+                          <td>
+                            2
+                          </td>
+                          <td style="">
+                            <p style="background-color: rgb(255, 0, 0);color: white;border-radius: 20px;">Rejected</p>
+                          </td>
+                          <td>100 Rs</td>
+                          <td>
+                            <div class="godropdown">
+                              <button class="go-dropdown-toggle" data-toggle="modal" data-target="#OrderDetailsModal">
+                                Order Details
+                              </button>
+
+                            </div>
+                          </td>
+                          <td>
+                            <div class="godropdown">
+                              <button class="go-dropdown-toggle">
+                                Actions<i class="fas fa-chevron-down"></i>
+                              </button>
+                              <div class="action-list" style="display: none;width: 100%;">
+                                <a href="./AddProduct.html" data-toggle="modal" data-target="#InvoiceModal">
+                                  <i class="fas fa-file-invoice"></i> View Invoice
+                                </a>
+
+                                <a href="javascript:;" data-toggle="modal" data-target="#confirm-delete" class="delete">
+                                  <i class="fa fa-check"></i>
+                                  Complete Order
+                                </a>
+                                <a href="javascript:;" data-toggle="modal" data-target="#CoupenSystemModal"
+                                  class="dele">
+                                  <i class="fa fa-ban"></i>
+                                  Reject Order
+                                </a>
+                                </a>
+                              </div>
+
+
+                            </div>
+                      </div>
+                      </td>
+
+
+                      </tr>
+
+                      </tbody>
+                      </table>
+                    </div>
+
+                    <div id="OrderDetailsModal" class="modal fade" tabindex="-1" role="dialog"
+                      aria-labelledby="gridModalLabel">
+                      <div class="modal-dialog modal-lg .modal-dialog-scrollable " role="document">
+                        <div class="modal-content" style="width: 1000px;">
+                          <div class="modal-header">
+                            <h4 class="modal-title" style="font-weight: 900;" id="gridModalLabel">Order
+                              Details </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="container-fluid">
+                              <div id="Products">
+                                <div class="row">
+
+                                  <div class="col-lg-4 col-example">
+                                    <strong style="font-size: 20px;">
+                                      Order ID -</strong>
+                                    C21323Loc
+                                  </div>
+
+                                  <div class="col-lg-4"><strong style="font-size: 20px;">Order
+                                      Status - </strong>Pending</div>
+                                  <div class="col-lg-4"><strong style="font-weight: 900;font-size: 10px;">
+                                      <img
+                                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&w=1000&q=80"
+                                        width="100" alt="">
+                                    </strong></div>
+
+                                </div>
+                              </div>
+
+                              <hr>
+
+                              <h4 class="modal-title" id="gridModalLabel">
+                                Product Type </h4>
+                              <br>
+                              <div class="row">
+
+                                <div class="col-lg-4"><strong>Cake
+                                    - </strong>Red Velvet</div>
+                                <div class="col-lg-4 ">
+                                  <strong>Quantity-</strong>2
+                                </div>
+                                <div class="col-lg-4"><strong>Product Price
+                                    - </strong>200 Rs</div>
+
+                              </div>
+
+                              <hr>
+                              <h4 class="modal-title" id="gridModalLabel">
+                                Addons</h4>
+                              <br>
+                              <div class="row">
+
+                                <div class="col-lg-4"><strong>Chocolate
+                                    - </strong>Dairy Milk
+                                </div>
+                                <div class="col-lg-4 ">
+                                  <strong>Quantity-</strong>2
+                                </div>
+                                <div class="col-lg-4"><strong>Add-on Price
+                                    - </strong>200 Rs
+                                </div>
+
+                              </div>
+
+                              <hr>
+                              <h4 class="modal-title" id="gridModalLabel">
+                                Total Price </h4>
+                              <br>
+                              <div class="row">
+
+
+                                <div class="col-lg-4"><strong style="font-weight: 900;font-size: 20px;">900
+                                    Rs</strong></div>
+
+                              </div>
+
+                              <hr>
+                              <h4 class="modal-title" id="gridModalLabel">
+                                Message on Order </h4>
+                              <br>
+                              <div class="row">
+
+
+                                <div class="col-lg-4">
+                                  <strong style="font-weight: 900">Special gifts for special ones</strong>
+                                </div>
+
+
+                              </div>
+
+                              <hr>
+                              <h4 class="modal-title" id="gridModalLabel">
+                                Order Preference </h4>
+                              <br>
+                              <div class="row">
+
+
+                                <div class="col-lg-4">
+                                  <strong style="font-weight: 900">Mid
+                                    -Night Delivery</strong>
+                                </div>
+
+
+                              </div>
+
+                              <hr>
+                              <h4 class="modal-title" id="gridModalLabel">
+                                Billing Details</h4>
+                              <br>
+                              <div class="row">
+
+
+                                <div class="col-lg-12">
+                                  <p> <strong style="font-weight: 900">Billing
+                                      Addresss -1 ,</strong>
+
+                                    <strong style="font-weight: 900">Billing
+                                      Addresss -2 ,</strong>
+                                    <strong style="font-weight: 900">Billing
+                                      Addresss -3 ,</strong>
+                                    <strong style="font-weight: 900">Billing
+                                      Addresss -4</strong>
+                                  </p>
+                                </div>
+
+
+                              </div>
+
+
+                              <hr>
+                              <h4 class="modal-title" id="gridModalLabel">
+                                Shipping Details</h4>
+                              <br>
+                              <div class="row">
+
+
+                                <div class="col-lg-12">
+                                  <p> <strong style="font-weight: 900">Shipping
+                                      Addresss -1 ,</strong>
+
+                                    <strong style="font-weight: 900">Shipping
+                                      Addresss -2 ,</strong>
+                                    <strong style="font-weight: 900">Shipping
+                                      Addresss -3 ,</strong>
+                                    <strong style="font-weight: 900">Shipping
+                                      Addresss -4</strong>
+                                  </p>
+                                </div>
+
+
+                              </div>
+
+                              <hr>
+
+
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default waves-effect waves-light"
+                              data-dismiss="modal">Close</button>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="InvoiceModal" class="modal fade" tabindex="-1" role="dialog"
+                      aria-labelledby="gridModalLabel">
+                      <div class="modal-dialog modal-lg .modal-dialog-scrollable " role="document">
+                        <div class="modal-content" style="width: 1000px;">
+                          <div class="modal-header">
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">×</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form id="geniusform" action="https://lakeofcakes.com/admin/products/store" method="POST"
+                              enctype="multipart/form-data">
+                              <div class="col-lg-12 ">
+                                <div class="container">
+                                  <div class="row invoice-header px-3 py-2">
+                                    <div class="col-4">
+
+                                      <img src="../assets/images/logo.png" width="100" alt="">
+                                      <h1>INVOICE</h1>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                      <p>(011)-123-1243</p>
+                                      <p>email@adress.com</p>
+                                      <p>personal-website.com</p>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                      <p>Street Adress</p>
+                                      <p>City, State Adress, ZIP</p>
+                                      <p>VAT ID / PID</p>
+                                    </div>
+                                  </div>
+
+                                  <div class="invoice-content row px-5 pt-5">
+                                    <div class="col-3">
+                                      <h5 class="almost-gray mb-3">Invoiced to:</h5>
+                                      <p class="gray-ish">Client Name</p>
+                                      <p class="gray-ish">Client Adress spanning on two rows hopefully.</p>
+                                      <p class="gray-ish">VAT ID: 12091803</p>
+                                    </div>
+                                    <div class="col-3">
+                                      <h5 class="almost-gray">Order Id:</h5>
+                                      <p class="gray-ish"># 123456789</p>
+
+                                      <h5 class="almost-gray">Date of Issue:</h5>
+                                      <p class="gray-ish">01 / 01 / 20 20 </p>
+
+                                    </div>
+                                    <div class="col-6 text-right total-field">
+                                      <h4 class="almost-gray">Invoice Total</h4>
+                                      <h1 class="gray-ish">634,57 <span class="curency">&#8377;</span></h1>
+                                      <h5 class="almost-gray due-date">Due Date: 01 / 01 / 20 20</h5>
+                                    </div>
+                                  </div>
+
+                                  <div class="row mt-5">
+                                    <div class="col-10 offset-1 invoice-table pt-1">
+                                      <table class="table table-hover">
+                                        <thead class="thead splitForPrint">
+                                          <tr>
+                                            <th scope="col gray-ish">NO.</th>
+                                            <th scope="col gray-ish">Item</th>
+                                            <th scope="col gray-ish">Qty.</th>
+                                            <th scope="col gray-ish">Order Preference</th>
+                                            <th scope="col gray-ish">Coupen Applied</th>
+                                            <th class="text-right" scope="col gray-ish">Amount</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td class="item">Cake</td>
+                                            <td>1</td>
+                                            <td>MidNight Delivery</td>
+                                            <td>Yes</td>
+                                            <td>350 <span class="currency">&#8377;</span></td>
+
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td class="item">Add on Cholocate</td>
+                                            <td>2</td>
+                                            <td>MidNight Delivery</td>
+                                            <td>Yes</td>
+                                            <td>150 <span class="currency">&#8377;</span></td>
+
+                                          </tr>
+                                          <tr>
+                                            <th scope="row">1</th>
+                                            <td class="item">Cake</td>
+                                            <td>1</td>
+                                            <td>MidNight Delivery</td>
+                                            <td>No</td>
+                                            <td>350 <span class="currency">&#8377;</span></td>
+
+                                          </tr>
+
+
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <div class="row invoice_details">
+                                    <!-- invoiced to details -->
+                                    <div class="col-4 offset-1 pt-3">
+                                      <h4 class="gray-ish">Invoice Summary & Notes</h4>
+                                      <p class="pt-3 almost-gray">Upon due tender of goods for delivery at the F.O.B.
+                                        point all risk of loss or damage and other incident of ownership pass to Buyer,
+                                        but Seller retains a security interest in the goods until purchase price is
+                                        paid. All deliveries are subject to weight at shipping point which shall govern.
+                                      </p>
+                                    </div>
+                                    <!-- Invoice assets and total -->
+                                    <div class="offset-1 col-5 mb-3 pr-4 sub-table">
+                                      <table class="table table-borderless">
+                                        <tbody>
+                                          <tr>
+                                            <th scope="row gray-ish">Subtotal</th>
+                                            <td class="text-right">75 <span class="currency ">&#8377;</span></td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row gray-ish">Shipping Charges</th>
+                                            <td class="text-right">50 <span class="currency">&#8377;</span></td>
+                                          </tr>
+                                          <tr>
+                                            <th scope="row gray-ish">Coupen Discount</th>
+                                            <td class="text-right">50 <span class="currency">&#8377;</span></td>
+                                          </tr>
+
+                                          <tr class="last-row" style="background-color: rgb(221, 145, 4);">
+                                            <th scope="row">
+                                              <h4>Total</h4>
+                                            </th>
+                                            <td class="text-right">
+                                              <h4><span class="currency">&#8377;</span> 590,25</h4>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <p class="text-center pb-3"><em style="color:rgb(204, 31, 204);"> Thnkyou for
+                                      celebrating with lakeofcakes.com</em></p>
+                                </div>
+
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default waves-effect waves-light"
+                              data-dismiss="modal">Close</button>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  </div>
+
+
+
+
+  </div>
+
+
+  </section>
+  </div>
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2020 <a href="http://adminlte.io">CrossHex</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 2.0
+    </div>
+  </footer>
+  </div>
+  <script src="../assets/plugins/jquery/jquery.min.js"></script>
+  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../assets/js/adminlte.js"></script>
+
+  <!-- OPTIONAL SCRIPTS -->
+  <script src="../assets/js/demo.js"></script>
+
+  <!-- PAGE PLUGINS -->
+  <!-- jQuery Mapael -->
+
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <!-- <script src="../assets/js/vue.js"></script> -->
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jqueryui.min.js"></script>
+  <!-- Fullside-menu Js-->
+  <script src="../assets/js/jquery.slimscroll.min.js"></script>
+  <script src="../assets/js/waves.min.js"></script>
+
+  <script src="../assets/js/plugin.js"></script>
+  <script src="../assets/js/Chart.min.js"></script>
+  <script src="../assets/js/tag-it.js"></script>
+  <script src="../assets/js/nicEdit.js"></script>
+  <script src="../assets/js/bootstrap-colorpicker.min.js"></script>
+  <script src="../assets/js/notify.js"></script>
+  <script src="../assets/js/product.js"></script>
+  <script src="../assets/js/jquery.canvasjs.min.js"></script>
+
+  <script src="../assets/js/load.js"></script>
+  <!-- Custom Js-->
+  <script src="../assets/js/custom.js"></script>
+  <!-- AJAX Js-->
+  <script src="../assets/js/myscript.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../assets/js/adminlte.min.js"></script>
+  <!-- Summernote -->
+  <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
+
+
+  <script src="../assets/js/jquery.Jcrop.js"></script>
+  <script src="../assets/js/jquery.SimpleCropper.js"></script>
+  <!-- ChartJS -->
+  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+  <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../assets/plugins/chart.js/Chart.min.js"></script>
+
+  <!-- PAGE SCRIPTS -->
+  <!-- <script src="../assets/dist/js/pages/dashboard2.js"></script> -->
+  <script type="text/javascript">
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#blah')
+            .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    // Gallery Section Insert
+    $('#example2').DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  </script>
+</body>
+</html>

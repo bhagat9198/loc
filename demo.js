@@ -1,3 +1,254 @@
+console.log("AddSection1.js");
+
+const db = firebase.firestore();
+const firebaseStorage = firebase.storage();
+
+const addSectionFormHTML = document.querySelector("#add-section");
+const sectionTypeHTML = addSectionFormHTML.querySelector("#sectiontype");
+const catHTML = addSectionFormHTML.querySelector("#cat");
+const tbodyHTML = addSectionFormHTML.querySelector("tbody");
+
+let allCategories = [];
+
+const extractCategories = async () => {
+  await db
+    .collection("categories")
+    .get()
+    .then((snapshot) => {
+      let options =
+        '<option value="" selected disabled>Select Category</option>';
+      let snapshotDocs = snapshot.docs;
+      snapshotDocs.map((doc) => {
+        let docData = doc.data();
+        allCategories.push(docData.name);
+        options += `
+      <option value="${docData.name}" >${docData.name}</option>
+      `;
+      });
+      options += `
+    <option value="all">All (Common Section)</option>`;
+      catHTML.innerHTML = options;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return allCategories;
+};
+extractCategories();
+
+const extractImgURL = async (imgPath) => {
+  let imgUrl;
+  await firebaseStorage
+    .ref(imgPath)
+    .getDownloadURL()
+    .then((url) => {
+      imgUrl = url;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  return imgUrl;
+};
+
+const extractProducts = async (data) => {
+  // console.log(data);
+  if (allCategories.includes(data)) {
+    let tRows = "";
+
+    await db
+      .collection(data)
+      .get()
+      .then(async (snapshot) => {
+        let snapshotDocs = snapshot.docs;
+        for (let doc of snapshotDocs) {
+          let docData = doc.data();
+          // console.log(docData);
+          let imgPath = "";
+          if (docData.mainImg) {
+            imgPath = `${data}/${doc.id}/${docData.mainImg}`;
+            imgPath = await extractImgURL(imgPath);
+          }
+          // console.log(imgPath);
+          tRows += `
+          <tr>
+            <td>
+              <img
+                src="${imgPath}" />
+            </td>
+            <td>${docData.name}</td>
+            <td>${docData.sno}</td>
+            <td> <input type="checkbox" name="products-list" id="${doc.id}" value="${doc.id}" /></td>
+          </tr>
+          `;
+        }
+      });
+    tbodyHTML.innerHTML = tRows;
+  }
+};
+
+addSectionFormHTML["section-category"].addEventListener("change", (e) => {
+  let selectedCat;
+  selectedCat = e.target.value;
+  // console.log(selectedCat);
+  extractProducts(selectedCat);
+});
+
+console.log(addSectionFormHTML["product-img-1"]);
+
+let i1, i2, i3, i3, imgBanner, animationBanner;
+// addSectionFormHTML["product-img-1"]
+//   .addEventListener("change", (e) => {
+//     console.log(e.target.files);
+//     console.log(e.target.files[0]);
+    // i1 = e.target.files[0];
+  // });
+// addSectionFormHTML["product-img-2"].addEventListener("change", e => {
+//   i2 = e.target.files[0];
+// });
+// addSectionFormHTML["product-img-3"].addEventListener("change", e => {
+//   i3 = e.target.files[0];
+// });
+// addSectionFormHTML["product-img-4"].addEventListener("change", e => {
+//   i4 = e.target.files[0];
+// });
+// addSectionFormHTML["img-banner"].addEventListener("change", e => {
+//   imgBanner = e.target.files[0];
+// });
+// addSectionFormHTML["animation-banner"].addEventListener("change", e => {
+//   animationBanner = e.target.files[0];
+// });
+
+const addSection = (e) => {
+  e.preventDefault();
+
+  const sectionType = addSectionFormHTML["section-type"].value;
+  const sectionName = addSectionFormHTML["section-name"].value;
+  const sectioncategory = addSectionFormHTML["section-category"].value;
+  // const colorTopLeft = addSectionFormHTML["color-top-left"].value;
+  // const colorBottomRight = addSectionFormHTML["color-bottom-right"].value;
+  let productsSelected = [];
+
+  if (sectionType === "4") {
+    console.log(4);
+    productsSelected = [];
+    // let t1 = addSectionFormHTML["product-tag-1"].value;
+    // let t2 = addSectionFormHTML["product-tag-2"].value;
+    // let t3 = addSectionFormHTML["product-tag-3"].value;
+    // let t4 = addSectionFormHTML["product-tag-4"].value;
+
+    // if (i1 && t1) {
+    //   productsSelected.push({
+    //     tag: t1,
+    //     img: `card__${Math.random()}__${i1.name}`,
+    //   });
+    // }
+    // if (i2 && t2) {
+    //   productsSelected.push({
+    //     tag: t2,
+    //     img: `card__${Math.random()}__${i2.name}`,
+    //   });
+    // }
+    // if (i3 && t3) {
+    //   productsSelected.push({
+    //     tag: t3,
+    //     img: `card__${Math.random()}__${i3.name}`,
+    //   });
+    // }
+    // if (i4 && t4) {
+    //   productsSelected.push({
+    //     tag: t4,
+    //     img: `card__${Math.random()}__${i1.name}`,
+    //   });
+    // }
+    console.log(productsSelected);
+  } else if (sectionType === "6") {
+    console.log(6);
+    productsSelected = [];
+    addSectionFormHTML
+      .querySelectorAll("input[name='products-list']:checked")
+      .forEach((prod) => {
+        // console.log(prod.value);
+        productsSelected.push(prod.value);
+      });
+    productsSelected.length = 6;
+  } else if (sectionType === "slider") {
+    console.log("slider");
+    productsSelected = [];
+    addSectionFormHTML
+      .querySelectorAll("input[name='products-list']:checked")
+      .forEach((prod) => {
+        // console.log(prod.value);
+        productsSelected.push(prod.value);
+      });
+  } else if (sectionType === "img") {
+    console.log("img");
+    // productsSelected = imgBanner;
+    console.log(productsSelected);
+  } else if (sectionType === "animation") {
+    console.log("animation");
+    // productsSelected = animationBanner;
+    console.log(productsSelected);
+  } else {
+    console.log("invalid");
+  }
+
+  let wholeSectionData = {
+    title: sectionName,
+    type: sectionType,
+    category: sectioncategory,
+    colorTL: colorTopLeft,
+    colorBR: colorBottomRight,
+    card: productsSelected,
+  };
+  console.log(wholeSectionData);
+};
+
+addSectionFormHTML.addEventListener("submit", addSection);
+
+// const sectionType = e => {
+//   console.log(e.target.value);
+// }
+
+// sectionTypeHTML.addEventListener('change', sectionType);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var firebase = require("firebase");
 require("firebase/auth");
 require("firebase/database");
