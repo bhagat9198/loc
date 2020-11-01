@@ -455,7 +455,6 @@ const editDetails = async (e) => {
                 if (doc.weights) {
                     doc.weights.map((weight) => {
                         if (weight.cakeWeight === "half") {
-                            alert(3)
                             editProduct["cake-weight-half"].checked = true;
                             editProduct["cake-price-half"].value = weight.weightPrice;
                         } else if (weight.cakeWeight === "one") {
