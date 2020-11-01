@@ -97,7 +97,7 @@ const addCategory = (event) => {
       // console.log(childCategory);
       childCategories.push({
         name: childCategory.value,
-        id: Math.random(),
+        id: Math.floor(1000000000000000 + Math.random() * 9000000000),
         isActivated: true,
       });
     });
@@ -113,7 +113,7 @@ const addCategory = (event) => {
     subCategory: [
       {
         name: subCategoryName,
-        id: Math.random(),
+        id: Math.floor(1000000000000000 + Math.random() * 9000000000000000),
         childCategories: childCategories,
         isActivated: true,
       },
@@ -150,7 +150,7 @@ const addCategory = (event) => {
       console.log(docData);
       docData.subCategory.push({
         name: subCategoryName,
-        id: Math.random(),
+        id: Math.floor(1000000000000000 + Math.random() * 9000000000),
         childCategories: childCategories,
         isActivated: true,
       });
