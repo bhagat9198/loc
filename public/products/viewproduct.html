@@ -35,6 +35,11 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
@@ -628,14 +633,9 @@
       <div class="content-wrapper">
         <div class="container-fluid">
           <h3 style="padding:20px;">All Products</h3>
-          <ul class="links" style="display: flex;list-style: none;">
-            <li style="padding: 10px;">
-              <a href="https://lakeofcakes.com/admin">1.Cakes</a>
-            </li>
-            <li style="padding: 10px;"><a href="javascript:;">2.Flower</a></li>
-            <li style="padding: 10px;">
-              <a href="https://lakeofcakes.com/admin/category">3.Combos</a>
-            </li>
+          <ul class="links" style="display: flex;list-style: none;" id="productNav">
+
+
           </ul>
           <div id="displayAllCat">
 
@@ -963,7 +963,7 @@
                                           <div class="col-10">
                                             <div class="price-container">
                                               <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-weight-one"
+                                              <input type="text" class="input-field price-input" id="cake-price-one"
                                                 name="cake-price-one" placeholder="0.00 (Additional Price)" value="">
                                             </div>
                                           </div>
@@ -1621,9 +1621,9 @@
   <script src="../assets/js/adminlte.min.js"></script>
   <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-  <!-- <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script> -->
+  <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
 
 
@@ -1639,30 +1639,39 @@
       // After 3 seconds, remove the show class from DIV
       setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
     }
-    // $('#example2').DataTable({
-    //   "responsive": true,
-    //   "autoWidth": false,
-    // });
-    function myFunction() {
-      // Declare variables
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
 
-      // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
+    function myFunction(searchId, tableID) {
+      document.getElementById(searchId).style.display="none"
+      $('#'+tableID).DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+
+      // Declare variables
+
+      // var input, filter, table, tr, td, i, txtValue;
+      // input = document.getElementById(searchId);
+      // filter = input.value.toUpperCase();
+      // table = document.getElementById(tableID);
+  
+      // tr = table.getElementsByTagName("tr");
+
+      // // Loop through all table rows, and hide those who don't match the search query
+      // for (j = 0; j < 5; j++) {
+      //   for (i = 0; i < tr.length; i++) {
+
+      //     td = tr[i].getElementsByTagName("td")[0];
+      //     if (td) {
+      //       txtValue = td.textContent || td.innerText;
+      //       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      //         tr[i].style.display = "";
+      //       } else {
+      //         tr[i].style.display = "none";
+      //       }
+      //     }
+      //   }
+      // }
+
     }
     $(document).ready(function () {
       $('#example1').DataTable();
@@ -1780,7 +1789,7 @@
     });
 
     function readURL(input) {
-      alert(8)
+      
       if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -1790,6 +1799,14 @@
         reader.readAsDataURL(input.files[0]);
       }
     }
+    $(".scrollTo").on('click', function (e) {
+      e.preventDefault();
+      var target = $(this).attr('href');
+      $('html, body').animate({
+        scrollTop: ($(target).offset().top)
+      }, 2000);
+    });
+
   </script>
 
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase.js"></script>
@@ -1819,7 +1836,7 @@
     // firebase.analytics();
   </script>
 
-  <script src="./viewproduct2.js"></script>
+  <script src="./viewproduct1.js"></script>
   <!-- <script src="./addProduct1.js"></script> -->
 </body>
 

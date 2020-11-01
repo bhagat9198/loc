@@ -94,7 +94,7 @@ const displayChildCategory = async(data, elHTML) => {
   // console.log(data);
   docId = data.substring(0, 20);
   // console.log(docId);
-  scId = data.substring(22, 41);
+  scId = data.substring(22, 38);
   // console.log(scId);
 
   let dbRef = await db.collection("categories").doc(docId)
@@ -104,7 +104,10 @@ const displayChildCategory = async(data, elHTML) => {
       let docData = snapshot.data();
       let options = '<select id="product-child-category" disabled name="product-child-category">';
       docData.subCategory.map((sc) => {
+      
+       
         if(+sc.id === +scId) {
+        
           // console.log(sc);
           sc.childCategories.map(cc => {
             // console.log(cc);
@@ -276,16 +279,16 @@ const addProductForm = (event) => {
   }
 
   if (mainImg) {
-    productMainImg = `cake_${Math.random()}_${mainImg.name}`;
+    productMainImg = `${Math.random()}_${mainImg.name}`;
   } else {
     productMainImg = "";
   }
   if (subImgs) {
     productSubImgs = [...subImgs].map(
-      (img) => `cake_${Math.random()}_${img.name}`
+      (img) => `${Math.random()}_${img.name}`
     );
   }
-
+  
   let wholeProduct = {
     name: productName,
     sno: productSno,
@@ -358,44 +361,27 @@ const addProductForm = (event) => {
       }
       // console.log(subImgs);
 
-      async function uploadImg(id, name, img) {
-        await storageService
-          .ref(`${response.prodData.category}/${id}/${name}`)
-          .put(img);
-      }
+    
       let counter = -1;
 
-      async function upload() {
+      async function upload(subImgs) {
         for (let img of subImgs) {
           counter++;
           // console.log(img);
           let name = [...response.prodData.subImgs][counter];
           let id = response.dataId;
-          await uploadImg(id, name, img);
+          storageService
+          .ref(`${response.prodData.category}/${id}/${name}`)
+          .put(img);
+          console.log(counter)
         }
       }
 
       if (subImgs) {
-        upload();
+        upload(subImgs);
       }
 
-      async function addingImgUrl(imgPath) {
-        let imgUrl;
-        // console.log(imgPath);
-        await storageService
-          .ref(imgPath)
-          .getDownloadURL()
-          .then((url) => {
-            imgUrl = url;
-          })
-          .catch((err) => {
-            imgUrl = err;
-            // console.log(err);
-          });
-
-        console.log(imgUrl);
-        return imgUrl;
-      }
+      
 
       addProduct.reset();
       addProduct.querySelector(".alert-success").textContent = "Product Saved";
