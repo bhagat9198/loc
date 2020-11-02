@@ -25,7 +25,7 @@ async function displayRows(dd) {
         let docData = d.data();
         // console.log(docData);
         let id = d.id;
-        let cat=docData.category;
+        let cat = docData.category;
         let img = `${docData.category}/${id}/${docData.mainImg}`;
         let imgUrl = await imgDisplay(img);
 
@@ -37,7 +37,7 @@ async function displayRows(dd) {
         <td>${docData.childCategory}</td>
         <td>${docData.totalPrice}</td>
         <td>
-          <div class="action-list"><select class="process  drop-success" style="display: block; " id="statusUpdate`+d+`">
+          <div class="action-list"><select class="process  drop-success" style="display: block; " id="statusUpdate`+ d + `">
               <option data-val="1" value="true">Activated</option>
               <option data-val="0" value="false">Deactivated</option>
             </select>
@@ -55,7 +55,7 @@ async function displayRows(dd) {
             
                 <a 
                  >
-                  <i class="fas fa-trash-alt" onclick=deleteProduct("`+cat+`","`+id+`")></i>
+                  <i class="fas fa-trash-alt" onclick=deleteProduct("`+ cat + `","` + id + `")></i>
                   Delete
                 </a>
                 <a href="javascript:;"
@@ -73,27 +73,90 @@ async function displayRows(dd) {
     // console.log(tRows);
     return tRows;
 }
-function deleteProduct(cat,id){
+async function deleteProduct(cat, prid) {
 
-    var answer=confirm("Are you sure to delete data")
-    if(answer){
+    var answer = confirm("Are you sure to delete the product")
+    if (answer) {
+        var docData;
+        let imgsPath = [];
+        var url, docID;
+        await db.collection(cat)
+            .get()
+            .then(async (snapshot) => {
 
-        var desertRef = firebase.storage().ref().child('./'+cat+'/'+id+"/");
+                let snapshotsDocs = snapshot.docs;
+                snapshotsDocs.map(async (doc) => {
+                    docData = doc.data();
+                    docID = doc.id
+                    url = await extractImgUrl(
+                        `${docData.category}/${prid}/${docData.mainImg}`
+                    );
+                    var counter = 0;
+                    if (url != null) {
+                        imgsPath.push(url);
+                        for (let i of docData.subImgs) {
 
-        // Delete the file
-        desertRef.delete().then(function() {
-            db.collection(cat).doc(id).delete().then(function() {
-                alert("Delete Succesfull")
-            }).catch(function(error) {
-                console.error("Error removing document: ", error);
+                            url = await extractImgUrl(`${docData.category}/${prid}/${i}`);
+                            imgsPath.push(url);
+
+                        }
+
+                        for (let i of imgsPath) {
+                            alert(i)
+                            var desertRef = await firebase.storage().refFromURL(i);
+
+                            desertRef.delete().then(function () {
+
+                                db.collection(cat).doc(prid).delete().then(function () {
+                                    counter++;
+                                    if (counter == imgsPath.length) {
+                                        alert("Product Deleted Successfully")
+                                        extractData();
+                                    }
+
+
+                                }).catch(function (error) {
+                                    console.error("Error removing document: ", error);
+                                });
+
+                                // File deleted successfully
+                            }).catch(function (error) {
+                                // Uh-oh, an error occurred!
+                            });
+
+
+                        }
+
+
+                    } else {
+                        db.collection(cat).doc(prid).delete().then(function () {
+
+                            alert("Product Deleted Successfully")
+                            location.reload();
+
+
+
+                        }).catch(function (error) {
+                            console.error("Error removing document: ", error);
+                        });
+                    }
+
+
+
+                    // Delete the file
+
+
+
+
+                });
             });
-
-        // File deleted successfully
-        }).catch(function(error) {
-        // Uh-oh, an error occurred!
-        });
-    
     }
+
+
+
+
+
+
 
 
 
@@ -110,9 +173,10 @@ const extractData = async () => {
                 allCategoriesNames.push(docData.name);
             });
         });
-    console.log(allCategoriesNames);
+
     const displayAllCat = document.querySelector("#displayAllCat");
     let tRows = "";
+    $('#displayAllCat').empty();
     for (let cat of allCategoriesNames.reverse()) {
 
         productNav.innerHTML += `
@@ -124,18 +188,33 @@ const extractData = async () => {
         let mainHeading = cat.toUpperCase();
         tRows = ""
         displayAllCat.innerHTML += `
-    <div class="product-area" id=`+ cat + ` style="padding-top:40px;">
-    <h4 class="MainHeading" style="background-color:#ab749c">`+ mainHeading + `</h4>
+    
+    <div class="product-area" id=`+ cat + ` style="padding-top:0px;">
+
     <div class="row">
       <div class="col-lg-12">
+      
         <div class="mr-table allproduct">
+        <div class="table-title">
+        <div class="row">
+            <div class="col-sm-5">
+                <h2>`+cat+`</h2>
+            </div>
+            <div class="col-sm-7">
+                <a href="#" class="btn btn-secondary" id="myInput`+ cat + `" class="searchBar" onclick=myFunction("myInput` + cat + `","myTable` + cat + `","table-responsive` + cat + `")><i class="material-icons">&#xE147;</i>
+                    <span>Enable Attribute</span></a>
+                <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
+                    <span>Export to Pdf</span></a>
+            </div>
+        </div>
+    </div>
           <div class="alert alert-success validation" style="display: none;">
             <button type="button" class="close alert-close"><span>×</span></button>
             <p class="text-left"></p>
           </div>
-          <div class="table-responsiv">
-            <button id="myInput`+cat+`" class="searchBar" onclick=myFunction("myInput`+cat+`","myTable`+cat+`") >Activate Table Attributes</button>
-            <table id="myTable`+cat+`" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+          <div class="table-responsive`+cat+`">
+          
+            <table id="myTable`+ cat + `" class="table table-hover dt-responsive" cellspacing="0" width="100%">
               <div class="row btn-area">
               </div>
               <thead>
@@ -163,6 +242,8 @@ const extractData = async () => {
   <br>
         
     `
+    
+
 
         const tbodys = document.querySelector("#tbody" + cat);
 
@@ -175,13 +256,14 @@ const extractData = async () => {
                 let snapshotsDocs = snapshots.docs;
                 tRows += await displayRows(snapshotsDocs);
             });
-            if(tRows!=""){
-                
-                tbodys.innerHTML = tRows;
-            }else{
-                tbodys.innerHTML ='<h3 class="" style="text-align:center;font-weight:700;padding:5px">OoPS!!! No Data Found</h3>'
-            }
-           
+        if (tRows != "") {
+          
+              
+            tbodys.innerHTML = tRows;
+        } else {
+            tbodys.innerHTML = '<h3 class="responsive-text" style="text-align:center;font-weight:700;padding:5px">OoPS!!! No Data Found</h3>'
+        }
+
 
 
         // console.log(cat);
@@ -458,7 +540,7 @@ const editDetails = async (e) => {
                             editProduct["cake-weight-half"].checked = true;
                             editProduct["cake-price-half"].value = weight.weightPrice;
                         } else if (weight.cakeWeight === "one") {
-                            
+
                             editProduct["cake-weight-one"].checked = true;
                             editProduct["cake-price-one"].value = weight.weightPrice;
                         } else if (weight.cakeWeight === "oneHalf") {
