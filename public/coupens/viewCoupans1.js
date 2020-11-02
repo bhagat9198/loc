@@ -1,0 +1,172 @@
+console.log("viewCoupans.js");
+
+const db = firebase.firestore();
+const coupansTBodyHTML = document.querySelector(".coupans-tBody");
+// const editModalOptionHTML = document.querySelector("#edit-modal");
+// const detailModalOptionHTML = document.querySelector("#detail-modal");
+
+function displayRows(data, elHTML = coupansTBodyHTML) {
+  // console.log(elHTML);
+  let tRows = "";
+  data.map((doc) => {
+    let docData = doc.data();
+    // console.log(docData);
+    tRows += `
+    <tr role="row" class="odd parent">
+      <td tabindex="0">${docData.name}</td>
+      <td>Rs ${docData.amount}</td>
+      <td>
+        <div class="action-list">
+          <select class="process  drop-success" style="display: block;">
+            <option value="true" selected>Activated</option>
+            <option value="false">Deactivated</option>
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="godropdown">
+          <button class="go-dropdown-toggle">
+            Actions<i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="action-list" style="display: none;">
+            <a href="javascript:;" data-id="${doc.id}" onclick="loadEditModal(event)" data-toggle="modal" id="edit-modal" data-target="#coupanEditModal">
+              <i class="fas fa-edit"></i> Edit
+            </a>
+            <a href="javascript:;" data-id="${doc.id}" data-toggle="modal" id="delete-modal" data-target="#confirm-delete" class="delete">
+              <i class="fas fa-trash-alt"></i>Delete
+            </a>
+            <a href="javascript:;" data-toggle="modal" data-id="${doc.id}" onclick="loadDetailModal(event)" id="detail-modal"  data-target="#coupanSystemModal" class="dele">
+              <i class="fa fa-info"></i>Details
+            </a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    `;
+  });
+  elHTML.innerHTML = tRows;
+}
+
+// const extractData = async () => {
+//   await db
+//     .collection("coupans")
+//     .get()
+//     .then((snapshot) => {
+//       let snapshotDocs = snapshot.docs;
+//       // console.log(coupansTBodyHTML);
+//       displayRows(snapshotDocs);
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
+
+// extractData();
+
+db.collection("coupans")
+  .onSnapshot((snapshot) => {
+    let snapshotDocs = snapshot.docs;
+    // console.log(coupansTBodyHTML);
+    displayRows(snapshotDocs);
+  })
+  
+const loadDetailModal = async (e) => {
+  // console.log(e.target.dataset.id);
+  const docId = e.target.dataset.id;
+  const detailModalHTML = document.querySelector("#coupanSystemModal");
+  console.log(detailModalHTML);
+  const cNameHTML = detailModalHTML.querySelector(".cName");
+  const cCategoryHTML = detailModalHTML.querySelector(".cCategory");
+  const cAmtHTML = detailModalHTML.querySelector(".cAmt");
+  const cQuantityHTML = detailModalHTML.querySelector(".cQuantity");
+  const cFromHTML = detailModalHTML.querySelector(".cFrom");
+  const cValidHTML = detailModalHTML.querySelector(".cValid");
+  const cDescriptionHTML = detailModalHTML.querySelector(".cDescription");
+
+  await db
+    .collection("coupans")
+    .doc(docId)
+    .get()
+    .then((snapshot) => {
+      let docData = snapshot.data();
+      console.log(docData);
+      cNameHTML.innerHTML = docData.name;
+      cCategoryHTML.innerHTML = docData.category;
+      cAmtHTML.innerHTML = docData.amount;
+      cQuantityHTML.innerHTML = docData.quantity;
+      cFromHTML.innerHTML = docData.validFrom;
+      cValidHTML.innerHTML = docData.validTill;
+      cDescriptionHTML.innerHTML = docData.desc;
+    });
+};
+
+const loadEditModal = async (e) => {
+  const docId = e.target.dataset.id;
+  console.log(docId);
+  const editModalFormHTML = document.querySelector("#edit-modal-form");
+
+  await db
+    .collection("coupans")
+    .doc(docId)
+    .get()
+    .then((snapshot) => {
+      let docData = snapshot.data();
+      editModalFormHTML["edit-c-name"].value = docData.name;
+      editModalFormHTML["edit-c-desc"].value = docData.desc;
+      editModalFormHTML["edit-c-category"].value = docData.category;
+      editModalFormHTML["edit-c-amt"].value = docData.amount;
+      editModalFormHTML["edit-c-quantity"].value = docData.quantity;
+      editModalFormHTML["edit-c-total"].value = docData.totalCoupans;
+      editModalFormHTML["edit-c-validFrom"].value = docData.validFrom;
+      editModalFormHTML["edit-c-validTill"].value = docData.validTill;
+      editModalFormHTML["edit-c-id"].value = docId;
+    });
+};
+
+const submitEdit = (e) => {
+  e.preventDefault();
+
+  const editModalFormHTML = document.querySelector("#edit-modal-form");
+  const name = editModalFormHTML["edit-c-name"].value;
+  const desc = editModalFormHTML["edit-c-desc"].value;
+  const category = editModalFormHTML["edit-c-category"].value;
+  const amount = editModalFormHTML["edit-c-amt"].value;
+  const quantity = editModalFormHTML["edit-c-quantity"].value;
+  let totalCoupans = editModalFormHTML["edit-c-total"].value;
+  const validFrom = editModalFormHTML["edit-c-validFrom"].value;
+  const validTill = editModalFormHTML["edit-c-validTill"].value;
+  const docId = editModalFormHTML["edit-c-id"].value;
+
+  if (quantity === "Unlimited") {
+    totalCoupans = "unlimited";
+  }
+
+  const wholeCoupan = {
+    name: name,
+    desc: desc,
+    category: category,
+    amount: amount,
+    quantity: quantity,
+    totalCoupans: totalCoupans,
+    validFrom: validFrom,
+    validTill: validTill,
+  };
+
+  const updateCoupan = async (data) => {
+    console.log(data);
+    let dbRef = await db.collection("coupans").doc(docId);
+    dbRef
+      .get()
+      .then(async (snapshot) => {
+        let docData = snapshot.data();
+        docData = data;
+        console.log("done");
+        await dbRef.update(docData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  updateCoupan(wholeCoupan);
+};
