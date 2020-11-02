@@ -77,7 +77,7 @@ const extractProducts = async (data) => {
             </td>
             <td>${docData.name}</td>
             <td>${docData.sno}</td>
-            <td> <input type="checkbox" name="products-list" id="${doc.id}" value="${doc.id}" /></td>
+            <td> <input type="checkbox" name="products-list" id="${doc.id}" value="${doc.id}__${docData.category}" /></td>
           </tr>
           `;
         }
@@ -183,7 +183,10 @@ const addSection = (e) => {
       .querySelectorAll("input[name='products-list']:checked")
       .forEach((prod) => {
         // console.log(prod.value);
-        productsSelected.push(prod.value);
+        productsSelected.push({
+          id: prod.value.substring(0,20),
+          category: prod.value.substring(22),
+        });
       });
     if(productsSelected.length > 6) {
       productsSelected.length = 6;
@@ -195,7 +198,10 @@ const addSection = (e) => {
       .querySelectorAll("input[name='products-list']:checked")
       .forEach((prod) => {
         // console.log(prod.value);
-        productsSelected.push(prod.value);
+        productsSelected.push({
+          id: prod.value.substring(0,20),
+          category: prod.value.substring(22),
+        });
       });
   } else if (sectionType === "img") {
     console.log("img");
@@ -224,7 +230,7 @@ const addSection = (e) => {
   // console.log(wholeSectionData);
 
   async function addSectionFun(data) {
-    console.log(data);
+    // console.log(data);
     let dataId;
     await db
       .collection("sections")
@@ -259,7 +265,8 @@ const addSection = (e) => {
       } else if(response.data.type === "img") {
         await firebaseStorage.ref(`sections/${response.dataId}/${response.data.card.img}`).put(imgBanner);
       } else if(response.data.type === "animation") {
-        await firebaseStorage.ref(`sections/${response.dataId}/${response.data.card.img}`).put(animationBanner);
+        console.log(response.data.card.animation);
+        await firebaseStorage.ref(`sections/${response.dataId}/${response.data.card.animation}`).put(animationBanner);
       }
     })
     .catch((error) => {
