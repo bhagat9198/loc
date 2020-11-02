@@ -40,6 +40,7 @@ body {
   
 }
 
+
 h1 {
   font-size: 60px;
   line-height: 1.0833333333333333;
@@ -636,8 +637,11 @@ font-size: 15px;
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
     direction: rtl;
-  }
 
+  }
+  .responsive-text{
+    font-size: 1em;
+  }
   .row.reorder-xs>[class*="col-"] {
     -webkit-transform: rotate(-180deg);
     -moz-transform: rotate(-180deg);

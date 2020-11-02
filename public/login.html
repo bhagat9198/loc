@@ -1,0 +1,440 @@
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="zxx">
+<!-- Head -->
+<style>
+    
+body {
+	font-family: 'Mukta', sans-serif;
+}
+.main {
+    background: url(https://static1.squarespace.com/static/574ca4f84d088e3b762d87ec/t/57843fbcebbd1aba2d39cf88/1468284861162/White-Background-Wallpaper.jpg) no-repeat center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+	position: relative;
+    min-height: 100vh;
+}
+.layer {
+    padding: 2em 0;
+}
+.text-center {
+    text-align: center;
+}
+
+/*/////////////// FONT STYLES ////////////////////*/
+
+.content-w3ls {
+    max-width: 500px;
+    margin: 6em auto;
+}
+ul.links-unordered-list li.active a {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 20px;
+    color: #fff;
+}
+.icon span.fa{
+    font-size: 60px;
+    color: #eee;
+}
+.icon{
+	margin-bottom:3em;
+}
+.content-bottom {
+    padding: 0em 4em;
+    margin: 0 1em;
+	position: relative; 
+    z-index: 1;
+}
+.logo h1 a {
+    font-size: 25px;
+    color: #fff;
+    text-transform: capitalize;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.content-w3ls ul li {
+    display: inline-block;
+}
+
+li.switch-agileits {
+    float: left;
+}
+
+ul.list-login li:nth-child(2) {
+    float: right;
+}
+ul.list-login-bottom li:nth-child(2) {
+    float: right;
+}
+
+.field-group label {
+    font-size: 15px;
+}
+
+.check {
+    margin: .5em 0;
+}
+
+.checkbox input,
+.radio input {
+    position: absolute;
+    left: -9999px;
+}
+
+.checkbox i {
+    position: absolute;
+    bottom: 5px;
+    left: 2px;
+    display: block;
+    width: 14px;
+    height: 14px;
+    outline: none;
+    border: none;
+    background: #fff;
+}
+
+.check label {
+    margin: 0;
+    font-size: 1em;
+    text-transform: capitalize;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.checkbox {
+    position: relative;
+    padding-left: 28px !important;
+    cursor: pointer;
+}
+
+.checkbox input:checked+i:after,
+.radio input:checked+i:after {
+    opacity: 1;
+}
+
+
+.checkbox input+i:after,
+.radio input+i:after {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.1s;
+    -o-transition: opacity 0.1s;
+    -ms-transition: opacity 0.1s;
+    -moz-transition: opacity 0.1s;
+    -webkit-transition: opacity 0.1s;
+}
+
+/*/////////////// FORM STYLES ////////////////////*/
+
+.form .field-group {
+    background: transparent;
+
+    display: flex;
+    display: flex;
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;
+    /* TWEENER - IE 10 */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    margin-bottom: 20px;
+    padding: 2px 10px 2px 0;
+    border:1px solid green;
+	border-radius: 35px;
+	-webkit-border-radius: 35px;
+	-moz-border-radius: 35px;
+	-ms-border-radius: 35px;
+	-o-border-radius: 35px;
+}
+
+.form .field-group span {
+    flex: 1;
+    -webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 1;         /* OLD - Firefox 19- */
+    width: 20%;               /* For old syntax, otherwise collapses. */
+    -webkit-flex: 1;          /* Chrome */
+    -ms-flex: 1;              /* IE 10 */
+    color: #fff;
+    background: transparent;
+    line-height: 49px;
+    text-align: right;
+    color: black;
+}
+
+ul.list-login {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.form .field-group .wthree-field {
+    flex: 4 50%;
+    -webkit-box-flex:4 50%;     /* OLD - iOS 6-, Safari 3.1-6 */
+    -moz-box-flex: 4 50%;        /* OLD - Firefox 19- */
+    -webkit-flex: 4 50%;          /* Chrome */
+    -ms-flex: 4 50%;             /* IE 10 */
+}
+
+.wthree-field button.btn {
+    background: #fc636b;
+    border: none;
+    color: #fff;
+    padding: 11px 15px;
+    text-transform: uppercase;
+	font-family: 'Mukta', sans-serif;
+    font-size: 16px;
+	width:100%;
+	margin-top:10px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+	border-radius: 35px;
+	-webkit-border-radius: 35px;
+	-moz-border-radius: 35px;
+	-ms-border-radius: 35px;
+	-o-border-radius: 35px;
+}
+
+.bottom-grid,.bottom-grid1{
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    justify-content: space-between;
+    margin: 0em 10em;
+}
+ul.links-unordered-list li {
+    display: inline-block;
+    margin-right: 10px;
+}
+ul.links-unordered-list li a {
+    font-size: 16px;
+    color: #ccc;
+    font-weight: normal;
+    letter-spacing: 1px;
+    padding: 0 5px;
+    text-transform: capitalize;
+}
+.wthree-field input {
+    padding: 10px 0 10px 15px;
+    font-size: 17px;
+    font-weight: 300;
+	color:black;
+    letter-spacing: 1px;
+    border: none;
+    background: transparent;
+    box-sizing: border-box;
+	font-family: 'Mukta', sans-serif;
+    width: 100%;
+    outline: none;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+::-ms-input-placeholder { /* IE 10+ */
+  color:black;
+}
+::-moz-placeholder { /* Firefox 18- */
+  color:black;
+}
+/* switch */
+
+label.switch {
+    position: relative;
+    display: inline-block;
+    height: 18px;
+    padding-left: 3em;
+    cursor: pointer;
+    color: #ccc;
+    font-weight: 300;
+}
+
+li:nth-child(2) a,
+label.switch {
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    color: #ccc !important;
+    text-transform: capitalize;
+}
+ul.list-login-bottom li:nth-child(1) a,ul.list-login-bottom li:nth-child(2) a {
+    font-size: 15px;
+    letter-spacing: 2px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #fff !important;
+}
+
+li:nth-child(2) a,li:nth-child(1) a {
+    color: #fff;
+}
+
+.switch input {
+    display: none;
+}
+</style>
+<head>
+    <title>ADMIN | LOGIN</title>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Key Login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <link rel="icon" href="images/logo.png" type="image/icon type">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta-Tags -->
+    <!-- Index-Page-CSS -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <!-- //Custom-Stylesheet-Links -->
+    <!--fonts -->
+    <!-- //fonts -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="all">
+    <!-- //Font-Awesome-File-Links -->
+	
+	<!-- Google fonts -->
+
+	<!-- Google fonts -->
+
+</head>
+<!-- //Head -->
+<!-- Body -->
+
+<body>
+
+<section class="main">
+	<div class="layer">
+		<div class="content-w3ls">
+			<div class="text-center icon">
+				<img src="assets/images/logo.png" width="100">
+				<h3>ADMIN_LOGIN</h3>
+			</div>
+			<div class="content-bottom">
+
+				<div class="form" >
+					<div class="field-group">
+						<span class="fa fa-envelope" aria-hidden="true"></span>
+						<div class="wthree-field">
+							<input name="text1" id="email" type="email" value="" placeholder="Email" required>
+						</div>
+					</div>
+					<div class="field-group">
+						<span class="fa fa-lock" aria-hidden="true"></span>
+						<div class="wthree-field">
+							<input name="password" id="password" type="Password" placeholder="Password">
+						</div>
+					</div>
+					<div class="wthree-field">
+						<button type="submit" class="btn" id="log">Login</button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div class="bottom-grid1">
+			<div class="links">
+				
+			</div>
+			<div class="copyright">
+				<p style="color:gray">Design by
+					<a style="color: #000000">CrossHex @2020  </a>
+				</p>
+			</div>
+		</div>
+    </div>
+</section>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/7.16.0/firebase.js"></script>
+<script type="text/javascript">
+	var auth=window.localStorage.getItem('Locuser');
+	setInterval(function(){
+	 
+	  if(auth!=undefined||auth!=null){
+	    
+	    window.location="index.html"
+	  }
+	},100)
+    var firebaseConfig = {
+      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+      authDomain: "lake-of-cakes.firebaseapp.com",
+      databaseURL: "https://lake-of-cakes.firebaseio.com",
+      projectId: "lake-of-cakes",
+      storageBucket: "lake-of-cakes.appspot.com",
+      messagingSenderId: "779843608951",
+      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+      measurementId: "G-5ER0QF0FDW"
+    };
+    firebase.initializeApp(firebaseConfig);
+	// Initialize Firebase
+	let ref= firebase.database().ref('User');
+	ref.on('value',gotData,errData)
+	log.addEventListener('click',logind)
+	var sc,keys;
+	function gotData(data){
+
+		sc=data.val();
+		keys=Object.keys(sc);
+		
+	}
+	function logind(){
+		var email=document.querySelector('#email').value
+		var pass=document.querySelector('#password').value
+		var c=0;
+		var k;
+		if(email!=""||pass!=""){
+			for(var i=0;i<keys.length;i++){
+				k=keys[i]
+				if(sc[k].Email==email&&sc[k].Password==btoa(pass)){
+					c++;
+					break;
+
+				}
+			}
+			if(c==1){
+
+				token=btoa(k+"email")
+				firebase.database().ref("User").child(k).update({token})
+				window.localStorage.setItem('session', token);
+				window.localStorage.setItem('Locuser', k);
+				window.localStorage.setItem('username', sc[k].Name);
+
+
+				window.location="index.html"
+			}else{
+				alert("Invalid Email Id or password")
+			}
+		}else{
+			alert("Please enter your email and password")
+		}
+	}
+	function errData(){
+
+	}
+</script>
+<!-- //Body -->
+</html>
