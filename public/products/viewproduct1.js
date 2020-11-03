@@ -396,11 +396,11 @@ const cat = async (data) => {
 };
 
 const subCat = async (data) => {
-  // console.log(data);
-  let docId = data.substring(0, 20);
-  // console.log(docId);
-  let scId = data.substring(22, 41);
-  // console.log(scId);
+  console.log(data);
+  let docId = data.split('__')[0];
+  console.log(docId);
+  let scId = data.split('__')[1];
+  console.log(scId);
   await db
     .collection("categories")
     .doc(docId)
@@ -426,13 +426,13 @@ const subCat = async (data) => {
 };
 
 const childCat = async (data) => {
-  // console.log(data);
-  let docId = data.substring(0, 20);
-  // console.log(docId);
-  let scId = data.substring(22, 41);
-  // console.log(scId);
-  let cId = data.substring(43, 61);
-  // console.log(cId);
+  console.log(data);
+  let docId = data.split('__')[0];
+  console.log(docId);
+  let scId = data.split('__')[1];
+  console.log(scId);
+  let cId = data.split('__')[2];
+  console.log(cId);
 
   await db
     .collection("categories")
@@ -535,9 +535,9 @@ const editDetails = async (e) => {
       editProduct["product-sno"].value = doc.sno;
       await cat(doc.category);
       await subCat(doc.wholeSubCategory);
-      // await childCat(doc.wholeChildCategory);
-      editProduct["product-sub-category"].value = doc.subCategory;
-      editProduct["product-child-category"].value = doc.childCategory;
+      await childCat(doc.wholeChildCategory);
+      // editProduct["product-sub-category"].value = doc.subCategory;
+      // editProduct["product-child-category"].value = doc.childCategory;
 
 
 
