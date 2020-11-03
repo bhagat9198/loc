@@ -183,11 +183,30 @@ const addCategory = (event) => {
   if(!addCategoryForm['category-name'].disabled && !addCategoryForm['sub-category-name'].disabled) {
     addCategoryReq(wholeCategoryData)
     .then(async (response) => {
+      let imgUrl;
       if (categoryImg) {
         await storageService
           .ref(`categories/${response.docId}/${response.data.img}`)
           .put(categoryImg);
+        
+        await storageService.ref(`categories/${response.docId}/${response.data.img}`).getDownloadURL().then(url => {
+          imgUrl = url;
+        }).catch(error => {
+          console.log(error);
+        });
       }
+      console.log(imgUrl);
+
+      let docRef = await db.collection('categories').doc(response.docId);
+      docRef.get().then(async(snapshot) => {
+        console.log(snapshot);
+        let docData = snapshot.data();
+        docData.imgUrl = imgUrl;
+        console.log(docData);
+        await docRef.update(docData);
+      })
+      console.log('done');
+
       // console.log(response);
       addCategoryForm.reset();
     })

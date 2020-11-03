@@ -44,21 +44,36 @@ const addAddon = (event) => {
 
   addAddonReq(wholeAddonData)
     .then(async (response) => {
+      let imgUrl;
       await storageService.ref(`addons/${response.docId}/${response.docData.img}`).put(addonImg);
-      console.log(response);
+      await storageService.ref(`addons/${response.docId}/${response.docData.img}`).getDownloadURL().then(url => {
+        imgUrl = url;
+      }).catch(error => {
+        console.log(error);
+      })
+      // console.log(response);
+
+      const docRef = db.collection('addons').doc(response.docId);
+      docRef.get().then(async(snapshot) => {
+        let docData = snapshot.data();
+        docData.imgUrl = imgUrl;
+        console.log(docData);
+        await docRef.update(docData);
+      }).catch(error => {
+        console.log(error);
+      });
+
     })
     .catch((error) => {
       console.log(error);
     });
 };
-
 addonForm.addEventListener("submit", addAddon);
 
 addonForm.querySelector('#addon-img').addEventListener('change', (e) => {
   addonImg = e.target.files[0];
   console.log(addonImg);
 })
-
 
 async function extractImgUrl(imgPath) {
   let imgUrl;
@@ -82,6 +97,7 @@ const extractData = async () => {
       // console.log(snapshots.docs);
       let snapshotsDocs = snapshots.docs;
       // allAddonsData = snapshotsDocs;
+
       allData = snapshotsDocs;
     });
   

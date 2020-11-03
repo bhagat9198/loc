@@ -3,7 +3,7 @@ console.log("AddProduct1.js");
 const db = firebase.firestore();
 
 const addProduct = document.querySelector("#add-product");
-const   productMainImgHandler = addProduct.querySelector("#product-main-image");
+const productMainImgHandler = addProduct.querySelector("#product-main-image");
 const productSubImgsHandler = addProduct.querySelector("#product-sub-imgs");
 const productCategoryHTML = addProduct.querySelector("#product-category");
 const productSubCategoryHTML = addProduct.querySelector(
@@ -12,7 +12,7 @@ const productSubCategoryHTML = addProduct.querySelector(
 const productChildCategoryHTML = addProduct.querySelector(
   "#product-child-category"
 );
-const allAddonsHTML = addProduct.querySelector('#all-addons');
+const allAddonsHTML = addProduct.querySelector("#all-addons");
 
 let mainImg, subImgs;
 let allCategories, choosenCategory;
@@ -61,9 +61,11 @@ const displaySubCategory = async (data, elHTML) => {
   let docCat = data.substring(22);
   let options =
     '<option selected disabled value="">Select Sub Category*</option>';
-  let dbRef = await db.collection("categories").doc(docId)
+  let dbRef = await db.collection("categories").doc(docId);
 
-  dbRef.get().then((snapshot) => {
+  dbRef
+    .get()
+    .then((snapshot) => {
       // console.log(snapshot.data());
       let docData = snapshot.data();
       docData.subCategory.map((sc) => {
@@ -79,8 +81,7 @@ const displaySubCategory = async (data, elHTML) => {
     .catch((error) => {
       console.log(error);
     });
-  
-}
+};
 
 productCategoryHTML.addEventListener("change", (e) => {
   // console.log(e.target.value);
@@ -89,33 +90,32 @@ productCategoryHTML.addEventListener("change", (e) => {
   displaySubCategory(e.target.value, productSubCategoryHTML);
 });
 
-const displayChildCategory = async(data, elHTML) => {
-  let docId,scId;
+const displayChildCategory = async (data, elHTML) => {
+  let docId, scId;
   // console.log(data);
   docId = data.substring(0, 20);
   // console.log(docId);
   scId = data.substring(22, 38);
   // console.log(scId);
 
-  let dbRef = await db.collection("categories").doc(docId)
+  let dbRef = await db.collection("categories").doc(docId);
 
-  dbRef.get().then((snapshot) => {
+  dbRef
+    .get()
+    .then((snapshot) => {
       // console.log(snapshot.data());
       let docData = snapshot.data();
-      let options = '<select id="product-child-category" disabled name="product-child-category">';
+      let options =
+        '<select id="product-child-category" disabled name="product-child-category">';
       docData.subCategory.map((sc) => {
-      
-       
-        if(+sc.id === +scId) {
-        
+        if (+sc.id === +scId) {
           // console.log(sc);
-          sc.childCategories.map(cc => {
+          sc.childCategories.map((cc) => {
             // console.log(cc);
             options += `
             <option value="${docId}__${scId}__${cc.id}__${cc.name}">${cc.name}</option>
             `;
-          })
-          
+          });
         }
       });
       // console.log(options);
@@ -125,19 +125,18 @@ const displayChildCategory = async(data, elHTML) => {
     .catch((error) => {
       console.log(error);
     });
+};
 
-}
-
-productSubCategoryHTML.addEventListener("change", e => {
+productSubCategoryHTML.addEventListener("change", (e) => {
   choosenCategory = e.target.value;
   productChildCategoryHTML.disabled = false;
   displayChildCategory(e.target.value, productChildCategoryHTML);
 });
 
-const displayAddons = data => {
-  let addon = '';
+const displayAddons = (data) => {
+  let addon = "";
   // console.log(data);
-  data.map(doc => {
+  data.map((doc) => {
     let docData = doc.data();
     // console.log(docData);
     addon += `
@@ -145,29 +144,32 @@ const displayAddons = data => {
     `;
   });
   allAddonsHTML.innerHTML = addon;
-}
+};
 
 const extractAddons = async () => {
   let addonsData;
-  await db.collection('addons').get().then(snapshot => {
-    let snapshotDocs = snapshot.docs;
-    addonsData = snapshotDocs;
-  })
-  .catch(error => {
-    console.log(error);
-  });
+  await db
+    .collection("addons")
+    .get()
+    .then((snapshot) => {
+      let snapshotDocs = snapshot.docs;
+      addonsData = snapshotDocs;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
   return addonsData;
 };
 
 extractAddons()
-.then((response) => {
-  // console.log(response);
-  displayAddons(response);
-})
-.catch((error) => {
-  console.log(error);
-});
+  .then((response) => {
+    // console.log(response);
+    displayAddons(response);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 const addProductForm = (event) => {
   event.preventDefault();
@@ -216,7 +218,7 @@ const addProductForm = (event) => {
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
 
-  if (productCategory.toUpperCase().includes('CAKE')) {
+  if (productCategory.toUpperCase().includes("CAKE")) {
     addProduct
       .querySelectorAll('input[name="cake-weight"]')
       .forEach((weight) => {
@@ -284,11 +286,9 @@ const addProductForm = (event) => {
     productMainImg = "";
   }
   if (subImgs) {
-    productSubImgs = [...subImgs].map(
-      (img) => `${Math.random()}_${img.name}`
-    );
+    productSubImgs = [...subImgs].map((img) => `${Math.random()}_${img.name}`);
   }
-  
+
   let wholeProduct = {
     name: productName,
     sno: productSno,
@@ -311,13 +311,13 @@ const addProductForm = (event) => {
     isActivated: true,
   };
 
-  if (productCategory.toUpperCase().includes('CAKES')) {
-    wholeProduct.weights = cakeWeights || '';
-    wholeProduct.shapes = cakeShapes || '';
-    wholeProduct.type = cakeType  || '';
-    wholeProduct.flavours = cakeFlavours || '';
+  if (productCategory.toUpperCase().includes("CAKES")) {
+    wholeProduct.weights = cakeWeights || "";
+    wholeProduct.shapes = cakeShapes || "";
+    wholeProduct.type = cakeType || "";
+    wholeProduct.flavours = cakeFlavours || "";
   }
-  
+
   console.log(wholeProduct);
   let c = wholeProduct.wholeSubCategory.substring(43);
   // console.log(c);
@@ -343,14 +343,6 @@ const addProductForm = (event) => {
 
   addProductFun(wholeProduct)
     .then(async (response) => {
-      // console.log(response);
-      // console.log(response.prodData.category);
-      // console.log(response.prodData.subImgs);
-      // console.log(typeof response.prodData.subImgs);
-      // console.log(typeof response.prodData.mainImg, response.prodData.mainImg);
-      // console.log(response.dataId);
-      // console.log(mainImg);
-
       const storageService = firebase.storage();
       if (mainImg) {
         await storageService
@@ -359,29 +351,76 @@ const addProductForm = (event) => {
           )
           .put(mainImg);
       }
-      // console.log(subImgs);
 
-    
       let counter = -1;
 
-      async function upload(subImgs) {
+      const upload = (subImgs) => {
         for (let img of subImgs) {
           counter++;
           // console.log(img);
           let name = [...response.prodData.subImgs][counter];
           let id = response.dataId;
           storageService
-          .ref(`${response.prodData.category}/${id}/${name}`)
-          .put(img);
-          console.log(counter)
+            .ref(`${response.prodData.category}/${id}/${name}`)
+            .put(img);
+          console.log(counter);
         }
-      }
+      };
 
       if (subImgs) {
         upload(subImgs);
       }
 
-      
+      async function extractImgUrl(imgPath) {
+        let imgUrl;
+        await storageService
+          .ref(imgPath)
+          .getDownloadURL()
+          .then((url) => {
+            imgUrl = url;
+          })
+          .catch((err) => {
+            imgUrl = err;
+          });
+
+        return imgUrl;
+      }
+
+      let mainUrl;
+      if (mainImg) {
+        mainUrl = await extractImgUrl(
+          `${response.prodData.category}/${response.dataId}/${response.prodData.mainImg}`
+        );
+      }
+      console.log(mainUrl);
+      let subUrls = [];
+      if (subImgs) {
+        counter = -1;
+        for (let img of subImgs) {
+          counter++;
+          // console.log(img);
+          let name = [...response.prodData.subImgs][counter];
+          let id = response.dataId;
+          let url = await extractImgUrl(
+            `${response.prodData.category}/${id}/${name}`
+          );
+          subUrls.push(url);
+        }
+      }
+      console.log(subUrls);
+
+      let docRef = await db
+        .collection(`${response.prodData.category}`)
+        .doc(response.dataId);
+      // console.log(docRef);
+      docRef.get().then(async (snapshot) => {
+        // console.log(snapshot);
+        let docData = snapshot.data();
+        // console.log(docData);
+        docData.mainImgUrl = mainUrl;
+        docData.subImgsUrl = subUrls;
+        await docRef.update(docData);
+      });
 
       addProduct.reset();
       addProduct.querySelector(".alert-success").textContent = "Product Saved";
