@@ -958,7 +958,9 @@ const submitEditForm = (event) => {
 
 const uploadMainImg = (e) => {
   mainImg = e.target.files[0];
-  console.log(mainImg);
+  mainImagesUrl= extractImgUrl(mainImg)
+  
+  console.log(mainImagesUrl)
 
   var reader = new FileReader();
   reader.onload = function (e) {
