@@ -515,6 +515,7 @@ let editProductDetails;
 let editProductId;
 
 const editDetails = async (e) => {
+  $('#add-product').trigger("reset");
   let editProduct = document.querySelector("#add-product");
   console.log(e.target.dataset.id);
   console.log(e.target.dataset.category);
