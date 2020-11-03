@@ -25,8 +25,8 @@ async function displayRows(dd) {
     // console.log(docData);
     let id = d.id;
     let cat = docData.category;
-    let img = `${docData.category}/${id}/${docData.mainImg}`;
-    let imgUrl = await imgDisplay(img);
+   
+    let imgUrl =docData.mainImgUrl;
 
     tRows +=
       `
@@ -617,9 +617,8 @@ const editDetails = async (e) => {
       // console.log(putImg);
       $("#galleryImagesDisp").empty();
       for (var i = 0; i < doc.subImgs.length; i++) {
-        let sImgUrl = await extractImgUrl(
-          `${doc.category}/${snapshot.id}/${doc.subImgs[i]}`
-        );
+        let sImgUrl =doc.subImgsUrl[i]
+      
 
         galleryImages.innerHTML +=
           `
@@ -638,9 +637,8 @@ const editDetails = async (e) => {
          
         `;
       }
-      let mImgUrl = await extractImgUrl(
-        `${doc.category}/${snapshot.id}/${doc.mainImg}`
-      );
+      let mImgUrl = doc.mainImgUrl
+    
       let mImg = `
       <img id="putImage" src="${mImgUrl}" alt=" image" />
       `;
@@ -812,9 +810,9 @@ const submitEditForm = (event) => {
     wholeCategory: productCategory,
     wholeSubCategory: productSubCategory,
     wholeChildCategory: productChildCategory,
-    category: productCategory.substring(22),
-    subCategory: productSubCategory.substring(43),
-    childCategory: productChildCategory.substring(63),
+    category: productCategory.split('__')[1],
+    subCategory: productSubCategory.split('__')[2],
+    childCategory: productChildCategory.split('__')[3],
     mrp: productMRP,
     sp: productSP,
     gst: productGST,
