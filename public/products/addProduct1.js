@@ -422,7 +422,7 @@ const addProductForm = (event) => {
         await docRef.update(docData);
       });
 
-      addProduct.reset();
+      // addProduct.reset();
       addProduct.querySelector(".alert-success").textContent = "Product Saved";
       addProduct.querySelector(".alert-success").style.display = "block";
       setTimeout(() => {
