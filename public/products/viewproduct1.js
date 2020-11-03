@@ -534,7 +534,12 @@ const editDetails = async (e) => {
       editProduct["product-sno"].value = doc.sno;
       await cat(doc.category);
       await subCat(doc.wholeSubCategory);
-      await childCat(doc.wholeChildCategory);
+      // await childCat(doc.wholeChildCategory);
+      editProduct["product-sub-category"].value = doc.subCategory;
+      editProduct["product-child-category"].value = doc.childCategory;
+
+
+
       if (doc.category.toUpperCase().includes("CAKE")) {
         document.getElementById("cake-attributes").style.display = "block";
         if (doc.weights) {
@@ -969,69 +974,69 @@ const uploadSubImgs = (e) => {
   console.log(subImgs);
 };
 
-const displayChildCategory = async (elHTML) => {
-  let docId, scId;
-  // let data = editProduct["product-sub-category"].value;
-  let data = editProductDetails.wholeChildCategory;
-  console.log(data);
-  docId = data.substring(0, 20);
-  // console.log(docId);
-  scId = data.substring(22, 41);
-  // console.log(scId);
+// const displayChildCategory = async (elHTML) => {
+//   let docId, scId;
+//   // let data = editProduct["product-sub-category"].value;
+//   let data = editProductDetails.wholeChildCategory;
+//   console.log(data);
+//   docId = data.substring(0, 20);
+//   // console.log(docId);
+//   scId = data.substring(22, 41);
+//   // console.log(scId);
 
-  let dbRef = await db.collection("categories").doc(docId);
+//   let dbRef = await db.collection("categories").doc(docId);
 
-  dbRef
-    .get()
-    .then((snapshot) => {
-      // console.log(snapshot.data());
-      let docData = snapshot.data();
-      let options =
-        '<select id="product-child-category" name="product-child-category">';
-      docData.subCategory.map((sc) => {
-        if (+sc.id === +scId) {
-          // console.log(sc);
-          sc.childCategories.map((cc) => {
-            // console.log(cc);
-            options += `
-            <option value="${docId}__${scId}__${cc.id}__${cc.name}">${cc.name}</option>
-            `;
-          });
-        }
-      });
-      // console.log(options);
-      // console.log(elHTML);
-      elHTML.innerHTML = options;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+//   dbRef
+//     .get()
+//     .then((snapshot) => {
+//       // console.log(snapshot.data());
+//       let docData = snapshot.data();
+//       let options =
+//         '<select id="product-child-category" name="product-child-category">';
+//       docData.subCategory.map((sc) => {
+//         if (+sc.id === +scId) {
+//           // console.log(sc);
+//           sc.childCategories.map((cc) => {
+//             // console.log(cc);
+//             options += `
+//             <option value="${docId}__${scId}__${cc.id}__${cc.name}">${cc.name}</option>
+//             `;
+//           });
+//         }
+//       });
+//       // console.log(options);
+//       // console.log(elHTML);
+//       elHTML.innerHTML = options;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
 
-const displaySubCategory = async (elHTML) => {
-  let data = editProductDetails.wholeSubCategory;
-  console.log(data);
-  let docId = data.substring(0, 20);
-  let docCat = data.substring(22);
-  let options = '<option value="">Select Sub Category*</option>';
-  let dbRef = await db.collection("categories").doc(docId);
+// const displaySubCategory = async (elHTML) => {
+//   let data = editProductDetails.wholeSubCategory;
+//   console.log(data);
+//   let docId = data.substring(0, 20);
+//   let docCat = data.substring(22);
+//   let options = '<option value="">Select Sub Category*</option>';
+//   let dbRef = await db.collection("categories").doc(docId);
 
-  dbRef
-    .get()
-    .then((snapshot) => {
-      // console.log(snapshot.data());
-      let docData = snapshot.data();
-      docData.subCategory.map((sc) => {
-        // console.log(sc);
-        options += `
-        <option value="${docId}__${sc.id}__${sc.name}">${sc.name}</option>
-        `;
-      });
-      // console.log(options);
-      // console.log(elHTML);
-      elHTML.innerHTML = options;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+//   dbRef
+//     .get()
+//     .then((snapshot) => {
+//       // console.log(snapshot.data());
+//       let docData = snapshot.data();
+//       docData.subCategory.map((sc) => {
+//         // console.log(sc);
+//         options += `
+//         <option value="${docId}__${sc.id}__${sc.name}">${sc.name}</option>
+//         `;
+//       });
+//       // console.log(options);
+//       // console.log(elHTML);
+//       elHTML.innerHTML = options;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };

@@ -199,7 +199,6 @@ const addProductForm = (event) => {
   productCategory = addProduct["product-category"].value;
   productSubCategory = addProduct["product-sub-category"].value;
   productChildCategory = addProduct["product-child-category"].value;
-  console.log(productCategory);
   productMRP = addProduct["product-mrp"].value;
   productSP = addProduct["product-sp"].value;
   productGST = addProduct["product-gst"].value;
@@ -289,15 +288,16 @@ const addProductForm = (event) => {
     productSubImgs = [...subImgs].map((img) => `${Math.random()}_${img.name}`);
   }
 
+
   let wholeProduct = {
     name: productName,
     sno: productSno,
     wholeCategory: productCategory,
     wholeSubCategory: productSubCategory,
     wholeChildCategory: productChildCategory,
-    category: productCategory.substring(22),
-    subCategory: productSubCategory.substring(43),
-    childCategory: productChildCategory.substring(63),
+    category: productCategory.split('__')[1],
+    subCategory: productSubCategory.split('__')[2],
+    childCategory: productChildCategory.split('__')[3],
     mrp: productMRP,
     sp: productSP,
     gst: productGST,
