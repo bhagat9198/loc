@@ -248,7 +248,10 @@ const addSection = (e) => {
   addSectionFun(wholeSectionData)
     .then(async(response) => {
       console.log("done");
+      
       if(response.data.type === "4") {
+        let imgUrl;
+        let counter = 0;
         for(let img of response.data.card) {
           if(img.imgNo === 1) {
             await firebaseStorage.ref(`sections/${response.dataId}/${img.img}`).put(img1);
@@ -261,13 +264,46 @@ const addSection = (e) => {
           } else {
             console.log('invalid');
           }
+          imgUrl = await extractImgURL(`sections/${response.dataId}/${img.img}`);
+
+          let docRef = await db.collection('sections').doc(response.dataId);
+          await docRef.get().then(async(snapshot) => {
+            let docData = snapshot.data();
+            docData.card[counter].imgUrl = imgUrl;
+            console.log(docData);
+
+            await docRef.update(docData);
+          })
+          counter++;
         }
       } else if(response.data.type === "img") {
         await firebaseStorage.ref(`sections/${response.dataId}/${response.data.card.img}`).put(imgBanner);
+        let imgUrl = await extractImgURL(`sections/${response.dataId}/${response.data.card.img}`)
+        let docRef = await db.collection('sections').doc(response.dataId);
+        await docRef.get().then(async(snapshot) => {
+          let docData = snapshot.data();
+          docData.card.imgUrl = imgUrl;
+          console.log(docData);
+
+          await docRef.update(docData);
+        })
       } else if(response.data.type === "animation") {
         console.log(response.data.card.animation);
         await firebaseStorage.ref(`sections/${response.dataId}/${response.data.card.animation}`).put(animationBanner);
+        console.log(animationBanner);
+        let animationUrl = await extractImgURL(`sections/${response.dataId}/${response.data.card.animation}`);
+        console.log(animationUrl);
+        let docRef = await db.collection('sections').doc(response.dataId);
+        await docRef.get().then(async(snapshot) => {
+          let docData = snapshot.data();
+          docData.card.animationUrl = animationUrl;
+          console.log(docData);
+
+          await docRef.update(docData);
+        })
       }
+      console.log('done');
+      addSectionFormHTML.reset();
     })
     .catch((error) => {
       console.log(error);
