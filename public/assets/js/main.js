@@ -180,88 +180,93 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
 
 
     // Hero Area Slider
-    var $mainSlider = $('.intro-carousel');
-    if($('.intro-content').length > 1)
-    {
-        $mainSlider.owlCarousel({
-            loop: true,
-            //navText: ['<i class="fas fa-angle-double-left"></i>', '<i class="fas fa-angle-double-right"></i>'],
-            nav: false,
-            dots: true,
-            autoplay: true,
-            autoplayTimeout: 8000,
-            animateOut: 'fadeOut',
-            animateIn: 'fadeIn',
-            smartSpeed: 1000,
-            onInitialized: startProgressBar,
-            onTranslate: resetProgressBar,
-            onTranslated: startProgressBar,
-            responsive: {
-                0: {
-                    dots: false,
-                    items: 1
+
+        var $mainSlider = $('.intro-carousel');
+        if($('.intro-content').length > 1)
+        {
+            $mainSlider.owlCarousel({
+                loop: true,
+                //navText: ['<i class="fas fa-angle-double-left"></i>', '<i class="fas fa-angle-double-right"></i>'],
+                nav: false,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 8000,
+                animateOut: 'fadeOut',
+                animateIn: 'fadeIn',
+                smartSpeed: 1000,
+                onInitialized: startProgressBar,
+                onTranslate: resetProgressBar,
+                onTranslated: startProgressBar,
+                responsive: {
+                    0: {
+                        dots: false,
+                        items: 1
+                    },
+                    768: {
+                        items: 1
+                    }
                 },
-                768: {
-                    items: 1
-                }
-            },
+        
+            });
+        }
     
-        });
-    }
-
+        if($('.intro-content').length > 1)
+        {
+        var $currentItem = $('.owl-item', $mainSlider).eq(2);
+        var $class1 = $currentItem.find('.subtitle').attr('data-animation');
+        $currentItem.find('.subtitle').addClass($class1);
+        setTimeout(function(){
+                $currentItem.find('.subtitle').removeClass($class1);
+        }, 900);
+    
+        var $class2 = $currentItem.find('.title').attr('data-animation');
+        $currentItem.find('.title').addClass($class2);
+        setTimeout(function(){
+                $currentItem.find('.title').removeClass($class2);
+        }, 900);
+    
+        var $class3 = $currentItem.find('.text').attr('data-animation');
+        $currentItem.find('.text').addClass($class3);
+        setTimeout(function(){
+                $currentItem.find('.text').removeClass($class3);
+        }, 900);
+    
+        }
+    
+    
+    
+    
     if($('.intro-content').length > 1)
     {
-    var $currentItem = $('.owl-item', $mainSlider).eq(2);
-    var $class1 = $currentItem.find('.subtitle').attr('data-animation');
-    $currentItem.find('.subtitle').addClass($class1);
-    setTimeout(function(){
-            $currentItem.find('.subtitle').removeClass($class1);
-    }, 900);
-
-    var $class2 = $currentItem.find('.title').attr('data-animation');
-    $currentItem.find('.title').addClass($class2);
-    setTimeout(function(){
-            $currentItem.find('.title').removeClass($class2);
-    }, 900);
-
-    var $class3 = $currentItem.find('.text').attr('data-animation');
-    $currentItem.find('.text').addClass($class3);
-    setTimeout(function(){
-            $currentItem.find('.text').removeClass($class3);
-    }, 900);
-
+    
+    $mainSlider.on('changed.owl.carousel', function(event) {
+        var $currentItem = $('.owl-item', $mainSlider).eq(event.item.index)
+        
+        var $class11 = $currentItem.find('.subtitle').attr('data-animation');
+        $currentItem.find('.subtitle').addClass($class11);
+        setTimeout(function(){
+                $currentItem.find('.subtitle').removeClass($class11);
+        }, 900);
+    
+        var $class22 = $currentItem.find('.title').attr('data-animation');
+        $currentItem.find('.title').addClass($class22);
+        setTimeout(function(){
+                $currentItem.find('.title').removeClass($class22);
+        }, 900);
+        var $class33 = $currentItem.find('.text').attr('data-animation');
+        $currentItem.find('.text').addClass($class33);
+        setTimeout(function(){
+                $currentItem.find('.text').removeClass($class33);
+        }, 900);
+    
+    
+    });
+    
     }
 
-
-
-
-if($('.intro-content').length > 1)
-{
-
-$mainSlider.on('changed.owl.carousel', function(event) {
-    var $currentItem = $('.owl-item', $mainSlider).eq(event.item.index)
     
-    var $class11 = $currentItem.find('.subtitle').attr('data-animation');
-    $currentItem.find('.subtitle').addClass($class11);
-    setTimeout(function(){
-            $currentItem.find('.subtitle').removeClass($class11);
-    }, 900);
 
-    var $class22 = $currentItem.find('.title').attr('data-animation');
-    $currentItem.find('.title').addClass($class22);
-    setTimeout(function(){
-            $currentItem.find('.title').removeClass($class22);
-    }, 900);
-    var $class33 = $currentItem.find('.text').attr('data-animation');
-    $currentItem.find('.text').addClass($class33);
-    setTimeout(function(){
-            $currentItem.find('.text').removeClass($class33);
-    }, 900);
-
-
-});
-
-}
+    
 
 
       

@@ -90,9 +90,10 @@
 
         <div class="menu-container">
           <div class="menu">
-            <ul>
-              <li style=""><a>Cakes<i class="fas fa-chevron-down" style="margin-left: 0%;float: right;"></i></a>
+            <ul >
 
+              <!-- <li >
+                <a>Cakes<i class="fas fa-chevron-down" style="margin-left: 0%;float: right;"></i></a>
                 <ul>
                   <li><a href="#">School</a>
                     <ul>
@@ -124,34 +125,8 @@
                     </ul>
                   </li>
                 </ul>
-              </li>
-              <li><a href="#">Flowers<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
-                <ul>
-                  <li><a href="#">School</a>
-                    <ul>
-                      <li><a href="#">Lidership</a></li>
-                      <li><a href="#">History</a></li>
-                      <li><a href="#">Locations</a></li>
-                      <li><a href="#">Careers</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
+              </li> -->
 
-                    </ul>
-                  </li>
 
                   <li><a href="#">Empty sub</a>
                     <ul>
@@ -160,40 +135,7 @@
                   </li>
                 </ul>
               </li>
-              <li><a href="#">Combos<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
-                <ul>
-                  <li><a href="#">School</a>
-                    <ul>
-                      <li><a href="#">Lidership</a></li>
-                      <li><a href="#">History</a></li>
-                      <li><a href="#">Locations</a></li>
-                      <li><a href="#">Careers</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Empty sub</a>
-                    <ul>
-                      <li><img src="https://placeimg.com/300/200/people"></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="#">Chocolate<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
+              <!-- <li><a href="#">Chocolate<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
                 <ul>
                   <li><a href="#">School</a>
                     <ul>
@@ -357,7 +299,7 @@
                     </ul>
                   </li>
                 </ul>
-              </li>
+              </li> -->
             </ul>
           </div>
 
@@ -625,7 +567,7 @@
       <div
         class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
         <ul style="display: inline-flex;">
-          <li style="">
+          <li >
             <a href="//lakeofcakes.com/midnight">
               <div class="text-center">
                 <img src="images/Midnight-Delivery.png" style="width:80px;object-fit: cover;">
@@ -645,7 +587,7 @@
                 BE A CHEF</div>
             </a>
           </li>
-          <li style="">
+          <li >
             <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
               <img src="https://www.flaticon.com/svg/static/icons/svg/1792/1792931.svg"
                 style="width:80px;object-fit: cover;">
@@ -698,12 +640,8 @@
     <div class="desktopmenu">
       <div class="menu-container">
         <div class="menu">
-
-          <ul>
-
-
-
-            <li><a href="#">Cakes</a>
+          <ul id="whole-navigation-pc">
+            <!-- <li><a href="#">Cakes</a>
               <ul>
                 <li><a href="#">School</a>
                   <ul>
@@ -977,7 +915,7 @@
                   </ul>
                 </li>
               </ul>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -987,6 +925,7 @@
 
 
 <script>
+  setTimeout(() => {
     $(".menu > ul > li").hover(function (e) {
       if ($(window).width() > 943) {
         $(this).children("ul").stop(true, false).fadeToggle(150);
@@ -1015,4 +954,5 @@
   function hidenavigation() {
     $('.drobt0').addClass('colapse');
   }
+  }, 5500);    
 </script>
