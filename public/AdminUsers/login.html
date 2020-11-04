@@ -128,12 +128,12 @@
         }
       }, 100)
 
-    document.getElementById("log").addEventListener("click", function () {
+    document.getElementById("log").addEventListener("click", async function ()  {
 
       
       let email = document.querySelector('#email').value;
       let password = document.querySelector('#password').value;
-
+      var k;
       var count = 0;
       for (let i of snapshotDocs) {
 
@@ -141,28 +141,31 @@
 
         if (doc.Email == email && atob(doc.Password) == password) {
           count++;
-
+          key=i;
+          break;
 
         }
+      }
         if (count == 1) {
-          let token = btoa(i.id + "Online" + doc.Email)
+          let token = btoa(key.id + "Online" + doc.Email)
           document.getElementById("authError").style.display = "none"
           document.getElementById("authMessage").style.display = "block";
-          db.collection("Admin-Users").doc(i.id).update("token", token)
+          await db.collection("Admin-Users").doc(key.id).update("token", token)
 
           window.localStorage.setItem('AdminSession', token);
-          window.localStorage.setItem('adminId', i.id);
+          window.localStorage.setItem('adminId', key.id);
           window.localStorage.setItem('AdminUsername', doc.UserName);
 
           setTimeout(function () {
             window.location = "../index.html";
 
           }, 100)
+         
 
         } else {
           document.getElementById("authError").style.display = "block"
         }
-      }
+      
     })
 
   });
