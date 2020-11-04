@@ -85,6 +85,15 @@ padding: 15px;
 font-weight: bold;
 
 }
+
+.fixedInput{
+  width: 100%;
+  border: 2px solid brown;
+  
+}
+.product-area{
+  padding-top:20px !important;
+}
 .searchBar{
   
   float: right;
