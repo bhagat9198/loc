@@ -4,7 +4,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "site":"admin-lake-of-cakes",
+    "site":"admin-lakeofcakes",
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -18,4 +18,5 @@
   "database": {
     "rules": "database.rules.json"
   }
+  
 }

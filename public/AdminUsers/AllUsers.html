@@ -213,7 +213,8 @@
               UserName: name,
               Email: email,
               Password: btoa(pass),
-              TimeCreated: timestamp
+              TimeCreated: timestamp,
+              token:"null"
             })
               .then(function (docRef) {
                 alert("Admin Added Succesfully")
@@ -255,18 +256,27 @@
 
       let snapshotDocs = snapshot.docs;
       let count = 1;
+      let status="loading.."
       $('#adminUserData').empty()
       for (let i of snapshotDocs) {
         let timeStamp=(i.data().TimeCreated).toDate().toString().substring(0,24);
-
+        let onlineStatus=i.data().token;
+        let color="";
+        if(onlineStatus=="null"){
+          status="offline"
+          color='	&#128308;'
+        }else{
+          status="online"
+          color='&#128994;'
+        }
         document.getElementById("adminUserData").innerHTML += `
           <tr>
                       <td>`+ count + `</td>
                       <td>`+ i.data().UserName + `</td>
                       <td>`+ timeStamp + `</td>
-                      <td>Admin</td>
+                      <td>Admin</td>  
                       <td>`+i.data().Email+`</td>
-                      <td><span class="status text-success">&bull;</span> Active</td>
+                      <td><span class="status text-success" style="font-size:8px">`+color+`</span>`+status+`</td>
                       <td>
                         <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
                         class="fas fa-trash" onclick=deleteUser("`+ i.id + `")>&#xE5C9;</i></a>

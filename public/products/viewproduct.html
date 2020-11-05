@@ -1074,16 +1074,17 @@
 </div>
 
   <script src="../assets/js/jqueryui.min.js"></script>
-  <script type="text/javascript">
-    $('#admin-nav-load').load('/Common/navbar.html');
-    $('#admin-footer-load').load('/Common/footer.html');
-  </script>
 
+  
   <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/adminlte.js"></script>
   <script src="../assets/js/demo.js"></script>
   <script src="../assets/js/jquery-1.12.4.min.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $('#admin-nav-load').load('/Common/navbar.html');
+    $('#admin-footer-load').load('/Common/footer.html');
+  </script>
 
   <!-- <script src="../assets/js/waves.min.js"></script> -->
   <script src="../assets/js/plugin.js"></script>
@@ -1092,7 +1093,7 @@
   <script src="../assets/js/nicEdit.js"></script>
   <script src="../assets/js/bootstrap-colorpicker.min.js"></script>
   <script src="../assets/js/notify.js"></script>
-  <script src="../assets/js/product.js"></script>
+  <!-- <script src="../assets/js/product.js"></script> -->
   <script src="../assets/js/jquery.canvasjs.min.js"></script>
   <script src="../assets/js/load.js"></script>
   <!-- <script src="../assets/js/custom.js"></script> -->
@@ -1125,7 +1126,7 @@
     // source can be HTML-formatted string, or a reference
     // to an actual DOM element from which the text will be scraped.
     source = $('#'+divId)[0];
-    alert(divId)
+    
     // we support special element handlers. Register them with jQuery-style 
     // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
     // There is no support for any other type of selectors 
@@ -1154,7 +1155,7 @@
     },
 
     function (dispose) {
-      alert(8)
+      
         // dispose: object with X, Y of the last line add to the PDF 
         //          this allow the insertion of new lines after html
         pdf.save('Test.pdf');
