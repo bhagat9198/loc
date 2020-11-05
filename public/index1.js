@@ -5,19 +5,19 @@ const storageService = firebase.storage();
 
 const introCarouselHTML = document.querySelector(".intro-carousel");
 
-const extractImgUrl = async (imgPath) => {
-  let imgUrl;
-  await storageService
-    .ref(imgPath)
-    .getDownloadURL()
-    .then((url) => {
-      imgUrl = url;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  return imgUrl;
-};
+// const extractImgUrl = async (imgPath) => {
+//   let imgUrl;
+//   await storageService
+//     .ref(imgPath)
+//     .getDownloadURL()
+//     .then((url) => {
+//       imgUrl = url;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+//   return imgUrl;
+// };
 
 db.collection("sliders").onSnapshot(async(snapshots) => {
   let snapshotDocs = snapshots.docs;
@@ -25,13 +25,12 @@ db.collection("sliders").onSnapshot(async(snapshots) => {
   for(let doc of snapshotDocs) {
     let docData = doc.data();
     // console.log(docData);
-    let imgUrl = await extractImgUrl(`sliders/${doc.id}/${docData.img}`);
+    // let imgUrl = await extractImgUrl(`sliders/${doc.id}/${docData.img}`);
     img += `
     <a href="#">
       <div class="intro-content slide-one">
         <img class=""
-          
-          src="${imgUrl}">
+          src="${docData.imgUrl}">
           <div class="container">
           <div class="row">
               <div class="col-lg-12">

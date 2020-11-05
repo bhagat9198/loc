@@ -1,22 +1,20 @@
 console.log("navbar1.js");
 
-// const db = firebase.firestore();
-// const storageService = firebase.storage();
-// const wholeNavigationPcHTML = document.querySelector('#whole-navigation-pc');
+const wholeNavigationPcHTML = document.querySelector('#whole-navigation-pc');
 
-const extractImgURL = async (imgPath) => {
-  let imgUrl;
-  await storageService
-    .ref(imgPath)
-    .getDownloadURL()
-    .then((url) => {
-      imgUrl = url;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  return imgUrl;
-};
+// const extractImgURL = async (imgPath) => {
+//   let imgUrl;
+//   await storageService
+//     .ref(imgPath)
+//     .getDownloadURL()
+//     .then((url) => {
+//       imgUrl = url;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+//   return imgUrl;
+// };
 
 const extractChildCat = data => {
   let childLi = '';
@@ -53,7 +51,7 @@ db.collection('categories').onSnapshot(async(snapshots) => {
     let docData = doc.data();
     console.log(docData);
     let subCat = extractSubCat(docData);
-    let imgPath = await extractImgURL(`categories/${doc.id}/${docData.img}`);
+    // let imgPath = await extractImgURL(`categories/${doc.id}/${docData.img}`);
     // let imgPath = '';
     li += `
     <li >
@@ -63,7 +61,7 @@ db.collection('categories').onSnapshot(async(snapshots) => {
 
         <li>
           <ul>
-            <li><img src="${imgPath}"></li>
+            <li><img src="${docData.imgUrl}"></li>
           </ul>
         </li>
       </ul>
