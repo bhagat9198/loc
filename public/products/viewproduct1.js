@@ -105,7 +105,7 @@ async function deleteProduct(cat, prid) {
             }
 
             for (let i of imgsPath) {
-              alert(i);
+              
               var desertRef = await firebase.storage().refFromURL(i);
 
               desertRef

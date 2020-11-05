@@ -22,12 +22,12 @@
   <link href="../assets/css/product.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets//css/myStyles.css">
   <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
-  
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
-  <section id="admin-nav-load"></section>
+    <section id="admin-nav-load"></section>
 
     <!-- Main content -->
     <section class="wrapper">
@@ -40,13 +40,13 @@
                 <div class="table-title">
                   <div class="row">
                     <div class="col-sm-5">
-                      <h2>User <b>Management</b></h2>
+                      <h2>Admin <b>Management</b></h2>
                     </div>
                     <div class="col-sm-7">
-                      <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE147;</i>
+                      <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#adduser"><i
+                          class="fa fa-plus">&#xE147;</i>
                         <span>Add New User</span></a>
-                      <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
-                        <span>Export to Excel</span></a>
+
                     </div>
                   </div>
                 </div>
@@ -57,79 +57,101 @@
                       <th>Name</th>
                       <th>Date Created</th>
                       <th>Role</th>
+                      <th>Email</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td> Michael Holz</td>
-                      <td>04/10/2013</td>
-                      <td>Admin</td>
-                      <td><span class="status text-success">&bull;</span> Active</td>
-                      <td>
+                  <tbody id="adminUserData">
 
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                            class="material-icons">&#xE5C9;</i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td> Paula Wilson</td>
-                      <td>05/08/2014</td>
-                      <td>Publisher</td>
-                      <td><span class="status text-success">&bull;</span> Active</td>
-                      <td>
 
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                            class="material-icons">&#xE5C9;</i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td> Antonio Moreno</td>
-                      <td>11/05/2015</td>
-                      <td>Publisher</td>
-                      <td><span class="status text-danger">&bull;</span> Suspended</td>
-                      <td>
-
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                            class="material-icons">&#xE5C9;</i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td> Mary Saveley</td>
-                      <td>06/09/2016</td>
-                      <td>Reviewer</td>
-                      <td><span class="status text-success">&bull;</span> Active</td>
-                      <td>
-
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                            class="material-icons">&#xE5C9;</i></a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td> Martin Sommer</td>
-                      <td>12/08/2017</td>
-                      <td>Moderator</td>
-                      <td><span class="status text-warning">&bull;</span> Inactive</td>
-                      <td>
-
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
-                            class="material-icons">&#xE5C9;</i></a>
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
+                <div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-labelledby="adduser"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Add a new Admin</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="top-area">
+                          <div class="row">
+                            <div class="col-sm-6 ">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <div class="left-area">
+                                    <h4 class="heading">Name </h4>
+                                  </div>
+                                </div>
+                                <div class="col-lg-12">
+                                  <input type="text" class="input-field" id="name" placeholder="Enter Admin Name"
+                                    name="">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-6 ">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <div class="left-area">
+                                    <h4 class="heading">Email Id </h4>
+                                  </div>
+                                </div>
+                                <div class="col-lg-12">
+                                  <input type="email" class="input-field" id="email" placeholder="Enter Admin email"
+                                    name="">
+                                </div>
+                              </div>
+                            </div>
 
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-6 ">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <div class="left-area">
+                                    <h4 class="heading">Create Password </h4>
+                                  </div>
+                                </div>
+                                <div class="col-lg-12">
+                                  <input type="password" id="pass" class="input-field" placeholder="" name="">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-6 ">
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <div class="left-area">
+                                    <h4 class="heading">Confirm Password </h4>
+                                  </div>
+                                </div>
+                                <div class="col-lg-12">
+                                  <input type="password" id="cpass" class="input-field" placeholder="" name="">
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 text-center">
+                              <input class="addProductSubmit-btn btn btn-secondary" id="Adduser" value="Add Admin"
+                                type="submit">
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
 
     <section id="admin-footer-load"></section>
@@ -155,8 +177,11 @@
       $('[data-toggle="tooltip"]').tooltip();
     });
   </script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
   <script>
     var firebaseConfig = {
       apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
@@ -169,10 +194,112 @@
       measurementId: "G-5ER0QF0FDW"
     };
     firebase.initializeApp(firebaseConfig);
-    // firebase.analytics();
+    firebase.analytics();
+
+    var db = firebase.firestore();
+
+    document.getElementById("Adduser").addEventListener('click', function () {
+
+      let name = document.querySelector('#name').value;
+      let email = document.querySelector('#email').value;
+      let pass = document.querySelector('#pass').value;
+      let cpass = document.querySelector('#cpass').value;
+      const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+      if (name != null && name != "" && name != " ") {
+
+        if (email.includes("@")) {
+          if (pass == cpass) {
+            db.collection("Admin-Users").add({
+              UserName: name,
+              Email: email,
+              Password: btoa(pass),
+              TimeCreated: timestamp,
+              token:"null"
+            })
+              .then(function (docRef) {
+                alert("Admin Added Succesfully")
+                $('#adduser').modal('hide');
+              })
+              .catch(function (error) {
+                console.error("Error adding document: ", error);
+              });
+          } else {
+            alert("Password MissMatch")
+          }
+        } else {
+          alert("Please emter a valid Email Id")
+        }
+      } else {
+        alert("Please enter a username")
+      }
+    });
+
+
+
+    // Read Data
+    db.collection("Admin-Users").onSnapshot((snapshot) => {
+      if (snapshot.docs == "") {
+        document.getElementById("adminUserData").innerHTML += `
+          <tr>
+                      <td>--</td>
+                      <td>No User Found</td>
+                      <td>--</td>
+                      <td>Admin</td>
+                      <td><span class="status text-success"></span>No User Found</td>
+                      <td>
+                        <a href="#" class="delete"  title="Delete" data-toggle="tooltip">--</a>
+                      </td>
+                    </tr>
+          `
+       
+      }
+
+      let snapshotDocs = snapshot.docs;
+      let count = 1;
+      let status="loading.."
+      $('#adminUserData').empty()
+      for (let i of snapshotDocs) {
+        let timeStamp=(i.data().TimeCreated).toDate().toString().substring(0,24);
+        let onlineStatus=i.data().token;
+        let color="";
+        if(onlineStatus=="null"){
+          status="offline"
+          color='	&#128308;'
+        }else{
+          status="online"
+          color='&#128994;'
+        }
+        document.getElementById("adminUserData").innerHTML += `
+          <tr>
+                      <td>`+ count + `</td>
+                      <td>`+ i.data().UserName + `</td>
+                      <td>`+ timeStamp + `</td>
+                      <td>Admin</td>  
+                      <td>`+i.data().Email+`</td>
+                      <td><span class="status text-success" style="font-size:8px">`+color+`</span>`+status+`</td>
+                      <td>
+                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i
+                        class="fas fa-trash" onclick=deleteUser("`+ i.id + `")>&#xE5C9;</i></a>
+                      </td>
+                    </tr>
+          `
+        count++;
+      }
+    });
+
+    function deleteUser(id) {
+      let a=confirm("Are you  sure to delete the Admin-User")
+      db.collection("Admin-Users").doc(id).delete().then(function () {
+        console.log("Admin record successfully deleted!");
+
+      }).catch(function (error) {
+        console.error("Error removing user: ", error);
+      });
+    }
+
   </script>
 
-  <script src="./viewproduct1.js"></script>
+
 
 </body>
 

@@ -172,6 +172,10 @@ extractAddons()
   });
 
 const addProductForm = (event) => {
+
+  document.getElementById("successProduct").style.display = "block";
+  document.getElementById("successProduct").innerHTML = "Please wait ...Adding the product  &#128513;";
+ 
   event.preventDefault();
   let productName,
     productSno,
@@ -425,21 +429,34 @@ const addProductForm = (event) => {
       // addProduct.reset();
       addProduct.querySelector(".alert-success").textContent = "Product Saved";
       addProduct.querySelector(".alert-success").style.display = "block";
+   
+      document.getElementById("successProduct").innerHTML = "Product Added Sucessfully  &#128512;";
+      document.getElementById("successProduct").style.backgroundColor ="rgb(89, 151, 89)";
+      document.getElementById("successProduct").style.display = "block";
+      
+
       setTimeout(() => {
         addProduct.querySelector(".alert-success").style.display = "none";
+        document.getElementById("successProduct").style.display = "none";
       }, 5000);
     })
     .catch((error) => {
       console.log(error);
       addProduct.querySelector(".alert-danger").innerHTML = error.message;
+      document.getElementById("successProduct").innerHTML = error.message +" &#x1F610;";
+      document.getElementById("successProduct").style.backgroundColor ="red";
       addProduct.querySelector(".alert-danger").style.display = "block";
+      document.getElementById("successProduct").style.display = "block";
       setTimeout(() => {
         addProduct.querySelector(".alert-danger").style.display = "none";
+        document.getElementById("successProduct").style.display = "none";
       }, 5000);
     });
 };
 
 addProduct.addEventListener("submit", addProductForm);
+
+
 
 const uploadMainImg = (e) => {
   mainImg = e.target.files[0];
