@@ -158,7 +158,7 @@ function deleteSlider(id){
   let ans=confirm("Are you  sure to delete the Addon")
   if(ans){
     db.collection("addons").doc(id).delete().then(function () {
-      alert("Addon successfully deleted!");
+      alert("Addon successfully deleted!!");
 
     }).catch(function (error) {
       alert("Error removing user: ", error);
