@@ -373,7 +373,7 @@ const productChildCategoryHTML = editProduct.querySelector(
   "#product-child-category"
 );
 
-const allAddonsHTML = editProduct.querySelector("#all-addons");
+// const allAddonsHTML = editProduct.querySelector("#all-addons");
 
 const cat = async (data) => {
   // console.log(data);
@@ -462,40 +462,40 @@ const childCat = async (data) => {
     });
 };
 
-const addons = async (data) => {
-  console.log(data);
-  let options = "";
-  await db
-    .collection("addons")
-    .get()
-    .then((snapshot) => {
-      let snapshotDocs = snapshot.docs;
-      let checkboxSelect;
-      snapshotDocs.map((doc) => {
-        let docData = doc.data();
-        console.log(docData);
-        data.map((add) => {
-          let docId = add.substring(0, 20);
-          // console.log(docId);
-          console.log(doc.id, docId);
-          console.log(typeof doc.id, typeof docId);
-          if (doc.id === docId) {
-            // console.log(doc.id, docId);
-            // console.log(docData.name);
-            checkboxSelect = true;
-          }
-        });
-        options += `
-          <h5 class="addon"><input ${
-            checkboxSelect ? "checked" : null
-          } type="checkbox" name="product-addon" value="${doc.id}__${
-          docData.name
-        }" class="addon">&nbsp;${docData.name}</h5><br>`;
-        checkboxSelect = false;
-      });
-      allAddonsHTML.innerHTML = options;
-    });
-};
+// const addons = async (data) => {
+//   console.log(data);
+//   let options = "";
+//   await db
+//     .collection("addons")
+//     .get()
+//     .then((snapshot) => {
+//       let snapshotDocs = snapshot.docs;
+//       let checkboxSelect;
+//       snapshotDocs.map((doc) => {
+//         let docData = doc.data();
+//         console.log(docData);
+//         data.map((add) => {
+//           let docId = add.substring(0, 20);
+//           // console.log(docId);
+//           console.log(doc.id, docId);
+//           console.log(typeof doc.id, typeof docId);
+//           if (doc.id === docId) {
+//             // console.log(doc.id, docId);
+//             // console.log(docData.name);
+//             checkboxSelect = true;
+//           }
+//         });
+//         options += `
+//           <h5 class="addon"><input ${
+//             checkboxSelect ? "checked" : null
+//           } type="checkbox" name="product-addon" value="${doc.id}__${
+//           docData.name
+//         }" class="addon">&nbsp;${docData.name}</h5><br>`;
+//         checkboxSelect = false;
+//       });
+//       allAddonsHTML.innerHTML = options;
+//     });
+// };
 
 // const extractImgUrl = async (imgPath) => {
 //   let imgURL;
@@ -714,11 +714,11 @@ const submitEditForm = (event) => {
   productGST = editProduct["product-gst"].value;
   productTotalPrice = editProduct["product-total-price"].value;
 
-  editProduct
-    .querySelectorAll('input[name="product-addon"]:checked')
-    .forEach((addon) => {
-      productAddons.push(addon.value);
-    });
+  // editProduct
+  //   .querySelectorAll('input[name="product-addon"]:checked')
+  //   .forEach((addon) => {
+  //     productAddons.push(addon.value);
+  //   });
 
   editProduct.querySelectorAll('input[name="product-tag"]').forEach((tag) => {
     productTags.push(tag.value);
@@ -834,10 +834,10 @@ const submitEditForm = (event) => {
   }
 
   console.log(wholeProduct);
-  let c = wholeProduct.wholeSubCategory.substring(43);
-  // console.log(c);
-  let cc = wholeProduct.wholeChildCategory.substring(63);
-  // console.log(cc);
+  let c = wholeProduct.wholeSubCategory.split(__)[2];
+  console.log(c);
+  let cc = wholeProduct.wholeChildCategory.split(__)[3];
+  console.log(cc);
 
   async function editProductFun(data) {
     console.log(data);

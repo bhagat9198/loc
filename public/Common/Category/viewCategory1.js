@@ -50,30 +50,35 @@ const displayCategories = async (data) => {
 };
 
 const displaySubCategories = (data) => {
+  console.log(data)
   let tRows = "";
   data.map((doc) => {
     let docData = doc.data();
-    // console.log(docData);
-    tRows += `
-    <tr role="row" class="odd parent">
-      <td><input type="text" class="editField" value="${docData.subCategory.name}">
-        <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
-      <td tabindex="0">${docData.name}</i> </td>
-      <td>
-        <div class="action-list">
-          <select class="process  drop-success" style="display: block;">
-            <option data-val="1" value="true" selected="">Activated</option>
-            <option data-val="0" value="false"> Deactivated</option>
-          </select>
-        </div>
-      </td>
-      <td>
-        <div class="godropdown"><button class="go-dropdown-toggle">
-            Delete
-        </div>
-      </td>
-    </tr>
-    `;
+    console.log(docData);
+    console.log(docData.subCategory.name)
+    docData.subCategory.map(sc => {
+      tRows += `
+      <tr role="row" class="odd parent">
+        <td><input type="text" class="editField" value="${sc.name}">
+          <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
+        <td tabindex="0">${docData.name}</i> </td>
+        <td>
+          <div class="action-list">
+            <select class="process  drop-success" style="display: block;">
+              <option data-val="1" value="true" selected="">Activated</option>
+              <option data-val="0" value="false"> Deactivated</option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="godropdown"><button class="go-dropdown-toggle">
+              Delete
+          </div>
+        </td>
+      </tr>
+      `;
+    }) 
+   
   });
   subCategoryHTML.innerHTML = tRows;
 };

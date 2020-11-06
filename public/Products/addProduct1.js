@@ -12,7 +12,7 @@ const productSubCategoryHTML = addProduct.querySelector(
 const productChildCategoryHTML = addProduct.querySelector(
   "#product-child-category"
 );
-const allAddonsHTML = addProduct.querySelector("#all-addons");
+// const allAddonsHTML = addProduct.querySelector("#all-addons");
 
 let mainImg, subImgs;
 let allCategories, choosenCategory;
@@ -146,30 +146,30 @@ const displayAddons = (data) => {
   allAddonsHTML.innerHTML = addon;
 };
 
-const extractAddons = async () => {
-  let addonsData;
-  await db
-    .collection("addons")
-    .get()
-    .then((snapshot) => {
-      let snapshotDocs = snapshot.docs;
-      addonsData = snapshotDocs;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+// const extractAddons = async () => {
+//   let addonsData;
+//   await db
+//     .collection("addons")
+//     .get()
+//     .then((snapshot) => {
+//       let snapshotDocs = snapshot.docs;
+//       addonsData = snapshotDocs;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
 
-  return addonsData;
-};
+//   return addonsData;
+// };
 
-extractAddons()
-  .then((response) => {
-    // console.log(response);
-    displayAddons(response);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// extractAddons()
+//   .then((response) => {
+//     // console.log(response);
+//     displayAddons(response);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
 const addProductForm = (event) => {
 
@@ -208,11 +208,11 @@ const addProductForm = (event) => {
   productGST = addProduct["product-gst"].value;
   productTotalPrice = addProduct["product-total-price"].value;
 
-  addProduct
-    .querySelectorAll('input[name="product-addon"]:checked')
-    .forEach((addon) => {
-      productAddons.push(addon.value);
-    });
+  // addProduct
+  //   .querySelectorAll('input[name="product-addon"]:checked')
+  //   .forEach((addon) => {
+  //     productAddons.push(addon.value);
+  //   });
 
   addProduct.querySelectorAll('input[name="product-tag"]').forEach((tag) => {
     productTags.push(tag.value);
