@@ -20,7 +20,23 @@ const displayCategories = async (data) => {
   let tRows = "";
   for (let doc of data) {
     let docData = doc.data();
-    // console.log(docData);
+    let status=docData.isActivated;
+    var dispVal1,dispVal2,dataval1,dataval2;
+    if(status=="false"){
+
+      dispVal1="Deactivated";
+      dispVal2="Activated";
+      dataval1="false"
+      dataval2="true"
+
+    }else{
+      dispVal1="Activated";
+      dispVal2="Deactivated";
+      dataval1="true"
+      dataval2="false"
+     
+    }
+    console.log(docData);
     let imgUrl = await imgUrlFun(`categories/${doc.id}/${docData.img}`);
     tRows += `
     <tr role="row" class="odd parent">
@@ -31,17 +47,20 @@ const displayCategories = async (data) => {
         <input type="file" name="category-img" class="mybtn2" accept="image/*">
       </td>
       <td>
-        <div class="action-list">
-          <select class="process  drop-success" style="display: block;">
-            <option data-val="1" value="true" selected="">Activated</option>
-            <option data-val="0" value="false"> Deactivated</option>
-          </select>
-        </div>
+      <div class="action-list">
+      <select class="process  drop-success" style="display: block; " id="statusUpdate` + doc.id + `" onchange=statusUpdated("statusUpdate` + doc.id + `","` + doc.id + `")>
+      <option data-val="1" value="`+ dataval1 + `">` + dispVal1 + `</option>
+      <option data-val="0" value="`+ dataval2 + `">` + dispVal2 + `</option>
+      </select>
+      </div>
       </td>
       <td>
-        <div class="godropdown"><button class="go-dropdown-toggle">
-            Delete
-        </div>
+      <div class="godropdown">
+      <button class="go-dropdown-toggle" onclick=deleteSlider("`+doc.id+`")>
+        Delete
+      </button>
+     
+      </div>
       </td>
     </tr>
     `;
@@ -54,8 +73,24 @@ const displaySubCategories = (data) => {
   let tRows = "";
   data.map((doc) => {
     let docData = doc.data();
-    // console.log(docData);
-    // console.log(docData.subCategory.name)
+    console.log(docData);
+    console.log(docData.subCategory.name)
+    let status=docData.isActivated;
+    var dispVal1,dispVal2,dataval1,dataval2;
+    if(status=="false"){
+
+      dispVal1="Deactivated";
+      dispVal2="Activated";
+      dataval1="false"
+      dataval2="true"
+
+    }else{
+      dispVal1="Activated";
+      dispVal2="Deactivated";
+      dataval1="true"
+      dataval2="false"
+     
+    }
     docData.subCategory.map(sc => {
       tRows += `
       <tr role="row" class="odd parent">
@@ -63,17 +98,20 @@ const displaySubCategories = (data) => {
           <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
         <td tabindex="0">${docData.name}</i> </td>
         <td>
-          <div class="action-list">
-            <select class="process  drop-success" style="display: block;">
-              <option data-val="1" value="true" selected="">Activated</option>
-              <option data-val="0" value="false"> Deactivated</option>
-            </select>
-          </div>
+        <div class="action-list">
+        <select class="process  drop-success" style="display: block; " id="statusUpdate` + doc.id + `" onchange=statusUpdated("statusUpdate` + doc.id + `","` + doc.id + `")>
+        <option data-val="1" value="`+ dataval1 + `">` + dispVal1 + `</option>
+        <option data-val="0" value="`+ dataval2 + `">` + dispVal2 + `</option>
+        </select>
+        </div>
         </td>
         <td>
-          <div class="godropdown"><button class="go-dropdown-toggle">
-              Delete
-          </div>
+        <div class="godropdown">
+        <button class="go-dropdown-toggle" onclick=deleteSlider("`+doc.id+`")>
+          Delete
+        </button>
+       
+        </div>
         </td>
       </tr>
       `;
@@ -82,39 +120,88 @@ const displaySubCategories = (data) => {
   });
   subCategoryHTML.innerHTML = tRows;
 };
+function deleteSlider(id){
+  let ans=confirm("Are you  sure to delete the Category")
+  if(ans){
+    db.collection("categories").doc(id).delete().then(function () {
+      alert("Category successfully deleted!");
 
+    }).catch(function (error) {
+      console.error("Error removing user: ", error);
+    });
+  }
+    
+}
+function statusUpdated(dropId,id){
+ 
+  var status=document.querySelector(`#`+dropId).value;
+  if(status=="false"){
+
+    let isActivated="false"
+    db.collection("categories").doc(id).update("isActivated", isActivated)
+    let ans=confirm("Are you sure to deactivate the product")
+    if(ans){
+      alert("Category status Updated Sucessufully")
+    }
+   
+  }else{
+
+    let isActivated="true"
+    db.collection("categories").doc(id).update("isActivated", isActivated)
+    let ans=confirm("Are you sure to Activate the product")
+    if(ans){
+      alert("Category status Updated Sucessufully")
+    }
+   
+  }
+}
 const displayChildCategories = (data) => {
   console.log(data);
   let tRows = "";
   data.map((doc) => {
     let docData = doc.data();
-    console.log(docData);
-    docData.subCategory.forEach(sc => {
-      console.log(sc);
-      sc.childCategories.map(cc => {
-        tRows += `
-        <tr role="row" class="odd parent">
-          <td><input type="text" class="editField" value="${cc.name}">
-            <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
-          <td tabindex="0">${sc.name} </td>
-          <td>${docData.name} </td>
-          <td>
-            <div class="action-list">
-              <select class="process  drop-success" style="display: block;">
-                <option data-val="1" value="true" selected>Activated</option>
-                <option data-val="0" value="false"> Deactivated</option>
-              </select>
-  
-            </div>
-          </td>
-          <td>
-            <div class="godropdown"><button class="go-dropdown-toggle">
-                Delete
-            </div>
-          </td>
-        </tr>
-        `;
-      })
+    let status=docData.isActivated;
+    var dispVal1,dispVal2,dataval1,dataval2;
+    if(status=="false"){
+
+      dispVal1="Deactivated";
+      dispVal2="Activated";
+      dataval1="false"
+      dataval2="true"
+
+    }else{
+      dispVal1="Activated";
+      dispVal2="Deactivated";
+      dataval1="true"
+      dataval2="false"
+     
+    }
+    // console.log(docData);
+    docData.subCategory.childCategories.map(child => {
+      tRows += `
+      <tr role="row" class="odd parent">
+        <td><input type="text" class="editField" value="${child.name}">
+          <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
+        <td tabindex="0">${docData.subCategory.name} </td>
+        <td>${docData.name} </td>
+        <td>
+        <div class="action-list">
+          <select class="process  drop-success" style="display: block; " id="statusUpdate` + doc.id + `" onchange=statusUpdated("statusUpdate` + doc.id + `","` + doc.id + `")>
+          <option data-val="1" value="`+ dataval1 + `">` + dispVal1 + `</option>
+          <option data-val="0" value="`+ dataval2 + `">` + dispVal2 + `</option>
+          </select>
+        </div>
+        </td>
+        <td>
+        <div class="godropdown">
+        <button class="go-dropdown-toggle" onclick=deleteSlider("`+doc.id+`")>
+          Delete
+        </button>
+       
+        </div>
+        </td>
+      </tr>
+      `;
     })
     // docData.subCategory.childCategories.map(child => {
       
@@ -122,7 +209,41 @@ const displayChildCategories = (data) => {
   });
   childCategoryHTML.innerHTML = tRows;
 };
+function deleteSlider(id){
+  let ans=confirm("Are you  sure to delete the Slider")
+  if(ans){
+    db.collection("categories").doc(id).delete().then(function () {
+      console.log("Slider successfully deleted!");
 
+    }).catch(function (error) {
+      console.error("Error removing user: ", error);
+    });
+  }
+    
+}
+function statusUpdated(dropId,id){
+ 
+  var status=document.querySelector(`#`+dropId).value;
+  if(status=="false"){
+
+    let isActivated="false"
+    db.collection("categories").doc(id).update("isActivated", isActivated)
+    let ans=confirm("Are you sure to deactivate the product")
+    if(ans){
+      alert("Product status Updated Sucessufully")
+    }
+   
+  }else{
+
+    let isActivated="true"
+    db.collection("categories").doc(id).update("isActivated", isActivated)
+    let ans=confirm("Are you sure to Activate the product")
+    if(ans){
+      alert("Product status Updated Sucessufully")
+    }
+   
+  }
+}
 const extractData = async () => {
   let allCategoreis;
 

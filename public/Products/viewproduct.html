@@ -294,7 +294,7 @@
           </div>
         </div>
       </div>
-
+      <!-- <div id="snackbar">Please wait ...Updating the data</div> -->
       <div id="editProductModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel2">
         <div class="modal-dialog modal-lg .modal-dialog-scrollable " role="document">
           <div class="modal-content" style="width: 1000px;">
@@ -1015,10 +1015,10 @@
 
                                 </div>
                               </div>
-                              <div id="snackbar">Please wait ...Deleting the data</div>
+                           
                               <div class="row">
                                 <div class="col-lg-12 text-center">
-                                  <input class="addProductSubmit-btn" value="Update Product"
+                                  <input class="addProductSubmit-btn" data-dismiss="modal" value="Update Product"
                                     onclick="submitEditForm(event)" type="submit">
                                 </div>
                               </div>
@@ -1034,6 +1034,7 @@
             </div>
           </div>
         </div>
+      
         <!-- <div class="modal fade show" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="modal1" aria-modal="true" style="padding-right: 16px; display: block;">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -1068,7 +1069,7 @@
   </div>
   </div>
   </section>
-
+  
 
   <section id="admin-footer-load"></section>
 </div>
