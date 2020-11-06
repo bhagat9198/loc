@@ -208,6 +208,10 @@ const addProductForm = (event) => {
   productGST = addProduct["product-gst"].value;
   productTotalPrice = addProduct["product-total-price"].value;
 
+  let lower;
+  lower = productName.toLowerCase();
+  productName = productName.charAt(0).toUpperCase() + lower.slice(1);
+
   // addProduct
   //   .querySelectorAll('input[name="product-addon"]:checked')
   //   .forEach((addon) => {
