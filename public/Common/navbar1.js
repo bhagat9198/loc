@@ -24,12 +24,12 @@ const extractChildCat = data => {
     <li><a href="#">${doc.name}</a></li>
     `;
   })
-  console.log(childLi);
+  // console.log(childLi);
   return childLi;
 }
 
 const extractSubCat = data => {
-  console.log(data);
+  // console.log(data);
   let subLi = '';
   data.subCategory.map((doc) => {
     // let docData = doc.data();
@@ -49,7 +49,7 @@ db.collection('categories').onSnapshot(async(snapshots) => {
   let li = '';
   for(let doc of snapshotDocs) {
     let docData = doc.data();
-    console.log(docData);
+    // console.log(docData);
     let subCat = extractSubCat(docData);
     // let imgPath = await extractImgURL(`categories/${doc.id}/${docData.img}`);
     // let imgPath = '';
