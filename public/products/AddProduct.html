@@ -54,7 +54,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input type="text" class="input-field" placeholder="Enter Product Name" name="product-name">
+                            <input type="text" class="input-field" required placeholder="Enter Product Name" name="product-name">
                           </div>
                         </div>
 
@@ -65,7 +65,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input type="text" class="input-field" placeholder="Enter Product Sku" name="product-sno"
+                            <input type="text" required class="input-field" placeholder="Enter Product Sku" name="product-sno"
                               value="LOC">
                           </div>
                         </div>
@@ -77,7 +77,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <select id="product-category" name="product-category">
+                            <select id="product-category" required name="product-category">
                               <!-- <option selected disabled value="">Select Category*</option>
                               <option value="Cake">Cake</option>
                               <option value="Flower">Flower</option> -->
@@ -92,7 +92,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <select id="product-sub-category" disabled name="product-sub-category">
+                            <select id="product-sub-category" required disabled name="product-sub-category">
                               <!-- <option selected disabled value="">Select Sub Category*</option>
                               <option value="Sub Cakes">Sub Cakes</option>
                               <option value="Sub flowers">Sub flowers </option> -->
@@ -108,7 +108,7 @@
                           </div>
 
                           <div class="col-lg-12">
-                            <select id="product-child-category" disabled name="product-child-category">
+                            <select id="product-child-category" required disabled name="product-child-category">
                               <!-- <option selected disabled value="">Select Sub Category</option>
                               <option value="Child Cakes">Child Cakes</option>
                               <option value="Child Flowers">Child Flowers </option> -->
@@ -593,7 +593,7 @@
                               <div class="panel panel-body">
                                 <div class="span4  text-center" id="landscape"
                                   style="width: 100%; height: 285px; border: 1px dashed #ddd; background: #f1f1f1;border-radius: 5px;">
-                                  <input type='file' accept="image/*" name="product-main-image" id="product-main-image"
+                                  <input type='file' required accept="image/*" name="product-main-image" id="product-main-image"
                                     onchange="readURL(this);" />
                                   <img id="putImage" src="../assets/images/logo.png" alt="your image" />
                                 </div>
@@ -655,7 +655,7 @@
                                 <div class="feature-area">
                                   <div class="row">
                                     <div class="col-lg-12">
-                                      <input type="text" name="product-tag" class="input-field"
+                                      <input type="text" required name="product-tag" class="input-field"
                                         placeholder="Enter Your Keyword">
                                     </div>
                                   </div>

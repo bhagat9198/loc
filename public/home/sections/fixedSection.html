@@ -40,1152 +40,985 @@
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
     <section id="admin-nav-load"></section>
+
     <section class="content">
       <div class="content-wrapper">
         <div class="container-fluid">
           <h3 style="padding:20px;">All Fixed-Sections</h3>
-         
-
           <section class="section">
-
-
             <div class="product-area" id="fixe1" style="background-color:rgb(142, 147, 165,0.1)">
-              <div style="display: flex;padding: 10px;">
-                <input type="text" value="Choose The Best Joy"  class="fixedInput MainHeading">
-              
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mr-table allproduct">
-
-                    <div class="alert alert-success validation" style="display: none;">
-                      <button type="button" class="close alert-close"><span>×</span></button>
-                      <p class="text-left"></p>
-                    </div>
-
-                    <div class="table-responsiv">
-
-                      <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                        <div class="row btn-area" style="float: right;padding-right: 5px;">
-                          <button class="btn btn-primary" type="submit">Save</button>
-                        </div>
-                        
-                        <thead>
-                          <tr>
-
-                            <th>Image</th>
-                            <th>Category</th>
-                            <th>Tag</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/d1.jpeg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/d2.jpeg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Gifts"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/d3.jpeg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some tag"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/d4.jpeg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some Tag"></td>
-                          </tr>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-
-                  </div>
-
+              <form id="fForm1">
+                <div style="display: flex;padding: 10px;">
+                  <input type="text" name="f1-title" class="fixedInput MainHeading">
                 </div>
-              </div>
-            </div>
-
-            <br>
-            <div class="product-area" id="fixed2" style="background-color: rgba(137, 168, 139, 0.2);">
-              <div style="display: flex;padding: 10px;">
-                <input type="text" value="Floating Icons Section" class="fixedInput MainHeading">
-              
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mr-table allproduct">
-
-                    <div class="alert alert-success validation" style="display: none;">
-                      <button type="button" class="close alert-close"><span>×</span></button>
-                      <p class="text-left"></p>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="mr-table allproduct">
+                      <div class="alert alert-success validation" style="display: none;">
+                        <button type="button" class="close alert-close"><span>×</span></button>
+                        <p class="text-left"></p>
+                      </div>
+                      <div class="table-responsiv">
+                        <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                          <div class="row btn-area" style="float: right;padding-right: 5px;">
+                            <button class="btn btn-primary" type="submit">Save</button>
+                          </div>
+                          <thead>
+                            <tr>
+                              <th>Image</th>
+                              <th>Category</th>
+                              <th>Tag</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr role="row" class="odd parent">
+                              <td><span><img id="f1-img1" src="../../assets/images/d1.jpeg"></span>
+                                <br>
+                                <input id="f1-file1" name="f1-file1" type="file" accept="images/*">
+                              </td>
+                              <td>
+                                <select class="categoryType" name="f1-cat1">
+                                  <!-- <option value="" selected disabled>Select From the List</option>
+                                  <option  value="cake">Cake</option>
+                                  <option value="combo">Combo</option> -->
+                                </select>
+                              </td>
+                              <td><input type="text" name="f1-t1"></td>
+                            </tr>
+                            <tr role="row" class="odd parent">
+                              <td><img id="f1-img2" src="../../assets/images/d1.jpeg">
+                                <br>
+                                <input id="f1-file2" name="f1-file1" type="file" accept="images/*">
+                              </td>
+                              <td>
+                                <select class="categoryType" name="f1-cat2">
+                                  <!-- <option value="" selected disabled>Select From the List</option>
+                                  <option selected value="cake">Cake</option>
+                                  <option value="combo">Combo</option> -->
+                                </select>
+                              </td>
+                              <td><input type="text" name="f1-t2"></td>
+                            </tr>
+                            <tr role="row" class="odd parent">
+                              <td><img id="f1-img3" src="../../assets/images/d1.jpeg">
+                                <br>
+                                <input id="f1-file3" name="f1-file1" type="file" accept="images/*">
+                              </td>
+                              <td>
+                                <select class="categoryType" name="f1-cat3">
+                                  <!-- <option value="" selected disabled>Select From the List</option>
+                                  <option selected value="cake">Cake</option>
+                                  <option value="combo">Combo</option> -->
+                                </select>
+                              </td>
+                              <td><input type="text" name="f1-t3"></td>
+                            </tr>
+                            <tr role="row" class="odd parent">
+                              <td><img id="f1-img4" src="../../assets/images/d1.jpeg">
+                                <br>
+                                <input id="f1-file4" name="f1-file1" type="file" accept="images/*">
+                              </td>
+                              <td>
+                                <select class="categoryType" name="f1-cat4">
+                                  <!-- <option value="" selected disabled>Select From the List</option>
+                                  <option selected value="cake">Cake</option>
+                                  <option value="combo">Combo</option> -->
+                                </select>
+                              </td>
+                              <td><input type="text" name="f1-t4"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
-
-                    <div class="table-responsiv">
-
-                      <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                        <div class="row btn-area" style="float: right;padding-right: 5px;">
-                          <button class="btn btn-primary" type="submit">Save</button>
-                        </div>
-                        
-                        <thead>
-                          <tr>
-
-                            <th>Icons</th>
-                            <th>Category</th>
-                            <th>Tag</th>
-                            <th>Priority</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr role="row" class="odd parent">
-                            <td><img src="../../assets/images/ic1.jpg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                            <td><input type="number" value="8"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><img src="../../assets/images/ic2.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                            <td><input type="number" value="7"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><img src="../../assets/images/ic3.png">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                            <td><input type="number" value="6"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><img src="../../assets/images/ic4.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                            <td><input type="number" value="5"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><img src="../../assets/images/ic5.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                            <td><input type="number" value="4"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><img src="../../assets/images/ic6.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                            <td><input type="number" value="3"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><img src="../../assets/images/ic7.png">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                            <td><input type="number" value="2"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><img src="../../assets/images/ic8.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                            <td><input type="number" value="1"></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-
                   </div>
-
-                </div>
-              </div>
+              </form>
             </div>
-
-            <br>
-            <div class="product-area" id="fixe1" style="background-color: rgba(14, 28, 39, 0.2);">
-              <div style="display: flex;padding: 10px;">
-                <input type="text" value="Choose Your Hapiness with our cakes"  class="fixedInput MainHeading">
-              
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mr-table allproduct">
-
-                    <div class="alert alert-success validation" style="display: none;">
-                      <button type="button" class="close alert-close"><span>×</span></button>
-                      <p class="text-left"></p>
-                    </div>
-
-                    <div class="table-responsiv">
-
-                      <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                        <div class="row btn-area" style="float: right;padding-right: 5px;">
-                          <button class="btn btn-primary" type="submit">Save</button>
-                        </div>
-                        
-                        <thead>
-                          <tr>
-
-                            <th>Image</th>
-                            <th>Category</th>
-                            <th>Tag</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/hap1.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/hap2.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Gifts"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/hap3.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some tag"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/hap4.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some Tag"></td>
-                          </tr>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <br>
-            <div class="product-area" id="fixe1" style="background-color: rgba(75, 35, 65, 0.2);">
-              <div style="display: flex;padding: 10px;">
-                <input type="text" value="Featured"  class="fixedInput MainHeading">
-              
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mr-table allproduct">
-
-                    <div class="alert alert-success validation" style="display: none;">
-                      <button type="button" class="close alert-close"><span>×</span></button>
-                      <p class="text-left"></p>
-                    </div>
-
-                    <div class="table-responsiv">
-
-                      <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                        <div class="row btn-area" style="float: right;padding-right: 5px;">
-                          <button class="btn btn-primary" type="submit">Save</button>
-                        </div>
-                        
-                        <thead>
-                          <tr>
-
-                            <th>Product Id</th>
-                            <th>Category</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <br>
-            <div class="product-area" id="fixe1" style="background-color:rgba(177, 94, 101, 0.1)">
-              <div style="display: flex;padding: 10px;">
-                <input type="text" value="Garden Of Flowers"  class="fixedInput MainHeading">
-              
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mr-table allproduct">
-
-                    <div class="alert alert-success validation" style="display: none;">
-                      <button type="button" class="close alert-close"><span>×</span></button>
-                      <p class="text-left"></p>
-                    </div>
-
-                    <div class="table-responsiv">
-
-                      <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                        <div class="row btn-area" style="float: right;padding-right: 5px;">
-                          <button class="btn btn-primary" type="submit">Save</button>
-                        </div>
-                        
-                        <thead>
-                          <tr>
-
-                            <th>Image</th>
-                            <th>Category</th>
-                            <th>Tag</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/fl1.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/fl2.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Gifts"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/fl3.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some tag"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/fl4.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some Tag"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/fl5.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some Tag"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/fl6.jpg">
-                              <br>
-                              <input type="file" accept="images/*"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some Tag"></td>
-                          </tr>
-                          
-                          
-                        </tbody>
-                      </table>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-            
-            <br>
-            <div class="product-area" id="fixe1" style="background-color: rgba(116, 98, 49, 0.2);">
-              <div style="display: flex;padding: 10px;">
-                <input type="text" value="Best Seller Cakes"  class="fixedInput MainHeading">
-              
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mr-table allproduct">
-
-                    <div class="alert alert-success validation" style="display: none;">
-                      <button type="button" class="close alert-close"><span>×</span></button>
-                      <p class="text-left"></p>
-                    </div>
-
-                    <div class="table-responsiv">
-
-                      <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                        <div class="row btn-area" style="float: right;padding-right: 5px;">
-                          <button class="btn btn-primary" type="submit">Save</button>
-                        </div>
-                        
-                        <thead>
-                          <tr>
-
-                            <th>Product Id</th>
-                            <th>Category</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <br>
-            <div class="product-area" id="fixe1" style="background-color: rgba(67, 49, 116, 0.2);">
-              <div style="display: flex;padding: 10px;">
-                <input type="text" value="Best Seller Gifts"  class="fixedInput MainHeading">
-              
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mr-table allproduct">
-
-                    <div class="alert alert-success validation" style="display: none;">
-                      <button type="button" class="close alert-close"><span>×</span></button>
-                      <p class="text-left"></p>
-                    </div>
-
-                    <div class="table-responsiv">
-
-                      <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                        <div class="row btn-area" style="float: right;padding-right: 5px;">
-                          <button class="btn btn-primary" type="submit">Save</button>
-                        </div>
-                        
-                        <thead>
-                          <tr>
-
-                            <th>Product Id</th>
-                            <th>Tag</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-                            <td><input type="text" value="LOC1234"></td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                          </tr>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <br>
-            <div class="product-area" id="fixe1" style="background-color:rgba(165, 142, 142, 0.1)">
-              <div style="display: flex;padding: 10px;">
-                <input type="text" value="Print Your Gifts"  class="fixedInput MainHeading">
-              
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mr-table allproduct">
-
-                    <div class="alert alert-success validation" style="display: none;">
-                      <button type="button" class="close alert-close"><span>×</span></button>
-                      <p class="text-left"></p>
-                    </div>
-
-                    <div class="table-responsiv">
-
-                      <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                        <div class="row btn-area" style="float: right;padding-right: 5px;">
-                          <button class="btn btn-primary" type="submit">Save</button>
-                        </div>
-                        
-                        <thead>
-                          <tr>
-
-                            <th>Image</th>
-                            <th>Category</th>
-                            <th>Tag</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/g1.jpg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/g3.jpg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Gifts"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/g3.jpg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some tag"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/g3.png">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some Tag"></td>
-                          </tr>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <br>
-            <div class="product-area" id="fixe1" style="background-color:rgba(73, 3, 12, 0.1)">
-              <div style="display: flex;padding: 10px;">
-                <input type="text" value="Chocolate World"  class="fixedInput MainHeading">
-              
-              </div>
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="mr-table allproduct">
-
-                    <div class="alert alert-success validation" style="display: none;">
-                      <button type="button" class="close alert-close"><span>×</span></button>
-                      <p class="text-left"></p>
-                    </div>
-
-                    <div class="table-responsiv">
-
-                      <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                        <div class="row btn-area" style="float: right;padding-right: 5px;">
-                          <button class="btn btn-primary" type="submit">Save</button>
-                        </div>
-                        
-                        <thead>
-                          <tr>
-                            <th>Image</th>
-                            <th>Category</th>
-                            <th>Tag</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/c1.jpg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Delicious"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/c2.jpg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option value="cake">Cake</option>
-                                <option selected value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Gifts"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/c3.jpg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some tag"></td>
-                          </tr>
-                          <tr role="row" class="odd parent">
-
-
-                            <td><img src="../../assets/images/c4.jpg">
-                              <br>
-                              <input type="file" accept="images/*">
-                            </td>
-                            <td>
-                              <select id="categoryType" name="category-type">
-                                <option value="" selected disabled>Select From the List</option>
-                                <option selected value="cake">Cake</option>
-                                <option value="combo">Combo</option>
-                                
-                              </select>
-                            </td>
-                            <td><input type="text" value="Some Tag"></td>
-                          </tr>
-                          
-                        </tbody>
-                      </table>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </section>
-
-
-
         </div>
 
-      </div>
+        <br>
+        <div class="product-area" id="fixed2" style="background-color: rgba(137, 168, 139, 0.2);">
+          <form id="fForm2">
+            <div style="display: flex;padding: 10px;">
+              <input type="text" name="f2-title" class="fixedInput MainHeading">
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mr-table allproduct">
+                  <div class="alert alert-success validation" style="display: none;">
+                    <button type="button" class="close alert-close"><span>×</span></button>
+                    <p class="text-left"></p>
+                  </div>
+                  <div class="table-responsiv">
+                    <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                      <div class="row btn-area" style="float: right;padding-right: 5px;">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                      </div>
+                      <thead>
+                        <tr>
+                          <th>Icons</th>
+                          <th>Category</th>
+                          <th>Tag</th>
+                          <th>Priority</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f2-img1" src="../../assets/images/ic1.jpg">
+                            <br>
+                            <input id="f2-file1" name="f2-file1" type="file" accept="images/*">
+                          </td>
+                          <td>
+                            <select class="categoryType" name="f2-cat1">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option selected value="cake">Cake</option>
+                              <option value="combo">Combo</option> -->
+
+                            </select>
+                          </td>
+                          <td><input type="text" name="f2-tag1"></td>
+                          <td><input type="number" name="f2-priority-1"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f2-img2" src="../../assets/images/ic2.jpg">
+                            <br>
+                            <input id="f2-file2" name="f2-file2" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f2-cat2">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option selected value="cake">Cake</option>
+                              <option value="combo">Combo</option> -->
+
+                            </select>
+                          </td>
+                          <td><input type="text" name="f2-tag2"></td>
+                          <td><input type="number" name="f2-priority-2"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f2-img3" src="../../assets/images/ic3.png">
+                            <br>
+                            <input id="f2-file3" name="f2-file3" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f2-cat3">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option selected value="cake">Cake</option>
+                              <option value="combo">Combo</option> -->
+
+                            </select>
+                          </td>
+                          <td><input type="text" name="f2-tag3"></td>
+                          <td><input type="number" name="f2-priority-3"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f2-img4" src="../../assets/images/ic4.jpg">
+                            <br>
+                            <input id="f2-file4" name="f2-file4" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f2-cat4">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option selected value="cake">Cake</option>
+                              <option value="combo">Combo</option> -->
+
+                            </select>
+                          </td>
+                          <td><input type="text" name="f2-tag4"></td>
+                          <td><input type="number" name="f2-priority-4"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f2-img5" src="../../assets/images/ic5.jpg">
+                            <br>
+                            <input id="f2-file5" name="f2-file5" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f2-cat5">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option selected value="cake">Cake</option>
+                              <option value="combo">Combo</option> -->
+
+                            </select>
+                          </td>
+                          <td><input type="text" name="f2-tag5"></td>
+                          <td><input type="number" name="f2-priority-5"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f2-img6" src="../../assets/images/ic6.jpg">
+                            <br>
+                            <input id="f2-file6" name="f2-file6" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f2-cat6">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option selected value="cake">Cake</option>
+                              <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f2-tag6"></td>
+                          <td><input type="number" name="f2-priority-6"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f2-img7" src="../../assets/images/ic7.png">
+                            <br>
+                            <input id="f2-file7" name="f2-file7" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f2-cat7">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option selected value="cake">Cake</option>
+                              <option value="combo">Combo</option> -->
+
+                            </select>
+                          </td>
+                          <td><input type="text" name="f2-tag7"></td>
+                          <td><input type="number" name="f2-priority-7"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f2-img8" src="../../assets/images/ic8.jpg">
+                            <br>
+                            <input id="f2-file8" name="f2-file8" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f2-cat8">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option selected value="cake">Cake</option>
+                              <option value="combo">Combo</option> -->
+
+                            </select>
+                          </td>
+                          <td><input type="text" name="f2-tag8"></td>
+                          <td><input type="number" name="f2-priority-8"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <br>
+        <div class="product-area" id="fixe1" style="background-color: rgba(14, 28, 39, 0.2);">
+          <form id="fForm3">
+            <div style="display: flex;padding: 10px;">
+              <input type="text" name="f3-title" value="Choose Your Hapiness with our cakes"
+                class="fixedInput MainHeading">
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mr-table allproduct">
+                  <div class="alert alert-success validation" style="display: none;">
+                    <button type="button" class="close alert-close"><span>×</span></button>
+                    <p class="text-left"></p>
+                  </div>
+                  <div class="table-responsiv">
+                    <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                      <div class="row btn-area" style="float: right;padding-right: 5px;">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                      </div>
+                      <thead>
+                        <tr>
+                          <th>Image</th>
+                          <th>Category</th>
+                          <th>Tag</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f3-img1" src="../../assets/images/hap1.jpg">
+                            <br>
+                            <input id="f3-file1" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f3-cat1">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f3-t1"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f3-img2" src="../../assets/images/hap2.jpg">
+                            <br>
+                            <input id="f3-file2" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f3-cat2">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f3-t2"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f3-img3" src="../../assets/images/hap3.jpg">
+                            <br>
+                            <input id="f3-file3" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f3-cat3">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f3-t3"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f3-img4" src="../../assets/images/hap4.jpg">
+                            <br>
+                            <input type="file" id="f3-file4" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f3-cat4">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f3-t4"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <br>
+        <div class="product-area" id="fixe1" style="background-color: rgba(75, 35, 65, 0.2);">
+          <form id="fForm4">
+            <div style="display: flex;padding: 10px;">
+              <input type="text" name="f4-title" class="fixedInput MainHeading">
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mr-table allproduct">
+                  <div class="alert alert-success validation" style="display: none;">
+                    <button type="button" class="close alert-close"><span>×</span></button>
+                    <p class="text-left"></p>
+                  </div>
+                  <div class="table-responsiv">
+                    <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                      <div class="row btn-area" style="float: right;padding-right: 5px;">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                      </div>
+                      <thead>
+                        <tr>
+                          <th>Product Id</th>
+                          <th>Category</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f4-id1"></td>
+                          <td>
+                            <select class="categoryType" name="f4-cat1">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f4-id2"></td>
+                          <td>
+                            <select class="categoryType" name="f4-cat2">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f4-id3"></td>
+                          <td>
+                            <select class="categoryType" name="f4-cat3">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f4-id4"></td>
+                          <td>
+                            <select class="categoryType" name="f4-cat4">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f4-id5"></td>
+                          <td>
+                            <select class="categoryType" name="f4-cat5">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f4-id6"></td>
+                          <td>
+                            <select class="categoryType" name="f4-cat6">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f4-id7"></td>
+                          <td>
+                            <select class="categoryType" name="f4-cat7">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f4-id8"></td>
+                          <td>
+                            <select class="categoryType" name="f4-cat8">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <br>
+        <div class="product-area" id="fixe1" style="background-color:rgba(177, 94, 101, 0.1)">
+          <form id="fForm5">
+            <div style="display: flex;padding: 10px;">
+              <input type="text" name="f5-title" class="fixedInput MainHeading">
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mr-table allproduct">
+                  <div class="alert alert-success validation" style="display: none;">
+                    <button type="button" class="close alert-close"><span>×</span></button>
+                    <p class="text-left"></p>
+                  </div>
+                  <div class="table-responsiv">
+                    <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                      <div class="row btn-area" style="float: right;padding-right: 5px;">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                      </div>
+                      <thead>
+                        <tr>
+                          <th>Image</th>
+                          <th>Category</th>
+                          <th>Tag</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f5-img1" src="../../assets/images/fl1.jpg">
+                            <br>
+                            <input id="f5-file1" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f5-cat1">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f5-t1"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f5-img2" src="../../assets/images/fl2.jpg">
+                            <br>
+                            <input id="f5-file2" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f5-cat2">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f5-t2"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f5-img3" src="../../assets/images/fl3.jpg">
+                            <br>
+                            <input id="f5-file3" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f5-cat3">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f5-t3"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f5-img4" src="../../assets/images/fl4.jpg">
+                            <br>
+                            <input id="f5-file4" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f5-cat4">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f5-t4"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f5-img5" src="../../assets/images/fl5.jpg">
+                            <br>
+                            <input id="f5-file5" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f5-cat5">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f5-t5"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f5-img6" src="../../assets/images/fl6.jpg">
+                            <br>
+                            <input id="f5-file6" type="file" accept="images/*"></td>
+                          <td>
+                            <select class="categoryType" name="f5-cat6">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f5-t6"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <br>
+        <div class="product-area" id="fixe1" style="background-color: rgba(116, 98, 49, 0.2);">
+          <form id="fForm6">
+            <div style="display: flex;padding: 10px;">
+              <input type="text" name="f6-title" class="fixedInput MainHeading">
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mr-table allproduct">
+                  <div class="alert alert-success validation" style="display: none;">
+                    <button type="button" class="close alert-close"><span>×</span></button>
+                    <p class="text-left"></p>
+                  </div>
+                  <div class="table-responsiv">
+                    <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                      <div class="row btn-area" style="float: right;padding-right: 5px;">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                      </div>
+                      <thead>
+                        <tr>
+                          <th>Product Id</th>
+                          <th>Category</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f6-id1"></td>
+                          <td>
+                            <select class="categoryType" name="f6-cat1">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f6-id2"></td>
+                          <td>
+                            <select class="categoryType" name="f6-cat2">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f6-id3"></td>
+                          <td>
+                            <select class="categoryType" name="f6-cat3">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f6-id4"></td>
+                          <td>
+                            <select class="categoryType" name="f6-cat4">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f6-id5"></td>
+                          <td>
+                            <select class="categoryType" name="f6-cat5">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f6-id6"></td>
+                          <td>
+                            <select class="categoryType" name="f6-cat6">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f6-id7"></td>
+                          <td>
+                            <select class="categoryType" name="f6-cat7">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f6-id8"></td>
+                          <td>
+                            <select class="categoryType" name="f6-cat8">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                              <option value="cake">Cake</option>
+                              <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <br>
+        <div class="product-area" id="fixe1" style="background-color: rgba(67, 49, 116, 0.2);">
+          <form id="fForm7">
+            <div style="display: flex;padding: 10px;">
+              <input type="text" name="f7-title" class="fixedInput MainHeading">
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mr-table allproduct">
+                  <div class="alert alert-success validation" style="display: none;">
+                    <button type="button" class="close alert-close"><span>×</span></button>
+                    <p class="text-left"></p>
+                  </div>
+                  <div class="table-responsiv">
+                    <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                      <div class="row btn-area" style="float: right;padding-right: 5px;">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                      </div>
+                      <thead>
+                        <tr>
+                          <th>Product Id</th>
+                          <th>Tag</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f7-id1"></td>
+                          <td>
+                            <select class="categoryType" name="f7-cat1">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f7-id2"></td>
+                          <td>
+                            <select class="categoryType" name="f7-cat2">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f7-id3"></td>
+                          <td>
+                            <select class="categoryType" name="f7-cat3">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f7-id4"></td>
+                          <td>
+                            <select class="categoryType" name="f7-cat4">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f7-id5"></td>
+                          <td>
+                            <select class="categoryType" name="f7-cat5">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f7-id6"></td>
+                          <td>
+                            <select class="categoryType" name="f7-cat6">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f7-id7"></td>
+                          <td>
+                            <select class="categoryType" name="f7-cat7">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><input type="text" name="f7-id8"></td>
+                          <td>
+                            <select class="categoryType" name="f7-cat8">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <br>
+        <div class="product-area" id="fixe1" style="background-color:rgba(165, 142, 142, 0.1)">
+          <form id="fForm8">
+            <div style="display: flex;padding: 10px;">
+              <input type="text" name="f8-title" class="fixedInput MainHeading">
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mr-table allproduct">
+                  <div class="alert alert-success validation" style="display: none;">
+                    <button type="button" class="close alert-close"><span>×</span></button>
+                    <p class="text-left"></p>
+                  </div>
+                  <div class="table-responsiv">
+                    <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                      <div class="row btn-area" style="float: right;padding-right: 5px;">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                      </div>
+                      <thead>
+                        <tr>
+                          <th>Image</th>
+                          <th>Category</th>
+                          <th>Tag</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f8-img1" src="../../assets/images/g1.jpg">
+                            <br>
+                            <input id="f8-file1" type="file" accept="images/*">
+                          </td>
+                          <td>
+                            <select class="categoryType" name="f8-cat1">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f8-t1"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f8-img2" src="../../assets/images/g3.jpg">
+                            <br>
+                            <input id="f8-file2" type="file" accept="images/*">
+                          </td>
+                          <td>
+                            <select class="categoryType" name="f8-cat2">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f8-t2"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f8-img3" src="../../assets/images/g3.jpg">
+                            <br>
+                            <input id="f8-file3" type="file" accept="images/*">
+                          </td>
+                          <td>
+                            <select class="categoryType" name="f8-cat3">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f8-t3"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f8-img4" src="../../assets/images/g3.png">
+                            <br>
+                            <input id="f8-file4" type="file" accept="images/*">
+                          </td>
+                          <td>
+                            <select class="categoryType" name="f8-cat4">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f8-t4"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <br>
+        <div class="product-area" id="fixe1" style="background-color:rgba(165, 142, 142, 0.1)">
+          <form id="fForm9">
+            <div style="display: flex;padding: 10px;">
+              <input type="text" name="f9-title" class="fixedInput MainHeading">
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mr-table allproduct">
+                  <div class="alert alert-success validation" style="display: none;">
+                    <button type="button" class="close alert-close"><span>×</span></button>
+                    <p class="text-left"></p>
+                  </div>
+                  <div class="table-responsiv">
+                    <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                      <div class="row btn-area" style="float: right;padding-right: 5px;">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                      </div>
+                      <thead>
+                        <tr>
+                          <th>Image</th>
+                          <th>Category</th>
+                          <th>Tag</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f9-img1" src="../../assets/images/g1.jpg">
+                            <br>
+                            <input id="f9-file1" type="file" accept="images/*">
+                          </td>
+                          <td>
+                            <select class="categoryType" name="f9-cat1">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f9-t1"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f9-img2" src="../../assets/images/g3.jpg">
+                            <br>
+                            <input id="f9-file2" type="file" accept="images/*">
+                          </td>
+                          <td>
+                            <select class="categoryType" name="f9-cat2">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option value="cake">Cake</option>
+                            <option selected value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f9-t2"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f9-img3" src="../../assets/images/g3.jpg">
+                            <br>
+                            <input id="f9-file3" type="file" accept="images/*">
+                          </td>
+                          <td>
+                            <select class="categoryType" name="f9-cat3">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f9-t3"></td>
+                        </tr>
+                        <tr role="row" class="odd parent">
+                          <td><img id="f9-img4" src="../../assets/images/g3.png">
+                            <br>
+                            <input id="f9-file4" type="file" accept="images/*">
+                          </td>
+                          <td>
+                            <select class="categoryType" name="f9-cat4">
+                              <!-- <option value="" selected disabled>Select From the List</option>
+                            <option selected value="cake">Cake</option>
+                            <option value="combo">Combo</option> -->
+                            </select>
+                          </td>
+                          <td><input type="text" name="f9-t4"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
 
 
 
@@ -1203,6 +1036,7 @@
     $('#admin-nav-load').load('/Common/navbar.html');
     $('#admin-footer-load').load('/Common/footer.html');
   </script>
+
   <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/js/adminlte.js"></script>
   <script src="../../assets/js/demo.js"></script>
@@ -1254,7 +1088,6 @@
   <script src="../../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 
   <script>
-
     $('#example2').DataTable({
 
       "responsive": true,
@@ -1286,7 +1119,7 @@
     firebase.analytics();
   </script>
 
-  <!-- <script src="./viewSection1.js"></script> -->
+  <script src="./fixedSection1.js"></script>
 
 </body>
 
