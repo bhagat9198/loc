@@ -336,7 +336,13 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
     });
 
     // trending item  slider
-    var $trending_slider = $('.trending-item-slider');
+    var count = 0;
+    var sliderBar = setInterval(() => {
+        count++;
+        if(count == 10) {
+            clearInterval(sliderBar)
+        }
+        var $trending_slider = $('.trending-item-slider');
     $trending_slider.owlCarousel({
         items: 4,
         autoplay: true,
@@ -366,6 +372,8 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
             }
         }
     });
+    },3000);
+    
 
 
 
