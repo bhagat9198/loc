@@ -27,6 +27,7 @@ async function displayRows(dd) {
     let cat = docData.category;
     let status=docData.isActivated;
     var dispVal1,dispVal2,dataval1,dataval2;
+    
     if(status=="false"){
 
       dispVal1="Deactivated";
@@ -98,19 +99,28 @@ function statusUpdated(dropId,id,cat){
   if(status=="false"){
 
     let isActivated="false"
-    db.collection(cat).doc(id).update("isActivated", isActivated)
+
     let ans=confirm("Are you sure to deactivate the product")
     if(ans){
+      db.collection(cat).doc(id).update("isActivated", isActivated)
       alert("Product status Updated Sucessufully")
+    }else{
+    
+
+
     }
    
   }else{
 
     let isActivated="true"
-    db.collection(cat).doc(id).update("isActivated", isActivated)
+   
     let ans=confirm("Are you sure to Activate the product")
     if(ans){
+      db.collection(cat).doc(id).update("isActivated", isActivated)
       alert("Product status Updated Sucessufully")
+    }else{
+      // document.getElementById(dropId).value="Deactivated"
+     
     }
    
   }

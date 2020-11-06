@@ -109,6 +109,22 @@ extractData().then( async(response) => {
   let tRows = '';
   for(let doc of response) {
     let docData = doc.data();
+    let status=docData.isActivated;
+    var dispVal1,dispVal2,dataval1,dataval2;
+    if(status=="false"){
+
+      dispVal1="Deactivated";
+      dispVal2="Activated";
+      dataval1="false"
+      dataval2="true"
+
+    }else{
+      dispVal1="Activated";
+      dispVal2="Deactivated";
+      dataval1="true"
+      dataval2="false"
+     
+    }
     // console.log(docData);
     let imgPath = await extractImgUrl(`addons/${doc.id}/${docData.img}`);
     tRows += `
@@ -117,33 +133,59 @@ extractData().then( async(response) => {
       <td><img src="${imgPath}"></td>
       <td>${docData.price}</td>
       <td>
-        <div class="action-list">
-          <select class="process  drop-success" style="display: block;">
-            <option data-val="1" value="true" selected>Activated</option>
-            <option data-val="0" value="false">Deactivated</option>
-          </select>
-        </div>
+      <div class="action-list">
+        <select class="process  drop-success" style="display: block; " id="statusUpdate` + doc.id + `" onchange=statusUpdated("statusUpdate` + doc.id + `","` + doc.id + `")>
+        <option data-val="1" value="`+ dataval1 + `">` + dispVal1 + `</option>
+        <option data-val="0" value="`+ dataval2 + `">` + dispVal2 + `</option>
+        </select>
+      </div>
       </td>
       <td>
-        <div class="godropdown">
-          <button class="go-dropdown-toggle"> Actions
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="action-list" style="display: none;">
-            <a href="#">
-              <i class="fas fa-edit"></i>
-              Edit
-            </a>
-            <a href="javascript:;" data-href="#" data-toggle="modal"
-              data-target="#confirm-delete" class="delete">
-              <i class="fas fa-trash-alt"></i>
-              Delete
-            </a>
-          </div>
-        </div>
+      <div class="godropdown">
+      <button class="go-dropdown-toggle" onclick=deleteSlider("`+doc.id+`")>
+        Delete
+      </button>
+     
+      </div>
       </td>
     </tr>
     `;
   }
+
   addonsTbodyHTML.innerHTML = tRows;
 })
+function deleteSlider(id){
+  let ans=confirm("Are you  sure to delete the Addon")
+  if(ans){
+    db.collection("addons").doc(id).delete().then(function () {
+      alert("Addon successfully deleted!");
+
+    }).catch(function (error) {
+      alert("Error removing user: ", error);
+    });
+  }
+    
+}
+function statusUpdated(dropId,id){
+ 
+  var status=document.querySelector(`#`+dropId).value;
+  if(status=="false"){
+
+    let isActivated="false"
+    db.collection("addons").doc(id).update("isActivated", isActivated)
+    let ans=confirm("Are you sure to deactivate the Addon")
+    if(ans){
+      alert("Addon status Updated Sucessufully")
+    }
+   
+  }else{
+
+    let isActivated="true"
+    db.collection("addons").doc(id).update("isActivated", isActivated)
+    let ans=confirm("Are you sure to Activate the Addon")
+    if(ans){
+      alert("Addon status Updated Sucessufully")
+    }
+   
+  }
+}
