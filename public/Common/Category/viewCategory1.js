@@ -20,7 +20,7 @@ const displayCategories = async (data) => {
   let tRows = "";
   for (let doc of data) {
     let docData = doc.data();
-    console.log(docData);
+    // console.log(docData);
     let imgUrl = await imgUrlFun(`categories/${doc.id}/${docData.img}`);
     tRows += `
     <tr role="row" class="odd parent">
@@ -50,12 +50,12 @@ const displayCategories = async (data) => {
 };
 
 const displaySubCategories = (data) => {
-  console.log(data)
+  // console.log(data)
   let tRows = "";
   data.map((doc) => {
     let docData = doc.data();
-    console.log(docData);
-    console.log(docData.subCategory.name)
+    // console.log(docData);
+    // console.log(docData.subCategory.name)
     docData.subCategory.map(sc => {
       tRows += `
       <tr role="row" class="odd parent">
@@ -84,34 +84,41 @@ const displaySubCategories = (data) => {
 };
 
 const displayChildCategories = (data) => {
+  console.log(data);
   let tRows = "";
   data.map((doc) => {
     let docData = doc.data();
-    // console.log(docData);
-    docData.subCategory.childCategories.map(child => {
-      tRows += `
-      <tr role="row" class="odd parent">
-        <td><input type="text" class="editField" value="${child.name}">
-          <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
-        <td tabindex="0">${docData.subCategory.name} </td>
-        <td>${docData.name} </td>
-        <td>
-          <div class="action-list">
-            <select class="process  drop-success" style="display: block;">
-              <option data-val="1" value="true" selected>Activated</option>
-              <option data-val="0" value="false"> Deactivated</option>
-            </select>
-
-          </div>
-        </td>
-        <td>
-          <div class="godropdown"><button class="go-dropdown-toggle">
-              Delete
-          </div>
-        </td>
-      </tr>
-      `;
+    console.log(docData);
+    docData.subCategory.forEach(sc => {
+      console.log(sc);
+      sc.childCategories.map(cc => {
+        tRows += `
+        <tr role="row" class="odd parent">
+          <td><input type="text" class="editField" value="${cc.name}">
+            <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
+          <td tabindex="0">${sc.name} </td>
+          <td>${docData.name} </td>
+          <td>
+            <div class="action-list">
+              <select class="process  drop-success" style="display: block;">
+                <option data-val="1" value="true" selected>Activated</option>
+                <option data-val="0" value="false"> Deactivated</option>
+              </select>
+  
+            </div>
+          </td>
+          <td>
+            <div class="godropdown"><button class="go-dropdown-toggle">
+                Delete
+            </div>
+          </td>
+        </tr>
+        `;
+      })
     })
+    // docData.subCategory.childCategories.map(child => {
+      
+    // })
   });
   childCategoryHTML.innerHTML = tRows;
 };
