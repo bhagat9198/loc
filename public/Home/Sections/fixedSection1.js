@@ -344,6 +344,14 @@ const form2 = async (e) => {
   });
 
   const title = fForm2HTML["f2-title"].value;
+  const iconN1 = fForm2HTML["f2-iconName1"].value;
+  const iconN2 = fForm2HTML["f2-iconName2"].value;
+  const iconN3 = fForm2HTML["f2-iconName3"].value;
+  const iconN4 = fForm2HTML["f2-iconName4"].value;
+  const iconN5 = fForm2HTML["f2-iconName5"].value;
+  const iconN6 = fForm2HTML["f2-iconName6"].value;
+  const iconN7 = fForm2HTML["f2-iconName7"].value;
+  const iconN8 = fForm2HTML["f2-iconName8"].value;
   const t1 = fForm2HTML["f2-tag1"].value;
   const t2 = fForm2HTML["f2-tag2"].value;
   const t3 = fForm2HTML["f2-tag3"].value;
@@ -427,6 +435,7 @@ const form2 = async (e) => {
       img: imgName1,
       imgUrl: iconUrl1,
       tag: t1,
+      iconTitle:iconN1,
       cat: c1,
       priority: p1,
     };
@@ -434,6 +443,7 @@ const form2 = async (e) => {
       img: imgName2,
       imgUrl: iconUrl2,
       tag: t2,
+      iconTitle:iconN2,
       cat: c2,
       priority: p2,
     };
@@ -441,6 +451,7 @@ const form2 = async (e) => {
       img: imgName3,
       imgUrl: iconUrl3,
       tag: t3,
+      iconTitle:iconN3,
       cat: c3,
       priority: p3,
     };
@@ -448,6 +459,7 @@ const form2 = async (e) => {
       img: imgName4,
       imgUrl: iconUrl4,
       tag: t4,
+      iconTitle:iconN4,
       cat: c4,
       priority: p4,
     };
@@ -455,6 +467,7 @@ const form2 = async (e) => {
       img: imgName5,
       imgUrl: iconUrl5,
       tag: t5,
+      iconTitle:iconN5,
       cat: c5,
       priority: p5,
     };
@@ -462,6 +475,7 @@ const form2 = async (e) => {
       img: imgName6,
       imgUrl: iconUrl6,
       tag: t6,
+      iconTitle:iconN6,
       cat: c6,
       priority: p6,
     };
@@ -469,6 +483,7 @@ const form2 = async (e) => {
       img: imgName7,
       imgUrl: iconUrl7,
       tag: t7,
+      iconTitle:iconN7,
       cat: c7,
       priority: p7,
     };
@@ -476,6 +491,7 @@ const form2 = async (e) => {
       img: imgName8,
       imgUrl: iconUrl8,
       tag: t8,
+      iconTitle:iconN8,
       cat: c8,
       priority: p8,
     };
@@ -540,6 +556,7 @@ db.collection("sections")
     if (docData.card1) {
       fForm2HTML["f2-cat1"].value = docData.card1.cat;
       fForm2HTML["f2-tag1"].value = docData.card1.tag;
+      fForm2HTML["f2-iconName1"].value = docData.card1.iconTitle;
       fForm2HTML["f2-priority-1"].value = docData.card1.priority;
       fForm2HTML.querySelector("#f2-img1").src = docData.card1.imgUrl;
     }
@@ -547,6 +564,7 @@ db.collection("sections")
     if (docData.card2) {
       fForm2HTML["f2-cat2"].value = docData.card2.cat;
       fForm2HTML["f2-tag2"].value = docData.card2.tag;
+      fForm2HTML["f2-iconName2"].value = docData.card2.iconTitle;
       fForm2HTML["f2-priority-2"].value = docData.card2.priority;
       fForm2HTML.querySelector("#f2-img2").src = docData.card2.imgUrl;
     }
@@ -554,6 +572,7 @@ db.collection("sections")
     if (docData.card3) {
       fForm2HTML["f2-cat3"].value = docData.card3.cat;
       fForm2HTML["f2-tag3"].value = docData.card3.tag;
+      fForm2HTML["f2-iconName3"].value = docData.card3.iconTitle;
       fForm2HTML["f2-priority-3"].value = docData.card3.priority;
       fForm2HTML.querySelector("#f2-img3").src = docData.card3.imgUrl;
     }
@@ -561,6 +580,7 @@ db.collection("sections")
     if (docData.card4) {
       fForm2HTML["f2-cat4"].value = docData.card4.cat;
       fForm2HTML["f2-tag4"].value = docData.card4.tag;
+      fForm2HTML["f2-iconName4"].value = docData.card4.iconTitle;
       fForm2HTML["f2-priority-4"].value = docData.card4.priority;
       fForm2HTML.querySelector("#f2-img4").src = docData.card4.imgUrl;
     }
@@ -568,6 +588,7 @@ db.collection("sections")
     if (docData.card5) {
       fForm2HTML["f2-cat5"].value = docData.card5.cat;
       fForm2HTML["f2-tag5"].value = docData.card5.tag;
+      fForm2HTML["f2-iconName5"].value = docData.card5.iconTitle;
       fForm2HTML["f2-priority-5"].value = docData.card5.priority;
       fForm2HTML.querySelector("#f2-img5").src = docData.card5.imgUrl;
     }
@@ -575,6 +596,7 @@ db.collection("sections")
     if (docData.card6) {
       fForm2HTML["f2-cat6"].value = docData.card6.cat;
       fForm2HTML["f2-tag6"].value = docData.card6.tag;
+      fForm2HTML["f2-iconName6"].value = docData.card6.iconTitle;
       fForm2HTML["f2-priority-6"].value = docData.card6.priority;
       fForm2HTML.querySelector("#f2-img6").src = docData.card6.imgUrl;
     }
@@ -582,6 +604,7 @@ db.collection("sections")
     if (docData.card7) {
       fForm2HTML["f2-cat7"].value = docData.card7.cat;
       fForm2HTML["f2-tag7"].value = docData.card7.tag;
+      fForm2HTML["f2-iconName7"].value = docData.card7.iconTitle;
       fForm2HTML["f2-priority-7"].value = docData.card7.priority;
       fForm2HTML.querySelector("#f2-img7").src = docData.card7.imgUrl;
     }
@@ -589,6 +612,7 @@ db.collection("sections")
     if (docData.card8) {
       fForm2HTML["f2-cat8"].value = docData.card8.cat;
       fForm2HTML["f2-tag8"].value = docData.card8.tag;
+      fForm2HTML["f2-iconName8"].value = docData.card8.iconTitle;
       fForm2HTML["f2-priority-8"].value = docData.card8.priority;
       fForm2HTML.querySelector("#f2-img8").src = docData.card8.imgUrl;
     }

@@ -1,4 +1,4 @@
-console.log("ViewProduct1.js");
+
 
 const storageService = firebase.storage();
 const db = firebase.firestore();
@@ -25,7 +25,23 @@ async function displayRows(dd) {
     // console.log(docData);
     let id = d.id;
     let cat = docData.category;
-   
+    let status=docData.isActivated;
+    var dispVal1,dispVal2,dataval1,dataval2;
+    
+    if(status=="false"){
+
+      dispVal1="Deactivated";
+      dispVal2="Activated";
+      dataval1="false"
+      dataval2="true"
+
+    }else{
+      dispVal1="Activated";
+      dispVal2="Deactivated";
+      dataval1="true"
+      dataval2="false"
+     
+    }
     let imgUrl =docData.mainImgUrl;
 
     tRows +=
@@ -37,11 +53,9 @@ async function displayRows(dd) {
         <td>${docData.childCategory}</td>
         <td>${docData.totalPrice}</td>
         <td>
-          <div class="action-list"><select class="process  drop-success" style="display: block; " id="statusUpdate` +
-      d +
-      `">
-              <option data-val="1" value="true">Activated</option>
-              <option data-val="0" value="false">Deactivated</option>
+          <div class="action-list"><select class="process  drop-success" style="display: block; " id="statusUpdate` +id +`" onchange=statusUpdated("statusUpdate` +id+ `","`+id+`","`+cat+`")>
+              <option data-val="1" value="`+dataval1+`">`+dispVal1+`</option>
+              <option data-val="0" value="`+dataval2+`">`+dispVal2+`</option>
             </select>
           </div>
         </td>
@@ -78,6 +92,38 @@ async function displayRows(dd) {
   }
   // console.log(tRows);
   return tRows;
+}
+function statusUpdated(dropId,id,cat){
+ 
+  var status=document.querySelector(`#`+dropId).value;
+  if(status=="false"){
+
+    let isActivated="false"
+
+    let ans=confirm("Are you sure to deactivate the product")
+    if(ans){
+      db.collection(cat).doc(id).update("isActivated", isActivated)
+      alert("Product status Updated Sucessufully")
+    }else{
+    
+
+
+    }
+   
+  }else{
+
+    let isActivated="true"
+   
+    let ans=confirm("Are you sure to Activate the product")
+    if(ans){
+      db.collection(cat).doc(id).update("isActivated", isActivated)
+      alert("Product status Updated Sucessufully")
+    }else{
+      // document.getElementById(dropId).value="Deactivated"
+     
+    }
+   
+  }
 }
 async function deleteProduct(cat, prid) {
   var answer = confirm("Are you sure to delete the product");
@@ -198,7 +244,7 @@ const extractData = async () => {
       `</h2>
             </div>
             <div class="col-sm-7">
-                <a href="#" class="btn btn-secondary" id="myInput` +
+                <a  class="btn btn-secondary" id="myInput` +
       cat +
       `" class="searchBar" onclick=myFunction("myInput` +
       cat +
@@ -206,10 +252,10 @@ const extractData = async () => {
       cat +
       `","table-responsive` +
       cat +
-      `")><i class="material-icons">&#xE147;</i>
-                    <span>Enable Attribute</span></a>
-                <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i>
-                    <span>Export to Pdf</span></a>
+      `")><i class="material-icons" style="color:black">&#xE147;</i>
+                    <span style="color:black">Enable Attribute</span></a>
+                <a class="btn btn-secondary"><i class="material-icons" style="color:black">&#xE24D;</i>
+                    <span style="color:black">Export to Pdf</span></a>
             </div>
         </div>
     </div>
@@ -610,7 +656,7 @@ const editDetails = async (e) => {
       editProduct["product-sp"].value = doc.sp;
       editProduct["product-gst"].value = doc.gst;
       editProduct["product-total-price"].value = doc.totalPrice;
-      await addons(doc.addons);
+      // await addons(doc.addons);
       // editProduct["product-main-image"].value = doc.mainImg;
       let mainImgSpanHTML = editProduct.querySelector("#main-img-span");
       let galleryImages = document.querySelector("#galleryImagesDisp");
@@ -672,7 +718,8 @@ const editDetails = async (e) => {
     })
     .catch((error) => {
       console.log(error);
-    });
+    }
+  );
 };
 
 let subImgs, mainImg;
@@ -929,13 +976,15 @@ const submitEditForm = (event) => {
       showSnack();
       function showSnack() {
         // Get the snackbar DIV
+        alert("Product Updated Successfully")
         var x = document.getElementById("snackbar");
 
         // Add the "show" class to DIV
         x.className = "show";
-
+     
         // After 3 seconds, remove the show class from DIV
         setTimeout(function () {
+
           x.className = x.className.replace("show", "");
         }, 3000);
       }
@@ -945,6 +994,8 @@ const submitEditForm = (event) => {
         editProduct.querySelector(".alert-success").style.display = "none";
       }, 5000);
       console.log("edit done");
+      // $('#editProductModal').modal('hide');
+      // $('#editProductModal').close();
     })
     .catch((error) => {
       console.log(error);
