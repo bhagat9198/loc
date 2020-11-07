@@ -7,6 +7,7 @@
 
   <title>Lake of Cakes | Add Product</title>
 
+
   <link href="../assets/css/plugin.css" rel="stylesheet" />
   <link href="../assets/css/jquery.tagit.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/bootstrap-coloroicker.css">
@@ -21,9 +22,10 @@
   <link href="../assets/css/jquery.Jcrop.css" rel="stylesheet" />
   <link href="../assets/css/Jcrop-style.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/plugins/summernote/summernote-bs4.css">
+  <link href="../assets/css/tagger.css" rel="stylesheet">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" style="overflow: hidden !important;">
   <section id="admin-nav-load"></section>
   <div class="wrapper">
     <section class="wrapper">
@@ -54,7 +56,8 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input type="text" class="input-field" required placeholder="Enter Product Name" name="product-name">
+                            <input type="text" class="input-field" required placeholder="Enter Product Name"
+                              name="product-name">
                           </div>
                         </div>
 
@@ -65,8 +68,8 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input type="text" required class="input-field" placeholder="Enter Product Sku" name="product-sno"
-                              value="LOC">
+                            <input type="text" required class="input-field" placeholder="Enter Product Sku"
+                              name="product-sno" value="LOC">
                           </div>
                         </div>
 
@@ -116,11 +119,15 @@
                           </div>
                         </div>
 
-                        <div id="cake-attributes" style="display: none;">
+                        <div id="cake-attributes"
+                          style="display: none;background-color: rgb(214, 213, 157);padding: 10px;border-radius: 5px;box-shadow: 5px 5px 5px gray;">
+                          <h4 class="mainHeading" style="padding: 10px;">Cake Attributes</h4>
+                          <br>
                           <div class="row">
+
                             <div class="col-lg-4">
                               <div class="left-area">
-                                <h4 class="heading">Cake weight*</h4>
+                                <h4 class="heading">Choose Cake weight's</h4>
                               </div>
                             </div>
                             <div class="col-lg-7">
@@ -141,8 +148,12 @@
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
                                         <input type="text" class="input-field price-input" id="cake-price-half"
-                                          name="cake-price-half" placeholder="0.00 (Additional Price)"
-                                          name="cake-price-half">
+                                          name="cake-price-half" placeholder="Basic Price" name="cake-price-half">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-half"
+                                          name="cake-price-half" placeholder="Previous Price" name="cake-price-half">
                                       </div>
                                     </div>
                                   </div>
@@ -167,7 +178,12 @@
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
                                         <input type="text" class="input-field price-input" id="cake-weight-one"
-                                          name="cake-price-one" placeholder="0.00 (Additional Price)" value="">
+                                          name="cake-price-one" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-weight-one"
+                                          name="cake-price-one" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -192,7 +208,12 @@
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
                                         <input type="text" class="input-field price-input" id="cake-price-oneHalf"
-                                          name="cake-price-oneHalf" placeholder="0.00 (Additional Price)" value="">
+                                          name="cake-price-oneHalf" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-oneHalf"
+                                          name="cake-price-oneHalf" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -217,7 +238,12 @@
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
                                         <input type="text" class="input-field price-input" id="cake-price-two"
-                                          name="cake-price-two" placeholder="0.00 (Additional Price)" value="">
+                                          name="cake-price-two" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-two"
+                                          name="cake-price-two" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -242,7 +268,12 @@
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
                                         <input type="text" class="input-field price-input" id="cake-price-three"
-                                          name="cake-price-three" placeholder="0.00 (Additional Price)" value="">
+                                          name="cake-price-three" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-three"
+                                          name="cake-price-three" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -267,7 +298,12 @@
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
                                         <input type="text" class="input-field price-input" id="cake-price-four"
-                                          name="cake-price-four" placeholder="0.00 (Additional Price)" value="">
+                                          name="cake-price-four" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-four"
+                                          name="cake-price-four" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -292,7 +328,12 @@
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
                                         <input type="text" class="input-field price-input" id="cake-price-five"
-                                          name="cake-price-five" placeholder="0.00 (Additional Price)" value="">
+                                          name="cake-price-five" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-five"
+                                          name="cake-price-five" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -317,7 +358,12 @@
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
                                         <input type="text" class="input-field price-input" id="cake-price-six"
-                                          name="cake-price-six" placeholder="0.00 (Additional Price)" value="">
+                                          name="cake-price-six" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-six"
+                                          name="cake-price-six" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -494,7 +540,7 @@
                             </div>
                           </div>
                         </div>
-
+                        <br>
                         <div class="row">
                           <div class="col-lg-12">
                             <div class="left-area">
@@ -572,7 +618,7 @@
                           </div> -->
 
                           <!-- <div class="col-lg-12" id="all-addons"> -->
-                            <!-- <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 1"
+                          <!-- <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 1"
                                 class="addon">&nbsp;ADDON1</h5><br>
                             <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 2"
                                 class="addon">&nbsp;ADDON1</h5><br>
@@ -590,48 +636,85 @@
                               <div class="panel panel-body">
                                 <div class="span4  text-center" id="landscape"
                                   style="width: 100%; height: 285px; border: 1px dashed #ddd; background: #f1f1f1;border-radius: 5px;">
-                                  <input type='file' required accept="image/*" name="product-main-image" id="product-main-image"
-                                    onchange="readURL(this);" />
+                                  <input type='file' required accept="image/*" name="product-main-image"
+                                    id="product-main-image" onchange="readURL(this);" />
                                   <img id="putImage" src="../assets/images/logo.png" alt="your image" />
                                 </div>
                               </div>
                             </div>
                           </div>
-
-                          <input type="file" name="product-sub-imgs" class="hidden" id="product-sub-imgs"
-                            accept="image/*" multiple>
+                          
                           <br>
-                          <div class="row mb-4">
-                            <div class="col-lg-12 mb-2">
-                              <div class="left-area">
-                                <h4 class="heading">
-                                  Product Gallery Images
-                                </h4>
-                              </div>
-                            </div>
-                            <div class="col-lg-12" style="padding: 50px;">
-                              <a href="#" class="set-gallery" data-toggle="modal" data-target="#setgallery"
-                                style="margin-left:20%">
-                                <i class="icofont-plus"></i> Add More Images
-                              </a>
-                            </div>
+               
+                        
+                        </div>
+                        
+                      </div>
+                      
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+                
+              </div>
+              <div class="row">
+                <input type="file" name="product-sub-imgs" class="hidden" id="product-sub-imgs"
+                accept="image/*" multiple>
+              <br>
+              <div class="row mb-4" >
+                <div class="col-lg-12 mb-4">
+                  <div class="left-area">
+                    <h4 class="mainHeading">
+                      Product Gallery Images
+                    </h4>
+                  </div>
+                </div>
+                <div class="col-lg-12" style="padding: 20px;">
+                  <div class="modal-body" style="border: 1px solid black;padding: 10px;">
+                    <div class="top-area">
+                      <div class="row">
+                        <div class="col-sm-6 text-right">
+                          <div class="upload-img-btn" style="cursor: pointer;">
+                            <label for="image-upload" id="prod_gallery" style="cursor: pointer;"><i class="fas fa-upload" ></i>Upload
+                              File</label>
                           </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <a href="javascript:;" class="upload-done" data-dismiss="modal"> <i class="fas fa-check"></i>
+                            Done</a>
+                        </div>
+                        <div class="col-sm-12 text-center">( <small>You can upload multiple images at once.</small>
+                          )</div>
+                      </div>
+                    </div>
+                    <div class="gallery-images">
+                      <div class="selected-image">
+                        <div class="row">
+    
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+             
+              </div>
+
             </div>
-            <br><br><br><br>
-            <div class="col-lg-12">
-              <div class="add-product-content">
-                <h4 class="MainHeading">Additional Data</h4>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="product-description">
-                      <div class="body-area">
-                        <!-- <div class="row">
+            
+            
+          </div>
+
+          <br>
+          <div class="col-lg-12">
+            <div class="add-product-content">
+              <h4 class="MainHeading">Additional Data</h4>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="product-description">
+                    <div class="body-area">
+                      <!-- <div class="row">
                         <div class="col-lg-12">
                           <div class="left-area">
                             <h4 class="heading">Youtube Video URL</h4>
@@ -642,70 +725,71 @@
                           <input name="youtube" type="text" class="input-field" placeholder="Enter Youtube Video URL">
                         </div>
                       </div> -->
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <div class="featured-keyword-area">
-                              <div class="left-area">
-                                <h4 class="heading">Add Tags For Search List</h4>
-                              </div>
-                              <div class="feature-tag-top-filds" id="feature-section">
-                                <div class="feature-area">
-                                  <div class="row">
-                                    <div class="col-lg-12">
-                                      <input type="text" required name="product-tag" class="input-field"
-                                        placeholder="Enter Your Keyword">
-                                    </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="featured-keyword-area">
+                            <div class="left-area">
+                              <h4 class="heading">Add Tags For Search List</h4>
+                            </div>
+                            <div class="feature-tag-top-filds" id="feature-section">
+                              <div class="feature-area">
+                                <div class="row">
+                                  <div class="col-lg-12">
+                                    <input type="text" required name="product-tag" class="input-field"
+                                      placeholder="Enter Your Keyword" >
                                   </div>
                                 </div>
                               </div>
+                            </div>
 
-                              <a href="javascript:;" id="product-tag-btn" class="add-fild-btn"><i
+                            <!-- <a href="javascript:;" id="product-tag-btn" class="add-fild-btn"><i
                                   class="icofont-plus"></i>
-                                Add Another Tag</a>
-                            </div>
+                                Add Another Tag</a> -->
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <div class="left-area">
-                              <h4 class="heading">
-                                Add A Product Description
-                              </h4>
-                            </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="left-area">
+                            <h4 class="heading">
+                              Add A Product Description
+                            </h4>
                           </div>
-                          <div class="card-body pad">
-                            <div class="mb-3">
-                              <textarea class="textarea1" placeholder="Place some text here"
-                                style="width: 100%; height: 400px; font-size: 34px; line-height: 28px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
+                        </div>
+                        <div class="card-body pad">
+                          <div class="mb-3">
+                            <textarea class="textarea1" placeholder="Place some text here"
+                              style="width: 100%; height: 400px; font-size: 34px; line-height: 28px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                          </div>
 
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="left-area">
+                            <h4 class="heading">
+                              Product Buy/Return Policy*
+                            </h4>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <div class="left-area">
-                              <h4 class="heading">
-                                Product Buy/Return Policy*
-                              </h4>
-                            </div>
+                        <div class="card-body pad">
+                          <div class="mb-3">
+                            <textarea class="textarea2" placeholder="Place some text here"
+                              style="width: 100%; height: 400px; font-size: 34px; line-height: 28px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                           </div>
-                          <div class="card-body pad">
-                            <div class="mb-3">
-                              <textarea class="textarea2" placeholder="Place some text here"
-                                style="width: 100%; height: 400px; font-size: 34px; line-height: 28px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
 
-                          </div>
                         </div>
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <h3 id="successProduct" style="text-align: center;background-color: rgb(89, 151, 89);padding: 5px;border-radius: 20px;display:none ;">Product Added Sucessfully</h3>
-                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <h3 id="successProduct"
+                            style="text-align: center;background-color: rgb(89, 151, 89);padding: 5px;border-radius: 20px;display:none ;">
+                            Product Added Sucessfully</h3>
                         </div>
-                        <div class="row">
-                          <div class="col-lg-12 text-center">
-                            <input class="addProductSubmit-btn" value="Add Product" type="submit">
-                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12 text-center">
+                          <input class="addProductSubmit-btn" value="Add Product" type="submit">
                         </div>
                       </div>
                     </div>
@@ -713,8 +797,9 @@
                 </div>
               </div>
             </div>
+          </div>
         </form>
-
+<!-- 
         <div class="modal fade" id="setgallery" tabindex="-1" role="dialog" aria-labelledby="setgallery"
           aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
@@ -752,7 +837,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
   </div>
@@ -769,6 +854,7 @@
   <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
 
   <script src="../assets/js/demo.js"></script>
+  <script src="../assets/js/tagger.js"></script>
   <!-- <script src="../assets/js/bootstrap.min.js"></script> -->
 
 
@@ -799,12 +885,12 @@
       var total_file = document.getElementById("product-sub-imgs").files.length;
       for (var i = 0; i < total_file; i++) {
         $('.selected-image .row').append('<div class="col-sm-6">' +
-          '<div class="img gallery-img">' +
+          '<div class="img gallery-img" style="width:100px;object-fit:cover">' +
           '<span class="remove-img"><i class="fas fa-times"></i>' +
           '<input type="hidden" value="' + i + '">' +
           '</span>' +
           '<a href="' + URL.createObjectURL(event.target.files[i]) + '" target="_blank">' +
-          '<img src="' + URL.createObjectURL(event.target.files[i]) + '" alt="gallery image">' +
+          '<img src="' + URL.createObjectURL(event.target.files[i]) + '" alt="gallery image" style="width:300px;object-fit:cover">' +
           '</a>' +
           '</div>' +
           '</div> '
@@ -818,24 +904,13 @@
 
   <script>
     // Tags
-    $("#product-tag-btn").on("click", function () {
-      $("#feature-section").append(
-        "" +
-        '<div class="feature-area">' +
-        '<span class="remove feature-remove"><i class="fas fa-times"></i></span>' +
-        '<div  class="row">' +
-        '<div class="col-lg-12">' +
-        '<input type="text" name="product-tag" class="input-field" placeholder="Enter Your Keyword">' +
-        "</div>" +
-        "</div>" +
-        "</div>" +
-        ""
-      );
+    tagger(document.querySelector('[name="product-tag"]'), {
+      allow_spaces: true,
+      allow_duplicates: false,
+      link: function() { return false; }
     });
 
-    $(document).on("click", ".feature-remove", function () {
-      $(this.parentNode).remove();
-    });
+
   </script>
 
   <script>

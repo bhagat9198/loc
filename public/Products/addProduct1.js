@@ -26,6 +26,7 @@ const displayCategories = (data) => {
     <option value="${doc.id}__${docData.name}">${docData.name}</option>
     `;
   });
+  
   productCategoryHTML.innerHTML = options;
 };
 
