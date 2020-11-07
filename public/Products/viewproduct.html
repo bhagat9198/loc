@@ -17,7 +17,9 @@
   <link rel="stylesheet" href="../assets/css/bootstrap-coloroicker.css">
   <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
-  <!-- overlayScrollbars -->
+  <link href="../assets/css/tagger.css">
+  <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+   <!-- overlayScrollbars -->
 
   <!-- Theme style -->
   <link rel="stylesheet" href="../assets/css/adminlte.min.css">
@@ -396,391 +398,428 @@
                                   </select>
                                 </div>
                               </div>
-
-                              <div id="cake-attributes" style="display: none;">
-                                <div class="row">
-                                  <div class="col-lg-4">
-                                    <div class="left-area">
-                                      <h4 class="heading">Cake weight*</h4>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-7">
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-weight-half" name="cake-weight" value="half"
-                                            class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-weight-half">1/2</label>
-                                        </div>
-                                      </div>
-                                      <div class="col-lg-7 ">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
-                                          </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-price-half"
-                                                name="cake-price-half" placeholder="0.00 (Additional Price)"
-                                                name="cake-price-half">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-weight-one" name="cake-weight" value="one"
-                                            class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-weight-one">1</label>
-                                        </div>
-                                      </div>
-                                      <div class="col-lg-7 ">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
-                                          </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-price-one"
-                                                name="cake-price-one" placeholder="0.00 (Additional Price)" value="">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-weight-oneHalf" name="cake-weight"
-                                            value="oneHalf" class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-weight-oneHalf">1.5</label>
-                                        </div>
-                                      </div>
-                                      <div class="col-lg-7 ">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
-                                          </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-price-oneHalf"
-                                                name="cake-price-oneHalf" placeholder="0.00 (Additional Price)"
-                                                value="">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-weight-two" name="cake-weight" value="two"
-                                            class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-weight-two">2</label>
-                                        </div>
-                                      </div>
-                                      <div class="col-lg-7 ">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
-                                          </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-price-two"
-                                                name="cake-price-two" placeholder="0.00 (Additional Price)" value="">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-weight-three" name="cake-weight" value="three"
-                                            class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-weight-three">3</label>
-                                        </div>
-                                      </div>
-                                      <div class="col-lg-7 ">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
-                                          </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-price-three"
-                                                name="cake-price-three" placeholder="0.00 (Additional Price)" value="">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-weight-four" name="cake-weight" value="four"
-                                            class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-weight-four">4</label>
-                                        </div>
-                                      </div>
-                                      <div class="col-lg-7 ">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
-                                          </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-price-four"
-                                                name="cake-price-four" placeholder="0.00 (Additional Price)" value="">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-weight-five" name="cake-weight" value="five"
-                                            class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-weight-five">5</label>
-                                        </div>
-                                      </div>
-                                      <div class="col-lg-7 ">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
-                                          </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-price-five"
-                                                name="cake-price-five" placeholder="0.00 (Additional Price)" value="">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-
-
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-weight-six" name="cake-weight" value="six"
-                                            class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-weight-six">6</label>
-                                        </div>
-                                      </div>
-                                      <div class="col-lg-7 ">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
-                                          </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-price-six"
-                                                name="cake-price-six" placeholder="0.00 (Additional Price)" value="">
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                              <div id="cake-attributes"
+                              style="display: none;background-color: rgb(214, 213, 157);padding: 10px;border-radius: 5px;box-shadow: 5px 5px 5px gray;">
+                              <h4 class="mainHeading" style="padding: 10px;">Cake Attributes</h4>
+                              <br>
+                              <div class="row">
+    
+                                <div class="col-lg-4">
+                                  <div class="left-area">
+                                    <h4 class="heading">Choose Cake weight's</h4>
                                   </div>
                                 </div>
-
-                                <div class="row">
-                                  <div class="col-lg-4">
-                                    <div class="left-area">
-                                      <h4 class="heading">Shape *</h4>
-                                    </div>
-                                  </div>
-
-                                  <div class="col-lg-7">
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-shape" name="cake-shape" value="Heart"
-                                            class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-shape">Heart</label>
-                                        </div>
-
+                                <div class="col-lg-7">
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-weight-half" name="cake-weight" value="half"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-weight-half">1/2</label>
                                       </div>
-                                      <div class="col-lg-7 ">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
+                                    </div>
+                                    <div class="col-lg-7 ">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-half"
+                                              name="cake-price-half" placeholder="Basic Price" name="cake-price-half">
                                           </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-price-heart"
-                                                name="cake-price-heart" placeholder="0.00 (Additional Price)" value="">
-                                            </div>
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-half"
+                                              name="cake-price-half" placeholder="Previous Price" name="cake-price-half">
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-
-
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-lg-4">
-                                    <div class="left-area">
-                                      <h4 class="heading">Type*</h4>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-7">
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-type" name="cake-type" value="Eggless"
-                                            class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-type">Eggless</label>
-                                        </div>
-
+    
+    
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-weight-one" name="cake-weight" value="one"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-weight-one">1</label>
                                       </div>
-                                      <div class="col-lg-7 ">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
+                                    </div>
+                                    <div class="col-lg-7 ">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-weight-one"
+                                              name="cake-price-one" placeholder="Basic Price" value="">
                                           </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="cake-price-eggless"
-                                                name="cake-price-eggless" placeholder="0.00 (Additional Price)"
-                                                value="">
-                                            </div>
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-weight-one"
+                                              name="cake-price-one" placeholder="Previous Price" value="">
                                           </div>
                                         </div>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
-
-                                <div class="row">
-                                  <div class="col-lg-4">
-                                    <div class="left-area">
-                                      <h4 class="heading">Flavour*</h4>
+    
+    
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-weight-oneHalf" name="cake-weight" value="oneHalf"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-weight-oneHalf">1.5</label>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-7 ">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-oneHalf"
+                                              name="cake-price-oneHalf" placeholder="Basic Price" value="">
+                                          </div>
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-oneHalf"
+                                              name="cake-price-oneHalf" placeholder="Previous Price" value="">
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
-                                  <div class="col-lg-7">
-
-                                    <!-- <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-flavour-blackForest" name="cake-flavour"
-                                            value="Black forest" class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-flavour">Black forest</label>
-                                        </div>
+    
+    
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-weight-two" name="cake-weight" value="two"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-weight-two">2</label>
                                       </div>
-                                      <div class="col-lg-7 d-none">
-                                        <div class="row">
-                                          <div class="col-2">
-                                            +
+                                    </div>
+                                    <div class="col-lg-7 ">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-two"
+                                              name="cake-price-two" placeholder="Basic Price" value="">
                                           </div>
-                                          <div class="col-10">
-                                            <div class="price-container">
-                                              <span class="price-curr">₹</span>
-                                              <input type="text" class="input-field price-input" id="flavour83_price"
-                                                data-name="flavour_price[]" placeholder="0.00 (Additional Price)" value="">
-                                            </div>
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-two"
+                                              name="cake-price-two" placeholder="Previous Price" value="">
                                           </div>
                                         </div>
                                       </div>
-      
-                                    </div> -->
-
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-flavour-blackForest" name="cake-flavour"
-                                            value="Black forest" class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-flavour-blackForest">Black
-                                            Forest</label>
+                                    </div>
+                                  </div>
+    
+    
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-weight-three" name="cake-weight" value="three"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-weight-three">3</label>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-7 ">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-three"
+                                              name="cake-price-three" placeholder="Basic Price" value="">
+                                          </div>
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-three"
+                                              name="cake-price-three" placeholder="Previous Price" value="">
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-flavour-vanila" name="cake-flavour"
-                                            value="Vanila" class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-flavour-vanila">Vanila</label>
+                                  </div>
+    
+    
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-weight-four" name="cake-weight" value="four"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-weight-four">4</label>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-7 ">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-four"
+                                              name="cake-price-four" placeholder="Basic Price" value="">
+                                          </div>
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-four"
+                                              name="cake-price-four" placeholder="Previous Price" value="">
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-flavour-chocolate" name="cake-flavour"
-                                            value="Chocolate" class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label"
-                                            for="cake-flavour-chocolate">Chocolate</label>
+                                  </div>
+    
+    
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-weight-five" name="cake-weight" value="five"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-weight-five">5</label>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-7 ">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-five"
+                                              name="cake-price-five" placeholder="Basic Price" value="">
+                                          </div>
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-five"
+                                              name="cake-price-five" placeholder="Previous Price" value="">
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-flavour-butterScotch" name="cake-flavour"
-                                            value="Butter scotch" class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label" for="cake-flavour-butterScotch">Butter
-                                            scotch</label>
-                                        </div>
+                                  </div>
+    
+    
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-weight-six" name="cake-weight" value="six"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-weight-six">6</label>
                                       </div>
                                     </div>
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-flavour-pineapple" name="cake-flavour"
-                                            value="Pineapple" class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label"
-                                            for="cake-flavour-pineapple">Pineapple</label>
+                                    <div class="col-lg-7 ">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-six"
+                                              name="cake-price-six" placeholder="Basic Price" value="">
+                                          </div>
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-six"
+                                              name="cake-price-six" placeholder="Previous Price" value="">
+                                          </div>
                                         </div>
                                       </div>
-
-                                    </div>
-
-
-                                    <div class="row mb-0 option-row">
-                                      <div class="col-lg-5">
-                                        <div class="custom-control custom-checkbox">
-                                          <input type="checkbox" id="cake-flavour-strawberry" name="cake-flavour"
-                                            value="Strawberry" class="custom-control-input attr-checkbox">
-                                          <label class="custom-control-label"
-                                            for="cake-flavour-strawberry">Strawberry</label>
-                                        </div>
-                                      </div>
-
                                     </div>
                                   </div>
                                 </div>
                               </div>
-
+    
+                              <div class="row">
+                                <div class="col-lg-4">
+                                  <div class="left-area">
+                                    <h4 class="heading">Shape *</h4>
+                                  </div>
+                                </div>
+    
+                                <div class="col-lg-7">
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-shape" name="cake-shape" value="Heart"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-shape">Heart</label>
+                                      </div>
+    
+                                    </div>
+                                    <div class="col-lg-7 ">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-heart"
+                                              name="cake-price-heart" placeholder="0.00 (Additional Price)" value="">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+    
+    
+                              </div>
+    
+                              <div class="row">
+                                <div class="col-lg-4">
+                                  <div class="left-area">
+                                    <h4 class="heading">Type*</h4>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7">
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-type" name="cake-type" value="Eggless"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-type">Eggless</label>
+                                      </div>
+    
+                                    </div>
+                                    <div class="col-lg-7 ">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="cake-price-eggless"
+                                              name="cake-price-eggless" placeholder="0.00 (Additional Price)" value="">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+    
+                              <div class="row">
+                                <div class="col-lg-4">
+                                  <div class="left-area">
+                                    <h4 class="heading">Flavour*</h4>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7">
+    
+                                  <!-- <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-flavour-blackForest" name="cake-flavour"
+                                          value="Black forest" class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-flavour">Black forest</label>
+                                      </div>
+                                    </div>
+                                    <div class="col-lg-7 d-none">
+                                      <div class="row">
+                                        <div class="col-2">
+                                          +
+                                        </div>
+                                        <div class="col-10">
+                                          <div class="price-container">
+                                            <span class="price-curr">₹</span>
+                                            <input type="text" class="input-field price-input" id="flavour83_price"
+                                              data-name="flavour_price[]" placeholder="0.00 (Additional Price)" value="">
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+    
+                                  </div> -->
+    
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-flavour-blackForest" name="cake-flavour"
+                                          value="Black forest" class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-flavour-blackForest">Black
+                                          Forest</label>
+                                      </div>
+                                    </div>
+                                  </div>
+    
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-flavour-vanila" name="cake-flavour" value="Vanila"
+                                          class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-flavour-vanila">Vanila</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-flavour-chocolate" name="cake-flavour"
+                                          value="Chocolate" class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-flavour-chocolate">Chocolate</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-flavour-butterScotch" name="cake-flavour"
+                                          value="Butter scotch" class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-flavour-butterScotch">Butter
+                                          scotch</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-flavour-pineapple" name="cake-flavour"
+                                          value="Pineapple" class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-flavour-pineapple">Pineapple</label>
+                                      </div>
+                                    </div>
+    
+                                  </div>
+    
+    
+                                  <div class="row mb-0 option-row">
+                                    <div class="col-lg-5">
+                                      <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" id="cake-flavour-strawberry" name="cake-flavour"
+                                          value="Strawberry" class="custom-control-input attr-checkbox">
+                                        <label class="custom-control-label" for="cake-flavour-strawberry">Strawberry</label>
+                                      </div>
+                                    </div>
+    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <br>
                               <div class="row">
                                 <div class="col-lg-12">
                                   <div class="left-area">
@@ -975,12 +1014,12 @@
                                         </div>
                                       </div>
                                     </div> -->
-                                    </div>
+                                    <!-- </div>
 
                                     <a href="javascript:;" id="product-tag-btn" class="add-fild-btn"><i
                                         class="icofont-plus"></i>
                                       Add Another Tag</a>
-                                  </div>
+                                  </div> -->
                                 </div>
                               </div>
                               <div class="row">
@@ -1086,7 +1125,8 @@
     $('#admin-nav-load').load('/Common/navbar.html');
     $('#admin-footer-load').load('/Common/footer.html');
   </script>
-
+  <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+  <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
   <!-- <script src="../assets/js/waves.min.js"></script> -->
   <script src="../assets/js/plugin.js"></script>
   <script src="../assets/js/Chart.min.js"></script>
@@ -1121,7 +1161,51 @@
       // After 3 seconds, remove the show class from DIV
       setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
     }
+    function convertToPdf(tbID){
+      var dataSource = shield.DataSource.create({
+                data: "#"+tbID,
+                schema: {
+                    type: "table",
+                    fields: {
+                        Name: { type: String },
+                        Age: { type: Number },
+                        Email: { type: String }
+                    }
+                }
+            });
 
+            // when parsing is done, export the data to PDF
+            dataSource.read().then(function (data) {
+                var pdf = new shield.exp.PDFDocument({
+                    author: "PrepBootstrap",
+                    created: new Date()
+                });
+
+                pdf.addPage("a4", "portrait");
+
+                pdf.table(
+                    50,
+                    50,
+                    data,
+                    [
+                        { field: "Name", title: "Person Name", width: 200 },
+                        { field: "Age", title: "Age", width: 50 },
+                        { field: "Email", title: "Email Address", width: 200 }
+                    ],
+                    {
+                        margins: {
+                            top: 50,
+                            left: 50
+                        }
+                    }
+                );
+
+                pdf.saveAs({
+                    fileName: "PrepBootstrapPDF"
+                });
+            });
+        });
+    }
     function myFunction(searchId, tableID,divId) {
       var pdf = new jsPDF('p', 'pt', 'letter');
     // source can be HTML-formatted string, or a reference
@@ -1322,6 +1406,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+  <script src="../assets/js/tagger.js"></script>
   <script>
     var firebaseConfig = {
       apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
@@ -1335,6 +1420,11 @@
     };
     firebase.initializeApp(firebaseConfig);
     // firebase.analytics();
+    tagger(document.querySelector('[name="product-tag"]'), {
+      allow_spaces: true,
+      allow_duplicates: false,
+      link: function() { return false; }
+    });
   </script>
 
   <script src="./viewproduct1.js"></script>
