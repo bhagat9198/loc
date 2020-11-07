@@ -217,7 +217,7 @@ const displayChildCategories = (data) => {
         <td><input type="text" class="editField" value="${child.name}">
           <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
         <td tabindex="0">${docData.subCategory.name} </td>
-        <td>${docData.name} </td>
+        <td>${docData.name}</td>
         <td>
         <div class="action-list">
           <select class="process  drop-success" style="display: block; " id="statusUpdate` + doc.id + `" onchange=statusUpdated("statusUpdate` + doc.id + `","` + doc.id + `")>
@@ -228,7 +228,7 @@ const displayChildCategories = (data) => {
         </td>
         <td>
         <div class="godropdown">
-        <button class="go-dropdown-toggle" onclick=deleteCategory("`+doc.id+`")>
+        <button class="go-dropdown-toggle" onclick=deleteChildCategory("`+doc.id+`")>
           Delete
         </button>
        
@@ -243,11 +243,11 @@ const displayChildCategories = (data) => {
   });
   childCategoryHTML.innerHTML = tRows;
 };
-function deleteCategory(id){
-  let ans=confirm("Are you  sure to delete the Slider")
+function deleteChildCategory(id){
+  let ans=confirm("Are you  sure to delete the Child Category")
   if(ans){
     db.collection("categories").doc(id).delete().then(function () {
-      console.log("Slider successfully deleted!");
+      console.log("Child Category successfully deleted!");
 
     }).catch(function (error) {
       console.error("Error removing user: ", error);
