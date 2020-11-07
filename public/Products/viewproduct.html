@@ -1005,7 +1005,7 @@
                                       <div class="feature-area">
                                       <div class="row">
                                         <div class="col-lg-12">
-                                          <input type="text" name="product-tag" class="input-field"
+                                          <input type="text" value="" name="product-tag" class="input-field"
                                             placeholder="Enter Your Keyword">
                                         </div>
                                       </div>
@@ -1110,54 +1110,44 @@
   <section id="admin-footer-load"></section>
   </div>
 
+  <script>
+
+  </script>
   <script src="../assets/js/jqueryui.min.js"></script>
-
-
-  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="../assets/js/jquery-1.12.4.min.js"></script> -->
   <script src="../assets/js/adminlte.js"></script>
-  <script src="../assets/js/demo.js"></script>
-  <script src="../assets/js/jquery-1.12.4.min.js"></script>
-  <script src="../assets/js/bootstrap.min.js"></script>
+  <!-- <script src="../assets/js/bootstrap.min.js"></script> -->
+  
+
   <script type="text/javascript">
     $('#admin-nav-load').load('/Common/navbar.html');
     $('#admin-footer-load').load('/Common/footer.html');
   </script>
-  <script src="../assets/js/tagger.js"></script>
-  <script>
-    tagger(document.querySelector('[name="product-tag"]'), {
-    allow_duplicates: false,
-    allow_spaces: true,
-    link: function(name) {
-      return `javascript:alert('${name}');`;
-    }
-  });
-  </script>
 
-  <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
-  <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
+  <!-- <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+  <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script> -->
   <!-- <script src="../assets/js/waves.min.js"></script> -->
   <script src="../assets/js/plugin.js"></script>
-  <script src="../assets/js/Chart.min.js"></script>
-  <script src="../assets/js/tag-it.js"></script>
-  <script src="../assets/js/nicEdit.js"></script>
-  <script src="../assets/js/bootstrap-colorpicker.min.js"></script>
-  <script src="../assets/js/notify.js"></script>
-  <!-- <script src="../assets/js/product.js"></script> -->
-  <script src="../assets/js/jquery.canvasjs.min.js"></script>
-  <script src="../assets/js/load.js"></script>
-  <!-- <script src="../assets/js/custom.js"></script> -->
-  <!-- <script src="../assets/js/myscript.js"></script> -->
-  <script src="../assets/js/adminlte.min.js"></script>
+  
+ 
   <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+  <!-- <script src="../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script> -->
   <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
   <script src="../assets/js/jsPdf.js"></script>
+  <script src="../assets/js/tagger.js"></script>
 
 
   <script>
+
+      tagger(document.querySelector('[name="product-tag"]'), {
+        
+      allow_spaces: true,
+      allow_duplicates: false,
+      link: function () { return false; }
+       });
     function showSnack() {
       // Get the snackbar DIV
       var x = document.getElementById("snackbar");
@@ -1171,66 +1161,7 @@
       }, 3000);
     }
 
-    function convertToPdf(tbID) {
-      var dataSource = shield.DataSource.create({
-        data: "#" + tbID,
-        schema: {
-          type: "table",
-          fields: {
-            Name: {
-              type: String
-            },
-            Age: {
-              type: Number
-            },
-            Email: {
-              type: String
-            }
-          }
-        }
-      });
 
-      // when parsing is done, export the data to PDF
-      dataSource.read().then(function (data) {
-        var pdf = new shield.exp.PDFDocument({
-          author: "PrepBootstrap",
-          created: new Date()
-        });
-
-        pdf.addPage("a4", "portrait");
-
-        pdf.table(
-          50,
-          50,
-          data,
-          [{
-              field: "Name",
-              title: "Person Name",
-              width: 200
-            },
-            {
-              field: "Age",
-              title: "Age",
-              width: 50
-            },
-            {
-              field: "Email",
-              title: "Email Address",
-              width: 200
-            }
-          ], {
-            margins: {
-              top: 50,
-              left: 50
-            }
-          }
-        );
-
-        pdf.saveAs({
-          fileName: "PrepBootstrapPDF"
-        });
-      });
-    }
 
     function myFunction(searchId, tableID, divId) {
       var pdf = new jsPDF('p', 'pt', 'letter');
@@ -1304,7 +1235,7 @@
     });
   </script>
 
-  <script src="../assets/js/jquery.Jcrop.js"></script>
+
 
   <script type="text/javascript">
     function hideModal() {
@@ -1365,22 +1296,7 @@
   </script>
 
   <script>
-    // Tags
-    $("#product-tag-btn").on("click", function () {
-      $("#feature-section").append(
-        "" +
-        '<div class="feature-area">' +
-        '<span class="remove feature-remove"><i class="fas fa-times"></i></span>' +
-        '<div  class="row">' +
-        '<div class="col-lg-12">' +
-        '<input type="text" name="product-tag" class="input-field" placeholder="Enter Your Keyword">' +
-        "</div>" +
-        "</div>" +
-        "</div>" +
-        ""
-      );
-    });
-
+    
     $(document).on("click", ".feature-remove", function () {
       $(this.parentNode).remove();
     });
