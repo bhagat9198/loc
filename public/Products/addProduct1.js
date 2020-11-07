@@ -173,6 +173,7 @@ const displayAddons = (data) => {
 //   });
 
 const addProductForm = (event) => {
+  console.log(event);
 
   document.getElementById("successProduct").style.display = "block";
   document.getElementById("successProduct").innerHTML = "Please wait ...Adding the product  &#128513;";
@@ -191,13 +192,13 @@ const addProductForm = (event) => {
     productPolicy,
     productMainImg;
 
-  let productTags = [];
+  let productTags;
   let productAddons = [];
   let productSubImgs = [];
   let cakeWeights = [];
   let cakeShapes = [];
   let cakeFlavours = [];
-  let weightPrice, cakeType;
+  let weightPrice, cakeType, weightPrevPrice;
 
   productName = addProduct["product-name"].value;
   productSno = addProduct["product-sno"].value;
@@ -219,9 +220,11 @@ const addProductForm = (event) => {
   //     productAddons.push(addon.value);
   //   });
 
-  addProduct.querySelectorAll('input[name="product-tag"]').forEach((tag) => {
-    productTags.push(tag.value);
-  });
+  // addProduct.querySelectorAll('input[name="product-tag"]').forEach((tag) => {
+  //   productTags.push(tag.value);
+  // });
+  productTags = addProduct["product-tag"].value;
+  console.log(productTags);
 
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
@@ -233,25 +236,34 @@ const addProductForm = (event) => {
         if (weight.checked) {
           if (weight.value == "half") {
             weightPrice = addProduct["cake-price-half"].value;
+            weightPrevPrice = addProduct["cake-prevPrice-half"].value;
             console.log(weightPrice);
           } else if (weight.value === "one") {
             weightPrice = addProduct["cake-price-one"].value;
+            weightPrevPrice = addProduct["cake-prevPrice-one"].value;
           } else if (weight.value === "oneHalf") {
             weightPrice = addProduct["cake-price-oneHalf"].value;
+            weightPrevPrice = addProduct["cake-prevPrice-oneHalf"].value;
           } else if (weight.value === "two") {
             weightPrice = addProduct["cake-price-two"].value;
+            weightPrevPrice = addProduct["cake-prevPrice-two"].value;
           } else if (weight.value === "three") {
             weightPrice = addProduct["cake-price-three"].value;
+            weightPrevPrice = addProduct["cake-prevPrice-three"].value;
           } else if (weight.value === "four") {
             weightPrice = addProduct["cake-price-four"].value;
+            weightPrevPrice = addProduct["cake-prevPrice-four"].value;
           } else if (weight.value === "five") {
             weightPrice = addProduct["cake-price-five"].value;
+            weightPrevPrice = addProduct["cake-prevPrice-five"].value;
           } else {
             weightPrice = addProduct["cake-price-six"].value;
+            weightPrevPrice = addProduct["cake-prevPrice-six"].value;
           }
           let data = {
             cakeWeight: weight.value,
             weightPrice: weightPrice,
+            weightPrevPrice: weightPrevPrice,
           };
 
           cakeWeights.push(data);
@@ -372,7 +384,7 @@ const addProductForm = (event) => {
           storageService
             .ref(`${response.prodData.category}/${id}/${name}`)
             .put(img);
-          console.log(counter);
+          // console.log(counter);
         }
       };
 
@@ -461,6 +473,13 @@ const addProductForm = (event) => {
 
 addProduct.addEventListener("submit", addProductForm);
 
+const addProductFormNotSubmit = e => {
+  if (e.keyCode == 13) {
+    e.preventDefault();
+    return false;
+  }
+}
+addProduct.addEventListener("keypress", addProductFormNotSubmit);
 
 
 const uploadMainImg = (e) => {
@@ -489,15 +508,11 @@ const calculate = (e) => {
     // total.innerHTML = +sp * (+sp + +gst*100);
     console.log(+sp * (+sp + +gst*100));
   }
+
 };
 
 
 addProduct.querySelector("#product-sp").addEventListener("keyup", calculate);
 addProduct.querySelector("#product-gst").addEventListener("keyup", calculate);
 
-// addProduct.addEventListener("keypress", function (event) {
-//   if (event.keyCode == 13) {
-//     event.preventDefault();
-//   }
 
-// });

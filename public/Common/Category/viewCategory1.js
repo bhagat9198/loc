@@ -159,7 +159,9 @@ const displayChildCategories = (data) => {
   console.log(data);
   let tRows = "";
   data.map((doc) => {
+    console.log(doc);
     let docData = doc.data();
+    console.log(docData);
     let status=docData.isActivated;
     var dispVal1,dispVal2,dataval1,dataval2;
     if(status=="false"){
@@ -177,35 +179,38 @@ const displayChildCategories = (data) => {
      
     }
     // console.log(docData);
-    docData.subCategory.childCategories.map(child => {
-      tRows += `
-      <tr role="row" class="odd parent">
-        <td><input type="text" class="editField" value="${child.name}">
-          <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
-        <td tabindex="0">${docData.subCategory.name} </td>
-        <td>${docData.name} </td>
-        <td>
-        <div class="action-list">
-          <select class="process  drop-success" style="display: block; " id="statusUpdate` + doc.id + `" onchange=statusUpdated("statusUpdate` + doc.id + `","` + doc.id + `")>
-          <option data-val="1" value="`+ dataval1 + `">` + dispVal1 + `</option>
-          <option data-val="0" value="`+ dataval2 + `">` + dispVal2 + `</option>
-          </select>
-        </div>
-        </td>
-        <td>
-        <div class="godropdown">
-        <button class="go-dropdown-toggle" onclick=deleteSlider("`+doc.id+`")>
-          Delete
-        </button>
-       
-        </div>
-        </td>
-      </tr>
-      `;
-    })
-    // docData.subCategory.childCategories.map(child => {
+    docData.subCategory.map(sc => {
       
-    // })
+      sc.childCategories.map(child => {
+        tRows += `
+        <tr role="row" class="odd parent">
+          <td><input type="text" class="editField" value="${child.name}">
+            <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
+          <td tabindex="0">${sc.name} </td>
+          <td>${docData.name} </td>
+          <td>
+          <div class="action-list">
+            <select class="process  drop-success" style="display: block; " id="statusUpdate` + doc.id + `" onchange=statusUpdated("statusUpdate` + doc.id + `","` + doc.id + `")>
+            <option data-val="1" value="`+ dataval1 + `">` + dispVal1 + `</option>
+            <option data-val="0" value="`+ dataval2 + `">` + dispVal2 + `</option>
+            </select>
+          </div>
+          </td>
+          <td>
+          <div class="godropdown">
+          <button class="go-dropdown-toggle" onclick=deleteSlider("`+doc.id+`")>
+            Delete
+          </button>
+         
+          </div>
+          </td>
+        </tr>
+        `;
+      })
+
+    })
+
+
   });
   childCategoryHTML.innerHTML = tRows;
 };

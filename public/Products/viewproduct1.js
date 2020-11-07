@@ -43,7 +43,6 @@ async function displayRows(dd) {
      
     }
     let imgUrl =docData.mainImgUrl;
-
     tRows +=
       `
     <tr role="row" class="odd parent">
@@ -65,7 +64,7 @@ async function displayRows(dd) {
               Actions<i class="fas fa-chevron-down"></i>
             </button>
             <div class="action-list" style="display: none;">
-              <a href="" data-category="${docData.category}" data-id="${d.id}" onclick="editDetails(event)" data-toggle="modal" data-target="#editProductModal">
+              <a href="" data-category="${docData.category}" data-id="${d.id}"   onclick="editDetails(event)" data-toggle="modal" data-target="#editProductModal">
                 <i class="fas fa-edit"></i> Edit
               </a>
             
@@ -371,12 +370,12 @@ const extractDetails = async (e) => {
       pCatHTML.innerHTML = doc.category;
       pSubCatHTML.innerHTML = doc.subCategory;
       pChildCatHTML.innerHTML = doc.childCategory;
-      let allTags = [];
-      doc.tags.map((t) => {
-        allTags.push(`${t}, `);
-      });
-      console.log(allTags);
-      pTagsHTML.innerHTML = allTags.join("   ");
+      // let allTags = [];
+      // doc.tags.map((t) => {
+      //   allTags.push(`${t}, `);
+      // });
+      // console.log(allTags);
+      pTagsHTML.innerHTML = doc.tags;
       pSnoHTML.innerHTML = doc.sno;
 
       pDescHTML.innerHTML = doc.descriptions;
@@ -591,30 +590,39 @@ const editDetails = async (e) => {
         document.getElementById("cake-attributes").style.display = "block";
         if (doc.weights) {
           doc.weights.map((weight) => {
+            console.log(weight);
             if (weight.cakeWeight === "half") {
               editProduct["cake-weight-half"].checked = true;
               editProduct["cake-price-half"].value = weight.weightPrice;
+              editProduct["cake-prevPrice-half"].value = weight.weightPrevPrice;
             } else if (weight.cakeWeight === "one") {
               editProduct["cake-weight-one"].checked = true;
               editProduct["cake-price-one"].value = weight.weightPrice;
+              editProduct["cake-prevPrice-one"].value = weight.weightPrevPrice;
             } else if (weight.cakeWeight === "oneHalf") {
               editProduct["cake-weight-oneHalf"].checked = true;
               editProduct["cake-price-oneHalf"].value = weight.weightPrice;
+              editProduct["cake-prevPrice-oneHalf"].value = weight.weightPrevPrice;
             } else if (weight.cakeWeight === "two") {
               editProduct["cake-weight-two"].checked = true;
               editProduct["cake-price-two"].value = weight.weightPrice;
+              editProduct["cake-prevPrice-two"].value = weight.weightPrevPrice;
             } else if (weight.cakeWeight === "three") {
               editProduct["cake-weight-three"].checked = true;
               editProduct["cake-price-three"].value = weight.weightPrice;
+              editProduct["cake-prevPrice-three"].value = weight.weightPrevPrice;
             } else if (weight.cakeWeight === "four") {
               editProduct["cake-weight-four"].checked = true;
               editProduct["cake-price-four"].value = weight.weightPrice;
+              editProduct["cake-prevPrice-four"].value = weight.weightPrevPrice;
             } else if (weight.cakeWeight === "five") {
               editProduct["cake-weight-five"].checked = true;
               editProduct["cake-price-five"].value = weight.weightPrice;
+              editProduct["cake-prevPrice-five"].value = weight.weightPrevPrice;
             } else if (weight.cakeWeight === "six") {
               editProduct["cake-weight-six"].checked = true;
               editProduct["cake-price-six"].value = weight.weightPrice;
+              editProduct["cake-prevPrice-six"].value = weight.weightPrevPrice;
             } else {
               console.log("unknown");
             }
@@ -664,8 +672,6 @@ const editDetails = async (e) => {
       $("#galleryImagesDisp").empty();
       for (var i = 0; i < doc.subImgs.length; i++) {
         let sImgUrl =doc.subImgsUrl[i]
-      
-
         galleryImages.innerHTML +=
           `
         <div class="img gallery-img" id="images` +
@@ -700,21 +706,31 @@ const editDetails = async (e) => {
         doc.policy.replace(/(<([^>]+)>)/g, "")
       );
       //   $('#productPolicy').val(doc.policy)
-      let featureSectionHTML = editProduct.querySelector("#feature-section");
-      let t = "";
-      doc.tags.map((tag) => {
-        t += `
-        <div class="feature-area">
-          <div class="row">
-            <div class="col-lg-12">
-              <input type="text" name="product-tag" class="input-field" value="${tag}"
-                placeholder="Enter Your Keyword">
-            </div>
-          </div>
-        </div>
-        `;
-      });
-      featureSectionHTML.innerHTML = t;
+      // let featureSectionHTML = editProduct.querySelector("#feature-section");
+      // let t = "";
+      // doc.tags.map((tag) => {
+      //   t += `
+      //   <div class="feature-area">
+      //     <div class="row">
+      //       <div class="col-lg-12">
+      //         <input type="text" name="product-tag" class="input-field" value="${tag}"
+      //           placeholder="Enter Your Keyword">
+      //       </div>
+      //     </div>
+      //   </div>
+      //   `;
+      // });
+      // featureSectionHTML.innerHTML = t;
+
+      editProduct["product-tag"].value = doc.tags;
+      // let [...args] = doc.tags.split(',');
+      // console.log(args);
+      // var t1 = tagger(editProduct.querySelector('input[name="product-tag"]'), {
+      //   allow_duplicates: false,
+      //   allow_spaces: true,
+      //   completion: {list: doc.tags.split(',')}
+      // });
+
     })
     .catch((error) => {
       console.log(error);
@@ -784,18 +800,25 @@ const submitEditForm = (event) => {
             // console.log(weightPrice);
           } else if (weight.value === "one") {
             weightPrice = editProduct["cake-price-one"].value;
+            weightPrice = editProduct["cake-prevPrice-one"].value;
           } else if (weight.value === "oneHalf") {
             weightPrice = editProduct["cake-price-oneHalf"].value;
+            weightPrice = editProduct["cake-prevPrice-oneHalf"].value;
           } else if (weight.value === "two") {
             weightPrice = editProduct["cake-price-two"].value;
+            weightPrice = editProduct["cake-prevPrice-two"].value;
           } else if (weight.value === "three") {
             weightPrice = editProduct["cake-price-three"].value;
+            weightPrice = editProduct["cake-prevPrice-three"].value;
           } else if (weight.value === "four") {
             weightPrice = editProduct["cake-price-four"].value;
+            weightPrice = editProduct["cake-prevPrice-four"].value;
           } else if (weight.value === "five") {
             weightPrice = editProduct["cake-price-five"].value;
+            weightPrice = editProduct["cake-prevPrice-five"].value;
           } else {
             weightPrice = editProduct["cake-price-six"].value;
+            weightPrice = editProduct["cake-prevPrice-six"].value;
           }
           let data = {
             cakeWeight: weight.value,
@@ -1092,3 +1115,13 @@ const uploadSubImgs = (e) => {
 //       console.log(error);
 //     });
 // };
+
+
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
