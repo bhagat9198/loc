@@ -1,22 +1,20 @@
-
-
 const storageService = firebase.storage();
 const db = firebase.firestore();
 
-async function imgDisplay(imgPath) {
-  let imgUrl;
-  await storageService
-    .ref(imgPath)
-    .getDownloadURL()
-    .then((url) => {
-      imgUrl = url;
-    })
-    .catch((err) => {
-      imgUrl = err;
-    });
+// async function imgDisplay(imgPath) {
+//   let imgUrl;
+//   await storageService
+//     .ref(imgPath)
+//     .getDownloadURL()
+//     .then((url) => {
+//       imgUrl = url;
+//     })
+//     .catch((err) => {
+//       imgUrl = err;
+//     });
 
-  return imgUrl;
-}
+//   return imgUrl;
+// }
 
 async function displayRows(dd) {
   let tRows = "";
@@ -25,24 +23,21 @@ async function displayRows(dd) {
     // console.log(docData);
     let id = d.id;
     let cat = docData.category;
-    let status=docData.isActivated;
-    var dispVal1,dispVal2,dataval1,dataval2;
-    
-    if(status=="false"){
+    let status = docData.isActivated;
+    var dispVal1, dispVal2, dataval1, dataval2;
 
-      dispVal1="Deactivated";
-      dispVal2="Activated";
-      dataval1="false"
-      dataval2="true"
-
-    }else{
-      dispVal1="Activated";
-      dispVal2="Deactivated";
-      dataval1="true"
-      dataval2="false"
-     
+    if (status == "false") {
+      dispVal1 = "Deactivated";
+      dispVal2 = "Activated";
+      dataval1 = "false";
+      dataval2 = "true";
+    } else {
+      dispVal1 = "Activated";
+      dispVal2 = "Deactivated";
+      dataval1 = "true";
+      dataval2 = "false";
     }
-    let imgUrl =docData.mainImgUrl;
+    let imgUrl = docData.mainImgUrl;
     tRows +=
       `
     <tr role="row" class="odd parent">
@@ -52,9 +47,25 @@ async function displayRows(dd) {
         <td>${docData.childCategory}</td>
         <td>${docData.totalPrice}</td>
         <td>
-          <div class="action-list"><select class="process  drop-success" style="display: block; " id="statusUpdate` +id +`" onchange=statusUpdated("statusUpdate` +id+ `","`+id+`","`+cat+`")>
-              <option data-val="1" value="`+dataval1+`">`+dispVal1+`</option>
-              <option data-val="0" value="`+dataval2+`">`+dispVal2+`</option>
+          <div class="action-list"><select class="process  drop-success" style="display: block; " id="statusUpdate` +
+      id +
+      `" onchange=statusUpdated("statusUpdate` +
+      id +
+      `","` +
+      id +
+      `","` +
+      cat +
+      `")>
+              <option data-val="1" value="` +
+      dataval1 +
+      `">` +
+      dispVal1 +
+      `</option>
+              <option data-val="0" value="` +
+      dataval2 +
+      `">` +
+      dispVal2 +
+      `</option>
             </select>
           </div>
         </td>
@@ -92,38 +103,32 @@ async function displayRows(dd) {
   // console.log(tRows);
   return tRows;
 }
-function statusUpdated(dropId,id,cat){
- 
-  var status=document.querySelector(`#`+dropId).value;
-  if(status=="false"){
-
-    let isActivated="false"
-
-    let ans=confirm("Are you sure to deactivate the product")
-    if(ans){
-      db.collection(cat).doc(id).update("isActivated", isActivated)
-      alert("Product status Updated Sucessufully")
-    }else{
-    
 
 
+function statusUpdated(dropId, id, cat) {
+  var status = document.querySelector(`#` + dropId).value;
+  if (status == "false") {
+    let isActivated = "false";
+
+    let ans = confirm("Are you sure to deactivate the product");
+    if (ans) {
+      db.collection(cat).doc(id).update("isActivated", isActivated);
+      alert("Product status Updated Sucessufully");
+    } else {
     }
-   
-  }else{
+  } else {
+    let isActivated = "true";
 
-    let isActivated="true"
-   
-    let ans=confirm("Are you sure to Activate the product")
-    if(ans){
-      db.collection(cat).doc(id).update("isActivated", isActivated)
-      alert("Product status Updated Sucessufully")
-    }else{
+    let ans = confirm("Are you sure to Activate the product");
+    if (ans) {
+      db.collection(cat).doc(id).update("isActivated", isActivated);
+      alert("Product status Updated Sucessufully");
+    } else {
       // document.getElementById(dropId).value="Deactivated"
-     
     }
-   
   }
 }
+
 async function deleteProduct(cat, prid) {
   var answer = confirm("Are you sure to delete the product");
   if (answer) {
@@ -150,7 +155,6 @@ async function deleteProduct(cat, prid) {
             }
 
             for (let i of imgsPath) {
-              
               var desertRef = await firebase.storage().refFromURL(i);
 
               desertRef
@@ -194,42 +198,41 @@ async function deleteProduct(cat, prid) {
       });
   }
 }
-const extractData = async () => {
-  let allCategoriesNames = [];
-  await db
-    .collection("categories")
-    .get()
-    .then((snapshot) => {
-      let snapshotDocs = snapshot.docs;
-      snapshotDocs.map((doc) => {
-        let docData = doc.data();
-        allCategoriesNames.push(docData.name);
-      });
-    });
 
-  const displayAllCat = document.querySelector("#displayAllCat");
-  let tRows = "";
-  $("#displayAllCat").empty();
-  for (let cat of allCategoriesNames.reverse()) {
-    productNav.innerHTML +=
-      `
+// const extractData = async () => {
+let allCategoriesNames = [];
+db.collection("categories").onSnapshot((snapshot) => {
+  let snapshotDocs = snapshot.docs;
+  snapshotDocs.map((doc) => {
+    let docData = doc.data();
+    allCategoriesNames.push(docData.name);
+  });
+});
+
+
+// const displayAllCat = document.querySelector("#displayAllCat");
+let tRows = "";
+$("#displayAllCat").empty();
+for (let cat of allCategoriesNames.reverse()) {
+  productNav.innerHTML +=
+    `
         <li style="padding: 10px;list-style:square;margin:auto 2%">
          <a class="scrollTo" href="#` +
-      cat +
-      `">` +
-      cat.toUpperCase() +
-      `</a>
+    cat +
+    `">` +
+    cat.toUpperCase() +
+    `</a>
         </li>
          `;
-    $("#tbody" + cat).empty();
-    let mainHeading = cat.toUpperCase();
-    tRows = "";
-    displayAllCat.innerHTML +=
-      `
+  $("#tbody" + cat).empty();
+  let mainHeading = cat.toUpperCase();
+  tRows = "";
+  displayAllCat.innerHTML +=
+    `
     
     <div class="product-area" id=` +
-      cat +
-      ` style="padding-top:0px;">
+    cat +
+    ` style="padding-top:0px;">
 
     <div class="row">
       <div class="col-lg-12">
@@ -239,19 +242,19 @@ const extractData = async () => {
         <div class="row">
             <div class="col-sm-5">
                 <h2>` +
-      cat +
-      `</h2>
+    cat +
+    `</h2>
             </div>
             <div class="col-sm-7">
                 <a  class="btn btn-secondary" id="myInput` +
-      cat +
-      `" class="searchBar" onclick=myFunction("myInput` +
-      cat +
-      `","myTable` +
-      cat +
-      `","table-responsive` +
-      cat +
-      `")><i class="material-icons" style="color:black">&#xE147;</i>
+    cat +
+    `" class="searchBar" onclick=myFunction("myInput` +
+    cat +
+    `","myTable` +
+    cat +
+    `","table-responsive` +
+    cat +
+    `")><i class="material-icons" style="color:black">&#xE147;</i>
                     <span style="color:black">Enable Attribute</span></a>
                 <a class="btn btn-secondary"><i class="material-icons" style="color:black">&#xE24D;</i>
                     <span style="color:black">Export to Pdf</span></a>
@@ -263,12 +266,12 @@ const extractData = async () => {
             <p class="text-left"></p>
           </div>
           <div class="table-responsive` +
-      cat +
-      `">
+    cat +
+    `">
           
             <table id="myTable` +
-      cat +
-      `" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+    cat +
+    `" class="table table-hover dt-responsive" cellspacing="0" width="100%">
               <div class="row btn-area">
               </div>
               <thead>
@@ -283,8 +286,8 @@ const extractData = async () => {
                 </tr>
               </thead>
               <tbody id="tbody` +
-      cat +
-      `">
+    cat +
+    `">
                <tr>
                 <td>Loading Rows......Please Wait</td>
                </tr>
@@ -296,29 +299,27 @@ const extractData = async () => {
     </div>
   </div>
   <br>
-        
     `;
 
-    const tbodys = document.querySelector("#tbody" + cat);
-
-    await db
-      .collection(cat)
-      .get()
-      .then(async (snapshots) => {
-        let snapshotsDocs = snapshots.docs;
-        tRows += await displayRows(snapshotsDocs);
-      });
-    if (tRows != "") {
-      tbodys.innerHTML = tRows;
-    } else {
-      tbodys.innerHTML =
-        '<h3 class="responsive-text" style="text-align:center;font-weight:700;padding:5px">OoPS!!! No Data Found</h3>';
-    }
-
-    // console.log(cat);
+  const tbodys = document.querySelector("#tbody" + cat);
+  await db
+    .collection(cat)
+    .get()
+    .then(async (snapshots) => {
+      let snapshotsDocs = snapshots.docs;
+      tRows += await displayRows(snapshotsDocs);
+    });
+  if (tRows != "") {
+    tbodys.innerHTML = tRows;
+  } else {
+    tbodys.innerHTML =
+      '<h3 class="responsive-text" style="text-align:center;font-weight:700;padding:5px">OoPS!!! No Data Found</h3>';
   }
-};
-extractData();
+
+  // console.log(cat);
+}
+// };
+// extractData();
 
 // display details
 const detialsModalHTML = document.querySelector("#details-modal");
@@ -336,21 +337,21 @@ const pImgsHTML = detialsModalHTML.querySelector(".prod-img-detail");
 
 const optionDetailsHTML = document.querySelector(".option-details");
 
-async function extractImgUrl(imgPath) {
-  let urlPath;
+// async function extractImgUrl(imgPath) {
+//   let urlPath;
 
-  await storageService
-    .ref(imgPath)
-    .getDownloadURL()
-    .then((url) => {
-      urlPath = url;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+//   await storageService
+//     .ref(imgPath)
+//     .getDownloadURL()
+//     .then((url) => {
+//       urlPath = url;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
 
-  return urlPath;
-}
+//   return urlPath;
+// }
 
 const extractDetails = async (e) => {
   console.log(e.target.dataset.id);
@@ -442,9 +443,9 @@ const cat = async (data) => {
 
 const subCat = async (data) => {
   console.log(data);
-  let docId = data.split('__')[0];
+  let docId = data.split("__")[0];
   console.log(docId);
-  let scId = data.split('__')[1];
+  let scId = data.split("__")[1];
   console.log(scId);
   await db
     .collection("categories")
@@ -472,11 +473,11 @@ const subCat = async (data) => {
 
 const childCat = async (data) => {
   console.log(data);
-  let docId = data.split('__')[0];
+  let docId = data.split("__")[0];
   console.log(docId);
-  let scId = data.split('__')[1];
+  let scId = data.split("__")[1];
   console.log(scId);
-  let cId = data.split('__')[2];
+  let cId = data.split("__")[2];
   console.log(cId);
 
   await db
@@ -560,7 +561,7 @@ let editProductDetails;
 let editProductId;
 
 const editDetails = async (e) => {
-  $('#add-product').trigger("reset");
+  $("#add-product").trigger("reset");
   let editProduct = document.querySelector("#add-product");
   console.log(e.target.dataset.id);
   console.log(e.target.dataset.category);
@@ -584,8 +585,6 @@ const editDetails = async (e) => {
       // editProduct["product-sub-category"].value = doc.subCategory;
       // editProduct["product-child-category"].value = doc.childCategory;
 
-
-
       if (doc.category.toUpperCase().includes("CAKE")) {
         document.getElementById("cake-attributes").style.display = "block";
         if (doc.weights) {
@@ -602,7 +601,8 @@ const editDetails = async (e) => {
             } else if (weight.cakeWeight === "oneHalf") {
               editProduct["cake-weight-oneHalf"].checked = true;
               editProduct["cake-price-oneHalf"].value = weight.weightPrice;
-              editProduct["cake-prevPrice-oneHalf"].value = weight.weightPrevPrice;
+              editProduct["cake-prevPrice-oneHalf"].value =
+                weight.weightPrevPrice;
             } else if (weight.cakeWeight === "two") {
               editProduct["cake-weight-two"].checked = true;
               editProduct["cake-price-two"].value = weight.weightPrice;
@@ -610,7 +610,8 @@ const editDetails = async (e) => {
             } else if (weight.cakeWeight === "three") {
               editProduct["cake-weight-three"].checked = true;
               editProduct["cake-price-three"].value = weight.weightPrice;
-              editProduct["cake-prevPrice-three"].value = weight.weightPrevPrice;
+              editProduct["cake-prevPrice-three"].value =
+                weight.weightPrevPrice;
             } else if (weight.cakeWeight === "four") {
               editProduct["cake-weight-four"].checked = true;
               editProduct["cake-price-four"].value = weight.weightPrice;
@@ -671,7 +672,7 @@ const editDetails = async (e) => {
       // console.log(putImg);
       $("#galleryImagesDisp").empty();
       for (var i = 0; i < doc.subImgs.length; i++) {
-        let sImgUrl =doc.subImgsUrl[i]
+        let sImgUrl = doc.subImgsUrl[i];
         galleryImages.innerHTML +=
           `
         <div class="img gallery-img" id="images` +
@@ -689,8 +690,8 @@ const editDetails = async (e) => {
          
         `;
       }
-      let mImgUrl = doc.mainImgUrl
-    
+      let mImgUrl = doc.mainImgUrl;
+
       let mImg = `
       <img id="putImage" src="${mImgUrl}" alt=" image" />
       `;
@@ -731,12 +732,10 @@ const editDetails = async (e) => {
       //   allow_spaces: true,
       //   completion: {list: doc.tags.split(',')}
       // });
-
     })
     .catch((error) => {
       console.log(error);
-    }
-  );
+    });
 };
 
 let subImgs, mainImg;
@@ -881,9 +880,9 @@ const submitEditForm = (event) => {
     wholeCategory: productCategory,
     wholeSubCategory: productSubCategory,
     wholeChildCategory: productChildCategory,
-    category: productCategory.split('__')[1],
-    subCategory: productSubCategory.split('__')[2],
-    childCategory: productChildCategory.split('__')[3],
+    category: productCategory.split("__")[1],
+    subCategory: productSubCategory.split("__")[2],
+    childCategory: productChildCategory.split("__")[3],
     mrp: productMRP,
     sp: productSP,
     gst: productGST,
@@ -1000,15 +999,14 @@ const submitEditForm = (event) => {
       showSnack();
       function showSnack() {
         // Get the snackbar DIV
-        alert("Product Updated Successfully")
+        alert("Product Updated Successfully");
         var x = document.getElementById("snackbar");
 
         // Add the "show" class to DIV
         x.className = "show";
-     
+
         // After 3 seconds, remove the show class from DIV
         setTimeout(function () {
-
           x.className = x.className.replace("show", "");
         }, 3000);
       }
@@ -1033,9 +1031,9 @@ const submitEditForm = (event) => {
 
 const uploadMainImg = (e) => {
   mainImg = e.target.files[0];
-  mainImagesUrl= extractImgUrl(mainImg)
-  
-  console.log(mainImagesUrl)
+  mainImagesUrl = extractImgUrl(mainImg);
+
+  console.log(mainImagesUrl);
 
   var reader = new FileReader();
   reader.onload = function (e) {
@@ -1117,10 +1115,9 @@ const uploadSubImgs = (e) => {
 //     });
 // };
 
-
-$(document).ready(function() {
-  $(window).keydown(function(event){
-    if(event.keyCode == 13) {
+$(document).ready(function () {
+  $(window).keydown(function (event) {
+    if (event.keyCode == 13) {
       event.preventDefault();
       return false;
     }
