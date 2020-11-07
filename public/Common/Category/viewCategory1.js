@@ -56,7 +56,7 @@ const displayCategories = async (data) => {
       </td>
       <td>
       <div class="godropdown">
-      <button class="go-dropdown-toggle" onclick=deleteSlider("`+doc.id+`")>
+      <button class="go-dropdown-toggle" onclick=deleteMainCategory("`+doc.id+`")>
         Delete
       </button>
      
@@ -107,7 +107,7 @@ const displaySubCategories = (data) => {
         </td>
         <td>
         <div class="godropdown">
-        <button class="go-dropdown-toggle" onclick=deleteSlider("`+doc.id+`")>
+        <button class="go-dropdown-toggle" onclick=deleteSubCategory("`+doc.id+`","`+sc.id+`")>
           Delete
         </button>
        
@@ -120,7 +120,7 @@ const displaySubCategories = (data) => {
   });
   subCategoryHTML.innerHTML = tRows;
 };
-function deleteSlider(id){
+function deleteMainCategory(id){
   let ans=confirm("Are you  sure to delete the Category")
   if(ans){
     db.collection("categories").doc(id).delete().then(function () {
@@ -129,6 +129,40 @@ function deleteSlider(id){
     }).catch(function (error) {
       console.error("Error removing user: ", error);
     });
+  }
+    
+}
+ function deleteSubCategory(id,subID){
+  alert(subID)
+  let ans=confirm("Are you  sure to delete the Sub-Category")
+  if(ans){
+    let subIndex;
+    db.collection("categories").doc(id).onSnapshot(doc =>{
+      let docData=doc.data();
+      docData.subCategory.map((el,index) =>{
+        console.log(el);
+        if(+el.id === +subID){
+          subIndex=index;
+        }
+      })
+      console.log(subIndex);
+
+       docData.subCategory.splice(subIndex,1);
+      //  alert(docData.subCategory)
+       if(docData.subCategory.length==0){
+         
+        docData.subCategory=[]
+       }
+       db.collection("categories").doc(id).update("subCategory", docData.subCategory)
+       alert("Done")
+
+    })
+    // db.collection("categories").doc(id).delete().then(function () {
+    //   alert("Sub-Category successfully deleted!");
+
+    // }).catch(function (error) {
+    //   console.error("Error removing user: ", error);
+    // });
   }
     
 }
@@ -193,7 +227,7 @@ const displayChildCategories = (data) => {
         </td>
         <td>
         <div class="godropdown">
-        <button class="go-dropdown-toggle" onclick=deleteSlider("`+doc.id+`")>
+        <button class="go-dropdown-toggle" onclick=deleteCategory("`+doc.id+`")>
           Delete
         </button>
        
@@ -205,7 +239,7 @@ const displayChildCategories = (data) => {
   });
   childCategoryHTML.innerHTML = tRows;
 };
-function deleteSlider(id){
+function deleteCategory(id){
   let ans=confirm("Are you  sure to delete the Slider")
   if(ans){
     db.collection("categories").doc(id).delete().then(function () {

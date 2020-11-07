@@ -12,10 +12,17 @@
  */
 .tagger {
     border: 1px solid #909497;
+
+    /* word-break: break-word;
+    white-space:inherit; */
+    padding: 10px;
+    overflow-x:auto;
+  
 }
 .tagger input[type="hidden"] {
   /* fix for bootsrap */
   display: none;
+  
 }
 .tagger > ul {
     display: flex;
@@ -46,6 +53,7 @@
     background: #852b37;
     border: 1px solid #41ed89;
     border-radius: 3px;
+    margin: auto;
 }
 .tagger li a.close {
     padding: 4px;
@@ -70,6 +78,7 @@
     width: 100%;
     padding-left: 0;
     background: transparent;
+   
 }
 .tagger .tagger-new {
     flex-grow: 1;
