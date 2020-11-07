@@ -643,68 +643,70 @@
                               </div>
                             </div>
                           </div>
-                          
+
                           <br>
-               
-                        
+
+
                         </div>
-                        
+
                       </div>
-                      
+
                     </div>
-                    
+
                   </div>
-                  
+
                 </div>
-                
+
               </div>
               <div class="row">
-                <input type="file" name="product-sub-imgs" class="hidden" id="product-sub-imgs"
-                accept="image/*" multiple>
-              <br>
-              <div class="row mb-4" >
-                <div class="col-lg-12 mb-4">
-                  <div class="left-area">
-                    <h4 class="mainHeading">
-                      Product Gallery Images
-                    </h4>
+                <input type="file" name="product-sub-imgs" class="hidden" id="product-sub-imgs" accept="image/*"
+                  multiple>
+                <br>
+                <div class="row mb-4">
+                  <div class="col-lg-12 mb-4">
+                    <div class="left-area">
+                      <h4 class="mainHeading">
+                        Product Gallery Images
+                      </h4>
+                    </div>
                   </div>
-                </div>
-                <div class="col-lg-12" style="padding: 20px;">
-                  <div class="modal-body" style="border: 1px solid black;padding: 10px;">
-                    <div class="top-area">
-                      <div class="row">
-                        <div class="col-sm-6 text-right">
-                          <div class="upload-img-btn" style="cursor: pointer;">
-                            <label for="image-upload" id="prod_gallery" style="cursor: pointer;"><i class="fas fa-upload" ></i>Upload
-                              File</label>
+                  <div class="col-lg-12" style="padding: 20px;">
+                    <div class="modal-body" style="border: 1px solid black;padding: 10px;">
+                      <div class="top-area">
+                        <div class="row">
+                          <div class="col-sm-6 text-right">
+                            <div class="upload-img-btn" style="cursor: pointer;">
+                              <label for="image-upload" id="prod_gallery" style="cursor: pointer;"><i
+                                  class="fas fa-upload"></i>Upload
+                                File</label>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <a href="javascript:;" class="upload-done" data-dismiss="modal"> <i
+                                class="fas fa-check"></i>
+                              Done</a>
+                          </div>
+                          <div class="col-sm-12 text-center">( <small>You can upload multiple images at once.</small>
+                            )</div>
+                        </div>
+                      </div>
+                      <div class="gallery-images">
+                        <div class="selected-image">
+                          <div class="row">
+
                           </div>
                         </div>
-                        <div class="col-sm-6">
-                          <a href="javascript:;" class="upload-done" data-dismiss="modal"> <i class="fas fa-check"></i>
-                            Done</a>
-                        </div>
-                        <div class="col-sm-12 text-center">( <small>You can upload multiple images at once.</small>
-                          )</div>
-                      </div>
-                    </div>
-                    <div class="gallery-images">
-                      <div class="selected-image">
-                        <div class="row">
-    
-                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-             
+
               </div>
 
             </div>
-            
-            
+
           </div>
+
 
           <br>
           <div class="col-lg-12">
@@ -735,7 +737,7 @@
                               <div class="feature-area">
                                 <div class="row">
                                   <div class="col-lg-12">
-                                    <input type="text" name="product-tag" id="lolo" class="input-field"
+                                    <input type="text" name="product-tag" class="input-field"
                                       placeholder="Enter Your Keyword">
                                   </div>
                                 </div>
@@ -799,7 +801,7 @@
             </div>
           </div>
         </form>
-<!-- 
+        <!-- 
         <div class="modal fade" id="setgallery" tabindex="-1" role="dialog" aria-labelledby="setgallery"
           aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
@@ -852,8 +854,8 @@
     $('#admin-footer-load').load('/Common/footer.html');
   </script>
   <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
-
-  <script src="../assets/js/demo.js"></script>
+<!-- 
+  <script src="../assets/js/demo.js"></script> -->
   <script src="../assets/js/tagger.js"></script>
   <!-- <script src="../assets/js/bootstrap.min.js"></script> -->
 
@@ -907,7 +909,7 @@
     tagger(document.querySelector('[name="product-tag"]'), {
       allow_spaces: true,
       allow_duplicates: false,
-      link: function() { return false; }
+      link: function () { return false; }
     });
 
 
