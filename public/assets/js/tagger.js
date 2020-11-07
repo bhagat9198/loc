@@ -102,7 +102,7 @@
         allow_spaces: true,
         completion: {
             list: [],
-            delay: 400,
+            delay: 100,
             min_length: 2
         },
         link: function(name) {

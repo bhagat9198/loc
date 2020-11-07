@@ -25,12 +25,11 @@
   <link href="../assets/css/tagger.css" rel="stylesheet">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
-  >
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" >
   <section id="admin-nav-load"></section>
   <div class="wrapper">
     <section class="wrapper" style="width: 99% !important;">
-      <div class="content-wrapper" style="height: 2000px !important; ">
+      <div class="content-wrapper" style="height: 2000px !important;">
         <form id="add-product">
           <div class="row">
             <div class="col-lg-8">
@@ -57,7 +56,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input type="text" class="input-field" required placeholder="Enter Product Name"
+                            <input type="text" class="input-field" placeholder="Enter Product Name"
                               name="product-name">
                           </div>
                         </div>
@@ -69,7 +68,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input type="text" required class="input-field" placeholder="Enter Product Sku"
+                            <input type="text" class="input-field" placeholder="Enter Product Sku"
                               name="product-sno" value="LOC">
                           </div>
                         </div>
@@ -81,7 +80,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <select id="product-category" required name="product-category">
+                            <select id="product-category" name="product-category">
                               <!-- <option selected disabled value="">Select Category*</option>
                               <option value="Cake">Cake</option>
                               <option value="Flower">Flower</option> -->
@@ -96,7 +95,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <select id="product-sub-category" required disabled name="product-sub-category">
+                            <select id="product-sub-category" disabled name="product-sub-category">
                               <!-- <option selected disabled value="">Select Sub Category*</option>
                               <option value="Sub Cakes">Sub Cakes</option>
                               <option value="Sub flowers">Sub flowers </option> -->
@@ -112,7 +111,7 @@
                           </div>
 
                           <div class="col-lg-12">
-                            <select id="product-child-category" required disabled name="product-child-category">
+                            <select id="product-child-category" disabled name="product-child-category">
                               <!-- <option selected disabled value="">Select Sub Category</option>
                               <option value="Child Cakes">Child Cakes</option>
                               <option value="Child Flowers">Child Flowers </option> -->
@@ -149,12 +148,12 @@
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
                                         <input type="text" class="input-field price-input" id="cake-price-half"
-                                          name="cake-price-half" placeholder="Basic Price" name="cake-price-half">
+                                          name="cake-price-half" placeholder="Basic Price">
                                       </div>
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
-                                        <input type="text" class="input-field price-input" id="cake-price-half"
-                                          name="cake-price-half" placeholder="Previous Price" name="cake-price-half">
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-half"
+                                          name="cake-prevPrice-half" placeholder="Previous Price" >
                                       </div>
                                     </div>
                                   </div>
@@ -178,13 +177,13 @@
                                     <div class="col-10">
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
-                                        <input type="text" class="input-field price-input" id="cake-weight-one"
+                                        <input type="text" class="input-field price-input" id="cake-price-one"
                                           name="cake-price-one" placeholder="Basic Price" value="">
                                       </div>
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
-                                        <input type="text" class="input-field price-input" id="cake-weight-one"
-                                          name="cake-price-one" placeholder="Previous Price" value="">
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-one"
+                                          name="cake-prevPrice-one" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -213,8 +212,8 @@
                                       </div>
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
-                                        <input type="text" class="input-field price-input" id="cake-price-oneHalf"
-                                          name="cake-price-oneHalf" placeholder="Previous Price" value="">
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-oneHalf"
+                                          name="cake-prevPrice-oneHalf" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -243,8 +242,8 @@
                                       </div>
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
-                                        <input type="text" class="input-field price-input" id="cake-price-two"
-                                          name="cake-price-two" placeholder="Previous Price" value="">
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-two"
+                                          name="cake-prevPrice-two" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -273,8 +272,8 @@
                                       </div>
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
-                                        <input type="text" class="input-field price-input" id="cake-price-three"
-                                          name="cake-price-three" placeholder="Previous Price" value="">
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-three"
+                                          name="cake-prevPrice-three" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -303,8 +302,8 @@
                                       </div>
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
-                                        <input type="text" class="input-field price-input" id="cake-price-four"
-                                          name="cake-price-four" placeholder="Previous Price" value="">
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-four"
+                                          name="cake-prevPrice-four" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -333,8 +332,8 @@
                                       </div>
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
-                                        <input type="text" class="input-field price-input" id="cake-price-five"
-                                          name="cake-price-five" placeholder="Previous Price" value="">
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-five"
+                                          name="cake-prevPrice-five" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -363,8 +362,8 @@
                                       </div>
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
-                                        <input type="text" class="input-field price-input" id="cake-price-six"
-                                          name="cake-price-six" placeholder="Previous Price" value="">
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-six"
+                                          name="cake-prevPrice-six" placeholder="Previous Price" value="">
                                       </div>
                                     </div>
                                   </div>
@@ -556,7 +555,7 @@
                               placeholder="INR" min="0">
                           </div>
                         </div>
-                        <div class="row">
+                        <div class="row"  >
                           <div class="col-lg-12">
                             <div class="left-area">
                               <h4 class="heading">
@@ -576,7 +575,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input name="product-gst" type="number" id="product-gst" class="input-field gstt"
+                            <input name="product-gst" type="text" id="product-gst" class="input-field gstt"
                               placeholder="Range (1-20)">
                           </div>
                         </div>
@@ -593,7 +592,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input name="product-total-price" id="product-total-price" type="text" class="input-field"
+                            <input name="product-total-price" readonly id="product-total-price" type="text" class="input-field"
                               placeholder="INR" min="0">
                           </div>
                         </div>
@@ -637,7 +636,7 @@
                               <div class="panel panel-body">
                                 <div class="span4  text-center" id="landscape"
                                   style="width: 100%; height: 285px; border: 1px dashed #ddd; background: #f1f1f1;border-radius: 5px;">
-                                  <input type='file' required accept="image/*" name="product-main-image"
+                                  <input type='file' accept="image/*" name="product-main-image"
                                     id="product-main-image" onchange="readURL(this);" />
                                   <img id="putImage" src="../assets/images/logo.png" alt="your image" />
                                 </div>
@@ -738,8 +737,8 @@
                               <div class="feature-area">
                                 <div class="row">
                                   <div class="col-lg-12">
-                                    <input type="text" required name="product-tag" class="input-field"
-                                      placeholder="Enter Your Keyword" style="width: 50% !important;">
+                                    <input type="text" name="product-tag" class="input-field"
+                                      placeholder="Enter Your Keyword">
                                   </div>
                                 </div>
                               </div>
@@ -922,8 +921,14 @@
       // console.log(val);
       if (val.toUpperCase().includes('CAKE')) {
         document.getElementById("cake-attributes").style.display = "block"
+        // document.querySelectorAll(".cake-attributes1").forEach(el => {
+        //   el.style.display = "none";
+        // }) 
       } else {
         document.getElementById("cake-attributes").style.display = "none"
+        // document.querySelectorAll(".cake-attributes1").forEach(el => {
+        //   el.style.display = "block";
+        // })
       }
     });
 
