@@ -507,54 +507,7 @@ const childCat = async (data) => {
     });
 };
 
-// const addons = async (data) => {
-//   console.log(data);
-//   let options = "";
-//   await db
-//     .collection("addons")
-//     .get()
-//     .then((snapshot) => {
-//       let snapshotDocs = snapshot.docs;
-//       let checkboxSelect;
-//       snapshotDocs.map((doc) => {
-//         let docData = doc.data();
-//         console.log(docData);
-//         data.map((add) => {
-//           let docId = add.substring(0, 20);
-//           // console.log(docId);
-//           console.log(doc.id, docId);
-//           console.log(typeof doc.id, typeof docId);
-//           if (doc.id === docId) {
-//             // console.log(doc.id, docId);
-//             // console.log(docData.name);
-//             checkboxSelect = true;
-//           }
-//         });
-//         options += `
-//           <h5 class="addon"><input ${
-//             checkboxSelect ? "checked" : null
-//           } type="checkbox" name="product-addon" value="${doc.id}__${
-//           docData.name
-//         }" class="addon">&nbsp;${docData.name}</h5><br>`;
-//         checkboxSelect = false;
-//       });
-//       allAddonsHTML.innerHTML = options;
-//     });
-// };
 
-// const extractImgUrl = async (imgPath) => {
-//   let imgURL;
-//   await storageService
-//     .ref(imgPath)
-//     .getDownloadURL()
-//     .then((url) => {
-//       imgURL = url;
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-//   return imgURL;
-// };
 
 let editProductDetails;
 let editProductId;
@@ -687,7 +640,7 @@ const editDetails = async (e) => {
             <img src="${sImgUrl}" width="130"  style="object-ft:cover" alt="gallery image">;
             </a>
          </div>
-         
+
         `;
       }
       let mImgUrl = doc.mainImgUrl
