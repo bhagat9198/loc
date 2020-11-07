@@ -561,6 +561,7 @@ let editProductId;
 
 const editDetails = async (e) => {
   $('#add-product').trigger("reset");
+  document.getElementById("setCat").value="hh";
   let editProduct = document.querySelector("#add-product");
   console.log(e.target.dataset.id);
   console.log(e.target.dataset.category);
@@ -705,32 +706,17 @@ const editDetails = async (e) => {
         "editor.insertText",
         doc.policy.replace(/(<([^>]+)>)/g, "")
       );
-      //   $('#productPolicy').val(doc.policy)
-      // let featureSectionHTML = editProduct.querySelector("#feature-section");
-      // let t = "";
-      // doc.tags.map((tag) => {
-      //   t += `
-      //   <div class="feature-area">
-      //     <div class="row">
-      //       <div class="col-lg-12">
-      //         <input type="text" name="product-tag" class="input-field" value="${tag}"
-      //           placeholder="Enter Your Keyword">
-      //       </div>
-      //     </div>
-      //   </div>
-      //   `;
-      // });
-      // featureSectionHTML.innerHTML = t;
-
-      editProduct["product-tag"].value = doc.tags;
-      console.log(editProduct["product-tag"]);
-      // let [...args] = doc.tags.split(',');
-      // console.log(args);
-      // var t1 = tagger(editProduct.querySelector('input[name="product-tag"]'), {
-      //   allow_duplicates: false,
-      //   allow_spaces: true,
-      //   completion: {list: doc.tags.split(',')}
-      // });
+  
+            document.getElementById("setCat").value = doc.tags
+  
+            tagger(document.querySelector('#setCat'), {
+  
+              allow_spaces: true,
+              allow_duplicates: false,
+              link: function () { return false; }
+            });
+        
+            
 
     })
     .catch((error) => {
@@ -905,9 +891,9 @@ const submitEditForm = (event) => {
   }
 
   console.log(wholeProduct);
-  let c = wholeProduct.wholeSubCategory.split(__)[2];
+  let c = wholeProduct.wholeSubCategory.split("__")[2];
   console.log(c);
-  let cc = wholeProduct.wholeChildCategory.split(__)[3];
+  let cc = wholeProduct.wholeChildCategory.split("__")[3];
   console.log(cc);
 
   async function editProductFun(data) {
