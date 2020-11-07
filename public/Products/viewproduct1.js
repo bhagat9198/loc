@@ -723,6 +723,7 @@ const editDetails = async (e) => {
       // featureSectionHTML.innerHTML = t;
 
       editProduct["product-tag"].value = doc.tags;
+      console.log(editProduct["product-tag"]);
       // let [...args] = doc.tags.split(',');
       // console.log(args);
       // var t1 = tagger(editProduct.querySelector('input[name="product-tag"]'), {
