@@ -891,9 +891,9 @@ const submitEditForm = (event) => {
   }
 
   console.log(wholeProduct);
-  let c = wholeProduct.wholeSubCategory.split(__)[2];
+  let c = wholeProduct.wholeSubCategory.split("__")[2];
   console.log(c);
-  let cc = wholeProduct.wholeChildCategory.split(__)[3];
+  let cc = wholeProduct.wholeChildCategory.split("__")[3];
   console.log(cc);
 
   async function editProductFun(data) {
