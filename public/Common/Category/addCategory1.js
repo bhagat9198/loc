@@ -235,6 +235,16 @@ const addCategory = (event) => {
 };
 addCategoryForm.addEventListener("submit", addCategory);
 
+const addCategoryNoSubmit = e => {
+  console.log(e);
+  if(e.keyCode === 13) {
+
+    e.preventDefault();
+  }
+}
+
+addCategoryForm.addEventListener("keypress", addCategoryNoSubmit);
+
 addCategoryForm
   .querySelector('input[name="category-img"]')
   .addEventListener("change", (e) => {

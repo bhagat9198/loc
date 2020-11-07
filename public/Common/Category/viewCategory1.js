@@ -6,375 +6,498 @@ const mainCategoryHTML = document.querySelector(".main-category");
 const subCategoryHTML = document.querySelector(".sub-category");
 const childCategoryHTML = document.querySelector(".child-category");
 
-async function imgUrlFun(imgPath) {
-  let imgUrl;
-  await storageService
-    .ref(imgPath)
-    .getDownloadURL()
-    .then((url) => (imgUrl = url))
-    .catch((error) => console.log(error));
-  return imgUrl;
-}
+const displayOptions = (isSeleted, data) => {
+  let options = "";
+  if (isSeleted.toString() === "true") {
+    options = `
+      <option value="true" selected>Activated</option>
+      <option value="false">Deactivated</option>
+    `;
+  } else {
+    options = `
+      <option value="true" >Activated</option>
+      <option value="false" selected>Deactivated</option>
+    `;
+  }
+  return options;
+};
 
 const displayCategories = async (data) => {
   let tRows = "";
   for (let doc of data) {
     let docData = doc.data();
-    let status=docData.isActivated;
-    var dispVal1,dispVal2,dataval1,dataval2;
-    if(status=="false"){
-
-      dispVal1="Deactivated";
-      dispVal2="Activated";
-      dataval1="false"
-      dataval2="true"
-
-    }else{
-      dispVal1="Activated";
-      dispVal2="Deactivated";
-      dataval1="true"
-      dataval2="false"
-     
-    }
-    console.log(docData);
-    let imgUrl = await imgUrlFun(`categories/${doc.id}/${docData.img}`);
+    // console.log(docData);
     tRows += `
     <tr role="row" class="odd parent">
-      <td tabindex="0"> <input type="text" value="${docData.name}" class="editField">
-        <i class="fas fa-check"  style="margin: 3%;cursor: pointer;"></i> </td>
-      <td><img src="${imgUrl}">
+      <td tabindex="0"> <input type="text" class="editField" value="${
+        docData.name
+      }">
+        <i class="fas fa-check" style="margin: 3%;cursor: pointer;" data-id="${
+          doc.id
+        }" onclick="saveNameMainCat(event, this, null)"></i> </td>
+      <td><img src="${docData.imgUrl}">
         <br>
-        <input type="file" name="category-img" class="mybtn2" accept="image/*">
+        <input type="file"  class="mybtn2 cat-file-input" data-id="${
+          doc.id
+        }"  onchange="uploadCatFile(event)" accept="image/*">
       </td>
       <td>
-      <div class="action-list">
-      <select class="process  drop-success" style="display: block; " id="statusUpdate` + doc.id + `" onchange=statusUpdated("statusUpdate` + doc.id + `","` + doc.id + `")>
-      <option data-val="1" value="`+ dataval1 + `">` + dispVal1 + `</option>
-      <option data-val="0" value="`+ dataval2 + `">` + dispVal2 + `</option>
-      </select>
-      </div>
+        <div class="action-list">
+          <select class="process  drop-success" style="display: block;" data-id="${
+            doc.id
+          }" onchange="mainChangeState(event, this)">
+            ${displayOptions(docData.isActivated, null)}
+        </div>
       </td>
       <td>
-      <div class="godropdown">
-      <button class="go-dropdown-toggle" onclick=deleteMainCategory("`+doc.id+`")>
-        Delete
-      </button>
-     
-      </div>
+        <div class="godropdown"><button class="go-dropdown-toggle" data-id="${
+          doc.id
+        }" onclick="deleteMainCat(event)">Delete</div>
       </td>
-    </tr>
-    `;
+    </tr>`;
   }
   mainCategoryHTML.innerHTML = tRows;
 };
 
+const successMainCategory = document.querySelector("#successMainCat");
+const successSubCategory = document.querySelector("#successSubCat");
+const successChildCategory = document.querySelector("#successChildCat");
+
+const uploadCatFile = async (e) => {
+  // console.log(e);
+  let file = e.target.files[0];
+  // console.log(file);
+  let dataId = e.target.dataset.id;
+  console.log(dataId);
+  await storageService.ref(`categories/${dataId}/${file.name}`).put(file);
+  // console.log("run");
+  let imgUrl = await storageService
+    .ref(`categories/${dataId}/${file.name}`)
+    .getDownloadURL()
+    .then((url) => {
+      // console.log(url);
+      return url;
+    })
+    .catch((error) => {
+      alert(error);
+    });
+  console.log("aaa");
+  let docRef = db.collection("categories").doc(dataId);
+  docRef
+    .get()
+    .then((doc) => {
+      let docData = doc.data();
+      docData.img = file.name;
+      docData.imgUrl = imgUrl;
+
+      successMainCategory.style.display = "block";
+      setTimeout(() => {
+        successMainCategory.style.display = "none";
+      }, 3000);
+
+      docRef.update(docData);
+    })
+    .catch((error) => {
+      alert(error);
+    });
+};
+
+// document.querySelectorAll('.cat-file-input').forEach(el => {
+//   // console.log(el);
+//   el.addEventListener('change', uploadFile)
+// })
+
+const saveNameMainCat = (e, current, data) => {
+  // console.log(current.parentElement.children[0].value);
+  let newName = current.parentElement.children[0].value;
+  let docId = e.target.dataset.id;
+
+  db.collection("categories")
+    .doc(docId)
+    .update("name", newName)
+    .then(() => {
+      // console.log("updated");
+      successMainCategory.style.display = "block";
+      setTimeout(() => {
+        successMainCategory.style.display = "none";
+      }, 3000);
+    })
+    .catch((error) => {
+      alert(error);
+    });
+};
+
+const mainChangeState = (e, current) => {
+  let docId = e.target.dataset.id;
+  let dbRef = db.collection("categories").doc(docId);
+
+  dbRef
+    .get()
+    .then((doc) => {
+      let docData = doc.data();
+      // console.log(docData);
+      docData.isActivated = current.value;
+      docData.subCategory.map((sc) => {
+        sc.isActivated = current.value;
+        if (sc.childCategories) {
+          sc.childCategories.map((cc) => {
+            // console.log(cc);
+            cc.isActivated = current.value;
+          });
+        }
+      });
+      dbRef.update(docData);
+      // console.log("updated");
+      successMainCategory.style.display = "block";
+      setTimeout(() => {
+        successMainCategory.style.display = "none";
+      }, 3000);
+    })
+    .catch((error) => {
+      alert("Error", error);
+    });
+  console.log("done");
+};
+
+const deleteMainCat = (e) => {
+  let ans = confirm("Are you  sure to delete the Category");
+  if (ans) {
+    let docId = e.target.dataset.id;
+    db.collection("categories")
+      .doc(docId)
+      .delete()
+      .then(() => {
+        // console.log("Deleted");
+        successMainCategory.style.display = "block";
+        setTimeout(() => {
+          successMainCategory.style.display = "none";
+        }, 3000);
+      })
+      .catch((error) => {
+        alert("Error", error);
+      });
+  }
+};
+
 const displaySubCategories = (data) => {
-  // console.log(data)
   let tRows = "";
   data.map((doc) => {
     let docData = doc.data();
-    console.log(docData);
-    console.log(docData.subCategory.name)
-    let status=docData.isActivated;
-    var dispVal1,dispVal2,dataval1,dataval2;
-    if(status=="false"){
+    // console.log(docData);
+    // console.log(docData.subCategory.name);
 
-      dispVal1="Deactivated";
-      dispVal2="Activated";
-      dataval1="false"
-      dataval2="true"
-
-    }else{
-      dispVal1="Activated";
-      dispVal2="Deactivated";
-      dataval1="true"
-      dataval2="false"
-     
-    }
-    docData.subCategory.map(sc => {
+    docData.subCategory.map((sc) => {
       tRows += `
       <tr role="row" class="odd parent">
         <td><input type="text" class="editField" value="${sc.name}">
-          <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
+          <i class="fas fa-check" style="margin: 3%;cursor: pointer;" data-id="${
+            doc.id
+          }__${sc.id}"  onclick="saveNameSubCat(event, this, null)"></i> </td>
         <td tabindex="0">${docData.name}</i> </td>
+
         <td>
-        <div class="action-list">
-        <select class="process  drop-success" style="display: block; " id="statusUpdate` + doc.id + `" onchange=statusUpdated("statusUpdate` + doc.id + `","` + doc.id + `")>
-        <option data-val="1" value="`+ dataval1 + `">` + dispVal1 + `</option>
-        <option data-val="0" value="`+ dataval2 + `">` + dispVal2 + `</option>
-        </select>
-        </div>
+          <div class="action-list">
+            <select class="process  drop-success" style="display: block;"  data-id="${
+              doc.id
+            }__${sc.id}" onchange="subChangeState(event, this)">
+              ${displayOptions(sc.isActivated, null)}
+            </select>
+
+          </div>
         </td>
         <td>
-        <div class="godropdown">
-        <button class="go-dropdown-toggle" onclick=deleteSubCategory("`+doc.id+`","`+sc.id+`")>
-          Delete
-        </button>
-       
-        </div>
+          <div class="godropdown"><button class="go-dropdown-toggle" data-id="${
+            doc.id
+          }__${sc.id}" onclick="deleteSubCat(event)">Delete</button>
+          </div>
+
         </td>
-      </tr>
-      `;
-    }) 
-   
+      </tr>`;
+    });
   });
   subCategoryHTML.innerHTML = tRows;
 };
-function deleteMainCategory(id){
-  let ans=confirm("Are you  sure to delete the Category")
-  if(ans){
-    db.collection("categories").doc(id).delete().then(function () {
-      alert("Category successfully deleted!");
 
-    }).catch(function (error) {
-      console.error("Error removing user: ", error);
-    });
-  }
-    
-}
- function deleteSubCategory(id,subID){
-  alert(subID)
-  let ans=confirm("Are you  sure to delete the Sub-Category")
-  if(ans){
-    let subIndex;
-    db.collection("categories").doc(id).onSnapshot(doc =>{
-      let docData=doc.data();
-      docData.subCategory.map((el,index) =>{
-        console.log(el);
-        if(+el.id === +subID){
-          subIndex=index;
+const saveNameSubCat = (e, current, data) => {
+  // console.log(current.parentElement.children[0].value);
+  let newName = current.parentElement.children[0].value;
+  const [docId, subId] = e.target.dataset.id.split("__");
+  // console.log(docId, subId);
+  const dbRef = db.collection("categories").doc(docId);
+  dbRef
+    .get()
+    .then((doc) => {
+      let docData = doc.data();
+      // let stateIndex;
+      let counter = -1;
+      for (let sc of docData.subCategory) {
+        console.log(sc);
+        counter++;
+        if (+sc.id === +subId) {
+          // stateIndex = counter;
+          console.log(sc.name, newName);
+          sc.name = newName;
+          break;
         }
-      })
-      console.log(subIndex);
-
-       docData.subCategory.splice(subIndex,1);
-      //  alert(docData.subCategory)
-       if(docData.subCategory.length==0){
-         
-        docData.subCategory=[]
-       }
-       db.collection("categories").doc(id).update("subCategory", docData.subCategory)
-       alert("Done")
-
+      }
+      dbRef.update(docData);
+      // console.log("deleted");
+      successSubCategory.style.display = "block";
+      setTimeout(() => {
+        successSubCategory.style.display = "none";
+      }, 3000);
     })
-    // db.collection("categories").doc(id).delete().then(function () {
-    //   alert("Sub-Category successfully deleted!");
+    .catch((error) => {
+      alert("Error", error);
+    });
+};
 
-    // }).catch(function (error) {
-    //   console.error("Error removing user: ", error);
-    // });
+const subChangeState = (e, current) => {
+  const [docId, subId] = e.target.dataset.id.split("__");
+  console.log(docId, subId);
+  const dbRef = db.collection("categories").doc(docId);
+  dbRef
+    .get()
+    .then((doc) => {
+      let docData = doc.data();
+      let stateIndex;
+      let counter = -1;
+      for (let sc of docData.subCategory) {
+        counter++;
+        if (+sc.id === +subId) {
+          stateIndex = counter;
+          if (sc.childCategories) {
+            sc.childCategories.map((cc) => {
+              cc.isActivated = current.value;
+            });
+          }
+          break;
+        }
+      }
+
+      docData.subCategory[stateIndex].isActivated = current.value;
+      dbRef.update(docData);
+      // console.log("deleted");
+      successSubCategory.style.display = "block";
+      setTimeout(() => {
+        successSubCategory.style.display = "none";
+      }, 3000);
+    })
+    .catch((error) => {
+      alert("Error", error);
+    });
+};
+
+const deleteSubCat = (event) => {
+  console.log(event);
+  let ans = confirm("Are you  sure to delete the Category");
+  if (ans) {
+    const [docId, subId] = event.target.dataset.id.split("__");
+    console.log(docId, subId);
+    const dbRef = db.collection("categories").doc(docId);
+    dbRef
+      .get()
+      .then((doc) => {
+        let docData = doc.data();
+        let deleteIndex;
+        let counter = -1;
+        for (let sc of docData.subCategory) {
+          counter++;
+          if (+sc.id === +subId) {
+            deleteIndex = counter;
+            break;
+          }
+        }
+        docData.subCategory.splice(deleteIndex, 1);
+        dbRef.update(docData);
+        // console.log("deleted");
+        successSubCategory.style.display = "block";
+        setTimeout(() => {
+          successSubCategory.style.display = "none";
+        }, 3000);
+      })
+      .catch((error) => {
+        alert("Error", error);
+      });
   }
-    
-}
-function statusUpdated(dropId,id){
- 
-  var status=document.querySelector(`#`+dropId).value;
-  if(status=="false"){
+  console.log("done");
+};
 
-    let isActivated="false"
-    db.collection("categories").doc(id).update("isActivated", isActivated)
-    let ans=confirm("Are you sure to deactivate the product")
-    if(ans){
-      alert("Category status Updated Sucessufully")
-    }
-   
-  }else{
-
-    let isActivated="true"
-    db.collection("categories").doc(id).update("isActivated", isActivated)
-    let ans=confirm("Are you sure to Activate the product")
-    if(ans){
-      alert("Category status Updated Sucessufully")
-    }
-   
-  }
-}
 const displayChildCategories = (data) => {
-  console.log(data);
+  // console.log(data);
   let tRows = "";
   data.map((doc) => {
-    console.log(doc);
+    // console.log(doc);
     let docData = doc.data();
-    console.log(docData);
-   
     // console.log(docData);
-    docData.subCategory.map(sc => {
-      
-      sc.childCategories.map(child => {
-        let status=child.isActivated;
-        var dispVal1,dispVal2,dataval1,dataval2;
-        if(status=="false"){
-    
-          dispVal1="Deactivated";
-          dispVal2="Activated";
-          dataval1="false"
-          dataval2="true"
-    
-        }else{
-          dispVal1="Activated";
-          dispVal2="Deactivated";
-          dataval1="true"
-          dataval2="false"
-         
-        }
+    docData.subCategory.map((sc) => {
+      sc.childCategories.map((child) => {
+        // console.log(child.isActivated);
         tRows += `
         <tr role="row" class="odd parent">
           <td><input type="text" class="editField" value="${child.name}">
-            <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
-          <td tabindex="0">${sc.name} </td>
+            <i class="fas fa-check" style="margin: 3%;cursor: pointer;" data-id="${
+              doc.id
+            }__${sc.id}__${
+          child.id
+        }" onclick="saveNameChildCat(event, this, null)"></i> </td>
+          <td tabindex="0">${sc.name}</td>
           <td>${docData.name} </td>
+
           <td>
-          <div class="action-list">
-            <select class="process  drop-success" style="display: block; " id="statusSubUpdate` + doc.id + `" onchange=statusChildUpdated("statusUpdate` + doc.id + `","` + doc.id + `","`+sc.id+`","`+child.id+`")>
-            <option data-val="1" value="`+ dataval1 + `">` + dispVal1 + `</option>
-            <option data-val="0" value="`+ dataval2 + `">` + dispVal2 + `</option>
-            </select>
-          </div>
+            <div class="action-list">
+              <select class="process  drop-success" style="display: block;" data-id="${
+                doc.id
+              }__${sc.id}__${
+          child.id
+        }" onchange="childChangeState(event, this)">
+                ${displayOptions(child.isActivated, null)}
+              </select>
+            </div>
           </td>
           <td>
-          <div class="godropdown">
-          <button class="go-dropdown-toggle" )>
-            Delete
-          </button>
-         
-          </div>
+            <div class="godropdown"><button data-id="${doc.id}__${sc.id}__${
+          child.id
+        }" onclick="deleteChildCat(event)" class="go-dropdown-toggle">Delete</button>
+            </div>
           </td>
         </tr>
         `;
-      })
-
-    })
-
-
+      });
+    });
   });
   childCategoryHTML.innerHTML = tRows;
 };
-function deleteChildCategory(id){
-  let ans=confirm("Are you  sure to delete the Child Category")
-  if(ans){
-    db.collection("categories").doc(id).delete().then(function () {
-      console.log("Child Category successfully deleted!");
 
-    }).catch(function (error) {
-      console.error("Error removing user: ", error);
-    });
-  }
-    
-}
-function statusMainUpdated(dropId,id){
- 
-  var status=document.querySelector(`#`+dropId).value;
-  if(status=="false"){
+const saveNameChildCat = (e, current, data) => {
+  // console.log(current.parentElement.children[0].value);
+  let newName = current.parentElement.children[0].value;
+  const stateInfo = e.target.dataset.id;
+  const [docId, subId, childId] = stateInfo.split("__");
+  console.log(docId, subId, childId);
+  let docRef = db.collection("categories").doc(docId);
 
-    let isActivated="false"
-    db.collection("categories").doc(id).update("isActivated", isActivated)
-    let ans=confirm("Are you sure to deactivate the product")
-    if(ans){
-      alert("Category status Updated Sucessufully")
-    }
-   
-  }else{
-
-    let isActivated="true"
-    db.collection("categories").doc(id).update("isActivated", isActivated)
-    let ans=confirm("Are you sure to Activate the product")
-    if(ans){
-      alert("Category status Updated Sucessufully")
-    }
-   
-  }
-}
-
-function statusSubUpdated(dropId,id){
- 
-  var status=document.querySelector(`#`+dropId).value;
-  if(status=="false"){
-
-    let isActivated="false"
-    db.collection("categories").doc(id).update("isActivated", isActivated)
-    let ans=confirm("Are you sure to deactivate the product")
-    if(ans){
-      alert("Category status Updated Sucessufully")
-    }
-   
-  }else{
-
-    let isActivated="true"
-    db.collection("categories").doc(id).update("isActivated", isActivated)
-    let ans=confirm("Are you sure to Activate the product")
-    if(ans){
-      alert("Category status Updated Sucessufully")
-    }
-   
-  }
-}
-function statusChildUpdated(dropId,docid,subId,childId){
-  
-  var status=document.querySelector(`#`+dropId).value;
-  
-  if(status=="false"){
-    alert("false")
-    let docref=db.collection("categories").doc(docid);
-    docref.onSnapshot(doc =>{
-      let docData=doc.data();
-
-      for(let sc of docData.subCategory){
-        
-        console.log(sc);
-        if(+sc.id === +subId){
-          for(let cc of sc.childCategories){
-            console.log(cc);
-            if(+cc.id === +childId){
-              cc.isActivated="true"
-              docref.update(docData)
-              alert("Status Changed")
+  docRef
+    .get()
+    .then((doc) => {
+      let docData = doc.data();
+      // console.log(docData);
+      let stateIndex;
+      for (let sc of docData.subCategory) {
+        if (+sc.id === +subId) {
+          let counter = -1;
+          for (let cc of sc.childCategories) {
+            counter++;
+            if (+cc.id === +childId) {
+              sc.childCategories[counter].name = newName;
               break;
             }
           }
         }
-       
       }
+      docRef.update(docData);
+      // console.log("updated");
+      successChildCategory.style.display = "block";
+      setTimeout(() => {
+        successChildCategory.style.display = "none";
+      }, 3000);
     })
-
-    // let isActivated="false"
-    // // db.collection("categories").doc(docid).update("isActivated", isActivated)
-    // let ans=confirm("Are you sure to deactivate the product")
-    // if(ans){
-    //   alert("Category status Updated Sucessufully")
-    // }
-   
-  }else{
-    alert(8)
-    let isActivated="true"
-    db.collection("categories").doc(id).update("isActivated", isActivated)
-    let ans=confirm("Are you sure to Activate the product")
-    if(ans){
-      alert("Category status Updated Sucessufully")
-    }
-   
-  }
-}
-const extractData = async () => {
-  let allCategoreis;
-
-  await db
-    .collection("categories")
-    .get()
-    .then((snapshot) => {
-      const snapshotDocs = snapshot.docs;
-      allCategoreis = snapshotDocs;
+    .catch((error) => {
+      alert("Error", error);
     });
-  // console.log(allCategoreis);
-  return allCategoreis;
 };
 
-extractData()
-  .then((response) => {
-    // console.log(response);
-    displayCategories(response);
-    displaySubCategories(response);
-    displayChildCategories(response);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+const childChangeState = (e, current) => {
+  // console.log(e, current.value);
+  const stateInfo = e.target.dataset.id;
+  const [docId, subId, childId] = stateInfo.split("__");
+  console.log(docId, subId, childId);
+  let docRef = db.collection("categories").doc(docId);
+
+  docRef
+    .get()
+    .then((doc) => {
+      let docData = doc.data();
+      // console.log(docData);
+      let stateIndex;
+      for (let sc of docData.subCategory) {
+        if (+sc.id === +subId) {
+          let counter = -1;
+          for (let cc of sc.childCategories) {
+            counter++;
+            if (+cc.id === +childId) {
+              stateIndex = counter;
+              break;
+            }
+          }
+          if (stateIndex) {
+            sc.childCategories[stateIndex].isActivated = current.value;
+            break;
+          }
+        }
+      }
+      docRef.update(docData);
+      // console.log("changed");
+      successChildCategory.style.display = "block";
+      setTimeout(() => {
+        successChildCategory.style.display = "none";
+      }, 3000);
+    })
+    .catch((error) => {
+      alert("Error", error);
+    });
+};
+
+const deleteChildCat = (event) => {
+  const ans = confirm("Are you  sure to delete the Child-Category");
+  if (ans) {
+    const deleteInfo = event.target.dataset.id;
+    // console.log(deleteInfo);
+    const [docId, subId, childId] = deleteInfo.split("__");
+    // console.log(docId, subId, childId);
+    let docRef = db.collection("categories").doc(docId);
+
+    docRef
+      .get()
+      .then((doc) => {
+        let docData = doc.data();
+        // console.log(docData);
+        let deleteIndex;
+        for (let sc of docData.subCategory) {
+          if (+sc.id === +subId) {
+            let counter = -1;
+            for (let cc of sc.childCategories) {
+              counter++;
+              if (+cc.id === +childId) {
+                deleteIndex = counter;
+                break;
+              }
+            }
+            if (deleteIndex) {
+              sc.childCategories.splice(deleteIndex, 1);
+              break;
+            }
+          }
+        }
+        docRef.update(docData);
+        // console.log("deleted");
+        successChildCategory.style.display = "block";
+        setTimeout(() => {
+          successChildCategory.style.display = "none";
+        }, 3000);
+      })
+      .catch((error) => {
+        alert("Error", error);
+      });
+    console.log("done");
+  }
+};
+
+db.collection("categories").onSnapshot((snapshot) => {
+  let allCategoreis;
+  const snapshotDocs = snapshot.docs;
+  allCategoreis = snapshotDocs;
+  displayCategories(allCategoreis);
+  displaySubCategories(allCategoreis);
+  displayChildCategories(allCategoreis);
+});
