@@ -165,7 +165,13 @@ const addCategory = (event) => {
         childCategories: childCategories,
         isActivated: true,
       });
+      document.getElementById("successCategory").innerHTML="Category Updated Successfully"
+      document.getElementById("successCategory").style.display="block";
+      setTimeout(function(){
+        document.getElementById("successCategory").style.display="none";
+      },3000)
 
+      // con
       addCategoryForm.reset();
       await docRef.update(docData);
     });
@@ -186,6 +192,12 @@ const addCategory = (event) => {
           sc.childCategories.push(...childCategories);
         }
       })
+      document.getElementById("successCategory").innerHTML="Category Updated Successfully"
+      document.getElementById("successCategory").style.display="block";
+      setTimeout(function(){
+        document.getElementById("successCategory").style.display="none";
+      },3000)
+
       addCategoryForm.reset();
       await docRef.update(docData);
     });
@@ -216,7 +228,12 @@ const addCategory = (event) => {
         console.log(docData);
         await docRef.update(docData);
       })
-      console.log('done');
+
+      document.getElementById("successCategory").innerHTML="Category Added Successfully"
+      document.getElementById("successCategory").style.display="block";
+      setTimeout(function(){
+        document.getElementById("successCategory").style.display="none";
+      },3000)
 
       // console.log(response);
       addCategoryForm.reset();
