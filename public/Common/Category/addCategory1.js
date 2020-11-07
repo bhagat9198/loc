@@ -81,10 +81,17 @@ subCategoryNameDropdownHTML.addEventListener('change', e => {
 const addCategory = (event) => {
   // event.preventDefault();
   event.preventDefault();
-  const categoryName = addCategoryForm["category-name"].value;
+  let lower;
+  let categoryName = addCategoryForm["category-name"].value;
   // console.log(categoryName);
-  const subCategoryName = addCategoryForm["sub-category-name"].value;
+  lower = categoryName.toLowerCase();
+  categoryName = categoryName.charAt(0).toUpperCase() + lower.slice(1);
+
+  let subCategoryName = addCategoryForm["sub-category-name"].value;
   // console.log(subCategoryName);
+  lower = subCategoryName.toLowerCase();
+  subCategoryName = subCategoryName.charAt(0).toUpperCase() + lower.slice(1);
+
   const categoryNameOption = addCategoryForm['category-name-dropdown'].value;
   // console.log(categoryNameOption);
   const subCategoryNameOption = addCategoryForm['sub-category-name-dropdown'].value;
@@ -95,8 +102,12 @@ const addCategory = (event) => {
     .querySelectorAll('input[name="child-category"]')
     .forEach((childCategory) => {
       // console.log(childCategory);
+      let childName = childCategory.value;
+      lower = childName.toLowerCase();
+      childName = childName.charAt(0).toUpperCase() + lower.slice(1);
+
       childCategories.push({
-        name: childCategory.value,
+        name: childName,
         id: Math.floor(1000000000000000 + Math.random() * 9000000000),
         isActivated: true,
       });

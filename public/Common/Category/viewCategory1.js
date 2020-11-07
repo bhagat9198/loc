@@ -69,7 +69,7 @@ const displayCategories = async (data) => {
 };
 
 const displaySubCategories = (data) => {
-  console.log(data)
+  // console.log(data)
   let tRows = "";
   data.map((doc) => {
     let docData = doc.data();
@@ -190,6 +190,7 @@ function statusUpdated(dropId,id){
   }
 }
 const displayChildCategories = (data) => {
+  console.log(data);
   let tRows = "";
   data.map((doc) => {
     let docData = doc.data();
@@ -236,6 +237,9 @@ const displayChildCategories = (data) => {
       </tr>
       `;
     })
+    // docData.subCategory.childCategories.map(child => {
+      
+    // })
   });
   childCategoryHTML.innerHTML = tRows;
 };

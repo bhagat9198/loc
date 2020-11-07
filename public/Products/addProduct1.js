@@ -209,6 +209,10 @@ const addProductForm = (event) => {
   productGST = addProduct["product-gst"].value;
   productTotalPrice = addProduct["product-total-price"].value;
 
+  let lower;
+  lower = productName.toLowerCase();
+  productName = productName.charAt(0).toUpperCase() + lower.slice(1);
+
   // addProduct
   //   .querySelectorAll('input[name="product-addon"]:checked')
   //   .forEach((addon) => {
@@ -473,14 +477,27 @@ productSubImgsHandler.addEventListener("change", uploadSubImgs);
 
 const calculate = (e) => {
   // console.log(e.target.value);
+  let sp = addProduct.querySelector("#product-sp");
+  let gst = addProduct.querySelector("#product-gst");
+  let total = addProduct.querySelector("#product-total-price");
+  // console.log(sp.value);
+  // console.log(gst.value);
+  if(sp.value && gst.value) {
+    // console.log(sp.value, gst.value);
+    // console.log(typeof(+sp.value), typeof(+gst.value));
+    total.value = +sp.value + (+sp.value * +(gst.value/100));
+    // total.innerHTML = +sp * (+sp + +gst*100);
+    console.log(+sp * (+sp + +gst*100));
+  }
 };
 
-addProduct.querySelector("#product-mrp").addEventListener("keyup", calculate);
+
 addProduct.querySelector("#product-sp").addEventListener("keyup", calculate);
 addProduct.querySelector("#product-gst").addEventListener("keyup", calculate);
 
-addProduct.addEventListener("keypress", function (event) {
-  if (event.keyCode == 13) {
-    event.preventDefault();
-  }
-});
+// addProduct.addEventListener("keypress", function (event) {
+//   if (event.keyCode == 13) {
+//     event.preventDefault();
+//   }
+
+// });
