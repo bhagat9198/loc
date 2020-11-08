@@ -59,7 +59,6 @@ extractCategories()
 const displaySubCategory = async (data, elHTML) => {
   // console.log(data);
   let docId = data.substring(0, 20);
-  let docCat = data.substring(22);
   let options =
     '<option selected disabled value="">Select Sub Category*</option>';
   let dbRef = await db.collection("categories").doc(docId);
@@ -96,8 +95,9 @@ const displayChildCategory = async (data, elHTML) => {
   // console.log(data);
   docId = data.substring(0, 20);
   // console.log(docId);
-  scId = data.substring(22, 38);
-  // console.log(scId);
+  // scId = data.substring(22, 38);
+  scId = data.split('__')[1];
+  console.log(scId);
 
   let dbRef = await db.collection("categories").doc(docId);
 
@@ -134,18 +134,18 @@ productSubCategoryHTML.addEventListener("change", (e) => {
   displayChildCategory(e.target.value, productChildCategoryHTML);
 });
 
-const displayAddons = (data) => {
-  let addon = "";
-  // console.log(data);
-  data.map((doc) => {
-    let docData = doc.data();
-    // console.log(docData);
-    addon += `
-    <h5 class="addon"><input type="checkbox" name="product-addon" value="${doc.id}__${docData.name}" class="addon">&nbsp;${docData.name}</h5><br>
-    `;
-  });
-  allAddonsHTML.innerHTML = addon;
-};
+// const displayAddons = (data) => {
+//   let addon = "";
+//   // console.log(data);
+//   data.map((doc) => {
+//     let docData = doc.data();
+//     // console.log(docData);
+//     addon += `
+//     <h5 class="addon"><input type="checkbox" name="product-addon" value="${doc.id}__${docData.name}" class="addon">&nbsp;${docData.name}</h5><br>
+//     `;
+//   });
+//   allAddonsHTML.innerHTML = addon;
+// };
 
 // const extractAddons = async () => {
 //   let addonsData;
@@ -223,6 +223,7 @@ const addProductForm = (event) => {
   // addProduct.querySelectorAll('input[name="product-tag"]').forEach((tag) => {
   //   productTags.push(tag.value);
   // });
+
   productTags = addProduct["product-tag"].value;
   console.log(productTags);
 
@@ -316,9 +317,6 @@ const addProductForm = (event) => {
     wholeCategory: productCategory,
     wholeSubCategory: productSubCategory,
     wholeChildCategory: productChildCategory,
-    category: productCategory.split('__')[1],
-    subCategory: productSubCategory.split('__')[2],
-    childCategory: productChildCategory.split('__')[3],
     mrp: productMRP,
     sp: productSP,
     gst: productGST,
@@ -328,7 +326,6 @@ const addProductForm = (event) => {
     policy: productPolicy,
     mainImg: productMainImg,
     subImgs: productSubImgs,
-    addons: productAddons,
     isActivated: true,
   };
 
@@ -340,9 +337,9 @@ const addProductForm = (event) => {
   }
 
   console.log(wholeProduct);
-  let c = wholeProduct.wholeSubCategory.substring(43);
+  // let c = wholeProduct.wholeSubCategory.substring(43);
   // console.log(c);
-  let cc = wholeProduct.wholeChildCategory.substring(63);
+  // let cc = wholeProduct.wholeChildCategory.substring(63);
   // console.log(cc);
 
   async function addProductFun(data) {
@@ -350,7 +347,7 @@ const addProductForm = (event) => {
     // console.log(data.category, typeof data.category);
     let dataId, prodData;
     await db
-      .collection(data.category)
+      .collection(data.wholeCategory.split('__')[0])
       .add(data)
       .then((dataSaved) => {
         // console.log(dataSaved.id);
@@ -368,29 +365,25 @@ const addProductForm = (event) => {
       if (mainImg) {
         await storageService
           .ref(
-            `${response.prodData.category}/${response.dataId}/${response.prodData.mainImg}`
+            `${response.prodData.wholeCategory.split('__')[0]}/${response.dataId}/${response.prodData.mainImg}`
           )
           .put(mainImg);
       }
 
-      let counter = -1;
-
-      const upload = (subImgs) => {
+      let counter;
+      if(subImgs) {
+        counter = -1;
         for (let img of subImgs) {
           counter++;
           // console.log(img);
           let name = [...response.prodData.subImgs][counter];
           let id = response.dataId;
-          storageService
-            .ref(`${response.prodData.category}/${id}/${name}`)
+          await storageService
+            .ref(`${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`)
             .put(img);
           // console.log(counter);
         }
       };
-
-      if (subImgs) {
-        upload(subImgs);
-      }
 
       async function extractImgUrl(imgPath) {
         let imgUrl;
@@ -403,14 +396,13 @@ const addProductForm = (event) => {
           .catch((err) => {
             imgUrl = err;
           });
-
         return imgUrl;
       }
 
       let mainUrl;
       if (mainImg) {
         mainUrl = await extractImgUrl(
-          `${response.prodData.category}/${response.dataId}/${response.prodData.mainImg}`
+          `${response.prodData.wholeCategory.split('__')[0]}/${response.dataId}/${response.prodData.mainImg}`
         );
       }
       console.log(mainUrl);
@@ -423,7 +415,7 @@ const addProductForm = (event) => {
           let name = [...response.prodData.subImgs][counter];
           let id = response.dataId;
           let url = await extractImgUrl(
-            `${response.prodData.category}/${id}/${name}`
+            `${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`
           );
           subUrls.push(url);
         }
@@ -431,7 +423,7 @@ const addProductForm = (event) => {
       console.log(subUrls);
 
       let docRef = await db
-        .collection(`${response.prodData.category}`)
+        .collection(`${response.prodData.wholeCategory.split('__')[0]}`)
         .doc(response.dataId);
       // console.log(docRef);
       docRef.get().then(async (snapshot) => {
@@ -504,7 +496,7 @@ const calculate = (e) => {
   if(sp.value && gst.value) {
     // console.log(sp.value, gst.value);
     // console.log(typeof(+sp.value), typeof(+gst.value));
-    total.value = +sp.value + (+sp.value * +(gst.value/100));
+    total.value = Math.round(+sp.value + (+sp.value * +(gst.value/100)));
     // total.innerHTML = +sp * (+sp + +gst*100);
     console.log(+sp * (+sp + +gst*100));
   }
