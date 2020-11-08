@@ -173,7 +173,7 @@ const deleteProduct = (e) => {
       // console.log('all deleted');
       extractData();
     }).catch(error => {
-      alert('aaaaa');
+     
       alert('error', error);
       console.log(error);
     })
@@ -190,7 +190,7 @@ const extractData = async () => {
         allCategoriesData.push({ data: docData, id: doc.id });
       });
     });
-
+    
   const displayAllCat = document.querySelector("#displayAllCat");
   let tRows = "";
   $("#displayAllCat").empty();
@@ -200,7 +200,7 @@ const extractData = async () => {
       <a class="scrollTo" href="#${cat.id}">${cat.data.name.toUpperCase()}</a>
     </li>`;
 
-    $("#tbody" + cat.id).empty();
+    $("#tbody"+cat.id).empty();
     tRows = "";
     displayAllCat.innerHTML += `
     <div class="product-area" id="${cat.id}" style="padding-top:0px;">
@@ -245,41 +245,7 @@ const extractData = async () => {
             </div>
         </div>
     </div>
-          <div class="alert alert-success validation" style="display: none;">
-            <button type="button" class="close alert-close"><span>×</span></button>
-            <p class="text-left"></p>
-          </div>
-          <div class="table-responsive` +
-      cat +
-      `" style="overflow-x:auto">
-          
-            <table id="myTable` +
-      cat +
-      `" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-              <div class="row btn-area">
-              </div>
-              <thead>
-                <tr>
-                  <th>Product Name</th>
-                  <th>Image</th>
-                  <th>Sub-Category</th>
-                  <th>Child-Category</th>
-                  <th>Price</th>
-                  <th>Status</th>
-                  <th>Options</th>
-                </tr>
-              </thead>
-              <tbody id="tbody`+cat+`">
-               <tr>
-                <td>Loading Rows......Please Wait</td>
-               </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        
   <br>
         
     `;
@@ -644,21 +610,32 @@ const editDetails = async (e) => {
       <img id="putImage" src="${mImgUrl}" alt=" image" />
       `;
       mainImgSpanHTML.innerHTML = mImg;
-      $("#productDesc").summernote("reset");
-      $("#productPolicy").summernote("reset");
-      var productDescDetail = document.createElement('div');
+      $(".textarea1").summernote("reset");
+      $(".textarea2").summernote("reset");
+      // $("#productDesc").summernote(
+      //   "pasteHTML", ""
 
-      productDescDetail.innerHTML = doc.descriptions;
+      // );
+      // $("#productPolicy").summernote(
+      //   "pasteHTML", ""
 
+      // );
+      // productDescDetail.innerHTML=""
+      // var productDescDetail = document.createElement('div');
+
+      // productDescDetail.innerHTML = doc.descriptions;
+      // alert(doc.descriptions)
+      alert(doc.descriptions)
+      alert(doc.policy)
       $("#productDesc").summernote(
-        "pasteHTML", doc.descriptions
+        "editor.pasteHTML", doc.descriptions
 
       );
       $("#productPolicy").summernote(
-        "pasteHTML", doc.policy
+        "editor.pasteHTML", doc.policy
 
       );
-
+      
       document.getElementById("setCat").value = doc.tags;
 
       tagger(document.querySelector("#setCat"), {
@@ -685,6 +662,7 @@ const editDetails = async (e) => {
 let subImgs, mainImg;
 
 const submitEditForm = (event) => {
+
   // console.log(editProduct);
   let editProduct = document.querySelector("#add-product");
   // console.log("edit form submit");
@@ -837,7 +815,8 @@ const submitEditForm = (event) => {
     });
   }
   console.log(productSubImgs);
-
+  // alert(productDescription)
+  // alert(productPolicy)
   let wholeProduct = {
     name: productName,
     sno: productSno,
@@ -975,7 +954,7 @@ const submitEditForm = (event) => {
       // document.querySelector('#product-main-image').value = "";
       // document.querySelector('#product-sub-imgs').value = "";
       editProduct.reset();
-      extractData();
+      // extractData();
       console.log("edit done");
       // $('#editProductModal').modal('hide');
       // $('#editProductModal').close();

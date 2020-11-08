@@ -37,7 +37,22 @@
   .table-responsive {
     margin: 30px 0;
   }
-
+  .modal-fullscreen {
+  padding: 0 !important;
+}
+.modal-fullscreen .modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.modal-fullscreen .modal-content {
+  height: auto;
+  min-height: 100%;
+  border: 0 none;
+  border-radius: 0;
+  box-shadow: none;
+}
   .table-wrapper {
     min-width: 1000px;
     background: #fff;
@@ -294,9 +309,9 @@
     </div>
   </div>
   <!-- <div id="snackbar">Please wait ...Updating the data</div> -->
-  <div id="editProductModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel2">
+  <div id="editProductModal" class="modal modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel2">
     <div class="modal-dialog modal-lg .modal-dialog-scrollable " role="document">
-      <div class="modal-content" style="width: 1000px;">
+      <div class="modal-content" style="padding: 0px !important;">
         <div class="modal-header">
           <h4 class="modal-title" id="gridModalLabel2">Edit Product </h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
