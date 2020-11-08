@@ -296,6 +296,8 @@ const extractData = async () => {
     if (tRows != "") {
       tbodys.innerHTML = tRows;
     } else {
+
+      $('#tbodys').empty();
       tbodys.innerHTML =
         '<h3 class="responsive-text" style="text-align:center;font-weight:700;padding:5px">OoPS!!! No Data Found</h3>';
     }
@@ -367,6 +369,7 @@ const extractDetails = async (e, current) => {
       }
 
       console.log(imgsPath);
+      pImgsHTML.innerHTML = '';
       imgsPath.map((i) => {
         pImgsHTML.innerHTML += `
         <div class="col-lg-2">
@@ -380,6 +383,9 @@ const extractDetails = async (e, current) => {
     });
 };
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // edit
 
 const editModal = document.querySelector("#editProductModal");
@@ -518,19 +524,10 @@ const editDetails = async (e) => {
       let wcat = `${catData.cId}__${catData.cname}`;
       let wscat = `${catData.cId}__${catData.scId}__${catData.scname}`;
       let ccat = `${catData.cId}__${catData.scId}__${catData.ccId}__${catData.ccname}`;
-      // console.log(wcat, wscat, ccat);
-
-      // console.log(catId);
 
       await catSelect(wcat);
       await subCatSelect( wscat);
       await childCatSelect(ccat);
-
-      // console.log(editProduct["product-sub-category"]);
-      // editProduct["product-category"].value = wcat.
-      // editProduct["product-sub-category"].value = wscat;
-      // editProduct["product-child-category"].value = ccat;
-
       if (doc.wholeCategory.toUpperCase().includes("CAKE")) {
         document.getElementById("cake-attributes").style.display = "block";
         if (doc.weights) {
@@ -616,22 +613,32 @@ const editDetails = async (e) => {
 
       // console.log(putImg);
       $("#galleryImagesDisp").empty();
-      for (var i = 0; i < doc.subImgs.length; i++) {
-        let sImgUrl = doc.subImgsUrl[i];
-        galleryImages.innerHTML += `
-        <div class="img gallery-img" id="images${i}" style="padding:5px">
-            <span class="remove-img2" onclick=deleteImage('images${i}')>
-              <i class="fas fa-times" data-id="${snapshot.id}__${doc.subImgs[i]}" ></i>
-              <input type="hidden" />
-            </span>
-            <a href="#">
-            <img src="${sImgUrl}" class="subImgTag" width="130"  style="object-ft:cover" alt="${doc.subImgs[i]}">;
-            </a>
-         </div>
+      if(doc.subImgs) {
+        for (var i = 0; i < doc.subImgs.length; i++) {
+          let sImgUrl = doc.subImgsUrl[i];
+          galleryImages.innerHTML += `
+          <div class="img gallery-img" id="images${i}" style="padding:5px">
+              <span class="remove-img2" data-imgid="images${i}" onclick="deleteImage(event)">
+                <i class="fas fa-times" data-id="${snapshot.id}__${doc.subImgs[i]}" ></i>
+                <input type="hidden" />
+              </span>
+              <a href="#">
+              <img src="${sImgUrl}" class="subImgTag" width="130"  style="object-ft:cover" alt="${doc.subImgs[i]}">;
+              </a>
+          </div>
 
-        `;
+          `;
+        }
       }
       let mImgUrl = doc.mainImgUrl;
+
+      const deleteImage = e => {
+        console.log(e);
+        const imgId = e.target.dataset.imgid;
+        console.log(imgId);
+        $('#' + imgId).remove();
+
+      }
 
       let mImg = `
       <img id="putImage" src="${mImgUrl}" alt=" image" />
@@ -818,6 +825,7 @@ const submitEditForm = (event) => {
     document.querySelectorAll(".subImgTag").forEach((el) => {
       // console.log(el.alt);
       productSubImgs.push(el.alt);
+      suburlss.push(el.src);
     });
   } else {
     // productSubImgs = editProductDetails.subImgs;
@@ -920,10 +928,10 @@ const submitEditForm = (event) => {
           let id = response.dataId;
           // await uploadImg(id, name, img);
           await storageService
-            .ref(`${response.prodData.category}/${id}/${name}`)
+            .ref(`${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`)
             .put(img);
           let subUrl = await extractImgUrl(
-            `${response.prodData.category}/${id}/${name}`
+            `${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`
           );
           console.log(subUrl);
           subImgsUrl.push(subUrl);
