@@ -26361,7 +26361,7 @@ nav button {
     -o-transition: 0.26s ease-in;
     transition: 0.26s ease-in;
     background-attachment: scroll;
-    
+  
     
     
 }
@@ -26377,6 +26377,9 @@ nav button {
     -moz-transition: 0.3s ease-in;
     -o-transition: 0.3s ease-in;
     transition: 0.3s ease-in;
+    width:370px;
+    height:200px;
+    object-fit:cover;
 }
 
 .banner-effect:hover img {
