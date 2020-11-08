@@ -1,4 +1,4 @@
-console.log('viewproduct1.js');
+
 
 const storageService = firebase.storage();
 const db = firebase.firestore();
@@ -25,24 +25,24 @@ async function displayRows(dd) {
     // console.log(docData);
     let id = d.id;
     let cat = docData.category;
-    let status=docData.isActivated;
-    var dispVal1,dispVal2,dataval1,dataval2;
-    
-    if(status=="false"){
+    let status = docData.isActivated;
+    var dispVal1, dispVal2, dataval1, dataval2;
 
-      dispVal1="Deactivated";
-      dispVal2="Activated";
-      dataval1="false"
-      dataval2="true"
+    if (status == "false") {
 
-    }else{
-      dispVal1="Activated";
-      dispVal2="Deactivated";
-      dataval1="true"
-      dataval2="false"
-     
+      dispVal1 = "Deactivated";
+      dispVal2 = "Activated";
+      dataval1 = "false"
+      dataval2 = "true"
+
+    } else {
+      dispVal1 = "Activated";
+      dispVal2 = "Deactivated";
+      dataval1 = "true"
+      dataval2 = "false"
+
     }
-    let imgUrl =docData.mainImgUrl;
+    let imgUrl = docData.mainImgUrl;
     tRows +=
       `
     <tr role="row" class="odd parent">
@@ -52,9 +52,9 @@ async function displayRows(dd) {
         <td>${docData.childCategory}</td>
         <td>${docData.totalPrice}</td>
         <td>
-          <div class="action-list"><select class="process  drop-success" style="display: block; " id="statusUpdate` +id +`" onchange=statusUpdated("statusUpdate` +id+ `","`+id+`","`+cat+`")>
-              <option data-val="1" value="`+dataval1+`">`+dispVal1+`</option>
-              <option data-val="0" value="`+dataval2+`">`+dispVal2+`</option>
+          <div class="action-list"><select class="process  drop-success" style="display: block; " id="statusUpdate` + id + `" onchange=statusUpdated("statusUpdate` + id + `","` + id + `","` + cat + `")>
+              <option data-val="1" value="`+ dataval1 + `">` + dispVal1 + `</option>
+              <option data-val="0" value="`+ dataval2 + `">` + dispVal2 + `</option>
             </select>
           </div>
         </td>
@@ -92,39 +92,40 @@ async function displayRows(dd) {
   // console.log(tRows);
   return tRows;
 }
+function statusUpdated(dropId, id, cat) {
 
-function statusUpdated(dropId,id,cat){ 
-  var status=document.querySelector(`#`+dropId).value;
-  if(status=="false"){
-    let isActivated="false"
-    let ans=confirm("Are you sure to deactivate the product")
-    if(ans){
+  var status = document.querySelector(`#` + dropId).value;
+  if (status == "false") {
+
+    let isActivated = "false"
+
+    let ans = confirm("Are you sure to deactivate the product")
+    if (ans) {
       db.collection(cat).doc(id).update("isActivated", isActivated)
       alert("Product status Updated Sucessufully")
-    }else{
-    
+    } else {
+
 
 
     }
-   
-  }else{
 
-    let isActivated="true"
-   
-    let ans=confirm("Are you sure to Activate the product")
-    if(ans){
+  } else {
+
+    let isActivated = "true"
+
+    let ans = confirm("Are you sure to Activate the product")
+    if (ans) {
       db.collection(cat).doc(id).update("isActivated", isActivated)
       alert("Product status Updated Sucessufully")
-    }else{
+    } else {
       // document.getElementById(dropId).value="Deactivated"
-     
+
     }
-   
+
   }
 }
-
 async function deleteProduct(cat, prid) {
-  const answer = confirm("Are you sure to delete the product");
+  var answer = confirm("Are you sure to delete the product");
   if (answer) {
     var docData;
     let imgsPath = [];
@@ -149,7 +150,7 @@ async function deleteProduct(cat, prid) {
             }
 
             for (let i of imgsPath) {
-              
+
               var desertRef = await firebase.storage().refFromURL(i);
 
               desertRef
@@ -187,12 +188,12 @@ async function deleteProduct(cat, prid) {
                 console.error("Error removing document: ", error);
               });
           }
+
           // Delete the file
         });
       });
   }
 }
-
 const extractData = async () => {
   let allCategoriesNames = [];
   await db
@@ -210,26 +211,49 @@ const extractData = async () => {
   let tRows = "";
   $("#displayAllCat").empty();
   for (let cat of allCategoriesNames.reverse()) {
-    productNav.innerHTML +=`
-    <li style="padding: 10px;list-style:square;margin:auto 2%">
-      <a class="scrollTo" href="#${cat}">${cat.toUpperCase()}</a>
-    </li>`;
-
+    productNav.innerHTML +=
+      `
+        <li style="padding: 10px;list-style:square;margin:auto 2%">
+         <a class="scrollTo" href="#` +
+      cat +
+      `">` +
+      cat.toUpperCase() +
+      `</a>
+        </li>
+         `;
     $("#tbody" + cat).empty();
+    let mainHeading = cat.toUpperCase();
     tRows = "";
+    displayAllCat.innerHTML +=
+      `
+    
+    <div class="product-area" id=` +
+      cat +
+      ` style="padding-top:0px;">
 
-    displayAllCat.innerHTML +=`
-    <div class="product-area" id="${cat}" style="padding-top:0px;">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="mr-table allproduct">
-            <div class="table-title">
-              <div class="row">
-                <div class="col-sm-5"><h2> ${cat} </h2></div>
-                <div class="col-sm-7">
-                  <a  class="btn btn-secondary" id="myInput${cat}" class="searchBar" onclick=myFunction("myInput${cat}","myTable${cat}","table-responsive${cat}")><i class="material-icons" style="color:black">&#xE147;</i>
+    <div class="row">
+      <div class="col-lg-12">
+      
+        <div class="mr-table allproduct">
+        <div class="table-title">
+        <div class="row">
+            <div class="col-sm-5">
+                <h2>` +
+      cat +
+      `</h2>
+            </div>
+            <div class="col-sm-7">
+                <a  class="btn btn-secondary" id="myInput` +
+      cat +
+      `" class="searchBar" onclick=myFunction("myInput` +
+      cat +
+      `","myTable` +
+      cat +
+      `","table-responsive` +
+      cat +
+      `")><i class="material-icons" style="color:black">&#xE147;</i>
                     <span style="color:black">Enable Attribute</span></a>
-                  <a class="btn btn-secondary"><i class="material-icons" style="color:black">&#xE24D;</i>
+                <a class="btn btn-secondary" onclick=createPDF("myTable`+cat+`")><i class="material-icons" style="color:black">&#xE24D;</i>
                     <span style="color:black">Export to Pdf</span></a>
             </div>
         </div>
@@ -240,67 +264,59 @@ const extractData = async () => {
           </div>
           <div class="table-responsive` +
       cat +
-      `">
+      `" style="overflow-x:auto">
           
             <table id="myTable` +
       cat +
-      `" class="table-responsive table-hover dt-responsive" cellspacing="0" width="100%">
+      `" class="table table-hover dt-responsive" cellspacing="0" width="100%">
               <div class="row btn-area">
               </div>
-            </div>
-            <div class="alert alert-success validation" style="display: none;">
-              <button type="button" class="close alert-close"><span>×</span></button>
-              <p class="text-left"></p>
-            </div>
-            <div class="table-responsive${cat}">
-              <table id="myTable${cat}" class="table-responsive table-hover dt-responsive" cellspacing="0" width="100%">
-                <div class="row btn-area"></div>
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Image</th>
-                    <th>Sub-Category</th>
-                    <th>Child-Category</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                    <th>Options</th>
-                  </tr>
-                </thead>
-                <tbody id="tbody${cat}">
-                  <tr>
-                    <td>Loading Rows......Please Wait</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Image</th>
+                  <th>Sub-Category</th>
+                  <th>Child-Category</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Options</th>
+                </tr>
+              </thead>
+              <tbody id="tbody`+cat+`">
+               <tr>
+                <td>Loading Rows......Please Wait</td>
+               </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-    <br>`;
+  </div>
+  <br>
+        
+    `;
 
     const tbodys = document.querySelector("#tbody" + cat);
-      await db
-        .collection(cat)
-        .get()
-        .then(async (snapshots) => {
-          let snapshotsDocs = snapshots.docs;
-          tRows += await displayRows(snapshotsDocs);
-        });
-      if (tRows != "") {
-        tbodys.innerHTML = tRows;
-      } else {
-        tbodys.innerHTML =
-          '<h3 class="responsive-text" style="text-align:center;font-weight:700;padding:5px">OoPS!!! No Data Found</h3>';
-      }
+
+    await db
+      .collection(cat)
+      .get()
+      .then(async (snapshots) => {
+        let snapshotsDocs = snapshots.docs;
+        tRows += await displayRows(snapshotsDocs);
+      });
+    if (tRows != "") {
+      tbodys.innerHTML = tRows;
+    } else {
+      tbodys.innerHTML =
+        '<h3 class="responsive-text" style="text-align:center;font-weight:700;padding:5px">OoPS!!! No Data Found</h3>';
     }
+
+    // console.log(cat);
+  }
 };
 extractData();
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // display details
 const detialsModalHTML = document.querySelector("#details-modal");
@@ -330,6 +346,7 @@ async function extractImgUrl(imgPath) {
     .catch((error) => {
       console.log(error);
     });
+
   return urlPath;
 }
 
@@ -387,12 +404,7 @@ const extractDetails = async (e) => {
     });
 };
 
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// edit form display info
+// edit
 
 const editModal = document.querySelector("#editProductModal");
 let editProduct = editModal.querySelector("#add-product");
@@ -417,9 +429,8 @@ const cat = async (data) => {
       snapshotDocs.map((doc) => {
         let docData = doc.data();
         options += `
-      <option ${docData.name == data ? "selected" : null}  value="${doc.id}__${
-          docData.name
-        }">${docData.name}</option>
+      <option ${docData.name == data ? "selected" : null}  value="${doc.id}__${docData.name
+          }">${docData.name}</option>
       `;
       });
       productCategoryHTML.innerHTML = options;
@@ -427,22 +438,22 @@ const cat = async (data) => {
 };
 
 const subCat = async (data) => {
-  // console.log(data);
+  console.log(data);
   let docId = data.split('__')[0];
-  // console.log(docId);
+  console.log(docId);
   let scId = data.split('__')[1];
-  // console.log(scId);
+  console.log(scId);
   await db
     .collection("categories")
     .doc(docId)
     .get()
     .then((snapshot) => {
       let doc = snapshot.data();
-      // console.log(doc);
+      console.log(doc);
       let options = "<option >Select Sub Category*</option>";
       doc.subCategory.map((sc) => {
         if (+sc.id === +scId) {
-          // console.log(docId);
+          console.log(docId);
           options += `
           <option  selected value="${docId}__${sc.id}__${sc.name}">${sc.name}</option>
           `;
@@ -457,13 +468,13 @@ const subCat = async (data) => {
 };
 
 const childCat = async (data) => {
-  // console.log(data);
+  console.log(data);
   let docId = data.split('__')[0];
-  // console.log(docId);
+  console.log(docId);
   let scId = data.split('__')[1];
-  // console.log(scId);
+  console.log(scId);
   let cId = data.split('__')[2];
-  // console.log(cId);
+  console.log(cId);
 
   await db
     .collection("categories")
@@ -500,10 +511,10 @@ let editProductId;
 
 const editDetails = async (e) => {
   $('#add-product').trigger("reset");
-  document.getElementById("setCat").value="hh";
+  document.getElementById("setCat").value = "hh";
   let editProduct = document.querySelector("#add-product");
-  // console.log(e.target.dataset.id);
-  // console.log(e.target.dataset.category);
+  console.log(e.target.dataset.id);
+  console.log(e.target.dataset.category);
   // let allCategories = [];
 
   await db
@@ -611,7 +622,7 @@ const editDetails = async (e) => {
       // console.log(putImg);
       $("#galleryImagesDisp").empty();
       for (var i = 0; i < doc.subImgsUrl.length; i++) {
-        let sImgUrl =doc.subImgsUrl[i]
+        let sImgUrl = doc.subImgsUrl[i]
         galleryImages.innerHTML +=
           `
         <div class="img gallery-img" id="images` +
@@ -626,59 +637,54 @@ const editDetails = async (e) => {
             <img src="${sImgUrl}" width="130"  style="object-ft:cover" alt="gallery image">;
             </a>
          </div>
+
         `;
       }
       let mImgUrl = doc.mainImgUrl
-    
+
       let mImg = `
       <img id="putImage" src="${mImgUrl}" alt=" image" />
       `;
       mainImgSpanHTML.innerHTML = mImg;
       $("#productDesc").summernote("reset");
       $("#productPolicy").summernote("reset");
-      var productDescDetail=document.createElement('div');
-   
+      var productDescDetail = document.createElement('div');
+
       productDescDetail.innerHTML = doc.descriptions;
-      
+
       $("#productDesc").summernote(
-        "pasteHTML",doc.descriptions
-       
+        "pasteHTML", doc.descriptions
+
       );
       $("#productPolicy").summernote(
-        "pasteHTML",doc.policy
-       
+        "pasteHTML", doc.policy
+
       );
-  
-            document.getElementById("setCat").value = doc.tags
-  
-            tagger(document.querySelector('#setCat'), {
-  
-              allow_spaces: true,
-              allow_duplicates: false,
-              link: function () { return false; }
-            });
-        
-            
+
+      document.getElementById("setCat").value = doc.tags
+
+      tagger(document.querySelector('#setCat'), {
+
+        allow_spaces: true,
+        allow_duplicates: false,
+        link: function () { return false; }
+      });
+
+
 
     })
     .catch((error) => {
       console.log(error);
     }
-  );
+    );
 };
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// submit edit form
 
 let subImgs, mainImg;
 
 const submitEditForm = (event) => {
-  // console.log(editProduct);
+  console.log(editProduct);
   // let editProduct = document.querySelector("#add-product");
-  // console.log("edit form submit");
+  console.log("edit form submit");
   event.preventDefault();
   let productName,
     productSno,
@@ -706,11 +712,17 @@ const submitEditForm = (event) => {
   productCategory = editProduct["product-category"].value;
   productSubCategory = editProduct["product-sub-category"].value;
   productChildCategory = editProduct["product-child-category"].value;
-  // console.log(productCategory);
+  console.log(productCategory);
   productMRP = editProduct["product-mrp"].value;
   productSP = editProduct["product-sp"].value;
   productGST = editProduct["product-gst"].value;
   productTotalPrice = editProduct["product-total-price"].value;
+
+  // editProduct
+  //   .querySelectorAll('input[name="product-addon"]:checked')
+  //   .forEach((addon) => {
+  //     productAddons.push(addon.value);
+  //   });
 
   editProduct.querySelectorAll('input[name="product-tag"]').forEach((tag) => {
     productTags.push(tag.value);
@@ -753,6 +765,7 @@ const submitEditForm = (event) => {
             cakeWeight: weight.value,
             weightPrice: weightPrice,
           };
+
           cakeWeights.push(data);
         }
       });
@@ -790,25 +803,17 @@ const submitEditForm = (event) => {
   }
 
   if (mainImg) {
-    console.log(mainImg);
     productMainImg = `cake_${Math.random()}_${mainImg.name}`;
   } else {
-    console.log(mainImg);
     productMainImg = editProductDetails.mainImg;
   }
-  console.log(productMainImg);
-
   if (subImgs) {
-    console.log(subImgs);
     productSubImgs = [...subImgs].map(
       (img) => `cake_${Math.random()}_${img.name}`
     );
   } else {
-    console.log(subImgs);
     productSubImgs = editProductDetails.subImgs;
   }
-  console.log(productSubImgs);
-
 
   let wholeProduct = {
     name: productName,
@@ -839,16 +844,26 @@ const submitEditForm = (event) => {
     wholeProduct.flavours = cakeFlavours || "";
   }
 
-  // console.log(wholeProduct);
-  // let c = wholeProduct.wholeSubCategory.split("__")[2];
-  // console.log(c);
-  // let cc = wholeProduct.wholeChildCategory.split("__")[3];
-  // console.log(cc);
+  console.log(wholeProduct);
+  let c = wholeProduct.wholeSubCategory.split("__")[2];
+  console.log(c);
+  let cc = wholeProduct.wholeChildCategory.split("__")[3];
+  console.log(cc);
 
   async function editProductFun(data) {
     console.log(data);
     // console.log(data.category, typeof data.category);
-    let dataId;
+    let dataId, prodData;
+    // await db
+    //   .collection(data.category)
+    //   .add(data)
+    //   .then((dataSaved) => {
+    //     // console.log(dataSaved.id);
+    //     dataId = dataSaved.id;
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
     dataId = editProductId;
     console.log(data.category, editProductId);
     let docRef = await db.collection(data.category).doc(editProductId);
@@ -864,6 +879,14 @@ const submitEditForm = (event) => {
 
   editProductFun(wholeProduct)
     .then(async (response) => {
+      // console.log(response);
+      // console.log(response.prodData.category);
+      // console.log(response.prodData.subImgs);
+      // console.log(typeof response.prodData.subImgs);
+      // console.log(typeof response.prodData.mainImg, response.prodData.mainImg);
+      // console.log(response.dataId);
+      // console.log(mainImg);
+
       const storageService = firebase.storage();
       if (mainImg) {
         await storageService
@@ -872,12 +895,15 @@ const submitEditForm = (event) => {
           )
           .put(mainImg);
       }
+      // console.log(subImgs);
+
       async function uploadImg(id, name, img) {
         await storageService
           .ref(`${response.prodData.category}/${id}/${name}`)
           .put(img);
       }
       let counter = -1;
+
       async function upload() {
         for (let img of subImgs) {
           counter++;
@@ -892,16 +918,40 @@ const submitEditForm = (event) => {
         upload();
       }
 
-      // editProduct.reset();
-      // showSnack();
-      // function showSnack() {
-      //   alert("Product Updated Successfully")
-      //   var x = document.getElementById("snackbar");
-      //   x.className = "show";
-      //   setTimeout(function () {
-      //     x.className = x.className.replace("show", "");
-      //   }, 3000);
+      // async function addingImgUrl(imgPath) {
+      //   let imgUrl;
+      //   // console.log(imgPath);
+      //   await storageService
+      //     .ref(imgPath)
+      //     .getDownloadURL()
+      //     .then((url) => {
+      //       imgUrl = url;
+      //     })
+      //     .catch((err) => {
+      //       imgUrl = err;
+      //       // console.log(err);
+      //     });
+
+      //   console.log(imgUrl);
+      //   return imgUrl;
       // }
+
+      editProduct.reset();
+      showSnack();
+      function showSnack() {
+        // Get the snackbar DIV
+        alert("Product Updated Successfully")
+        var x = document.getElementById("snackbar");
+
+        // Add the "show" class to DIV
+        x.className = "show";
+
+        // After 3 seconds, remove the show class from DIV
+        setTimeout(function () {
+
+          x.className = x.className.replace("show", "");
+        }, 3000);
+      }
       editProduct.querySelector(".alert-success").textContent = "Product Saved";
       editProduct.querySelector(".alert-success").style.display = "block";
       setTimeout(() => {
@@ -921,31 +971,24 @@ const submitEditForm = (event) => {
     });
 };
 
-const uploadMainImg = async(e) => {
+const uploadMainImg = (e) => {
   mainImg = e.target.files[0];
-  // mainImagesUrl= await extractImgUrl(mainImg)
-  console.log(mainImg)
+  mainImagesUrl = extractImgUrl(mainImg)
+
+  console.log(mainImagesUrl)
+
   var reader = new FileReader();
   reader.onload = function (e) {
     $("#putImage").attr("src", e.target.result);
   };
   reader.readAsDataURL(e.target.files[0]);
 };
+// productMainImgHandler.addEventListener("change", uploadMainImg);
 
 const uploadSubImgs = (e) => {
   subImgs = e.target.files;
   console.log(subImgs);
 };
-
-// global
-$(document).ready(function() {
-  $(window).keydown(function(event){
-    if(event.keyCode == 13) {
-      event.preventDefault();
-      return false;
-    }
-  });
-});
 
 // const displayChildCategory = async (elHTML) => {
 //   let docId, scId;
@@ -1015,3 +1058,11 @@ $(document).ready(function() {
 // };
 
 
+$(document).ready(function () {
+  $(window).keydown(function (event) {
+    if (event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
