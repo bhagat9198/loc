@@ -117,6 +117,7 @@ async function displayRows(snapshotDocs, allCatData) {
 }
 
 
+
 const displayOptions = (isSeleted, data) => {
   let options = "";
   if (isSeleted.toString() === "true") {
@@ -178,7 +179,6 @@ const deleteProduct = (e) => {
     })
   }
 }
-
 const extractData = async () => {
   await db
     .collection("categories")
@@ -213,7 +213,7 @@ const extractData = async () => {
                 <div class="col-sm-7">
                   <a  class="btn btn-secondary" id="myInput${cat.id}" class="searchBar" onclick=myFunction("myInput${cat.id}","myTable${cat.id}","table-responsive${cat.id}")><i class="material-icons" style="color:black">&#xE147;</i>
                     <span style="color:black">Enable Attribute</span></a>
-                  <a class="btn btn-secondary"><i class="material-icons" style="color:black">&#xE24D;</i>
+                <a class="btn btn-secondary" onclick=createPDF("myTable`+cat+`")><i class="material-icons" style="color:black">&#xE24D;</i>
                     <span style="color:black">Export to Pdf</span></a>
                 </div>
               </div>
@@ -243,11 +243,46 @@ const extractData = async () => {
                 </tbody>
               </table>
             </div>
+        </div>
+    </div>
+          <div class="alert alert-success validation" style="display: none;">
+            <button type="button" class="close alert-close"><span>×</span></button>
+            <p class="text-left"></p>
+          </div>
+          <div class="table-responsive` +
+      cat +
+      `" style="overflow-x:auto">
+          
+            <table id="myTable` +
+      cat +
+      `" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+              <div class="row btn-area">
+              </div>
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>Image</th>
+                  <th>Sub-Category</th>
+                  <th>Child-Category</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Options</th>
+                </tr>
+              </thead>
+              <tbody id="tbody`+cat+`">
+               <tr>
+                <td>Loading Rows......Please Wait</td>
+               </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-    <br>`;
+  </div>
+  <br>
+        
+    `;
 
     const tbodys = document.querySelector("#tbody" + cat.id);
     console.log(tbodys);
@@ -345,12 +380,7 @@ const extractDetails = async (e, current) => {
     });
 };
 
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// edit form display info
+// edit
 
 const editModal = document.querySelector("#editProductModal");
 let editProduct = editModal.querySelector("#add-product");
@@ -398,11 +428,11 @@ const subCatSelect = async (data) => {
     .get()
     .then((snapshot) => {
       let doc = snapshot.data();
-      // console.log(doc);
+      console.log(doc);
       let options = "<option >Select Sub Category*</option>";
       doc.subCategory.map((sc) => {
         if (+sc.id === +scId) {
-          // console.log(docId);
+          console.log(docId);
           options += `
           <option  selected value="${docId}__${sc.id}__${sc.name}">${sc.name}</option>
           `;
@@ -462,8 +492,8 @@ const editDetails = async (e) => {
   $("#add-product").trigger("reset");
   
   let editProduct = document.querySelector("#add-product");
-  // console.log(e.target.dataset.id);
-  // console.log(e.target.dataset.category);
+  console.log(e.target.dataset.id);
+  console.log(e.target.dataset.category);
   // let allCategories = [];
   const docId = e.target.dataset.id;
   const catId = e.target.dataset.catid;
@@ -598,6 +628,7 @@ const editDetails = async (e) => {
             <img src="${sImgUrl}" class="subImgTag" width="130"  style="object-ft:cover" alt="${doc.subImgs[i]}">;
             </a>
          </div>
+
         `;
       }
       let mImgUrl = doc.mainImgUrl;
@@ -608,13 +639,17 @@ const editDetails = async (e) => {
       mainImgSpanHTML.innerHTML = mImg;
       $("#productDesc").summernote("reset");
       $("#productPolicy").summernote("reset");
+      var productDescDetail = document.createElement('div');
+
+      productDescDetail.innerHTML = doc.descriptions;
+
       $("#productDesc").summernote(
-        "editor.insertText",
-        doc.descriptions.replace(/(<([^>]+)>)/g, "")
+        "pasteHTML", doc.descriptions
+
       );
       $("#productPolicy").summernote(
-        "editor.insertText",
-        doc.policy.replace(/(<([^>]+)>)/g, "")
+        "pasteHTML", doc.policy
+
       );
 
       document.getElementById("setCat").value = doc.tags;
@@ -673,11 +708,17 @@ const submitEditForm = (event) => {
   productCategory = editProduct["product-category"].value;
   productSubCategory = editProduct["product-sub-category"].value;
   productChildCategory = editProduct["product-child-category"].value;
-  // console.log(productCategory);
+  console.log(productCategory);
   productMRP = editProduct["product-mrp"].value;
   productSP = editProduct["product-sp"].value;
   productGST = editProduct["product-gst"].value;
   productTotalPrice = editProduct["product-total-price"].value;
+
+  // editProduct
+  //   .querySelectorAll('input[name="product-addon"]:checked')
+  //   .forEach((addon) => {
+  //     productAddons.push(addon.value);
+  //   });
 
   editProduct.querySelectorAll('input[name="product-tag"]').forEach((tag) => {
     productTags.push(tag.value);
@@ -720,6 +761,7 @@ const submitEditForm = (event) => {
             cakeWeight: weight.value,
             weightPrice: weightPrice,
           };
+
           cakeWeights.push(data);
         }
       });
@@ -824,7 +866,17 @@ const submitEditForm = (event) => {
   async function editProductFun(data) {
     console.log(data);
     // console.log(data.category, typeof data.category);
-    let dataId;
+    let dataId, prodData;
+    // await db
+    //   .collection(data.category)
+    //   .add(data)
+    //   .then((dataSaved) => {
+    //     // console.log(dataSaved.id);
+    //     dataId = dataSaved.id;
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
     dataId = editProductId;
     console.log(data.wholeCategory.split('__')[0], editProductId);
 
@@ -940,6 +992,7 @@ const uploadMainImg = async (e) => {
   };
   reader.readAsDataURL(e.target.files[0]);
 };
+// productMainImgHandler.addEventListener("change", uploadMainImg);
 
 const uploadSubImgs = (e) => {
   subImgs = e.target.files;
