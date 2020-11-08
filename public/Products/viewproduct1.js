@@ -268,7 +268,7 @@ const extractData = async () => {
           
             <table id="myTable` +
       cat +
-      `" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+      `" class="table-responsive table-hover dt-responsive" cellspacing="0" width="100%">
               <div class="row btn-area">
               </div>
               <thead>
