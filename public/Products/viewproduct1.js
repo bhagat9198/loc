@@ -612,14 +612,25 @@ const editDetails = async (e) => {
       // editProduct["product-main-image"].value = doc.mainImg;
 
       // console.log(putImg);
+
+      // const deleteImage = e => {
+      //   console.log(e);
+      //   const imgId = e.target.dataset.imgid;
+      //   console.log(imgId);
+      //   $('#' + imgId).remove();
+
+      // }
+
+      
+
       $("#galleryImagesDisp").empty();
       if(doc.subImgs) {
         for (var i = 0; i < doc.subImgs.length; i++) {
           let sImgUrl = doc.subImgsUrl[i];
           galleryImages.innerHTML += `
           <div class="img gallery-img" id="images${i}" style="padding:5px">
-              <span class="remove-img2" data-imgid="images${i}" onclick="deleteImage(event)">
-                <i class="fas fa-times" data-id="${snapshot.id}__${doc.subImgs[i]}" ></i>
+              <span class="remove-img2" data-index="${i}" data-imgid="images${i}" onclick="deleteImage(event)">
+                <i class="fas fa-times" data-index="${i}" data-imgid="images${i}" data-id="${snapshot.id}__${doc.subImgs[i]}" ></i>
                 <input type="hidden" />
               </span>
               <a href="#">
@@ -632,14 +643,7 @@ const editDetails = async (e) => {
       }
       let mImgUrl = doc.mainImgUrl;
 
-      const deleteImage = e => {
-        console.log(e);
-        const imgId = e.target.dataset.imgid;
-        console.log(imgId);
-        $('#' + imgId).remove();
-
-      }
-
+      
       let mImg = `
       <img id="putImage" src="${mImgUrl}" alt=" image" />
       `;
@@ -650,13 +654,15 @@ const editDetails = async (e) => {
 
       productDescDetail.innerHTML = doc.descriptions;
 
+      // $('#productDesc').reset();
+
       $("#productDesc").summernote(
         "pasteHTML", doc.descriptions
-
       );
+
+      // $('#productPolicy').reset();
       $("#productPolicy").summernote(
         "pasteHTML", doc.policy
-
       );
 
       document.getElementById("setCat").value = doc.tags;
@@ -674,6 +680,16 @@ const editDetails = async (e) => {
     });
 };
 
+const deleteSubImgs = [];
+function deleteImage(e) {
+  // console.log(e.target.dataset);
+  const imgId = e.target.dataset.imgid;
+  const imgIndex = e.target.dataset.index;
+  // console.log(imgIndex);
+  $('#' + imgId).remove();
+  deleteSubImgs.push(imgIndex);
+  
+}
 
 
 
@@ -917,7 +933,7 @@ const submitEditForm = (event) => {
         );
         console.log(mainImgUrl);
       }
-      console.log(mainImgUrl);
+      // console.log(mainImgUrl);
 
       let counter = -1;
       if (subImgs) {
@@ -930,6 +946,7 @@ const submitEditForm = (event) => {
           await storageService
             .ref(`${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`)
             .put(img);
+          console.log('stored');
           let subUrl = await extractImgUrl(
             `${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`
           );
@@ -937,7 +954,7 @@ const submitEditForm = (event) => {
           subImgsUrl.push(subUrl);
         }
       }
-
+      console.log('sdfghgfd');
       // editProduct.reset();
       // showSnack();
       // function showSnack() {
@@ -953,7 +970,7 @@ const submitEditForm = (event) => {
           .collection(response.prodData.wholeCategory.split('__')[0])
           .doc(response.dataId);
 
-        await docRef.get().then((doc) => {
+        await docRef.get().then(async(doc) => {
           let docData = doc.data();
           if (mainImg) {
             docData.mainImgUrl = mainImgUrl;
@@ -961,8 +978,30 @@ const submitEditForm = (event) => {
           if (subImgs) {
             docData.subImgsUrl.push(...subImgsUrl);
           }
+          console.log(deleteSubImgs);
+          if(deleteSubImgs) {
+            if(deleteSubImgs.length > 0) {
+              for(let el of deleteSubImgs) {
+                console.log(el);
+                console.log(docData.subImgs);
+                console.log(`${docData.wholeCategory.split('__')[0]}/${doc.id}/${docData.subImgs[el]}`);
+                await storageService.ref(`${docData.wholeCategory.split('__')[0]}/${doc.id}/${docData.subImgs[el]}`).delete().then(d => {
+                  console.log(d);
+                  console.log('deleted');
+                  docData.subImgs.splice(el, 1);
+                docData.subImgsUrl.splice(el, 1);
+
+                }).catch(error => {
+                  console.log(error);
+                  alert(error)
+                })
+                
+              }
+            }
+          }
           console.log(docData);
-          docRef.update(docData);
+          await docRef.update(docData);
+          location.reload();
         });
       }
 
@@ -975,7 +1014,8 @@ const submitEditForm = (event) => {
       // document.querySelector('#product-main-image').value = "";
       // document.querySelector('#product-sub-imgs').value = "";
       editProduct.reset();
-      extractData();
+      // extractData();
+      
       console.log("edit done");
       // $('#editProductModal').modal('hide');
       // $('#editProductModal').close();
