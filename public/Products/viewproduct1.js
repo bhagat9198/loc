@@ -624,7 +624,7 @@ const editDetails = async (e) => {
       let galleryImages = document.querySelector("#galleryImagesDisp");
       // console.log(putImg);
       $("#galleryImagesDisp").empty();
-      for (var i = 0; i < doc.subImgs.length; i++) {
+      for (var i = 0; i < doc.subImgsUrl.length; i++) {
         let sImgUrl =doc.subImgsUrl[i]
         galleryImages.innerHTML +=
           `
@@ -651,13 +651,17 @@ const editDetails = async (e) => {
       mainImgSpanHTML.innerHTML = mImg;
       $("#productDesc").summernote("reset");
       $("#productPolicy").summernote("reset");
+      var productDescDetail=document.createElement('div');
+   
+      productDescDetail.innerHTML = doc.descriptions;
+      
       $("#productDesc").summernote(
-        "editor.insertText",
-        doc.descriptions.replace(/(<([^>]+)>)/g, "")
+        "pasteHTML",doc.descriptions
+       
       );
       $("#productPolicy").summernote(
-        "editor.insertText",
-        doc.policy.replace(/(<([^>]+)>)/g, "")
+        "pasteHTML",doc.policy
+       
       );
   
             document.getElementById("setCat").value = doc.tags
