@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="contact_form" method="post" action="" onsubmit="return validate_form ( );">
+        <h1>Please Enter Your Name</h1>
+
+        <p>Your Name: <input type="text" name="contact_name"></p>
+        <p><input type="submit" name="send" value="Send Details"></p>
+
+
+    </form>
+</body>
+
+
+<script type="text/javascript">
+
+    
+    function validate_form ( )
+    {
+        valid = true;
+    
+        if ( document.contact_form.contact_name.value == "" )
+        {
+            alert ( "Please fill in the 'Your Name' box." );
+            valid = false;
+        }
+    
+        return valid;
+    }
+    
+
+    </script>
+</html>
