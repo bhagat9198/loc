@@ -213,7 +213,7 @@ const extractData = async () => {
                 <div class="col-sm-7">
                   <a  class="btn btn-secondary" id="myInput${cat.id}" class="searchBar" onclick=myFunction("myInput${cat.id}","myTable${cat.id}","table-responsive${cat.id}")><i class="material-icons" style="color:black">&#xE147;</i>
                     <span style="color:black">Enable Attribute</span></a>
-                <a class="btn btn-secondary" onclick=createPDF("myTable`+cat+`")><i class="material-icons" style="color:black">&#xE24D;</i>
+                <a class="btn btn-secondary" onclick=createPDF("myTable`+cat.id+`","`+cat.data.name+`")><i class="material-icons" style="color:black">&#xE24D;</i>
                     <span style="color:black">Export to Pdf</span></a>
                 </div>
               </div>
