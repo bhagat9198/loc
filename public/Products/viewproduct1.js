@@ -1011,10 +1011,6 @@ const submitEditForm = (event) => {
       // document.querySelector('#product-sub-imgs').value = "";
       editProduct.reset();
       // extractData();
-<<<<<<< HEAD
-=======
-      
->>>>>>> 30fbc352cbf87dd9e41b57862f7dd07e586956d1
       console.log("edit done");
       // $('#editProductModal').modal('hide');
       // $('#editProductModal').close();
