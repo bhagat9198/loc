@@ -625,8 +625,25 @@ const editDetails = async (e) => {
 
       // productDescDetail.innerHTML = doc.descriptions;
       // alert(doc.descriptions)
-      alert(doc.descriptions)
-      alert(doc.policy)
+
+      while(doc.descriptions.startsWith('<p><br></p>')){
+       
+       doc.descriptions=doc.descriptions.replace('<p><br></p>','')
+        }
+        
+      while(doc.descriptions.endsWith('<p><br></p>')){
+        
+       doc.descriptions=doc.descriptions.replace(new RegExp('<p><br></p>$'),'')
+      }
+      while(doc.policy.startsWith('<p><br></p>')){
+       
+        doc.policy=doc.policy.replace('<p><br></p>','')
+         }
+         
+       while(doc.policy.endsWith('<p><br></p>')){
+         
+        doc.policy=doc.policy.replace(new RegExp('<p><br></p>$'),'')
+       }
       $("#productDesc").summernote(
         "editor.pasteHTML", doc.descriptions
 
