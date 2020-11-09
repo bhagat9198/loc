@@ -1,7 +1,8 @@
 
 .menu {
-	width: 100%;
+	width: 95%;
 	margin: auto;
+
 }
 
 .menu-container {
@@ -11,11 +12,20 @@
 	background:#ffffff;
 	padding: 0px;
 
-
 }
 
-.menu img {
-	max-width: 100%;
+/* .menu img {
+	width: 500px !important;
+
+	object-fit: contain;
+
+} */
+.navimage{
+	width: 600px !important;
+	height: 250px !important;
+	object-fit: cover;
+
+	
 }
 
 .menu-mobile {
@@ -55,6 +65,7 @@
 	clear: right;
 	display: flex;
 	justify-content: center;
+	
 }
 
 .menu>ul:before, .menu>ul:after {
@@ -69,6 +80,7 @@
 .menu>ul>li {
 	float: left;
 	background:white;
+	
 
 }
 
@@ -79,6 +91,7 @@
 	padding-right: 30px;
 	padding-bottom: 10px;
 	padding-top: 10px;
+	
 	display: block;
 	
 }
@@ -92,13 +105,14 @@
 	display: none;
 	width: 100%;
 	background: #ffffff;
-	padding: 20px;
+	padding: 10px;
 	position: absolute;
 	z-index: 99;
 	left: 0;
 	margin: 0;
 	list-style: none;
 	box-sizing: border-box;
+	box-shadow: 0 7px 7px -1px rgba(0, 0, 0, 0.3);
 
 }
 ::-webkit-scrollbar {
@@ -133,8 +147,10 @@
 	width:18%;
 	background: none;
 	float: left;
-	overflow: auto;
 	scrollbar-3dlight-color: blueviolet;
+	overflow: auto;
+	
+	
 
 }
 
@@ -144,6 +160,8 @@
 	width: 95%;
 	display: block;
 	border-bottom: 1px solid #ccc;
+	padding: 0px;
+
 }
 
 .menu>ul>li>ul>li a:hover {
@@ -172,13 +190,14 @@
 	width: 100%;
 	padding: 10px 0;
 	margin: 0;
-	font-size: .8em;
+	font-size: .5em;
+	
+	
 }
 
 .menu>ul>li>ul>li>ul>li a {
 	border: 0;
-	font-size: 14px;
-	color: red;
+	font-size: 12px;
 }
 
 .menu>ul>li>ul.normal-sub {
@@ -202,7 +221,7 @@ Mobile style's
 @media only screen and (min-width: 961px){
 	.menu>ul>li>ul>li {
 
-		height: 300px;
+		height: 350px;
 		margin-left: 5%;
 		
 	}

@@ -61,7 +61,7 @@ db.collection('categories').onSnapshot(async(snapshots) => {
 
         <li>
           <ul>
-            <li><img src="${docData.imgUrl}"></li>
+            <li><img class="navimage" src="${docData.imgUrl}"></li>
           </ul>
         </li>
       </ul>
