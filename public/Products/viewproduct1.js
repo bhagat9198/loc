@@ -150,7 +150,7 @@ const changeStatus = (e, current) => {
 const deleteProduct = (e) => {
   console.log(e);
   let answer = confirm('Are you sure you want to delete the product?');
-  if(answer) {
+  if (answer) {
     let docId = e.target.dataset.id;
     let catId = e.target.dataset.catid;
 
@@ -164,7 +164,7 @@ const deleteProduct = (e) => {
     }).then(async (mainImgDelete) => {
       console.log(mainImgDelete);
       console.log(prodData);
-      for(let subImg of prodData.subImgs) {
+      for (let subImg of prodData.subImgs) {
         console.log(subImg);
         await storageService.ref(`${catId}/${docId}/${subImg}`).delete();
       }
@@ -173,7 +173,7 @@ const deleteProduct = (e) => {
       // console.log('all deleted');
       extractData();
     }).catch(error => {
-     
+
       alert('error', error);
       console.log(error);
     })
@@ -190,7 +190,7 @@ const extractData = async () => {
         allCategoriesData.push({ data: docData, id: doc.id });
       });
     });
-    
+  var tableID;
   const displayAllCat = document.querySelector("#displayAllCat");
   let tRows = "";
   $("#displayAllCat").empty();
@@ -200,7 +200,7 @@ const extractData = async () => {
       <a class="scrollTo" href="#${cat.id}">${cat.data.name.toUpperCase()}</a>
     </li>`;
 
-    $("#tbody"+cat.id).empty();
+    $("#tbody" + cat.id).empty();
     tRows = "";
     displayAllCat.innerHTML += `
     <div class="product-area" id="${cat.id}" style="padding-top:0px;">
@@ -213,7 +213,7 @@ const extractData = async () => {
                 <div class="col-sm-7">
                   <a  class="btn btn-secondary" id="myInput${cat.id}" class="searchBar" onclick=myFunction("myInput${cat.id}","myTable${cat.id}","table-responsive${cat.id}")><i class="material-icons" style="color:black">&#xE147;</i>
                     <span style="color:black">Enable Attribute</span></a>
-                <a class="btn btn-secondary" onclick=createPDF("myTable`+cat.id+`","`+cat.data.name+`")><i class="material-icons" style="color:black">&#xE24D;</i>
+                <a class="btn btn-secondary" onclick=createPDF("myTable`+ cat.id + `","` + cat.data.name + `")><i class="material-icons" style="color:black">&#xE24D;</i>
                     <span style="color:black">Export to Pdf</span></a>
                 </div>
               </div>
@@ -249,6 +249,7 @@ const extractData = async () => {
   <br>
         
     `;
+    
 
     const tbodys = document.querySelector("#tbody" + cat.id);
     console.log(tbodys);
@@ -258,6 +259,7 @@ const extractData = async () => {
       .then(async (snapshots) => {
         let snapshotsDocs = snapshots.docs;
         tRows += await displayRows(snapshotsDocs, allCategoriesData);
+      
       });
     if (tRows != "") {
       tbodys.innerHTML = tRows;
@@ -268,7 +270,10 @@ const extractData = async () => {
         '<h3 class="responsive-text" style="text-align:center;font-weight:700;padding:5px">OoPS!!! No Data Found</h3>';
     }
   }
+
 };
+
+
 extractData();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -375,7 +380,7 @@ const catSelect = async (data) => {
         let docData = doc.data();
         // console.log(docData);
         // console.log(docData.name.includes(data));
-        if(doc.id == data.split('__')[0]) {
+        if (doc.id == data.split('__')[0]) {
           // console.log(doc.id, data.split('__')[0]);
           options += `
           <option selected  value="${doc.id}__${docData.name}">${docData.name}</option>`;
@@ -462,7 +467,7 @@ let editProductId;
 
 const editDetails = async (e) => {
   $("#add-product").trigger("reset");
-  
+
   let editProduct = document.querySelector("#add-product");
   console.log(e.target.dataset.id);
   console.log(e.target.dataset.category);
@@ -486,13 +491,13 @@ const editDetails = async (e) => {
 
       editProduct["product-name"].value = doc.name;
       editProduct["product-sno"].value = doc.sno;
-      
+
       let wcat = `${catData.cId}__${catData.cname}`;
       let wscat = `${catData.cId}__${catData.scId}__${catData.scname}`;
       let ccat = `${catData.cId}__${catData.scId}__${catData.ccId}__${catData.ccname}`;
 
       await catSelect(wcat);
-      await subCatSelect( wscat);
+      await subCatSelect(wscat);
       await childCatSelect(ccat);
       if (doc.wholeCategory.toUpperCase().includes("CAKE")) {
         document.getElementById("cake-attributes").style.display = "block";
@@ -587,10 +592,10 @@ const editDetails = async (e) => {
 
       // }
 
-      
+
 
       $("#galleryImagesDisp").empty();
-      if(doc.subImgs) {
+      if (doc.subImgs) {
         for (var i = 0; i < doc.subImgs.length; i++) {
           let sImgUrl = doc.subImgsUrl[i];
           galleryImages.innerHTML += `
@@ -609,7 +614,7 @@ const editDetails = async (e) => {
       }
       let mImgUrl = doc.mainImgUrl;
 
-      
+
       let mImg = `
       <img id="putImage" src="${mImgUrl}" alt=" image" />
       `;
@@ -630,24 +635,24 @@ const editDetails = async (e) => {
       // productDescDetail.innerHTML = doc.descriptions;
       // alert(doc.descriptions)
 
-      while(doc.descriptions.startsWith('<p><br></p>')){
-       
-       doc.descriptions=doc.descriptions.replace('<p><br></p>','')
-        }
-        
-      while(doc.descriptions.endsWith('<p><br></p>')){
-        
-       doc.descriptions=doc.descriptions.replace(new RegExp('<p><br></p>$'),'')
+      while (doc.descriptions.startsWith('<p><br></p>')) {
+
+        doc.descriptions = doc.descriptions.replace('<p><br></p>', '')
       }
-      while(doc.policy.startsWith('<p><br></p>')){
-       
-        doc.policy=doc.policy.replace('<p><br></p>','')
-         }
-         
-       while(doc.policy.endsWith('<p><br></p>')){
-         
-        doc.policy=doc.policy.replace(new RegExp('<p><br></p>$'),'')
-       }
+
+      while (doc.descriptions.endsWith('<p><br></p>')) {
+
+        doc.descriptions = doc.descriptions.replace(new RegExp('<p><br></p>$'), '')
+      }
+      while (doc.policy.startsWith('<p><br></p>')) {
+
+        doc.policy = doc.policy.replace('<p><br></p>', '')
+      }
+
+      while (doc.policy.endsWith('<p><br></p>')) {
+
+        doc.policy = doc.policy.replace(new RegExp('<p><br></p>$'), '')
+      }
       $("#productDesc").summernote(
         "editor.pasteHTML", doc.descriptions
 
@@ -658,7 +663,7 @@ const editDetails = async (e) => {
         "editor.pasteHTML", doc.policy
 
       );
-      
+
       document.getElementById("setCat").value = doc.tags;
 
       tagger(document.querySelector("#setCat"), {
@@ -682,7 +687,7 @@ function deleteImage(e) {
   // console.log(imgIndex);
   $('#' + imgId).remove();
   deleteSubImgs.push(imgIndex);
-  
+
 }
 
 
@@ -966,7 +971,7 @@ const submitEditForm = (event) => {
           .collection(response.prodData.wholeCategory.split('__')[0])
           .doc(response.dataId);
 
-        await docRef.get().then(async(doc) => {
+        await docRef.get().then(async (doc) => {
           let docData = doc.data();
           if (mainImg) {
             docData.mainImgUrl = mainImgUrl;
@@ -975,9 +980,9 @@ const submitEditForm = (event) => {
             docData.subImgsUrl.push(...subImgsUrl);
           }
           console.log(deleteSubImgs);
-          if(deleteSubImgs) {
-            if(deleteSubImgs.length > 0) {
-              for(let el of deleteSubImgs) {
+          if (deleteSubImgs) {
+            if (deleteSubImgs.length > 0) {
+              for (let el of deleteSubImgs) {
                 console.log(el);
                 console.log(docData.subImgs);
                 console.log(`${docData.wholeCategory.split('__')[0]}/${doc.id}/${docData.subImgs[el]}`);
@@ -985,13 +990,13 @@ const submitEditForm = (event) => {
                   console.log(d);
                   console.log('deleted');
                   docData.subImgs.splice(el, 1);
-                docData.subImgsUrl.splice(el, 1);
+                  docData.subImgsUrl.splice(el, 1);
 
                 }).catch(error => {
                   console.log(error);
                   alert(error)
                 })
-                
+
               }
             }
           }
