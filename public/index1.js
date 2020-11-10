@@ -59,7 +59,7 @@ db.collection('sections').doc('fixed1').onSnapshot(doc => {
       fixedSection1HeadingHTML.innerHTML = docData[card];
     } else {
       row += `
-      <div class="col-lg-3 col-md-3 col-6 remove-padding">
+      <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
             <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" target="_blank">
               <img class="imgc"
@@ -101,7 +101,7 @@ db.collection('sections').doc('fixed2').onSnapshot(doc => {
   let row = '';
   for(let card of sortArr) {
     row += `
-    <div class="sc-common-padding colxl2">
+    <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
       <div class="card cardc align-items-center">
         <a href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${card.tag}" class="">
           <div class="iconimg">
@@ -136,7 +136,7 @@ db.collection('sections').doc('fixed3').onSnapshot(doc => {
       `;
     } else {
       row += `
-      <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
+      <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3 revealOnScroll" data-animation="fadeInUp >
         <div class="aside">
           <a href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb" target="_blank">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
@@ -227,12 +227,12 @@ db.collection('sections').doc('fixed5').onSnapshot(doc => {
     if(card === 'title') {
       title = `
       <div class="col-md-12 text-center">
-        <h3 class="mb-3"  style="font-weight: 700;font-size: 30px">${docData[card]}</h3>
+        <h3 class="mb-3   revealOnScroll"  style="font-weight: 700;font-size: 30px" data-animation="fadeInUp>${docData[card]}</h3>
       </div>
       `;
     } else {
       row += `
-      <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3">
+      <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3  revealOnScroll" data-animation="fadeInUp>
         <div class="aside">
           <a href="./Products/products?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" class="banner-effect imgca" href="abcd" target="_blank">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
