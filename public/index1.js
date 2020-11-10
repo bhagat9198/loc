@@ -40,7 +40,7 @@ db.collection("sliders").onSnapshot(async(snapshots) => {
       </div>
     </a>`;
   };
-  // console.log(img);
+  console.log(img);
   introCarouselHTML.innerHTML = img;
 });
 
@@ -225,6 +225,7 @@ db.collection('sections').doc('fixed5').onSnapshot(doc => {
   for(let card in docData) {
     // console.log(card);
     if(card === 'title') {
+     
       title = `
       <div class="col-md-12 text-center">
         <h3 class="mb-3   revealOnScroll"  style="font-weight: 700;font-size: 30px" data-animation="fadeInUp>${docData[card]}</h3>
@@ -242,6 +243,7 @@ db.collection('sections').doc('fixed5').onSnapshot(doc => {
       `;
     }
   }
+ 
   fixedSection5Row.innerHTML = title + row;
 })
 
@@ -261,6 +263,7 @@ db.collection('sections').doc('fixed6').onSnapshot(async(doc) => {
     await db.collection(card.cat.split('__')[1]).doc(card.id).get().then(prod => {
       // console.log(prod);
       let prodData = prod.data();
+
       // console.log(prodData);
       row += `
       <div class="col-lg-2 col-md-3 col-6 remove-padding">
