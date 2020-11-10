@@ -2,19 +2,6 @@ console.log("navbar1.js");
 
 const wholeNavigationPcHTML = document.querySelector('#whole-navigation-pc');
 
-// const extractImgURL = async (imgPath) => {
-//   let imgUrl;
-//   await storageService
-//     .ref(imgPath)
-//     .getDownloadURL()
-//     .then((url) => {
-//       imgUrl = url;
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-//   return imgUrl;
-// };
 
 const extractChildCat = data => {
   let childLi = '';
