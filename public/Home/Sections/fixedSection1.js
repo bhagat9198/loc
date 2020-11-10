@@ -690,9 +690,9 @@ const form3 = async (e) => {
   const t4 = fForm3HTML["f3-t4"].value;
 
   if (f3File1) {
-    f3name = `${Math.random()}__${f3File1.name}`;
-    await storageService.ref(`sections/fixed3/${f3name}`).put(f3File1);
-    img1Url = await extractImgUrl(`sections/fixed3/${f3name}`);
+    f1name = `${Math.random()}__${f3File1.name}`;
+    await storageService.ref(`sections/fixed3/${f1name}`).put(f3File1);
+    img1Url = await extractImgUrl(`sections/fixed3/${f1name}`);
   }
   if (f3File2) {
     f2name = `${Math.random()}__${f3File2.name}`;
