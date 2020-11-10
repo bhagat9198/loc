@@ -13,7 +13,10 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
-  <!-- <link rel="stylesheet" href="./assets//css/randomStyles.css"> -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.2.0/css/ionicons.min.css"
+    integrity="sha256-F3Xeb7IIFr1QsWD113kV2JXaEbjhsfpgrKkwZFGIA4E=" crossorigin="anonymous">
+
 </head>
 <style>
   @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic);
@@ -27,6 +30,12 @@
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
+  }
+
+  .listDisp {
+    padding: 10px;
+    /* color: white; */
+    text-align: left;
   }
 
   .product-navbar .product-navbar-centered {
@@ -89,11 +98,11 @@
 
   #about-main .jumbotron {
     width: 100%;
-    height: 450px;
+    height: 210px;
     background: #171b23;
-    background-image: url(https://www.chokola.in/images/cake-banner-new-chokola.png);
+    /* background-image: url(https://ribbonsandballoons.com/frontassets/images/slider/1.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain; */
     position: relative;
     margin: 0;
     z-index: 3;
@@ -215,10 +224,7 @@
 
   @media (max-width: 640px) {
     #about-main .jumbotron {
-      height: 300px !important;
-    }
-    .mobileHidden{
-      display: none;
+      height: 200px !important;
     }
 
     #about-main .jumbotron .jumbotron-inner {
@@ -353,6 +359,146 @@
     padding-left: 5px;
     color: #676a6c;
   }
+
+  .bg-teal-light-3 {
+    background-color: #7fcdc1 !important;
+  }
+
+  .hk-row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -10px;
+    margin-left: -10px;
+  }
+
+  @media (min-width: 576px) {
+    .mt-sm-60 {
+      margin-top: 60px !important;
+    }
+  }
+
+  .mt-30 {
+    margin-top: 30px !important;
+  }
+
+  .list-group-item.active {}
+
+  .accordion .card .card-header.activestate {
+    border-width: 1px;
+  }
+
+  .accordion .card .card-header {
+    padding: 0;
+    border-width: 0;
+  }
+
+  .card.card-lg .card-header,
+  .card.card-lg .card-footer {
+    padding: .9rem 1.5rem;
+  }
+
+  .accordion>.card .card-header {
+    margin-bottom: -1px;
+  }
+
+  .card .card-header {
+    background: transparent;
+    border: none;
+  }
+
+  .accordion.accordion-type-2 .card .card-header>a.collapsed {
+    color: #324148;
+  }
+
+  .accordion .card:first-of-type .card-header:first-child>a {
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+  }
+
+  .accordion.accordion-type-2 .card .card-header>a {
+    background: transparent;
+
+    padding-left: 50px;
+  }
+
+  .accordion .card .card-header>a.collapsed {
+    color: #324148;
+    background: transparent;
+  }
+
+  .accordion .card .card-header>a {
+
+    color: #fff;
+    font-weight: 500;
+    padding: .75rem 1.25rem;
+    display: block;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+
+  a {
+    text-decoration: none;
+
+    -webkit-transition: color 0.2s ease;
+    -moz-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+  }
+
+
+  .badge.badge-pill {
+    border-radius: 50px;
+  }
+
+  .badge.badge-light {
+    background: #eaecec;
+    color: #324148;
+  }
+
+  .badge {
+    font-weight: 500;
+    border-radius: 4px;
+    padding: 5px 7px;
+    font-size: 72%;
+    letter-spacing: 0.3px;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+  .ml-15 {
+    margin-left: 15px !important;
+  }
+
+  .accordion.accordion-type-2 .card .card-header>a.collapsed:after {
+    content: "\f158";
+  }
+
+  .accordion.accordion-type-2 .card .card-header>a::after {
+    display: inline-block;
+    font: normal normal normal 14px/1 'Ionicons';
+    speak: none;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: auto;
+    position: absolute;
+    content: "\f176";
+    font-size: 21px;
+    top: 15px;
+    left: 20px;
+  }
+
+  .mr-15 {
+    margin-right: 15px !important;
+  }
 </style>
 
 <body style="overflow-x: hidden !important; ">
@@ -364,89 +510,54 @@
         <div class="top-box">
           <div class="content-box">
             <h1>
-              About Us
+              Frequenty Asked Questions
             </h1>
-            <p class="mobileHidden" style="text-align: center !important;">
-              Lake of Cakes Make your day memorable !!
-            </p> 
           </div>
         </div>
       </div>
-      <div class="img-layer-container">
-        <div class="team-image" id="team-image">
-          <img src="" style="width: 700px;">
-        </div>
-        <div class="team-image" id="team-image">
-          <img src="https://apimatic.io/img/theme/aboutUs/Circles-1-1.svg" style="width: 700px;">
-        </div>
-        <div class="circles-container">
-          <div class="img-1">
-            <img src="https://apimatic.io/img/theme/aboutUs/Circles-1-1.svg" />
-          </div>
-          <div class="img-2">
-            <img src="https://apimatic.io/img/theme/aboutUs/Circles-2-1.svg" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="story-container">
-      <div class="need-for-dx-container">
-        <h3 class="text-center">
-          Concerning us
-        </h3>
-        <p>
-          Taking birth from the idea to bridge the gap which is developing among an individual relations due to new life
-          style, work pressure and busy schedules. We provide an option for "How to make your day memorable". With Lake
-          of Cakes, we endeavor to create an online gifting portal addressing the above need with passion of excelling
-          in the field. In today's world everyone is so busy that going out to buy a gift is a pain. But you cannot miss
-          to gift because a gift is a perfect way to tell someone how much you love them, care for them, want to make
-          them happy, want them to have all that they want, and so many countless feelings that A Gift can convey. Then
-          what to do?
 
-        </p>
-        <p>
-          Solution is to buy gifts online. By that you need not to be present in the city where you want gifts to be
-          delivered and you can place order sitting anywhere. All you need to have is an internet connection.
-          We provide you a trustworthy and convenient platform to choose best gift for your family, friends etc. for
-          every occasion like birthdays, anniversaries, marriage, love, farewell and many more. We offer wide range of
-          products in various categories like cakes (only egg-less cakes), drawing cakes, 3D cakes, photo cakes,
-          chocolates, bouquet, flowers bunch, soft toys, greeting cards, candles, photo frames, handicrafts etc. We also
-          customize gifts according to customer wish.
-          A Unique concept we will adding in our portal i.e. “CUSTOMIZED CAKES”, in which you create your own cake as
-          per your creativity.
-          We are all about how you make your day memorable in the best possible manner which fulfill you with joy
-          happiness and satisfaction.
-          You can choose date and time of the delivery of your gifts. We do offer same day delivery but its always
-          better to place your order atleast 1 day in advance. That way we could serve you better and you have more
-          options to customize your order as per your needs.
-        </p>
-        <!-- <div class="img-container">
-          <img src="https://apimatic.io/img/theme/aboutUs/dxFlow.svg" alt="apimatic developer experience process"
-            class="img-responsive" />
-        </div> -->
-      </div>
-      <div class="container-divider"></div>
-      <div class="our-tech-container">
-        <h3 class="text-center">
-          Our Specialization
-        </h3>
-        <p>
-          Our specialization resides in cakes and flowers delivery across Lucknow. Cakes and Flowers are main item for
-          any kind of celebration, our team put special efforts to make sure the timely, fresh and safe delivery of
-          these products in entire Lucknow. On top of that, we made it sure that customer always gets great quality
-          cakes and flowers at a reasonable prices. Besides that, services like midnight delivery, customized cakes
-          liberty to choose delivery date and time, and highly supportive customer support staff makes us stand apart.
-          Surprise your loved one, gift them and celebrate the uniqueness of very relation with Lake of Cakes.
-        </p>
-        <div class="img-container">
-          <img src="https://media.giphy.com/media/dxDAKjYybPPkE1pfvp/giphy.gif" alt="apimatic code generation engine"
-            class="img-responsive" />
+    </div>
+
+
+    <div class="container mt-sm-60 mt-30" style="padding: 20px;">
+      <div class="hk-row">
+        <div class="col-xl-12">
+          <div class="card card-lg">
+
+            <div class="accordion accordion-type-2 accordion-flush" id="accordion_2">
+
+              <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                  <a class="collapsed" role="button" data-toggle="collapse" href="#collapse_2i" aria-expanded="false">
+                    Will you deliver fresh cakes?</a>
+                </div>
+                <div id="collapse_2i" class="collapse" data-parent="#accordion_2">
+                  <div class="card-body pa-15">You can enjoy the taste of cake only when it's fresh, that’s why we
+                    deliver all the cakes are prepare only when your order puts on the portal. To achieve the same, we
+                    offer customers to choose delivery time as well, so that we know when we need to prepare a cake and
+                    get it delivered. We ensure that customer always enjoys the freshest possible cake. </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                  <a class="collapsed" role="button" data-toggle="collapse" href="#collapse_3i" aria-expanded="false">
+                    How can I trust the quality of cake delivered by Lake of Cakes?</a>
+                </div>
+                <div id="collapse_3i" class="collapse" data-parent="#accordion_2">
+                  <div class="card-body pa-15">We procure cakes from top and renowned bakeries in town. This help us to
+                    ensure that customer always get quality cakes and consistent taste. We promise to deliver quality
+                    products when ordering from lakeofcakes.com.</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="container-divider"></div>
-      
-      <div class="container-divider"></div>
     </div>
+  </div>
+  </div>
+
+
   </div>
   <footer class="footer" id="footer" style="background:rgba(10, 46, 100, 0.6);"></footer>
 
