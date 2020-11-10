@@ -192,7 +192,7 @@ const displaySubCategories = (data) => {
         <td><input type="text" class="editField" value="${sc.name}">
           <i class="fas fa-check" style="margin: 3%;cursor: pointer;" data-id="${
             doc.id
-          }__${sc.id}"  onclick="saveNameSubCat(event, this, null)"></i> </td>
+          }__${sc.id}"  onclick="saveNameSubCat(event, this, null)"></i><span style="display:none">${sc.name}</span> </td>
         <td tabindex="0">${docData.name}</i> </td>
 
         <td>
@@ -216,6 +216,11 @@ const displaySubCategories = (data) => {
     });
   });
   subCategoryHTML.innerHTML = tRows;
+  $('#example2').DataTable({
+
+    "responsive": true,
+    "autoWidth": false,
+  });
 };
 
 const saveNameSubCat = (e, current, data) => {
@@ -340,7 +345,7 @@ const displayChildCategories = (data) => {
               doc.id
             }__${sc.id}__${
           child.id
-        }" onclick="saveNameChildCat(event, this, null)"></i> </td>
+        }" onclick="saveNameChildCat(event, this, null)"></i><span style="display:none">${child.name}</span> </td>
           <td tabindex="0">${sc.name}</td>
           <td>${docData.name} </td>
 
@@ -367,6 +372,11 @@ const displayChildCategories = (data) => {
     });
   });
   childCategoryHTML.innerHTML = tRows;
+  $('#example3').DataTable({
+
+    "responsive": true,
+    "autoWidth": false,
+  });
 };
 
 const saveNameChildCat = (e, current, data) => {
