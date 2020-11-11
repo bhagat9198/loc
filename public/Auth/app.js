@@ -59,6 +59,11 @@ function getUiConfig() {
         clientId: CLIENT_ID
       },
       {
+        provider:firebase.auth.EmailAuthProvider.PROVIDER_ID,
+      },
+     
+      {
+      
         provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
         scopes: [
           'public_profile',
@@ -157,13 +162,6 @@ var handleSignedInUser = function (user) {
     document.getElementById('photo').src = photoURL;
     document.getElementById('photo').style.display = 'block';
 
-    if (counter == 1) {
-
-
-      counter = 0;
-    }
-
-
   } else {
     document.getElementById('photo').style.display = 'none';
   }
@@ -181,34 +179,49 @@ var handleSignedOutUser = function () {
 
 // Listen to change in auth state so it displays the correct UI for when
 // the user is signed in or not.
-firebase.auth().onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged(function(user) {
   document.getElementById('loading').style.display = 'none';
   document.getElementById('loaded').style.display = 'block';
 
   const db = firebase.firestore();
-  console.log(user)
+ 
 
   var counter = 0;
+  let getUserStatus=window.localStorage.getItem("locLoggedInUser")
+
+    // $('#hideLogOut').addEventListener("click",function(){
+    //   alert(8)
+    // })
+    // alert(getUserStatus)
+    // await signOut()
+   
+   
+    // alert("0000")
+  
   if (user != null) {
-
+    
     db.collection("Customers").onSnapshot(async (snapshots) => {
-
+    
       let snapshotDocs = snapshots.docs;
       var dbref = db.collection('Customers');
       for (let doc of snapshotDocs) {
-    
+       
         let docData = doc.data();
         if (docData.Email == user.email) {
-          var setWithMerge = dbref.doc(doc.id).update({
+          await dbref.doc(doc.id).update({
             UserName: user.displayName,
             Email: user.email,
             Image: user.photoURL,
-            UserID: user.uid,
+            UserAuthID: user.uid,
+            userId:doc.id,
+            token:btoa(user.email)
             
             
           });
+          window.localStorage.setItem("locLoggedInUser",doc.id)
           counter++;
           user ? handleSignedInUser(user) : handleSignedOutUser();
+          window.location="../index.html"
           break;
          
          
@@ -221,10 +234,9 @@ firebase.auth().onAuthStateChanged(function (user) {
           UserName: user.displayName,
           Email: user.email,
           Image: user.photoURL,
-          UserID: user.uid,
           createdDtm: firebase.firestore.FieldValue.serverTimestamp(),
           lastLoginTime: firebase.firestore.FieldValue.serverTimestamp(),
-          token:"null"
+          token:"newUser"
         });
         user ? handleSignedInUser(user) : handleSignedOutUser();
 
@@ -235,11 +247,16 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
   } else {
+    
+    window.localStorage.setItem("locLoggedInUser",null)
     user ? handleSignedInUser(user) : handleSignedOutUser();
   }
 
 
 });
+async function signOut(){
+ await firebase.auth().signOut();
+}
 
 /**
  * Deletes the user's account.
