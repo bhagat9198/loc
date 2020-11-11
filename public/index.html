@@ -533,12 +533,16 @@
 
   <script src="./assets/js/jquery.js"></script>
   <!-- <script src="./assets/js/jquery-ui.min.js"></script> -->
-
   <script type="text/javascript">
     // $(document).ready(() => {
     $('#nav-section-loader').load('./common/navbar.html');
     $('#footer').load('./common/footer.html');
     // })
+  </script>
+  <script type="text/javascript">
+    setTimeout(() => {
+      $('#footer').load('./common/files.html');
+    }, 3000);
   </script>
 
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
@@ -562,7 +566,9 @@
   </script>
 
   <script src="./index1.js"></script>
-  <script src="./common/navbar1.js"></script>
+  <script src="./Common/navbar1.js"></script>
+
+  
 </body>
 <script>
   $(function() {
