@@ -22,10 +22,10 @@
     <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
 
     <meta name="theme-color" content="#a15a55">
-    <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/styles.php">
-    <link rel="stylesheet" href="css/mega-menu.css">
+    <link rel="stylesheet" href="../assets/css/all.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/styles.php">
+    <link rel="stylesheet" href="../assets/css/mega-menu.css">
 </head>
 <style>
     @media (max-width: 767px) {
@@ -3661,27 +3661,27 @@
 </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="odometer-master/odometer.js"></script>
-<script src="js/jquery.js"></script>
-<script src="js/vue.js"></script>
-<script src="jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/vue.js"></script>
+<script src="../assets/jquery-ui/jquery-ui.min.js"></script>
 
-<script src="js/popper.min.js"></script>
+<script src="../assets/js/popper.min.js"></script>
 
-<script src="js/bootstrap.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
 
-<script src="js/plugin.js"></script>
+<script src="../assets/js/plugin.js"></script>
 
-<script src="js/xzoom.min.js"></script>
-<script src="js/jquery.hammer.min.js"></script>
-<script src="js/setup.js"></script>
+<script src="../assets/js/xzoom.min.js"></script>
+<script src="../assets/js/jquery.hammer.min.js"></script>
+<script src="../assets/js/setup.js"></script>
 
-<script src="js/toastr.js"></script>
+<script src="../assets/js/toastr.js"></script>
 
-<script src="js/main.js"></script>
-<script src="js/jquery.mb.YTPlayer.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/jquery.mb.YTPlayer.js"></script>
 
-<script src="js/custom.js"></script>
-<script src="js/bootsnav.js"></script>
+<script src="../assets/js/custom.js"></script>
+<script src="../assets/js/bootsnav.js"></script>
 
 
 <script>
@@ -3965,30 +3965,6 @@
 
 <script type="text/javascript">
 
-    $(function () {
-
-        $("#slider-range").slider({
-            range: true,
-            orientation: "horizontal",
-            min: 0,
-            max: 10000000,
-            values: [0, 10000000],
-            step: 5,
-
-            slide: function (event, ui) {
-                if (ui.values[0] == ui.values[1]) {
-                    return false;
-                }
-
-                $("#min_price").val(ui.values[0]);
-                $("#max_price").val(ui.values[1]);
-            }
-        });
-
-        $("#min_price").val($("#slider-range").slider("values", 0));
-        $("#max_price").val($("#slider-range").slider("values", 1));
-
-    });
 
 </script>
 <script>

@@ -33225,7 +33225,7 @@ ul.pagination li.disabled {
 }
 
 .hidden {
-    display: none !important;
+    display: none ;
 }
 
 
