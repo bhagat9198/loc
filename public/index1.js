@@ -171,7 +171,7 @@ db.collection('sections').doc('fixed4').get().then(async(doc) => {
       // console.log(card.cat.id);
       let docRef = db.collection(card.cat.toString().split('__')[0]).doc(card.id.toString());
       // console.log(docRef)
-      await docRef.get().then(prod => {
+      docRef.get().then(prod => {
         // console.log(prod);
         let prodData = prod.data();
         console.log(prodData);

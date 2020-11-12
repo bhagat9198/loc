@@ -180,36 +180,38 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
 
 
     // Hero Area Slider
-
-        var $mainSlider = $('.intro-carousel');
-        // setInterval(() => {
-            if($('.intro-content').length > 1)
-        {
-            $mainSlider.owlCarousel({
-                loop: true,
-                //navText: ['<i class="fas fa-angle-double-left"></i>', '<i class="fas fa-angle-double-right"></i>'],
-                nav: false,
-                dots: true,
-                autoplay: true,
-                autoplayTimeout: 8000,
-                animateOut: 'fadeOut',
-                animateIn: 'fadeIn',
-                smartSpeed: 1000,
-                onInitialized: startProgressBar,
-                onTranslate: resetProgressBar,
-                onTranslated: startProgressBar,
-                responsive: {
-                    0: {
-                        dots: false,
-                        items: 1
+        setInterval(function(){
+            var $mainSlider = $('.intro-carousel');
+            // setInterval(() => {
+                if($('.intro-content').length > 1)
+            {
+                $mainSlider.owlCarousel({
+                    loop: true,
+                    //navText: ['<i class="fas fa-angle-double-left"></i>', '<i class="fas fa-angle-double-right"></i>'],
+                    nav: false,
+                    dots: true,
+                    autoplay: true,
+                    autoplayTimeout: 8000,
+                    animateOut: 'fadeOut',
+                    animateIn: 'fadeIn',
+                    smartSpeed: 1000,
+                    onInitialized: startProgressBar,
+                    onTranslate: resetProgressBar,
+                    onTranslated: startProgressBar,
+                    responsive: {
+                        0: {
+                            dots: false,
+                            items: 1
+                        },
+                        768: {
+                            items: 1
+                        }
                     },
-                    768: {
-                        items: 1
-                    }
-                },
-        
-            });
-        }
+            
+                });
+            }
+        },500)
+      
 
         
     
@@ -341,11 +343,8 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
     // trending item  slider
     var count = 0;
     var sliderBar = setInterval(() => {
-        count++;
-        if(count == 10) {
-            clearInterval(sliderBar)
-        }
-        var $trending_slider = $('.trending-item-slider');
+      
+    var $trending_slider = $('.trending-item-slider');
     $trending_slider.owlCarousel({
         items: 4,
         autoplay: true,
@@ -375,7 +374,7 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
             }
         }
     });
-    },6000);
+    },1000);
     
 
 

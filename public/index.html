@@ -538,7 +538,7 @@
     </div>
   </section>
 
-  <div class="loader"></div>
+  <!-- <div class="loader"></div> -->
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
 
   <script src="./assets/js/jquery.js"></script>
@@ -554,9 +554,18 @@
       $('#footer-section-loader').load('./Common/files.html');
     }, 1000);
     
-    $(window).load(function () {
-      $(".loader").fadeOut("slow");
-    });
+// document.onreadystatechange = function() { 
+//     if (document.readyState !== "complete") { 
+//         document.querySelector("body").style.visibility = "hidden"; 
+//         document.querySelector(".loader").style.visibility = "visible"; 
+//     } else { 
+//         document.querySelector(".loader").style.display = "none"; 
+//         document.querySelector("body").style.visibility = "visible"; 
+//     } 
+// }; 
+    // $(window).load(function () {
+    //   $(".loader").fadeOut("slow");
+    // });
    
   </script>
   <script type="text/javascript">
