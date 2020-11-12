@@ -3,7 +3,7 @@ $(function ($) {
 
 
     $(document).ready(function () {
-
+        
           // Profile Dropdown
           $('.profilearea.my-dropdown').on('mouseover', function(){
              $('.profilearea.my-dropdown .my-dropdown-menu.profile-dropdown').stop().show(0);

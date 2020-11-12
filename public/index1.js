@@ -156,13 +156,13 @@ db.collection('sections').doc('fixed3').onSnapshot(doc => {
 const fixedSection4Row = document.querySelector('#fixed-section4-row');
 const fixedSection4Heading = document.querySelector('#fixed-section4-heading');
 
-db.collection('sections').doc('fixed4').get().then(async(doc) => {
+db.collection('sections').doc('fixed4').get().then(async(doc) => {      
   let docData = doc.data();
   let row = '';
   fixedSection4Heading.innerHTML = docData['title'];
   for(let card of docData.prodIds) {
     // console.log(card);
-    // if(card == 'title') {
+    // if(card == 'title') {        
       // console.log(docData[card]);
       // fixedSection4Heading.innerHTML = docData[card];
     // } else {
