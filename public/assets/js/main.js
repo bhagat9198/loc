@@ -168,21 +168,22 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
   /*-----------------------------
       Accordion Active js
   -----------------------------*/
-  $("#accordion, #accordion2").accordion({
-    heightStyle: "content",
-    collapsible: true,
-    icons: {
-      "header": "ui-icon-caret-1-e",
-      "activeHeader": " ui-icon-caret-1-s"
-    }
-  });
-    $("#product-details-tab").tabs();
+//   $("#accordion, #accordion2").accordion({
+//     heightStyle: "content",
+//     collapsible: true,
+//     icons: {
+//       "header": "ui-icon-caret-1-e",
+//       "activeHeader": " ui-icon-caret-1-s"
+//     }
+//   });
+//     $("#product-details-tab").tabs();
 
 
     // Hero Area Slider
 
         var $mainSlider = $('.intro-carousel');
-        if($('.intro-content').length > 1)
+        // setInterval(() => {
+            if($('.intro-content').length > 1)
         {
             $mainSlider.owlCarousel({
                 loop: true,
@@ -209,6 +210,8 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
         
             });
         }
+
+        
     
         if($('.intro-content').length > 1)
         {

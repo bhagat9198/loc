@@ -19,229 +19,144 @@
   <link rel="icon" type="image/x-icon" href="//lakeofcakes.com/assets/images/1596886304logo for favicon.PNG" />
 
 
-  <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
+    <meta name="theme-color" content="#a15a55">
+    <link href="../assets/css/login.css" rel="stylesheet" type="text/css" media="screen" />
 
-  <meta name="theme-color" content="#a15a55">
-  <link rel="stylesheet" href="../assets/css/all.css">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <!-- <link rel="stylesheet" href="../assets/css/styles.php"> -->
-  <link rel="stylesheet" href="../assets/css/mega-menu.css">
-  <link rel="manifest" href="manifest.json">
+    <link type="text/css" rel="stylesheet" href="firebaseui.css" />
+    
+    <link rel="manifest" href="manifest.json">
+    
 
-  <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
-
-  <link type="text/css" rel="stylesheet" href="firebaseui.css" />
 </head>
 
 <body style="overflow-x: hidden !important; ">
-  <section id="nav-section-loader"></section>
-  <div class="container2 splitscreen">
-    <div class="row">
-      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div class="card card-signin my-5">
-          <div class="card-body">
-            <h5 class="authHead text-center">Welcome Back</h5>
-            <br>
-            <form class="form-signin">
-              <div class="form-label-group" style="display: flex;">
-
-                <input type="email" id="inputEmail" class="authInput form-control" placeholder="Email address" required
-                  autofocus>
-
-              </div>
-
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="authInput form-control" placeholder="Password"
-                  required>
-
-              </div>
 
 
-              <button class="btn authBtn  btn-google text-uppercase" type="submit">Sign
-                in</button>
-              <h4 class="forgotPass" style="float: right;">Forgot Password</h4>
-              <br>
-              <hr class="my-4">
-              <h4 class="defaulttext" style="float:left;">Or Login Using</h4>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="container">
-    <h3>FirebaseUI Demo</h3>
-    <div id="loading">Loading...</div>
-    <div id="loaded" class="hidden">
-      <div id="main">
-        <div id="user-signed-in" class="hidden">
-          <div id="user-info">
-            <div id="photo-container">
-              <img id="photo">
+    <section class="w3l-workinghny-form">
+        <!-- /form -->
+        <div class="workinghny-form-grid">
+            <div class="wrapper">
+                <div class="logo">
+                    <h1><a class="brand-logo" href="index.html"><span>Hi !!</span>Guest</a></h1>
+                    <!-- if logo is image enable this   
+                        <a class="brand-logo" href="#index.html">
+                            <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+                        </a> -->
+                </div>
+                <div class="workinghny-block-grid">
+                    
+                    <div class="workinghny-left-img ">
+                        
+                        <div id="loading">Loading...</div>
+                        <div id="loaded" class="hidden">
+                          <div id="main">
+                            <div id="user-signed-in" class="hidden">
+                              <div id="user-info">
+                                <div id="photo-container">
+                                  <img id="photo">
+                                </div>
+                                <div id="name"></div>
+                                <div id="email"></div>
+                                <div id="phone"></div>
+                                <div id="is-new-user"></div>
+                                <div class="clearfix"></div>
+                              </div>
+                              <p>
+                                <button id="sign-out">Sign Out</button>
+                                <button id="delete-account">Delete account</button>
+                              </p>
+                            </div>
+                            <div id="user-signed-out" class="hidden">
+                          
+                              <fieldset>
+                  <!--               <legend>Configuration</legend>
+                                reCAPTCHA mode for Phone Auth:
+                                <label for="recaptcha-normal">
+                                  <input type="radio" id="recaptcha-normal" name="recaptcha" value="normal">
+                                  Normal
+                                </label>
+                                <label for="recaptcha-invisible">
+                                  <input type="radio" id="recaptcha-invisible" name="recaptcha" value="invisible">
+                                  Invisible
+                                </label><br>
+                                Email signInMethod:
+                                <label for="email-signInMethod-password">
+                                  <input type="radio" id="email-signInMethod-password" name="emailSignInMethod"
+                                         value="password">
+                                  Password
+                                </label>
+                                <label for="email-signInMethod-emailLink">
+                                  <input type="radio" id="email-signInMethod-emailLink" name="emailSignInMethod"
+                                         value="emailLink">
+                                  Email Link
+                                </label>
+                              </fieldset>
+                              <p>
+                                <button id="sign-in-with-redirect">Sign In with Redirect</button>
+                                <button id="sign-in-with-popup">Sign In with Popup</button>
+                              </p> -->
+                              <div id="firebaseui-spa">
+                                <!-- <h5>Single Page Application mode:</h5> -->
+                                <div id="firebaseui-container"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      
+                    
+                    </div>
+                    <div class="form-right-inf">
+						
+                        <div class="login-form-content">
+                            <h2>Where to?</h2>
+                            <form action="#" class="signin-form" method="post">
+								<div class="one-frm">
+
+									<label>Name</label>
+									<input type="text" name="Name"  placeholder="" required="">
+								</div>
+								<div class="one-frm">
+									<label>Password</label>
+									<input type="password" name="Password"  placeholder="" required="">
+								</div>
+                                <!-- <label class="check-remaind">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <p class="remember">Remember Me</p>
+
+                                </label> -->
+                                <button class="btn btn-style mt-3">Sign In </button>
+                                <p class="already">Don't have an account? <a href="#signin">Sign Up</a></p>
+                            </form>
+                       
+                    </div>
+                </div>
             </div>
-            <div id="name"></div>
-            <div id="email"></div>
-            <div id="phone"></div>
-            <div id="is-new-user"></div>
-            <div class="clearfix"></div>
-          </div>
-          <p>
-            <button id="sign-out">Sign Out</button>
-            <button id="delete-account">Delete account</button>
-          </p>
         </div>
-        <div id="user-signed-out" class="hidden">
-          <h4>You are signed out.</h4>
-          <fieldset>
-            <!--               <legend>Configuration</legend>
-                reCAPTCHA mode for Phone Auth:
-                <label for="recaptcha-normal">
-                  <input type="radio" id="recaptcha-normal" name="recaptcha" value="normal">
-                  Normal
-                </label>
-                <label for="recaptcha-invisible">
-                  <input type="radio" id="recaptcha-invisible" name="recaptcha" value="invisible">
-                  Invisible
-                </label><br>
-                Email signInMethod:
-                <label for="email-signInMethod-password">
-                  <input type="radio" id="email-signInMethod-password" name="emailSignInMethod"
-                         value="password">
-                  Password
-                </label>
-                <label for="email-signInMethod-emailLink">
-                  <input type="radio" id="email-signInMethod-emailLink" name="emailSignInMethod"
-                         value="emailLink">
-                  Email Link
-                </label>
-              </fieldset>
-              <p>
-                <button id="sign-in-with-redirect">Sign In with Redirect</button>
-                <button id="sign-in-with-popup">Sign In with Popup</button>
-              </p> -->
-            <div id="firebaseui-spa">
-              <h5>Single Page Application mode:</h5>
-              <div id="firebaseui-container"></div>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <li>
-    <a href="//www.facebook.com/" class="facebook" target="_blank"
-      style="background: #3b5999; color: #ffffff; border: 1px solid #3b5999;">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-  </li>
-
-  <li>
-    <a href="//plus.google.com/" class="google-plus" target="_blank"
-      style=" color: #ffffff; border: 1px solid #d62651; background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); ">
-      <i class="fab fa-instagram" aria-hidden="true"></i>
-    </a>
-  </li>
-  </ul>
-  <img class="mt-3" src="//lakeofcakes.com/assets/front/images/gplay.png" alt="" style="max-width: 56%;">
-  </div>
-  </div>
-
-  <div class="col-md-12 col-lg-12 mb-3 text-center" style="border-top: 1px solid #251d34;">
-    <img class="mt-3" src="//lakeofcakes.com/assets/front/images/footericons.png" alt="" style="max-width: 56%;">
-  </div>
-  </div>
-  </div>
-  </div>
-
-  <footer class="footer" id="footer" style="background:rgba(10, 46, 100, 0.6);"></footer>
-
-	<script src="../assets/js/jquery.js"></script>
-	<!-- <script src="./assets/js/jquery-ui.min.js"></script> -->
-	<script type="text/javascript">
-		$('#nav-section-loader').load('../Common/navbar.html');
-		$('#footer').load('../Common/footer.html');
-	</script>
-	<script type="text/javascript">
-		setTimeout(() => {
-			$('#footer').load('../Common/files.html');
-		}, 1000);
-	</script>
-
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-	<script>
-		var firebaseConfig = {
-			apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
-			authDomain: "lake-of-cakes.firebaseapp.com",
-			databaseURL: "https://lake-of-cakes.firebaseio.com",
-			projectId: "lake-of-cakes",
-			storageBucket: "lake-of-cakes.appspot.com",
-			messagingSenderId: "779843608951",
-			appId: "1:779843608951:web:48c6afe1773e2b395e8172",
-			measurementId: "G-5ER0QF0FDW"
-		};
-		firebase.initializeApp(firebaseConfig);
-		firebase.analytics();
-	</script>
-
-  <script src="./app.js"></script>
-  <script src="./common.js"></script>
-  <script src="./config.js"></script>
-  <script src="./firebaseui.js"></script>
-	<script src="./products1.js"></script>
-	<script src="../Common/navbar1.js"></script>
 
 
 
-  <script>
-    $(".thumbimg").click(function () {
-      $(".changeing").attr('src', this.src);
-      $(".changeing").attr('alt', this.alt);
-      $(".textcaption").text($(this).closest('.item').find('h5').text());
-    });
-  </script>
-
-  <script async src="//www.googletagmanager.com/gtag/js?id=UA-180297043-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-180297043-1');
-  </script>
 
 
-
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {},
-      Tawk_LoadStart = new Date();
-    (function () {
-      var s1 = document.createElement("script"),
-        s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = '//embed.tawk.to/5f705b89f0e7167d00141f98/default';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin', '*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
-
-  <script>
-    $(window).on('load', function () {
-
-      setTimeout(function () {
-
-        $('#extraData').load('//lakeofcakes.com/extras');
-
-      }, 100);
-    });
-  </script>
   
+
+
+
+   
+
+
+    <div class="bottomtotop">
+        <i class="fas fa-chevron-right"></i>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase.js"></script>
+    <script src="config.js"></script>
+    <script src="common.js"></script>
+    <script src="firebaseui.js"></script>
+    <script src="app.js"></script>
+
+
+    
 </body>
 
 </html>

@@ -531,18 +531,18 @@
 
 
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
-</body>
+
 <script src="./assets/js/jquery.js"></script>
   <!-- <script src="./assets/js/jquery-ui.min.js"></script> -->
   <script type="text/javascript">
     // $(document).ready(() => {
-    $('#nav-section-loader').load('./common/navbar.html');
-    $('#footer-section-loader').load('./common/footer.html');
+    $('#nav-section-loader').load('./Common/navbar.html');
+    $('#footer-section-loader').load('./Common/footer.html');
     // })
   </script>
   <script type="text/javascript">
     setTimeout(() => {
-      $('#footer').load('./common/files.html');
+      $('#footer-section-loader').load('./Common/files.html');
     }, 3000);
   </script>
 
@@ -551,6 +551,9 @@
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebaseui.js"></script> -->
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  
   <script>
     var firebaseConfig = {
       apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
@@ -611,6 +614,35 @@
     }
     revealOnScroll();
   });
+</script>
+
+<style>
+	.drobt1 {
+		transform: translateX(-101%);
+	}
+
+	.drobt2 {
+		transform: translateX(0%);
+	}
+</style>
+
+<script>
+	$(".drobt").click(function () {
+		if ($('.drobt0').hasClass('drobt1')) {
+			$('.drobt0').removeClass('drobt1');
+			$('.drobt0').addClass('drobt2');
+		} else {
+			$('.drobt0').removeClass('drobt2');
+			$('.drobt0').addClass('drobt1');
+		}
+	});
+	// $('body').click(function(evt){
+	//     alert('hellow');
+	//     if(!$(evt.target).is('#drobt0')) {
+	//          $('.drobt0').removeClass('drobt2');
+	//       $('.drobt0').addClass('drobt1');
+	//     }
+	// });
 </script>
 
 </html>
