@@ -168,15 +168,15 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
   /*-----------------------------
       Accordion Active js
   -----------------------------*/
-//   $("#accordion, #accordion2").accordion({
-//     heightStyle: "content",
-//     collapsible: true,
-//     icons: {
-//       "header": "ui-icon-caret-1-e",
-//       "activeHeader": " ui-icon-caret-1-s"
-//     }
-//   });
-//     $("#product-details-tab").tabs();
+  $("#accordion, #accordion2").accordion({
+    heightStyle: "content",
+    collapsible: true,
+    icons: {
+      "header": "ui-icon-caret-1-e",
+      "activeHeader": " ui-icon-caret-1-s"
+    }
+  });
+    $("#product-details-tab").tabs();
 
 
     // Hero Area Slider
@@ -372,7 +372,7 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
             }
         }
     });
-    },3000);
+    },6000);
     
 
 

@@ -23,15 +23,13 @@
 	<meta name="theme-color" content="#a15a55">
 	<link rel="stylesheet" href="../assets/css/all.css">
 	<link rel="stylesheet" href="../assets/css/base.css">
-	<link rel="stylesheet" href="../assetscss/styles.php">
+	<link rel="stylesheet" href="../assets/css/styles.php">
 	<link rel="stylesheet" href="../assets/css/mega-menu.css">
 	<link rel="stylesheet" href="../assets/css/products.css">
 </head>
 
 <body style="overflow-x: hidden !important; ">
 	<section id="nav-section-loader"></section>
-
-
 	<section class="sub-categori responsive-sec" style="padding:25px 20px 30px; background:rgba(145, 70, 107, 0.7);">
 
 		<div class="col-lg-12 order-first order-lg-last ajax-loader-parent"
@@ -667,19 +665,21 @@
 
 	</section>
 
-	<footer class="footer" id="footer" style="background:rgba(10, 46, 100, 0.6);"></footer>
+	<footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
+
+</body>
 
 	<script src="../assets/js/jquery.js"></script>
 	<!-- <script src="./assets/js/jquery-ui.min.js"></script> -->
 	<script type="text/javascript">
 		// $(document).ready(() => {
 		$('#nav-section-loader').load('../Common/navbar.html');
-		$('#footer').load('../Common/footer.html');
+		$('#footer-section-loader').load('../Common/footer.html');
 		// })
 	</script>
 	<script type="text/javascript">
 		setTimeout(() => {
-			$('#footer').load('../Common/files.html');
+			$('#footer-section-loader').load('../Common/files.html');
 		}, 1000);
 	</script>
 
@@ -822,51 +822,51 @@
 			});
 		}
 		// -------------------------------------------this is testing code that is  created by swa softech-------------------------------------------------------
-		$(document).ready(function () {
-			var busy = false;
-			var page = 1;
-			$("#ajaxContent").attr('id', 'ajaxContent' + page);
-			$('#ajaxContent' + page).after('<div class="row" id="ajaxContent"></div>');
-			$(window).scroll(function () {
-				// make sure u give the container id of the data to be loaded in.
+		// $(document).ready(function () {
+		// 	var busy = false;
+		// 	var page = 1;
+		// 	$("#ajaxContent").attr('id', 'ajaxContent' + page);
+		// 	$('#ajaxContent' + page).after('<div class="row" id="ajaxContent"></div>');
+		// 	$(window).scroll(function () {
+		// 		// make sure u give the container id of the data to be loaded in.
 
-				if ($(window).scrollTop() + $(window).height() > ($("#ajaxContent").height() + 200) && busy == false) {
-					//   alert($(window).scrollTop() + $(window).height()  +"---"+$(".ajax-loader-parent").height());
-					busy = true;
-					$('#dataloader').show();
-					page++;
+		// 		if ($(window).scrollTop() + $(window).height() > ($("#ajaxContent").height() + 200) && busy == false) {
+		// 			//   alert($(window).scrollTop() + $(window).height()  +"---"+$(".ajax-loader-parent").height());
+		// 			busy = true;
+		// 			$('#dataloader').show();
+		// 			page++;
 
-					$('#ajaxContent').load("//lakeofcakes.com/category/cakes?page=" + page, function (response, status,
-					xhr) {
-						//  alert(response);
-						if (response.indexOf("No Product Found.") < 0) {
-
-
-							if (status == "success") {
-
-								addToPagination();
-								if (busy == true) {
-									setTimeout(function () {
-										busy = false;
-
-									}, 1500);
-								}
-
-								$("#ajaxContent").attr('id', 'ajaxContent' + page);
-								$('#ajaxContent' + page).after('<div class="row" id="ajaxContent"></div>');
+		// 			$('#ajaxContent').load("//lakeofcakes.com/category/cakes?page=" + page, function (response, status,
+		// 			xhr) {
+		// 				//  alert(response);
+		// 				if (response.indexOf("No Product Found.") < 0) {
 
 
-							}
-						} else {
-							$("#ajaxContent").remove();
-							$("#dataloader").hide();
-						}
-					});
-				} else {
+		// 					if (status == "success") {
 
-				}
-			});
-		});
+		// 						addToPagination();
+		// 						if (busy == true) {
+		// 							setTimeout(function () {
+		// 								busy = false;
+
+		// 							}, 1500);
+		// 						}
+
+		// 						$("#ajaxContent").attr('id', 'ajaxContent' + page);
+		// 						$('#ajaxContent' + page).after('<div class="row" id="ajaxContent"></div>');
+
+
+		// 					}
+		// 				} else {
+		// 					$("#ajaxContent").remove();
+		// 					$("#dataloader").hide();
+		// 				}
+		// 			});
+		// 		} else {
+
+		// 		}
+		// 	});
+		// });
 	</script>
 
 	<script type="text/javascript">
@@ -918,6 +918,6 @@
 	<script src="../Common/navbar1.js"></script>
 
 
-</body>
+
 
 </html>
