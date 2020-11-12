@@ -198,9 +198,7 @@ db.collection('sections').doc('fixed4').get().then(async(doc) => {
               <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
               <h5 class="name">${prodData.name}</h5>
               <div class="item-cart-area">
-                <span class="add-to-cart-quick add-to-cart-btn" onclick="addToCart(event)">
-                  <i class="icofont-cart"></i> Order Now
-                </span>
+                
               </div>
             </div>
           </a>
@@ -287,11 +285,7 @@ db.collection('sections').doc('fixed6').onSnapshot(async(doc) => {
             </div>
             <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
             <h5 class="name">${prodData.name}</h5>
-            <div class="item-cart-area">
-              <span class="add-to-cart-quick add-to-cart-btn" onclick="addToCart(event)">
-                <i class="icofont-cart"></i> Order Now
-              </span>
-            </div>
+           
           </div>
         </a>
       </div>
@@ -340,11 +334,7 @@ db.collection('sections').doc('fixed7').onSnapshot(async(doc) => {
             </div>
             <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
             <h5 class="name">${prodData.name}</h5>
-            <div class="item-cart-area">
-              <span class="add-to-cart-quick add-to-cart-btn" onclick="addToCart(event)">
-                <i class="icofont-cart"></i> Order Now
-              </span>
-            </div>
+           
           </div>
         </a>
       </div>
