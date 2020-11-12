@@ -344,14 +344,6 @@ const form2 = async (e) => {
   });
 
   const title = fForm2HTML["f2-title"].value;
-  const iconN1 = fForm2HTML["f2-iconName1"].value;
-  const iconN2 = fForm2HTML["f2-iconName2"].value;
-  const iconN3 = fForm2HTML["f2-iconName3"].value;
-  const iconN4 = fForm2HTML["f2-iconName4"].value;
-  const iconN5 = fForm2HTML["f2-iconName5"].value;
-  const iconN6 = fForm2HTML["f2-iconName6"].value;
-  const iconN7 = fForm2HTML["f2-iconName7"].value;
-  const iconN8 = fForm2HTML["f2-iconName8"].value;
   const t1 = fForm2HTML["f2-tag1"].value;
   const t2 = fForm2HTML["f2-tag2"].value;
   const t3 = fForm2HTML["f2-tag3"].value;
@@ -435,7 +427,6 @@ const form2 = async (e) => {
       img: imgName1,
       imgUrl: iconUrl1,
       tag: t1,
-      iconTitle:iconN1,
       cat: c1,
       priority: p1,
     };
@@ -443,7 +434,6 @@ const form2 = async (e) => {
       img: imgName2,
       imgUrl: iconUrl2,
       tag: t2,
-      iconTitle:iconN2,
       cat: c2,
       priority: p2,
     };
@@ -451,7 +441,6 @@ const form2 = async (e) => {
       img: imgName3,
       imgUrl: iconUrl3,
       tag: t3,
-      iconTitle:iconN3,
       cat: c3,
       priority: p3,
     };
@@ -459,7 +448,6 @@ const form2 = async (e) => {
       img: imgName4,
       imgUrl: iconUrl4,
       tag: t4,
-      iconTitle:iconN4,
       cat: c4,
       priority: p4,
     };
@@ -467,7 +455,6 @@ const form2 = async (e) => {
       img: imgName5,
       imgUrl: iconUrl5,
       tag: t5,
-      iconTitle:iconN5,
       cat: c5,
       priority: p5,
     };
@@ -475,7 +462,6 @@ const form2 = async (e) => {
       img: imgName6,
       imgUrl: iconUrl6,
       tag: t6,
-      iconTitle:iconN6,
       cat: c6,
       priority: p6,
     };
@@ -483,7 +469,6 @@ const form2 = async (e) => {
       img: imgName7,
       imgUrl: iconUrl7,
       tag: t7,
-      iconTitle:iconN7,
       cat: c7,
       priority: p7,
     };
@@ -491,7 +476,6 @@ const form2 = async (e) => {
       img: imgName8,
       imgUrl: iconUrl8,
       tag: t8,
-      iconTitle:iconN8,
       cat: c8,
       priority: p8,
     };
@@ -556,7 +540,6 @@ db.collection("sections")
     if (docData.card1) {
       fForm2HTML["f2-cat1"].value = docData.card1.cat;
       fForm2HTML["f2-tag1"].value = docData.card1.tag;
-      fForm2HTML["f2-iconName1"].value = docData.card1.iconTitle;
       fForm2HTML["f2-priority-1"].value = docData.card1.priority;
       fForm2HTML.querySelector("#f2-img1").src = docData.card1.imgUrl;
     }
@@ -564,7 +547,6 @@ db.collection("sections")
     if (docData.card2) {
       fForm2HTML["f2-cat2"].value = docData.card2.cat;
       fForm2HTML["f2-tag2"].value = docData.card2.tag;
-      fForm2HTML["f2-iconName2"].value = docData.card2.iconTitle;
       fForm2HTML["f2-priority-2"].value = docData.card2.priority;
       fForm2HTML.querySelector("#f2-img2").src = docData.card2.imgUrl;
     }
@@ -572,7 +554,6 @@ db.collection("sections")
     if (docData.card3) {
       fForm2HTML["f2-cat3"].value = docData.card3.cat;
       fForm2HTML["f2-tag3"].value = docData.card3.tag;
-      fForm2HTML["f2-iconName3"].value = docData.card3.iconTitle;
       fForm2HTML["f2-priority-3"].value = docData.card3.priority;
       fForm2HTML.querySelector("#f2-img3").src = docData.card3.imgUrl;
     }
@@ -580,7 +561,6 @@ db.collection("sections")
     if (docData.card4) {
       fForm2HTML["f2-cat4"].value = docData.card4.cat;
       fForm2HTML["f2-tag4"].value = docData.card4.tag;
-      fForm2HTML["f2-iconName4"].value = docData.card4.iconTitle;
       fForm2HTML["f2-priority-4"].value = docData.card4.priority;
       fForm2HTML.querySelector("#f2-img4").src = docData.card4.imgUrl;
     }
@@ -588,7 +568,6 @@ db.collection("sections")
     if (docData.card5) {
       fForm2HTML["f2-cat5"].value = docData.card5.cat;
       fForm2HTML["f2-tag5"].value = docData.card5.tag;
-      fForm2HTML["f2-iconName5"].value = docData.card5.iconTitle;
       fForm2HTML["f2-priority-5"].value = docData.card5.priority;
       fForm2HTML.querySelector("#f2-img5").src = docData.card5.imgUrl;
     }
@@ -596,7 +575,6 @@ db.collection("sections")
     if (docData.card6) {
       fForm2HTML["f2-cat6"].value = docData.card6.cat;
       fForm2HTML["f2-tag6"].value = docData.card6.tag;
-      fForm2HTML["f2-iconName6"].value = docData.card6.iconTitle;
       fForm2HTML["f2-priority-6"].value = docData.card6.priority;
       fForm2HTML.querySelector("#f2-img6").src = docData.card6.imgUrl;
     }
@@ -604,7 +582,6 @@ db.collection("sections")
     if (docData.card7) {
       fForm2HTML["f2-cat7"].value = docData.card7.cat;
       fForm2HTML["f2-tag7"].value = docData.card7.tag;
-      fForm2HTML["f2-iconName7"].value = docData.card7.iconTitle;
       fForm2HTML["f2-priority-7"].value = docData.card7.priority;
       fForm2HTML.querySelector("#f2-img7").src = docData.card7.imgUrl;
     }
@@ -612,7 +589,6 @@ db.collection("sections")
     if (docData.card8) {
       fForm2HTML["f2-cat8"].value = docData.card8.cat;
       fForm2HTML["f2-tag8"].value = docData.card8.tag;
-      fForm2HTML["f2-iconName8"].value = docData.card8.iconTitle;
       fForm2HTML["f2-priority-8"].value = docData.card8.priority;
       fForm2HTML.querySelector("#f2-img8").src = docData.card8.imgUrl;
     }
@@ -690,9 +666,9 @@ const form3 = async (e) => {
   const t4 = fForm3HTML["f3-t4"].value;
 
   if (f3File1) {
-    f1name = `${Math.random()}__${f3File1.name}`;
-    await storageService.ref(`sections/fixed3/${f1name}`).put(f3File1);
-    img1Url = await extractImgUrl(`sections/fixed3/${f1name}`);
+    f3name = `${Math.random()}__${f3File1.name}`;
+    await storageService.ref(`sections/fixed3/${f3name}`).put(f3File1);
+    img1Url = await extractImgUrl(`sections/fixed3/${f3name}`);
   }
   if (f3File2) {
     f2name = `${Math.random()}__${f3File2.name}`;
@@ -837,7 +813,7 @@ const form4 = async(e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for(let ui of userInputs) {
-    let c = ui.cat.split('__')[1];
+    let c = ui.cat.split('__')[0];
     // console.log(ui);
     await db.collection(c).get().then(snapshots => {
       let snapshotDocs = snapshots.docs;
@@ -1163,8 +1139,6 @@ const form6 = async(e) => {
   const f6Id4 = fForm6HTML["f6-id4"].value;
   const f6Id5 = fForm6HTML["f6-id5"].value;
   const f6Id6 = fForm6HTML["f6-id6"].value;
-  const f6Id7 = fForm6HTML["f6-id7"].value;
-  const f6Id8 = fForm6HTML["f6-id8"].value;
 
   const f6Cat1 = fForm6HTML["f6-cat1"].value;
   const f6Cat2 = fForm6HTML["f6-cat2"].value;
@@ -1172,8 +1146,6 @@ const form6 = async(e) => {
   const f6Cat4 = fForm6HTML["f6-cat4"].value;
   const f6Cat5 = fForm6HTML["f6-cat5"].value;
   const f6Cat6 = fForm6HTML["f6-cat6"].value;
-  const f6Cat7 = fForm6HTML["f6-cat7"].value;
-  const f6Cat8 = fForm6HTML["f6-cat8"].value;
 
   let userInputs = [
     { sno: f6Id1, cat: f6Cat1 },
@@ -1182,14 +1154,13 @@ const form6 = async(e) => {
     { sno: f6Id4, cat: f6Cat4 },
     { sno: f6Id5, cat: f6Cat5 },
     { sno: f6Id6, cat: f6Cat6 },
-    { sno: f6Id7, cat: f6Cat7 },
-    { sno: f6Id8, cat: f6Cat8 },
+
   ];
 
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for(let ui of userInputs) {
-    let c = ui.cat.split('__')[1];
+    let c = ui.cat.split('__')[0];
 
     await db.collection(c).get().then(snapshots => {
       let snapshotDocs = snapshots.docs;
@@ -1234,16 +1205,13 @@ db.collection('sections').doc('fixed6').onSnapshot(doc => {
   fForm6HTML["f6-cat4"].value = docData.prodIds[3].cat;
   fForm6HTML["f6-cat5"].value = docData.prodIds[4].cat;
   fForm6HTML["f6-cat6"].value = docData.prodIds[5].cat;
-  fForm6HTML["f6-cat7"].value = docData.prodIds[6].cat;
-  fForm6HTML["f6-cat8"].value = docData.prodIds[7].cat;
   fForm6HTML["f6-id1"].value = docData.prodIds[0].sno;
   fForm6HTML["f6-id2"].value = docData.prodIds[1].sno;
   fForm6HTML["f6-id3"].value = docData.prodIds[2].sno;
   fForm6HTML["f6-id4"].value = docData.prodIds[3].sno;
   fForm6HTML["f6-id5"].value = docData.prodIds[4].sno;
   fForm6HTML["f6-id6"].value = docData.prodIds[5].sno;
-  fForm6HTML["f6-id7"].value = docData.prodIds[6].sno;
-  fForm6HTML["f6-id8"].value = docData.prodIds[7].sno;
+
 });
 
 
@@ -1265,8 +1233,6 @@ const form7 = async(e) => {
   const f7Id4 = fForm7HTML["f7-id4"].value;
   const f7Id5 = fForm7HTML["f7-id5"].value;
   const f7Id6 = fForm7HTML["f7-id6"].value;
-  const f7Id7 = fForm7HTML["f7-id7"].value;
-  const f7Id8 = fForm7HTML["f7-id8"].value;
 
   const f7Cat1 = fForm7HTML["f7-cat1"].value;
   const f7Cat2 = fForm7HTML["f7-cat2"].value;
@@ -1274,8 +1240,7 @@ const form7 = async(e) => {
   const f7Cat4 = fForm7HTML["f7-cat4"].value;
   const f7Cat5 = fForm7HTML["f7-cat5"].value;
   const f7Cat6 = fForm7HTML["f7-cat6"].value;
-  const f7Cat7 = fForm7HTML["f7-cat7"].value;
-  const f7Cat8 = fForm7HTML["f7-cat8"].value;
+
 
   let userInputs = [
     { sno: f7Id1, cat: f7Cat1 },
@@ -1284,12 +1249,10 @@ const form7 = async(e) => {
     { sno: f7Id4, cat: f7Cat4 },
     { sno: f7Id5, cat: f7Cat5 },
     { sno: f7Id6, cat: f7Cat6 },
-    { sno: f7Id7, cat: f7Cat7 },
-    { sno: f7Id8, cat: f7Cat8 },
   ];
 
   for(let ui of userInputs) {
-    let c = ui.cat.split('__')[1];
+    let c = ui.cat.split('__')[0];
     await db.collection(c).get().then(snapshots => {
       let snapshotDocs = snapshots.docs;
       for(let doc of snapshotDocs) {
@@ -1330,16 +1293,12 @@ db.collection('sections').doc('fixed7').onSnapshot(doc => {
   fForm7HTML["f7-cat4"].value = docData.prodIds[3].cat;
   fForm7HTML["f7-cat5"].value = docData.prodIds[4].cat;
   fForm7HTML["f7-cat6"].value = docData.prodIds[5].cat;
-  fForm7HTML["f7-cat7"].value = docData.prodIds[6].cat;
-  fForm7HTML["f7-cat8"].value = docData.prodIds[7].cat;
   fForm7HTML["f7-id1"].value = docData.prodIds[0].sno;
   fForm7HTML["f7-id2"].value = docData.prodIds[1].sno;
   fForm7HTML["f7-id3"].value = docData.prodIds[2].sno;
   fForm7HTML["f7-id4"].value = docData.prodIds[3].sno;
   fForm7HTML["f7-id5"].value = docData.prodIds[4].sno;
   fForm7HTML["f7-id6"].value = docData.prodIds[5].sno;
-  fForm7HTML["f7-id7"].value = docData.prodIds[6].sno;
-  fForm7HTML["f7-id8"].value = docData.prodIds[7].sno;
 });
 
 
