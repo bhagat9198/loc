@@ -21,7 +21,7 @@ const extractChildCat = (data, subId, docId) => {
   data.childCategories.map(doc => {
     // let docData = doc.data();
     childLi += `
-    <li><a href="/Products/products.html?cat=${docId}&&sub=${subId}&&child=${doc.id}">${doc.name}</a></li>
+      <li><a href="/Products/products.html?cat=${docId}&&sub=${subId}&&child=${doc.id}">${doc.name}</a></li>
     `;
   })
   // console.log(childLi);
