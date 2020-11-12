@@ -61,7 +61,7 @@ db.collection('sections').doc('fixed1').onSnapshot(doc => {
       row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
-            <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" target="_blank">
+            <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}">
               <img class="imgc"
                 src="${docData[card].imgUrl}">
             </a>
@@ -138,7 +138,7 @@ db.collection('sections').doc('fixed3').onSnapshot(doc => {
       row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3 revealOnScroll" data-animation="fadeInUp >
         <div class="aside">
-          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb" target="_blank">
+          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -234,7 +234,7 @@ db.collection('sections').doc('fixed5').onSnapshot(doc => {
       row += `
       <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3  revealOnScroll" data-animation="fadeInUp>
         <div class="aside">
-          <a href="./Products/products?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca" target="_blank">
+          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -362,7 +362,7 @@ db.collection('sections').doc('fixed8').onSnapshot(doc => {
       row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
-          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca" target="_blank">
+          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -390,7 +390,7 @@ db.collection('sections').doc('fixed9').onSnapshot(doc => {
       row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
-          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca" target="_blank">
+          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
