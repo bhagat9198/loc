@@ -40,7 +40,7 @@ db.collection("sliders").onSnapshot(async(snapshots) => {
       </div>
     </a>`;
   };
-  console.log(img);
+  // console.log(img);
   introCarouselHTML.innerHTML = img;
 });
 
@@ -61,7 +61,7 @@ db.collection('sections').doc('fixed1').onSnapshot(doc => {
       row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
-            <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" target="_blank">
+            <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" target="_blank">
               <img class="imgc"
                 src="${docData[card].imgUrl}">
             </a>
@@ -103,7 +103,7 @@ db.collection('sections').doc('fixed2').onSnapshot(doc => {
     row += `
     <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
       <div class="card cardc align-items-center">
-        <a href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${card.tag}" class="">
+        <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${card.tag}" class="">
           <div class="iconimg">
             <img class="comimg" src="${docData[card].imgUrl}"
               class="card-img-top img-fluid" alt="...">
@@ -138,7 +138,7 @@ db.collection('sections').doc('fixed3').onSnapshot(doc => {
       row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3 revealOnScroll" data-animation="fadeInUp >
         <div class="aside">
-          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb" target="_blank">
+          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb" target="_blank">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -167,16 +167,17 @@ db.collection('sections').doc('fixed4').get().then(async(doc) => {
       // fixedSection4Heading.innerHTML = docData[card];
     // } else {
       // console.log(card);
-      // console.log(card.cat.toString().split('__')[1]);
-      let docRef = db.collection(card.cat.split('__')[1]).doc(card.id);
+      // console.log(card.cat.toString().split('__')[0]);
+      // console.log(card.cat.id);
+      let docRef = db.collection(card.cat.toString().split('__')[0]).doc(card.id.toString());
       // console.log(docRef)
       await docRef.get().then(prod => {
         // console.log(prod);
         let prodData = prod.data();
-        // console.log(prodData);
+        console.log(prodData);
         if(prodData.isActivated) {
           row +=  `
-          <a href="./Product/product/${prod.id}" class="item">
+          <a href="./Product/product?prod=${prod.id}" class="item">
             <div class="item-img">
               <div class="extra-list">
                 <ul>
@@ -225,17 +226,17 @@ db.collection('sections').doc('fixed5').onSnapshot(doc => {
   for(let card in docData) {
     // console.log(card);
     if(card === 'title') {
-     
+      // console.log(docData[card]);
       title = `
       <div class="col-md-12 text-center">
-        <h3 class="mb-3   revealOnScroll"  style="font-weight: 700;font-size: 30px" data-animation="fadeInUp>${docData[card]}</h3>
+        <h3 class="mb-3   revealOnScroll"  style="font-weight: 700;font-size: 30px" data-animation="fadeInUp">${docData[card]}</h3>
       </div>
       `;
     } else {
       row += `
       <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3  revealOnScroll" data-animation="fadeInUp>
         <div class="aside">
-          <a href="./Products/products?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" class="banner-effect imgca" href="abcd" target="_blank">
+          <a href="./Products/products?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca" target="_blank">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -243,7 +244,7 @@ db.collection('sections').doc('fixed5').onSnapshot(doc => {
       `;
     }
   }
- 
+  // console.log(title, row);
   fixedSection5Row.innerHTML = title + row;
 })
 
@@ -260,14 +261,14 @@ db.collection('sections').doc('fixed6').onSnapshot(async(doc) => {
   for(let card of docData.prodIds) {
     // console.log(card);
     // console.log(card.cat.split('__')[1], card.id);
-    await db.collection(card.cat.split('__')[1]).doc(card.id).get().then(prod => {
+    await db.collection(card.cat.split('__')[0]).doc(card.id).get().then(prod => {
       // console.log(prod);
       let prodData = prod.data();
 
       // console.log(prodData);
       row += `
       <div class="col-lg-2 col-md-3 col-6 remove-padding">
-        <a class="item" href="./Product/product.html/${prod.id}">
+        <a class="item" href="./Product/product.html?prod=${prod.id}">
           <div class="item-img">
             <div class="extra-list">
               <ul>
@@ -314,13 +315,13 @@ db.collection('sections').doc('fixed7').onSnapshot(async(doc) => {
   for(let card of docData.prodIds) {
     // console.log(card);
     // console.log(card.cat.split('__')[1], card.id);
-    await db.collection(card.cat.split('__')[1]).doc(card.id).get().then(prod => {
+    await db.collection(card.cat.split('__')[0]).doc(card.id).get().then(prod => {
       // console.log(prod);
       let prodData = prod.data();
       // console.log(prodData);
       row += `
       <div class="col-lg-2 col-md-3 col-6 remove-padding">
-        <a class="item" href="./Product/product.html/${prod.id}">
+        <a class="item" href="./Product/product.html?prod=${prod.id}">
           <div class="item-img">
             <div class="extra-list">
               <ul>
@@ -365,13 +366,13 @@ db.collection('sections').doc('fixed8').onSnapshot(doc => {
   let row = '';
   fixedSection8Heading.innerHTML = docData['title'];
   for(let card in docData) {
-    console.log(docData[card]);
+    // console.log(docData[card]);
     // console.log(docData[card]);
     if(card != 'title') {
       row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
-          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" class="banner-effect imgca" target="_blank">
+          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca" target="_blank">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -393,13 +394,13 @@ db.collection('sections').doc('fixed9').onSnapshot(doc => {
   let row = '';
   fixedSection9Heading.innerHTML = docData['title'];
   for(let card in docData) {
-    console.log(docData[card]);
+    // console.log(docData[card]);
     // console.log(docData[card]);
     if(card != 'title') {
       row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
-          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" class="banner-effect imgca" target="_blank">
+          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca" target="_blank">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
