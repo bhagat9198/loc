@@ -162,7 +162,7 @@ db.collection('sections').doc('fixed4').get().then(async(doc) => {
   fixedSection4Heading.innerHTML = docData['title'];
   for(let card of docData.prodIds) {
     // console.log(card);
-    // if(card == 'title') {
+    // if(card == 'title') {        
       // console.log(docData[card]);
       // fixedSection4Heading.innerHTML = docData[card];
     // } else {
