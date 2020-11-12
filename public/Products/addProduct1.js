@@ -448,6 +448,33 @@ const addProductForm = (event) => {
         addProduct.querySelector(".alert-success").style.display = "none";
         document.getElementById("successProduct").style.display = "none";
       }, 5000);
+
+      const searchRef = db.collection('miscellaneous').doc('searchList');
+      searchRef.get().then(seachDoc => {
+        let searchData = seachDoc.data();
+        let searchName = {
+          name: response.prodData.name,
+          id: Math.random(),
+          type: 'prodName'
+        }
+        searchData.searches.push(searchName);
+        let searchSno = {
+          name: response.prodData.sno,
+          id: Math.random(),
+          type: 'prodId',
+          prodId: response.dataId
+        }
+        searchData.searches.push(searchSno);
+        response.prodData.tags.split(',').map(tt => {
+          searchData.searches.push({
+            name: tt,
+            id: Math.random(),
+            type: 'tag'
+          })
+        })
+        console.log(searchData);
+        searchRef.update(searchData);
+      })
     })
     .catch((error) => {
       console.log(error);
