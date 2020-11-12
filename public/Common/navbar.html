@@ -24,21 +24,8 @@
                           style="color: rgb(235, 48, 79);"></i>
                         COUPONS</span> </a>
                   </li> &nbsp;
-                  <li><a href="//lakeofcakes.com/allcoupons" class="track-btn"><span class="sign-in"
-                        style="font-size: 15px; color: #000;"><i class="fa fa-sign-in" aria-hidden="true"
-                          style="color: rgb(235, 48, 79);"></i>
-                        Login</span> </a>
-                  </li> &nbsp;
-                  <li><a href="//lakeofcakes.com/allcoupons" class="track-btn"><span class="sign-in"
-                        style="font-size: 15px; color: #000;"><i class="fa fa-user" aria-hidden="true"
-                          style="color: rgb(235, 48, 79);"></i>
-                        SignUp</span> </a>
-                  </li>
-                  <li><a href="" data-toggle="modal" data-target="#track-order-modal" class="track-btn"><span
-                        class="sign-in" style="font-size: 15px; color: #000;"><i class="fa fa-truck"
-                          style="color: rgb(235, 48, 79);"></i>
-                        Track Order</span> </a>
-                  </li>
+
+
                   <li><a href="" class="sign-log"><span class="sign-in"
                         style="font-size: 14px; color: #000; text-decoration: underline; "><i class="fa fa-phone"
                           style="color: rgb(51, 165, 51);"></i>&nbsp;<strong>+91
@@ -50,6 +37,39 @@
                           style="color: rgb(214, 150, 55);"></i>&nbsp;<strong>Email
                           Us</strong></span>
                     </a>
+                  </li>
+                  <li>
+                    <ul class="" style="padding-left: 10px;">
+                      <li class="nav-item dropdown">
+                        <a class=" dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <img src="https://img.pngio.com/user-logos-user-logo-png-1920_1280.png" id="userImg"
+                            alt="User Logos" style="width: 40px ;object-fit: cover;padding: 5px;"
+                            class="rounded-circle">
+
+                        </a>
+                        <div class="dropdown-menu" style="padding: 10px; margin-left:-50%;margin-top:4%;"
+                          data-toggle="dropdown" aria-labelledby="navbarDropdownMenuLink">
+                          <div style="padding: 0px;width: 200px;background-color: antiquewhite;padding: 5px;">
+                            <a class="dropdown-item" href="#">
+                              <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest!
+                                Login to continue</h4>
+                              <button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
+                            </a>
+                          </div>
+                          <hr>
+                          <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+                          <hr>
+                          <a class="dropdown-item" href="#"><i class="fa fa-truck"></i> Track Orders</a>
+                          <hr>
+                          <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> My Orders</a>
+                          <hr>
+                          <a class="dropdown-item" href="#" id="hideLogOut" onclick="logOut()"><i
+                              class="fa fa-sign-out"></i>
+                            Logout</a>
+                        </div>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
@@ -90,7 +110,7 @@
 
         <div class="menu-container">
           <div class="menu">
-            <ul >
+            <ul>
 
               <!-- <li >
                 <a>Cakes<i class="fas fa-chevron-down" style="margin-left: 0%;float: right;"></i></a>
@@ -128,14 +148,14 @@
               </li> -->
 
 
-                  <li><a href="#">Empty sub</a>
-                    <ul>
-                      <li><img src="https://placeimg.com/300/200/people"></li>
-                    </ul>
-                  </li>
+              <li><a href="#">Empty sub</a>
+                <ul>
+                  <li><img src="https://placeimg.com/300/200/people"></li>
                 </ul>
               </li>
-              <!-- <li><a href="#">Chocolate<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
+            </ul>
+            </li>
+            <!-- <li><a href="#">Chocolate<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
                 <ul>
                   <li><a href="#">School</a>
                     <ul>
@@ -567,7 +587,7 @@
       <div
         class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
         <ul style="display: inline-flex;">
-          <li >
+          <li>
             <a href="//lakeofcakes.com/midnight">
               <div class="text-center">
                 <img src="images/Midnight-Delivery.png" style="width:80px;object-fit: cover;">
@@ -587,7 +607,7 @@
                 BE A CHEF</div>
             </a>
           </li>
-          <li >
+          <li>
             <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
               <img src="https://www.flaticon.com/svg/static/icons/svg/1792/1792931.svg"
                 style="width:80px;object-fit: cover;">
@@ -942,17 +962,86 @@
       e.preventDefault();
     });
 
-  $(window).resize(function () {
-    $(".menu > ul > li").children("ul").hide();
-    $(".menu > ul").removeClass('show-on-mobile');
-  });
+    $(window).resize(function () {
+      $(".menu > ul > li").children("ul").hide();
+      $(".menu > ul").removeClass('show-on-mobile');
+    });
 
-  function shownavigation() {
-    $('.drobt0').removeClass('colapse');
-  }
+    function shownavigation() {
+      $('.drobt0').removeClass('colapse');
+    }
 
-  function hidenavigation() {
-    $('.drobt0').addClass('colapse');
-  }
+    function hidenavigation() {
+      $('.drobt0').addClass('colapse');
+    }
   }, 5500);    
+</script>
+<script src="../Auth/app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+<script>
+  var checkUser;
+  var timecount=0;
+  const inter=setInterval(function(){
+  timecount++;
+  if(timecount==10){
+    clearInterval(inter)
+   
+  }
+  var counter = 0;
+  document.getElementById("hideLogOut").style.display = "none";
+  const db = firebase.firestore();
+  var docData, userDoc;
+
+     db.collection("Customers").onSnapshot(async (snapshots) => {
+      checkUser = window.localStorage.getItem("locLoggedInUser");
+      
+      let snapshotDocs = snapshots.docs;
+
+      // var dbref = db.collection('Customers');
+      for (let doc of snapshotDocs) {
+
+        if (checkUser == doc.data().userId) {
+        
+          counter++;
+          userDoc = doc.data()
+          document.getElementById("logInBtn").style.display = "none";
+          document.getElementById("hideLogOut").style.display = "block";
+          document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
+          document.getElementById("userImg").src = userDoc.Image;
+          break;
+        }
+      }
+
+      if (counter == 0) {
+
+        document.getElementById("hideLogOut").style.display = "none";
+        document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
+        document.getElementById("logInBtn").style.display = "block";
+      }
+
+    });
+  
+
+},1000) 
+  
+
+  function redirectLogin() {
+    window.location = "/Auth/login.html"
+  }
+  function logOut() {
+    let dbref = db.collection('Customers');
+    // firebase.auth().signOut();
+    dbref.doc(checkUser).update({
+      token: "null"
+
+    }).then(function () {
+      window.localStorage.removeItem("locLoggedInUser")
+      firebase.auth().signOut();
+      location.reload();
+
+    });
+
+
+  }
+
 </script>
