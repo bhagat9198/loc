@@ -718,7 +718,7 @@ const submitEditForm = (event) => {
     productPolicy,
     productMainImg;
 
-  let productTags = [];
+  let productTags;
   let productAddons = [];
   let productSubImgs = [];
   let cakeWeights = [];
@@ -743,9 +743,11 @@ const submitEditForm = (event) => {
   //     productAddons.push(addon.value);
   //   });
 
-  editProduct.querySelectorAll('input[name="product-tag"]').forEach((tag) => {
-    productTags.push(tag.value);
-  });
+  // .forEach((tag) => {
+  //   productTags.push(tag.value);
+  // });
+
+  productTags = editProduct.querySelector('input[name="product-tag"]').value;
 
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
@@ -852,9 +854,11 @@ const submitEditForm = (event) => {
       suburlss.push(el.src);
     });
   }
-  console.log(productSubImgs);
+  // console.log(productSubImgs);
   // alert(productDescription)
   // alert(productPolicy)
+
+  console.log();
   let wholeProduct = {
     name: productName,
     sno: productSno,
@@ -955,7 +959,6 @@ const submitEditForm = (event) => {
           subImgsUrl.push(subUrl);
         }
       }
-      console.log('sdfghgfd');
       // editProduct.reset();
       // showSnack();
       // function showSnack() {
@@ -1007,33 +1010,66 @@ const submitEditForm = (event) => {
       }
 
       const searchRef = db.collection('miscellaneous').doc('searchList');
-      searchRef.get().then(seachDoc => {
+      searchRef.get().then(async(seachDoc) => {
         let searchData = seachDoc.data();
         let searchName = {
           name: response.prodData.name,
           id: Math.random(),
-          type: 'prodName',
-          
+          type: 'prodName'
         }
-        searchData.searches.push(searchName);
+        
         let searchSno = {
           name: response.prodData.sno,
           id: Math.random(),
           type: 'prodId',
           prodId: response.dataId
         }
-        searchData.searches.push(searchSno);
+        console.log(response.prodData);
         response.prodData.tags.split(',').map(tt => {
-          searchData.searches.push({
-            name: tt,
-            id: Math.random(),
-            type: 'tag'
-          })
+          let tagFlag = 0;
+          for(let s of searchData.searches) { 
+            if(s.name === tt) {
+              tagFlag++;
+              break;
+            }
+          }
+
+          if(tagFlag === 0) {
+            searchData.searches.push({
+              name: tt,
+              id: Math.random(),
+              type: 'tag'
+            })
+          }
         })
+
+        let flag = 0;
+        for(let s of searchData.searches) {
+          if(s.name == searchName.name) {
+            flag = 1;
+            break;
+          }
+        }
+        if(flag === 0) {
+          searchData.searches.push(searchName);
+        }
+
+        let snoFlag = 0;
+        for(let s of searchData.searches) {
+          if(s.name == searchSno.name) {
+            snoFlag = 1;
+            break;
+          }
+        }
+        if(snoFlag === 0) {
+          searchData.searches.push(searchSno);
+        }
+
         console.log(searchData);
-        searchRef.update(searchData);
+        await searchRef.update(searchData);
         location.reload();
       })
+
 
       editProduct.querySelector(".alert-success").textContent = "Product Saved";
       editProduct.querySelector(".alert-success").style.display = "block";
