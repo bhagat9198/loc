@@ -36,7 +36,7 @@ const extractSubCat = (data, docId) => {
     let childCat = extractChildCat(doc, doc.id, docId);
     subLi += `
     <li>
-      <a href="/Products/products.html?cat=${docId}&&subcat=${doc.id}">${doc.name}</a>
+      <a href="/Products/products.html?cat=${docId}&&sub=${doc.id}">${doc.name}</a>
       <ul> ${childCat}</ul>
     </li>
     `;
