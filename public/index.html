@@ -19,16 +19,7 @@
 
 </head>
 <style>
-  .loader {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url('./assets/images/loader.gif') 50% 50% no-repeat rgb(249, 249, 249);
 
-  }
 </style>
 
 <body style="overflow-x: hidden !important; ">
@@ -538,38 +529,21 @@
     </div>
   </section>
 
-  <!-- <div class="loader"></div> -->
+
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
 
-  <script src="./assets/js/jquery.js"></script>
-  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="./assets/js/jquery.js"></script>
   <!-- <script src="./assets/js/jquery-ui.min.js"></script> -->
   <script type="text/javascript">
-
-    
-
+    // $(document).ready(() => {
     $('#nav-section-loader').load('./Common/navbar.html');
     $('#footer-section-loader').load('./Common/footer.html');
-    setTimeout(() => {
-      $('#footer-section-loader').load('./Common/files.html');
-    }, 1000);
-    
-// document.onreadystatechange = function() { 
-//     if (document.readyState !== "complete") { 
-//         document.querySelector("body").style.visibility = "hidden"; 
-//         document.querySelector(".loader").style.visibility = "visible"; 
-//     } else { 
-//         document.querySelector(".loader").style.display = "none"; 
-//         document.querySelector("body").style.visibility = "visible"; 
-//     } 
-// }; 
-    // $(window).load(function () {
-    //   $(".loader").fadeOut("slow");
-    // });
-   
+    // })
   </script>
   <script type="text/javascript">
-
+    setTimeout(() => {
+      $('#footer-section-loader').load('./Common/files.html');
+    }, 3000);
   </script>
 
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
@@ -579,7 +553,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
   <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebaseui.js"></script> -->
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-
+  
   <script>
     var firebaseConfig = {
       apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
@@ -593,78 +567,75 @@
     };
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
-    
   </script>
 
   <script src="./index1.js"></script>
   <script src="./Common/navbar1.js"></script>
-  <script>
-   
-    $(function () {
+<script>
+  $(function () {
 
-      var $window = $(window),
-        win_height_padded = $window.height() * 1.1,
-        isTouch = Modernizr.touch;
+    var $window = $(window),
+      win_height_padded = $window.height() * 1.1,
+      isTouch = Modernizr.touch;
 
-      if (isTouch) {
-        $('.revealOnScroll').addClass('animated');
-      }
+    if (isTouch) {
+      $('.revealOnScroll').addClass('animated');
+    }
 
-      $window.on('scroll', revealOnScroll);
+    $window.on('scroll', revealOnScroll);
 
-      function revealOnScroll() {
-        var scrolled = $window.scrollTop(),
-          win_height_padded = $window.height() * 1.1;
+    function revealOnScroll() {
+      var scrolled = $window.scrollTop(),
+        win_height_padded = $window.height() * 1.1;
 
-        // Showed...
-        $(".revealOnScroll:not(.animated)").each(function () {
-          var $this = $(this),
-            offsetTop = $this.offset().top;
+      // Showed...
+      $(".revealOnScroll:not(.animated)").each(function () {
+        var $this = $(this),
+          offsetTop = $this.offset().top;
 
-          if (scrolled + win_height_padded > offsetTop) {
-            if ($this.data('timeout')) {
-              window.setTimeout(function () {
-                $this.addClass('animated ' + $this.data('animation'));
-              }, parseInt($this.data('timeout'), 10));
-            } else {
+        if (scrolled + win_height_padded > offsetTop) {
+          if ($this.data('timeout')) {
+            window.setTimeout(function () {
               $this.addClass('animated ' + $this.data('animation'));
-            }
+            }, parseInt($this.data('timeout'), 10));
+          } else {
+            $this.addClass('animated ' + $this.data('animation'));
           }
-        });
-        // Hidden...
-        $(".revealOnScroll.animated").each(function (index) {
-          var $this = $(this),
-            offsetTop = $this.offset().top;
-          if (scrolled + win_height_padded < offsetTop) {
-            $(this).removeClass('animated fadeInUp flipInX lightSpeedIn')
-          }
-        });
-      }
-      revealOnScroll();
-    });
-  </script>
-
-  <style>
-    .drobt1 {
-      transform: translateX(-101%);
+        }
+      });
+      // Hidden...
+      $(".revealOnScroll.animated").each(function (index) {
+        var $this = $(this),
+          offsetTop = $this.offset().top;
+        if (scrolled + win_height_padded < offsetTop) {
+          $(this).removeClass('animated fadeInUp flipInX lightSpeedIn')
+        }
+      });
     }
+    revealOnScroll();
+  });
+</script>
 
-    .drobt2 {
-      transform: translateX(0%);
-    }
-  </style>
+<style>
+	.drobt1 {
+		transform: translateX(-101%);
+	}
 
-  <script>
-    $(".drobt").click(function () {
-      if ($('.drobt0').hasClass('drobt1')) {
-        $('.drobt0').removeClass('drobt1');
-        $('.drobt0').addClass('drobt2');
-      } else {
-        $('.drobt0').removeClass('drobt2');
-        $('.drobt0').addClass('drobt1');
-      }
-    });
-   
+	.drobt2 {
+		transform: translateX(0%);
+	}
+</style>
+
+<script>
+	$(".drobt").click(function () {
+		if ($('.drobt0').hasClass('drobt1')) {
+			$('.drobt0').removeClass('drobt1');
+			$('.drobt0').addClass('drobt2');
+		} else {
+			$('.drobt0').removeClass('drobt2');
+			$('.drobt0').addClass('drobt1');
+		}
+	});
 	// $('body').click(function(evt){
 	//     alert('hellow');
 	//     if(!$(evt.target).is('#drobt0')) {
@@ -672,6 +643,6 @@
 	//       $('.drobt0').addClass('drobt1');
 	//     }
 	// });
-  </script>
+</script>
 
 </html>
