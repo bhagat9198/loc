@@ -1002,9 +1002,38 @@ const submitEditForm = (event) => {
           }
           console.log(docData);
           await docRef.update(docData);
-          location.reload();
+          
         });
       }
+
+      const searchRef = db.collection('miscellaneous').doc('searchList');
+      searchRef.get().then(seachDoc => {
+        let searchData = seachDoc.data();
+        let searchName = {
+          name: response.prodData.name,
+          id: Math.random(),
+          type: 'prodName',
+          
+        }
+        searchData.searches.push(searchName);
+        let searchSno = {
+          name: response.prodData.sno,
+          id: Math.random(),
+          type: 'prodId',
+          prodId: response.dataId
+        }
+        searchData.searches.push(searchSno);
+        response.prodData.tags.split(',').map(tt => {
+          searchData.searches.push({
+            name: tt,
+            id: Math.random(),
+            type: 'tag'
+          })
+        })
+        console.log(searchData);
+        searchRef.update(searchData);
+        location.reload();
+      })
 
       editProduct.querySelector(".alert-success").textContent = "Product Saved";
       editProduct.querySelector(".alert-success").style.display = "block";
