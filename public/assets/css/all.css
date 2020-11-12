@@ -25743,7 +25743,8 @@ nav button {
 
 .item .item-img img {
     width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
