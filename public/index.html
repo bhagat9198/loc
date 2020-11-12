@@ -546,13 +546,14 @@
   <!-- <script src="./assets/js/jquery-ui.min.js"></script> -->
   <script type="text/javascript">
 
- 
+    
 
     $('#nav-section-loader').load('./Common/navbar.html');
     $('#footer-section-loader').load('./Common/footer.html');
     setTimeout(() => {
       $('#footer-section-loader').load('./Common/files.html');
     }, 1000);
+    
     $(window).load(function () {
       $(".loader").fadeOut("slow");
     });
