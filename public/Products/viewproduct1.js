@@ -249,7 +249,7 @@ const extractData = async () => {
   <br>
         
     `;
-    
+
 
     const tbodys = document.querySelector("#tbody" + cat.id);
     console.log(tbodys);
@@ -259,7 +259,7 @@ const extractData = async () => {
       .then(async (snapshots) => {
         let snapshotsDocs = snapshots.docs;
         tRows += await displayRows(snapshotsDocs, allCategoriesData);
-      
+
       });
     if (tRows != "") {
       tbodys.innerHTML = tRows;
@@ -464,13 +464,18 @@ let mainImgSpanHTML = editProduct.querySelector("#main-img-span");
 let galleryImages = document.querySelector("#galleryImagesDisp");
 let editProductDetails;
 let editProductId;
-
+var count = 0;
 const editDetails = async (e) => {
+  document.getElementById("setCat").value =""
+  // document.getElementById("setCat").value=""
+  document.getElementById("add-product").reset();
+  count++;
   $("#add-product").trigger("reset");
+  // let abc=document.querySelector("#setCat").value=""
 
   let editProduct = document.querySelector("#add-product");
-  console.log(e.target.dataset.id);
-  console.log(e.target.dataset.category);
+  // console.log(e.target.dataset.id);
+  // console.log(e.target.dataset.category);
   // let allCategories = [];
   const docId = e.target.dataset.id;
   const catId = e.target.dataset.catid;
@@ -635,21 +640,21 @@ const editDetails = async (e) => {
       // productDescDetail.innerHTML = doc.descriptions;
       // alert(doc.descriptions)
 
-      while (doc.descriptions.startsWith('<p><br></p>')) {
+      while (doc.descriptions.includes('<p><br></p>') || doc.descriptions.startsWith('<p><br></p>')) {
 
         doc.descriptions = doc.descriptions.replace('<p><br></p>', '')
       }
 
-      while (doc.descriptions.endsWith('<p><br></p>')) {
+      while (doc.descriptions.includes('<p><br></p>') || doc.descriptions.endsWith('<p><br></p>')) {
 
         doc.descriptions = doc.descriptions.replace(new RegExp('<p><br></p>$'), '')
       }
-      while (doc.policy.startsWith('<p><br></p>')) {
+      while (doc.policy.startsWith('<p><br></p>') || doc.policy.includes('<p><br></p>')) {
 
         doc.policy = doc.policy.replace('<p><br></p>', '')
       }
 
-      while (doc.policy.endsWith('<p><br></p>')) {
+      while (doc.policy.endsWith('<p><br></p>') || doc.policy.includes('<p><br></p>')) {
 
         doc.policy = doc.policy.replace(new RegExp('<p><br></p>$'), '')
       }
@@ -663,16 +668,26 @@ const editDetails = async (e) => {
         "editor.pasteHTML", doc.policy
 
       );
+      // document.getElementById("setCat").value = "HELOO";
+      // $('#setCat').tagsinput('removeAll');
+      document.getElementById("setCat").value = doc.tags
+  
+     
 
-      document.getElementById("setCat").value = doc.tags;
+    
+      //# sourceMappingURL=bootstrap-tagsinput.min.js.
+      // editProduct["product-tag"].value = doc.tags;
 
-      tagger(document.querySelector("#setCat"), {
-        allow_spaces: true,
-        allow_duplicates: false,
-        link: function () {
-          return false;
-        },
-      });
+
+      // tagger(document.querySelector("#setCat"), {
+      //   allow_spaces: true,
+      //   allow_duplicates: false,
+      //   link: function () {
+      //     return false;
+      //   },
+      // });
+
+
     })
     .catch((error) => {
       console.log(error);
