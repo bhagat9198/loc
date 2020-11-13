@@ -97,7 +97,7 @@ h6 {
 
 p {
     margin-top: 0;
-    margin-bottom: 1rem
+    /* margin-bottom: 1rem */
 }
 
 abbr[data-original-title],
@@ -23879,7 +23879,7 @@ h6 {
 p {
     font-size: 16px;
     color: #333333;
-    line-height: 1.625;
+    /* line-height: 1.625; */
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     -ms-hyphens: auto;
@@ -36214,7 +36214,7 @@ p.product-unit-price {
 
 section.trending {
     
-    background: linear-gradient(rgba(190, 52, 190, 0.5), rgba(161, 75, 54, 0.616)),url('../images/pngcakes.png');
+    background: linear-gradient(#814b68,#814b68),url('../images/pngcakes.png');
 }
 
 section.phone-and-accessories.categori-item {
