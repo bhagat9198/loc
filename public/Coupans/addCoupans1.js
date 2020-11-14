@@ -25,6 +25,7 @@ const addCoupan = (e) => {
     totalCoupans: numOfCoupans || 'unlimited',
     validFrom: dateFrom,
     validTill: dateTill,
+    isActivated: "true"
   };
 
   const addCoupanReq = async(data) => {

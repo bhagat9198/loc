@@ -2,8 +2,22 @@ console.log("viewCoupans.js");
 
 const db = firebase.firestore();
 const coupansTBodyHTML = document.querySelector(".coupans-tBody");
-// const editModalOptionHTML = document.querySelector("#edit-modal");
-// const detailModalOptionHTML = document.querySelector("#detail-modal");
+
+const displayOptions = (isSeleted, data) => {
+  let options = "";
+  if (isSeleted.toString() === "true") {
+    options = `
+      <option value="true" selected>Activated</option>
+      <option value="false">Deactivated</option>
+    `;
+  } else {
+    options = `
+      <option value="true" >Activated</option>
+      <option value="false" selected>Deactivated</option>
+    `;
+  }
+  return options;
+};
 
 function displayRows(data, elHTML = coupansTBodyHTML) {
   // console.log(elHTML);
@@ -17,9 +31,10 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
       <td>Rs ${docData.amount}</td>
       <td>
         <div class="action-list">
-          <select class="process  drop-success" style="display: block;">
-            <option value="true" selected>Activated</option>
-            <option value="false">Deactivated</option>
+          <select class="process  drop-success" data-id="${
+            doc.id
+          }" onchange="changeStatus(event, this)" style="display: block;">
+            ${displayOptions(docData.isActivated)}
           </select>
         </div>
       </td>
@@ -29,13 +44,17 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
             Actions<i class="fas fa-chevron-down"></i>
           </button>
           <div class="action-list" style="display: none;">
-            <a href="javascript:;" data-id="${doc.id}" onclick="loadEditModal(event)" data-toggle="modal" id="edit-modal" data-target="#coupanEditModal">
+            <a href="javascript:;" data-id="${
+              doc.id
+            }" onclick="loadEditModal(event)" data-toggle="modal" id="edit-modal" data-target="#coupanEditModal">
               <i class="fas fa-edit"></i> Edit
             </a>
-            <a href="javascript:;" data-id="${doc.id}" data-toggle="modal" id="delete-modal" data-target="#confirm-delete" class="delete">
+            <a href="javascript:;" data-id="${doc.id}" class="delete" onclick="deleteCoupan(event)">
               <i class="fas fa-trash-alt"></i>Delete
             </a>
-            <a href="javascript:;" data-toggle="modal" data-id="${doc.id}" onclick="loadDetailModal(event)" id="detail-modal"  data-target="#coupanSystemModal" class="dele">
+            <a href="javascript:;" data-toggle="modal" data-id="${
+              doc.id
+            }" onclick="loadDetailModal(event)" id="detail-modal"  data-target="#coupanSystemModal" class="dele">
               <i class="fa fa-info"></i>Details
             </a>
           </div>
@@ -47,29 +66,38 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
   elHTML.innerHTML = tRows;
 }
 
-// const extractData = async () => {
-//   await db
-//     .collection("coupans")
-//     .get()
-//     .then((snapshot) => {
-//       let snapshotDocs = snapshot.docs;
-//       // console.log(coupansTBodyHTML);
-//       displayRows(snapshotDocs);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
+const changeStatus = (e, current) => {
+  console.log(current.value);
+  let docId = e.target.dataset.id;
+  let docRef = db.collection("coupans").doc(docId);
 
-// extractData();
+  docRef.get().then((doc) => {
+    let docData = doc.data();
 
-db.collection("coupans")
-  .onSnapshot((snapshot) => {
-    let snapshotDocs = snapshot.docs;
-    // console.log(coupansTBodyHTML);
-    displayRows(snapshotDocs);
-  })
-  
+    docData.isActivated = current.value;
+    docRef.update(docData);
+  });
+};
+
+const deleteCoupan = (e) => {
+  let docId = e.target.dataset.id;
+  db.collection('coupans')
+    .doc(docId)
+    .delete()
+    .then( response => {
+      console.log("Document successfully deleted!");
+    })
+    .catch(error => {
+      console.error("Error removing document: ", error);
+    });
+};
+
+db.collection("coupans").onSnapshot((snapshot) => {
+  let snapshotDocs = snapshot.docs;
+  // console.log(coupansTBodyHTML);
+  displayRows(snapshotDocs);
+});
+
 const loadDetailModal = async (e) => {
   // console.log(e.target.dataset.id);
   const docId = e.target.dataset.id;
@@ -125,7 +153,6 @@ const loadEditModal = async (e) => {
 
 const submitEdit = (e) => {
   e.preventDefault();
-
   const editModalFormHTML = document.querySelector("#edit-modal-form");
   const name = editModalFormHTML["edit-c-name"].value;
   const desc = editModalFormHTML["edit-c-desc"].value;
