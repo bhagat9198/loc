@@ -25,6 +25,8 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
   data.map((doc) => {
     let docData = doc.data();
     // console.log(docData);
+    let discountAmt = '';
+    
     tRows += `
     <tr role="row" class="odd parent">
       <td tabindex="0">${docData.name}</td>
@@ -106,6 +108,7 @@ const loadDetailModal = async (e) => {
   const cNameHTML = detailModalHTML.querySelector(".cName");
   const cCategoryHTML = detailModalHTML.querySelector(".cCategory");
   const cAmtHTML = detailModalHTML.querySelector(".cAmt");
+  const pAmtHTML = detailModalHTML.querySelector(".pAmt");
   const cQuantityHTML = detailModalHTML.querySelector(".cQuantity");
   const cFromHTML = detailModalHTML.querySelector(".cFrom");
   const cValidHTML = detailModalHTML.querySelector(".cValid");
@@ -121,6 +124,7 @@ const loadDetailModal = async (e) => {
       cNameHTML.innerHTML = docData.name;
       cCategoryHTML.innerHTML = docData.category;
       cAmtHTML.innerHTML = docData.amount;
+      pAmtHTML.innerHTML = docData.prevAmout || '';
       cQuantityHTML.innerHTML = docData.quantity;
       cFromHTML.innerHTML = docData.validFrom;
       cValidHTML.innerHTML = docData.validTill;
@@ -143,6 +147,7 @@ const loadEditModal = async (e) => {
       editModalFormHTML["edit-c-desc"].value = docData.desc;
       editModalFormHTML["edit-c-category"].value = docData.category;
       editModalFormHTML["edit-c-amt"].value = docData.amount;
+      editModalFormHTML["edit-c-pamt"].value = docData.prevAmout;
       editModalFormHTML["edit-c-quantity"].value = docData.quantity;
       editModalFormHTML["edit-c-total"].value = docData.totalCoupans;
       editModalFormHTML["edit-c-validFrom"].value = docData.validFrom;
@@ -158,6 +163,7 @@ const submitEdit = (e) => {
   const desc = editModalFormHTML["edit-c-desc"].value;
   const category = editModalFormHTML["edit-c-category"].value;
   const amount = editModalFormHTML["edit-c-amt"].value;
+  const pAmount = editModalFormHTML["edit-c-pamt"].value;
   const quantity = editModalFormHTML["edit-c-quantity"].value;
   let totalCoupans = editModalFormHTML["edit-c-total"].value;
   const validFrom = editModalFormHTML["edit-c-validFrom"].value;
@@ -173,6 +179,7 @@ const submitEdit = (e) => {
     desc: desc,
     category: category,
     amount: amount,
+    prevAmout: pAmount,
     quantity: quantity,
     totalCoupans: totalCoupans,
     validFrom: validFrom,
