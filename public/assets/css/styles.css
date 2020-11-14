@@ -554,17 +554,17 @@ input[type=checkbox]:checked + label:before {
   border-left: 20px solid #ff0000;
 }
 .checkout-area .checkout-process li a.active{
-  background: #ff0000;
+  background: #ac8d04;
 
 }
 .checkout-area .checkout-process li a.active::before{
-  border-left: 20px solid #ff0000;
+  border-left: 20px solid #ac8d04;
 }
 .checkout-area  .content-box .content .billing-info-area .info-list li p i{
-  color: #ff0000;
+   color: #ac8d04;
 }
   .checkout-area  .content-box .content .payment-information .nav a span::after{
-    background: #ff0000;
+    background:#ac8d04 ;
   }
       .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-3 a {
       border: 1px solid #ff0000;

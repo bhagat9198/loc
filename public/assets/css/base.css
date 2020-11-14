@@ -33,7 +33,7 @@
 
 
     .form-control {
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) inset !important;
+      /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) inset !important; */
     }
 
     .road {
@@ -562,7 +562,9 @@
       }
 
       .addtocart .btns {
-        padding: 0px 40px !important;
+        padding: 10px !important;
+        border-radius: 5px !important;
+        width: 100% !important;
       }
 
       .logo img {

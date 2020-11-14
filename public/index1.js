@@ -59,6 +59,7 @@ db.collection('sections').doc('fixed1').onSnapshot(doc => {
       fixedSection1HeadingHTML.innerHTML = docData[card];
     } else {
       row += `
+   
       <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
             <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}">
@@ -67,6 +68,7 @@ db.collection('sections').doc('fixed1').onSnapshot(doc => {
             </a>
           </div>
         </div>
+       
       `;
     } 
   }
@@ -101,6 +103,7 @@ db.collection('sections').doc('fixed2').onSnapshot(doc => {
   let row = '';
   for(let card of sortArr) {
     row += `
+    
     <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
       <div class="card cardc align-items-center">
         <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${card.tag}" class="">
@@ -130,6 +133,7 @@ db.collection('sections').doc('fixed3').onSnapshot(doc => {
   for(let card in docData) {
     if(card === 'title') {
       title = `
+      
       <div class="col-md-12 text-center">
         <h3 class="mb-3 bannerheading" id="fixed-section3-heading" style="font-weight: 700;font-size: 30px">${docData[card]}</h3>
       </div>
@@ -137,11 +141,13 @@ db.collection('sections').doc('fixed3').onSnapshot(doc => {
     } else {
       row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3 revealOnScroll" data-animation="fadeInUp >
+      <div class="top-grid-head">
         <div class="aside">
           <a href="./Products/products.html?cat=${docData[card].cat.split('__')[0]}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
+        
       </div>
       `;
     }

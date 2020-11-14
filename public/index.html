@@ -15,15 +15,32 @@
   <link rel="stylesheet" href="./assets//css/randomStyles.css">
   <link rel="stylesheet" href="./assets/css/animate.css">
   <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <link rel="stylesheet" href="assets/css/animation.css">
 </head>
+<style>
+.top-grid-head{
+	background:url(./assets/images/header-bg1.png);
+	min-height:101px;
+  text-align:center;
+  width: 100%;
+  background-size:contain;
+  z-index: 999;
+}
+.darkmode-toggle{
+  z-index: 999 !important;
+}
+</style>
 
 <body style="overflow-x: hidden !important; ">
   <section id="nav-section-loader"></section>
 
   <!-- SLIDER -->
+
   <section class="hero-area">
+    
     <div class="hero-area-slider">
+   
       <div class="intro-carousel">
       </div>
       <div class="base">
@@ -32,13 +49,16 @@
         <!--<img src="" alt="" draggable="false">-->
       </div>
     </div>
-    </div>
+    
   </section>
+</div>
   <br>
 
   <!-- SECTION1 -->
+
   <section class="banner-section"
-    style="background: linear-gradient(rgba(112, 172, 190, 0.5), rgba(202, 194, 192, 0.616));">
+    style="background: linear-gradient(rgba(112, 172, 190, 0.5), rgba(202, 194, 192, 0.616)),url('./assets/images/top-grid-bg.png');;">
+    
     <h3 class="bannerheading fadeIn" id="fixed-section1-heading">Choose the Best Joy</h3>
     <div class="container-fluid">
       <div class="row" id="fixed-section1-row">
@@ -55,6 +75,7 @@
       </div>
     </div>
   </section>
+  
 
   <section class="" style="position: absolute;margin-top: -2%;">
     <div class="contain ">
@@ -126,7 +147,8 @@
       </div>
     </div>
   </section>
-
+  <div class="top-grid-head"></div>
+ 
   <!-- fixed section 4 -->
   <section class="trending">
     <div class="container-fluid">
@@ -194,6 +216,7 @@
   </section>
 
   <!-- fixed section 6 -->
+  
   <section class="categori-items bestseller">
     <div class="container-fluid">
       <div class="row ">
@@ -609,6 +632,24 @@
     }
     revealOnScroll();
   });
+</script>
+<script>
+  const options = {
+  top: '64px', // default: '32px'
+  left: 'unset', // default: '32px'
+  right: '32px', // default: 'unset'
+  time: '0.5s', // default: '0.3s'
+  mixColor: '#fff', // default: '#fff'
+  backgroundColor: '#fff',  // default: '#fff'
+  buttonColorDark: '#100f2c',  // default: '#100f2c'
+  buttonColorLight: '#fff', // default: '#fff'
+  saveInCookies: false, // default: true,
+  label: '🌓', // default: ''
+  autoMatchOsTheme: true // default: true
+}
+
+const darkmode = new Darkmode(options);
+darkmode.showWidget();
 </script>
 
 </html>

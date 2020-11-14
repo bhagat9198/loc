@@ -25,7 +25,11 @@
     box-shadow: 0px 0px 18px -3px rgba(143, 143, 143, 0.5);
   }
 
-
+  @media (min-width:576px) {
+    .card-deck {
+        width: 700px !important;
+    }
+  }
   .card:hover {
     box-shadow: 0px 0px 20px -3px rgba(143, 143, 143, 0.75);
   }
@@ -278,24 +282,25 @@
     <div class="row">
       <div class="mx-auto">
         <div class="col-lg-12">
-          <h1 class="display-2 heading-big text-center">Grab your coupans for free </h1>
+          <h1 class="display-2 heading-big text-center ">Grab your coupans for free </h1>
         </div>
       </div>
     </div>
   </div>
-
+  
   <section>
     <!-- heading -->
     <!-- cards -->
     <div class="container">
       <div class="row">
+        
         <div class="mx-auto">
-          <div class="col-lg-12">
+          <div class="col-lg-12" style="margin-top: 5%;">
             <div class="text-center my-3">
 
               <div class="card-deck no-gutters">
 
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4">
                   <div class="card h-100 mb-4">
                     <div class="card-header">
                       <h5 class="card-title m-0 p-0 font-weight-bolder " id="copyCode1">#6LOC786
@@ -318,6 +323,56 @@
 
                   </div>
                 </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <div class="card h-100 mb-4">
+                    <div class="card-header">
+                      <h5 class="card-title m-0 p-0 font-weight-bolder " id="copyCode1">#6LOC786
+                      </h5>
+                    </div>
+                    <div class="card-body text-left">
+                      <p class="card-text">Coupen Description</p>
+                      <span class="font-lead-base font-weight-bold text-muted">20% Off!</span>
+                      <div class="promotion-promo">₹ 11.5</div>
+                      <div class="promotion-price">
+                        <div class="promotion-price-desc">Now</div>
+                        <div class="promotion-price-text">₹ 9.5</div>
+                      </div>
+                    </div>
+                    <div class="card-footer"><a href="#" class="btn btn-warning" onclick="copyToClipboard('#copyCode1')"
+                        data-toggle="tooltip" title="Copied to clipboard">Copy Code</a>
+                    </div>
+                    <h5 style="font-weight: 800;background-color: green;font-size: 14px;display: none;"
+                      id="copiedText1">Copied To ClipBoard</h5>
+
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+                  <div class="card h-100 mb-4">
+                    <div class="card-header">
+                      <h5 class="card-title m-0 p-0 font-weight-bolder " id="copyCode1">#6LOC786
+                      </h5>
+                    </div>
+                    <div class="card-body text-left">
+                      <p class="card-text">Coupen Description</p>
+                      <span class="font-lead-base font-weight-bold text-muted">20% Off!</span>
+                      <div class="promotion-promo">₹ 11.5</div>
+                      <div class="promotion-price">
+                        <div class="promotion-price-desc">Now</div>
+                        <div class="promotion-price-text">₹ 9.5</div>
+                      </div>
+                    </div>
+                    <div class="card-footer"><a href="#" class="btn btn-warning" onclick="copyToClipboard('#copyCode1')"
+                        data-toggle="tooltip" title="Copied to clipboard">Copy Code</a>
+                    </div>
+                    <h5 style="font-weight: 800;background-color: green;font-size: 14px;display: none;"
+                      id="copiedText1">Copied To ClipBoard</h5>
+
+                  </div>
+                </div>
+               
+
+                
+               
 
                
 
