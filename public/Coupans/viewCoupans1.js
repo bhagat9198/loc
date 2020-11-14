@@ -25,12 +25,11 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
   data.map((doc) => {
     let docData = doc.data();
     // console.log(docData);
-    let discountAmt = '';
     
     tRows += `
     <tr role="row" class="odd parent">
       <td tabindex="0">${docData.name}</td>
-      <td>Rs ${docData.amount}</td>
+      <td>${displayDisAmt(docData.category, docData.amount)}</td>
       <td>
         <div class="action-list">
           <select class="process  drop-success" data-id="${
@@ -66,6 +65,16 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
     `;
   });
   elHTML.innerHTML = tRows;
+}
+
+const displayDisAmt = (coupanCat, amt) => {
+  let discountAmt = '';
+    if(coupanCat === "price") {
+      discountAmt = `₹ ${amt}`;
+    } else {
+      discountAmt = `${amt}%`;
+    }
+  return discountAmt;
 }
 
 const changeStatus = (e, current) => {
@@ -134,7 +143,7 @@ const loadDetailModal = async (e) => {
 
 const loadEditModal = async (e) => {
   const docId = e.target.dataset.id;
-  console.log(docId);
+  // console.log(docId);
   const editModalFormHTML = document.querySelector("#edit-modal-form");
 
   await db
@@ -187,7 +196,7 @@ const submitEdit = (e) => {
   };
 
   const updateCoupan = async (data) => {
-    console.log(data);
+    // console.log(data);
     let dbRef = await db.collection("coupans").doc(docId);
     dbRef
       .get()
