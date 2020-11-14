@@ -180,10 +180,10 @@ db.collection('sections').doc('fixed4').get().then(async(doc) => {
       await docRef.get().then(prod => {
         // console.log(prod);
         let prodData = prod.data();
-        console.log(prodData);
+        // console.log(prodData);
         if(prodData.isActivated) {
           row +=  `
-          <a href="./Product/product?prod=${prod.id}" class="item">
+          <a href="./Product/product.html?prod=${prod.id}" class="item">
             <div class="item-img">
               <div class="extra-list">
                 <ul>

@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../assets/css/styles.php">
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
   <link rel="stylesheet" href="../assets/css/products.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -26,10 +27,97 @@
   .item .info .price {
     line-height: 20px !important;
   }
+
   .owl-carousel .owl-item img {
     /* height: 6rem; */
     margin: auto 35%;
 
+  }
+  body {
+    background-color: #f7f6f6
+}
+
+.card {
+    width: 800px
+}
+
+.icon i {
+    font-size: 25px;
+    color: #2196F3
+}
+
+label.radio {
+    cursor: pointer;
+    width: 100% !important;
+    margin-top: 9px
+}
+
+label.radio input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+    width: 100%
+}
+
+label.radio span {
+    padding: 7px 14px;
+    border: 1px solid #D32F2F;
+    display: inline-block;
+    color: #D32F2F;
+    border-radius: 3px;
+    box-shadow: 3px 5px 8px 2px #e9ecef;
+    width: 100%;
+    align-items: center
+}
+
+label.radio input:checked+span {
+    border-color: #D32F2F;
+    background-color: #D32F2F;
+    color: #fff
+}
+
+.area {
+    resize: none
+}
+
+.area:focus {
+    box-shadow: none;
+    border-color: #D32F2F !important
+}
+
+.submit-button,
+.submit-button:active,
+.submit-button:visited,
+.submit-button:focus {
+    background-color: #D32F2F !important;
+    border-color: #D32F2F !important;
+    color: #fff !important;
+    box-shadow: none;
+    text-transform: uppercase;
+    padding-left: 35px;
+    padding-right: 35px
+}
+
+.submit-button:hover {
+    background-color: #D32F2F !important;
+    border-color: #D32F2F !important
+}
+
+  input[type="checkbox"] {
+    /* -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; */
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    margin: 0;
+    zoom: 1.8;
+    margin: auto 2%;
+  }
+
+  input[type="checkbox"]:focus {
+    outline: 0;
   }
 
   @media (min-width: 768px) {
@@ -46,11 +134,17 @@
       width: 600px;
       object-fit: fill;
 
+
     }
- 
+
+    .btns {
+      padding: 20px 20px 20px 20px !important;
+    }
+
   }
+
   @media (max-width: 990px) {
-    .responsiveName{
+    .responsiveName {
       margin-bottom: 10% !important;
     }
   }
@@ -165,23 +259,18 @@
                                 </div>
                               </li>
                             </div>
-                            <div class="col-lg-4">
 
-                              <div class="custom-control custom-radio" style="margin-right: 15px;">
-                                <input type="hidden" class="keys" value="">
-                                <input type="hidden" class="values" value="">
-                                <input type="radio" id="eggless" name="eggless"
-                                  class="custom-control-input product-attr" data-key="eggless" data-price="6589"
-                                  value="1">
 
-                                <img class="productimg"
-                                  src="https://pngimage.net/wp-content/uploads/2018/06/veg-icon-png-1.png"
-                                  alt="Happy Bhai Dooj Truffle Cake Half Kg" style=" width: 50px ;object-fit: cover;">
-                                <br>
-                                <label class="custom-control-label" for="eggless" style="font-weight: 700;">EggLess ?
-                                </label>
 
-                              </div>
+                            <div class="custom-control custom-radio" style="margin-right: 15px;">
+
+                              <input type="checkbox" id="eggless" name="eggless"
+                                class="custom-control-input product-attr" data-key="eggless" data-price="6589"
+                                value="Eggless">
+                              <label class="custom-control-label" for="eggless"
+                                style="font-weight: 900;color: green;text-transform: uppercase;">Want EggLess ?
+                              </label>
+
                             </div>
 
                           </div>
@@ -297,7 +386,7 @@
                           <label class="">Message/Name on Cake</label>
                           <input type="text" class="values form-control message_cart" name="message"
                             placeholder="Enter a name/message (Max 30 Characters)" maxlength="20"
-                            style="height: 3em;width: 75%;" value="">
+                            style="height: 3em;width: 82%;" value="">
                         </div>
                       </div>
                       <br>
@@ -308,10 +397,12 @@
                         style="border-radius: 15px;line-height: 35px;  padding:10px 73px;background: #09192c; border: 1px solid #ac2664; color:#fff;"
                         class="btn btn-primary btns" data-toggle="modal" data-target="#myModal2">Add to Cart</button>
 
-                      </li>
+
                       <button type="button"
                         style="border-radius: 15px;line-height: 35px;  padding:10px 76.5px;background: rgb(60,179,36); border: 1px solid rgb(60,179,36); color:#fff;"
                         class="btn btn-primary btns" data-toggle="modal" data-target="#myModal3">Buy Now</button>
+
+                      </li>
                       <div class="modal fade" id="myModal3">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
@@ -334,25 +425,31 @@
                                   <div class="col-md-3 col-6 mt-3">
                                     <a class="item" for="add_addons[]"
                                       style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-                                      <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
-                                        value="28" style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
+
+                                      <input type="checkbox" name="add_addons[]" class="add_addons " data-id="28"
+                                        value="28"
+                                        style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
                                       <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
                                         <img class="img-fluid"
-                                          src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg" alt=""
-                                          style="width:100%;object-fit: cover;">
+                                          src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg"
+                                          alt="" style="width:100%;object-fit: cover;">
                                       </div>
-                                      <div class="info" style="height: 75px; ">
-                                        <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">Party popper</h5>
-                                        
-                                        <h4 class="price" style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70 </h4>
-                                       
-                                        <li class="d-block count " >
+                                      <div class="info" style="height: 88px; ">
+                                        <h5 class="name responsiveName"
+                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
+                                          popper</h5>
+
+                                        <h4 class="price"
+                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
+                                        </h4>
+
+                                        <li class="d-block count ">
 
                                           <div class="qty">
-                                            <ul >
+                                            <ul>
                                               <li>
                                                 <span class="qtminus">
-                                                  <i class="fa fa-minus" ></i>
+                                                  <i class="fa fa-minus"></i>
                                                 </span>
                                               </li>
                                               <li>
@@ -373,22 +470,26 @@
                                   <div class="col-md-3 col-6 mt-3">
                                     <a class="item" for="add_addons[]"
                                       style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-                                      <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
-                                        value="28" style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
+                                      <input type="checkbox" name="add_addons[]" class="" data-id="28" value="28"
+                                        style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;padding: 20px !important;">
                                       <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
                                         <img class="img-fluid"
-                                          src="https://static.archiesonline.com/public/images/product/large/8457.jpg" alt=""
-                                          style="width:100%;object-fit: cover;">
+                                          src="https://static.archiesonline.com/public/images/product/large/8457.jpg"
+                                          alt="" style="width:100%;object-fit: cover;">
                                       </div>
-                                      <div class="info" style="height: 75px; ">
-                                        <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">Party popper</h5>
-                                        
-                                        <h4 class="price" style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70 </h4>
-                                       
+                                      <div class="info" style="height: 88px; ">
+                                        <h5 class="name responsiveName"
+                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
+                                          popper</h5>
+
+                                        <h4 class="price"
+                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
+                                        </h4>
+
                                         <li class="d-block count ">
 
                                           <div class="qty">
-                                            <ul >
+                                            <ul>
                                               <li>
                                                 <span class="qtminus">
                                                   <i class="fa fa-minus"></i>
@@ -417,18 +518,154 @@
           position: absolute !important; top: 3px !important; z-index: 4 !important;">
                                       <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
                                         <img class="img-fluid"
-                                          src="https://images.jdmagicbox.com/quickquotes/images_main/fancy-party-popper-346070273-99jf4.jpg" alt=""
-                                          style="width:100%;object-fit: cover;">
+                                          src="https://images.jdmagicbox.com/quickquotes/images_main/fancy-party-popper-346070273-99jf4.jpg"
+                                          alt="" style="width:100%;object-fit: cover;">
                                       </div>
-                                      <div class="info" style="height: 75px; ">
-                                        <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">Party popper</h5>
-                                        
-                                        <h4 class="price" style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70 </h4>
-                                       
+                                      <div class="info" style="height: 88px; ">
+                                        <h5 class="name responsiveName"
+                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
+                                          popper</h5>
+
+                                        <h4 class="price"
+                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
+                                        </h4>
+
                                         <li class="d-block count ">
 
                                           <div class="qty">
-                                            <ul >
+                                            <ul>
+                                              <li>
+                                                <span class="qtminus">
+                                                  <i class="fa fa-minus"></i>
+                                                </span>
+                                              </li>
+                                              <li>
+                                                <span class="qttotal">1</span>
+                                              </li>
+                                              <li>
+                                                <span class="qtplus">
+                                                  <i class="fa fa-plus"></i>
+                                                </span>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </li>
+                                      </div>
+
+                                    </a>
+                                  </div>
+                                  <div class="col-md-3 col-6 mt-3">
+                                    <a class="item" for="add_addons[]"
+                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+
+                                      <input type="checkbox" name="add_addons[]" class="add_addons " data-id="28"
+                                        value="28"
+                                        style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
+                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+                                        <img class="img-fluid"
+                                          src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg"
+                                          alt="" style="width:100%;object-fit: cover;">
+                                      </div>
+                                      <div class="info" style="height: 88px; ">
+                                        <h5 class="name responsiveName"
+                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
+                                          popper</h5>
+
+                                        <h4 class="price"
+                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
+                                        </h4>
+
+                                        <li class="d-block count ">
+
+                                          <div class="qty">
+                                            <ul>
+                                              <li>
+                                                <span class="qtminus">
+                                                  <i class="fa fa-minus"></i>
+                                                </span>
+                                              </li>
+                                              <li>
+                                                <span class="qttotal">1</span>
+                                              </li>
+                                              <li>
+                                                <span class="qtplus">
+                                                  <i class="fa fa-plus"></i>
+                                                </span>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </li>
+                                      </div>
+
+                                    </a>
+                                  </div>
+                                  <div class="col-md-3 col-6 mt-3">
+                                    <a class="item" for="add_addons[]"
+                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+                                      <input type="checkbox" name="add_addons[]" class="" data-id="28" value="28"
+                                        style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;padding: 20px !important;">
+                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+                                        <img class="img-fluid"
+                                          src="https://static.archiesonline.com/public/images/product/large/8457.jpg"
+                                          alt="" style="width:100%;object-fit: cover;">
+                                      </div>
+                                      <div class="info" style="height: 88px; ">
+                                        <h5 class="name responsiveName"
+                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
+                                          popper</h5>
+
+                                        <h4 class="price"
+                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
+                                        </h4>
+
+                                        <li class="d-block count ">
+
+                                          <div class="qty">
+                                            <ul>
+                                              <li>
+                                                <span class="qtminus">
+                                                  <i class="fa fa-minus"></i>
+                                                </span>
+                                              </li>
+                                              <li>
+                                                <span class="qttotal">1</span>
+                                              </li>
+                                              <li>
+                                                <span class="qtplus">
+                                                  <i class="fa fa-plus"></i>
+                                                </span>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </li>
+                                      </div>
+
+                                    </a>
+                                  </div>
+                                  <div class="col-md-3 col-6 mt-3">
+                                    <a class="item" for="add_addons[]"
+                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+                                      <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
+                                        value="28" style="display:block;
+          position: absolute !important; top: 3px !important; z-index: 4 !important;">
+                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+                                        <img class="img-fluid"
+                                          src="https://images.jdmagicbox.com/quickquotes/images_main/fancy-party-popper-346070273-99jf4.jpg"
+                                          alt="" style="width:100%;object-fit: cover;">
+                                      </div>
+                                      <div class="info" style="height: 88px; ">
+                                        <h5 class="name responsiveName"
+                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
+                                          popper</h5>
+
+                                        <h4 class="price"
+                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
+                                        </h4>
+
+                                        <li class="d-block count ">
+
+                                          <div class="qty">
+                                            <ul>
                                               <li>
                                                 <span class="qtminus">
                                                   <i class="fa fa-minus"></i>
@@ -457,10 +694,12 @@
 
 
                             <div class="modal-footer">
+
                               <a id="qaddcrt" href="javascript:;"
-                                style="border-radius: 0px; background: #fff; border: 0px;">
+                                style="border-radius: 0px; background: #fff; border: 0px;display: flex;">
+                                <h5 style="padding: 20px ;font-weight: 900;"> Total Prize :₹ 800</h5>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                  style="background-color: #3CB324;">CONTINUE</button>
+                                  style="background-color: #b32443;">CONTINUE WITH ADDONS</button>
                               </a>
                             </div>
                           </div>
@@ -505,201 +744,109 @@
         </div>
       </div>
     </div>
-    <div class="" style="background: #ffffff; border-radius: 5px; margin-top: 20px;padding: 10px;     ">
+    <div class="" style="background: #ffffff; border-radius: 5px; margin-top: 5px;padding: 5px;     ">
       <div class="row">
         <div class="col-lg-12">
-          <!-- <div id="product-details-tab" style="margin-top: 15px;     margin-bottom: 15px;">
-            <div class="top-menu-area">
-              <ul class="tab-menu">
-                <li><a href="#tabs-1">DESCRIPTION</a></li>
-                <li><a href="#tabs-2">BUY &amp; RETURN POLICY</a></li>
-                <li><a href="#tabs-3">Reviews(0)</a></li>
-                <li><a href="#tabs-4">Comment(<span id="comment_count">0</span>)</a></li>
-              </ul>
-            </div>
-            <div class="tab-content-wrapper">
-              <div id="tabs-1" class="tab-content-area">
-                <p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  <span style="font-weight: bolder;"><span style="font-size: 14pt;">Product Details:
-                      <o:p></o:p></span></span></p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Cake Flavour- Vanila<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Type of Cake - Cream<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Shape-Barbie Doll<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Weight- 2 Kg<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  <o:p>&nbsp;</o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  <span
-                    style="font-weight: bolder;">Note:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <o:p></o:p></span></p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  The cake stand, cutlery &amp; accessories used in the image are only for
-                  representation purposes. They are not delivered with the cake.<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  This cake is hand delivered in a good quality cardboard box.<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  <o:p>&nbsp;</o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  <span style="font-weight: bolder;">Delivery Information<o:p></o:p></span></p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Every chef has own way of baking and designing a cake, there might be slight
-                  variation in the product in terms of design, flavour and shape.<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  The delivery time is an estimated time.<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Due to the nature of cakes are perishable, we attempt delivery of your order only
-                  once. The delivery cannot be redirected to any other address.<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  This product is hand delivered and will not be delivered along with courier
-                  products.<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  <o:p>&nbsp;</o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  <span style="font-weight: bolder;">Care Instructions<o:p></o:p></span></p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Store cake in a refrigerator.<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Consume the cake within 24 hours.<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Surprise your beloved one on every occasion with this never-fading elegance of the
-                  Barbie doll, when baked gorgeously into the form of this tempting cake, then it adds
-                  the perfect bliss to her's birthday. To heighten the joy of her's birthday
-                  celebration, order this mouth-watering cream cake online. The rich and delicious
-                  flavor of vanilla of this Barbie doll cake will drool the taste buds of your little
-                  princess. Ensure a cute smile on her's face by ordering this cake online. Get this
-                  cake for a memorable treat to your people and taste buds go crazy. So place your
-                  order now!!<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Please check the placement of these items before serving to small children.<o:p>
-                  </o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  The cake should be consumed within 24 hours.<o:p></o:p>
-                </p>
-                <p class="MsoNormal"
-                  style="margin-bottom: 0.0001pt; font-size: 16px; color: rgb(51, 51, 51); line-height: normal; font-family: Arial, Helvetica, sans-serif; text-align: justify;">
-                  Enjoy your cake!</p>
-                </p>
-              </div>
-              <div id="tabs-2" class="tab-content-area">
-                <p><br></p>
-              </div>
-              <div id="tabs-3" class="tab-content-area">
-                <div class="heading-area">
-                  <h4 class="title">
-                    Ratings &amp; Reviews
-                  </h4>
-                  <div class="reating-area">
-                    <div class="stars"><span id="star-rating">0.0</span> <i class="fas fa-star"></i>
-                    </div>
-                  </div>
-                </div>
-                <div id="replay-area">
-                  <div id="reviews-section">
-                    <p>No Review Found.</p>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <br>
-                      <h5 class="text-center"><a href="javascript:;" data-toggle="modal" data-target="#comment-log-reg"
-                          class="btn login-btn mr-1">Login</a>
-                        To Review</h5>
-                      <br>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="tabs-4" class="tab-content-area">
-                <div id="comment-area">
 
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <br>
-                      <h3 class="text-center"><a href="javascript:;" data-toggle="modal" data-target="#comment-log-reg"
-                          class="btn login-btn">Login</a> To
-                        Comment </h3>
-                      <br>
-                    </div>
-                  </div>
-                  <ul class="all-comment">
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#home">Home</a></li>
-            <li><a href="#menu1">Menu 1</a></li>
-            <li><a href="#menu2">Menu 2</a></li>
-            <li><a href="#menu3">Menu 3</a></li>
-          </ul>
-          <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">
-              <h3>HOME</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.</p>
-            </div>
-            <div id="menu1" class="tab-pane fade">
-              <h3>Menu 1</h3>
-              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.</p>
-            </div>
-            <div id="menu2" class="tab-pane fade">
-              <h3>Menu 2</h3>
-              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                rem aperiam.</p>
-            </div>
-            <div id="menu3" class="tab-pane fade">
-              <h3>Menu 3</h3>
-              <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-            </div>
+          <div class="w3-bar" style="padding: 20px;background-color: rgb(40, 56, 66);">
+            <button class="w3-bar-item w3-button " style="color: white;font-weight: 800;"
+              onclick="openCity('Description')">Description</button>
+            <button class="w3-bar-item w3-button " style="color: white;font-weight: 800;"
+              onclick="openCity('Paris')">Privacy & Policy</button>
+            <button class="w3-bar-item w3-button " style="color: white;font-weight: 800;"
+              onclick="openCity('Tokyo')">Reviews</button>
           </div>
-          <hr>
-          <p class="act"><b>Active Tab</b>: <span></span></p>
-          <p class="prev"><b>Previous Tab</b>: <span></span></p>
+          <div id="Description" class="w3-container w3-display-container city w3-animate-left">
+            <span onclick="this.parentElement.style.display='none'"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+            <h2>Description</h2>
+            <p>
+              Product Details:
+
+              <br>
+
+              Cake Flavour- Red Velvet
+
+              Type of Cake - Cream
+
+              Shape-Round
+
+              Weight- Half Kg
+
+              <br>
+
+              Note:
+
+              The cake stand, cutlery & accessories used in the image are only for representation purposes. They are not
+              delivered with the cake.
+
+              This cake is hand delivered in a good quality cardboard box.
+
+              <br>
+
+              Delivery Information
+
+              Every chef has own way of baking and designing a cake, there might be slight variation in the product in
+              terms of design, flavour and shape.
+
+              The delivery time is an estimated time.
+
+              Due to the nature of cakes are perishable, we attempt delivery of your order only once. The delivery
+              cannot be redirected to any other address.
+
+              This product is hand delivered and will not be delivered along with courier products.
+
+
+
+              Care Instructions
+
+              Store cake in a refrigerator.
+
+              Consume the cake within 24 hours.
+
+              Surprise your beloved one on every occasion with this Red Velvet crumbs, this delight makes a perfect
+              expression of love. A bite of this dreamy creamy cake would brim you with love to the full. Get this cake
+              for a memorable treat to your people and taste buds go crazy. So place your order now!!
+
+              Please check the placement of these items before serving to small children.
+
+              The cake should be consumed within 24 hours.
+
+              Enjoy your cake!
+            </p>
+          </div>
+
+          <div id="Paris" class="w3-container w3-display-container city w3-animate-left" style="display:none">
+            <span onclick="this.parentElement.style.display='none'"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+            <h2>Paris</h2>
+            <p>Paris is the capital of France.</p>
+          </div>
+
+          <div id="Tokyo" class="w3-container w3-display-container city w3-animate-left" style="display:none">
+            <span onclick="this.parentElement.style.display='none'"
+              class="w3-button w3-large w3-display-topright">&times;</span>
+            <h2>Reviews</h2>
+            <div class="">
+              <div class="card">
+                  <div class="p-6">
+                      
+                      <div class=" p-3 rounded">
+                          <div class="row">
+                              <div class="col-md-4"> <label class="radio"> <input type="radio" name="experience" value="Bad Experience"> <span>Bad Experience</span> </label> </div>
+                              <div class="col-md-4"> <label class="radio"> <input type="radio" name="experience" value="Good Experience"> <span>Good Experience</span> </label> </div>
+                              <div class="col-md-4"> <label class="radio"> <input type="radio" name="experience" value="Great Experience" checked> <span>Great Experience</span> </label> </div>
+                              <div class="col-md-4"> <label class="radio"> <input type="radio" name="experience" value="Amazing Experience"> <span>Amazng Experience</span> </label> </div>
+                          </div>
+                          <label>Write Your Review</label>
+                         <textarea class="area form-control" rows="7" placeholder="Wrate your Review"> </textarea>
+                          <div class="button mt-4 text-right"> <button class="btn btn-success submit-button " style="background-color: brown !important;" >Submit</button> </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -707,9 +854,9 @@
 
 
     <div class="trending" style="padding:20px">
-      <div class="" style="background: #fbeadd;border-radius: 5px;">
+      <div class="" style="background: #f3f2f1;border-radius: 15px;">
         <div class="row">
-          <div class="col-lg-12 remove-pading">
+          <div class="col-lg-12 " style="padding: 30px;">
             <div class="section-top">
               <h2 class="section-title">
                 You May Also Like
@@ -722,36 +869,34 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="row" id="fixed-section7-row">
-                <div class="col-lg-2 col-md-3 col-6 remove-padding">
-                  <a href="///item/5-star-chocolate-bouquet-loc12557" class="item">
+
+                <div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
+                  <a href="../Product/product.html?prod=${p.prodId}" class="item">
                     <div class="item-img">
                       <div class="extra-list">
                         <ul>
                           <li>
-                            <span rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                              data-target="#comment-log-reg" data-placement="right"
-                              data-original-title="Add To Wishlist">
-                              <i class="icofont-heart-alt"></i>
+                            <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
+                              data-target="#comment-log-reg" data-placement="right">
+                              <i class="fa fa-heart"></i>
                             </span>
                           </li>
                         </ul>
                       </div>
-                      <img class="img-fluid" src="./../assets/images/emb2.jpg" alt="">
+                      <img class="img-fluid"
+                        src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/rainbow-cake760x580.jpg?ext=.jpg"
+                        alt="Lake of cakes ${p.prodData.name}">
                     </div>
-                    <div class="info">
-                      <div class="stars">
-                      </div>
-                      <h4 class="price">₹499</h4>
-                      <h5 class="name">5 star chocolate bouquet</h5>
-                      <div class="item-cart-area">
-                        <span class="add-to-cart-quick add-to-cart-btn" data-href="///addtocart/331">
-                          <i class="icofont-cart"></i> Buy Now
-                        </span>
-                      </div>
+                    <div class="info" style="height: 100px !important;">
+                      <h5 class="name" style="font-size: 15px;">Product Name</h5>
+                      <br>
+                      <h5 style=""></h5>
+                      <h5 class="discount" style="font-size: 16px;">₹ 1197 <small><del>2000</del></small></h5>
                     </div>
                   </a>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -810,6 +955,15 @@
       $(".prev span").text(y);
     });
   });
+
+  function openCity(cityName) {
+    var i;
+    var x = document.getElementsByClassName("city");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    document.getElementById(cityName).style.display = "block";
+  }
 </script>
 
 

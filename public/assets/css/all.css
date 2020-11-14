@@ -646,7 +646,8 @@ pre code {
 .no-gutters>.col,
 .no-gutters>[class*=col-] {
     padding-right: 0;
-    padding-left: 0
+    padding-left: 0;
+    margin: auto;
 }
 
 .col,

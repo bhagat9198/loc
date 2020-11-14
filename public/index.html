@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">      
+<html lang="en">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,7 +17,6 @@
   <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <link rel="stylesheet" href="assets/css/animation.css">
-
 </head>
 <style>
 .top-grid-head{
@@ -549,51 +548,50 @@
     </div>
   </section>
 
-
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
 
+</body>
+
 <script src="./assets/js/jquery.js"></script>
-  <!-- <script src="./assets/js/jquery-ui.min.js"></script> -->
-  <script type="text/javascript">
-    // $(document).ready(() => {
-    $('#nav-section-loader').load('./Common/navbar.html');
+<script type="text/javascript">
+  $('#nav-section-loader').load('./Common/navbar.html');
+</script>
+<script type="text/javascript">
+  setTimeout(() => {
+    $('#footer-section-loader').load('./Common/files.html');
     $('#footer-section-loader').load('./Common/footer.html');
-    // })
-  </script>
-  <script type="text/javascript">
-    setTimeout(() => {
-      $('#footer-section-loader').load('./Common/files.html');
-    }, 3000);
-  </script>
+  }, 1000);
+</script>
 
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-  <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebaseui.js"></script> -->
-  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-  
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
-      authDomain: "lake-of-cakes.firebaseapp.com",
-      databaseURL: "https://lake-of-cakes.firebaseio.com",
-      projectId: "lake-of-cakes",
-      storageBucket: "lake-of-cakes.appspot.com",
-      messagingSenderId: "779843608951",
-      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
-      measurementId: "G-5ER0QF0FDW"
-    };
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebaseui.js"></script> -->
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
-  <script src="./index1.js"></script>
-  <script src="./Common/navbar1.js"></script>
 <script>
-  $(function () {
+  var firebaseConfig = {
+    apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+    authDomain: "lake-of-cakes.firebaseapp.com",
+    databaseURL: "https://lake-of-cakes.firebaseio.com",
+    projectId: "lake-of-cakes",
+    storageBucket: "lake-of-cakes.appspot.com",
+    messagingSenderId: "779843608951",
+    appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+    measurementId: "G-5ER0QF0FDW"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 
+<script src="./index1.js"></script>
+<script src="./Common/navbar1.js"></script>
+
+<script>
+  // Icons rotate
+  $(function () {
     var $window = $(window),
       win_height_padded = $window.height() * 1.1,
       isTouch = Modernizr.touch;
@@ -634,36 +632,6 @@
     }
     revealOnScroll();
   });
-</script>
-
-<style>
-	.drobt1 {
-		transform: translateX(-101%);
-	}
-
-	.drobt2 {
-		transform: translateX(0%);
-	}
-</style>
-
-<script>
-	$(".drobt").click(function () {
-		if ($('.drobt0').hasClass('drobt1')) {
-			$('.drobt0').removeClass('drobt1');
-			$('.drobt0').addClass('drobt2');
-		} else {
-			$('.drobt0').removeClass('drobt2');
-			$('.drobt0').addClass('drobt1');
-		}
-  });
-  
-	// $('body').click(function(evt){
-	//     alert('hellow');
-	//     if(!$(evt.target).is('#drobt0')) {
-	//          $('.drobt0').removeClass('drobt2');
-	//       $('.drobt0').addClass('drobt1');
-	//     }
-	// });
 </script>
 <script>
   const options = {
