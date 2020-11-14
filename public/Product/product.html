@@ -18,13 +18,40 @@
   <link rel="stylesheet" href="../assets/css/styles.php">
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
   <link rel="stylesheet" href="../assets/css/products.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
+  .item .info .price {
+    line-height: 20px !important;
+  }
+  .owl-carousel .owl-item img {
+    /* height: 6rem; */
+    margin: auto 35%;
+
+  }
+
+  @media (min-width: 768px) {
+    .col-md-3 {
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      max-width: 18%;
+    }
+  }
+
   @media (max-width: 767px) {
     .owl-carousel .owl-item img {
-      height: 6rem;
+      /* height: 6rem; */
       width: 600px;
       object-fit: fill;
+
+    }
+ 
+  }
+  @media (max-width: 990px) {
+    .responsiveName{
+      margin-bottom: 10% !important;
     }
   }
 </style>
@@ -36,7 +63,7 @@
   <section class="product-details-page" style="background: whitesmoke;">
     <div class="" style="background: white; padding:46px 28px; border-radius: 5px;">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-8">
           <div class="row">
 
             <div class="col-lg-5 col-md-12">
@@ -101,17 +128,6 @@
                     <p><span style="font-size: 13px; cursor: pointer;  font-weight: 600;color: #1e4794e6;">Product
                         Description</span></p>
                   </div>
-
-                  <div class="info-meta-2">
-                    <ul>
-
-
-                    </ul>
-                  </div>
-
-
-
-                
                   <input type="hidden" id="stock" value="">
 
                   <input type="hidden" id="product_price" value="0">
@@ -119,30 +135,60 @@
                   <input type="hidden" id="product_id" value="395">
                   <input type="hidden" id="curr_pos" value="0">
                   <input type="hidden" id="curr_sign" value="₹">
-                  <p><span style="font-size: 13px; cursor: pointer;  font-weight: 600;color: #941e80e6;">Quantity</span></p>
+                  <p><span style="font-size: 15px; cursor: pointer;  font-weight: 600;color: #941e80e6;">Quantity</span>
+                  </p>
                   <div class="info-meta-3">
-                
+
                     <ul class="meta-list">
-                      <li class="d-block count ">
-                        
-                        <div class="qty">
-                          <ul>
-                            <li>
-                              <span class="qtminus">
-                                <i class="fa fa-minus"></i>
-                              </span>
-                            </li>
-                            <li>
-                              <span class="qttotal">1</span>
-                            </li>
-                            <li>
-                              <span class="qtplus">
-                                <i class="fa fa-plus"></i>
-                              </span>
-                            </li>
-                          </ul>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <li class="d-block count ">
+
+                                <div class="qty">
+                                  <ul>
+                                    <li>
+                                      <span class="qtminus">
+                                        <i class="fa fa-minus"></i>
+                                      </span>
+                                    </li>
+                                    <li>
+                                      <span class="qttotal">1</span>
+                                    </li>
+                                    <li>
+                                      <span class="qtplus">
+                                        <i class="fa fa-plus"></i>
+                                      </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </li>
+                            </div>
+                            <div class="col-lg-4">
+
+                              <div class="custom-control custom-radio" style="margin-right: 15px;">
+                                <input type="hidden" class="keys" value="">
+                                <input type="hidden" class="values" value="">
+                                <input type="radio" id="eggless" name="eggless"
+                                  class="custom-control-input product-attr" data-key="eggless" data-price="6589"
+                                  value="1">
+
+                                <img class="productimg"
+                                  src="https://pngimage.net/wp-content/uploads/2018/06/veg-icon-png-1.png"
+                                  alt="Happy Bhai Dooj Truffle Cake Half Kg" style=" width: 50px ;object-fit: cover;">
+                                <br>
+                                <label class="custom-control-label" for="eggless" style="font-weight: 700;">EggLess ?
+                                </label>
+
+                              </div>
+                            </div>
+
+                          </div>
                         </div>
-                      </li>
+                      </div>
+
+
 
                       <div class="product-attributes my-3">
                         <div class="row">
@@ -150,20 +196,21 @@
 
                           <div class="col-lg-12">
                             <div class="form-group mb-2">
-                              <h4 style="font-weight: 900 !important;padding: 5px !important;font-size: 13px;">Upgrade your cake to</h4>
+                              <h4 style="font-weight: 900 !important;padding: 5px !important;font-size: 13px;">Upgrade
+                                your cake to</h4>
                               <!--<strong for="" class="text-capitalize">kg :</strong>-->
                               <div class="" style="display: flex;">
 
                                 <div class="custom-control custom-radio" style="margin-right: 15px;">
                                   <input type="hidden" class="keys" value="">
                                   <input type="hidden" class="values" value="">
-                                  <input type="radio" id="kg0" name="kg" class="custom-control-input product-attr"
+                                  <input type="radio" idshapekg0" name="kg" class="custom-control-input product-attr"
                                     data-key="kg" data-price="6589" value="1" checked>
 
                                   <img class="productimg"
-                                    src="https://i7.fnp.com/images/pr/s/v20201014151339/happy-bhai-dooj-truffle-cake-half-kg_1.jpg"
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuDo9bCm5Vrxv7wE-DFzNCTS20ve2XOF6Xj4s7z94mAv01M5KjmSHtHxZp&s=10"
                                     alt="Happy Bhai Dooj Truffle Cake Half Kg"
-                                    style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray">
+                                    style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
 
                                   <label class="custom-control-label" for="kg0" style="font-weight: 700;">1 kg
                                   </label>
@@ -176,10 +223,9 @@
                                     data-key="kg" data-price="6589" value="2" checked>
 
                                   <img class="productimg"
-                                    src="https://i7.fnp.com/images/pr/s/v20201014151339/happy-bhai-dooj-truffle-cake-half-kg_1.jpg"
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuDo9bCm5Vrxv7wE-DFzNCTS20ve2XOF6Xj4s7z94mAv01M5KjmSHtHxZp&s=10"
                                     alt="Happy Bhai Dooj Truffle Cake Half Kg"
-                                    style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray">
-
+                                    style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
                                   <label class="custom-control-label" for="kg1">2 kg
                                   </label>
 
@@ -191,9 +237,9 @@
                                     data-key="kg" data-price="6589" value="2" checked>
 
                                   <img class="productimg"
-                                    src="https://i7.fnp.com/images/pr/s/v20201014151339/happy-bhai-dooj-truffle-cake-half-kg_1.jpg"
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuDo9bCm5Vrxv7wE-DFzNCTS20ve2XOF6Xj4s7z94mAv01M5KjmSHtHxZp&s=10"
                                     alt="Happy Bhai Dooj Truffle Cake Half Kg"
-                                    style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray">
+                                    style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
 
                                   <label class="custom-control-label" for="kg1">2 kg
                                   </label>
@@ -207,645 +253,232 @@
 
                         </div>
                       </div>
+                      <div class="product-attributes my-3">
+                        <div class="row">
+
+
+                          <div class="col-lg-12">
+                            <div class="form-group mb-2">
+                              <h4 style="font-weight: 900 !important;padding: 5px !important;font-size: 13px;">Convert
+                                your cake into</h4>
+                              <!--<strong for="" class="text-capitalize">kg :</strong>-->
+                              <div class="" style="display: flex;">
+
+                                <div class="custom-control custom-radio" style="margin-right: 15px;">
+                                  <input type="hidden" class="keys" value="">
+                                  <input type="hidden" class="values" value="">
+                                  <input type="radio" id="shape0" name="shape0"
+                                    class="custom-control-input product-attr" data-key="kg" data-price="6589" value="1">
+
+                                  <label class="custom-control-label" for="shape0" style="font-weight: 700;">Heart Shape
+                                  </label>
+
+                                </div>
+                                <div class="custom-control custom-radio" style="margin-right: 15px;">
+                                  <input type="hidden" class="keys" value="">
+                                  <input type="hidden" class="values" value="">
+                                  <input type="radio" id="shape2" name="shape2"
+                                    class="custom-control-input product-attr" data-key="kg" data-price="6589" value="2">
+                                  <label class="custom-control-label" for="shape2">Circular Shape
+                                  </label>
+
+                                </div>
+
+
+                              </div>
+                            </div>
+                          </div>
+
+
+                        </div>
+                      </div>
                       <div class="product-attributes my-2">
                         <div>
-                          <label class="">Message on Cake</label>
+                          <label class="">Message/Name on Cake</label>
                           <input type="text" class="values form-control message_cart" name="message"
-                            placeholder="25 characters" maxlength="25" value="">
+                            placeholder="Enter a name/message (Max 30 Characters)" maxlength="20"
+                            style="height: 3em;width: 75%;" value="">
                         </div>
                       </div>
+                      <br>
 
+                      <!--<a href="javascript:;" id="addcrt" style="border-radius: 5px;line-height: 35px; height: 35px; padding: 0px 68px;background: #FF9F00; border: 1px solid #FF9F00; color:#fff;"><i class="icofont-cart"></i>Add to Cart</a>-->
 
-                      <li class="addtocart">
-                        <!--<a href="javascript:;" id="addcrt" style="border-radius: 5px;line-height: 35px; height: 35px; padding: 0px 68px;background: #FF9F00; border: 1px solid #FF9F00; color:#fff;"><i class="icofont-cart"></i>Add to Cart</a>-->
-
-                        <button type="button"
-                          style="border-radius: 5px;line-height: 35px; height: 35px; padding:0px 73px;background: #FF9F00; border: 1px solid #FF9F00; color:#fff;"
-                          class="btn btn-primary btns" data-toggle="modal" data-target="#myModal2">Add to Cart</button>
-                        <div class="modal fade" id="myModal2">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-
-
-                              <div class="modal-header" style="background-color: #f00;">
-                                <h4 class="modal-title text-center tb" style="color:#fff; ">Add Extra Love For Your
-                                  Loved
-                                  Ones</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              </div>
-
-
-                              <div class="modal-body" style="height: 500px;
-                          overflow-y: scroll;">
-                                <div class="container-fluid">
-                                  <div class="row">
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item"
-                                        style="width: 100%;height: 100%;padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="30"
-                                          value="30" style="display:block; position: absolute !important;
-          top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1602510347.png" alt=""
-                                            style="width:100%; height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 118 </h4>
-                                          <h5 class="name">teesfjnkm</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item"
-                                        style="width: 100%;height: 100%;padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="29"
-                                          value="29" style="display:block; position: absolute !important;
-          top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1602510341.png" alt=""
-                                            style="width:100%; height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 118 </h4>
-                                          <h5 class="name">teesfjnkm</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item"
-                                        style="width: 100%;height: 100%;padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
-                                          value="28" style="display:block; position: absolute !important;
-          top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1598107522.jpg" alt=""
-                                            style="width:100%; height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 70 </h4>
-                                          <h5 class="name">Party popper</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item"
-                                        style="width: 100%;height: 100%;padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="27"
-                                          value="27" style="display:block; position: absolute !important;
-          top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1597515408.jpg" alt=""
-                                            style="width:100%; height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 99 </h4>
-                                          <h5 class="name">Party popper</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item"
-                                        style="width: 100%;height: 100%;padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="26"
-                                          value="26" style="display:block; position: absolute !important;
-          top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1596826554.png" alt=""
-                                            style="width:100%; height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 129 </h4>
-                                          <h5 class="name">Dairymilk chocolate
-                                            hamper</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item"
-                                        style="width: 100%;height: 100%;padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="25"
-                                          value="25" style="display:block; position: absolute !important;
-          top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1596826502.jpg" alt=""
-                                            style="width:100%; height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 1 </h4>
-                                          <h5 class="name">Greeting card</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item"
-                                        style="width: 100%;height: 100%;padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="24"
-                                          value="24" style="display:block; position: absolute !important;
-          top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1596826419.gif" alt=""
-                                            style="width:100%; height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 399 </h4>
-                                          <h5 class="name">10 red roses</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-
-
-                                  </div>
-                                </div>
-                              </div>
-
-
-                              <div class="modal-footer">
-                                <a href="javascript:;" id="addcrt"
-                                  style="border-radius: 0px; background: #fff; border: 0px;">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                    style="background-color: #3CB324;">CONTINUE</button></a>
-
-                              </div>
-
-                            </div>
-                          </div>
-                        </div>
+                      <button type="button"
+                        style="border-radius: 15px;line-height: 35px;  padding:10px 73px;background: #09192c; border: 1px solid #ac2664; color:#fff;"
+                        class="btn btn-primary btns" data-toggle="modal" data-target="#myModal2">Add to Cart</button>
 
                       </li>
-
-                      <li class="addtocart">
-                        <!--<a id="qaddcrt" href="javascript:;" style="border-radius: 5px;line-height: 35px; height: 35px; padding: 0px 68px; background-color: rgb(60,179,36); border: 1px solid rgb(60,179,36); color:#fff;">-->
-
-                        <!--</a>-->
-
-                        <button type="button"
-                          style="border-radius: 5px;line-height: 35px; height: 35px; padding:0px 76.5px;background: rgb(60,179,36); border: 1px solid rgb(60,179,36); color:#fff;"
-                          class="btn btn-primary btns" data-toggle="modal" data-target="#myModal3">Buy Now</button>
-                        <div class="modal fade" id="myModal3">
-                          <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
+                      <button type="button"
+                        style="border-radius: 15px;line-height: 35px;  padding:10px 76.5px;background: rgb(60,179,36); border: 1px solid rgb(60,179,36); color:#fff;"
+                        class="btn btn-primary btns" data-toggle="modal" data-target="#myModal3">Buy Now</button>
+                      <div class="modal fade" id="myModal3">
+                        <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
 
 
-                              <div class="modal-header" style="background-color: #f00;">
-                                <h4 class="modal-title text-center tb" style="color:#fff;">Add Extra Love For Your Loved
-                                  Ones</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              </div>
+                            <div class="modal-header"
+                              style="background-color: rgb(197, 143, 42);padding: 20px !important;">
+                              <h4 class="modal-title text-center tb" style="color:#fff;">Add Extra Love For Your Loved
+                                Ones</h4>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
 
 
-                              <div class="modal-body" style="height: 500px;
+                            <div class="modal-body" style="height: 500px;
                           overflow-y: scroll;">
-                                <div class="container-fluid">
-                                  <div class="row">
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item" for="add_addons[]"
-                                        style="width: 100%; height: 100%; padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="30"
-                                          value="30" style="display:block;
-          position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1602510347.png" alt=""
-                                            style="width:100%;height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
+
+                              <div class="container-fluid">
+                                <div class="row">
+
+                                  <div class="col-md-3 col-6 mt-3">
+                                    <a class="item" for="add_addons[]"
+                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+                                      <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
+                                        value="28" style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
+                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+                                        <img class="img-fluid"
+                                          src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg" alt=""
+                                          style="width:100%;object-fit: cover;">
+                                      </div>
+                                      <div class="info" style="height: 75px; ">
+                                        <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">Party popper</h5>
+                                        
+                                        <h4 class="price" style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70 </h4>
+                                       
+                                        <li class="d-block count " >
+
+                                          <div class="qty">
+                                            <ul >
+                                              <li>
+                                                <span class="qtminus">
+                                                  <i class="fa fa-minus" ></i>
+                                                </span>
+                                              </li>
+                                              <li>
+                                                <span class="qttotal">1</span>
+                                              </li>
+                                              <li>
+                                                <span class="qtplus">
+                                                  <i class="fa fa-plus"></i>
+                                                </span>
+                                              </li>
+                                            </ul>
                                           </div>
-                                          <h4 class="price">₹ 118 </h4>
-                                          <h5 class="name">teesfjnkm</h5>
+                                        </li>
+                                      </div>
 
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item" for="add_addons[]"
-                                        style="width: 100%; height: 100%; padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="29"
-                                          value="29" style="display:block;
-          position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1602510341.png" alt=""
-                                            style="width:100%;height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 118 </h4>
-                                          <h5 class="name">teesfjnkm</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item" for="add_addons[]"
-                                        style="width: 100%; height: 100%; padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
-                                          value="28" style="display:block;
-          position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1598107522.jpg" alt=""
-                                            style="width:100%;height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 70 </h4>
-                                          <h5 class="name">Party popper</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item" for="add_addons[]"
-                                        style="width: 100%; height: 100%; padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="27"
-                                          value="27" style="display:block;
-          position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1597515408.jpg" alt=""
-                                            style="width:100%;height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 99 </h4>
-                                          <h5 class="name">Party popper</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item" for="add_addons[]"
-                                        style="width: 100%; height: 100%; padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="26"
-                                          value="26" style="display:block;
-          position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1596826554.png" alt=""
-                                            style="width:100%;height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 129 </h4>
-                                          <h5 class="name">Dairymilk chocolate
-                                            hamper</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item" for="add_addons[]"
-                                        style="width: 100%; height: 100%; padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="25"
-                                          value="25" style="display:block;
-          position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1596826502.jpg" alt=""
-                                            style="width:100%;height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 1 </h4>
-                                          <h5 class="name">Greeting card</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-                                    <div class="col-md-3 col-6 mt-3">
-                                      <a class="item" for="add_addons[]"
-                                        style="width: 100%; height: 100%; padding: 0px; border-radius: 0px; background: #fff;">
-                                        <input type="checkbox" name="add_addons[]" class="add_addons" data-id="24"
-                                          value="24" style="display:block;
-          position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                                        <div class="item-img">
-                                          <img class="img-fluid"
-                                            src="//lakeofcakes.com/assets/images/products/1596826419.gif" alt=""
-                                            style="width:100%;height:120px;">
-                                        </div>
-                                        <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                          <div class="stars">
-                                            <div class="ratings">
-                                              <div class="empty-stars">
-                                              </div>
-                                              <div class="full-stars" style="width:0%"></div>
-                                            </div>
-                                          </div>
-                                          <h4 class="price">₹ 399 </h4>
-                                          <h5 class="name">10 red roses</h5>
-
-                                        </div>
-
-                                      </a>
-                                    </div>
-
-
+                                    </a>
                                   </div>
+                                  <div class="col-md-3 col-6 mt-3">
+                                    <a class="item" for="add_addons[]"
+                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+                                      <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
+                                        value="28" style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
+                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+                                        <img class="img-fluid"
+                                          src="https://static.archiesonline.com/public/images/product/large/8457.jpg" alt=""
+                                          style="width:100%;object-fit: cover;">
+                                      </div>
+                                      <div class="info" style="height: 75px; ">
+                                        <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">Party popper</h5>
+                                        
+                                        <h4 class="price" style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70 </h4>
+                                       
+                                        <li class="d-block count ">
+
+                                          <div class="qty">
+                                            <ul >
+                                              <li>
+                                                <span class="qtminus">
+                                                  <i class="fa fa-minus"></i>
+                                                </span>
+                                              </li>
+                                              <li>
+                                                <span class="qttotal">1</span>
+                                              </li>
+                                              <li>
+                                                <span class="qtplus">
+                                                  <i class="fa fa-plus"></i>
+                                                </span>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </li>
+                                      </div>
+
+                                    </a>
+                                  </div>
+                                  <div class="col-md-3 col-6 mt-3">
+                                    <a class="item" for="add_addons[]"
+                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+                                      <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
+                                        value="28" style="display:block;
+          position: absolute !important; top: 3px !important; z-index: 4 !important;">
+                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+                                        <img class="img-fluid"
+                                          src="https://images.jdmagicbox.com/quickquotes/images_main/fancy-party-popper-346070273-99jf4.jpg" alt=""
+                                          style="width:100%;object-fit: cover;">
+                                      </div>
+                                      <div class="info" style="height: 75px; ">
+                                        <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">Party popper</h5>
+                                        
+                                        <h4 class="price" style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70 </h4>
+                                       
+                                        <li class="d-block count ">
+
+                                          <div class="qty">
+                                            <ul >
+                                              <li>
+                                                <span class="qtminus">
+                                                  <i class="fa fa-minus"></i>
+                                                </span>
+                                              </li>
+                                              <li>
+                                                <span class="qttotal">1</span>
+                                              </li>
+                                              <li>
+                                                <span class="qtplus">
+                                                  <i class="fa fa-plus"></i>
+                                                </span>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </li>
+                                      </div>
+
+                                    </a>
+                                  </div>
+
+
                                 </div>
                               </div>
+                            </div>
 
 
-                              <div class="modal-footer">
-                                <a id="qaddcrt" href="javascript:;"
-                                  style="border-radius: 0px; background: #fff; border: 0px;">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                    style="background-color: #3CB324;">CONTINUE</button>
-                                </a>
-                              </div>
+                            <div class="modal-footer">
+                              <a id="qaddcrt" href="javascript:;"
+                                style="border-radius: 0px; background: #fff; border: 0px;">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                  style="background-color: #3CB324;">CONTINUE</button>
+                              </a>
                             </div>
                           </div>
                         </div>
+                      </div>
                       </li>
                     </ul>
-                    <!-- <div class="modal fade" id="myModal">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                          <div class="modal-header" style="background-color: #812990;">
-                            <h4 class="modal-title" style="color:#fff;">Make Your Gift More
-                              Special With</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                          </div>
-                          <div class="modal-body" style="height: 500px;overflow-y: scroll;">
-                            <div class="container-fluid">
-                              <div class="row">
-                                <div class="col-md-3 mt-3">
-                                  <a class="item" style="width: 100%;height: 100%;">
-                                    <input type="checkbox" name="add_addons[]" class="add_addons" data-id="30"
-                                      value="30" style="display:block">
-                                    <div class="item-img">
-                                      <img class="img-fluid"
-                                        src="//lakeofcakes.com/assets/images/products/1602510347.png" alt=""
-                                        style="width:100%;height:120px;">
-                                    </div>
-                                    <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                      <div class="stars">
-                                        <div class="ratings">
-                                          <div class="empty-stars"></div>
-                                          <div class="full-stars" style="width:0%"></div>
-                                        </div>
-                                      </div>
-                                      <h4 class="price">₹ 118 </h4>
-                                      <h5 class="name">teesfjnkm</h5>
-                                    </div>
-                                  </a>
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                  <a class="item" style="width: 100%;height: 100%;">
-                                    <input type="checkbox" name="add_addons[]" class="add_addons" data-id="29"
-                                      value="29" style="display:block">
-                                    <div class="item-img">
-                                      <img class="img-fluid"
-                                        src="//lakeofcakes.com/assets/images/products/1602510341.png" alt=""
-                                        style="width:100%;height:120px;">
-                                    </div>
-                                    <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                      <div class="stars">
-                                        <div class="ratings">
-                                          <div class="empty-stars"></div>
-                                          <div class="full-stars" style="width:0%"></div>
-                                        </div>
-                                      </div>
-                                      <h4 class="price">₹ 118 </h4>
-                                      <h5 class="name">teesfjnkm</h5>
-                                    </div>
-                                  </a>
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                  <a class="item" style="width: 100%;height: 100%;">
-                                    <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
-                                      value="28" style="display:block">
-                                    <div class="item-img">
-                                      <img class="img-fluid"
-                                        src="//lakeofcakes.com/assets/images/products/1598107522.jpg" alt=""
-                                        style="width:100%;height:120px;">
-                                    </div>
-                                    <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                      <div class="stars">
-                                        <div class="ratings">
-                                          <div class="empty-stars"></div>
-                                          <div class="full-stars" style="width:0%"></div>
-                                        </div>
-                                      </div>
-                                      <h4 class="price">₹ 70 </h4>
-                                      <h5 class="name">Party popper</h5>
-                                    </div>
-                                  </a>
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                  <a class="item" style="width: 100%;height: 100%;">
-                                    <input type="checkbox" name="add_addons[]" class="add_addons" data-id="27"
-                                      value="27" style="display:block">
-                                    <div class="item-img">
-                                      <img class="img-fluid"
-                                        src="//lakeofcakes.com/assets/images/products/1597515408.jpg" alt=""
-                                        style="width:100%;height:120px;">
-                                    </div>
-                                    <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                      <div class="stars">
-                                        <div class="ratings">
-                                          <div class="empty-stars"></div>
-                                          <div class="full-stars" style="width:0%"></div>
-                                        </div>
-                                      </div>
-                                      <h4 class="price">₹ 99 </h4>
-                                      <h5 class="name">Party popper</h5>
-                                    </div>
-                                  </a>
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                  <a class="item" style="width: 100%;height: 100%;">
-                                    <input type="checkbox" name="add_addons[]" class="add_addons" data-id="26"
-                                      value="26" style="display:block">
-                                    <div class="item-img">
-                                      <img class="img-fluid"
-                                        src="//lakeofcakes.com/assets/images/products/1596826554.png" alt=""
-                                        style="width:100%;height:120px;">
-                                    </div>
-                                    <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                      <div class="stars">
-                                        <div class="ratings">
-                                          <div class="empty-stars"></div>
-                                          <div class="full-stars" style="width:0%"></div>
-                                        </div>
-                                      </div>
-                                      <h4 class="price">₹ 129 </h4>
-                                      <h5 class="name">Dairymilk chocolate hamper
-                                      </h5>
-                                    </div>
-                                  </a>
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                  <a class="item" style="width: 100%;height: 100%;">
-                                    <input type="checkbox" name="add_addons[]" class="add_addons" data-id="25"
-                                      value="25" style="display:block">
-                                    <div class="item-img">
-                                      <img class="img-fluid"
-                                        src="//lakeofcakes.com/assets/images/products/1596826502.jpg" alt=""
-                                        style="width:100%;height:120px;">
-                                    </div>
-                                    <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                      <div class="stars">
-                                        <div class="ratings">
-                                          <div class="empty-stars"></div>
-                                          <div class="full-stars" style="width:0%"></div>
-                                        </div>
-                                      </div>
-                                      <h4 class="price">₹ 1 </h4>
-                                      <h5 class="name">Greeting card</h5>
-                                    </div>
-                                  </a>
-                                </div>
-                                <div class="col-md-3 mt-3">
-                                  <a class="item" style="width: 100%;height: 100%;">
-                                    <input type="checkbox" name="add_addons[]" class="add_addons" data-id="24"
-                                      value="24" style="display:block">
-                                    <div class="item-img">
-                                      <img class="img-fluid"
-                                        src="//lakeofcakes.com/assets/images/products/1596826419.gif" alt=""
-                                        style="width:100%;height:120px;">
-                                    </div>
-                                    <div class="info" style="height: 85px; padding: 0px 14px 10px;">
-                                      <div class="stars">
-                                        <div class="ratings">
-                                          <div class="empty-stars"></div>
-                                          <div class="full-stars" style="width:0%"></div>
-                                        </div>
-                                      </div>
-                                      <h4 class="price">₹ 399 </h4>
-                                      <h5 class="name">10 red roses</h5>
-                                    </div>
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                              style="background-color: #3CB324;">CONTINUE</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
+
+
                   </div>
+
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-4">
           <div class="row">
             <div class="col-md-12">
               <img src="//lakeofcakes.com/assets/front/images/topsafe.png">
@@ -862,44 +495,7 @@
             <div class="col-md-6 col-sm-6 col-6 remove-padding">
               <img src="//lakeofcakes.com/assets/front/images/4.png">
             </div>
-            <div class="com-md-12 socialdiv">
-              <div class="right-area">
-                <div class="product-info">
 
-                  <div class="social-links social-sharing a2a_kit a2a_kit_size_32">
-                    <ul class="link-list social-links">
-                      <li>
-                        <a class="facebook a2a_button_facebook" href="">
-                          <i class="fab fa-facebook-f"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="twitter a2a_button_instagram" href="" style="background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-      background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-      background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
-      ">
-                          <i class="fab fa-instagram" aria-hidden="true"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="pinterest a2a_button_pinterest" href="">
-                          <i class="fab fa-pinterest-p"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                  <script async src="//static.addtoany.com/menu/page.js"></script>
-                  <p class="p-sku">
-                    Product SKU: <span class="idno">WkV9997cyt</span>
-                  </p>
-                  <div class="report-area">
-                    <a href="javascript:;" data-toggle="modal" data-target="#comment-log-reg"><i
-                        class="fas fa-flag"></i> Report This Item</a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -912,7 +508,7 @@
     <div class="" style="background: #ffffff; border-radius: 5px; margin-top: 20px;padding: 10px;     ">
       <div class="row">
         <div class="col-lg-12">
-          <div id="product-details-tab" style="margin-top: 15px;     margin-bottom: 15px;">
+          <!-- <div id="product-details-tab" style="margin-top: 15px;     margin-bottom: 15px;">
             <div class="top-menu-area">
               <ul class="tab-menu">
                 <li><a href="#tabs-1">DESCRIPTION</a></li>
@@ -1073,7 +669,37 @@
                 </div>
               </div>
             </div>
+          </div> -->
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#home">Home</a></li>
+            <li><a href="#menu1">Menu 1</a></li>
+            <li><a href="#menu2">Menu 2</a></li>
+            <li><a href="#menu3">Menu 3</a></li>
+          </ul>
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+              <h3>HOME</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
+            </div>
+            <div id="menu1" class="tab-pane fade">
+              <h3>Menu 1</h3>
+              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.</p>
+            </div>
+            <div id="menu2" class="tab-pane fade">
+              <h3>Menu 2</h3>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem aperiam.</p>
+            </div>
+            <div id="menu3" class="tab-pane fade">
+              <h3>Menu 3</h3>
+              <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
           </div>
+          <hr>
+          <p class="act"><b>Active Tab</b>: <span></span></p>
+          <p class="prev"><b>Previous Tab</b>: <span></span></p>
         </div>
       </div>
     </div>
@@ -1172,6 +798,19 @@
 
 <script src="./product1.js"></script>
 <script src="../Common/navbar1.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".nav-tabs a").click(function () {
+      $(this).tab('show');
+    });
+    $('.nav-tabs a').on('shown.bs.tab', function (event) {
+      var x = $(event.target).text();         // active tab
+      var y = $(event.relatedTarget).text();  // previous tab
+      $(".act span").text(x);
+      $(".prev span").text(y);
+    });
+  });
+</script>
 
 
 <!-- <script>

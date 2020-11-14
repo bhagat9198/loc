@@ -97,11 +97,12 @@
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-step1" role="tabpanel"
                                     aria-labelledby="pills-step1-tab">
-                                    <div class="content-box" style="background-color: #ffff;border-radius: 15px !important;">
+                                    <div class="content-box"
+                                        style="background-color: #ffff;border-radius: 15px !important;">
 
                                         <div class="content">
                                             <div class="personal-info">
-                                               
+
                                                 <div class="row set-account-pass d-none">
                                                     <div class="col-lg-6">
                                                         <input type="password" name="personal_pass" id="personal-pass"
@@ -237,7 +238,7 @@
                                                     <div class="col-lg-6">
                                                         <input class="form-control ship_input" type="text"
                                                             name="shipping_zip" id="shippingPostal_code"
-                                                            placeholder="Pin Code" >
+                                                            placeholder="Pin Code">
                                                         <div id="postal_code"></div>
                                                     </div>
 
@@ -737,12 +738,13 @@
                 </div>
             </div>
     </section>
+    <script src="./prodCheckout1.js"></script>
 
     <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
 
-    <script src="../assets/js/jquery.js"></script>
     <!-- <script src="../assets/js/jquery-ui.min.js"></script> -->
     <script type="text/javascript">
+
         // $(document).ready(() => {
         $('#nav-section-loader').load('../Common/navbar.html');
         $('#footer-section-loader').load('../Common/footer.html');
@@ -777,8 +779,9 @@
         firebase.analytics();
     </script>
 
-    <script src="../index1.js"></script>
     <script src="../Common/navbar1.js"></script>
+    <script src="../assets/js/jquery.js"></script>
+
     <script>
         $(function () {
 
@@ -1342,7 +1345,7 @@
 
     </script>
     <script src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB4w5Jc6UUGDqfjk0kVIKBKB3y1zFZXzF0"></script>
-    <!--<script async defer src="//maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"-->
+    <!-- <script async defer src="//maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"-->
 
     <script>
 
@@ -1372,75 +1375,75 @@
     </script>
 
     <script>
-        var  editClntInfoAutocomplete, addrStreet ="",
-       addressComponets = {
-                    street_number: 'short_name',
-                    route: 'long_name',
-                    locality: 'long_name',
-                    administrative_area_level_1: 'short_name',
-                    country: 'long_name',
-                    postal_code: 'short_name'
-       };
+        var editClntInfoAutocomplete, addrStreet = "",
+            addressComponets = {
+                street_number: 'short_name',
+                route: 'long_name',
+                locality: 'long_name',
+                administrative_area_level_1: 'short_name',
+                country: 'long_name',
+                postal_code: 'short_name'
+            };
 
-function initEditClntInfoAutoComplete() {   // Callback  
+        function initEditClntInfoAutoComplete() {   // Callback  
 
-      editClntInfoAutocomplete = new google.maps.places.Autocomplete(
+            editClntInfoAutocomplete = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */(document.getElementById('shippingPostal_code')),
-            {types: ['geocode']});
+                { types: ['geocode'] });
 
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        editClntInfoAutocomplete.addListener('place_changed', fillInEditClntInfoAddress);
-    }
+            // When the user selects an address from the dropdown, populate the address
+            // fields in the form.
+            editClntInfoAutocomplete.addListener('place_changed', fillInEditClntInfoAddress);
+        }
 
-    function fillInEditClntInfoAddress() {
+        function fillInEditClntInfoAddress() {
 
-        var place = editClntInfoAutocomplete.getPlace();        
+            var place = editClntInfoAutocomplete.getPlace();
 
             clearPrevEditFrmAddrVals();
 
-        for ( var i = 0; i < place.address_components.length; i++) {
+            for (var i = 0; i < place.address_components.length; i++) {
 
-              var addressType = place.address_components[i].types[0]; 
-              if (  addressComponets[addressType] ) {
-                    var val = place.address_components[i][addressComponets[addressType]];                 
+                var addressType = place.address_components[i].types[0];
+                if (addressComponets[addressType]) {
+                    var val = place.address_components[i][addressComponets[addressType]];
 
-                    assignEditFrmAddrFieldsVal(addressType, val );
-              }
-
-         }
-
-           if( addrStreet != "")
-                 document.getElementById("shippingPostal_code").value = addrStreet;
-
-     }
-
-     function assignEditFrmAddrFieldsVal( addressType , val ) {
-
-            switch( addressType ) {
-                case "administrative_area_level_1":
-                        document.getElementById("shippingPostal_code").value = val;  break;
-                case "locality":
-                    document.getElementById("clntInfoEditCity").value = val;  break;
-                //   case "country":
-                //        document.getElementById("addressType").value = val;  break;
-                case "postal_code":
-                    document.getElementById("clntInfoEditZip").value = val;  break;  
-                case "street_number": 
-                case "route":     
-                    addrStreet += " "+val;      break;
+                    assignEditFrmAddrFieldsVal(addressType, val);
+                }
 
             }
 
-     }
+            if (addrStreet != "")
+                document.getElementById("shippingPostal_code").value = addrStreet;
 
-     function clearPrevEditFrmAddrVals(){
-         var editClntFrmAddrIDs = ["shippingPostal_code","clntInfoEditCity","clntInfoEditZip","clntInfoEditAddr1"];
-             addrStreet = "";
+        }
 
-         for( var frmID in editClntFrmAddrIDs )
-              wrap(editClntFrmAddrIDs[frmID]).val("");
-     }
+        function assignEditFrmAddrFieldsVal(addressType, val) {
+
+            switch (addressType) {
+                case "administrative_area_level_1":
+                    document.getElementById("shippingPostal_code").value = val; break;
+                case "locality":
+                    document.getElementById("clntInfoEditCity").value = val; break;
+                //   case "country":
+                //        document.getElementById("addressType").value = val;  break;
+                case "postal_code":
+                    document.getElementById("clntInfoEditZip").value = val; break;
+                case "street_number":
+                case "route":
+                    addrStreet += " " + val; break;
+
+            }
+
+        }
+
+        function clearPrevEditFrmAddrVals() {
+            var editClntFrmAddrIDs = ["shippingPostal_code", "clntInfoEditCity", "clntInfoEditZip", "clntInfoEditAddr1"];
+            addrStreet = "";
+
+            for (var frmID in editClntFrmAddrIDs)
+                wrap(editClntFrmAddrIDs[frmID]).val("");
+        }
     </script>
 
 </html>
