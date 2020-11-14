@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lake of Cakes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/all.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/mega-menu.css">
+    <link rel="stylesheet" href="../assets//css/randomStyles.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <link rel="stylesheet" href="assets/css/animation.css">
+
+</head>
+<style>
+    .top-grid-head {
+        background: url(../assets/images/header-bg1.png);
+        min-height: 101px;
+        text-align: center;
+        width: 100%;
+        background-size: contain;
+        z-index: 999;
+    }
+
+
+
+    @media only screen and (min-width:900px) {
+        #sectionPayment {
+            background-image: url('https://img.wallpapersafari.com/desktop/1680/1050/64/85/9cgUjb.jpg') !important;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+</style>
+
+<body style="overflow-x: hidden !important; ">
+    <section id="nav-section-loader"></section>
+
+
+
+
+
+    <section id="sectionPayment" class="checkout">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="checkout-area mb-0 pb-0">
+                        <div class="checkout-process">
+                            <ul class="nav" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-step1-tab" data-toggle="pill"
+                                        href="#pills-step1" role="tab" aria-controls="pills-step1" aria-selected="true">
+                                        <span>1</span> Shipping
+                                        <i class="fa fa-address-card"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" id="pills-step2-tab" data-toggle="pill"
+                                        href="#pills-step2" role="tab" aria-controls="pills-step2"
+                                        aria-selected="false">
+                                        <span>2</span> Orders
+                                        <i class="fas fa-dolly"></i>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link disabled" id="pills-step3-tab" data-toggle="pill"
+                                        href="#pills-step3" role="tab" aria-controls="pills-step3"
+                                        aria-selected="false">
+                                        <span>3</span> Payment
+                                        <i class="far fa-credit-card"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-8">
+
+
+
+
+                    <form id="" action="" method="POST" class="checkoutform">
+
+
+                        <input type="hidden" name="_token" value="xnpN1sjLEYJ77DLjIol2YpGeBTtok4rsImzbfoxD">
+
+                        <div class="checkout-area">
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-step1" role="tabpanel"
+                                    aria-labelledby="pills-step1-tab">
+                                    <div class="content-box"
+                                        style="background-color: #ffff;border-radius: 15px !important;">
+
+                                        <div class="content">
+                                            <div class="personal-info">
+
+                                                <div class="row set-account-pass d-none">
+                                                    <div class="col-lg-6">
+                                                        <input type="password" name="personal_pass" id="personal-pass"
+                                                            class="form-control" placeholder="Enter Your Password">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input type="password" name="personal_confirm"
+                                                            id="personal-pass-confirm" class="form-control"
+                                                            placeholder="Confirm Your Password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="billing-address">
+                                                <h5 class="title">
+
+                                                    Recipient / Shipping Details
+                                                </h5>
+                                                <div class="row">
+                                                    <div class="col-lg-6 " style="display:none;">
+                                                        <select class="form-control" id="shipop" name="shipping"
+                                                            required="">
+                                                            <option value="shipto">Ship To Address</option>
+                                                            <option value="pickup">Pick Up</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-lg-6 d-none" id="shipshow">
+                                                        <select class="form-control nice" name="pickup_location">
+                                                            <option value="Azampur">Azampur</option>
+                                                            <option value="Dhaka">Dhaka</option>
+                                                            <option value="Kazipara">Kazipara</option>
+                                                            <option value="Kamarpara">Kamarpara</option>
+                                                            <option value="Uttara">Uttara</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control" type="text" name="name"
+                                                            placeholder="Full Name" required="" value="">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control phoneee" type="text" name="phone"
+                                                            maxlength="10" placeholder="Phone Number" required=""
+                                                            value="" onkeypress="return onlyNumber(event)">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control" type="text" name="email"
+                                                            placeholder="Email" required="" value="">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control" type="text" name="address"
+                                                            placeholder="Address" required="" value="">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control" type="text" name="customer_landmark"
+                                                            placeholder="Landmark" required="required">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <!--<select class="form-control customer_country" name="customer_country" required="">-->
+
+                                                        <!--</select>-->
+                                                        <input type="text" readonly="readonly"
+                                                            class="form-control customer_country"
+                                                            name="customer_country" value="India">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <!--<input class="form-control" type="text" name="city"-->
+
+
+                                                        <input class="form-control" type="text" name="city"
+                                                            value="Lucknow" readonly="readonly">
+
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control" type="text" name="zip" id="locality"
+                                                            placeholder="Pin Code" required="" value="">
+                                                        <div id="postal_code"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row ">
+                                                <div class="col-lg-12 mt-3">
+                                                    <input class="styled-checkbox" id="ship-diff-address"
+                                                        type="checkbox" value="value1">
+                                                    <label for="ship-diff-address">Ship to a Different Address?</label>
+                                                </div>
+                                            </div>
+                                            <div class="ship-diff-addres-area d-none">
+                                                <h5 class="title">
+                                                    Shipping Details
+                                                </h5>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control ship_input" type="text"
+                                                            name="shipping_name" id="shippingFull_name"
+                                                            placeholder="Full Name">
+                                                        <input type="hidden" name="shipping_email" value="">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control ship_input phoneee" type="text"
+                                                            name="shipping_phone" maxlength="10"
+                                                            id="shipingPhone_number" placeholder="Phone Number"
+                                                            onkeypress="return onlyNumber(event)">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control ship_input" type="text"
+                                                            name="shipping_address" id="shipping_address"
+                                                            placeholder="Address">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control" type="text" name="shipping_landmark"
+                                                            placeholder="Landmark">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <!--<select class="form-control ship_input customer_country" name="shipping_country" >-->
+
+                                                        <!--</select>-->
+                                                        <input type="text" readonly="readonly"
+                                                            class="form-control ship_input customer_country"
+                                                            name="shipping_country" value="India">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <!--<input class="form-control ship_input" type="text" name="shipping_city"-->
+
+                                                        <input class="form-control ship_input" id="shipping_city"
+                                                            type="text" name="shipping_city" value="Lucknow"
+                                                            readonly="readonly">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control ship_input" type="text"
+                                                            name="shipping_zip" id="shippingPostal_code"
+                                                            placeholder="Pin Code">
+                                                        <div id="postal_code"></div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="order-note mt-3">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <input type="text" id="Order_Note" class="form-control"
+                                                            name="order_notes" placeholder="Order Note (Optional)">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="order-note mt-3">
+                                                <input class="styled-checkbox" id="ship-diff-address1" type="checkbox"
+                                                    value="value1">
+                                                <label for="ship-diff-address1">Do you prefer bill with GSTIN (Enter
+                                                    Buyers GSTIN)</label>
+                                                <div class="row d-none ship-diff-addres-area1">
+                                                    <div class="col-lg-12">
+                                                        <input type="text" id="gst_number" class="form-control"
+                                                            name="gst_number" placeholder="GSTIN No" value="">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12  mt-3">
+                                                    <div class="bottom-area paystack-area-btn">
+                                                        <button type="submit" class="mybtn1 2">Continue</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-step2" role="tabpanel"
+                                    aria-labelledby="pills-step2-tab">
+                                    <div class="content-box">
+                                        <div class="content">
+
+                                            <div class="order-area">
+
+
+                                                <div class="order-item">
+                                                    <div class="product-img">
+                                                        <div class="d-flex">
+                                                            <img src=" //lakeofcakes.com/assets/images/products/1598604187M48yYCke.png"
+                                                                height="80" width="80" class="p-1">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <p class="name"><a
+                                                                href="//lakeofcakes.com/item/5-star-chocolate-bouquet-loc12557"
+                                                                target="_blank">5 star chocolate bouquet</a></p>
+                                                        <div class="unit-price">
+                                                            <h5 class="label">Price : </h5>
+                                                            <p>₹499</p>
+                                                        </div>
+                                                        <div class="quantity">
+                                                            <h5 class="label">Quantity : </h5>
+                                                            <span class="qttotal">2 </span>
+                                                        </div>
+                                                        <div class="total-price">
+                                                            <h5 class="label">Total Price : </h5>
+                                                            <p>₹998
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+
+
+
+
+
+
+                                            <div class="row">
+                                                <div class="col-lg-12 mt-3">
+                                                    <div class="bottom-area">
+                                                        <a href="javascript:;" id="step1-btn"
+                                                            class="mybtn1 mr-3 3">Back</a>
+                                                        <a href="javascript:;" id="step3-btn"
+                                                            class="mybtn1 4">Continue</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-step3" role="tabpanel"
+                                    aria-labelledby="pills-step3-tab">
+                                    <div class="content-box">
+                                        <div class="content">
+
+                                            <div class="submit-loader">
+                                                <img src="//lakeofcakes.com/assets/images/loading_large.gif" alt="">
+                                            </div>
+                                            <div class="billing-info-area ">
+                                                <h4 class="title">
+                                                    Shipping Info
+                                                </h4>
+                                                <ul class="info-list">
+                                                    <li>
+                                                        <p id="shipping_user"></p>
+                                                    </li>
+                                                    <li>
+                                                        <p id="shipping_location"></p>
+                                                    </li>
+                                                    <li>
+                                                        <p id="shipping_phone"></p>
+                                                    </li>
+                                                    <li>
+                                                        <p id="shipping_email"></p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="payment-information">
+                                                <h4 class="title">
+                                                    Payment Info
+                                                </h4>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="nav flex-column" role="tablist"
+                                                            aria-orientation="vertical">
+                                                            <a class="nav-link payment" data-val="" data-show="no"
+                                                                data-form="//lakeofcakes.com/razorpay-submit"
+                                                                data-href="//lakeofcakes.com/checkout/payment/razorpay/0"
+                                                                id="v-pills-tab6-tab" data-toggle="pill"
+                                                                href="#v-pills-tab6" role="tab"
+                                                                aria-controls="v-pills-tab6" aria-selected="false">
+                                                                <div class="icon">
+                                                                    <span class="radio"></span>
+                                                                </div>
+                                                                <p>
+
+                                                                    Razorpay
+
+
+                                                                    <small>
+                                                                        Pay via your Razorpay account.
+                                                                    </small>
+
+
+                                                                </p>
+                                                            </a>
+
+
+
+
+
+
+                                                            <a class="nav-link payment" data-val="" data-show="yes"
+                                                                data-form="//lakeofcakes.com/gateway"
+                                                                data-href="//lakeofcakes.com/checkout/payment/other/46"
+                                                                id="v-pills-tab46-tab" data-toggle="pill"
+                                                                href="#v-pills-tab46" role="tab"
+                                                                aria-controls="v-pills-tab46" aria-selected="false">
+                                                                <div class="icon">
+                                                                    <span class="radio"></span>
+                                                                </div>
+                                                                <p>
+                                                                    Mobile Money
+
+
+                                                                    <small>
+                                                                        Pay via your Mobile Money.
+                                                                    </small>
+
+
+                                                                </p>
+                                                            </a>
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="pay-area d-none">
+                                                            <div class="tab-content" id="v-pills-tabContent">
+                                                                <div class="tab-pane fade" id="v-pills-tab6"
+                                                                    role="tabpanel" aria-labelledby="v-pills-tab6-tab">
+                                                                </div>
+
+
+                                                                <div class="tab-pane fade" id="v-pills-tab46"
+                                                                    role="tabpanel" aria-labelledby="v-pills-tab46-tab">
+
+                                                                </div>
+
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-lg-12 mt-3">
+                                                    <div class="bottom-area">
+
+                                                        <a href="javascript:;" id="step2-btn"
+                                                            class="mybtn1 mr-3 5">Back</a>
+                                                        <button type="submit" id="final-btn"
+                                                            class="mybtn1 1">Continue</button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="myModal1">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+
+
+                                    <div class="modal-header" style="background-color: #f00;">
+                                        <h4 class="modal-title text-center tb" style="color:#fff;">Select Date and Time
+                                        </h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="">
+                                                <div class="row">
+                                                    <div class="col-md-6 mt-3">
+                                                        <div class="form-group">
+                                                            <label>Delivery Date</label>
+                                                            <input type="date" name="shipping_date"
+                                                                placeholder="Shipping date"
+                                                                class="form-control shipping_date">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mt-3">
+                                                        <div class="form-group">
+                                                            <label>Delivery Time</label>
+                                                            <!--<input type="time" name="shipping_time" placeholder="Shipping time" class="form-control">-->
+                                                            <div class="free-sheppin1">
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Free Delivery - Between 10 AM to 8 PM">
+                                                                Between 10 AM to 8 PM <br>
+
+                                                            </div>
+                                                            <div class="free-sheppin2">
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 10 AM to 11 AM"> Between 10
+                                                                AM to 11 AM <br>
+
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 11 AM to 12 Noon"> Between 11
+                                                                AM to 12 Noon <br>
+
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 12 Noon to 1 PM"> Between 12
+                                                                Noon to 1 PM <br>
+
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 1 PM to 2 PM"> Between 1 PM
+                                                                to 2 PM <br>
+
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 2 PM to 3 PM"> Between 2 PM
+                                                                to 3 PM <br>
+
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 10 AM to 11 AM"> Between 3 PM
+                                                                to 4 PM <br>
+
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 10 AM to 11 AM"> Between 4 PM
+                                                                to 5 PM <br>
+
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 10 AM to 11 AM"> Between 5 PM
+                                                                to 6 PM <br>
+
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 7 PM to 8 PM"> Between 7 PM
+                                                                to 8 PM <br>
+
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 8 PM to 9 PM"> Between 8 PM
+                                                                to 9 PM <br>
+
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Perfect Hours - 9 PM to 10 PM"> Between 9 PM
+                                                                to 10 PM <br>
+
+
+                                                            </div>
+                                                            <div class="free-sheppin3">
+                                                                <input type="radio" name="shipping_time"
+                                                                    value="Midnight - 11:30 PM to 11:59 PM">11:30 PM to
+                                                                11:59 PM <br>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary contn" data-dismiss="modal"
+                                            style="background-color: #3CB324;">CONTINUE</button>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="shipping-cost" name="shipping_cost" value="0">
+                        <input type="hidden" id="packing-cost" name="packing_cost" value="0">
+                        <input type="hidden" name="dp" value="0">
+                        <input type="hidden" name="tax" value="0">
+                        <input type="hidden" name="totalQty" value="2">
+
+                        <input type="hidden" name="vendor_shipping_id" value="0">
+                        <input type="hidden" name="vendor_packing_id" value="0">
+
+
+                        <input type="hidden" name="total" id="grandtotal" value="998">
+                        <input type="hidden" id="tgrandtotal" value="998">
+
+
+                        <input type="hidden" name="coupon_code" id="coupon_code" value="">
+                        <input type="hidden" name="coupon_discount" id="coupon_discount" value="">
+                        <input type="hidden" name="coupon_id" id="coupon_id" value="">
+                        <input type="hidden" name="user_id" id="user_id" value="">
+
+
+
+                    </form>
+
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="right-area">
+                        <div class="order-box">
+                            <h4 class="title">PRICE DETAILS</h4>
+                            <ul class="order-list">
+                                <li>
+                                    <p>
+                                        Total MRP
+                                    </p>
+                                    <P>
+                                        <b class="cart-total">₹998</b>
+                                        <!--<b class="cart-total">₹998</b>-->
+                                        <!--<b class="cart-total">₹0</b>-->
+                                    </P>
+                                </li>
+
+
+
+
+
+
+
+
+                                <li class="discount-bar d-none">
+                                    <p>
+                                        Discount <span class="dpercent"></span>
+                                    </p>
+                                    <P>
+                                        <b id="discount">₹</b>
+                                    </P>
+                                </li>
+
+
+
+
+
+
+                            </ul>
+
+                            <div class="total-price">
+                                <p>
+                                    Total
+                                </p>
+                                <p>
+
+                                    <span id="total-cost">₹998</span>
+
+                                </p>
+                            </div>
+
+
+                            <div class="cupon-box">
+
+                                <div id="coupon-link" style="margin-bottom:0px;">
+                                    <img src="//lakeofcakes.com/assets/front/images/tag.png">
+                                    Have a promotion code?
+
+                                </div>
+                                <span style="font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Coupons not applicable on
+                                    add on items)</span>
+
+                                <form id="check-coupon-form" class="coupon">
+                                    <input type="text" placeholder="Coupon Code" id="code" required=""
+                                        autocomplete="off">
+                                    <button type="submit">Apply</button>
+                                </form>
+
+
+                            </div>
+
+
+
+                            <div class="packeging-area">
+                                <h4 class="title">Shipping Method</h4>
+
+
+                                <div class="radio-design">
+                                    <input type="radio" class="shipping" id="free-shepping1" name="shipping" value="0"
+                                        checked>
+                                    <span class="checkmark"></span>
+                                    <label for="free-shepping1">
+                                        Free Shipping
+                                        <small>(1 - 2 days)</small>
+                                    </label>
+                                </div>
+
+
+                                <div class="radio-design">
+                                    <input type="radio" class="shipping" id="free-shepping2" name="shipping" value="50">
+                                    <span class="checkmark"></span>
+                                    <label for="free-shepping2">
+                                        Perfect Hours
+                                        + ₹50
+                                        <small>2 Hours</small>
+                                    </label>
+                                </div>
+
+
+                                <div class="radio-design">
+                                    <input type="radio" class="shipping" id="free-shepping3" name="shipping"
+                                        value="150">
+                                    <span class="checkmark"></span>
+                                    <label for="free-shepping3">
+                                        Mid Night
+                                        + ₹150
+                                        <small>10pm to 12am</small>
+                                    </label>
+                                </div>
+
+
+                                <div class="radio-design">
+                                    <input type="radio" class="shipping" id="free-shepping4" name="shipping" value="1">
+                                    <span class="checkmark"></span>
+                                    <label for="free-shepping4">
+                                        Testing
+                                        + ₹1
+
+
+
+                                </div>
+
+
+
+                                <div class="final-price">
+                                    <span>Final Price :</span>
+                                    <!--<span id="final-cost">₹998</span>-->
+                                    <span id="final-cost" class="a4">₹998</span>
+
+
+
+                                </div>
+                                <p><span style="font-size: 13px;
+    font-weight: 600;
+    color: #bbbab0e6;float:right;">(Inclusive of all taxes)</span></p>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <script src="./prodCheckout1.js"></script>
+
+    <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
+
+    <!-- <script src="../assets/js/jquery-ui.min.js"></script> -->
+    <script type="text/javascript">
+
+        // $(document).ready(() => {
+        $('#nav-section-loader').load('../Common/navbar.html');
+        $('#footer-section-loader').load('../Common/footer.html');
+    // })
+    </script>
+    <script type="text/javascript">
+        setTimeout(() => {
+            $('#footer-section-loader').load('../Common/files.html');
+        }, 3000);
+    </script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebaseui.js"></script> -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+            authDomain: "lake-of-cakes.firebaseapp.com",
+            databaseURL: "https://lake-of-cakes.firebaseio.com",
+            projectId: "lake-of-cakes",
+            storageBucket: "lake-of-cakes.appspot.com",
+            messagingSenderId: "779843608951",
+            appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+            measurementId: "G-5ER0QF0FDW"
+        };
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+    <script src="../Common/navbar1.js"></script>
+    <script src="../assets/js/jquery.js"></script>
+
+    <script>
+        $(function () {
+
+            var $window = $(window),
+                win_height_padded = $window.height() * 1.1,
+                isTouch = Modernizr.touch;
+
+            if (isTouch) {
+                $('.revealOnScroll').addClass('animated');
+            }
+
+            $window.on('scroll', revealOnScroll);
+
+            function revealOnScroll() {
+                var scrolled = $window.scrollTop(),
+                    win_height_padded = $window.height() * 1.1;
+
+                // Showed...
+                $(".revealOnScroll:not(.animated)").each(function () {
+                    var $this = $(this),
+                        offsetTop = $this.offset().top;
+
+                    if (scrolled + win_height_padded > offsetTop) {
+                        if ($this.data('timeout')) {
+                            window.setTimeout(function () {
+                                $this.addClass('animated ' + $this.data('animation'));
+                            }, parseInt($this.data('timeout'), 10));
+                        } else {
+                            $this.addClass('animated ' + $this.data('animation'));
+                        }
+                    }
+                });
+                // Hidden...
+                $(".revealOnScroll.animated").each(function (index) {
+                    var $this = $(this),
+                        offsetTop = $this.offset().top;
+                    if (scrolled + win_height_padded < offsetTop) {
+                        $(this).removeClass('animated fadeInUp flipInX lightSpeedIn')
+                    }
+                });
+            }
+            revealOnScroll();
+        });
+    </script>
+
+    <style>
+        .drobt1 {
+            transform: translateX(-101%);
+        }
+
+        .drobt2 {
+            transform: translateX(0%);
+        }
+    </style>
+
+    <script>
+        $(".drobt").click(function () {
+            if ($('.drobt0').hasClass('drobt1')) {
+                $('.drobt0').removeClass('drobt1');
+                $('.drobt0').addClass('drobt2');
+            } else {
+                $('.drobt0').removeClass('drobt2');
+                $('.drobt0').addClass('drobt1');
+            }
+        });
+
+	// $('body').click(function(evt){
+	//     alert('hellow');
+	//     if(!$(evt.target).is('#drobt0')) {
+	//          $('.drobt0').removeClass('drobt2');
+	//       $('.drobt0').addClass('drobt1');
+	//     }
+	// });
+    </script>
+    <script>
+        const options = {
+            top: '64px', // default: '32px'
+            left: 'unset', // default: '32px'
+            right: '32px', // default: 'unset'
+            time: '0.5s', // default: '0.3s'
+            mixColor: '#fff', // default: '#fff'
+            backgroundColor: '#fff',  // default: '#fff'
+            buttonColorDark: '#100f2c',  // default: '#100f2c'
+            buttonColorLight: '#fff', // default: '#fff'
+            saveInCookies: false, // default: true,
+            label: '🌓', // default: ''
+            autoMatchOsTheme: true // default: true
+        }
+
+        const darkmode = new Darkmode(options);
+        darkmode.showWidget();
+    </script>
+    <script>
+        $(".thumbimg").click(function () {
+            $(".changeing").attr('src', this.src);
+            $(".changeing").attr('alt', this.alt);
+            $(".textcaption").text($(this).closest('.item').find('h5').text());
+        });
+    </script>
+
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-180297043-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-180297043-1');
+    </script>
+
+
+
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = '//embed.tawk.to/5f705b89f0e7167d00141f98/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
+
+
+    <script src="//js.paystack.co/v1/inline.js"></script>
+
+
+    <script type="text/javascript">
+        var today = "2020-10-16";
+        var next_date = "2020-10-17";
+
+        var time = "17:29";
+
+        //   alert(time);
+
+        if (time >= '00:01' && time <= '17:00') {
+            $(".shipping_date").attr('min', today);
+        }
+        $(".shipping_date").attr('min', today);
+        $(".free-sheppin1").css("display", "block");
+        $(".free-sheppin2").css("display", "none");
+        $(".free-sheppin3").css("display", "none");
+
+        $('a.payment:first').addClass('active');
+        $('.checkoutform').prop('action', $('a.payment:first').data('form'));
+        $($('a.payment:first').attr('href')).load($('a.payment:first').data('href'));
+
+
+        var show = $('a.payment:first').data('show');
+        if (show != 'no') {
+            $('.pay-area').removeClass('d-none');
+        }
+        else {
+            $('.pay-area').addClass('d-none');
+        }
+        $($('a.payment:first').attr('href')).addClass('active').addClass('show');
+
+        $('.submit-loader').hide();
+    </script>
+
+
+    <script type="text/javascript">
+
+        var coup = 0;
+        var pos = 0;
+
+
+        var mship = $('.shipping').length > 0 ? $('.shipping').first().val() : 0;
+        var mpack = $('.packing').length > 0 ? $('.packing').first().val() : 0;
+        mship = parseFloat(mship);
+        mpack = parseFloat(mpack);
+
+        $('#shipping-cost').val(mship);
+        $('#packing-cost').val(mpack);
+        var ftotal = parseFloat($('#grandtotal').val()) + mship + mpack;
+        var addons = '0';
+        ftotal = parseFloat(ftotal) + Number(addons);
+        if (ftotal % 1 != 0) {
+            ftotal = ftotal.toFixed(2);
+        }
+        if (pos == 0) {
+            $('#final-cost').html('₹' + ftotal)
+        }
+        else {
+            $('#final-cost').html(ftotal + '₹')
+        }
+
+        $('#grandtotal').val(ftotal);
+
+        $('#shipop').on('change', function () {
+
+            var val = $(this).val();
+            if (val == 'pickup') {
+                $('#shipshow').removeClass('d-none');
+                $("#ship-diff-address").parent().addClass('d-none');
+                $('.ship-diff-addres-area').addClass('d-none');
+                $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', false);
+            }
+            else {
+                $('#shipshow').addClass('d-none');
+                $("#ship-diff-address").parent().removeClass('d-none');
+                $('.ship-diff-addres-area').removeClass('d-none');
+                $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', true);
+            }
+
+        });
+
+
+        $('.shipping').on('click', function () {
+            mship = $(this).val();
+
+            var addons = '0';
+
+            $('#shipping-cost').val(mship);
+            var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+            ttotal = parseFloat(ttotal) + Number(addons);
+            // alert(ttotal);
+            if (ttotal % 1 != 0) {
+                ttotal = ttotal.toFixed(2);
+            }
+            if (pos == 0) {
+                $('#final-cost').html('₹' + ttotal);
+            }
+            else {
+                $('#final-cost').html(ttotal + '₹');
+            }
+
+            var stype = $(this).attr('id');
+
+            console.log(stype);
+
+
+            if (stype == 'free-shepping1') {
+                if (time <= "00:01" && time >= "17:00") {
+                    $(".shipping_date").attr('min', next_date);
+                }
+                $(".free-sheppin1").css("display", "block");
+                $(".free-sheppin2").css("display", "none");
+                $(".free-sheppin3").css("display", "none");
+
+            }
+            if (stype == 'free-shepping2') {
+
+                $(".free-sheppin2").css("display", "block");
+                $(".free-sheppin1").css("display", "none");
+                $(".free-sheppin3").css("display", "none");
+
+            }
+
+            if (stype == 'free-shepping3') {
+
+                if (time <= "00:01" && time >= "19:59") {
+                    $(".shipping_date").attr('min', next_date);
+                }
+                // alert("lksdahflk");
+                $(".free-sheppin3").css("display", "block");
+                $(".free-sheppin1").css("display", "none");
+                $(".free-sheppin2").css("display", "none");
+            }
+
+            $('#grandtotal').val(ttotal);
+
+
+
+        })
+
+        $('.packing').on('click', function () {
+            mpack = $(this).val();
+            var addons = '0';
+            $('#packing-cost').val(mpack);
+            var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+            ttotal = parseFloat(ttotal) + Number(addons);
+            if (ttotal % 1 != 0) {
+                ttotal = ttotal.toFixed(2);
+            }
+
+            if (pos == 0) {
+                $('#final-cost').html('₹' + ttotal);
+            }
+            else {
+                $('#final-cost').html(ttotal + '₹');
+            }
+
+
+            $('#grandtotal').val(ttotal);
+
+        })
+
+        $("#check-coupon-form").on('submit', function () {
+            var val = $("#code").val();
+            var total = $("#grandtotal").val();
+            var ship = 0;
+            $.ajax({
+                type: "GET",
+                url: mainurl + "/carts/coupon/check",
+                data: { code: val, total: total, shipping_cost: ship },
+                success: function (data) {
+                    if (data == 0) {
+                        toastr.error(langg.no_coupon);
+                        $("#code").val("");
+                    }
+                    else if (data == 2) {
+                        toastr.error(langg.already_coupon);
+                        $("#code").val("");
+                    }
+                    else {
+                        $("#check-coupon-form").toggle();
+                        $(".discount-bar").removeClass('d-none');
+
+                        if (pos == 0) {
+                            $('#total-cost').html('₹' + data[0]);
+                            $('#discount').html('₹' + data[2]);
+                        }
+                        else {
+                            $('#total-cost').html(data[0] + '₹');
+                            $('#discount').html(data[2] + '₹');
+                        }
+                        $('#grandtotal').val(data[0]);
+                        $('#tgrandtotal').val(data[0]);
+                        $('#coupon_code').val(data[1]);
+                        $('#coupon_discount').val(data[2]);
+                        if (data[4] != 0) {
+                            $('.dpercent').html('(' + data[4] + ')');
+                        }
+                        else {
+                            $('.dpercent').html('');
+                        }
+
+
+                        var ttotal = parseFloat($('#grandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+                        ttotal = parseFloat(ttotal);
+                        if (ttotal % 1 != 0) {
+                            ttotal = ttotal.toFixed(2);
+                        }
+
+                        if (pos == 0) {
+                            $('#final-cost').html('₹' + ttotal)
+                        }
+                        else {
+                            $('#final-cost').html(ttotal + '₹')
+                        }
+
+                        toastr.success(langg.coupon_found);
+                        $("#code").val("");
+                    }
+                }
+            });
+            return false;
+        });
+
+        // Password Checking
+
+        $("#open-pass").on("change", function () {
+            if (this.checked) {
+                $('.set-account-pass').removeClass('d-none');
+                $('.set-account-pass input').prop('required', true);
+                $('#personal-email').prop('required', true);
+                $('#personal-name').prop('required', true);
+            }
+            else {
+                $('.set-account-pass').addClass('d-none');
+                $('.set-account-pass input').prop('required', false);
+                $('#personal-email').prop('required', false);
+                $('#personal-name').prop('required', false);
+
+            }
+        });
+
+        // Password Checking Ends
+
+
+        // Shipping Address Checking
+
+        $("#ship-diff-address").on("change", function () {
+            if (this.checked) {
+                $('.ship-diff-addres-area').removeClass('d-none');
+                $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', true);
+            }
+            else {
+                $('.ship-diff-addres-area').addClass('d-none');
+                $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', false);
+            }
+
+        });
+
+        $("#ship-diff-address1").on("change", function () {
+            if (this.checked) {
+                $('.ship-diff-addres-area1').removeClass('d-none');
+            }
+            else {
+                $('.ship-diff-addres-area1').addClass('d-none');
+            }
+
+        });
+
+
+// Shipping Address Checking Ends
+
+
+    </script>
+
+
+    <script type="text/javascript">
+
+        var ck = 0;
+
+        $('.checkoutform').on('submit', function (e) {
+            if (ck == 0) {
+                e.preventDefault();
+                $('#pills-step2-tab').removeClass('disabled');
+                $('#pills-step2-tab').click();
+
+            } else {
+                $('#preloader').show();
+            }
+            $('#pills-step1-tab').addClass('active');
+        });
+
+        $('#step1-btn').on('click', function () {
+            $('#pills-step1-tab').removeClass('active');
+            $('#pills-step2-tab').removeClass('active');
+            $('#pills-step3-tab').removeClass('active');
+            $('#pills-step2-tab').addClass('disabled');
+            $('#pills-step3-tab').addClass('disabled');
+
+            $('#pills-step1-tab').click();
+
+        });
+
+        // Step 2 btn DONE
+
+        $('#step2-btn').on('click', function () {
+            $('#pills-step3-tab').removeClass('active');
+            $('#pills-step1-tab').removeClass('active');
+            $('#pills-step2-tab').removeClass('active');
+            $('#pills-step3-tab').addClass('disabled');
+            $('#pills-step2-tab').click();
+            $('#pills-step1-tab').addClass('active');
+
+        });
+
+        $('#step3-btn').on('click', function () {
+            if ($('a.payment:first').data('val') == 'paystack') {
+                $('.checkoutform').prop('id', 'step1-form');
+            }
+            else {
+                $('.checkoutform').prop('id', '');
+            }
+            $('#pills-step3-tab').removeClass('disabled');
+            $('#pills-step3-tab').click();
+
+            var shipping_user = !$('input[name="shipping_name"]').val() ? $('input[name="name"]').val() : $('input[name="shipping_name"]').val();
+            var shipping_location = !$('input[name="shipping_address"]').val() ? $('input[name="address"]').val() : $('input[name="shipping_address"]').val();
+            var shipping_phone = !$('input[name="shipping_phone"]').val() ? $('input[name="phone"]').val() : $('input[name="shipping_phone"]').val();
+            var shipping_email = !$('input[name="shipping_email"]').val() ? $('input[name="email"]').val() : $('input[name="shipping_email"]').val();
+
+            $('#shipping_user').html('<i class="fas fa-user"></i>' + shipping_user);
+            $('#shipping_location').html('<i class="fas fas fa-map-marker-alt"></i>' + shipping_location);
+            $('#shipping_phone').html('<i class="fas fa-phone"></i>' + shipping_phone);
+            $('#shipping_email').html('<i class="fas fa-envelope"></i>' + shipping_email);
+
+            $('#pills-step1-tab').addClass('active');
+            $('#pills-step2-tab').addClass('active');
+        });
+
+        $('#final-btn').on('click', function () {
+            ck = 1;
+        })
+
+
+        $('.payment').on('click', function () {
+
+            $('.submit-loader').show();
+            if ($(this).data('val') == 'paystack') {
+                $('.checkoutform').prop('id', 'step1-form');
+            }
+            else {
+                $('.checkoutform').prop('id', '');
+            }
+            $('.checkoutform').prop('action', $(this).data('form'));
+            $('.pay-area #v-pills-tabContent .tab-pane.fade').not($(this).attr('href')).html('');
+            var show = $(this).data('show');
+            if (show != 'no') {
+                $('.pay-area').removeClass('d-none');
+            }
+            else {
+                $('.pay-area').addClass('d-none');
+            }
+            $($(this).attr('href')).load($(this).data('href'), function () {
+                $('.submit-loader').hide();
+            });
+
+
+        })
+
+
+        $(document).on('submit', '#step1-form', function () {
+            $('#preloader').hide();
+            var val = $('#sub').val();
+            var total = $('#grandtotal').val();
+            total = Math.round(total);
+            if (val == 0) {
+                var handler = PaystackPop.setup({
+                    key: 'pk_test_162a56d42131cbb01932ed0d2c48f9cb99d8e8e2',
+                    email: $('input[name=email]').val(),
+                    amount: total * 100,
+                    currency: "INR",
+                    ref: '' + Math.floor((Math.random() * 1000000000) + 1),
+                    callback: function (response) {
+                        $('#ref_id').val(response.reference);
+                        $('#sub').val('1');
+                        $('#final-btn').click();
+                    },
+                    onClose: function () {
+                        window.location.reload();
+
+                    }
+                });
+                handler.openIframe();
+                return false;
+            }
+            else {
+                $('#preloader').show();
+                return true;
+            }
+        });
+
+
+        $(".customer_country").val('India').trigger('change');
+
+        function onlyNumber(evt) {
+
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+        $('.phoneee').on('input propertychange paste', function (e) {
+            var reg = /^0+/gi;
+            if (this.value.match(reg)) {
+                this.value = this.value.replace(reg, '');
+            }
+        });
+        var btnc = 0;
+        $(".mybtn1").click(function () {
+            if (btnc == 0) {
+
+                $("#myModal1").modal('show');
+                // btnc=1;
+            }
+
+        });
+
+        $(".contn").click(function () {
+
+            btnc = 1;
+        });
+
+    </script>
+    <script src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB4w5Jc6UUGDqfjk0kVIKBKB3y1zFZXzF0"></script>
+    <!-- <script async defer src="//maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"-->
+
+    <script>
+
+        function initialize() {
+            var input = document.getElementById('locality');
+            var options = {
+                types: ['address'],
+                componentRestrictions: {
+                    country: 'in'
+                }
+            };
+            autocomplete = new google.maps.places.Autocomplete(input, options);
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var place = autocomplete.getPlace();
+                for (var i = 0; i < place.address_components.length; i++) {
+                    for (var j = 0; j < place.address_components[i].types.length; j++) {
+                        if (place.address_components[i].types[j] == "postal_code") {
+                            document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
+
+                        }
+                    }
+                }
+            })
+        }
+        google.maps.event.addDomListener(window, "load", initialize);
+
+    </script>
+
+    <script>
+        var editClntInfoAutocomplete, addrStreet = "",
+            addressComponets = {
+                street_number: 'short_name',
+                route: 'long_name',
+                locality: 'long_name',
+                administrative_area_level_1: 'short_name',
+                country: 'long_name',
+                postal_code: 'short_name'
+            };
+
+        function initEditClntInfoAutoComplete() {   // Callback  
+
+            editClntInfoAutocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('shippingPostal_code')),
+                { types: ['geocode'] });
+
+            // When the user selects an address from the dropdown, populate the address
+            // fields in the form.
+            editClntInfoAutocomplete.addListener('place_changed', fillInEditClntInfoAddress);
+        }
+
+        function fillInEditClntInfoAddress() {
+
+            var place = editClntInfoAutocomplete.getPlace();
+
+            clearPrevEditFrmAddrVals();
+
+            for (var i = 0; i < place.address_components.length; i++) {
+
+                var addressType = place.address_components[i].types[0];
+                if (addressComponets[addressType]) {
+                    var val = place.address_components[i][addressComponets[addressType]];
+
+                    assignEditFrmAddrFieldsVal(addressType, val);
+                }
+
+            }
+
+            if (addrStreet != "")
+                document.getElementById("shippingPostal_code").value = addrStreet;
+
+        }
+
+        function assignEditFrmAddrFieldsVal(addressType, val) {
+
+            switch (addressType) {
+                case "administrative_area_level_1":
+                    document.getElementById("shippingPostal_code").value = val; break;
+                case "locality":
+                    document.getElementById("clntInfoEditCity").value = val; break;
+                //   case "country":
+                //        document.getElementById("addressType").value = val;  break;
+                case "postal_code":
+                    document.getElementById("clntInfoEditZip").value = val; break;
+                case "street_number":
+                case "route":
+                    addrStreet += " " + val; break;
+
+            }
+
+        }
+
+        function clearPrevEditFrmAddrVals() {
+            var editClntFrmAddrIDs = ["shippingPostal_code", "clntInfoEditCity", "clntInfoEditZip", "clntInfoEditAddr1"];
+            addrStreet = "";
+
+            for (var frmID in editClntFrmAddrIDs)
+                wrap(editClntFrmAddrIDs[frmID]).val("");
+        }
+    </script>
+
+</html>
