@@ -161,7 +161,7 @@ const displayProds = async (arrProds) => {
     // console.log(p);
     card += `
 			<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
-				<a href="../Product/product.html?prod=${p.prodId}" class="item">
+				<a href="../Product/product.html?prod=${p.prodId}&&cat=${p.prodData.wholeCategory.split('__')[0]}" class="item">
 					<div class="item-img">
 						<div class="extra-list">
 							<ul>
