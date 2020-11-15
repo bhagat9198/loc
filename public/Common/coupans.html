@@ -345,7 +345,8 @@
     }, 1000);
 
     function copyToClipboard(rand1, rand2) {
-      console.log(rand1, rand2);
+      console.log(rand1,rand2);
+      
       document.getElementById(rand2).style.display = "block";
       setTimeout(function () {
         document.getElementById(rand2).style.display = "none";
@@ -354,6 +355,7 @@
       var $temp = $("<input>");
       $("body").append($temp);
       let tempEl = `#${rand1}`;
+      console.log(tempEl)
       $temp.val($(tempEl).text()).select();
       document.execCommand("copy");
       $temp.remove();
