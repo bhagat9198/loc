@@ -14,13 +14,13 @@ db.collection('coupans').onSnapshot(snapshots => {
 })
 
 const displayCard = (docData) => {
-  let rand1 = Math.random();
+  let rand1 = Math.random().toString();
   let rand2 = Math.random();
   return `
   <div class="col-12 col-sm-6 col-md-6 col-lg-4">
     <div class="card h-100 mb-4">
       <div class="card-header">
-        <h5 class="card-title m-0 p-0 font-weight-bolder" id="${rand1}">#${docData.name}
+        <h5 class="card-title m-0 p-0 font-weight-bolder" id="${docData.name}">#${docData.name}
         </h5>
       </div>
       <div class="card-body text-left">
@@ -32,11 +32,11 @@ const displayCard = (docData) => {
           <div class="promotion-price-text">Now</div>
         </div>
       </div>
-      <div class="card-footer"><a href="#" class="btn btn-warning" onclick="copyToClipboard(${rand1},${rand2})"
+      <div class="card-footer"><a href="#" class="btn btn-warning" onclick=copyToClipboard('${docData.name}','text__${rand2}')
           data-toggle="tooltip" title="Copied to clipboard">Copy Code</a>
       </div>
       <h5 style="font-weight: 800;background-color: green;font-size: 14px;display: none;"
-        id="${rand2}">Copied To ClipBoard</h5>
+        id="text__${rand2}">Copied To ClipBoard</h5>
     </div>
   </div>
   `;
