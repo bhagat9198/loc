@@ -293,14 +293,11 @@
     <!-- cards -->
     <div class="container">
       <div class="row">
-        
         <div class="mx-auto">
           <div class="col-lg-12" style="margin-top: 5%;">
             <div class="text-center my-3">
-
-              <div class="card-deck no-gutters">
-
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4">
+              <div class="card-deck no-gutters" id="allcoupans">
+                <!-- <div class="col-12 col-sm-6 col-md-6 col-lg-4">
                   <div class="card h-100 mb-4">
                     <div class="card-header">
                       <h5 class="card-title m-0 p-0 font-weight-bolder " id="copyCode1">#6LOC786
@@ -320,72 +317,14 @@
                     </div>
                     <h5 style="font-weight: 800;background-color: green;font-size: 14px;display: none;"
                       id="copiedText1">Copied To ClipBoard</h5>
-
                   </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <div class="card h-100 mb-4">
-                    <div class="card-header">
-                      <h5 class="card-title m-0 p-0 font-weight-bolder " id="copyCode1">#6LOC786
-                      </h5>
-                    </div>
-                    <div class="card-body text-left">
-                      <p class="card-text">Coupen Description</p>
-                      <span class="font-lead-base font-weight-bold text-muted">20% Off!</span>
-                      <div class="promotion-promo">₹ 11.5</div>
-                      <div class="promotion-price">
-                        <div class="promotion-price-desc">Now</div>
-                        <div class="promotion-price-text">₹ 9.5</div>
-                      </div>
-                    </div>
-                    <div class="card-footer"><a href="#" class="btn btn-warning" onclick="copyToClipboard('#copyCode1')"
-                        data-toggle="tooltip" title="Copied to clipboard">Copy Code</a>
-                    </div>
-                    <h5 style="font-weight: 800;background-color: green;font-size: 14px;display: none;"
-                      id="copiedText1">Copied To ClipBoard</h5>
-
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-                  <div class="card h-100 mb-4">
-                    <div class="card-header">
-                      <h5 class="card-title m-0 p-0 font-weight-bolder " id="copyCode1">#6LOC786
-                      </h5>
-                    </div>
-                    <div class="card-body text-left">
-                      <p class="card-text">Coupen Description</p>
-                      <span class="font-lead-base font-weight-bold text-muted">20% Off!</span>
-                      <div class="promotion-promo">₹ 11.5</div>
-                      <div class="promotion-price">
-                        <div class="promotion-price-desc">Now</div>
-                        <div class="promotion-price-text">₹ 9.5</div>
-                      </div>
-                    </div>
-                    <div class="card-footer"><a href="#" class="btn btn-warning" onclick="copyToClipboard('#copyCode1')"
-                        data-toggle="tooltip" title="Copied to clipboard">Copy Code</a>
-                    </div>
-                    <h5 style="font-weight: 800;background-color: green;font-size: 14px;display: none;"
-                      id="copiedText1">Copied To ClipBoard</h5>
-
-                  </div>
-                </div>
-               
-
-                
-               
-
-               
-
-                
+                </div> -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-
   </section>
 
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
@@ -405,15 +344,17 @@
       $('#footer-section-loader').load('./footer.html');
     }, 1000);
 
-    function copyToClipboard(element) {
-      document.getElementById("copiedText1").style.display = "block";
+    function copyToClipboard(rand1, rand2) {
+      console.log(rand1, rand2);
+      document.getElementById(rand2).style.display = "block";
       setTimeout(function () {
-        document.getElementById("copiedText1").style.display = "none";
+        document.getElementById(rand2).style.display = "none";
       }, 1000)
 
       var $temp = $("<input>");
       $("body").append($temp);
-      $temp.val($(element).text()).select();
+      let tempEl = `#${rand1}`;
+      $temp.val($(tempEl).text()).select();
       document.execCommand("copy");
       $temp.remove();
       $('[data-toggle="tooltip"]').tooltip();
