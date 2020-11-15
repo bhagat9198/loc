@@ -27079,10 +27079,12 @@ nav button {
 
 .product-details-page .right-area .product-info .product-price .title {
     display: inline-block;
-    margin-right: 20px;
+    /* margin-right: 20px; */
     margin-bottom: 0px;
 }
-
+.timer{
+    color: red;
+}
 .product-details-page .right-area .product-info .product-price .price {
     display: inline-block;
     font-size: 27px;

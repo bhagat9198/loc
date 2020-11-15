@@ -15,12 +15,12 @@
   <meta name="theme-color" content="#a15a55">
   <link rel="stylesheet" href="../assets/css/all.css">
   <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/styles.php">
+  <!-- <link rel="stylesheet" href="../assets/css/styles.php"> -->
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
   <link rel="stylesheet" href="../assets/css/products.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css">
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
@@ -195,7 +195,7 @@ label.radio input:checked+span {
                       <li class="product-isstook">
                         <p>
                           <i class="icofont-check-circled"></i>
-                          In Stock
+                          Best Seller
                         </p>
                       </li>
                       <li>
@@ -214,8 +214,8 @@ label.radio input:checked+span {
 
                   <div class="product-price">
                     <p class="title">Price :</p>
-                    <p class=" price"><span id="sizeprice">&#8377;6589.00</span>
-                      <small><del>&#8377; 9200</del></small></p>
+                    <p class="price">&#8377;<span id="odometer" class="odometer">6589.00</span>
+                      <small><del>&#8377;9200</del></small><small style="font-size: 11px;color: green;">(20% Off)</small></p>
 
                     <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;">(Inclusive all taxes)</span>
                     </p>
@@ -291,46 +291,43 @@ label.radio input:checked+span {
                               <div class="" style="display: flex;">
 
                                 <div class="custom-control custom-radio" style="margin-right: 15px;">
-                                  <input type="hidden" class="keys" value="">
-                                  <input type="hidden" class="values" value="">
-                                  <input type="radio" idshapekg0" name="kg" class="custom-control-input product-attr"
-                                    data-key="kg" data-price="6589" value="1" checked>
+                            
+                                  <input type="radio" id="kg0" name="kg0" class="custom-control-input product-attr"
+                                    data-key="kg" data-price="6589" value="1" >
 
                                   <img class="productimg"
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuDo9bCm5Vrxv7wE-DFzNCTS20ve2XOF6Xj4s7z94mAv01M5KjmSHtHxZp&s=10"
                                     alt="Happy Bhai Dooj Truffle Cake Half Kg"
-                                    style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
+                                    style="border-radius: 10px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
 
                                   <label class="custom-control-label" for="kg0" style="font-weight: 700;">1 kg
                                   </label>
 
                                 </div>
                                 <div class="custom-control custom-radio" style="margin-right: 15px;">
-                                  <input type="hidden" class="keys" value="">
-                                  <input type="hidden" class="values" value="">
-                                  <input type="radio" id="kg1" name="kg" class="custom-control-input product-attr"
-                                    data-key="kg" data-price="6589" value="2" checked>
+              
+                                  <input type="radio" id="kg2" name="kg2" class="custom-control-input product-attr"
+                                    data-key="kg" data-price="6589" value="2" >
 
                                   <img class="productimg"
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuDo9bCm5Vrxv7wE-DFzNCTS20ve2XOF6Xj4s7z94mAv01M5KjmSHtHxZp&s=10"
                                     alt="Happy Bhai Dooj Truffle Cake Half Kg"
-                                    style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
-                                  <label class="custom-control-label" for="kg1">2 kg
+                                    style="border-radius: 10px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
+                                  <label class="custom-control-label" for="kg2">2 kg
                                   </label>
 
                                 </div>
                                 <div class="custom-control custom-radio" style="margin-right: 15px;">
-                                  <input type="hidden" class="keys" value="">
-                                  <input type="hidden" class="values" value="">
-                                  <input type="radio" id="kg1" name="kg" class="custom-control-input product-attr"
-                                    data-key="kg" data-price="6589" value="2" checked>
+                                
+                                  <input type="radio" id="kg3" name="kg3" class="custom-control-input product-attr"
+                                    data-key="kg" data-price="6589" value="3"  onclick="changePrice()">
 
                                   <img class="productimg"
                                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuDo9bCm5Vrxv7wE-DFzNCTS20ve2XOF6Xj4s7z94mAv01M5KjmSHtHxZp&s=10"
                                     alt="Happy Bhai Dooj Truffle Cake Half Kg"
-                                    style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
+                                    style="border-radius: 10px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
 
-                                  <label class="custom-control-label" for="kg1">2 kg
+                                  <label class="custom-control-label" for="kg3">2 kg
                                   </label>
 
                                 </div>
@@ -919,8 +916,14 @@ label.radio input:checked+span {
   setTimeout(() => {
     $('#footer-section-loader').load('../Common/files.html');
   }, 1000);
-</script>
 
+  function changePrice(){
+
+    odometer.innerHTML='43449'
+  }
+ 
+</script>
+<script src="https://github.hubspot.com/odometer/odometer.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
