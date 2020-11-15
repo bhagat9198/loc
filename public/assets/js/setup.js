@@ -6,7 +6,7 @@
         // $('.xzoom4, .xzoom-gallery4').xzoom({tint: '#006699', Xoffset: 15});
 
         var w = window.innerWidth;
-
+        
 
         if( w > 575) 
         {
@@ -27,6 +27,7 @@
         $('.xzoom5').each(function() {
             var xzoom = $(this).data('xzoom');
             $(this).hammer().on("tap", function(event) {
+                alert(1);
                 event.pageX = event.gesture.center.pageX;
                 event.pageY = event.gesture.center.pageY;
                 var s = 1, ls;

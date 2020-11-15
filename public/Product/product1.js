@@ -63,11 +63,13 @@ const displayProduct = (prodData) => {
       alt="Lake of cakes"
     /> 
   `;
+  console.log(big);
   bigImgHolderHTML.innerHTML = big;
+  console.log(document.querySelector('#whole-img-block'));
 
   let imgs = `
   <a
-    href="javascript;;">
+    href="${prodData.mainImgUrl}">
     <img onclick="imgChange(event, this)" class="xzoom-gallery5" width="70" style="object-fit: contain;"
       src="${prodData.mainImgUrl}"
       alt="Lake of cakes"
@@ -79,7 +81,7 @@ const displayProduct = (prodData) => {
       prodData.subImgsUrl.map((subUrl) => {
         imgs += `
         <a
-          href="javascript;;">
+          href="${subUrl}">
           <img class="xzoom-gallery5"  onclick="imgChange(event, this)" width="70" style="object-fit: contain;"
             src="${subUrl}"
             alt="Lake of cakes">
@@ -310,19 +312,20 @@ const displaySuggestion = () => {
 };
 
 const imgChange = (e, current) => {
-  console.log(current);
+  // console.log(current);
   let imgUrl = current.src;
-  // console.log(imgUrl);
+  console.log(imgUrl);
   // bigImgHolderHTML.innerHTML = '';
   let big = `
-    <img class="xzoom5" id="xzoom-magnific"  
+  <img class="xzoom5" id="xzoom-magnific"  
       src="${imgUrl}"
-      xoriginal="${imgUrl}"
+      xoriginal = "${imgUrl}"
       alt="Lake of cakes"
     /> 
   `;
+
   bigImgHolderHTML.innerHTML = big;
-  // console.log(bigImgHolderHTML);
+  console.log(document.querySelector('#whole-img-block'));
 };
 
 
