@@ -25,10 +25,11 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
   data.map((doc) => {
     let docData = doc.data();
     // console.log(docData);
+    
     tRows += `
     <tr role="row" class="odd parent">
       <td tabindex="0">${docData.name}</td>
-      <td>Rs ${docData.amount}</td>
+      <td>${displayDisAmt(docData.category, docData.amount)}</td>
       <td>
         <div class="action-list">
           <select class="process  drop-success" data-id="${
@@ -64,6 +65,16 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
     `;
   });
   elHTML.innerHTML = tRows;
+}
+
+const displayDisAmt = (coupanCat, amt) => {
+  let discountAmt = '';
+    if(coupanCat === "price") {
+      discountAmt = `₹ ${amt}`;
+    } else {
+      discountAmt = `${amt}%`;
+    }
+  return discountAmt;
 }
 
 const changeStatus = (e, current) => {
@@ -106,6 +117,7 @@ const loadDetailModal = async (e) => {
   const cNameHTML = detailModalHTML.querySelector(".cName");
   const cCategoryHTML = detailModalHTML.querySelector(".cCategory");
   const cAmtHTML = detailModalHTML.querySelector(".cAmt");
+  const pAmtHTML = detailModalHTML.querySelector(".pAmt");
   const cQuantityHTML = detailModalHTML.querySelector(".cQuantity");
   const cFromHTML = detailModalHTML.querySelector(".cFrom");
   const cValidHTML = detailModalHTML.querySelector(".cValid");
@@ -121,6 +133,7 @@ const loadDetailModal = async (e) => {
       cNameHTML.innerHTML = docData.name;
       cCategoryHTML.innerHTML = docData.category;
       cAmtHTML.innerHTML = docData.amount;
+      pAmtHTML.innerHTML = docData.prevAmout || '';
       cQuantityHTML.innerHTML = docData.quantity;
       cFromHTML.innerHTML = docData.validFrom;
       cValidHTML.innerHTML = docData.validTill;
@@ -130,7 +143,7 @@ const loadDetailModal = async (e) => {
 
 const loadEditModal = async (e) => {
   const docId = e.target.dataset.id;
-  console.log(docId);
+  // console.log(docId);
   const editModalFormHTML = document.querySelector("#edit-modal-form");
 
   await db
@@ -143,6 +156,7 @@ const loadEditModal = async (e) => {
       editModalFormHTML["edit-c-desc"].value = docData.desc;
       editModalFormHTML["edit-c-category"].value = docData.category;
       editModalFormHTML["edit-c-amt"].value = docData.amount;
+      editModalFormHTML["edit-c-pamt"].value = docData.prevAmout;
       editModalFormHTML["edit-c-quantity"].value = docData.quantity;
       editModalFormHTML["edit-c-total"].value = docData.totalCoupans;
       editModalFormHTML["edit-c-validFrom"].value = docData.validFrom;
@@ -158,6 +172,7 @@ const submitEdit = (e) => {
   const desc = editModalFormHTML["edit-c-desc"].value;
   const category = editModalFormHTML["edit-c-category"].value;
   const amount = editModalFormHTML["edit-c-amt"].value;
+  const pAmount = editModalFormHTML["edit-c-pamt"].value;
   const quantity = editModalFormHTML["edit-c-quantity"].value;
   let totalCoupans = editModalFormHTML["edit-c-total"].value;
   const validFrom = editModalFormHTML["edit-c-validFrom"].value;
@@ -173,6 +188,7 @@ const submitEdit = (e) => {
     desc: desc,
     category: category,
     amount: amount,
+    prevAmout: pAmount,
     quantity: quantity,
     totalCoupans: totalCoupans,
     validFrom: validFrom,
@@ -180,7 +196,7 @@ const submitEdit = (e) => {
   };
 
   const updateCoupan = async (data) => {
-    console.log(data);
+    // console.log(data);
     let dbRef = await db.collection("coupans").doc(docId);
     dbRef
       .get()

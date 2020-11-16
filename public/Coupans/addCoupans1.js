@@ -11,6 +11,7 @@ const addCoupan = (e) => {
   const coupanDesc = addCoupanFormHTML["coupan-desc"].value;
   const coupanCat = addCoupanFormHTML["coupan-cat"].value;
   const coupanAmt = addCoupanFormHTML["coupan-amt"].value;
+  const prevCoupanAmt = addCoupanFormHTML["prev-coupan-amt"].value;
   const coupanQuantity = addCoupanFormHTML["coupan-quantity"].value;
   const numOfCoupans = addCoupanFormHTML["num-of-coupans"].value;
   const dateFrom = addCoupanFormHTML["date-from"].value;
@@ -21,6 +22,7 @@ const addCoupan = (e) => {
     desc: coupanDesc,
     category: coupanCat,
     amount: coupanAmt,
+    prevAmout: prevCoupanAmt,
     quantity: coupanQuantity,
     totalCoupans: numOfCoupans || 'unlimited',
     validFrom: dateFrom,
@@ -29,11 +31,11 @@ const addCoupan = (e) => {
   };
 
   const addCoupanReq = async(data) => {
-    console.log(data);
+    // console.log(data);
     await db.collection("coupans")
       .add(data)
       .then((savedData) => {
-        console.log(savedData);
+        // console.log(savedData);
       })
       .catch((error) => {
         console.log(error);
