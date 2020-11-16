@@ -78,7 +78,7 @@ async function displayRows(snapshotDocs, allCatData) {
     let imgUrl = docData.mainImgUrl;
     tRows += `
     <tr role="row" class="odd parent">
-        <td tabindex="0" >${docData.name}<br><small>ID: ${docData.sno}</small></td>
+        <td tabindex="0" >${docData.name}<br><small>ID: ${docData.sno}</small><br /> <small><strong>CHEX:</strong> ${id}</small></td>
         <td><img src="${imgUrl}"></td>
         <td>${catData.scname}</td>
         <td>${catData.ccname}</td>
