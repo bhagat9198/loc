@@ -118,13 +118,6 @@ const searchProd = (e, current) => {
   }
 }
 
-// const preventReload = (e) => {
-//   if(e.keyCode === 'Enter') {
-//     e.preventDefault();
-//   }
-//   console.log(e.key);
-// }
-
 
 
 
