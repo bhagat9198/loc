@@ -368,10 +368,11 @@ const enterKeyFun = e => {
 
 reviewFormHTML.addEventListener('keypress', enterKeyFun);
 
-const productOrder = () => {
-  
-}
+
 
 const buyNowBtnHTML = document.querySelector('#buyNowBtn');
 const addToCartBtnHTML = document.querySelector('#addToCartBtn');
 buyNowBtnHTML.addEventListener('click', productOrder);
+
+const allAddonsModalHTML = document.querySelector('#all-addons');
+
