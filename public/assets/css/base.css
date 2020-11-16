@@ -1,4 +1,27 @@
+#loading {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+  opacity: 1.9;
+  background-color:#fbdae7;
+  z-index: 99;
+  text-align: center;
+}
 
+#loading-image {
+  /* position: absolute;
+  top: 100px;
+  left: 240px; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  margin-top: auto;
+  z-index: 100;
+}
   
     #v-pills-tab46-tab {
       display: none;
@@ -309,7 +332,7 @@
       
       width: 92px;
       height: 92px;
-      border-radius: 50%;
+      /* border-radius: 50%; */
       /* background: linear-gradient(rgba(255,255,255,.1), rgba(134, 214, 81, 0.493)); */
     }
 

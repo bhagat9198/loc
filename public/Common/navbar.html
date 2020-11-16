@@ -50,11 +50,11 @@
                         </a>
                         <div class="dropdown-menu" style="padding: 10px; margin-left:-50%;margin-top:4%;"
                           data-toggle="dropdown" aria-labelledby="navbarDropdownMenuLink">
-                          <div style="padding: 0px;width: 200px;background-color: antiquewhite;padding: 5px;">
+                          <div style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
                             <a class="dropdown-item" href="#">
                               <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest!
                                 Login to continue</h4>
-                              <button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
+                              <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button></center>
                             </a>
                           </div>
                           <hr>
@@ -596,19 +596,22 @@
                 <span class="item-no">
                     <span class="cart-quantity">
                         1
-                    </span> Item(s)
+                    </span> Product(s)
                 </span>
 
-                <a class="view-cart" href="//lakeofcakes.com/carts">
-                    View Cart
-                </a>
             </div>
             <ul class="dropdown-cart-products">
                 <li class="product cremove3461">
+                  <figure class="product-image-container">
+                    <a href="" class="product-image">
+                        <img src="//lakeofcakes.com/assets/images/products/1601547238ON97VlRe.png" style="width: 50px; object-fit:cover;" alt="product">
+                    </a>
+                  
+                </figure>
                     <div class="product-details">
                         <div class="content">
-                            <a href="//lakeofcakes.com/item/tier-cake-ttp7178v6d">
-                                <h4 class="product-title">Tier Cake</h4>
+                            <a href="">
+                                <h4 class="product-title">Black Forest</h4>
                             </a>
 
                             <span class="cart-product-info">
@@ -618,15 +621,7 @@
                         </div>
                     </div>
 
-                    <figure class="product-image-container">
-                        <a href="//lakeofcakes.com/item/tier-cake-ttp7178v6d" class="product-image">
-                            <img src="//lakeofcakes.com/assets/images/products/1601547238ON97VlRe.png" alt="product">
-                        </a>
-                        <div class="cart-remove" data-class="cremove3461" data-href="//lakeofcakes.com/removecart/3461"
-                            title="Remove Product">
-                            <i class="fa fa-close"></i>
-                        </div>
-                    </figure>
+        
                 </li>
             </ul>
 
@@ -640,7 +635,7 @@
             </div>
 
             <div class="dropdown-cart-action">
-                <a href="//lakeofcakes.com/checkout" class="mybtn1">Checkout</a>
+                <a href="" class="mybtn1" style="background-color: rgb(20, 113, 167);">Checkout</a>
             </div>
         </div>
     </div>
@@ -950,6 +945,13 @@
 
 
 <script>
+  
+  function hidenavigation() {
+      $('.drobt0').addClass('colapse');
+    }
+    function shownavigation() {
+      $('.drobt0').removeClass('colapse');
+    }
   setTimeout(() => {
     $(".menu > ul > li").hover(function (e) {
       if ($(window).width() > 943) {
@@ -972,14 +974,9 @@
       $(".menu > ul").removeClass('show-on-mobile');
     });
 
-    function shownavigation() {
-      $('.drobt0').removeClass('colapse');
-    }
 
-    function hidenavigation() {
-      $('.drobt0').addClass('colapse');
-    }
-  }, 5500);    
+
+  }, 1000);    
 </script>
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
@@ -1008,7 +1005,15 @@
         if (checkUser == doc.data().userId) {
         
           counter++;
-          userDoc = doc.data()
+       
+          userDoc = doc.data();
+          if(userDoc.UserName==null){
+            userDoc.UserName="User@LOC";
+          } 
+          if(userDoc.Image==null){
+            userDoc.Image="../assets/images/userIcon.png"
+          }
+          
           document.getElementById("logInBtn").style.display = "none";
           document.getElementById("hideLogOut").style.display = "block";
           document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;

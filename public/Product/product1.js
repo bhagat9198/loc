@@ -65,7 +65,6 @@ const displayProduct = (prodData) => {
   `;
   console.log(big);
   bigImgHolderHTML.innerHTML = big;
-  console.log(document.querySelector('#whole-img-block'));
 
   let imgs = `
   <a
