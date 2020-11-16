@@ -199,7 +199,7 @@ db.collection("sections")
                   <li>  
                     <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
                       data-target="#comment-log-reg" data-placement="right">
-                      <i class="icofont-heart-alt"></i>
+                      <i class="fa fa-heart"></i>
                     </span>
                   </li>
                 </ul>
@@ -297,7 +297,7 @@ db.collection("sections")
                 <li>
                   <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
                     data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
-                    <i class="icofont-heart-alt"></i>
+                    <i class="fa fa-heart"></i>
                   </span>
                 </li>
               </ul>
@@ -354,7 +354,7 @@ db.collection("sections")
                 <li>
                   <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
                     data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
-                    <i class="icofont-heart-alt"></i>
+                    <i class="fa fa-heart"></i>
                   </span>
                 </li>
               </ul>

@@ -86,3 +86,46 @@ db.collection('categories').onSnapshot(async(snapshots) => {
   const wholeNavigationMobile = document.querySelector('#whole-navigation-mobile');
   wholeNavigationMobile.innerHTML = liMob;
 });
+
+let allSearchList;
+db.collection('miscellaneous').doc('searchList').get().then(doc => {
+  let docData = doc.data();
+  allSearchList = docData.searches;
+})
+
+
+const searchProd = (e, current) => {
+  // console.log(current.value);
+  // console.log(allSearchList);
+  let searchResults = [];
+  for(let el of allSearchList) {
+    // console.log(el);
+    if(el.name.toUpperCase().includes(current.value.toUpperCase())) {
+      searchResults.push(el.name);
+      // console.log(el);
+      if(searchResults.length >= 7) {
+        break;
+      }
+    }
+  }
+  console.log(searchResults);
+
+  if(e.keyCode === 13) {
+    console.log(e.keyCode);
+    // e.preventDefault();
+    // window.location(`/Products/products.html?user=${current.value}`)
+    window.location.href = `/Products/products.html?user=${current.value}`;
+  }
+}
+
+// const preventReload = (e) => {
+//   if(e.keyCode === 'Enter') {
+//     e.preventDefault();
+//   }
+//   console.log(e.key);
+// }
+
+
+
+
+

@@ -63,9 +63,9 @@ const displayProduct = (prodData) => {
       alt="Lake of cakes"
     /> 
   `;
-  console.log(big);
+  // console.log(big);
   bigImgHolderHTML.innerHTML = big;
-  console.log(document.querySelector('#whole-img-block'));
+  // console.log(document.querySelector('#whole-img-block'));
 
   let imgs = `
   <a
@@ -123,8 +123,8 @@ const displayProduct = (prodData) => {
   // sizepriceHTML.innerHTML = `&#8377;${prodData.totalPrice}`;
   // totalCost = +prodData.totalPrice;
   // prodPrevPriceHTML.innerHTML = `&#8377; ${prodData.mrp}`;
-  totalCost = prodData.totalPrice;
-  totalPrevPrice = prodData.mrp;
+  totalCost = +prodData.totalPrice;
+  totalPrevPrice = +prodData.mrp;
   calculatePrice("qty");
 
   document.querySelector("#prod-qty").innerHTML = initialProdValue;
@@ -159,11 +159,14 @@ const displayProduct = (prodData) => {
 };
 
 const calculatePrice = (condition, data) => {
+  console.log(totalCost, totalPrevPrice);
   if (condition === "qty") {
+    console.log('qty');
     totalCost = +initialProdValue * totalCost;
     // console.log(initialProdValue, totalCost);
     totalPrevPrice = +initialProdValue * +totalPrevPrice;
   } else if (condition === "weightPrice") {
+    console.log('weightPrice');
     let weightPrice = +prodDetails.weights[data].weightPrice;
     let gstPrice = (weightPrice * +prodDetails.gst) / 100;
     let prevWeightPrice = +prodDetails.weights[data].weightPrevPrice;
@@ -187,6 +190,8 @@ const calculatePrice = (condition, data) => {
     }
   }
 
+  // odometer.innerHTML='43449'
+  console.log(totalCost, totalPrevPrice);
   sizepriceHTML.innerHTML = `&#8377;${totalCost}`;
   prodPrevPriceHTML.innerHTML = `&#8377; ${totalPrevPrice}`;
 };
@@ -368,11 +373,10 @@ const enterKeyFun = e => {
 
 reviewFormHTML.addEventListener('keypress', enterKeyFun);
 
-
+const productOrder = () => {
+  
+}
 
 const buyNowBtnHTML = document.querySelector('#buyNowBtn');
 const addToCartBtnHTML = document.querySelector('#addToCartBtn');
 buyNowBtnHTML.addEventListener('click', productOrder);
-
-const allAddonsModalHTML = document.querySelector('#all-addons');
-
