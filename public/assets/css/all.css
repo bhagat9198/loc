@@ -36075,7 +36075,8 @@ p.product-unit-price {
     }
     /*  /Subscribe preloader area  */
     .item .info .name {
-        font-size: 13px!important;
+        font-size: 10px!important;
+        
     }
     .product-details-page .right-area .product-info {
         margin-top: 8px;

@@ -65,7 +65,6 @@ const displayProduct = (prodData) => {
   `;
   // console.log(big);
   bigImgHolderHTML.innerHTML = big;
-  // console.log(document.querySelector('#whole-img-block'));
 
   let imgs = `
   <a
@@ -120,9 +119,11 @@ const displayProduct = (prodData) => {
     `;
   }
 
-  // sizepriceHTML.innerHTML = `&#8377;${prodData.totalPrice}`;
-  // totalCost = +prodData.totalPrice;
-  // prodPrevPriceHTML.innerHTML = `&#8377; ${prodData.mrp}`;
+ 
+  sizepriceHTML.innerHTML = prodData.totalPrice;
+ 
+  totalCost = +prodData.totalPrice;
+  prodPrevPriceHTML.innerHTML = `&#8377; ${prodData.mrp}`;
   totalCost = +prodData.totalPrice;
   totalPrevPrice = +prodData.mrp;
   calculatePrice("qty");

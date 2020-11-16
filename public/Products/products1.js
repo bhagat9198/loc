@@ -200,7 +200,7 @@ const displayProds = async (arrProds) => {
   for (let p of arrProds) {
     // console.log(p);
     card += `
-			<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
+			<div class="col-lg-2  col-6 pb-3 pt-2">
 				<a href="../Product/product.html?prod=${p.prodId}&&cat=${
       p.prodData.wholeCategory.split("__")[0]
     }" class="item">
@@ -215,14 +215,13 @@ const displayProds = async (arrProds) => {
 								</li>
 							</ul>
 						</div>
-						<img class="img-fluid" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${
-      p.prodData.name
-    }">
+						<img class="responsive-image"  style="width:220px;height:200px;object-fit:cover" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
 					</div>
 					<div class="info" style="height: 100px !important;">
-						<h5 class="name">${p.prodData.name}</h5>
-						<br>
-						<h4 class="price ">₹ 1197 <del><small>₹ 2000</small></del></h4>
+						<h5 class="name responsive-name">${p.prodData.name}</h5>
+            <br>
+            <br>
+						<h4 class="price ">₹ ${p.prodData.totalPrice} <del><small>₹ 2000</small></del></h4>
 						<br>
 						<h5 class="discount">Discount : 20 % OFF</h5>
 					</div>
@@ -240,12 +239,13 @@ const displayTopSuggest = async (arrProds) => {
   for (let p of arrProds) {
     let pcat = p.prodData.wholeCategory.split("__")[0];
     card += `
-    <div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
+    <div class="col-lg-2 ">
       <a href="../Product/product.html?prod=${p.prodId}&&cat=${pcat}" class="item">
-        <div class="item-imgTop">
-          <img class="img-fluid" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.mainImgUrl}">
+      
+        <div class="" >
+          <img class="" style="width:220px;height:200px;object-fit:cover" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.mainImgUrl}">
         </div>
-        <div class="info" style="height: 40px !important;">
+        <div class="info" style="height: 60px !important;">
           <h5 class="nameTop">${p.prodData.name}</h5>
         </div>
       </a>
