@@ -81,7 +81,7 @@
                     <p class=" price">
                       
                       <span class="odometer" id="sizeprice">
-                        <!-- &#8377;6589.00 -->
+                      
                       </span>
                       
                       <small>
@@ -673,9 +673,17 @@
 </script>
 <script type="text/javascript">
   function changePrice(price){
-    alert(price)
-    $('.odometer').innerHTML=price
+    
+    $('.odometer').html(price);
+ 
+
   }
+  // var el = document.getElementById('sizePrice');
+
+// var new_odo = new Odometer({
+//   el: el
+// });
+// new_odo.update(999);
 </script>
 <script src="https://github.hubspot.com/odometer/odometer.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>

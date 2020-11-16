@@ -181,10 +181,13 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
 
     // Hero Area Slider
 
+
+   
         var $mainSlider = $('.intro-carousel');
+        setInterval(function(){
         // setInterval(() => {
             if($('.intro-content').length > 1)
-        {
+             {
             $mainSlider.owlCarousel({
                 loop: true,
                 //navText: ['<i class="fas fa-angle-double-left"></i>', '<i class="fas fa-angle-double-right"></i>'],
@@ -210,7 +213,7 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
         
             });
         }
-
+    },1000);
         
     
         if($('.intro-content').length > 1)
