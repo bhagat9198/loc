@@ -6,7 +6,6 @@
         <div class="">
           <div class="content">
             <div class="left-content">
-
             </div>
             <div class="right-content">
               <div class="list" style="padding: 1px;">
@@ -80,7 +79,6 @@
     </div>
   </div>
 </section>
-
 
 
 <section class="logo-header">
@@ -520,9 +518,9 @@
           <div class="col-md-1"></div>
           <div class="col-md-10 col-12 p-0 mt-3 ml-4">
             <div class="input-group mb-2 mt-2">
-              <form id="searchForm" class="search-form"
+              <div id="searchForm" class="search-form"
                 style="display: inline-flex; width: 100%;">
-                <input class="form-control" type="text" id="prod_name" name="search"
+                <input class="form-control" type="text" id="searchBar"  onkeyup="searchProd(event, this)" name="searchBar"
                   placeholder="Search: Cakes , Flowers ,Gifts..." value="" autocomplete="off"
                   style="border-radius: 15px 0px 0px 15px;border: none;">
                 <div class="autocomplete">
@@ -530,11 +528,11 @@
                   </div>
                 </div>
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" id="suggestionsearch" type="submit"
-                    style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background: rgb(226, 150, 50); border: #F00;"><i
+                  <button class="btn btn-outline-secondary" id="suggestionsearch" type="submit" 
+                    style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background: rgb(218, 22, 22); border: #F00;"><i
                       class="fa fa-search" style="color:#fff"></i></button>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>

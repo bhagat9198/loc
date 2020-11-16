@@ -63,7 +63,7 @@ const displayProduct = (prodData) => {
       alt="Lake of cakes"
     /> 
   `;
-  console.log(big);
+  // console.log(big);
   bigImgHolderHTML.innerHTML = big;
 
   let imgs = `
@@ -119,11 +119,13 @@ const displayProduct = (prodData) => {
     `;
   }
 
-  // sizepriceHTML.innerHTML = `&#8377;${prodData.totalPrice}`;
-  // totalCost = +prodData.totalPrice;
-  // prodPrevPriceHTML.innerHTML = `&#8377; ${prodData.mrp}`;
-  totalCost = prodData.totalPrice;
-  totalPrevPrice = prodData.mrp;
+ 
+  sizepriceHTML.innerHTML = prodData.totalPrice;
+ 
+  totalCost = +prodData.totalPrice;
+  prodPrevPriceHTML.innerHTML = `&#8377; ${prodData.mrp}`;
+  totalCost = +prodData.totalPrice;
+  totalPrevPrice = +prodData.mrp;
   calculatePrice("qty");
 
   document.querySelector("#prod-qty").innerHTML = initialProdValue;
@@ -158,11 +160,14 @@ const displayProduct = (prodData) => {
 };
 
 const calculatePrice = (condition, data) => {
+  console.log(totalCost, totalPrevPrice);
   if (condition === "qty") {
+    console.log('qty');
     totalCost = +initialProdValue * totalCost;
     // console.log(initialProdValue, totalCost);
     totalPrevPrice = +initialProdValue * +totalPrevPrice;
   } else if (condition === "weightPrice") {
+    console.log('weightPrice');
     let weightPrice = +prodDetails.weights[data].weightPrice;
     let gstPrice = (weightPrice * +prodDetails.gst) / 100;
     let prevWeightPrice = +prodDetails.weights[data].weightPrevPrice;
@@ -186,6 +191,8 @@ const calculatePrice = (condition, data) => {
     }
   }
 
+  
+  console.log(totalCost, totalPrevPrice);
   sizepriceHTML.innerHTML = `&#8377;${totalCost}`;
   prodPrevPriceHTML.innerHTML = `&#8377; ${totalPrevPrice}`;
 };
@@ -256,9 +263,9 @@ const displayWeights = (makedWeight) => {
         }
         weightCard += `
         <div class="custom-control custom-radio" style="margin-right: 15px;">
-          <input type="radio" ${
+          <input type="radio"  ${
             weightNum === makedWeight ? "checked" : null
-          } id="${rand}" name="cake-weight-option" data-weight="${weightNum}" data-weightindex="${index}" onchange="cakeWeight(event, this)"
+          } id="${rand}" name="cake-weight-option" data-weight="${weightNum}" data-weightindex="${index}" onclick=changePrice(4568) onchange="cakeWeight(event, this)"
             class="custom-control-input product-attr">
           <img class="productimg"
             src="${prodDetails.mainImgUrl}"
@@ -268,6 +275,7 @@ const displayWeights = (makedWeight) => {
         </div>
         `;
       });
+
       allCakesWeightsHTML.innerHTML = weightCard;
     }
   }
