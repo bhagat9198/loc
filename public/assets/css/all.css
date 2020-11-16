@@ -33282,7 +33282,7 @@ ul.pagination li.disabled {
     padding: 5px;
     cursor: pointer;
     width: 95%;
-    color: #fff;
+    color: rgb(8, 8, 8);
     font-size: 15px;
     text-align: left;
     background: #143250;
@@ -34864,7 +34864,7 @@ p.product-unit-price {
 .autocomplete-items {
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.10980392156862745);
     position: absolute !important;
-    left: -341px !important;
+    /* left: -341px !important; */
 }
 
 .docname {
