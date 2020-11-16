@@ -79,14 +79,18 @@
                   <div class="product-price">
                     <p class="title">Price :</p>
                     <p class=" price">
-                      <span  id="sizeprice">
+                      
+                      <span class="odometer" id="sizeprice">
                         <!-- &#8377;6589.00 -->
                       </span>
+                      
                       <small>
                         <del id="prod-prevPrice">
                           <!-- &#8377; 9200 -->
                         </del>
-                      </small></p>
+                      </small>
+                      <small style="color: green; font-size: 12px; ">(20% off)</small>
+                    </p>
                     <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;">(Inclusive all taxes)</span>
                     </p>
                     <p>
@@ -668,9 +672,9 @@
   // })
 </script>
 <script type="text/javascript">
-
-  function changePrice(){
-    odometer.innerHTML='43449'
+  function changePrice(price){
+    alert(price)
+    $('.odometer').innerHTML=price
   }
 </script>
 <script src="https://github.hubspot.com/odometer/odometer.js"></script>

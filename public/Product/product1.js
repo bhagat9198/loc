@@ -190,7 +190,7 @@ const calculatePrice = (condition, data) => {
     }
   }
 
-  // odometer.innerHTML='43449'
+  
   console.log(totalCost, totalPrevPrice);
   sizepriceHTML.innerHTML = `&#8377;${totalCost}`;
   prodPrevPriceHTML.innerHTML = `&#8377; ${totalPrevPrice}`;
@@ -262,9 +262,9 @@ const displayWeights = (makedWeight) => {
         }
         weightCard += `
         <div class="custom-control custom-radio" style="margin-right: 15px;">
-          <input type="radio" ${
+          <input type="radio"  ${
             weightNum === makedWeight ? "checked" : null
-          } id="${rand}" name="cake-weight-option" data-weight="${weightNum}" data-weightindex="${index}" onchange="cakeWeight(event, this)"
+          } id="${rand}" name="cake-weight-option" data-weight="${weightNum}" data-weightindex="${index}" onclick=changePrice(4568) onchange="cakeWeight(event, this)"
             class="custom-control-input product-attr">
           <img class="productimg"
             src="${prodDetails.mainImgUrl}"
@@ -274,6 +274,7 @@ const displayWeights = (makedWeight) => {
         </div>
         `;
       });
+
       allCakesWeightsHTML.innerHTML = weightCard;
     }
   }
