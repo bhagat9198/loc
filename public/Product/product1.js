@@ -49,7 +49,7 @@ const prodSubImgsHTML = document.querySelector("#prodSubImgs");
 const productNameHTML = document.querySelector(".product-name");
 const productIsstookHTML = document.querySelector(".product-isstook");
 const reviewCountHTML = document.querySelector(".review-count");
-const prodPriceHTML = document.querySelector("#prod-price");
+const prodPriceHTML = document.querySelector("#sizeprice");
 const prodPrevPriceHTML = document.querySelector("#prod-prevPrice");
 let PROD_QTY = 1;
 let TOTAL_COST = 0, TOTAL_PREV_PRICE = 0, HEART = false, EGGLESS = false, WEIGHT_PRICE = {};
@@ -198,9 +198,11 @@ const calculatePrice = () => {
   TOTAL_COST = costWithGST;
   TOTAL_PREV_PRICE = prevCostWithGST;
 
-
-  prodPriceHTML.innerHTML = TOTAL_COST;
+  TOTAL_COST=Math.round(TOTAL_COST)
+  TOTAL_PREV_PRICE=Math.round(TOTAL_PREV_PRICE)
+  prodPriceHTML.innerHTML = (TOTAL_COST);
   prodPrevPriceHTML.innerHTML = TOTAL_PREV_PRICE;
+  changePrice(TOTAL_COST)
 };
 
 const cakeShape = (e, current) => {
@@ -287,7 +289,7 @@ const displayWeights = (makedWeight) => {
         calculatePrice();
         weightCard += `
         <div class="custom-control custom-radio" style="margin-right: 15px;">
-          <input type="radio"  ${ selected } id="${rand}" name="cake-weight-option"  data-weight="${weightName}"  onchange="cakeWeight(event, this)" class="custom-control-input product-attr">
+          <input type="radio"  ${ selected } id="${rand}" name="cake-weight-option"  data-weight="${weightName}"   onchange="cakeWeight(event, this)" class="custom-control-input product-attr">
           <img class="productimg"
             src="${PROD_DETAILS.mainImgUrl}"
             alt="Lake of cakes"
