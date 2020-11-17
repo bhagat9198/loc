@@ -183,7 +183,7 @@
                       <div class="product-attributes my-2">
                         <div>
                           <label class="">Give your message too😍😇</label>
-                          <input type="text" class="values form-control message_cart" name="message"
+                          <input type="text" class="values form-control message_cart" name="message" id="prodMsg"
                             placeholder="Enter a name/message (Max 30 Characters)" maxlength="20"
                             style="height: 3em;width: 82%;">
                         </div>
@@ -209,11 +209,10 @@
                             </div>
                             <div class="modal-body" style="height: 500px;                    overflow-y: scroll;">
                               <div class="container-fluid">
-                                <div class="row">
-                                  <div class="col-md-3 col-6 mt-3">
+                                <div class="row" id="allAddons">
+                                  <!-- <div class="col-md-3 col-6 mt-3">
                                     <a class="item" for="add_addons[]"
                                       style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-
                                       <input type="checkbox" name="add_addons[]" class="add_addons " data-id="28"
                                         value="28"
                                         style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
@@ -252,248 +251,22 @@
                                           </div>
                                         </li>
                                       </div>
-
                                     </a>
-                                  </div>
-                                  <div class="col-md-3 col-6 mt-3">
-                                    <a class="item" for="add_addons[]"
-                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-                                      <input type="checkbox" name="add_addons[]" class="" data-id="28" value="28"
-                                        style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;padding: 20px !important;">
-                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
-                                        <img class="img-fluid"
-                                          src="https://static.archiesonline.com/public/images/product/large/8457.jpg"
-                                          alt="" style="width:100%;object-fit: cover;">
-                                      </div>
-                                      <div class="info" style="height: 88px; ">
-                                        <h5 class="name responsiveName"
-                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
-                                          popper</h5>
-
-                                        <h4 class="price"
-                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
-                                        </h4>
-
-                                        <li class="d-block count ">
-
-                                          <div class="qty">
-                                            <ul>
-                                              <li>
-                                                <span class="qtminus">
-                                                  <i class="fa fa-minus"></i>
-                                                </span>
-                                              </li>
-                                              <li>
-                                                <span class="qttotal">1</span>
-                                              </li>
-                                              <li>
-                                                <span class="qtplus">
-                                                  <i class="fa fa-plus"></i>
-                                                </span>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </li>
-                                      </div>
-
-                                    </a>
-                                  </div>
-                                  <div class="col-md-3 col-6 mt-3">
-                                    <a class="item" for="add_addons[]"
-                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-                                      <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
-                                        value="28" style="display:block;
-                  position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
-                                        <img class="img-fluid"
-                                          src="https://images.jdmagicbox.com/quickquotes/images_main/fancy-party-popper-346070273-99jf4.jpg"
-                                          alt="" style="width:100%;object-fit: cover;">
-                                      </div>
-                                      <div class="info" style="height: 88px; ">
-                                        <h5 class="name responsiveName"
-                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
-                                          popper</h5>
-
-                                        <h4 class="price"
-                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
-                                        </h4>
-
-                                        <li class="d-block count ">
-
-                                          <div class="qty">
-                                            <ul>
-                                              <li>
-                                                <span class="qtminus">
-                                                  <i class="fa fa-minus"></i>
-                                                </span>
-                                              </li>
-                                              <li>
-                                                <span class="qttotal">1</span>
-                                              </li>
-                                              <li>
-                                                <span class="qtplus">
-                                                  <i class="fa fa-plus"></i>
-                                                </span>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </li>
-                                      </div>
-
-                                    </a>
-                                  </div>
-                                  <div class="col-md-3 col-6 mt-3">
-                                    <a class="item" for="add_addons[]"
-                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-
-                                      <input type="checkbox" name="add_addons[]" class="add_addons " data-id="28"
-                                        value="28"
-                                        style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
-                                        <img class="img-fluid"
-                                          src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg"
-                                          alt="" style="width:100%;object-fit: cover;">
-                                      </div>
-                                      <div class="info" style="height: 88px; ">
-                                        <h5 class="name responsiveName"
-                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
-                                          popper</h5>
-
-                                        <h4 class="price"
-                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
-                                        </h4>
-
-                                        <li class="d-block count ">
-
-                                          <div class="qty">
-                                            <ul>
-                                              <li>
-                                                <span class="qtminus">
-                                                  <i class="fa fa-minus"></i>
-                                                </span>
-                                              </li>
-                                              <li>
-                                                <span class="qttotal">1</span>
-                                              </li>
-                                              <li>
-                                                <span class="qtplus">
-                                                  <i class="fa fa-plus"></i>
-                                                </span>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </li>
-                                      </div>
-
-                                    </a>
-                                  </div>
-                                  <div class="col-md-3 col-6 mt-3">
-                                    <a class="item" for="add_addons[]"
-                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-                                      <input type="checkbox" name="add_addons[]" class="" data-id="28" value="28"
-                                        style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;padding: 20px !important;">
-                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
-                                        <img class="img-fluid"
-                                          src="https://static.archiesonline.com/public/images/product/large/8457.jpg"
-                                          alt="" style="width:100%;object-fit: cover;">
-                                      </div>
-                                      <div class="info" style="height: 88px; ">
-                                        <h5 class="name responsiveName"
-                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
-                                          popper</h5>
-
-                                        <h4 class="price"
-                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
-                                        </h4>
-
-                                        <li class="d-block count ">
-
-                                          <div class="qty">
-                                            <ul>
-                                              <li>
-                                                <span class="qtminus">
-                                                  <i class="fa fa-minus"></i>
-                                                </span>
-                                              </li>
-                                              <li>
-                                                <span class="qttotal">1</span>
-                                              </li>
-                                              <li>
-                                                <span class="qtplus">
-                                                  <i class="fa fa-plus"></i>
-                                                </span>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </li>
-                                      </div>
-
-                                    </a>
-                                  </div>
-                                  <div class="col-md-3 col-6 mt-3">
-                                    <a class="item" for="add_addons[]"
-                                      style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-                                      <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
-                                        value="28"
-                                        style="display:block;                  position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                                      <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
-                                        <img class="img-fluid"
-                                          src="https://images.jdmagicbox.com/quickquotes/images_main/fancy-party-popper-346070273-99jf4.jpg"
-                                          alt="" style="width:100%;object-fit: cover;">
-                                      </div>
-                                      <div class="info" style="height: 88px; ">
-                                        <h5 class="name responsiveName"
-                                          style="text-align: center !important;float: inherit;font-size: 12px;">Party
-                                          popper</h5>
-
-                                        <h4 class="price"
-                                          style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
-                                        </h4>
-
-                                        <li class="d-block count ">
-
-                                          <div class="qty">
-                                            <ul>
-                                              <li>
-                                                <span class="qtminus">
-                                                  <i class="fa fa-minus"></i>
-                                                </span>
-                                              </li>
-                                              <li>
-                                                <span class="qttotal">1</span>
-                                              </li>
-                                              <li>
-                                                <span class="qtplus">
-                                                  <i class="fa fa-plus"></i>
-                                                </span>
-                                              </li>
-                                            </ul>
-                                          </div>
-                                        </li>
-                                      </div>
-
-                                    </a>
-                                  </div>
-
-
+                                  </div> -->
                                 </div>
                               </div>
                             </div>
-
-
                             <div class="modal-footer">
-
                               <a id="qaddcrt" href="javascript:;"
                                 style="border-radius: 0px; background: #fff; border: 0px;display: flex;">
-                                <h5 style="padding: 20px ;font-weight: 900;"> Total Prize :₹ 800</h5>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                <h5 style="padding: 20px ;font-weight: 900;"> Total Prize :₹ <span id="cost-with-addons"></span></h5>
+                                <button type="button" class="btn btn-secondary" id="prod_with_addons"
                                   style="background-color: #b32443;">CONTINUE WITH ADDONS</button>
                               </a>
                             </div>
                           </div>
                         </div>
                       </div>
-
                   </div>
                 </div>
               </div>
@@ -662,21 +435,12 @@
   }, 1000);
 </script>
 
-
 <script type="text/javascript">
   function changePrice(price) {
-
     $('.odometer').html(price);
-
-
   }
-  // var el = document.getElementById('sizePrice');
-
-  // var new_odo = new Odometer({
-  //   el: el
-  // });
-  // new_odo.update(999);
 </script>
+
 <script src="https://github.hubspot.com/odometer/odometer.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>

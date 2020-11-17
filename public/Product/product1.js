@@ -129,13 +129,13 @@ const displayProduct = (prodData) => {
   
 
   document.querySelector("#prod-qty").innerHTML = PROD_QTY;
-
   if (prodData.wholeCategory.toUpperCase().includes("CAKE")) {
     document.querySelectorAll(".cake-attribute").forEach((el) => {
       el.style.display = "block";
     });
     WEIGHT_PRICE.current = +prodData.weights[0].weightPrice;
     WEIGHT_PRICE.previous = +prodData.weights[0].weightPrevPrice;
+    WEIGHT_PRICE.weight = +prodData.weights[0].cakeWeight;
     calculatePrice();
     displayWeights(prodData.weights[0].cakeWeight);
   } else {
@@ -144,7 +144,7 @@ const displayProduct = (prodData) => {
     });
     WEIGHT_PRICE.current = +prodData.sp;
     WEIGHT_PRICE.previous = +prodData.mrp;
-    calculatePrice()
+    calculatePrice();
   }
 
   if (prodData.shapes) {
@@ -164,31 +164,29 @@ const displayProduct = (prodData) => {
 };
 
 const calculatePrice = () => {
-  console.log(TOTAL_COST, TOTAL_PREV_PRICE);
-  console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
+  // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
+  // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
 
   if(WEIGHT_PRICE) {
     TOTAL_COST = +WEIGHT_PRICE.current;
     TOTAL_PREV_PRICE = +WEIGHT_PRICE.previous;
   }
+  // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
+  // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
 
   if(HEART) {
     TOTAL_COST = TOTAL_COST + +PROD_DETAILS.shapes[0].shapePrice;
     TOTAL_PREV_PRICE = TOTAL_PREV_PRICE + +PROD_DETAILS.shapes[0].shapePrice;
   }
-  console.log(TOTAL_COST, TOTAL_PREV_PRICE);
-  console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
+  // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
+  // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
   if(EGGLESS) {
     console.log('egg');
     TOTAL_COST = TOTAL_COST + +PROD_DETAILS.type.price;
     TOTAL_PREV_PRICE = TOTAL_PREV_PRICE + +PROD_DETAILS.type.price;
   }
-  console.log(TOTAL_COST, TOTAL_PREV_PRICE);
-  console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
-
-  
-  console.log(TOTAL_COST, TOTAL_PREV_PRICE);
-  console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
+  // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
+  // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
 
   let cost = TOTAL_COST * PROD_QTY;
   let costWithGST = cost + (cost * (+PROD_DETAILS.gst/100));
@@ -225,7 +223,6 @@ const cakeWeight = (e, current) => {
 };
 
 const displayWeights = (makedWeight) => {
-  console.log(makedWeight);
   const allCakesWeightsHTML = document.querySelector("#allCakesWeights");
   if (PROD_DETAILS.weights) {
     if (PROD_DETAILS.weights.length > 0) {
@@ -281,9 +278,10 @@ const displayWeights = (makedWeight) => {
 
         let selected = null;
         if(weightName === makedWeight) {
-          console.log(weightName);
+          // console.log(weightName);
           WEIGHT_PRICE.current = price;
           WEIGHT_PRICE.previous = pprice;
+          WEIGHT_PRICE.weight = weightName;
           selected = 'checked'
         }
         calculatePrice();
@@ -404,4 +402,160 @@ const productOrder = () => {
 
 const buyNowBtnHTML = document.querySelector('#buyNowBtn');
 const addToCartBtnHTML = document.querySelector('#addToCartBtn');
-buyNowBtnHTML.addEventListener('click', productOrder);
+
+buyNowBtnHTML.addEventListener('click', () => {
+  costWithAddonsHTML.innerHTML = TOTAL_COST;
+});
+
+const allAddonsHTML = document.querySelector('#allAddons');
+const costWithAddonsHTML = document.querySelector('#cost-with-addons');
+
+const addons_details = [];
+db.collection('addons').get().then(snapshots => {
+  let snapshotDocs = snapshots.docs;
+  let card = '';
+  snapshotDocs.map((doc, index) => {
+    // card += displayAddon(doc);
+    let docData = doc.data();
+    addons_details.push({qty: 1, price: +docData.price, checked: false, id: doc.id});
+    card += `
+    <div class="col-md-3 col-6 mt-3">
+      <a class="item"
+        style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+        <input type="checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
+          style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
+        <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+          <img class="img-fluid"
+            src="${docData.imgUrl}"
+            alt="" style="width:100%;object-fit: cover;">
+        </div>
+        <div class="info" style="height: 88px; ">
+          <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">
+            ${docData.name}
+          </h5>
+          <h4 class="price"
+            style="text-align: center !important;float: inherit;font-size: 13px;">₹ ${docData.price}
+          </h4>
+          <li class="d-block count ">
+            <div class="qty">
+              <ul>
+                <li>
+                  <span class="qtminus" data-id="addon__minus__${doc.id}" data-index="${index}" onclick="decAddon(event)">
+                    <i class="fa fa-minus" data-id="addon__minus__${doc.id}" data-index="${index}"></i>
+                  </span>
+                </li>
+                <li>
+                  <span class="qttotal" id="addon__qty__${doc.id}" data-index="${index}">${addons_details[index].qty}</span>
+                </li>
+                <li>
+                  <span class="qtplus" data-id="addon__add__${doc.id}" data-index="${index}" onclick="addAddon(event)">
+                    <i class="fa fa-plus" data-id="addon__add__${doc.id}" data-index="${index}"></i>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </div>
+      </a>
+    </div>
+    `;
+  })
+  allAddonsHTML.innerHTML = card;
+  console.log(TOTAL_COST);
+})
+
+const calAddonPrice = () => {
+  let totalAddonPrice = 0;
+  addons_details.map(el => {
+    if(el.checked) {
+      totalAddonPrice += el.price * el.qty;
+    }
+  });
+  costWithAddonsHTML.innerHTML = totalAddonPrice + TOTAL_COST;
+}
+
+const buyAddon = (e, current) => {
+  let index = e.target.value;
+  console.log(addons_details);
+  console.log(addons_details[index]);
+  addons_details[index].checked = current.checked;
+  calAddonPrice();
+}
+
+const addAddon = e => {
+  let id = e.target.dataset.id.split('__')[2];
+  let index = e.target.dataset.index;
+  addons_details[index].qty++;
+  document.querySelector(`#addon__qty__${id}`).innerHTML = addons_details[index].qty;
+  calAddonPrice();
+}
+
+const decAddon = e => {
+  let id = e.target.dataset.id.split('__')[2];
+  let index = e.target.dataset.index;
+  if(addons_details[index].qty > 1) {
+    addons_details[index].qty--;
+  }
+  document.querySelector(`#addon__qty__${id}`).innerHTML = addons_details[index].qty;
+  calAddonPrice();
+}
+
+const prodWithAddonsHTML = document.querySelector('#prod_with_addons');
+
+const buyProd = async(e) => {
+  console.log(localStorage.getItem('locLoggedInUser'));
+  let addonsSelected = [];
+  addons_details.map(el => {
+    if(el.checked) {
+      addonsSelected.push(el);
+    }
+  })
+
+  if(localStorage.getItem('locLoggedInUser') == 'null') {
+    window.location.href = './../Auth/login.html';
+  } else {
+    // console.log(localStorage.getItem('locLoggedInUser'));
+    let userId = localStorage.getItem('locLoggedInUser');
+    // 
+    let dbRef = await db.collection('Customers').doc(userId);
+    await dbRef.get().then(async(doc) => {
+      let docData = doc.data();
+      console.log(docData);
+      if(docData.incompleteOrder) {
+        console.log(docData.incompleteOrder);
+        docData.incompleteOrder.push({
+          prodId: PRODUCT_ID,
+          message: document.querySelector('#prodMsg').value,
+          heart: HEART,
+          eggless: EGGLESS,
+          weight: WEIGHT_PRICE,
+          qty: PROD_QTY,
+          addAddons: addonsSelected 
+        })
+      } else {
+        console.log(docData.incompleteOrder);
+        docData.incompleteOrder = [];
+        docData.incompleteOrder.push({
+          prodId: PRODUCT_ID,
+          message: document.querySelector('#prodMsg').value,
+          heart: HEART,
+          eggless: EGGLESS,
+          weight: WEIGHT_PRICE,
+          qty: PROD_QTY,
+          addAddons: addonsSelected 
+        })
+      }
+      console.log('updated1');
+      await dbRef.update(docData);
+      console.log('updated');
+    })
+    console.log('done1');
+    window.location.href = './../Payment/checkout.html';
+    console.log('done');
+  }
+}
+
+prodWithAddonsHTML.addEventListener('click', buyProd);
+
+
+
