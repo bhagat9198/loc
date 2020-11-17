@@ -193,7 +193,7 @@ const calculatePrice = (condition, data) => {
 
   
   console.log(totalCost, totalPrevPrice);
-  sizepriceHTML.innerHTML = `&#8377;${totalCost}`;
+  sizepriceHTML.innerHTML = totalCost;
   prodPrevPriceHTML.innerHTML = `&#8377; ${totalPrevPrice}`;
 };
 
@@ -261,11 +261,12 @@ const displayWeights = (makedWeight) => {
           price = "";
           pprice = "";
         }
+        
         weightCard += `
         <div class="custom-control custom-radio" style="margin-right: 15px;">
           <input type="radio"  ${
             weightNum === makedWeight ? "checked" : null
-          } id="${rand}" name="cake-weight-option" data-weight="${weightNum}" data-weightindex="${index}" onclick=changePrice(4568) onchange="cakeWeight(event, this)"
+          } id="${rand}" name="cake-weight-option" data-weight="${weightNum}" data-weightindex="${index}" onclick=changePrice(`+price+`) onchange="cakeWeight(event, this)"
             class="custom-control-input product-attr">
           <img class="productimg"
             src="${prodDetails.mainImgUrl}"
