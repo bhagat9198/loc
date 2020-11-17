@@ -201,7 +201,7 @@ const calculateTotal = e => {
   let sp = addonForm["addon-sp"];
   // console.log(gst, sp);
   if(gst.value && sp.value) {
-    addonForm["addon-total-price"].value = +sp.value + (+sp.value * (+gst.value/100));
+    addonForm["addon-total-price"].value = Math.round(+sp.value + (+sp.value * (+gst.value/100)));
   }
 }
 
