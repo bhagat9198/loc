@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="Lake">
-  <meta name="author" content="GeniusOcean">
+  <meta name="author" content="CrossHex_ BHAGAT SINGH _ REETIK CHRITRAGUPT">
   <title>Lake of Cakes | Description</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
@@ -18,14 +18,10 @@
   <link rel="stylesheet" href="../assets/css/products.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css">
-
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 </head>
-
-
 <body style="overflow-x: hidden !important; ">
   <section id="nav-section-loader"></section>
-
   <section class="product-details-page" style="background: whitesmoke;">
     <div class="" style="background: white; padding:46px 28px; border-radius: 5px;">
       <div class="row">
@@ -79,11 +75,11 @@
                   <div class="product-price">
                     <p class="title">Price :</p>
                     <p class=" price">
-                      
+
                       <span class="odometer" id="sizeprice">
-                      
+
                       </span>
-                      
+
                       <small>
                         <del id="prod-prevPrice">
                           <!-- &#8377; 9200 -->
@@ -170,8 +166,7 @@
                               <div class="col-lg-12">
                                 <div class="form-group mb-2">
                                   <h4 style="font-weight: 900 !important;padding: 5px !important;font-size: 13px;">
-                                    Convert
-                                    your cake into</h4>
+                                    Convert                                    your cake into</h4>
                                   <div class="cake-shape" style="display: flex;">
                                     <!-- <div class="custom-control custom-radio" style="margin-right: 15px;">
                                     <input type="radio" id="shape0" name="shape0"
@@ -205,23 +200,17 @@
                         style="border-radius: 15px;line-height: 35px;  padding:10px 76.5px;background: rgb(60,179,36); border: 1px solid rgb(60,179,36); color:#fff;"
                         class="btn btn-primary btns" data-toggle="modal" data-target="#addonsModal">Buy Now</button>
 
-                      <div class="modal fade" id="addonsModal">
+                      <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog" >
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
                             <div class="modal-header"
                               style="background-color: rgb(197, 143, 42);padding: 20px !important;">
-                              <h4 class="modal-title text-center tb" style="color:#fff;">Add Extra Love For Your Loved
-                                Ones</h4>
+                              <h4 class="modal-title text-center tb" style="color:#fff;">Add Extra Love For Your Loved Ones</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
-
-
-                            <div class="modal-body" style="height: 500px;
-                        overflow-y: scroll;">
-
+                            <div class="modal-body" style="height: 500px;                    overflow-y: scroll;">
                               <div class="container-fluid">
                                 <div class="row">
-
                                   <div class="col-md-3 col-6 mt-3">
                                     <a class="item" for="add_addons[]"
                                       style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
@@ -446,8 +435,7 @@
                                     <a class="item" for="add_addons[]"
                                       style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
                                       <input type="checkbox" name="add_addons[]" class="add_addons" data-id="28"
-                                        value="28" style="display:block;
-                  position: absolute !important; top: 3px !important; z-index: 4 !important;">
+                                        value="28" style="display:block;                  position: absolute !important; top: 3px !important; z-index: 4 !important;">
                                       <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
                                         <img class="img-fluid"
                                           src="https://images.jdmagicbox.com/quickquotes/images_main/fancy-party-popper-346070273-99jf4.jpg"
@@ -650,7 +638,6 @@
                     </a>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -663,27 +650,32 @@
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
 </body>
 
+
 <script src="../assets/js/jquery.js"></script>
-<!-- <script src="./assets/js/jquery-ui.min.js"></script> -->
 <script type="text/javascript">
-  // $(document).ready(() => {
-  $('#nav-section-loader').load('../Common/navbar.html');
-  $('#footer-section-loader').load('../Common/footer.html');
-  // })
+	$('#nav-section-loader').load('../Common/navbar.html');
 </script>
 <script type="text/javascript">
-  function changePrice(price){
-    
+	setTimeout(() => {
+		$('#footer-section-loader').load('../Common/files.html');
+		$('#footer-section-loader').load('../Common/footer.html');
+	}, 1000);
+</script>
+
+
+<script type="text/javascript">
+  function changePrice(price) {
+
     $('.odometer').html(price);
- 
+
 
   }
   // var el = document.getElementById('sizePrice');
 
-// var new_odo = new Odometer({
-//   el: el
-// });
-// new_odo.update(999);
+  // var new_odo = new Odometer({
+  //   el: el
+  // });
+  // new_odo.update(999);
 </script>
 <script src="https://github.hubspot.com/odometer/odometer.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
