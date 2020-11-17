@@ -581,7 +581,7 @@ input[type=submit] {
               <div id="searchForm" class="search-form"
                 style="display: inline-flex; width: 100%;">
                 <div class="autocomplete" style="width:300px;">
-                  <input class="form-control" type="text"  id="searchBar"   name="searchBar"
+                  <input class="form-control" type="text"  id="searchBar" onkeyup=searchIfvalue(event)   name="searchBar"
                     placeholder="Search: Cakes , Flowers ,Gifts..."
                     style="border-radius: 15px 0px 0px 15px;border: none;">
                 </div>
@@ -590,7 +590,7 @@ input[type=submit] {
                   </div>
                 </div> -->
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" onclick="searchProd('searchBar','null')"
+                  <button class="btn btn-outline-secondary" onclick="searchByBtn('searchBar')"
                     style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background: rgb(218, 22, 22); border: #F00;"><i
                       class="fa fa-search" style="color:#fff"></i></button>
                 </div>
@@ -599,6 +599,8 @@ input[type=submit] {
           </div>
         </div>
       </div>
+
+      
       <div
         class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
         <ul style="display: inline-flex;">

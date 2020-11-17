@@ -106,9 +106,7 @@ db.collection('miscellaneous').doc('searchList').get().then(doc => {
 
 const searchProd = (e, current) => {
   if(e.keyCode === 13) {
-    console.log(e.keyCode);
-    // e.preventDefault();
-    // window.location(`/Products/products.html?user=${current.value}`)
+
     window.location.href = `/Products/products.html?user=${current}`;
   }else{
     
@@ -116,7 +114,21 @@ const searchProd = (e, current) => {
   }
 }
 
-
+function searchIfvalue(e){
+  
+  if(e.key=="Enter"){
+    window.location.href = `/Products/products.html?user=${e.target.value}`;
+  }
+}
+function searchByBtn(id){
+  
+  let val=document.querySelector("#"+id).value;
+  
+  window.location.href = `/Products/products.html?user=${val}`;
+  // if(e.key=="Enter"){
+  //   window.location.href = `/Products/products.html?user=${e.target.value}`;
+  // }
+}
 function autocomplete(inp, arr) {
 
   /*the autocomplete function takes two arguments,

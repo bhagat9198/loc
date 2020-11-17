@@ -80,6 +80,7 @@ db.collection("sections")
     fixedSection1RowHTML.innerHTML = row;
   });
 
+
 // fixed section 2
 const fixedSection2Row = document.querySelector("#fixed-section2-row");
 db.collection("sections")
