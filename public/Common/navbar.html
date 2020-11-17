@@ -1,3 +1,63 @@
+
+<style>
+  .autocomplete {
+  position: relative;
+  display: inline-block !important;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: rgb(131, 56, 56);
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+  /* font-style: italic; */
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+  /* font-style: italic; */
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+</style>
+
 <section class="top-header top-nav" style="background: orange;">
   <div class="container-fluid remove-padding topnaves" style="background:rgb(128, 178, 201, 0.7);
     background-size: 617px; background-image: url(assets/front/images/demo/);">
@@ -520,15 +580,17 @@
             <div class="input-group mb-2 mt-2">
               <div id="searchForm" class="search-form"
                 style="display: inline-flex; width: 100%;">
-                <input class="form-control" type="text" id="searchBar"  onkeyup="searchProd(event, this)" name="searchBar"
-                  placeholder="Search: Cakes , Flowers ,Gifts..." value="" autocomplete="off"
-                  style="border-radius: 15px 0px 0px 15px;border: none;">
-                <div class="autocomplete">
+                <div class="autocomplete" style="width:300px;">
+                  <input class="form-control" type="text"  id="searchBar" onkeyup=searchIfvalue(event)   name="searchBar"
+                    placeholder="Search: Cakes , Flowers ,Gifts..."
+                    style="border-radius: 15px 0px 0px 15px;border: none;">
+                </div>
+                <!-- <div class="autocomplete">
                   <div id="myInputautocomplete-list" class="autocomplete-items">
                   </div>
-                </div>
+                </div> -->
                 <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" id="suggestionsearch" type="submit" 
+                  <button class="btn btn-outline-secondary" onclick="searchByBtn('searchBar')"
                     style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background: rgb(218, 22, 22); border: #F00;"><i
                       class="fa fa-search" style="color:#fff"></i></button>
                 </div>
@@ -537,6 +599,8 @@
           </div>
         </div>
       </div>
+
+      
       <div
         class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
         <ul style="display: inline-flex;">

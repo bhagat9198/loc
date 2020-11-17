@@ -63,7 +63,7 @@ db.collection("sections")
       } else {
         row += `
    
-      <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
+      <div class="col-lg-3 col-md-3  remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
             <a class="banner-effect imgca" href="./Products/products.html?cat=${
               docData[card].cat.split("__")[0]
@@ -79,6 +79,7 @@ db.collection("sections")
     }
     fixedSection1RowHTML.innerHTML = row;
   });
+
 
 // fixed section 2
 const fixedSection2Row = document.querySelector("#fixed-section2-row");
