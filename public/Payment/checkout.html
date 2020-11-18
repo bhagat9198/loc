@@ -74,14 +74,13 @@
           </div>
         </div>
         <div class="col-lg-8">
-          <form class="checkoutform">
             <div class="checkout-area">
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-step1" role="tabpanel"
                   aria-labelledby="pills-step1-tab">
                   <div class="content-box" style="background-color: #ffff;border-radius: 15px !important;">
                     <div class="content">
-                      <div class="personal-info">
+                      <!-- <div class="personal-info">
                         <div class="row set-account-pass d-none">
                           <div class="col-lg-6">
                             <input type="password" name="personal_pass" id="personal-pass" class="form-control"
@@ -92,108 +91,109 @@
                               class="form-control" placeholder="Confirm Your Password">
                           </div>
                         </div>
-                      </div>
-                      <div class="billing-address">
-                        <h5 class="title">
-                          Recipient / Shipping Details
-                        </h5>
+                      </div> -->
+                      <form id="form1-shipping">
+                        <div class="billing-address">
+                          <h5 class="title">
+                            Recipient / Shipping Details
+                          </h5>
+                          <div class="row">
+                          
+                            <div class="col-lg-6">
+                              <input class="form-control" type="text" name="name" placeholder="Full Name" 
+                                value="">
+                            </div>
+                            <div class="col-lg-6">
+                              <input class="form-control phoneee" type="text" name="phone" maxlength="10"
+                                placeholder="Phone Number"  value="" onkeypress="return onlyNumber(event)">
+                            </div>
+                            <div class="col-lg-6">
+                              <input class="form-control" type="text" name="email" placeholder="Email" 
+                                value="">
+                            </div>
+                            <div class="col-lg-6">
+                              <input class="form-control" type="text" name="address" placeholder="Address" 
+                                value="">
+                            </div>
+                            <div class="col-lg-6">
+                              <input class="form-control" type="text" name="landmark" placeholder="Landmark"
+                                required="required">
+                            </div>
+                            <div class="col-lg-6">
+                              <input type="text" readonly="readonly" class="form-control customer_country" name="customer_country" value="India">
+                            </div>
+                            <div class="col-lg-6">
+                              <input class="form-control" type="text" name="city" value="Lucknow" readonly="readonly">
+                            </div>
+                            <div class="col-lg-6">
+                              <input class="form-control" type="text" name="zip" id="locality" placeholder="Pin Code"
+                                value="">
+                              <div id="postal_code"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row ">
+                          <div class="col-lg-12 mt-3">
+                            <input class="styled-checkbox" id="ship-diff-address" type="checkbox" value="value1">
+                            <label for="ship-diff-address">Ship to a Different Address?</label>
+                          </div>
+                        </div>
+                        <div class="ship-diff-addres-area d-none">
+                          <h5 class="title">
+                            Shipping Details
+                          </h5>
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <input class="form-control ship_input" type="text" name="shipping_name"
+                                id="shippingFull_name" placeholder="Full Name">
+                            </div>
+                            <div class="col-lg-6">
+                              <input class="form-control ship_input phoneee" type="text" name="shipping_phone"
+                                maxlength="10" id="shipingPhone_number" placeholder="Phone Number"
+                                onkeypress="return onlyNumber(event)">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <input class="form-control ship_input" type="text" name="shipping_address"
+                                id="shipping_address" placeholder="Address">
+                            </div>
+                            <div class="col-lg-6">
+                              <input class="form-control" type="text" name="shipping_landmark" placeholder="Landmark">
+                            </div>
+                            <div class="col-lg-6">
+                              <input type="text" readonly="readonly" class="form-control ship_input customer_country"
+                                name="shipping_country" value="India">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <input class="form-control ship_input" id="shipping_city" type="text" name="shipping_city"
+                                value="Lucknow" readonly="readonly">
+                            </div>
+                            <div class="col-lg-6">
+                              <input class="form-control ship_input" type="text" name="shipping_zip"
+                                id="shippingPostal_code" placeholder="Pin Code">
+                              <div id="postal_code"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="order-note mt-3">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <input type="text" id="Order_Note" class="form-control" name="order_notes"
+                                placeholder="Order Note (Optional)">
+                            </div>
+                          </div>
+                        </div>
                         <div class="row">
-                        
-                          <div class="col-lg-6">
-                            <input class="form-control" type="text" name="name" placeholder="Full Name" 
-                              value="">
-                          </div>
-                          <div class="col-lg-6">
-                            <input class="form-control phoneee" type="text" name="phone" maxlength="10"
-                              placeholder="Phone Number"  value="" onkeypress="return onlyNumber(event)">
-                          </div>
-                          <div class="col-lg-6">
-                            <input class="form-control" type="text" name="email" placeholder="Email" 
-                              value="">
-                          </div>
-                          <div class="col-lg-6">
-                            <input class="form-control" type="text" name="address" placeholder="Address" 
-                              value="">
-                          </div>
-                          <div class="col-lg-6">
-                            <input class="form-control" type="text" name="customer_landmark" placeholder="Landmark"
-                              required="required">
-                          </div>
-                          <div class="col-lg-6">
-                            <input type="text" readonly="readonly" class="form-control customer_country"
-                              name="customer_country" value="India">
-                          </div>
-                          <div class="col-lg-6">
-                            <input class="form-control" type="text" name="city" value="Lucknow" readonly="readonly">
-                          </div>
-                          <div class="col-lg-6">
-                            <input class="form-control" type="text" name="zip" id="locality" placeholder="Pin Code"
-                               value="">
-                            <div id="postal_code"></div>
+                          <div class="col-lg-12  mt-3">
+                            <div class="bottom-area paystack-area-btn">
+                              <button type="submit" class="mybtn1 2">Proceed </button>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="row ">
-                        <div class="col-lg-12 mt-3">
-                          <input class="styled-checkbox" id="ship-diff-address" type="checkbox" value="value1">
-                          <label for="ship-diff-address">Ship to a Different Address?</label>
-                        </div>
-                      </div>
-                      <div class="ship-diff-addres-area d-none">
-                        <h5 class="title">
-                          Shipping Details
-                        </h5>
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <input class="form-control ship_input" type="text" name="shipping_name"
-                              id="shippingFull_name" placeholder="Full Name">
-                          </div>
-                          <div class="col-lg-6">
-                            <input class="form-control ship_input phoneee" type="text" name="shipping_phone"
-                              maxlength="10" id="shipingPhone_number" placeholder="Phone Number"
-                              onkeypress="return onlyNumber(event)">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <input class="form-control ship_input" type="text" name="shipping_address"
-                              id="shipping_address" placeholder="Address">
-                          </div>
-                          <div class="col-lg-6">
-                            <input class="form-control" type="text" name="shipping_landmark" placeholder="Landmark">
-                          </div>
-                          <div class="col-lg-6">
-                            <input type="text" readonly="readonly" class="form-control ship_input customer_country"
-                              name="shipping_country" value="India">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <input class="form-control ship_input" id="shipping_city" type="text" name="shipping_city"
-                              value="Lucknow" readonly="readonly">
-                          </div>
-                          <div class="col-lg-6">
-                            <input class="form-control ship_input" type="text" name="shipping_zip"
-                              id="shippingPostal_code" placeholder="Pin Code">
-                            <div id="postal_code"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="order-note mt-3">
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <input type="text" id="Order_Note" class="form-control" name="order_notes"
-                              placeholder="Order Note (Optional)">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-lg-12  mt-3">
-                          <div class="bottom-area paystack-area-btn">
-                            <button type="submit" class="mybtn1 2">Proceed </button>
-                          </div>
-                        </div>
-                      </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -325,6 +325,7 @@
               </div>
             </div>
 
+            <!-- ------------------------DATE AND TIME MODAL--------------------------------- -->
             <div class="modal fade" id="myModal1">
               <div class="modal-dialog modal-md">
                 <div class="modal-content">
@@ -405,9 +406,10 @@
                 </div>
               </div>
             </div>
-          </form>
+  
         </div>
 
+        <!-- -------------------------   PRICING    ------------------------------ -->
         <div class="col-lg-4">
           <div class="right-area">
             <div class="order-box">
@@ -415,10 +417,29 @@
               <ul class="order-list">
                 <li>
                   <p>
+                    Basic Price
+                  </p>
+                  <P>
+                    <b class="bp" id="bp"></b>
+                  </P>
+                </li>
+                <span id="extra-price">
+                  
+                </span>
+                <li>
+                  <p>
+                    GST
+                  </p>
+                  <P>
+                    <b class="gst" id="gst"></b>
+                  </P>
+                </li>
+                <!-- <li>
+                  <p>
                     Total MRP
                   </p>
                   <P>
-                    <b class="cart-total">₹998</b>
+                    <b class="checkout-total" id="checkout-total">₹998</b>
                   </P>
                 </li>
                 <li class="discount-bar d-none">
@@ -428,16 +449,57 @@
                   <P>
                     <b id="discount">₹</b>
                   </P>
-                </li>
+                </li> -->
               </ul>
               <div class="total-price">
                 <p>
-                  Total
+                  Sub Total
                 </p>
                 <p>
-                  <span id="total-cost">₹998</span>
+                  <span id="total-cost"></span>
                 </p>
               </div>
+              <span id="discount-span">
+                <!-- <ul class="order-list">
+                  <li>
+                    <p>
+                      Discount
+                    </p>
+                    <P>
+                      <b ></b>
+                    </P>
+                  </li>
+                </ul>
+                <div class="total-price">
+                  <p>
+                    Final Price
+                  </p>
+                  <p>
+                    <span id="total-cost"></span>
+                  </p>
+                </div> -->
+              </span>
+              <span id="addon-span">
+                <!-- <ul class="order-list">
+                  <li>
+                    <p>
+                      Addons
+                    </p>
+                    <P>
+                      <b class="gst" id="gst"></b>
+                    </P>
+                  </li>
+                </ul>
+                <div class="total-price">
+                  <p>
+                    Total
+                  </p>
+                  <p>
+                    <span id="total-cost"></span>
+                  </p>
+                </div> -->
+              </span>
+              
               <div class="cupon-box">
                 <div id="coupon-link" style="margin-bottom:0px;">
                   <img src="//lakeofcakes.com/assets/front/images/tag.png">
@@ -446,8 +508,8 @@
                 <span style="font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Coupons not applicable on
                   add on items)</span>
                 <form id="check-coupon-form" class="coupon">
-                  <input type="text" placeholder="Coupon Code" id="code"  autocomplete="off">
-                  <button type="submit">Apply</button>
+                  <input type="text" placeholder="Coupon Code" id="code" name="code" >
+                  <button id="coupanApply">Apply</button>
                 </form>
               </div>
               <div class="packeging-area">
@@ -672,87 +734,87 @@
 
       })
 
-      $('.packing').on('click', function () {
-        mpack = $(this).val();
-        var addons = '0';
-        $('#packing-cost').val(mpack);
-        var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
-        ttotal = parseFloat(ttotal) + Number(addons);
-        if (ttotal % 1 != 0) {
-          ttotal = ttotal.toFixed(2);
-        }
+      // $('.packing').on('click', function () {
+      //   mpack = $(this).val();
+      //   var addons = '0';
+      //   $('#packing-cost').val(mpack);
+      //   var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+      //   ttotal = parseFloat(ttotal) + Number(addons);
+      //   if (ttotal % 1 != 0) {
+      //     ttotal = ttotal.toFixed(2);
+      //   }
 
-        if (pos == 0) {
-          $('#final-cost').html('₹' + ttotal);
-        } else {
-          $('#final-cost').html(ttotal + '₹');
-        }
-
-
-        $('#grandtotal').val(ttotal);
-
-      })
-
-      $("#check-coupon-form").on('submit', function () {
-        var val = $("#code").val();
-        var total = $("#grandtotal").val();
-        var ship = 0;
-        $.ajax({
-          type: "GET",
-          url: mainurl + "/carts/coupon/check",
-          data: {
-            code: val,
-            total: total,
-            shipping_cost: ship
-          },
-          success: function (data) {
-            if (data == 0) {
-              toastr.error(langg.no_coupon);
-              $("#code").val("");
-            } else if (data == 2) {
-              toastr.error(langg.already_coupon);
-              $("#code").val("");
-            } else {
-              $("#check-coupon-form").toggle();
-              $(".discount-bar").removeClass('d-none');
-
-              if (pos == 0) {
-                $('#total-cost').html('₹' + data[0]);
-                $('#discount').html('₹' + data[2]);
-              } else {
-                $('#total-cost').html(data[0] + '₹');
-                $('#discount').html(data[2] + '₹');
-              }
-              $('#grandtotal').val(data[0]);
-              $('#tgrandtotal').val(data[0]);
-              $('#coupon_code').val(data[1]);
-              $('#coupon_discount').val(data[2]);
-              if (data[4] != 0) {
-                $('.dpercent').html('(' + data[4] + ')');
-              } else {
-                $('.dpercent').html('');
-              }
+      //   if (pos == 0) {
+      //     $('#final-cost').html('₹' + ttotal);
+      //   } else {
+      //     $('#final-cost').html(ttotal + '₹');
+      //   }
 
 
-              var ttotal = parseFloat($('#grandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
-              ttotal = parseFloat(ttotal);
-              if (ttotal % 1 != 0) {
-                ttotal = ttotal.toFixed(2);
-              }
+      //   $('#grandtotal').val(ttotal);
 
-              if (pos == 0) {
-                $('#final-cost').html('₹' + ttotal)
-              } else {
-                $('#final-cost').html(ttotal + '₹')
-              }
+      // })
 
-              toastr.success(langg.coupon_found);
-              $("#code").val("");
-            }
-          }
-        });
-        return false;
-      });
+      // $("#check-coupon-form").on('submit', function () {
+      //   var val = $("#code").val();
+      //   var total = $("#grandtotal").val();
+      //   var ship = 0;
+      //   $.ajax({
+      //     type: "GET",
+      //     url: mainurl + "/carts/coupon/check",
+      //     data: {
+      //       code: val,
+      //       total: total,
+      //       shipping_cost: ship
+      //     },
+      //     success: function (data) {
+      //       if (data == 0) {
+      //         toastr.error(langg.no_coupon);
+      //         $("#code").val("");
+      //       } else if (data == 2) {
+      //         toastr.error(langg.already_coupon);
+      //         $("#code").val("");
+      //       } else {
+      //         $("#check-coupon-form").toggle();
+      //         $(".discount-bar").removeClass('d-none');
+
+      //         if (pos == 0) {
+      //           $('#total-cost').html('₹' + data[0]);
+      //           $('#discount').html('₹' + data[2]);
+      //         } else {
+      //           $('#total-cost').html(data[0] + '₹');
+      //           $('#discount').html(data[2] + '₹');
+      //         }
+      //         $('#grandtotal').val(data[0]);
+      //         $('#tgrandtotal').val(data[0]);
+      //         $('#coupon_code').val(data[1]);
+      //         $('#coupon_discount').val(data[2]);
+      //         if (data[4] != 0) {
+      //           $('.dpercent').html('(' + data[4] + ')');
+      //         } else {
+      //           $('.dpercent').html('');
+      //         }
+
+
+      //         var ttotal = parseFloat($('#grandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+      //         ttotal = parseFloat(ttotal);
+      //         if (ttotal % 1 != 0) {
+      //           ttotal = ttotal.toFixed(2);
+      //         }
+
+      //         if (pos == 0) {
+      //           $('#final-cost').html('₹' + ttotal)
+      //         } else {
+      //           $('#final-cost').html(ttotal + '₹')
+      //         }
+
+      //         toastr.success(langg.coupon_found);
+      //         $("#code").val("");
+      //       }
+      //     }
+      //   });
+      //   return false;
+      // });
 
       $("#ship-diff-address").on("change", function () {
         if (this.checked) {
@@ -776,16 +838,16 @@
     <script type="text/javascript">
       var ck = 0;
 
-      $('.checkoutform').on('submit', function (e) {
-        if (ck == 0) {
-          e.preventDefault();
-          $('#pills-step2-tab').removeClass('disabled');
-          $('#pills-step2-tab').click();
-        } else {
-          $('#preloader').show();
-        }
-        $('#pills-step1-tab').addClass('active');
-      });
+      // $('.checkoutform').on('submit', function (e) {
+      //   if (ck == 0) {
+      //     e.preventDefault();
+      //     $('#pills-step2-tab').removeClass('disabled');
+      //     $('#pills-step2-tab').click();
+      //   } else {
+      //     $('#preloader').show();
+      //   }
+      //   $('#pills-step1-tab').addClass('active');
+      // });
 
       $('#step1-btn').on('click', function () {
         $('#pills-step1-tab').removeClass('active');

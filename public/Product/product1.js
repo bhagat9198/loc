@@ -504,6 +504,7 @@ const prodWithAddonsHTML = document.querySelector('#prod_with_addons');
 
 const buyProd = async(e) => {
   console.log(localStorage.getItem('locLoggedInUser'));
+  console.log(typeof(localStorage.getItem('locLoggedInUser')));
   let addonsSelected = [];
   addons_details.map(el => {
     if(el.checked) {
@@ -511,38 +512,45 @@ const buyProd = async(e) => {
     }
   })
 
-  if(localStorage.getItem('locLoggedInUser') == 'null') {
+  if(!localStorage.getItem('locLoggedInUser')) {
+    console.log('if');
     window.location.href = './../Auth/login.html';
   } else {
-    // console.log(localStorage.getItem('locLoggedInUser'));
+    console.log(localStorage.getItem('locLoggedInUser'));
     let userId = localStorage.getItem('locLoggedInUser');
-    // 
+    const orderId = Math.random();
     let dbRef = await db.collection('Customers').doc(userId);
     await dbRef.get().then(async(doc) => {
       let docData = doc.data();
       console.log(docData);
-      if(docData.incompleteOrder) {
-        console.log(docData.incompleteOrder);
-        docData.incompleteOrder.push({
+      if(docData.orders) {
+        console.log(docData.orders);
+        docData.orders.push({
           prodId: PRODUCT_ID,
+          cat: CATEGORY_ID,
           message: document.querySelector('#prodMsg').value,
           heart: HEART,
           eggless: EGGLESS,
-          weight: WEIGHT_PRICE,
+          pricing: WEIGHT_PRICE,
           qty: PROD_QTY,
-          addAddons: addonsSelected 
+          orderId: orderId,
+          addAddons: addonsSelected ,
+          status: false
         })
       } else {
-        console.log(docData.incompleteOrder);
-        docData.incompleteOrder = [];
-        docData.incompleteOrder.push({
+        console.log(docData.orders);
+        docData.orders = [];
+        docData.orders.push({
           prodId: PRODUCT_ID,
+          cat: CATEGORY_ID,
           message: document.querySelector('#prodMsg').value,
           heart: HEART,
           eggless: EGGLESS,
-          weight: WEIGHT_PRICE,
+          pricing: WEIGHT_PRICE,
           qty: PROD_QTY,
-          addAddons: addonsSelected 
+          orderId: orderId,
+          addAddons: addonsSelected,
+          status: false
         })
       }
       console.log('updated1');
@@ -550,7 +558,7 @@ const buyProd = async(e) => {
       console.log('updated');
     })
     console.log('done1');
-    window.location.href = './../Payment/checkout.html';
+    window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
     console.log('done');
   }
 }
