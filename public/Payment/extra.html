@@ -1,0 +1,565 @@
+<script>
+  const options = {
+    top: '64px', // default: '32px'
+    left: 'unset', // default: '32px'
+    right: '32px', // default: 'unset'
+    time: '0.5s', // default: '0.3s'
+    mixColor: '#fff', // default: '#fff'
+    backgroundColor: '#fff', // default: '#fff'
+    buttonColorDark: '#100f2c', // default: '#100f2c'
+    buttonColorLight: '#fff', // default: '#fff'
+    saveInCookies: false, // default: true,
+    label: '🌓', // default: ''
+    autoMatchOsTheme: true // default: true
+  }
+
+  const darkmode = new Darkmode(options);
+  darkmode.showWidget();
+</script>
+
+<script async src="//www.googletagmanager.com/gtag/js?id=UA-180297043-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-180297043-1');
+  </script>
+    <script>
+      $(".thumbimg").click(function () {
+        $(".changeing").attr('src', this.src);
+        $(".changeing").attr('alt', this.alt);
+        $(".textcaption").text($(this).closest('.item').find('h5').text());
+      });
+    </script>
+<script src="//js.paystack.co/v1/inline.js"></script>
+
+
+<script type="text/javascript">
+  var today = "2020-10-16";
+  var next_date = "2020-10-17";
+
+  var time = "17:29";
+
+  //   alert(time);
+
+  if (time >= '00:01' && time <= '17:00') {
+    $(".shipping_date").attr('min', today);
+  }
+  $(".shipping_date").attr('min', today);
+  $(".free-sheppin1").css("display", "block");
+  $(".free-sheppin2").css("display", "none");
+  $(".free-sheppin3").css("display", "none");
+
+  $('a.payment:first').addClass('active');
+  $('.checkoutform').prop('action', $('a.payment:first').data('form'));
+  $($('a.payment:first').attr('href')).load($('a.payment:first').data('href'));
+
+
+  var show = $('a.payment:first').data('show');
+  if (show != 'no') {
+    $('.pay-area').removeClass('d-none');
+  } else {
+    $('.pay-area').addClass('d-none');
+  }
+  $($('a.payment:first').attr('href')).addClass('active').addClass('show');
+
+  $('.submit-loader').hide();
+</script>
+
+
+<script type="text/javascript">
+  var coup = 0;
+  var pos = 0;
+
+
+  var mship = $('.shipping').length > 0 ? $('.shipping').first().val() : 0;
+  var mpack = $('.packing').length > 0 ? $('.packing').first().val() : 0;
+  mship = parseFloat(mship);
+  mpack = parseFloat(mpack);
+
+  $('#shipping-cost').val(mship);
+  $('#packing-cost').val(mpack);
+  var ftotal = parseFloat($('#grandtotal').val()) + mship + mpack;
+  var addons = '0';
+  ftotal = parseFloat(ftotal) + Number(addons);
+  if (ftotal % 1 != 0) {
+    ftotal = ftotal.toFixed(2);
+  }
+  if (pos == 0) {
+    $('#final-cost').html('₹' + ftotal)
+  } else {
+    $('#final-cost').html(ftotal + '₹')
+  }
+
+  $('#grandtotal').val(ftotal);
+
+  $('#shipop').on('change', function () {
+
+    var val = $(this).val();
+    if (val == 'pickup') {
+      $('#shipshow').removeClass('d-none');
+      $("#ship-diff-address").parent().addClass('d-none');
+      $('.ship-diff-addres-area').addClass('d-none');
+      $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', false);
+    } else {
+      $('#shipshow').addClass('d-none');
+      $("#ship-diff-address").parent().removeClass('d-none');
+      $('.ship-diff-addres-area').removeClass('d-none');
+      $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', true);
+    }
+
+  });
+
+
+  // $('.shipping').on('click', function () {
+  //   mship = $(this).val();
+
+  //   var addons = '0';
+
+  //   $('#shipping-cost').val(mship);
+  //   var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+  //   ttotal = parseFloat(ttotal) + Number(addons);
+  //   // alert(ttotal);
+  //   if (ttotal % 1 != 0) {
+  //     ttotal = ttotal.toFixed(2);
+  //   }
+  //   if (pos == 0) {
+  //     $('#final-cost').html('₹' + ttotal);
+  //   } else {
+  //     $('#final-cost').html(ttotal + '₹');
+  //   }
+
+  //   var stype = $(this).attr('id');
+
+  //   console.log(stype);
+
+
+  //   if (stype == 'free-shepping1') {
+  //     if (time <= "00:01" && time >= "17:00") {
+  //       $(".shipping_date").attr('min', next_date);
+  //     }
+  //     $(".free-sheppin1").css("display", "block");
+  //     $(".free-sheppin2").css("display", "none");
+  //     $(".free-sheppin3").css("display", "none");
+
+  //   }
+  //   if (stype == 'free-shepping2') {
+
+  //     $(".free-sheppin2").css("display", "block");
+  //     $(".free-sheppin1").css("display", "none");
+  //     $(".free-sheppin3").css("display", "none");
+
+  //   }
+
+  //   if (stype == 'free-shepping3') {
+
+  //     if (time <= "00:01" && time >= "19:59") {
+  //       $(".shipping_date").attr('min', next_date);
+  //     }
+  //     // alert("lksdahflk");
+  //     $(".free-sheppin3").css("display", "block");
+  //     $(".free-sheppin1").css("display", "none");
+  //     $(".free-sheppin2").css("display", "none");
+  //   }
+
+  //   $('#grandtotal').val(ttotal);
+
+
+
+  // })
+
+  // $('.packing').on('click', function () {
+  //   mpack = $(this).val();
+  //   var addons = '0';
+  //   $('#packing-cost').val(mpack);
+  //   var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+  //   ttotal = parseFloat(ttotal) + Number(addons);
+  //   if (ttotal % 1 != 0) {
+  //     ttotal = ttotal.toFixed(2);
+  //   }
+
+  //   if (pos == 0) {
+  //     $('#final-cost').html('₹' + ttotal);
+  //   } else {
+  //     $('#final-cost').html(ttotal + '₹');
+  //   }
+
+
+  //   $('#grandtotal').val(ttotal);
+
+  // })
+
+  // $("#check-coupon-form").on('submit', function () {
+  //   var val = $("#code").val();
+  //   var total = $("#grandtotal").val();
+  //   var ship = 0;
+  //   $.ajax({
+  //     type: "GET",
+  //     url: mainurl + "/carts/coupon/check",
+  //     data: {
+  //       code: val,
+  //       total: total,
+  //       shipping_cost: ship
+  //     },
+  //     success: function (data) {
+  //       if (data == 0) {
+  //         toastr.error(langg.no_coupon);
+  //         $("#code").val("");
+  //       } else if (data == 2) {
+  //         toastr.error(langg.already_coupon);
+  //         $("#code").val("");
+  //       } else {
+  //         $("#check-coupon-form").toggle();
+  //         $(".discount-bar").removeClass('d-none');
+
+  //         if (pos == 0) {
+  //           $('#total-cost').html('₹' + data[0]);
+  //           $('#discount').html('₹' + data[2]);
+  //         } else {
+  //           $('#total-cost').html(data[0] + '₹');
+  //           $('#discount').html(data[2] + '₹');
+  //         }
+  //         $('#grandtotal').val(data[0]);
+  //         $('#tgrandtotal').val(data[0]);
+  //         $('#coupon_code').val(data[1]);
+  //         $('#coupon_discount').val(data[2]);
+  //         if (data[4] != 0) {
+  //           $('.dpercent').html('(' + data[4] + ')');
+  //         } else {
+  //           $('.dpercent').html('');
+  //         }
+
+
+  //         var ttotal = parseFloat($('#grandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+  //         ttotal = parseFloat(ttotal);
+  //         if (ttotal % 1 != 0) {
+  //           ttotal = ttotal.toFixed(2);
+  //         }
+
+  //         if (pos == 0) {
+  //           $('#final-cost').html('₹' + ttotal)
+  //         } else {
+  //           $('#final-cost').html(ttotal + '₹')
+  //         }
+
+  //         toastr.success(langg.coupon_found);
+  //         $("#code").val("");
+  //       }
+  //     }
+  //   });
+  //   return false;
+  // });
+
+  // Password Checking
+
+  $("#open-pass").on("change", function () {
+    if (this.checked) {
+      $('.set-account-pass').removeClass('d-none');
+      $('.set-account-pass input').prop('required', true);
+      $('#personal-email').prop('required', true);
+      $('#personal-name').prop('required', true);
+    } else {
+      $('.set-account-pass').addClass('d-none');
+      $('.set-account-pass input').prop('required', false);
+      $('#personal-email').prop('required', false);
+      $('#personal-name').prop('required', false);
+
+    }
+  });
+
+  // Password Checking Ends
+
+
+  // Shipping Address Checking
+
+  $("#ship-diff-address").on("change", function () {
+    if (this.checked) {
+      $('.ship-diff-addres-area').removeClass('d-none');
+      $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', true);
+    } else {
+      $('.ship-diff-addres-area').addClass('d-none');
+      $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', false);
+    }
+
+  });
+
+  $("#ship-diff-address1").on("change", function () {
+    if (this.checked) {
+      $('.ship-diff-addres-area1').removeClass('d-none');
+    } else {
+      $('.ship-diff-addres-area1').addClass('d-none');
+    }
+
+  });
+
+
+  // Shipping Address Checking Ends
+</script>
+
+
+<script type="text/javascript">
+  var ck = 0;
+
+  $('.checkoutform').on('submit', function (e) {
+    if (ck == 0) {
+      e.preventDefault();
+      $('#pills-step2-tab').removeClass('disabled');
+      $('#pills-step2-tab').click();
+
+    } else {
+      $('#preloader').show();
+    }
+    $('#pills-step1-tab').addClass('active');
+  });
+
+  $('#step1-btn').on('click', function () {
+    $('#pills-step1-tab').removeClass('active');
+    $('#pills-step2-tab').removeClass('active');
+    $('#pills-step3-tab').removeClass('active');
+    $('#pills-step2-tab').addClass('disabled');
+    $('#pills-step3-tab').addClass('disabled');
+
+    $('#pills-step1-tab').click();
+
+  });
+
+  // Step 2 btn DONE
+
+  $('#step2-btn').on('click', function () {
+    $('#pills-step3-tab').removeClass('active');
+    $('#pills-step1-tab').removeClass('active');
+    $('#pills-step2-tab').removeClass('active');
+    $('#pills-step3-tab').addClass('disabled');
+    $('#pills-step2-tab').click();
+    $('#pills-step1-tab').addClass('active');
+
+  });
+
+  $('#step3-btn').on('click', function () {
+    if ($('a.payment:first').data('val') == 'paystack') {
+      $('.checkoutform').prop('id', 'step1-form');
+    } else {
+      $('.checkoutform').prop('id', '');
+    }
+    $('#pills-step3-tab').removeClass('disabled');
+    $('#pills-step3-tab').click();
+
+    var shipping_user = !$('input[name="shipping_name"]').val() ? $('input[name="name"]').val() : $(
+      'input[name="shipping_name"]').val();
+    var shipping_location = !$('input[name="shipping_address"]').val() ? $('input[name="address"]').val() : $(
+      'input[name="shipping_address"]').val();
+    var shipping_phone = !$('input[name="shipping_phone"]').val() ? $('input[name="phone"]').val() : $(
+      'input[name="shipping_phone"]').val();
+    var shipping_email = !$('input[name="shipping_email"]').val() ? $('input[name="email"]').val() : $(
+      'input[name="shipping_email"]').val();
+
+    $('#shipping_user').html('<i class="fas fa-user"></i>' + shipping_user);
+    $('#shipping_location').html('<i class="fas fas fa-map-marker-alt"></i>' + shipping_location);
+    $('#shipping_phone').html('<i class="fas fa-phone"></i>' + shipping_phone);
+    $('#shipping_email').html('<i class="fas fa-envelope"></i>' + shipping_email);
+
+    $('#pills-step1-tab').addClass('active');
+    $('#pills-step2-tab').addClass('active');
+  });
+
+  $('#final-btn').on('click', function () {
+    ck = 1;
+  })
+
+
+  // $('.payment').on('click', function () {
+
+  //   $('.submit-loader').show();
+  //   if ($(this).data('val') == 'paystack') {
+  //     $('.checkoutform').prop('id', 'step1-form');
+  //   } else {
+  //     $('.checkoutform').prop('id', '');
+  //   }
+  //   $('.checkoutform').prop('action', $(this).data('form'));
+  //   $('.pay-area #v-pills-tabContent .tab-pane.fade').not($(this).attr('href')).html('');
+  //   var show = $(this).data('show');
+  //   if (show != 'no') {
+  //     $('.pay-area').removeClass('d-none');
+  //   } else {
+  //     $('.pay-area').addClass('d-none');
+  //   }
+  //   $($(this).attr('href')).load($(this).data('href'), function () {
+  //     $('.submit-loader').hide();
+  //   });
+
+
+  // })
+
+
+  $(document).on('submit', '#step1-form', function () {
+    $('#preloader').hide();
+    var val = $('#sub').val();
+    var total = $('#grandtotal').val();
+    total = Math.round(total);
+    if (val == 0) {
+      var handler = PaystackPop.setup({
+        key: 'pk_test_162a56d42131cbb01932ed0d2c48f9cb99d8e8e2',
+        email: $('input[name=email]').val(),
+        amount: total * 100,
+        currency: "INR",
+        ref: '' + Math.floor((Math.random() * 1000000000) + 1),
+        callback: function (response) {
+          $('#ref_id').val(response.reference);
+          $('#sub').val('1');
+          $('#final-btn').click();
+        },
+        onClose: function () {
+          window.location.reload();
+
+        }
+      });
+      handler.openIframe();
+      return false;
+    } else {
+      $('#preloader').show();
+      return true;
+    }
+  });
+
+
+  $(".customer_country").val('India').trigger('change');
+
+  function onlyNumber(evt) {
+
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+
+  $('.phoneee').on('input propertychange paste', function (e) {
+    var reg = /^0+/gi;
+    if (this.value.match(reg)) {
+      this.value = this.value.replace(reg, '');
+    }
+  });
+  var btnc = 0;
+  $(".mybtn1").click(function () {
+    if (btnc == 0) {
+
+      $("#myModal1").modal('show');
+      // btnc=1;
+    }
+
+  });
+
+  $(".contn").click(function () {
+
+    btnc = 1;
+  });
+</script>
+<script src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyB4w5Jc6UUGDqfjk0kVIKBKB3y1zFZXzF0"></script>
+<!-- <script async defer src="//maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"-->
+
+<!-- <script>
+  function initialize() {
+    var input = document.getElementById('locality');
+    var options = {
+      types: ['address'],
+      componentRestrictions: {
+        country: 'in'
+      }
+    };
+    autocomplete = new google.maps.places.Autocomplete(input, options);
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+      var place = autocomplete.getPlace();
+      for (var i = 0; i < place.address_components.length; i++) {
+        for (var j = 0; j < place.address_components[i].types.length; j++) {
+          if (place.address_components[i].types[j] == "postal_code") {
+            document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
+
+          }
+        }
+      }
+    })
+  }
+  google.maps.event.addDomListener(window, "load", initialize);
+</script> -->
+
+<!-- <script>
+  var editClntInfoAutocomplete, addrStreet = "",
+    addressComponets = {
+      street_number: 'short_name',
+      route: 'long_name',
+      locality: 'long_name',
+      administrative_area_level_1: 'short_name',
+      country: 'long_name',
+      postal_code: 'short_name'
+    };
+
+  function initEditClntInfoAutoComplete() { // Callback  
+
+    editClntInfoAutocomplete = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */
+      (document.getElementById('shippingPostal_code')), {
+        types: ['geocode']
+      });
+
+    // When the user selects an address from the dropdown, populate the address
+    // fields in the form.
+    editClntInfoAutocomplete.addListener('place_changed', fillInEditClntInfoAddress);
+  }
+
+  function fillInEditClntInfoAddress() {
+
+    var place = editClntInfoAutocomplete.getPlace();
+
+    clearPrevEditFrmAddrVals();
+
+    for (var i = 0; i < place.address_components.length; i++) {
+
+      var addressType = place.address_components[i].types[0];
+      if (addressComponets[addressType]) {
+        var val = place.address_components[i][addressComponets[addressType]];
+
+        assignEditFrmAddrFieldsVal(addressType, val);
+      }
+
+    }
+
+    if (addrStreet != "")
+      document.getElementById("shippingPostal_code").value = addrStreet;
+
+  }
+
+  function assignEditFrmAddrFieldsVal(addressType, val) {
+
+    switch (addressType) {
+      case "administrative_area_level_1":
+        document.getElementById("shippingPostal_code").value = val;
+        break;
+      case "locality":
+        document.getElementById("clntInfoEditCity").value = val;
+        break;
+        //   case "country":
+        //        document.getElementById("addressType").value = val;  break;
+      case "postal_code":
+        document.getElementById("clntInfoEditZip").value = val;
+        break;
+      case "street_number":
+      case "route":
+        addrStreet += " " + val;
+        break;
+
+    }
+
+  }
+
+  function clearPrevEditFrmAddrVals() {
+    var editClntFrmAddrIDs = ["shippingPostal_code", "clntInfoEditCity", "clntInfoEditZip", "clntInfoEditAddr1"];
+    addrStreet = "";
+
+    for (var frmID in editClntFrmAddrIDs)
+      wrap(editClntFrmAddrIDs[frmID]).val("");
+  }
+</script> -->  
