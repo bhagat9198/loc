@@ -4834,9 +4834,9 @@ input[type=submit].btn-block {
 
 .card-title {
     margin-bottom: .75rem;
-    background-color:rgba(190, 33, 46, 0.7);
+    /* background-color:rgba(190, 33, 46, 0.7); */
     border-radius: 10px;
-    color: wheat;
+    color: rgb(56, 2, 14);
     padding: 5px;
 
 }
@@ -26325,8 +26325,8 @@ nav button {
     display: block;
     width: 100%;
     overflow: hidden;
-    border: 1px groove black;
-    border-radius: 30px;
+    /* border: 1px groove black;
+    border-radius: 30px; */
 }
 .banner-effect2 {
     position: relative;

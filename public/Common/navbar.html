@@ -58,9 +58,9 @@ input[type=submit] {
 }
 </style>
 
-<section class="top-header top-nav" style="background: orange;">
-  <div class="container-fluid remove-padding topnaves" style="background:rgb(128, 178, 201, 0.7);
-    background-size: 617px; background-image: url(assets/front/images/demo/);">
+<section class="top-header top-nav" style="background: #f1f1f1;">
+  <div class="container-fluid remove-padding topnaves" style="background: #f1f1f1;;
+    background-size: 617px; background-image: url(assets/front/images/demo/);height: 35px !important;padding: 0px !important;">
     <div class="container topcnt">
       <div class="row" style="justify-content: flex-end;">
         <div class="">
@@ -103,7 +103,7 @@ input[type=submit] {
                         <a class=" dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <img src="/assets/images/userIcon.png" id="userImg"
-                            alt="User Logos" style="width: 40px ;object-fit: cover;padding: 5px;"
+                            alt="User Logos" style="width: 30px ;object-fit: cover;padding: 2px;"
                             class="rounded-circle">
 
                         </a>
@@ -384,7 +384,7 @@ input[type=submit] {
                 <div class="row pl-3">
                   <div class="col-2 col-sm-2 col-md-2 p-0">
                     <span>
-                      <img src="/assets/images/MidnightDelivery.png" alt="Lake of Cakes midnight" style="width: 25px;">
+                      <img src="/assets/images/MidnightDelivery.png" alt="Lake of Cakes midnight" style="width: 125px;">
                     </span>
                   </div>
                   <div class="col-8 col-sm-8 col-md-8 p-0">
@@ -607,7 +607,7 @@ input[type=submit] {
           <li >
             <a href="#">
               <div class="text-center">
-                <img src="/assets/images/MidnightDelivery.png" style="width:80px;object-fit: cover;">
+                <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
                 <div
                   style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
                   Midnight</div>
@@ -618,7 +618,7 @@ input[type=submit] {
             <a href="#">
               <img
                 src="/assets/images/chef.png"
-                style="width:80px;object-fit: cover;">
+                style="width:50px;object-fit: cover;">
               <div
                 style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
                 BE A CHEF</div>
@@ -627,7 +627,7 @@ input[type=submit] {
           <li>
             <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
               <div>
-                <img  style="width:125px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
+                <img  style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
                 
               </div>
               <div
@@ -1014,7 +1014,9 @@ input[type=submit] {
     function shownavigation() {
       $('.drobt0').removeClass('colapse');
     }
-  setTimeout(() => {
+ 
+  let navcount=setTimeout( function() {
+
     $(".menu > ul > li").hover(function (e) {
       if ($(window).width() > 943) {
         $(this).children("ul").stop(true, false).fadeToggle(150);
@@ -1038,18 +1040,19 @@ input[type=submit] {
 
 
 
-  }, 1000);    
+  }, 2000);    
 </script>
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
+
   var checkUser;
   var timecount=0;
   const inter=setInterval(function(){
   timecount++;
   if(timecount==10){
     clearInterval(inter)
-   
+ 
   }
   var counter = 0;
   document.getElementById("hideLogOut").style.display = "none";
@@ -1057,22 +1060,26 @@ input[type=submit] {
   var docData, userDoc;
 
      db.collection("Customers").onSnapshot(async (snapshots) => {
+
       checkUser = window.localStorage.getItem("locLoggedInUser");
       
       let snapshotDocs = snapshots.docs;
-
-      // var dbref = db.collection('Customers');
+     
+      // var dbref = db.collection('Customers');  
       for (let doc of snapshotDocs) {
+       
 
-        if (checkUser == doc.data().userId) {
-        
+        if (checkUser == doc.data().userId && checkUser!="null") {
+    
           counter++;
        
           userDoc = doc.data();
           if(userDoc.UserName==null){
+
             userDoc.UserName="User@LOC";
           } 
-          if(userDoc.Image==null){
+          if(userDoc.Image=="null" ||userDoc.Image==null){
+      
             userDoc.Image="../assets/images/userIcon.png"
           }
           
@@ -1094,7 +1101,7 @@ input[type=submit] {
     });
   
 
-},1000) 
+},300) 
   
 
   function redirectLogin() {
@@ -1109,7 +1116,7 @@ input[type=submit] {
     }).then(function () {
       window.localStorage.removeItem("locLoggedInUser")
       firebase.auth().signOut();
-      location.reload();
+      window.location="/index.html"
     });
   }
 </script>

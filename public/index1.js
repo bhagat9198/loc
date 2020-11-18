@@ -61,6 +61,7 @@ db.collection("sections")
       if (card === "title") {
         fixedSection1HeadingHTML.innerHTML = docData[card];
       } else {
+        console.log(docData[card].imgUrl)
         row += `
    
       <div class="col-lg-3 col-md-3  remove-padding revealOnScroll"  data-animation="slideInRight">
@@ -68,7 +69,7 @@ db.collection("sections")
             <a class="banner-effect imgca" href="./Products/products.html?cat=${
               docData[card].cat.split("__")[0]
             }&&tag=${docData[card].tag}">
-              <img class="imgc"
+              <img class="" style="width:450px !important;object-fit:cover!important"
                 src="${docData[card].imgUrl}">
             </a>
           </div>

@@ -7,7 +7,7 @@
 
 .menu-container {
 	
-	border:1px solid black;
+	/* border:1px solid black; */
 	border-radius: 2px;
 	background:#ffffff;
 	padding: 0px;
@@ -85,13 +85,14 @@
 }
 
 .menu>ul>li a {
-	font-weight: bolder;
+	font-weight:600;
+	text-transform: uppercase;
 	text-decoration: none;
 	padding-left: 30px;
 	padding-right: 30px;
 	padding-bottom: 10px;
 	padding-top: 10px;
-	
+	font-size: 15px;
 	display: block;
 	
 }

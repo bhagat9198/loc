@@ -19,120 +19,159 @@
   <link rel="icon" type="image/x-icon" href="//lakeofcakes.com/assets/images/1596886304logo for favicon.PNG" />
 
 
-    <meta name="theme-color" content="#a15a55">
-    <link href="../assets/css/login.css" rel="stylesheet" type="text/css" media="screen" />
+  <meta name="theme-color" content="#a15a55">
+  <link href="../assets/css/login.css" rel="stylesheet" type="text/css" media="screen" />
 
-    <link type="text/css" rel="stylesheet" href="firebaseui.css" />
-    
-    <link rel="manifest" href="manifest.json">
-    
+  <link type="text/css" rel="stylesheet" href="firebaseui.css" />
+
+  <link rel="manifest" href="manifest.json">
+
 
 </head>
 
 <body style="overflow-x: hidden !important; ">
 
 
-    <section class="w3l-workinghny-form">
-        <!-- /form -->
-        <div class="workinghny-form-grid">
-            <div class="wrapper">
-                <div class="logo">
-                    <h1><a class="brand-logo" href="index.html"><span>Hi !!</span>Guest</a></h1>
-                    <!-- if logo is image enable this   
+  <section class="w3l-workinghny-form">
+    <!-- /form -->
+    <div class="workinghny-form-grid">
+      <div class="wrapper">
+        <div class="logo">
+          <h1><a class="brand-logo" href="index.html"><span>Hi !!</span>Guest</a></h1>
+          <!-- if logo is image enable this   
                         <a class="brand-logo" href="#index.html">
                             <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
                         </a> -->
-                </div>
-                <div class="workinghny-block-grid">
-                    
-                    <div class="workinghny-left-img ">
-                        
-                        <div id="loading">Loading...</div>
-                        <div id="loaded" class="hidden">
-                          <div id="main">
-                            <div id="user-signed-in" class="hidden">
-                              <div id="user-info" style="display: none
-                              ;">
-                                <div id="photo-container">
-                                  <img id="photo">
-                                </div>
-                                <div id="name"></div>
-                                <div id="email"></div>
-                                <div id="phone"></div>
-                                <div id="is-new-user"></div>
-                                <div class="clearfix"></div>
-                              </div>
-                              <p>
-                                <button id="sign-out" style="display: none;">Sign Out</button>
-                                <button id="delete-account" style="display: none;">Delete account</button>
-                              </p>
-                            </div>
-                            <div id="user-signed-out" class="hidden">
-                          
-                              <fieldset>
-       
-                              <div id="firebaseui-spa">
-                                <!-- <h5>Single Page Application mode:</h5> -->
-                                <div id="firebaseui-container"></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      
-                    
-                    </div>
-                    <div class="form-right-inf">
-						
-                        <div class="login-form-content">
-                            <h2>Where to?</h2>
-                            <form action="#" class="signin-form" method="post">
-								<div class="one-frm">
+        </div>
+        <div class="workinghny-block-grid">
 
-									<label>Name</label>
-									<input type="text" name="Name"  placeholder="" required="">
-								</div>
-								<div class="one-frm">
-									<label>Password</label>
-									<input type="password" name="Password"  placeholder="" required="">
-								</div>
-                                <!-- <label class="check-remaind">
+          <div class="workinghny-left-img ">
+
+            <div id="loading">Loading...</div>
+            <div id="loaded" class="hidden">
+              <div id="main">
+                <div id="user-signed-in" class="hidden">
+                  <div id="user-info" style="display: none
+                              ;">
+                    <div id="photo-container">
+                      <img id="photo">
+                    </div>
+                    <div id="name"></div>
+                    <div id="email"></div>
+                    <div id="phone"></div>
+                    <div id="is-new-user"></div>
+                    <div class="clearfix"></div>
+                  </div>
+                  <p>
+                    <button id="sign-out" style="display: none;">Sign Out</button>
+                    <button id="delete-account" style="display: none;">Delete account</button>
+                  </p>
+                </div>
+                <div id="user-signed-out" class="hidden">
+
+                  <fieldset>
+
+                    <div id="firebaseui-spa">
+                      <!-- <h5>Single Page Application mode:</h5> -->
+                      <div id="firebaseui-container"></div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="form-right-inf">
+
+            <div class="login-form-content">
+              <h2>Where to?</h2>
+
+              <div class="one-frm">
+
+                <label>Email</label>
+                <input type="email" name="Name" id="email2" placeholder="" required="">
+              </div>
+              <div class="one-frm">
+                <label>Password</label>
+                <input type="password" name="Password" id="password" placeholder="" required="">
+              </div>
+              <!-- <label class="check-remaind">
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                     <p class="remember">Remember Me</p>
 
                                 </label> -->
-                                <button class="btn btn-style mt-3">Sign In </button>
-                                <p class="already">Don't have an account? <a href="#signin">Sign Up</a></p>
-                            </form>
-                       
-                    </div>
-                </div>
+              <button class="btn btn-style mt-3" id="log">Sign In </button>
+              <p class="already">Don't have an account? <a href="signup.html">Sign Up</a></p>
             </div>
+          </div>
         </div>
-
-
-
-
-
-  
-
-
-
-   
-
-
-    <div class="bottomtotop">
+      </div>
+      <!-- <div class="bottomtotop">
         <i class="fas fa-chevron-right"></i>
-    </div>
-
-    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase.js"></script>
-    <script src="config.js"></script>
-    <script src="common.js"></script>
-    <script src="firebaseui.js"></script>
-    <script src="app.js"></script>
+      </div> -->
 
 
-    
+
+
+
 </body>
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase.js"></script>
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="firebaseui.js"></script>
+<script src="app.js"></script>
+<script>
+  const dbs = firebase.firestore();
+  dbs.collection("Customers").onSnapshot((snapshot) => {
+
+    let snapshotDocs = snapshot.docs;
+    document.getElementById("log").addEventListener("click", async function () {
+
+
+      let email = document.querySelector('#email2').value;
+      let password = document.querySelector('#password').value;
+      var k;
+      var count = 0;
+      for (let i of snapshotDocs) {
+
+        var doc = i.data();
+
+        if ((doc.Email).toUpperCase() == email.toUpperCase() && atob(doc.Password) == password) {
+          count++;
+          key = i;
+          break;
+
+        }
+      }
+      if (count == 1) {
+        document.getElementById("log").innerHTML = "Welcome Back" +" "+ key.data().UserName;
+        document.getElementById("log").style.backgroundColor = "green"
+        let token = btoa(key.data().id + "Online" + doc.Email)
+
+        await dbs.collection("Customers").doc(key.data().userId).update("token", token)
+
+        window.localStorage.setItem("locLoggedInUser", key.data().userId)
+
+        setTimeout(function () {
+          window.location = "/index.html";
+
+        }, 100)
+
+
+      } else {
+        document.getElementById("log").innerHTML = "Invalid Credentials"
+        document.getElementById("log").style.backgroundColor = 'red'
+        setTimeout(function () {
+          document.getElementById("log").innerHTML = "Login"
+          document.getElementById("log").style.backgroundColor = '#4361ee'
+        }, 2000)
+      }
+    });
+  })
+
+
+
+</script>
 
 </html>

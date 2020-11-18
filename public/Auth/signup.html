@@ -1,190 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <!DOCTYPE html>
-  <html lang="en">
-  
-  <head>
-  
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Lake">
-    <meta name="author" content="GeniusOcean">
-    <title>Lake of Cakes | Login</title>
-  
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-  
-    <!-- New Navbar Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="mega-menu.css">
-    <link rel="icon" type="image/x-icon" href="//lakeofcakes.com/assets/images/1596886304logo for favicon.PNG" />
-  
-  
-      <meta name="theme-color" content="#a15a55">
-      <link href="../assets/css/login.css" rel="stylesheet" type="text/css" media="screen" />
-  
-      <link type="text/css" rel="stylesheet" href="firebaseui.css" />
-      
-      <link rel="manifest" href="manifest.json">
-      
-  
-  </head>
-  
-  <body style="overflow-x: hidden !important; ">
-  
-  
-      <section class="w3l-workinghny-form">
-          <!-- /form -->
-          <div class="workinghny-form-grid">
-              <div class="wrapper">
-                  <div class="logo">
-                      <h1><a class="brand-logo" href="index.html"><span>Hi !!</span>Guest</a></h1>
-                      <!-- if logo is image enable this   
-                          <a class="brand-logo" href="#index.html">
-                              <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
-                          </a> -->
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Lake">
+  <meta name="author" content="GeniusOcean">
+  <title>Lake of Cakes | Signup</title>
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+
+  <!-- New Navbar Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="mega-menu.css">
+  <link rel="icon" type="image/x-icon" href="//lakeofcakes.com/assets/images/1596886304logo for favicon.PNG" />
+
+
+  <meta name="theme-color" content="#a15a55">
+  <link href="../assets/css/login.css" rel="stylesheet" type="text/css" media="screen" />
+
+  <link type="text/css" rel="stylesheet" href="firebaseui.css" />
+
+  <link rel="manifest" href="manifest.json">
+
+
+</head>
+
+<body style="overflow-x: hidden !important; ">
+
+
+  <section class="w3l-workinghny-form">
+    <!-- /form -->
+    <div class="workinghny-form-grid">
+      <div class="wrapper">
+        <div class="logo">
+          <h1><a class="brand-logo" href="index.html"><span>Create a new loc </span>Account</a></h1>
+          <!-- if logo is image enable this   
+                        <a class="brand-logo" href="#index.html">
+                            <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+                        </a> -->
+        </div>
+        <div class="workinghny-block-grid">
+
+          <div class="workinghny-left-img ">
+
+            <div id="loading">Loading...</div>
+            <div id="loaded" class="hidden">
+              <div id="main">
+                <div id="user-signed-in" class="hidden">
+                  <div id="user-info" style="display: none
+                              ;">
+                    <div id="photo-container">
+                      <img id="photo">
+                    </div>
+                    <div id="name"></div>
+                    <div id="email"></div>
+                    <div id="phone"></div>
+                    <div id="is-new-user"></div>
+                    <div class="clearfix"></div>
                   </div>
-                  <div class="workinghny-block-grid">
-                      
-                      <div class="workinghny-left-img ">
-                          
-                          <div id="loading">Loading...</div>
-                          <div id="loaded" class="hidden">
-                            <div id="main">
-                              <div id="user-signed-in" class="hidden">
-                                <div id="user-info" style="display: none
-                                ;">
-                                  <div id="photo-container">
-                                    <img id="photo">
-                                  </div>
-                                  <div id="name"></div>
-                                  <div id="email"></div>
-                                  <div id="phone"></div>
-                                  <div id="is-new-user"></div>
-                                  <div class="clearfix"></div>
-                                </div>
-                                <p>
-                                  <button id="sign-out" style="display: none;">Sign Out</button>
-                                  <button id="delete-account" style="display: none;">Delete account</button>
-                                </p>
-                              </div>
-                              <div id="user-signed-out" class="hidden">
-                            
-                                <fieldset>
-         
-                                <div id="firebaseui-spa">
-                                  <!-- <h5>Single Page Application mode:</h5> -->
-                                  <div id="firebaseui-container"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        
-                      
-                      </div>
-                      <div class="form-right-inf">
-              
-                          <div class="login-form-content">
-                              <h2>Where to?</h2>
-                              <form action="#" class="signin-form" method="post">
-                  <div class="one-frm">
-  
-                    <label>Name</label>
-                    <input type="text" name="Name"  placeholder="" required="">
-                  </div>
-                  <div class="one-frm">
-                    <label>Password</label>
-                    <input type="password" name="Password"  placeholder="" required="">
-                  </div>
-                                  <!-- <label class="check-remaind">
-                                      <input type="checkbox">
-                                      <span class="checkmark"></span>
-                                      <p class="remember">Remember Me</p>
-  
-                                  </label> -->
-                                  <button class="btn btn-style mt-3">Sign In </button>
-                                  <p class="already">Don't have an account? <a href="#signin">Sign Up</a></p>
-                              </form>
-                         
-                      </div>
-                  </div>
+                  <p>
+                    <button id="sign-out" style="display: none;">Sign Out</button>
+                    <button id="delete-account" style="display: none;">Delete account</button>
+                  </p>
+                </div>
+                <div id="user-signed-out" class="hidden">
+
+                  <fieldset>
+
+                    <div id="firebaseui-spa">
+                      <!-- <h5>Single Page Application mode:</h5> -->
+                      <div id="firebaseui-container"></div>
+                    </div>
+                </div>
               </div>
+            </div>
+
+
           </div>
-  
-  
-  
-  
-  
-    
-  
-  
-  
-     
-  
-  
-      <div class="bottomtotop">
-          <i class="fas fa-chevron-right"></i>
+          <div class="form-right-inf">
+
+            <div class="login-form-content">
+              <h2>Fill up the details</h2>
+              <!-- <form action="#" class="signin-form" method="post"> -->
+              <div class="one-frm">
+
+                <label>Name</label>
+                <input type="text" name="Name" id="name2" placeholder="" required="">
+              </div>
+              <div class="one-frm">
+                <label>Email</label>
+                <input type="email" name="email" id="email2" placeholder="" required="">
+              </div>
+              <div class="one-frm">
+
+                <label>Phone Number</label>
+                <input type="number" name="phno" id="phone2" placeholder="">
+              </div>
+              <div class="one-frm">
+                <label>Password</label>
+                <input type="password" name="Password" id="pass" placeholder="" required="">
+              </div>
+              <div class="one-frm">
+                <label>Confirm Password</label>
+                <input type="password" name="Password" id="cpass" placeholder="" required="">
+              </div>
+              <!-- <h4
+                style="padding: 10px;font-weight: bolder;background-color: rgb(89, 167, 89);text-align: center; display: noe;width: 50%;margin-left: auto;margin-right:auto;font-size: 11px;margin-bottom:1em;">
+                Creating a new LOC Account ....</h4> -->
+
+              <button class="btn btn-style mt-3" id="AddCustomer">Sign Up</button>
+
+
+              <p class="already">Exsisting Customer? <a href="login.html">Login</a></p>
+              <!-- </form> -->
+
+            </div>
+          </div>
+        </div>
       </div>
-  
-      
+
+      <!-- 
+      <div class="bottomtotop">
+        <i class="fas fa-chevron-right"></i>
+      </div> -->
 
 
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+
+</body>
+
+
+<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-<script>
-  var firebaseConfig = {
-    apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
-    authDomain: "lake-of-cakes.firebaseapp.com",
-    databaseURL: "https://lake-of-cakes.firebaseio.com",
-    projectId: "lake-of-cakes",
-    storageBucket: "lake-of-cakes.appspot.com",
-    messagingSenderId: "779843608951",
-    appId: "1:779843608951:web:48c6afe1773e2b395e8172",
-    measurementId: "G-5ER0QF0FDW"
-  };
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
 
+<script src="config.js"></script>
+<script src="common.js"></script>
+<script src="firebaseui.js"></script>
+<script src="app.js"></script>
+<script>
+  var auth = window.localStorage.getItem('locLoggedInUser');
+
+  setInterval(function () {
+    
+    if (auth !="null") {
+
+      window.location = "/index.html"
+    }
+  }, 100);
   var db = firebase.firestore();
 
-  document.getElementById("signup").addEventListener('click', function () {
+  document.getElementById("AddCustomer").addEventListener('click', function () {
 
-    let name = document.querySelector('#name').value;
-    let email = document.querySelector('#email').value;
+    let name = document.querySelector('#name2').value;
+    let email = document.querySelector('#email2').value;
+    let phone = document.querySelector('#phone2').value;
     let pass = document.querySelector('#pass').value;
     let cpass = document.querySelector('#cpass').value;
     const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+    let exsistCount = 0;
     if (name != null && name != "" && name != " ") {
 
       if (email.includes("@")) {
-        if (pass == cpass) {
-          db.collection("Customers").add({
-            UserName: name,
-            Email: email,
-            Password: btoa(pass),
-            TimeCreated: timestamp,
-            token: "null"
-          })
-            .then(function (docRef) {
-              alert("Admin Added Succesfully")
-              $('#adduser').modal('hide');
-            })
-            .catch(function (error) {
-              console.error("Error adding document: ", error);
-            });
+        if (pass == cpass && pass != "" && cpass != "") {
+          document.getElementById("AddCustomer").innerHTML = "Verifying....."
+          db.collection('Customers').get().then((snapshots) => {
+
+
+            let snapshotDocs = snapshots.docs;
+
+            // var dbref = db.collection('Customers');
+            for (let doc of snapshotDocs) {
+
+
+              if (email == doc.data().Email) {
+                exsistCount++;
+                break;
+              }
+            }
+            if (exsistCount == 0) {
+
+              document.getElementById("AddCustomer").innerHTML = "Creating Account.."
+              document.getElementById("AddCustomer").style.backgroundColor = "green"
+
+              db.collection("Customers").add({
+                UserName: name,
+                Email: email,
+                Password: btoa(pass),
+                createdDtm: timestamp,
+                token: "null",
+                Image: "null"
+              })
+                .then(async function (docRef) {
+
+                  document.getElementById("AddCustomer").innerHTML = "Account Created Successfully"
+                  db.collection("Customers").onSnapshot(async (snapshots) => {
+                    var dbref = db.collection('Customers');
+                    let snapshotDocs = snapshots.docs;
+
+                    for (let doc of snapshotDocs) {
+
+                      let docData = doc.data();
+                      if (docData.Email == email) {
+                        await dbref.doc(doc.id).update({
+
+                          userId: doc.id,
+
+
+                        });
+                        window.localStorage.setItem("locLoggedInUser", doc.id)
+                        window.location = "../UserDash/customerProfile.html"
+                        break;
+
+                      }
+
+                    }
+                  });
+
+                })
+                .catch(function (error) {
+                  console.error("Error adding document: ", error);
+                });
+
+            } else {
+              document.getElementById("AddCustomer").innerHTML = "Email Already Exsists"
+              document.getElementById("AddCustomer").style.backgroundColor = "red"
+              setTimeout(function () {
+                document.getElementById("AddCustomer").innerHTML = "Signup"
+                document.getElementById("AddCustomer").style.backgroundColor = '#4361ee'
+              }, 2000)
+            }
+
+
+          });
+
         } else {
-          alert("Password MissMatch")
+
+          document.getElementById("AddCustomer").innerHTML = "Password MissMatch"
+          document.getElementById("AddCustomer").style.backgroundColor = "red"
+          setTimeout(function () {
+            document.getElementById("AddCustomer").innerHTML = "Signup"
+            document.getElementById("AddCustomer").style.backgroundColor = '#4361ee'
+          }, 1000)
         }
       } else {
-        alert("Please emter a valid Email Id")
+        document.getElementById("AddCustomer").innerHTML = "Invalid Email Id"
+        document.getElementById("AddCustomer").style.backgroundColor = "red"
+        setTimeout(function () {
+          document.getElementById("AddCustomer").innerHTML = "Signup"
+          document.getElementById("AddCustomer").style.backgroundColor = '#4361ee'
+        }, 1000)
       }
     } else {
-      alert("Please enter a username")
+      document.getElementById("AddCustomer").innerHTML = "Enter a Username"
+      document.getElementById("AddCustomer").style.backgroundColor = "red"
+      setTimeout(function () {
+        document.getElementById("AddCustomer").innerHTML = "Signup"
+        document.getElementById("AddCustomer").style.backgroundColor = '#4361ee'
+      }, 1000)
     }
   });
-</html >
+
+</script>
+
+</html>
