@@ -238,14 +238,17 @@ firebase.auth().onAuthStateChanged(function(user) {
 
       }
       if (counter == 0) {
-
+        if(user.Email==null ||user.Email=="null"){
+          user.Email=""
+        }
         var setWithMerge = dbref.add({
           UserName: user.displayName,
           Email: user.email,
           Image: user.photoURL,
           createdDtm: firebase.firestore.FieldValue.serverTimestamp(),
           lastLoginTime: firebase.firestore.FieldValue.serverTimestamp(),
-          token:"newUser"
+          token:"newUser",
+          Phone :user.phoneNumber
         });
         user ? handleSignedInUser(user) : handleSignedOutUser();
 
@@ -256,6 +259,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
   } else {
+    // window.localStorage.clear("locLoggedInUser")
 
     if( getUserStatus=="null" || getUserStatus==null){
     

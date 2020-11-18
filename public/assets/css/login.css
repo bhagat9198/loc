@@ -12,7 +12,7 @@ html {
     padding: 0;
     font-family: 'Karla', sans-serif;
     background-image: url(https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-birthday-party-color-hand-drawn-banner-image_188640.jpg);
-    background-repeat:repeat;
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
