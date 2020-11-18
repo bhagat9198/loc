@@ -342,43 +342,39 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
     });
 
     // trending item  slider
-    var count = 0;
-    var sliderBar = setInterval(() => {
-        count++;
-        if(count == 10) {
-            clearInterval(sliderBar)
-        }
-        var $trending_slider = $('.trending-item-slider');
-    $trending_slider.owlCarousel({
-        items: 4,
-        autoplay: true,
-        margin: 10,
-        loop: true,
-        dots: true,
-        nav: true,
-        center: false,
-        autoplayHoverPause: true,
-        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        smartSpeed: 800,
-        responsive: {
-            0: {
-                items: 2,
-            },
-            414: {
-                items: 2,
-            },
-            768: {
-                items: 3,
-            },
-            992: {
-                items: 5
-            },
-            1200: {
-                items: 6
-            }
-        }
-    });
-    },6000);
+ 
+    
+    // var $trending_slider = $('.trending-item-slider');
+    // $trending_slider.owlCarousel({
+    //     items: 4,
+    //     autoplay: true,
+    //     margin: 10,
+    //     loop: true,
+    //     dots: true,
+    //     nav: true,
+    //     center: false,
+    //     autoplayHoverPause: true,
+    //     navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+    //     smartSpeed: 800,
+    //     responsive: {
+    //         0: {
+    //             items: 2,
+    //         },
+    //         414: {
+    //             items: 2,
+    //         },
+    //         768: {
+    //             items: 3,
+    //         },
+    //         992: {
+    //             items: 5
+    //         },
+    //         1200: {
+    //             items: 6
+    //         }
+    //     }
+    // });
+   
     
 
 

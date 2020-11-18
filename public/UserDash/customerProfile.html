@@ -22,7 +22,7 @@
 
 </style>
 
-<body style="overflow-x: hidden !important; ">
+<body style="overflow-x: hidden !important; " id="userBody">
     <section id="nav-section-loader"></section>
     <div class="main-content">
         <!-- Top navbar -->
@@ -44,15 +44,16 @@
       </div>-->
         </div>
 
-        <div class="container-fluid mt--7" >
+        <div class="container-fluid mt--7">
             <div class="row">
-                <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0" >
+                <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
                     <div class="card card-profile shadow">
                         <div class="row justify-content-center">
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
                                     <a href="#">
-                                        <img src="https://img.icons8.com/bubbles/2x/user-male.png" class="rounded-circle">
+                                        <img src="https://img.icons8.com/bubbles/2x/user-male.png"
+                                            class="rounded-circle">
                                     </a>
                                 </div>
                             </div>
@@ -107,7 +108,7 @@
                                                     <th>Image</th>
                                                     <th>Order Total</th>
                                                     <th>Order Status</th>
-                                                  
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -183,48 +184,81 @@
                                     <h3 class="mb-0">My account</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="#!" class="btn btn-sm btn-primary">Update</a>
+                                    <a href="#" class="btn btn-sm btn-primary" id="updateDetails">Update</a>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
                             <form>
                                 <h6 class="heading-small text-muted mb-4">User information</h6>
+                                <h5 style="text-align: center;padding: 10px;color: #ffffff;display: none;" id="message">
+                                    Loading..</h5>
+
                                 <div class="pl-lg-4">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group focused">
                                                 <label class="form-control-label" for="input-username">Username</label>
-                                                <input type="text" id="input-username"
+                                                <input type="text" id="username"
                                                     class="form-control form-control-alternative" placeholder="Username"
-                                                    value="demo.GF">
+                                                    value="">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="input-email">Email
                                                     address</label>
-                                                <input type="email" id="input-email"
+                                                <input type="email" id="useremail"
                                                     class="form-control form-control-alternative"
                                                     placeholder="demo@example.com">
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="form-group focused">
-                                                <label class="form-control-label"
-                                                    for="input-first-name">Password</label>
-                                                <input type="password" id="input-first-name"
+                                                <label class="form-control-label" for="input-first-name">Phone
+                                                    Number</label>
+                                                <input type="number" id="phone2"
                                                     class="form-control form-control-alternative"
-                                                    placeholder="Update your password" value="">
+                                                    placeholder="Update your Phone Number" value="">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-last-name">Confirm
+                                                <label class="form-control-label" for="">Alt. Phone Number</label>
+                                                <input type="number" id="altphone"
+                                                    class="form-control form-control-alternative"
+                                                    placeholder="Confirm Updated Alternate Phone Number" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-first-name" id="lblcurrpass">Current
                                                     Password</label>
-                                                <input type="password" id="input-last-name"
+                                                <input type="password" id="currpass"
+                                                    class="form-control form-control-alternative"
+                                                    placeholder="Update your password" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label"
+                                                    for="input-first-name" id="lblpass">New Password</label>
+                                                <input type="password" id="pass"
+                                                    class="form-control form-control-alternative"
+                                                    placeholder="Update your password" value="">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group focused">
+                                                <label class="form-control-label" for="input-last-name" id="lblcpass">Confirm
+                                                    Password</label>
+                                                <input type="password" id="cpass"
                                                     class="form-control form-control-alternative"
                                                     placeholder="Confirm Updated Password" value="">
                                             </div>
@@ -238,8 +272,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-address">Address</label>
-                                                <input id="input-address" class="form-control form-control-alternative"
+                                                <label class="form-control-label" for="address">Address</label>
+                                                <input id="address" class="form-control form-control-alternative"
                                                     placeholder="Home Address"
                                                     value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
                                                     type="text">
@@ -249,25 +283,25 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-city">City</label>
-                                                <input type="text" id="input-city"
+                                                <label class="form-control-label" for="city">City</label>
+                                                <input type="text" id="city"
                                                     class="form-control form-control-alternative" placeholder="City"
                                                     value="New York">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-country">Country</label>
-                                                <input type="text" id="input-country"
-                                                    class="form-control form-control-alternative" placeholder="Country"
+                                                <label class="form-control-label" for="Landmark">Landmark</label>
+                                                <input type="text" id="landmark"
+                                                    class="form-control form-control-alternative" placeholder="Landmark"
                                                     value="United States">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group">
-                                                <label class="form-control-label" for="input-country">Postal
+                                                <label class="form-control-label" for="postal">Postal
                                                     code</label>
-                                                <input type="number" id="input-postal-code"
+                                                <input type="number" id="postal"
                                                     class="form-control form-control-alternative"
                                                     placeholder="Postal code">
                                             </div>
@@ -275,14 +309,6 @@
                                     </div>
                                 </div>
                                 <hr class="my-4">
-                                <!-- Description -->
-                                <!-- <h6 class="heading-small text-muted mb-4">About me</h6>
-                <div class="pl-lg-4">
-                  <div class="form-group focused">
-                    <label>About Me</label>
-                    <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
-                  </div>
-                </div> -->
                             </form>
                         </div>
                     </div>
@@ -329,83 +355,171 @@
             measurementId: "G-5ER0QF0FDW"
         };
         firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
+        // firebase.analytics();
+        var db = firebase.firestore();
     </script>
 
-    <script src="../index1.js"></script>
+    <!-- <script src="../index1.js"></script> -->
     <script src="../Common/navbar1.js"></script>
     <script>
-        $(function () {
+        var user = window.localStorage.getItem("locLoggedInUser");
+        var userKey = "null";
 
-            var $window = $(window),
-                win_height_padded = $window.height() * 1.1,
-                isTouch = Modernizr.touch;
+        if (user != "null" && user != null) {
+            var updatedPhone = "false";
+            db.collection("Customers").onSnapshot(async (snapshots) => {
 
-            if (isTouch) {
-                $('.revealOnScroll').addClass('animated');
-            }
+                let snapshotDocs = snapshots.docs;
+                var dbref = db.collection('Customers');
+                for (let doc of snapshotDocs) {
 
-            $window.on('scroll', revealOnScroll);
+                    let docData = doc.data();
+                    if (user == docData.userId) {
+                        userKey = docData;
+                        break;
+                    }
 
-            function revealOnScroll() {
-                var scrolled = $window.scrollTop(),
-                    win_height_padded = $window.height() * 1.1;
+                }
+                if (userKey != "null") {
+                    var dbref = db.collection('Customers');
+                    document.getElementById("username").value = userKey.UserName;
+                    document.getElementById("useremail").value = userKey.Email;
+                    if (userKey.Password == undefined) {
+                        document.getElementById("pass").style.display = "none"
+                        document.getElementById("cpass").style.display = "none"
+                        document.getElementById("currpass").style.display = "none"
+                        document.getElementById("lblcurrpass").style.display = "none"
+                        document.getElementById("lblpass").style.display = "none"
+                        document.getElementById("lblcpass").style.display = "none"
+                    } else {
+                        document.getElementById("pass").style.display = "block"
+                        document.getElementById("cpass").style.display = "block"
+                        document.getElementById("currpass").style.display = "block"
+                        document.getElementById("lblcurrpass").style.display = "block"
+                        document.getElementById("lblpass").style.display = "block"
+                        document.getElementById("lblcpass").style.display = "block"
+                    }
 
-                // Showed...
-                $(".revealOnScroll:not(.animated)").each(function () {
-                    var $this = $(this),
-                        offsetTop = $this.offset().top;
+                    if (userKey.Phone == undefined || userKey.Phone == null) {
+                        
+                        document.getElementById("phone2").value = "";
+                    } else {
+                        
+                        document.getElementById("phone2").value = userKey.Phone.slice(userKey.Phone.length - 10);
 
-                    if (scrolled + win_height_padded > offsetTop) {
-                        if ($this.data('timeout')) {
-                            window.setTimeout(function () {
-                                $this.addClass('animated ' + $this.data('animation'));
-                            }, parseInt($this.data('timeout'), 10));
-                        } else {
-                            $this.addClass('animated ' + $this.data('animation'));
+                    }
+                    if (userKey.AltPhone == undefined) {
+                        document.getElementById("altphone").value = "";
+                    } else {
+                        document.getElementById("altphone").value = userKey.AltPhone;
+                    }
+                    if (userKey.Address == undefined) {
+                        document.getElementById("address").value = "";
+                    } else {
+                        document.getElementById("address").value = userKey.Address;
+                    }
+
+                    if (userKey.City == undefined) {
+                        document.getElementById("city").value = "";
+                    } else {
+                        document.getElementById("city").value = userKey.City;
+                    }
+
+                    if (userKey.Landmark == undefined) {
+                        document.getElementById("landmark").value = "";
+                    } else {
+                        document.getElementById("landmark").value = userKey.Landmark;
+                    }
+
+                    if (userKey.Postal == undefined) {
+                        document.getElementById("postal").value = "";
+                    } else {
+                        document.getElementById("postal").value = userKey.Postal;
+                    }
+
+
+                    document.getElementById("updateDetails").addEventListener("click", async function () {
+                        let check = 0;
+
+                        let name = document.querySelector('#username').value;
+                        let email = document.querySelector('#useremail').value;
+                        let pass = document.querySelector('#pass').value;
+                        let cpass = document.querySelector('#cpass').value;
+                        let phone = document.querySelector('#phone2').value;
+                        let altphone = document.querySelector('#altphone').value;
+                        let address = document.querySelector('#address').value;
+                        let city = document.querySelector('#city').value;
+                        let postal = document.querySelector('#postal').value;
+                        let landmark = document.querySelector('#landmark').value;
+
+
+                        if (phone != "" && altphone != "") {
+                            if (phone.length == 10 && altphone.length == 10) {
+                                await dbref.doc(userKey.userId).update({
+                                    UserName: name,
+                                    Email: email,
+                                    // Image: user.photoURL,
+                                    Phone: phone,
+                                    AltPhone: altphone,
+                                    Address: address,
+                                    City: city,
+                                    Postal: postal,
+                                    Landmark: landmark
+
+                                }).then(function () {
+                                    document.getElementById("message").style.display = "block";
+                                    document.getElementById("message").style.backgroundColor = "green"
+                                    document.getElementById("message").innerHTML = "Data Updated Successfully"
+
+                                    setTimeout(function () {
+
+                                        document.getElementById("message").style.display = "none";
+                                    }, 2000)
+                                });
+                            }else {
+                                document.getElementById("message").style.display = "block";
+                                document.getElementById("message").style.backgroundColor = "red"
+                                document.getElementById("message").innerHTML = "Invalid Phone numbers"
+
+                                setTimeout(function () {
+
+                                    document.getElementById("message").style.display = "none";
+                                }, 2000)
+                            }
+                        }else {
+                            await dbref.doc(userKey.userId).update({
+                                UserName: name,
+                                Email: email,
+                                // Image: user.photoURL,
+                                Phone: phone,
+                                City: city,
+                                Postal: postal,
+                                Landmark: landmark
+
+                            }).then(function () {
+                                document.getElementById("message").style.display = "block";
+                                document.getElementById("message").style.backgroundColor = "green"
+                                document.getElementById("message").innerHTML = "Data Updated Successfully"
+
+                                setTimeout(function () {
+
+                                    document.getElementById("message").style.display = "none";
+                                }, 2000)
+                            });
                         }
-                    }
-                });
-                // Hidden...
-                $(".revealOnScroll.animated").each(function (index) {
-                    var $this = $(this),
-                        offsetTop = $this.offset().top;
-                    if (scrolled + win_height_padded < offsetTop) {
-                        $(this).removeClass('animated fadeInUp flipInX lightSpeedIn')
-                    }
-                });
-            }
-            revealOnScroll();
-        });
-    </script>
 
-    <style>
-        .drobt1 {
-            transform: translateX(-101%);
+                  
+
+
+                    });
+                }
+            });
+
+
+        } else {
+            document.getElementById("userBody").innerHTML = "404 Not Found"
+            window.location="/Auth/login.html"
         }
-
-        .drobt2 {
-            transform: translateX(0%);
-        }
-    </style>
-
-    <script>
-        $(".drobt").click(function () {
-            if ($('.drobt0').hasClass('drobt1')) {
-                $('.drobt0').removeClass('drobt1');
-                $('.drobt0').addClass('drobt2');
-            } else {
-                $('.drobt0').removeClass('drobt2');
-                $('.drobt0').addClass('drobt1');
-            }
-        });
-	// $('body').click(function(evt){
-	//     alert('hellow');
-	//     if(!$(evt.target).is('#drobt0')) {
-	//          $('.drobt0').removeClass('drobt2');
-	//       $('.drobt0').addClass('drobt1');
-	//     }
-	// });
     </script>
 
 </html>

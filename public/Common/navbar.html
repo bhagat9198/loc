@@ -1,66 +1,68 @@
-
 <style>
   .autocomplete {
-  position: relative;
-  display: inline-block !important;
-}
+    position: relative;
+    display: inline-block !important;
+  }
 
-input {
-  border: 1px solid transparent;
-  background-color: #f1f1f1;
-  padding: 10px;
-  font-size: 16px;
+  input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
 
-}
+  }
 
-input[type=text] {
-  background-color: #f1f1f1;
-  width: 100%;
+  input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
 
-}
+  }
 
-input[type=submit] {
-  background-color: DodgerBlue;
-  color: rgb(131, 56, 56);
-  cursor: pointer;
-}
+  input[type=submit] {
+    background-color: DodgerBlue;
+    color: rgb(131, 56, 56);
+    cursor: pointer;
+  }
 
-.autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
-  left: 0;
-  right: 0;
-  /* font-style: italic; */
-}
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+    /* font-style: italic; */
+  }
 
-.autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff; 
-  border-bottom: 1px solid #d4d4d4; 
-  /* font-style: italic; */
-}
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+    /* font-style: italic; */
+  }
 
-/*when hovering an item:*/
-.autocomplete-items div:hover {
-  background-color: #e9e9e9; 
-}
+  /*when hovering an item:*/
+  .autocomplete-items div:hover {
+    background-color: #e9e9e9;
+  }
 
-/*when navigating through the items using the arrow keys:*/
-.autocomplete-active {
-  background-color: DodgerBlue !important; 
-  color: #ffffff; 
-}
+  /*when navigating through the items using the arrow keys:*/
+  .autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
 </style>
 
-<section class="top-header top-nav" style="background: orange;">
-  <div class="container-fluid remove-padding topnaves" style="background:rgb(128, 178, 201, 0.7);
-    background-size: 617px; background-image: url(assets/front/images/demo/);">
+
+
+<section class="top-header top-nav" style="background: #f1f1f1;">
+  <div class="container-fluid remove-padding topnaves"
+    style="background: #f1f1f1;;
+    background-size: 617px; background-image: url();height: 35px !important;padding: 0px !important;">
     <div class="container topcnt">
       <div class="row" style="justify-content: flex-end;">
         <div class="">
@@ -78,9 +80,8 @@ input[type=submit] {
                     </a>
                   </li>
 
-                  <li><a href="#" class="track-btn"><span class="sign-in"
-                        style="font-size: 14px; color: #000;"><i class="fa fa-gift" aria-hidden="true"
-                          style="color: rgb(235, 48, 79);"></i>
+                  <li><a href="#" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
+                          class="fa fa-gift" aria-hidden="true" style="color: rgb(235, 48, 79);"></i>
                         COUPONS</span> </a>
                   </li> &nbsp;
 
@@ -102,22 +103,23 @@ input[type=submit] {
                       <li class="nav-item dropdown">
                         <a class=" dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <img src="/assets/images/userIcon.png" id="userImg"
-                            alt="User Logos" style="width: 40px ;object-fit: cover;padding: 5px;"
-                            class="rounded-circle">
+                          <img src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
+                            style="width: 30px ;object-fit: cover;padding: 2px;" class="rounded-circle">
 
                         </a>
                         <div class="dropdown-menu" style="padding: 10px; margin-left:-50%;margin-top:4%;"
                           data-toggle="dropdown" aria-labelledby="navbarDropdownMenuLink">
-                          <div style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
+                          <div
+                            style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
                             <a class="dropdown-item" href="#">
                               <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest!
                                 Login to continue</h4>
-                              <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button></center>
+                              <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
+                              </center>
                             </a>
                           </div>
                           <hr>
-                          <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+                          <a class="dropdown-item" href=""><i class="fa fa-user"></i> Profile</a>
                           <hr>
                           <a class="dropdown-item" href="#"><i class="fa fa-truck"></i> Track Orders</a>
                           <hr>
@@ -202,7 +204,7 @@ input[type=submit] {
                 </ul>
               </li> -->
 
-<!-- 
+              <!-- 
                   <li><a href="#">Empty sub</a>
                     <ul>
                       <li><img src="https://placeimg.com/300/200/people"></li>
@@ -384,7 +386,7 @@ input[type=submit] {
                 <div class="row pl-3">
                   <div class="col-2 col-sm-2 col-md-2 p-0">
                     <span>
-                      <img src="/assets/images/MidnightDelivery.png" alt="Lake of Cakes midnight" style="width: 25px;">
+                      <img src="/assets/images/MidnightDelivery.png" alt="Lake of Cakes midnight" style="width: 125px;">
                     </span>
                   </div>
                   <div class="col-8 col-sm-8 col-md-8 p-0">
@@ -426,7 +428,7 @@ input[type=submit] {
                 <div class="row pl-3">
                   <div class="col-2 col-sm-2 col-md-2 p-0">
                     <span>
-                      <img  style="width: 25px;" src="../assets/images/reminder.png" alt="">
+                      <img style="width: 25px;" src="../assets/images/reminder.png" alt="">
                     </span>
                   </div>
                   <div class="col-8 col-sm-8 col-md-8 p-0">
@@ -578,10 +580,9 @@ input[type=submit] {
           <div class="col-md-1"></div>
           <div class="col-md-10 col-12 p-0 mt-3 ml-4">
             <div class="input-group mb-2 mt-2">
-              <div id="searchForm" class="search-form"
-                style="display: inline-flex; width: 100%;">
+              <div id="searchForm" class="search-form" style="display: inline-flex; width: 100%;">
                 <div class="autocomplete" style="width:300px;">
-                  <input class="form-control" type="text"  id="searchBar" onkeyup=searchIfvalue(event)   name="searchBar"
+                  <input class="form-control" type="text" id="searchBar" onkeyup=searchIfvalue(event) name="searchBar"
                     placeholder="Search: Cakes , Flowers ,Gifts..."
                     style="border-radius: 15px 0px 0px 15px;border: none;">
                 </div>
@@ -600,14 +601,14 @@ input[type=submit] {
         </div>
       </div>
 
-      
+
       <div
         class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
         <ul style="display: inline-flex;">
-          <li >
+          <li>
             <a href="#">
               <div class="text-center">
-                <img src="/assets/images/MidnightDelivery.png" style="width:80px;object-fit: cover;">
+                <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
                 <div
                   style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
                   Midnight</div>
@@ -616,9 +617,7 @@ input[type=submit] {
           </li>
           <li style="padding: 0px 28px;">
             <a href="#">
-              <img
-                src="/assets/images/chef.png"
-                style="width:80px;object-fit: cover;">
+              <img src="/assets/images/chef.png" style="width:50px;object-fit: cover;">
               <div
                 style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
                 BE A CHEF</div>
@@ -627,8 +626,8 @@ input[type=submit] {
           <li>
             <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
               <div>
-                <img  style="width:125px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
-                
+                <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
+
               </div>
               <div
                 style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
@@ -652,55 +651,56 @@ input[type=submit] {
                 </div>
 
               </a>
-               <div class="my-dropdown-menu" id="cart-items">
-        <div class="dropdownmenu-wrapper">
-            <div class="dropdown-cart-header">
-                <span class="item-no">
-                    <span class="cart-quantity">
+              <div class="my-dropdown-menu" id="cart-items">
+                <div class="dropdownmenu-wrapper">
+                  <div class="dropdown-cart-header">
+                    <span class="item-no">
+                      <span class="cart-quantity">
                         1
-                    </span> Product(s)
-                </span>
-
-            </div>
-            <ul class="dropdown-cart-products">
-                <li class="product cremove3461">
-                  <figure class="product-image-container">
-                    <a href="" class="product-image">
-                        <img src="//lakeofcakes.com/assets/images/products/1601547238ON97VlRe.png" style="width: 50px; object-fit:cover;" alt="product">
-                    </a>
-                  
-                </figure>
-                    <div class="product-details">
-                        <div class="content">
-                            <a href="">
-                                <h4 class="product-title">Black Forest</h4>
-                            </a>
-
-                            <span class="cart-product-info">
-                                <span class="cart-product-qty" id="cqt3461">4</span><span></span>
-                                x <span id="prct3461">₹400</span>
-                            </span>
-                        </div>
-                    </div>
-
-        
-                </li>
-            </ul>
-
-            <div class="dropdown-cart-total">
-                <span>Total</span>
-
-                <span class="cart-total-price">
-                    <span class="cart-total">₹1600
+                      </span> Product(s)
                     </span>
-                </span>
-            </div>
 
-            <div class="dropdown-cart-action">
-                <a href="" class="mybtn1" style="background-color: rgb(20, 113, 167);">Checkout</a>
-            </div>
-        </div>
-    </div>
+                  </div>
+                  <ul class="dropdown-cart-products">
+                    <li class="product cremove3461">
+                      <figure class="product-image-container">
+                        <a href="" class="product-image">
+                          <img src="//lakeofcakes.com/assets/images/products/1601547238ON97VlRe.png"
+                            style="width: 50px; object-fit:cover;" alt="product">
+                        </a>
+
+                      </figure>
+                      <div class="product-details">
+                        <div class="content">
+                          <a href="">
+                            <h4 class="product-title">Black Forest</h4>
+                          </a>
+
+                          <span class="cart-product-info">
+                            <span class="cart-product-qty" id="cqt3461">4</span><span></span>
+                            x <span id="prct3461">₹400</span>
+                          </span>
+                        </div>
+                      </div>
+
+
+                    </li>
+                  </ul>
+
+                  <div class="dropdown-cart-total">
+                    <span>Total</span>
+
+                    <span class="cart-total-price">
+                      <span class="cart-total">₹1600
+                      </span>
+                    </span>
+                  </div>
+
+                  <div class="dropdown-cart-action">
+                    <a href="" class="mybtn1" style="background-color: rgb(20, 113, 167);">Checkout</a>
+                  </div>
+                </div>
+              </div>
             </li>
             <li class="wishlist" data-toggle="tooltip" data-placement="top" title="Wish">
               <a href="javascript:;" data-toggle="modal" id="wish-btn" data-target="#comment-log-reg" class="wish">
@@ -1004,78 +1004,58 @@ input[type=submit] {
     </div>
   </div>
 </div>
-
-
 <script>
-  
+
   function hidenavigation() {
-      $('.drobt0').addClass('colapse');
-    }
-    function shownavigation() {
-      $('.drobt0').removeClass('colapse');
-    }
-  setTimeout(() => {
-    $(".menu > ul > li").hover(function (e) {
-      if ($(window).width() > 943) {
-        $(this).children("ul").stop(true, false).fadeToggle(150);
-        e.preventDefault();
-      }
-    });
-    $(".menu > ul > li").click(function () {
-      if ($(window).width() <= 943) {
-        $(this).children("ul").fadeToggle(150);
-      }
-    });
-    $(".menu-mobile").click(function (e) {
-      $(".menu > ul").toggleClass('show-on-mobile');
-      e.preventDefault();
-    });
+    $('.drobt0').addClass('colapse');
+  }
+  function shownavigation() {
+    $('.drobt0').removeClass('colapse');
+  }
 
-    $(window).resize(function () {
-      $(".menu > ul > li").children("ul").hide();
-      $(".menu > ul").removeClass('show-on-mobile');
-    });
+  
 
 
 
-  }, 1000);    
+  
 </script>
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
   var checkUser;
-  var timecount=0;
-  const inter=setInterval(function(){
-  timecount++;
-  if(timecount==10){
-    clearInterval(inter)
-   
-  }
-  var counter = 0;
-  document.getElementById("hideLogOut").style.display = "none";
-  const db = firebase.firestore();
-  var docData, userDoc;
+  var timecount = 0;
+  const inter = setInterval(function () {
+    timecount++;
+    if (timecount == 10) {
+      clearInterval(inter)
 
-     db.collection("Customers").onSnapshot(async (snapshots) => {
+    }
+    var counter = 0;
+    document.getElementById("hideLogOut").style.display = "none";
+    const db = firebase.firestore();
+    var docData, userDoc;
+
+    db.collection("Customers").onSnapshot(async (snapshots) => {
       checkUser = window.localStorage.getItem("locLoggedInUser");
-      
+
       let snapshotDocs = snapshots.docs;
 
       // var dbref = db.collection('Customers');
       for (let doc of snapshotDocs) {
 
         if (checkUser == doc.data().userId) {
-        
+
           counter++;
-       
+
           userDoc = doc.data();
-          if(userDoc.UserName==null){
-            userDoc.UserName="User@LOC";
-          } 
-          if(userDoc.Image==null){
-            userDoc.Image="../assets/images/userIcon.png"
+          if (userDoc.UserName == null) {
+            userDoc.UserName = "User@LOC";
           }
-          
+        
+          if (userDoc.Image == null || userDoc.Image=="null" ||userDoc.Image==undefined) {
+            userDoc.Image = "../assets/images/userIcon.png"
+          }
+
           document.getElementById("logInBtn").style.display = "none";
           document.getElementById("hideLogOut").style.display = "block";
           document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
@@ -1092,10 +1072,10 @@ input[type=submit] {
       }
 
     });
-  
 
-},1000) 
-  
+
+  }, 1000)
+
 
   function redirectLogin() {
     window.location = "/Auth/login.html"
@@ -1126,6 +1106,7 @@ input[type=submit] {
 </style>
 
 <script>
+  
   $(".drobt").click(function () {
     if ($('.drobt0').hasClass('drobt1')) {
       $('.drobt0').removeClass('drobt1');

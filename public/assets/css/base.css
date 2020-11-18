@@ -5,9 +5,9 @@
   left: 0;
   position: fixed;
   display: block;
-  opacity: 1.9;
-  background-color:#fbdae7;
-  z-index: 99;
+  opacity: 0.6;
+  background-color:#ffffff;
+  z-index: 999;
   text-align: center;
 }
 
@@ -18,8 +18,8 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
-  margin-top: auto;
+  width: 10%;
+  margin-top: 20%;
   z-index: 100;
 }
   

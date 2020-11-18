@@ -207,7 +207,7 @@ firebase.auth().onAuthStateChanged(function(user) {
    
     // alert("0000")
   
-  if (user != null) {
+  if (user != null ) {
     
     db.collection("Customers").onSnapshot(async (snapshots) => {
     
@@ -238,14 +238,17 @@ firebase.auth().onAuthStateChanged(function(user) {
 
       }
       if (counter == 0) {
-
+        if(user.Email==null ||user.Email=="null"){
+          user.Email=""
+        }
         var setWithMerge = dbref.add({
           UserName: user.displayName,
           Email: user.email,
           Image: user.photoURL,
           createdDtm: firebase.firestore.FieldValue.serverTimestamp(),
           lastLoginTime: firebase.firestore.FieldValue.serverTimestamp(),
-          token:"newUser"
+          token:"newUser",
+          Phone :user.phoneNumber
         });
         user ? handleSignedInUser(user) : handleSignedOutUser();
 
@@ -256,9 +259,16 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
   } else {
+    // window.localStorage.clear("locLoggedInUser")
+
+    if( getUserStatus=="null" || getUserStatus==null){
     
-    window.localStorage.setItem("locLoggedInUser",null)
-    user ? handleSignedInUser(user) : handleSignedOutUser();
+      window.localStorage.setItem("locLoggedInUser",null)
+      user ? handleSignedInUser(user) : handleSignedOutUser();
+    }else{
+      window.location="/index.html"
+    }
+
   }
 
 
@@ -325,18 +335,18 @@ var initApp = function () {
   // document.getElementById('recaptcha-invisible').addEventListener(
   //   'change', handleConfigChange);
   // Check the selected reCAPTCHA mode.
-  document.querySelector(
-    'input[name="recaptcha"][value="' + getRecaptchaMode() + '"]')
-    .checked = true;
+  // document.querySelector(
+  //   'input[name="recaptcha"][value="' + getRecaptchaMode() + '"]')
+  //   .checked = true;
 
-  document.getElementById('email-signInMethod-password').addEventListener(
-    'change', handleConfigChange);
-  document.getElementById('email-signInMethod-emailLink').addEventListener(
-    'change', handleConfigChange);
+  // document.getElementById('email-signInMethod-password').addEventListener(
+  //   'change', handleConfigChange);
+  // document.getElementById('email-signInMethod-emailLink').addEventListener(
+  //   'change', handleConfigChange);
   // Check the selected email signInMethod mode.
-  document.querySelector(
-    'input[name="emailSignInMethod"][value="' + getEmailSignInMethod() + '"]')
-    .checked = true;
+  // document.querySelector(
+  //   'input[name="emailSignInMethod"][value="' + getEmailSignInMethod() + '"]')
+  //   .checked = true;
 };
 
 window.addEventListener('load', initApp);
