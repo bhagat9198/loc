@@ -51,22 +51,40 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-3 order-lg-2">
                                 <div class="card-profile-image">
-                                    <a href="#">
-                                        <img src="https://img.icons8.com/bubbles/2x/user-male.png"
-                                            class="rounded-circle">
+                                    <a href="#! ">
+                                        <img src="https://img.icons8.com/bubbles/2x/user-male.png" id="putImage"
+                                            class=""
+                                            style="width: 200px !important;height: 150px !important; object-fit: cover; border-radius: 100% !important;">
+
                                     </a>
+
                                 </div>
+
                             </div>
                         </div>
+
                         <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
                             <div class="d-flex justify-content-between">
-                                <a href="#" class="btn btn-sm btn-info mr-4">Delete Account</a>
-                                <a href="#" class="btn btn-sm btn-default float-right">Track Order</a>
+                                <a href="#!" class="btn btn-sm btn-info ">Delete Account</a>
+
+                                <label for="fileSubmit2" class="btn btn-sm btn-default float-right"
+                                    style="display: inline-block;background-color: rgb(170, 90, 90);color: #ffffff;">Update
+                                    Image</label>
+                                <input type="file" style="display: none;" accept="images/*" id="fileSubmit2"
+                                    onchange="readURL(this)">
+
                             </div>
                         </div>
-                        <div class="card-body pt-0 pt-md-4">
+                        <section style="margin-left: auto;margin-right: auto;margin-top: 8%;">
+                            <progress value="0" max="100" id="uploader2"> 0%</progress>
+                            <p id="demo"></p>
+                            <h5 style="font-size: 14px;padding: 10px;border-radius: 20px;color: palevioletred;font-weight: 900;display: none; "
+                                id="profileMessage">Click on update button to update the profile pic</h5>
+                        </section>
+                        <div class="card-body pt-0 ">
                             <div class="row">
-                                <div class="col">
+                                <div class="col"
+                                    style="background-color: transparent !important;color: black !important;">
                                     <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                                         <div>
                                             <span class="heading">10</span>
@@ -84,14 +102,14 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <h3>
-                                    Demo Name
+                                <h3 id="dbName">
+                                    Loading...
                                 </h3>
                                 <!-- <div class="h5 font-weight-300">
                   <i class="ni location_pin mr-2"></i>Bucharest, Romania
                 </div> -->
-                                <div class="h5 mt-4">
-                                    <i class="ni business_briefcase-24 mr-2"></i>demo@gmail.com
+                                <div class="h5 mt-4" id="dbEmail">
+                                    <i class="ni business_briefcase-24 mr-2"></i>Loading...
                                 </div>
                                 <!-- <div>
                   <i class="ni education_hat mr-2"></i>University of Computer Science
@@ -184,7 +202,7 @@
                                     <h3 class="mb-0">My account</h3>
                                 </div>
                                 <div class="col-4 text-right">
-                                    <a href="#" class="btn btn-sm btn-primary" id="updateDetails">Update</a>
+                                    <a href="#1" class="btn btn-sm btn-primary" id="updateDetails">Update</a>
                                 </div>
                             </div>
                         </div>
@@ -238,7 +256,8 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-first-name" id="lblcurrpass">Current
+                                                <label class="form-control-label" for="input-first-name"
+                                                    id="lblcurrpass">Current
                                                     Password</label>
                                                 <input type="password" id="currpass"
                                                     class="form-control form-control-alternative"
@@ -247,8 +266,8 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group focused">
-                                                <label class="form-control-label"
-                                                    for="input-first-name" id="lblpass">New Password</label>
+                                                <label class="form-control-label" for="input-first-name"
+                                                    id="lblpass">New Password</label>
                                                 <input type="password" id="pass"
                                                     class="form-control form-control-alternative"
                                                     placeholder="Update your password" value="">
@@ -256,7 +275,8 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group focused">
-                                                <label class="form-control-label" for="input-last-name" id="lblcpass">Confirm
+                                                <label class="form-control-label" for="input-last-name"
+                                                    id="lblcpass">Confirm
                                                     Password</label>
                                                 <input type="password" id="cpass"
                                                     class="form-control form-control-alternative"
@@ -365,12 +385,17 @@
         var user = window.localStorage.getItem("locLoggedInUser");
         var userKey = "null";
 
+
+
         if (user != "null" && user != null) {
+
+            var userimage = "null";
             var updatedPhone = "false";
+            var dbref = db.collection('Customers');
             db.collection("Customers").onSnapshot(async (snapshots) => {
 
                 let snapshotDocs = snapshots.docs;
-                var dbref = db.collection('Customers');
+       
                 for (let doc of snapshotDocs) {
 
                     let docData = doc.data();
@@ -382,6 +407,8 @@
                 }
                 if (userKey != "null") {
                     var dbref = db.collection('Customers');
+                    document.getElementById("dbName").innerHTML = userKey.UserName;
+                    document.getElementById("dbEmail").innerHTML = userKey.Email
                     document.getElementById("username").value = userKey.UserName;
                     document.getElementById("useremail").value = userKey.Email;
                     if (userKey.Password == undefined) {
@@ -401,10 +428,10 @@
                     }
 
                     if (userKey.Phone == undefined || userKey.Phone == null) {
-                        
+
                         document.getElementById("phone2").value = "";
                     } else {
-                        
+
                         document.getElementById("phone2").value = userKey.Phone.slice(userKey.Phone.length - 10);
 
                     }
@@ -437,6 +464,12 @@
                         document.getElementById("postal").value = userKey.Postal;
                     }
 
+                    if (userKey.Image == undefined || userKey.Image == null || userKey.Image == "null") {
+                        document.getElementById("putImage").src = "https://w7.pngwing.com/pngs/81/570/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png"
+                    } else {
+                        document.getElementById("putImage").src = userKey.Image;
+                    }
+
 
                     document.getElementById("updateDetails").addEventListener("click", async function () {
                         let check = 0;
@@ -444,6 +477,7 @@
                         let name = document.querySelector('#username').value;
                         let email = document.querySelector('#useremail').value;
                         let pass = document.querySelector('#pass').value;
+                        let currpass = document.querySelector('#currpass').value;
                         let cpass = document.querySelector('#cpass').value;
                         let phone = document.querySelector('#phone2').value;
                         let altphone = document.querySelector('#altphone').value;
@@ -455,10 +489,16 @@
 
                         if (phone != "" && altphone != "") {
                             if (phone.length == 10 && altphone.length == 10) {
+                                if (selectedFile == "null") {
+                                    userimage = userKey.Image;
+                                } else {
+                                    await sendimage2();
+                                    console.log(userimage)
+                                }
                                 await dbref.doc(userKey.userId).update({
                                     UserName: name,
                                     Email: email,
-                                    // Image: user.photoURL,
+                                    Image: userimage,
                                     Phone: phone,
                                     AltPhone: altphone,
                                     Address: address,
@@ -476,7 +516,7 @@
                                         document.getElementById("message").style.display = "none";
                                     }, 2000)
                                 });
-                            }else {
+                            } else {
                                 document.getElementById("message").style.display = "block";
                                 document.getElementById("message").style.backgroundColor = "red"
                                 document.getElementById("message").innerHTML = "Invalid Phone numbers"
@@ -486,11 +526,17 @@
                                     document.getElementById("message").style.display = "none";
                                 }, 2000)
                             }
-                        }else {
+                        } else {
+                            if (selectedFile == "null") {
+                                userimage = userKey.Image;
+                            } else {
+                                await sendimage2();
+                                console.log(userimage)
+                            }
                             await dbref.doc(userKey.userId).update({
                                 UserName: name,
                                 Email: email,
-                                // Image: user.photoURL,
+                                Image: userimage,
                                 Phone: phone,
                                 City: city,
                                 Postal: postal,
@@ -508,17 +554,136 @@
                             });
                         }
 
-                  
+                        if (currpass.trim() != "") {
 
+                            if (currpass.trim() == atob(userKey.Password)) {
+                                if ((pass.trim() == cpass.trim()) && (cpass.trim() != "" && pass.trim() != "")) {
+                                    if (selectedFile == "null") {
+                                        userimage = userKey.Image;
+                                    } else {
+                                        await sendimage2();
+                                        alert("9")
+                                    }
+                                    await dbref.doc(userKey.userId).update({
+                                        UserName: name,
+                                        Email: email,
+                                        Image: userimage,
+                                        Password: btoa(pass),
+                                        Phone: phone,
+                                        City: city,
+                                        Postal: postal,
+                                        Landmark: landmark
+
+                                    }).then(function () {
+                                        document.getElementById("message").style.display = "block";
+                                        document.getElementById("message").style.backgroundColor = "green"
+                                        document.getElementById("message").innerHTML = "Data Updated Successfully"
+
+                                        setTimeout(function () {
+
+                                            document.getElementById("message").style.display = "none";
+                                        }, 2000)
+                                    });
+                                } else {
+                                    document.getElementById("message").style.display = "block";
+                                    document.getElementById("message").style.backgroundColor = "red"
+                                    document.getElementById("message").innerHTML = "Password Miss-Match"
+
+                                    setTimeout(function () {
+
+                                        document.getElementById("message").style.display = "none";
+                                    }, 2000)
+
+                                }
+                            }
+                            else {
+
+                                document.getElementById("message").style.display = "block";
+                                document.getElementById("message").style.backgroundColor = "red"
+                                document.getElementById("message").innerHTML = "Current Password Incorrect"
+
+                                setTimeout(function () {
+
+                                    document.getElementById("message").style.display = "none";
+                                }, 2000)
+
+                            }
+                        }
 
                     });
                 }
             });
+            var selectedFile = "null";
+            var uploader = document.getElementById('uploader2');
+            fileSubmit2.addEventListener('change', uploadFile2);
+            function uploadFile2(e) {
+                selectedFile = e.target.files[0];
 
+            }
+
+            async function sendimage2() {
+                const storageService = firebase.storage();
+                var uploadTask = storageService.ref("UserProfileImages/"+userKey.userId+"/"+selectedFile.name+"").put(selectedFile);
+                console.log(selectedFile.getDownloadURL);
+                await uploadTask.on('state_changed', function (snapshot) {
+                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    uploader.value = percentage;
+                    progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+                    document.getElementById("demo").innerHTML = progress;
+                    switch (snapshot.state) {
+                        case firebase.storage.TaskState.PAUSED: // or 'paused'
+                            document.getElementById("demo").innerHTML = "Upload Paused";
+                            console.log('Upload is paused');
+                            break;
+                        case firebase.storage.TaskState.RUNNING: // or 'running'
+                            document.getElementById("demo").innerHTML = "File is uploading" + " " + progress + "%";
+
+                            break;
+                    }
+                }, function (error) {
+                    console.log(error);
+                    // Handle unsuccessful uploads
+                }, function () {
+                    document.getElementById("demo").innerHTML = "Uploaded" + " " + progress + "%";
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+
+                        urls2 = downloadURL;
+
+                        userimage = urls2;
+
+                        dbref.doc(userKey.userId).update({
+                        
+                            Image: userimage,
+                           
+
+                        });
+
+                        // window.location="CrewDetails.html"
+                    });
+                });
+
+            }
 
         } else {
             document.getElementById("userBody").innerHTML = "404 Not Found"
-            window.location="/Auth/login.html"
+            window.location = "/Auth/login.html"
+        }
+
+
+        function readURL(input) {
+            document.getElementById("profileMessage").style.display = "block";
+            setInterval(function () {
+                document.getElementById("profileMessage").style.display = "none";
+            }, 3000)
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#putImage')
+                        .attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
         }
     </script>
 
