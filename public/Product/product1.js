@@ -52,7 +52,11 @@ const reviewCountHTML = document.querySelector(".review-count");
 const prodPriceHTML = document.querySelector("#sizeprice");
 const prodPrevPriceHTML = document.querySelector("#prod-prevPrice");
 let PROD_QTY = 1;
-let TOTAL_COST = 0, TOTAL_PREV_PRICE = 0, HEART = false, EGGLESS = false, WEIGHT_PRICE = {};
+let TOTAL_COST = 0,
+  TOTAL_PREV_PRICE = 0,
+  HEART = false,
+  EGGLESS = false,
+  WEIGHT_PRICE = {};
 
 const displayProduct = (prodData) => {
   console.log(prodData);
@@ -120,13 +124,12 @@ const displayProduct = (prodData) => {
   }
 
   // sizepriceHTML.innerHTML = prodData.totalPrice;
- 
+
   // totalCost = +prodData.totalPrice;
   // prodPrevPriceHTML.innerHTML = `&#8377; ${prodData.mrp}`;
   // totalCost = +prodData.totalPrice;
   // totalPrevPrice = +prodData.mrp;
   // calculatePrice("qty");
-  
 
   document.querySelector("#prod-qty").innerHTML = PROD_QTY;
   if (prodData.wholeCategory.toUpperCase().includes("CAKE")) {
@@ -159,7 +162,7 @@ const displayProduct = (prodData) => {
 
   const prodDescHTML = document.querySelector("#prod-desc");
   prodDescHTML.innerHTML = `${prodData.descriptions}`;
-  const prodPolicyHTML = document.querySelector('#prod-policy');
+  const prodPolicyHTML = document.querySelector("#prod-policy");
   prodPolicyHTML.innerHTML = `${prodData.policy}`;
 };
 
@@ -167,21 +170,21 @@ const calculatePrice = () => {
   // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
   // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
 
-  if(WEIGHT_PRICE) {
+  if (WEIGHT_PRICE) {
     TOTAL_COST = +WEIGHT_PRICE.current;
     TOTAL_PREV_PRICE = +WEIGHT_PRICE.previous;
   }
   // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
   // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
 
-  if(HEART) {
+  if (HEART) {
     TOTAL_COST = TOTAL_COST + +PROD_DETAILS.shapes[0].shapePrice;
     TOTAL_PREV_PRICE = TOTAL_PREV_PRICE + +PROD_DETAILS.shapes[0].shapePrice;
   }
   // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
   // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
-  if(EGGLESS) {
-    console.log('egg');
+  if (EGGLESS) {
+    console.log("egg");
     TOTAL_COST = TOTAL_COST + +PROD_DETAILS.type.price;
     TOTAL_PREV_PRICE = TOTAL_PREV_PRICE + +PROD_DETAILS.type.price;
   }
@@ -189,18 +192,18 @@ const calculatePrice = () => {
   // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
 
   let cost = TOTAL_COST * PROD_QTY;
-  let costWithGST = cost + (cost * (+PROD_DETAILS.gst/100));
+  let costWithGST = cost + cost * (+PROD_DETAILS.gst / 100);
   let prevCost = TOTAL_PREV_PRICE * PROD_QTY;
-  let prevCostWithGST = prevCost + (prevCost * (+PROD_DETAILS.gst/100));
+  let prevCostWithGST = prevCost + prevCost * (+PROD_DETAILS.gst / 100);
 
   TOTAL_COST = costWithGST;
   TOTAL_PREV_PRICE = prevCostWithGST;
 
-  TOTAL_COST=Math.round(TOTAL_COST)
-  TOTAL_PREV_PRICE=Math.round(TOTAL_PREV_PRICE)
-  prodPriceHTML.innerHTML = (TOTAL_COST);
+  TOTAL_COST = Math.round(TOTAL_COST);
+  TOTAL_PREV_PRICE = Math.round(TOTAL_PREV_PRICE);
+  prodPriceHTML.innerHTML = TOTAL_COST;
   prodPrevPriceHTML.innerHTML = TOTAL_PREV_PRICE;
-  changePrice(TOTAL_COST)
+  changePrice(TOTAL_COST);
 };
 
 const cakeShape = (e, current) => {
@@ -231,42 +234,42 @@ const displayWeights = (makedWeight) => {
         let rand = Math.random();
         let weightName, price, pprice, weightNum;
         if (weight.cakeWeight === "half") {
-          weightNum = '0.5';
+          weightNum = "0.5";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
         } else if (weight.cakeWeight === "one") {
-          weightNum = '1';
+          weightNum = "1";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
         } else if (weight.cakeWeight === "oneHalf") {
-          weightNum = '1.5';
+          weightNum = "1.5";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
         } else if (weight.cakeWeight === "two") {
-          weightNum = '2';
+          weightNum = "2";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
         } else if (weight.cakeWeight === "three") {
-          weightNum = '3';
+          weightNum = "3";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
         } else if (weight.cakeWeight === "four") {
-          weightNum = '4';
+          weightNum = "4";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
         } else if (weight.cakeWeight === "five") {
-          weightNum = '5';
+          weightNum = "5";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
         } else if (weight.cakeWeight === "six") {
-          weightNum = '6';
+          weightNum = "6";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
@@ -277,17 +280,17 @@ const displayWeights = (makedWeight) => {
         }
 
         let selected = null;
-        if(weightName === makedWeight) {
+        if (weightName === makedWeight) {
           // console.log(weightName);
           WEIGHT_PRICE.current = price;
           WEIGHT_PRICE.previous = pprice;
           WEIGHT_PRICE.weight = weightName;
-          selected = 'checked'
+          selected = "checked";
         }
         calculatePrice();
         weightCard += `
         <div class="custom-control custom-radio" style="margin-right: 15px;">
-          <input type="radio"  ${ selected } id="${rand}" name="cake-weight-option"  data-weight="${weightName}"   onchange="cakeWeight(event, this)" class="custom-control-input product-attr">
+          <input type="radio"  ${selected} id="${rand}" name="cake-weight-option"  data-weight="${weightName}"   onchange="cakeWeight(event, this)" class="custom-control-input product-attr">
           <img class="productimg"
             src="${PROD_DETAILS.mainImgUrl}"
             alt="Lake of cakes"
@@ -355,11 +358,11 @@ const imgChange = (e, current) => {
   `;
 
   bigImgHolderHTML.innerHTML = big;
-  console.log(document.querySelector('#whole-img-block'));
+  console.log(document.querySelector("#whole-img-block"));
 };
 
-const reviewFormHTML = document.querySelector('#review-form');
-const reviewForm = e => {
+const reviewFormHTML = document.querySelector("#review-form");
+const reviewForm = (e) => {
   // console.log(e);
   e.preventDefault();
   const expirence = reviewFormHTML["experience"].value;
@@ -367,53 +370,60 @@ const reviewForm = e => {
 
   let dbRef = db.collection(CATEGORY_ID).doc(PRODUCT_ID);
 
-  dbRef.get().then(doc => {
+  dbRef.get().then((doc) => {
     let docData = doc.data();
     let data = {
       rating: expirence,
-      msg: msg
-    }
-    if(docData.reviews) {
+      msg: msg,
+    };
+    if (docData.reviews) {
       docData.reviews.push(data);
     } else {
       docData.reviews = [data];
     }
     dbRef.update(docData);
     reviewFormHTML.reset();
-    console.log('updated');
-  })
-  console.log('done');
-}
+    console.log("updated");
+  });
+  console.log("done");
+};
 
-reviewFormHTML.addEventListener('submit', reviewForm);
+reviewFormHTML.addEventListener("submit", reviewForm);
 
-const enterKeyFun = e => {
+const enterKeyFun = (e) => {
   // console.log(e.keyCode);
-  if(e.keyCode === 13) {
+  if (e.keyCode === 13) {
     e.preventDefault();
   }
-}
+};
 
-reviewFormHTML.addEventListener('keypress', enterKeyFun);
+reviewFormHTML.addEventListener("keypress", enterKeyFun);
 
-const buyNowBtnHTML = document.querySelector('#buyNowBtn');
+const buyNowBtnHTML = document.querySelector("#buyNowBtn");
 
-buyNowBtnHTML.addEventListener('click', () => {
+buyNowBtnHTML.addEventListener("click", () => {
   costWithAddonsHTML.innerHTML = TOTAL_COST;
 });
 
-const allAddonsHTML = document.querySelector('#allAddons');
-const costWithAddonsHTML = document.querySelector('#cost-with-addons');
+const allAddonsHTML = document.querySelector("#allAddons");
+const costWithAddonsHTML = document.querySelector("#cost-with-addons");
 
 const addons_details = [];
-db.collection('addons').get().then(snapshots => {
-  let snapshotDocs = snapshots.docs;
-  let card = '';
-  snapshotDocs.map((doc, index) => {
-    // card += displayAddon(doc);
-    let docData = doc.data();
-    addons_details.push({qty: 1, price: +docData.price, checked: false, id: doc.id});
-    card += `
+db.collection("addons")
+  .get()
+  .then((snapshots) => {
+    let snapshotDocs = snapshots.docs;
+    let card = "";
+    snapshotDocs.map((doc, index) => {
+      // card += displayAddon(doc);
+      let docData = doc.data();
+      addons_details.push({
+        qty: 1,
+        price: +docData.price,
+        checked: false,
+        id: doc.id,
+      });
+      card += `
     <div class="col-md-3 col-6 mt-3">
       <a class="item"
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
@@ -454,20 +464,20 @@ db.collection('addons').get().then(snapshots => {
       </a>
     </div>
     `;
-  })
-  allAddonsHTML.innerHTML = card;
-  console.log(TOTAL_COST);
-})
+    });
+    allAddonsHTML.innerHTML = card;
+    console.log(TOTAL_COST);
+  });
 
 const calAddonPrice = () => {
   let totalAddonPrice = 0;
-  addons_details.map(el => {
-    if(el.checked) {
+  addons_details.map((el) => {
+    if (el.checked) {
       totalAddonPrice += el.price * el.qty;
     }
   });
   costWithAddonsHTML.innerHTML = totalAddonPrice + TOTAL_COST;
-}
+};
 
 const buyAddon = (e, current) => {
   let index = e.target.value;
@@ -475,94 +485,122 @@ const buyAddon = (e, current) => {
   console.log(addons_details[index]);
   addons_details[index].checked = current.checked;
   calAddonPrice();
-}
+};
 
-const addAddon = e => {
-  let id = e.target.dataset.id.split('__')[2];
+const addAddon = (e) => {
+  let id = e.target.dataset.id.split("__")[2];
   let index = e.target.dataset.index;
   addons_details[index].qty++;
-  document.querySelector(`#addon__qty__${id}`).innerHTML = addons_details[index].qty;
+  document.querySelector(`#addon__qty__${id}`).innerHTML =
+    addons_details[index].qty;
   calAddonPrice();
-}
+};
 
-const decAddon = e => {
-  let id = e.target.dataset.id.split('__')[2];
+const decAddon = (e) => {
+  let id = e.target.dataset.id.split("__")[2];
   let index = e.target.dataset.index;
-  if(addons_details[index].qty > 1) {
+  if (addons_details[index].qty > 1) {
     addons_details[index].qty--;
   }
-  document.querySelector(`#addon__qty__${id}`).innerHTML = addons_details[index].qty;
+  document.querySelector(`#addon__qty__${id}`).innerHTML =
+    addons_details[index].qty;
   calAddonPrice();
-}
+};
 
-const prodWithAddonsHTML = document.querySelector('#prod_with_addons');
+const prodWithAddonsHTML = document.querySelector("#prod_with_addons");
+let userId;
+let userRef;
+const checkAuth = async () => {
+  if (!localStorage.getItem("locLoggedInUser")) {
+    window.location.href = "./../Auth/login.html";
+  } else {
+    userId = localStorage.getItem("locLoggedInUser");
+    userRef = await db.collection("Customers").doc(userId);
+  }
+};
 
-const buyProd = async(e) => {
-  // console.log(localStorage.getItem('locLoggedInUser'));
-  // console.log(typeof(localStorage.getItem('locLoggedInUser')));
+const buyProd = async (e) => {
   let addonsSelected = [];
-  addons_details.map(el => {
-    if(el.checked) {
+  addons_details.map((el) => {
+    if (el.checked) {
       addonsSelected.push(el);
     }
-  })
+  });
 
-  if(!localStorage.getItem('locLoggedInUser')) {
-    window.location.href = './../Auth/login.html';
-  } else {
-    // console.log(localStorage.getItem('locLoggedInUser'));
-    let userId = localStorage.getItem('locLoggedInUser');
-    const orderId = Math.random();
-    let dbRef = await db.collection('Customers').doc(userId);
-    await dbRef.get().then(async(doc) => {
-      let docData = doc.data();
-      console.log(docData);
-      if(docData.orders) {
-        console.log(docData.orders);
-        docData.orders.push({
-          prodId: PRODUCT_ID,
-          cat: CATEGORY_ID,
-          message: document.querySelector('#prodMsg').value,
-          heart: HEART,
-          eggless: EGGLESS,
-          pricing: WEIGHT_PRICE,
-          qty: PROD_QTY,
-          orderId: orderId,
-          addAddons: addonsSelected ,
-          status: false
-        })
-      } else {
-        console.log(docData.orders);
-        docData.orders = [];
-        docData.orders.push({
-          prodId: PRODUCT_ID,
-          cat: CATEGORY_ID,
-          message: document.querySelector('#prodMsg').value,
-          heart: HEART,
-          eggless: EGGLESS,
-          pricing: WEIGHT_PRICE,
-          qty: PROD_QTY,
-          orderId: orderId,
-          addAddons: addonsSelected,
-          status: false
-        })
-      }
-      console.log('updated1');
-      await dbRef.update(docData);
-      console.log('updated');
-    })
-    console.log('done1');
-    window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
-    console.log('done');
-  }
-}
+  await checkAuth();
+  const orderId = Math.random();
+  await userRef.get().then(async (doc) => {
+    let docData = doc.data();
+    if (docData.orders) {
+      docData.orders.push({
+        prodId: PRODUCT_ID,
+        cat: CATEGORY_ID,
+        message: document.querySelector("#prodMsg").value,
+        heart: HEART,
+        eggless: EGGLESS,
+        pricing: WEIGHT_PRICE,
+        qty: PROD_QTY,
+        orderId: orderId,
+        addAddons: addonsSelected,
+        status: false,
+      });
+    } else {
+      docData.orders = [];
+      docData.orders.push({
+        prodId: PRODUCT_ID,
+        cat: CATEGORY_ID,
+        message: document.querySelector("#prodMsg").value,
+        heart: HEART,
+        eggless: EGGLESS,
+        pricing: WEIGHT_PRICE,
+        qty: PROD_QTY,
+        orderId: orderId,
+        addAddons: addonsSelected,
+        status: false,
+      });
+    }
+    await userRef.update(docData);
+  });
+  window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
+};
 
-prodWithAddonsHTML.addEventListener('click', buyProd);
+prodWithAddonsHTML.addEventListener("click", buyProd);
 
-const addToCartBtnHTML = document.querySelector('#addToCartBtn');
+const addToCartBtnHTML = document.querySelector("#addToCartBtn");
 
-const addToCart = e => {
+const addToCart = async(e) => {
+  await checkAuth();
+  const cartId = Math.random();
+  await userRef.get().then(async (doc) => {
+    let docData = doc.data();
+    if (docData.cart) {
+      docData.cart.push({
+        prodId: PRODUCT_ID,
+        cat: CATEGORY_ID,
+        message: document.querySelector("#prodMsg").value,
+        heart: HEART,
+        eggless: EGGLESS,
+        pricing: WEIGHT_PRICE,
+        qty: PROD_QTY,
+        cartId: cartId,
+      });
+    } else {
+      docData.cart = [];
+      docData.cart.push({
+        prodId: PRODUCT_ID,
+        cat: CATEGORY_ID,
+        message: document.querySelector("#prodMsg").value,
+        heart: HEART,
+        eggless: EGGLESS,
+        pricing: WEIGHT_PRICE,
+        qty: PROD_QTY,
+        cartId: cartId,
+      });
+    }
+    await userRef.update(docData);
+    console.log('updated');
+  });
+  console.log('done');
+};
 
-}
-
-addToCartBtnHTML.addEventListener('click', addToCart);
+addToCartBtnHTML.addEventListener("click", addToCart);

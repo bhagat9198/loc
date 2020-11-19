@@ -45,7 +45,7 @@
     }
 
     .pname {
-      font-size: 7px;
+      font-size: 9px !important;
     }
   }
 
@@ -69,106 +69,91 @@
   <section id="nav-section-loader"></section>
 
   <section class="cartpage" style="border-radius: 20px;">
-
-    <div class="row" style="padding: 10px !important">
-      <div class="col-lg-8">
-        <div class="left-area">
-          <div class="cart-table">
-            <table class="table" style="background-color: antiquewhite;">
-              <thead>
-                <tr style="text-align: center;">
-                  <th class="d-sm-nones">Product</th>
-
-                  <th class="d-sm-nones" width="30%">Details</th>
-                  <th class="d-sm-nones" style="text-align: left;">Quantity</th>
-                  <th class="d-sm-nones">Sub Total</th>
-                  <th class="d-sm-nones">Delete</th>
-                  <th class="d-sm-nones">Select</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="cremove3831">
-                  <td>
-
-                    <img
-                      src="https://i1.fnp.com/images/pr/l/v20191113144513/gems-on-top-black-forest-cake-half-kg_1.jpg"
-                      alt="" class=" crtimg responsiveImage">
-                    <p class="pname"><a href="/item/cake365-plm9053dyi">cake365</a></p>
-
-                  </td>
-                  <td class="responsiveTags" style="text-align: center;">
-
-
-                    <b>Weight </b> 1 Kg<br>
-
-                    <b>Shape</b> Round<br>
-
-                    <b>Flavour</b> Default<br>
-
-                    <b>Prize</b> 200Rs
-
-
-                  </td>
-                  <td class="unit-price quantity names">
-                    <div class="qty ">
-                      <ul>
-                        <input type="hidden" class="size_price" value="1720">
-                        <li>
-                          <span class="qtminus1 reducing">
-                            <i class="fa fa-minus"></i>
-                          </span>
-                        </li>
-                        <li>
-                          <span class="qttotal1" id="qty3831">1</span>
-                        </li>
-                        <li>
-                          <span class="qtplus1 adding">
-                            <i class="fa fa-plus"></i>
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                  <td class="total-price">
-                    <p id="prc3831" style="text-align: center;">
-                      ₹1720
-                    </p>
-                  </td>
-
-                  <td>
-
-                    <span class="qtplus1 adding">
-                      <center><i class="fa fa-trash"></i>
-                    </span></center>
-                    </span>
-
-                  </td>
-                  <td>
-                    <center> <input type="checkbox" style="background-color: red; display: block;"></center>
-                  </td>
-                </tr>
-
-              </tbody>
-            </table>
+   <h5 style="padding: 10px;font-weight: 600;">Your Cart</h5>
+      <div class="row" style="padding: 10px !important" >
+        <div class="col-lg-8">
+          <div class="left-area">
+            <div class="cart-table">
+              <table class="table" style="background-color: rgb(148, 140, 129,0.3);">
+                <thead>
+                  <tr style="text-align: center;">
+                    <th class="d-sm-nones">Product </th>
+                    <th class="d-sm-nones" width="30%">Details</th>
+                    <th class="d-sm-nones" style="text-align: left;">Unit Price</th>
+                    <th class="d-sm-nones">Sub Total</th>
+                    <th class="d-sm-nones">Delete</th>
+                    <th class="d-sm-nones">Select</th>
+                  </tr>
+                </thead>
+                <tbody id="cartBody">
+                  <!-- <tr class="cremove3831">
+                    <td >
+                        <img
+                          src="https://i1.fnp.com/images/pr/l/v20191113144513/gems-on-top-black-forest-cake-half-kg_1.jpg"
+                          alt="" style="width: 60px ;object-fit: cover;">
+                        <p class="name"><a href="/item/cake365-plm9053dyi">cake365</a></p>
+                    </td>
+                    <td class="namess">
+                      <b>Weight : </b> 1<br>
+                      <b>Shape :</b>Heart<br>
+                      <b>Flavour :</b>Default<br>
+                      <b>Cost :</b>100
+                    </td>
+                    <td class="unit-price quantity names">
+                      <div class="qty">
+                        <ul>
+                          <input type="hidden" class="size_price" value="1720">
+                          <li>
+                            <span class="qtminus1 reducing">
+                              <i class="fa fa-minus"></i>
+                            </span>
+                          </li>
+                          <li>
+                            <span class="qttotal1" id="qty3831">1</span>
+                          </li>
+                          <li>
+                            <span class="qtplus1 adding">
+                              <i class="fa fa-plus"></i>
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                    <td class="total-price">
+                      <p id="prc3831">
+                        ₹1720
+                      </p>
+                    </td>
+                    <td>
+                      <span class="qtplus1 adding">
+                        <i class="fa fa-trash"></i> </span>
+                      </span>
+                    </td>
+                    <td>
+                      <input type="checkbox" style="background-color: red; display: block;">
+                    </td>
+                  </tr> -->
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-      <input type="hidden" class="addonss_price" value="0">
-      <div class="col-lg-4">
-        <div class="right-area">
-          <div class="order-box">
-            <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
-            <ul class="order-list">
-              <li>
-                <p>
-                  Total MRP
-                </p>
-                <P>
-                  <b class="cart-total ctt">₹1720</b>
-
-                </P>
-              </li>
-              <li>
+        <div class="col-lg-4">
+          <div class="right-area">
+            <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to checkout</div>
+            <div class="order-box" style="display: none;">
+              <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
+              <ul class="order-list">
+                <!-- <li>
+                  <p>
+                    Total MRP
+                  </p>
+                  <P>
+                    <b class="cart-total ctt">₹1720</b>
+                  </P>
+                </li> -->
+              </ul>
+              <div class="total-price">
                 <p>
                   Discount
                 </p>
@@ -179,25 +164,11 @@
               </li>
               <li style="display:none">
                 <p>
-                  Tax
+                  <span class="cart-total"></span>
                 </p>
-                <P>
-                  <b>0%</b>
-                </P>
-              </li>
-            </ul>
-            <div class="total-price">
-              <p>
-                Total
-              </p>
-              <p>
-                <span class="main-total">₹1720</span>
-              </p>
-
-            </div>
-            <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all
-                taxes)</span></p><br>
-            <!-- <div class="cupon-box">
+              </div>
+              <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all taxes)</span></p><br>
+              <!-- <div class="cupon-box">
                 <div id="coupon-link">
                   Have a promotion code?
                 </div>
