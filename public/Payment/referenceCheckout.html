@@ -1,99 +1,740 @@
-<div class="row" style="padding: 10px !important">
-	<div class="col-lg-8">
-	  <div class="left-area">
-		<div class="cart-table">
-		  <table class="table" style="background-color: antiquewhite;">
-			<thead>
-			  <tr style="text-align: center;">
-				<th class="d-sm-nones">Product</th>
+<!DOCTYPE html>
+<html lang="en">
 
-				<th class="d-sm-nones" width="30%">Details</th>
-				<th class="d-sm-nones" style="text-align: left;">Quantity</th>
-				<th class="d-sm-nones">Sub Total</th>
-				<th class="d-sm-nones">Delete</th>
-				<th class="d-sm-nones">Select</th>
-			  </tr>
-			</thead>
-			<tbody>
-			  <tr class="cremove3831">
-				<td>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lake of Cakes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../assets/css/all.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/mega-menu.css">
+  <link rel="stylesheet" href="../assets//css/randomStyles.css">
+  <link rel="stylesheet" href="../assets/css/animate.css">
+  <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+  <link rel="stylesheet" href="assets/css/animation.css">
+</head>
+<style>
+  .top-grid-head {
+    background: url(../assets/images/header-bg1.png);
+    min-height: 101px;
+    text-align: center;
+    width: 100%;
+    background-size: contain;
+    z-index: 999;
+  }
 
-				  <img
-					src="https://i1.fnp.com/images/pr/l/v20191113144513/gems-on-top-black-forest-cake-half-kg_1.jpg"
-					alt="" class=" crtimg responsiveImage">
-				  <p class="pname"><a href="/item/cake365-plm9053dyi">cake365</a></p>
+  @media only screen and (min-width:900px) {
+    #sectionPayment {
+      background-image: url('https://img.wallpapersafari.com/desktop/1680/1050/64/85/9cgUjb.jpg') !important;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+</style>
 
-				</td>
-				<td class="responsiveTags" style="text-align: center;">
+<body style="overflow-x: hidden !important; ">
+  <section id="nav-section-loader"></section>
+
+  <!-- -------------------------1----------------------------------- -->
+  <section id="sectionPayment" class="checkout">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="checkout-area mb-0 pb-0">
+            <div class="checkout-process">
+              <ul class="nav" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="pills-step1-tab" data-toggle="pill" href="#pills-step1" role="tab"
+                    aria-controls="pills-step1" aria-selected="true">
+                    <span>1</span> Shipping
+                    <i class="fa fa-address-card"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" id="pills-step2-tab" data-toggle="pill" href="#pills-step2" role="tab"
+                    aria-controls="pills-step2" aria-selected="false">
+                    <span>2</span> Orders
+                    <i class="fas fa-dolly"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" id="pills-step3-tab" data-toggle="pill" href="#pills-step3" role="tab"
+                    aria-controls="pills-step3" aria-selected="false">
+                    <span>3</span> Payment
+                    <i class="far fa-credit-card"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="checkout-area">
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-step1" role="tabpanel" aria-labelledby="pills-step1-tab">
+                <div class="content-box" style="background-color: #ffff;border-radius: 15px !important;">
+                  <div class="content">
+                    <!-- <div class="personal-info">
+                        <div class="row set-account-pass d-none">
+                          <div class="col-lg-6">
+                            <input type="password" name="personal_pass" id="personal-pass" class="form-control"
+                              placeholder="Enter Your Password">
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="password" name="personal_confirm" id="personal-pass-confirm"
+                              class="form-control" placeholder="Confirm Your Password">
+                          </div>
+                        </div>
+                      </div> -->
+                    <form id="form1-shipping" class="checkoutform">
+                      <div class="billing-address">
+                        <h5 class="title">
+                          Recipient / Shipping Details
+                        </h5>
+                        <div class="row">
+
+                          <div class="col-lg-6">
+                            <input class="form-control" type="text" name="name" placeholder="Full Name" value=""
+                              required>
+                          </div>
+                          <div class="col-lg-6">
+                            <input class="form-control phoneee" type="text" name="phone" maxlength="10"
+                              placeholder="Phone Number" value="" required onkeypress="return onlyNumber(event)">
+                          </div>
+                          <div class="col-lg-6">
+                            <input class="form-control" type="text" name="email" placeholder="Email" value="" required>
+                          </div>
+                          <div class="col-lg-6">
+                            <input class="form-control" type="text" name="address" placeholder="Address" value=""
+                              required>
+                          </div>
+                          <div class="col-lg-6">
+                            <input class="form-control" type="text" name="landmark" placeholder="Landmark">
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="text" readonly="readonly" class="form-control customer_country"
+                              name="customer_country" value="India">
+                          </div>
+                          <div class="col-lg-6">
+                            <input class="form-control" type="text" name="city" value="Lucknow" readonly="readonly">
+                          </div>
+                          <div class="col-lg-6">
+                            <input class="form-control" type="text" name="zip" id="locality" placeholder="Pin Code"
+                              value="" required>
+                            <div id="postal_code"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row ">
+                        <div class="col-lg-12 mt-3">
+                          <input class="styled-checkbox" id="ship-diff-address" type="checkbox" value="value1">
+                          <label for="ship-diff-address">Ship to a Different Address?</label>
+                        </div>
+                      </div>
+                      <div class="ship-diff-addres-area d-none">
+                        <h5 class="title">
+                          Shipping Details
+                        </h5>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input class="form-control ship_input" type="text" name="shipping_name"
+                              id="shippingFull_name" placeholder="Full Name">
+                          </div>
+                          <div class="col-lg-6">
+                            <input class="form-control ship_input phoneee" type="text" name="shipping_phone"
+                              maxlength="10" id="shipingPhone_number" placeholder="Phone Number"
+                              onkeypress="return onlyNumber(event)">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input class="form-control ship_input" type="text" name="shipping_address"
+                              id="shipping_address" placeholder="Address">
+                          </div>
+                          <div class="col-lg-6">
+                            <input class="form-control" type="text" name="shipping_landmark" placeholder="Landmark">
+                          </div>
+                          <div class="col-lg-6">
+                            <input type="text" readonly="readonly" class="form-control ship_input customer_country"
+                              name="shipping_country" value="India">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <input class="form-control ship_input" id="shipping_city" type="text" name="shipping_city"
+                              value="Lucknow" readonly="readonly">
+                          </div>
+                          <div class="col-lg-6">
+                            <input class="form-control ship_input" type="text" name="shipping_zip"
+                              id="shippingPostal_code" placeholder="Pin Code">
+                            <div id="postal_code"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="order-note mt-3">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <input type="text" id="Order_Note" class="form-control" name="order_notes"
+                              placeholder="Order Note (Optional)">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12  mt-3">
+                          <div class="bottom-area paystack-area-btn">
+                            <button type="submit" class="mybtn1 2">Choose Date and Time </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <!-- --------------------2--------------------------- -->
+              <div class="tab-pane fade" id="pills-step2" role="tabpanel" aria-labelledby="pills-step2-tab">
+                <div class="content-box">
+                  <div class="content">
+                    <div class="order-area">
+                      <div class="order-item">
+                        <div class="product-img">
+                          <div class="d-flex">
+                            <img src=" //lakeofcakes.com/assets/images/products/1598604187M48yYCke.png" height="80"
+                              width="80" class="p-1">
+                          </div>
+                        </div>
+                        <div class="product-content">
+                          <p class="name"><a href="//lakeofcakes.com/item/5-star-chocolate-bouquet-loc12557"
+                              target="_blank">5 star chocolate bouquet</a></p>
+                          <div class="unit-price">
+                            <h5 class="label">Price : </h5>
+                            <p>₹499</p>
+                          </div>
+                          <div class="quantity">
+                            <h5 class="label">Quantity : </h5>
+                            <span class="qttotal">2 </span>
+                          </div>
+                          <div class="total-price">
+                            <h5 class="label">Total Price : </h5>
+                            <p>₹998
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 mt-3">
+                        <div class="bottom-area">
+                          <a href="javascript:;" id="step1-btn" class="mybtn1 mr-3 3">Back</a>
+                          <a href="javascript:;" id="step3-btn" class="mybtn1 4">Continue</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pills-step3" role="tabpanel" aria-labelledby="pills-step3-tab">
+                <div class="content-box">
+                  <div class="content">
+                    <div class="submit-loader">
+                      <img src="//lakeofcakes.com/assets/images/loading_large.gif" alt="">
+                    </div>
+                    <div class="billing-info-area ">
+                      <h4 class="title">
+                        Shipping Info
+                      </h4>
+                      <ul class="info-list">
+                        <li>
+                          <p id="shipping_user"></p>
+                        </li>
+                        <li>
+                          <p id="shipping_location"></p>
+                        </li>
+                        <li>
+                          <p id="shipping_phone"></p>
+                        </li>
+                        <li>
+                          <p id="shipping_email"></p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="payment-information">
+                      <h4 class="title">
+                        Payment Info
+                      </h4>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="nav flex-column" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link payment">
+                              <div class="icon">
+                                <span class="radio"></span>
+                              </div>
+                              <p>
+                                UPI,VISA,MASTER,RUPAY
+                                <small>
+                                  Secure Payment Through RazorPay
+                                </small>
+                              </p>
+                            </a>
+                            <a class="nav-link payment">
+                              <div class="icon">
+                                <span class="radio"></span>
+                              </div>
+                              <p>
+                                Mobile Money
+                                <small>
+                                  Pay via your Mobile Money.
+                                </small>
+                              </p>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div class="pay-area d-none">
+                            <div class="tab-content" id="v-pills-tabContent">
+                              <div class="tab-pane fade" id="v-pills-tab6" role="tabpanel"
+                                aria-labelledby="v-pills-tab6-tab">
+                              </div>
+                              <div class="tab-pane fade" id="v-pills-tab46" role="tabpanel"
+                                aria-labelledby="v-pills-tab46-tab">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-lg-12 mt-3">
+                        <div class="bottom-area">
+                          <a href="javascript:;" id="step2-btn" class="mybtn1 mr-3 5">Back</a>
+                          <button type="submit" id="final-btn" class="mybtn1 1">Continue</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ------------------------DATE AND TIME MODAL--------------------------------- -->
+          <div class="modal fade" id="myModal1">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header" style="background-color: #f00;">
+                  <h4 class="modal-title text-center tb" style="color:#fff;">Select Date and Time
+                  </h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <div class="">
+                      <div class="row">
+                        <div class="col-md-6 mt-3">
+                          <div class="form-group">
+                            <label>Delivery Date</label><br />
+                            <small>Select the date first</small>
+                            <input type="date" name="shipping_date" id="shipping_date" placeholder="Shipping date"
+                              max="2090-12-31" class="form-control shipping_date">
+                          </div>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                          <div class="form-group">
+                            <label>Delivery Time</label>
+                            <div class="free-hours" id="free-hours" style="display: none;">
+                              <input type="radio" name="shipping_time" value="Free">Between 10 AM to 8 PM <br>
+                            </div>
+                            <div id="time-error" style="color: #f00; display: none;">Sorry!! you cant book for today 😶
+                              <br /> Select next day date or upcoming day date.</div>
+                            <div class="perfect-hours" id="perfect-hours" style="display: none;">
+                              <input type="radio" name="shipping_time" id="perfect_10" value="10">Between 10 AM to 11 AM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_11" value="11">Between 11 AM to 12
+                              Noon <br>
+                              <input type="radio" name="shipping_time" id="perfect_12" value="12">Between 12 Noon to 1
+                              PM <br>
+                              <input type="radio" name="shipping_time" id="perfect_1" value="1">Between 1 PM to 2 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_2" value="2">Between 2 PM to 3 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_3" value="10">Between 3 PM to 4 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_4" value="10">Between 4 PM to 5 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_5" value="10">Between 5 PM to 6 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_7" value="7">Between 7 PM to 8 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_8" value="8">Between 8 PM to 9 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_9" value="9">Between 9 PM to 10 PM
+                              <br>
+                            </div>
+                            <div class="midnight-hours" id="midnight-hours" style="display: none;">
+                              <input type="radio" name="shipping_time" value="Midnight">11:30 PM to 11:59 PM <br>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary contn" data-dismiss="modal" id="registerTime"
+                    style="background-color: #3CB324;">CONTINUE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- -------------------------   PRICING    ------------------------------ -->
+        <div class="col-lg-4">
+          <div class="right-area">
+            <div class="order-box">
+              <h4 class="title">PRICE DETAILS</h4>
+              <ul class="order-list">
+                <li>
+                  <p>
+                    Basic Price
+                  </p>
+                  <P>
+                    <b class="bp" id="bp"></b>
+                  </P>
+                </li>
+                <span id="extra-price">
+
+                </span>
+                <li>
+                  <p>
+                    Discount
+                  </p>
+                  <P>
+                    <b id="discount"></b>
+                  </P>
+                </li>
+              </ul>
+              <div class="total-price">
+                <p>
+                  Sub Total
+                </p>
+                <p>
+                  <span id="discount-cost"></span>
+                </p>
+              </div>
+              <ul class="order-list">
+                <li>
+                  <p>
+                    GST
+                  </p>
+                  <P>
+                    <b class="gst" id="gst"></b>
+                  </P>
+                </li>
+                <li>
+                  <p>
+                    Addons
+                  </p>
+                  <P>
+                    <b class="gst" id="addon-cost"></b>
+                  </P>
+                </li>
+              </ul>
+              <div class="total-price">
+                <p>
+                  Total
+                </p>
+                <p>
+                  <span id="cost"></span>
+                </p>
+              </div>
+
+              <div class="cupon-box">
+                <div id="coupon-link" style="margin-bottom:0px;">
+                  <img src="//lakeofcakes.com/assets/front/images/tag.png">
+                  Have a promotion code?
+                </div>
+                <span style="font-size:11px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Coupons not applicable on
+                  add on items)</span>
+                <div id="check-coupon-form" class="coupon">
+                  <input type="text" placeholder="Coupon Code" id="code" name="code">
+                  <button id="coupanApply">Apply</button>
+                </div>
+              </div>
+              <div class="packeging-area">
+                <h4 class="title">Shipping Method</h4>
+                <div class="radio-design">
+                  <input type="radio" class="shipping" id="free-shepping1" name="shipping" value="free" checked>
+                  <span class="checkmark"></span>
+                  <label for="free-shepping1">
+                    Free Shipping
+                    <small>This option is available till</small>
+                    <small id="freeTimer" class="timer"></small>
+                  </label>
+                </div>
+                <div class="radio-design">
+                  <input type="radio" class="shipping" id="free-shepping2" name="shipping" value="perfect">
+                  <span class="checkmark"></span>
+                  <label for="free-shepping2">
+                    Perfect Hours + ₹ 150
+                    <small>2 Hours</small>
+                  </label>
+                </div>
+                <div class="radio-design">
+                  <input type="radio" class="shipping" id="free-shepping3" name="shipping" value="midnight">
+                  <span class="checkmark"></span>
+                  <label for="free-shepping3">
+                    Mid Night + ₹ 200
+                    <small>10pm to 12am</small>
+                  </label>
+                </div>
+                <div class="final-price">
+                  <span>Final Price :</span>
+                  <span id="final-cost" class="a4"></span>
+                </div>
+                <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;float:right;">(Inclusive of all
+                    taxes)</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
+
+</body>
+
+<script src="../assets/js/jquery.js"></script>
+<script type="text/javascript">
+  $('#nav-section-loader').load('../Common/navbar.html');
+</script>
+<script type="text/javascript">
+  setTimeout(() => {
+    $('#footer-section-loader').load('../Common/files.html');
+    $('#footer-section-loader').load('../Common/footer.html');
+  }, 3000);
+</script>
+
+<script>
+  $("input[type='date']").keydown(function (event) {
+    event.preventDefault();
+  });
+
+  // /////////////////////////////////////////////////////////////////////////
+  $("#ship-diff-address").on("change", function () {
+    if (this.checked) {
+      $('.ship-diff-addres-area').removeClass('d-none');
+      $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', true);
+    } else {
+      $('.ship-diff-addres-area').addClass('d-none');
+      $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', false);
+    }
+  });
+  var ck = 0;
+
+  $('.checkoutform').on('submit', function (e) {
+
+    if (ck == 0 && modalVisited==1) {
+     
+      e.preventDefault();
+      $('#pills-step2-tab').removeClass('disabled');
+      $('#pills-step2-tab').click();
+
+    } else {
+
+    }
+    $('#pills-step1-tab').addClass('active');
+  });
+
+  $('#step1-btn').on('click', function () {
+    $('#pills-step1-tab').removeClass('active');
+    $('#pills-step2-tab').removeClass('active');
+    $('#pills-step3-tab').removeClass('active');
+    $('#pills-step2-tab').addClass('disabled');
+    $('#pills-step3-tab').addClass('disabled');
+
+    $('#pills-step1-tab').click();
+
+  });
+
+  // Step 2 btn DONE
+
+  $('#step2-btn').on('click', function () {
+    $('#pills-step3-tab').removeClass('active');
+    $('#pills-step1-tab').removeClass('active');
+    $('#pills-step2-tab').removeClass('active');
+    $('#pills-step3-tab').addClass('disabled');
+    $('#pills-step2-tab').click();
+    $('#pills-step1-tab').addClass('active');
+
+  });
+
+  $('#step3-btn').on('click', function () {
+    if ($('a.payment:first').data('val') == 'paystack') {
+      $('.checkoutform').prop('id', 'step1-form');
+    }
+    else {
+      $('.checkoutform').prop('id', '');
+    }
+    $('#pills-step3-tab').removeClass('disabled');
+    $('#pills-step3-tab').click();
+
+    var shipping_user = !$('input[name="shipping_name"]').val() ? $('input[name="name"]').val() : $('input[name="shipping_name"]').val();
+    var shipping_location = !$('input[name="shipping_address"]').val() ? $('input[name="address"]').val() : $('input[name="shipping_address"]').val();
+    var shipping_phone = !$('input[name="shipping_phone"]').val() ? $('input[name="phone"]').val() : $('input[name="shipping_phone"]').val();
+    var shipping_email = !$('input[name="shipping_email"]').val() ? $('input[name="email"]').val() : $('input[name="shipping_email"]').val();
+
+    $('#shipping_user').html('<i class="fas fa-user"></i>' + shipping_user);
+    $('#shipping_location').html('<i class="fas fas fa-map-marker-alt"></i>' + shipping_location);
+    $('#shipping_phone').html('<i class="fas fa-phone"></i>' + shipping_phone);
+    $('#shipping_email').html('<i class="fas fa-envelope"></i>' + shipping_email);
+
+    $('#pills-step1-tab').addClass('active');
+    $('#pills-step2-tab').addClass('active');
+  });
+
+  $('#final-btn').on('click', function () {
+    ck = 1;
+  })
 
 
-				  <b>Weight </b> 1 Kg<br>
+  $('.payment').on('click', function () {
 
-				  <b>Shape</b> Round<br>
+    $('.submit-loader').show();
+    if ($(this).data('val') == 'paystack') {
+      $('.checkoutform').prop('id', 'step1-form');
+    }
+    else {
+      $('.checkoutform').prop('id', '');
+    }
+    $('.checkoutform').prop('action', $(this).data('form'));
+    $('.pay-area #v-pills-tabContent .tab-pane.fade').not($(this).attr('href')).html('');
+    var show = $(this).data('show');
+    if (show != 'no') {
+      $('.pay-area').removeClass('d-none');
+    }
+    else {
+      $('.pay-area').addClass('d-none');
+    }
+    $($(this).attr('href')).load($(this).data('href'), function () {
+      $('.submit-loader').hide();
+    });
 
-				  <b>Flavour</b> Default<br>
 
-				  <b>Prize</b> 200Rs
+  })
 
 
-				</td>
-				<td class="unit-price quantity names">
-				  <div class="qty ">
-					<ul>
-					  <input type="hidden" class="size_price" value="1720">
-					  <li>
-						<span class="qtminus1 reducing">
-						  <i class="fa fa-minus"></i>
-						</span>
-					  </li>
-					  <li>
-						<span class="qttotal1" id="qty3831">1</span>
-					  </li>
-					  <li>
-						<span class="qtplus1 adding">
-						  <i class="fa fa-plus"></i>
-						</span>
-					  </li>
-					</ul>
-				  </div>
-				</td>
-				<td class="total-price">
-				  <p id="prc3831" style="text-align: center;">
-					₹1720
-				  </p>
-				</td>
+  $(document).on('submit', '#step1-form', function () {
 
-				<td>
+    var val = $('#sub').val();
+    var total = $('#grandtotal').val();
+    total = Math.round(total);
+    if (val == 0) {
+      var handler = PaystackPop.setup({
+        key: 'pk_test_162a56d42131cbb01932ed0d2c48f9cb99d8e8e2',
+        email: $('input[name=email]').val(),
+        amount: total * 100,
+        currency: "INR",
+        ref: '' + Math.floor((Math.random() * 1000000000) + 1),
+        callback: function (response) {
+          $('#ref_id').val(response.reference);
+          $('#sub').val('1');
+          $('#final-btn').click();
+        },
+        onClose: function () {
+          window.location.reload();
 
-				  <span class="qtplus1 adding">
-					<center><i class="fa fa-trash"></i>
-				  </span></center>
-				  </span>
+        }
+      });
+      handler.openIframe();
+      return false;
+    }
+    else {
 
-				</td>
-				<td>
-				  <center> <input type="checkbox" style="background-color: red; display: block;"></center>
-				</td>
-			  </tr>
+      return true;
+    }
+  });
 
-			</tbody>
-		  </table>
-		</div>
-	  </div>
-	</div>
-	<input type="hidden" class="addonss_price" value="0">
-	<div class="col-lg-4">
-	  <div class="right-area">
-		<div class="order-box">
-		  <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
-		  <ul class="order-list">
-			<li>
-			  <p>
-				Total MRP
-			  </p>
-			  <P>
-				<b class="cart-total ctt">₹1720</b>
 
-			  </P>
-			</li>
-			<li>
+  $(".customer_country").val('India').trigger('change');
+
+  function onlyNumber(evt) {
+
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+
+  $('.phoneee').on('input propertychange paste', function (e) {
+    var reg = /^0+/gi;
+    if (this.value.match(reg)) {
+      this.value = this.value.replace(reg, '');
+    }
+  });
+  var btnc = 0;
+  var modalVisited=0;
+  $(".mybtn1").click(function () {
+    if (btnc == 0) {
+      
+     
+      if(document.getElementById("free-shepping1").checked){
+        $("#myModal1").modal('show');
+        document.getElementById("free-hours").style.display="block"
+        modalVisited=1;
+      }
+      else if(document.getElementById("free-shepping2").checked){
+        $("#myModal1").modal('show');
+        document.getElementById("perfect-hours").style.display="block"
+        modalVisited=1
+      }else{
+        $("#myModal1").modal('show');
+        document.getElementById("midnight-hours").style.display="block"
+        modalVisited=1
+      }
+     
+    }
+
+  });
+
+  $(".contn").click(function () {
+
+    btnc = 1;
+  });
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebaseui.js"></script> -->
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+    authDomain: "lake-of-cakes.firebaseapp.com",
+    databaseURL: "https://lake-of-cakes.firebaseio.com",
+    projectId: "lake-of-cakes",
+    storageBucket: "lake-of-cakes.appspot.com",
+    messagingSenderId: "779843608951",
+    appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+    measurementId: "G-5ER0QF0FDW"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<script src="./checkout1.js"></script>
+<script src="../Common/navbar1.js"></script>
+
+</html>

@@ -60,8 +60,7 @@
 
 
 <section class="top-header top-nav" style="background: #f1f1f1;">
-  <div class="container-fluid remove-padding topnaves"
-    style="background: #f1f1f1;;
+  <div class="container-fluid remove-padding topnaves" style="background: #f1f1f1;;
     background-size: 617px; background-image: url();height: 35px !important;padding: 0px !important;">
     <div class="container topcnt">
       <div class="row" style="justify-content: flex-end;">
@@ -119,7 +118,8 @@
                             </a>
                           </div>
                           <hr>
-                          <a class="dropdown-item" href="" onclick="checkifUser()"><i class="fa fa-user"></i> Profile</a>
+                          <a class="dropdown-item" href="" onclick="checkifUser()"><i class="fa fa-user"></i>
+                            Profile</a>
                           <hr>
                           <a class="dropdown-item" href="#"><i class="fa fa-truck"></i> Track Orders</a>
                           <hr>
@@ -644,9 +644,9 @@
         <div class="helpful-links mt-md-3 cartres">
           <ul class="helpful-links-inner" style="display: flex;">
             <li class="my-dropdown" data-toggle="tooltip" data-placement="top" title="Cart">
-              <a href="javascript:;" class="cart carticon">
+              <a href="#cart" class="cart carticon">
                 <div class="icon">
-                  <i class="fa fa-shopping-cart"></i>
+                  <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
                   <span class="cart-quantity" id="cart-count">0</span>
                 </div>
 
@@ -1013,22 +1013,29 @@
     $('.drobt0').removeClass('colapse');
   }
 
-  
 
 
 
-  
+
+
 </script>
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
   var checkUser;
   var timecount = 0;
-  function checkifUser(){
-    if(checkUser==null ||checkUser =="null"){
-      window.location="/Auth/login.html"
-    }else{
-      window.location="/UserDash/customerProfile.html"
+  function checkifUser() {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      window.location = "/UserDash/customerProfile.html"
+    }
+  }
+  function redirectToCart() {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      window.location = "/UserDash/cart.html"
     }
   }
   const inter = setInterval(function () {
@@ -1058,8 +1065,8 @@
           if (userDoc.UserName == null) {
             userDoc.UserName = "User@LOC";
           }
-        
-          if (userDoc.Image == null || userDoc.Image=="null" ||userDoc.Image==undefined) {
+
+          if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
             userDoc.Image = "../assets/images/userIcon.png"
           }
 
@@ -1113,7 +1120,7 @@
 </style>
 
 <script>
-  
+
   $(".drobt").click(function () {
     if ($('.drobt0').hasClass('drobt1')) {
       $('.drobt0').removeClass('drobt1');
