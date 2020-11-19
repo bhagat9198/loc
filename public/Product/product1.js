@@ -503,8 +503,8 @@ const decAddon = e => {
 const prodWithAddonsHTML = document.querySelector('#prod_with_addons');
 
 const buyProd = async(e) => {
-  console.log(localStorage.getItem('locLoggedInUser'));
-  console.log(typeof(localStorage.getItem('locLoggedInUser')));
+  // console.log(localStorage.getItem('locLoggedInUser'));
+  // console.log(typeof(localStorage.getItem('locLoggedInUser')));
   let addonsSelected = [];
   addons_details.map(el => {
     if(el.checked) {
@@ -513,10 +513,9 @@ const buyProd = async(e) => {
   })
 
   if(!localStorage.getItem('locLoggedInUser')) {
-    console.log('if');
     window.location.href = './../Auth/login.html';
   } else {
-    console.log(localStorage.getItem('locLoggedInUser'));
+    // console.log(localStorage.getItem('locLoggedInUser'));
     let userId = localStorage.getItem('locLoggedInUser');
     const orderId = Math.random();
     let dbRef = await db.collection('Customers').doc(userId);
@@ -565,5 +564,10 @@ const buyProd = async(e) => {
 
 prodWithAddonsHTML.addEventListener('click', buyProd);
 
+const addToCartBtnHTML = document.querySelector('#addToCartBtn');
 
+const addToCart = e => {
 
+}
+
+addToCartBtnHTML.addEventListener('click', addToCart);
