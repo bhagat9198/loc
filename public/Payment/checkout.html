@@ -185,7 +185,7 @@
                       <div class="row">
                         <div class="col-lg-12  mt-3">
                           <div class="bottom-area paystack-area-btn">
-                            <button type="submit" class="mybtn1 2">Proceed </button>
+                            <button type="submit" class="mybtn1 2">Choose Date and Time </button>
                           </div>
                         </div>
                       </div>
@@ -345,22 +345,34 @@
                         <div class="col-md-6 mt-3">
                           <div class="form-group">
                             <label>Delivery Time</label>
-                            <div class="free-hours" id="free-hours" style="display: none;" >
+                            <div class="free-hours" id="free-hours" style="display: none;">
                               <input type="radio" name="shipping_time" value="Free">Between 10 AM to 8 PM <br>
                             </div>
-                            <div id="time-error" style="color: #f00; display: none;">Sorry!! you cant book for today 😶 <br /> Select next day date or upcoming day date.</div>
+                            <div id="time-error" style="color: #f00; display: none;">Sorry!! you cant book for today 😶
+                              <br /> Select next day date or upcoming day date.</div>
                             <div class="perfect-hours" id="perfect-hours" style="display: none;">
-                              <input type="radio" name="shipping_time" id="perfect_10" value="10">Between 10 AM to 11 AM <br>
-                              <input type="radio" name="shipping_time" id="perfect_11" value="11">Between 11 AM to 12 Noon <br>
-                              <input type="radio" name="shipping_time" id="perfect_12" value="12">Between 12 Noon to 1 PM <br>
-                              <input type="radio" name="shipping_time" id="perfect_1" value="1">Between 1 PM to 2 PM <br>
-                              <input type="radio" name="shipping_time" id="perfect_2" value="2">Between 2 PM to 3 PM <br>
-                              <input type="radio" name="shipping_time" id="perfect_3" value="10">Between 3 PM to 4 PM <br>
-                              <input type="radio" name="shipping_time" id="perfect_4" value="10">Between 4 PM to 5 PM <br>
-                              <input type="radio" name="shipping_time" id="perfect_5" value="10">Between 5 PM to 6 PM <br>
-                              <input type="radio" name="shipping_time" id="perfect_7" value="7">Between 7 PM to 8 PM <br>
-                              <input type="radio" name="shipping_time" id="perfect_8" value="8">Between 8 PM to 9 PM <br>
-                              <input type="radio" name="shipping_time" id="perfect_9" value="9">Between 9 PM to 10 PM <br>
+                              <input type="radio" name="shipping_time" id="perfect_10" value="10">Between 10 AM to 11 AM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_11" value="11">Between 11 AM to 12
+                              Noon <br>
+                              <input type="radio" name="shipping_time" id="perfect_12" value="12">Between 12 Noon to 1
+                              PM <br>
+                              <input type="radio" name="shipping_time" id="perfect_1" value="1">Between 1 PM to 2 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_2" value="2">Between 2 PM to 3 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_3" value="10">Between 3 PM to 4 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_4" value="10">Between 4 PM to 5 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_5" value="10">Between 5 PM to 6 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_7" value="7">Between 7 PM to 8 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_8" value="8">Between 8 PM to 9 PM
+                              <br>
+                              <input type="radio" name="shipping_time" id="perfect_9" value="9">Between 9 PM to 10 PM
+                              <br>
                             </div>
                             <div class="midnight-hours" id="midnight-hours" style="display: none;">
                               <input type="radio" name="shipping_time" value="Midnight">11:30 PM to 11:59 PM <br>
@@ -372,13 +384,11 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary contn" data-dismiss="modal"
-                    style="background-color: #3CB324;">CONTINUE</button>
+                  <button type="button" class="btn btn-secondary contn" data-dismiss="modal" id="registerTime" style="background-color: #3CB324;">CONTINUE</button>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
 
         <!-- -------------------------   PRICING    ------------------------------ -->
@@ -513,6 +523,20 @@
   $("input[type='date']").keydown(function (event) {
     event.preventDefault();
   });
+
+  // /////////////////////////////////////////////////////////////////////////
+  $("#ship-diff-address").on("change", function () {
+    if (this.checked) {
+      $('.ship-diff-addres-area').removeClass('d-none');
+      $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', true);
+    } else {
+      $('.ship-diff-addres-area').addClass('d-none');
+      $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', false);
+    }
+  });
+
+
+  
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>

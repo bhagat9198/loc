@@ -222,7 +222,7 @@ const checkCoupon = async (e) => {
 coupanApplyHTML.addEventListener("click", checkCoupon);
 
 const form1ShippingHTML = document.querySelector("#form1-shipping");
-
+const SHIPPING_DATA = {};
 const form1 = (e) => {
   e.preventDefault();
 
@@ -248,6 +248,28 @@ const form1 = (e) => {
   const order_notes = form1ShippingHTML["order_notes"].value;
   setDateAndTime();
   $("#myModal1").modal("show");
+
+  SHIPPING_DATA.name = name;
+  SHIPPING_DATA.phone = phone;
+  SHIPPING_DATA.email = email;
+  SHIPPING_DATA.address = address;
+  SHIPPING_DATA.landmark = landmark;
+  SHIPPING_DATA.country = customer_country;
+  SHIPPING_DATA.city = city;
+  SHIPPING_DATA.zip = zip;
+
+  if (shipDiffAddress.checked) {
+    SHIPPING_DATA.differtAddress = true;
+    SHIPPING_DATA.alt_name = shipping_name;
+    SHIPPING_DATA.alt_phone = shipping_phone; 
+    SHIPPING_DATA.alt_address = shipping_address;
+    SHIPPING_DATA.alt_landmark = shipping_landmark;
+    SHIPPING_DATA.alt_country = shipping_country;
+    SHIPPING_DATA.alt_city = shipping_city;
+    SHIPPING_DATA.alt_zip = shipping_zip; 
+  } else {
+    SHIPPING_DATA.differtAddress = false;
+  }
 };
 
 form1ShippingHTML.addEventListener("submit", form1);
@@ -267,6 +289,7 @@ let day = date.getDate();
 let hours = date.getHours();
 
 const setDateAndTime = () => {
+  // console.log(SHIPPING_DATA);
   $("input[type=date]").val("")
   // hours = 19;
   shippingDateHTML.setAttribute("min", `${year}-${month}-${day}`);
@@ -277,7 +300,7 @@ const setDateAndTime = () => {
 
   console.log(shipVal);
   if (shipVal === "free") {
-    finalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
+    
     shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
     // console.log(hours);
     perfectHoursHTML.style.display = "none";
@@ -295,9 +318,6 @@ const setDateAndTime = () => {
       timeErrorHTML.style.display = "block";
     }
   } else if (shipVal === "perfect") {
-    let temp = TOTAL_COST + 150; 
-    finalCostHTML.innerHTML = `₹ ${temp}`;
-
     shippingDateHTML.value = `${year}-${month}-${day}`;
     // console.log("perfect");
     freeHoursHTML.style.display = "none";
@@ -392,9 +412,6 @@ const setDateAndTime = () => {
       timeErrorHTML.style.display = "block";
     }
   } else if (shipVal === "midnight") {
-    let temp = TOTAL_COST + 200;
-    finalCostHTML.innerHTML = `₹ ${temp}`;
-
     finalCostHTML.innerHTML = ``
     shippingDateHTML.value = `${year}-${month}-${day}`;
     freeHoursHTML.style.display = "none";
@@ -456,3 +473,21 @@ const changeDate = (e) => {
 };
 
 shippingDateHTML.addEventListener("change", changeDate);
+
+
+document.querySelectorAll('input[name=shipping]').forEach(el => {
+  el.addEventListener('change', e => {
+    console.log(e.target.value);
+    if(e.target.value === 'free') {
+      finalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
+    } else if(e.target.value === 'perfect') {
+      let temp = TOTAL_COST + 150; 
+      finalCostHTML.innerHTML = `₹ ${temp}`;
+    } else if(e.target.value === 'midnight') {
+      let temp = TOTAL_COST + 200;
+      finalCostHTML.innerHTML = `₹ ${temp}`;
+    } else {
+      console.log('invalid');
+    }
+  })
+})

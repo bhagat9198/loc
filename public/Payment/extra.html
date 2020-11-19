@@ -115,144 +115,144 @@
   });
 
 
-  // $('.shipping').on('click', function () {
-  //   mship = $(this).val();
+  $('.shipping').on('click', function () {
+    mship = $(this).val();
 
-  //   var addons = '0';
+    var addons = '0';
 
-  //   $('#shipping-cost').val(mship);
-  //   var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
-  //   ttotal = parseFloat(ttotal) + Number(addons);
-  //   // alert(ttotal);
-  //   if (ttotal % 1 != 0) {
-  //     ttotal = ttotal.toFixed(2);
-  //   }
-  //   if (pos == 0) {
-  //     $('#final-cost').html('₹' + ttotal);
-  //   } else {
-  //     $('#final-cost').html(ttotal + '₹');
-  //   }
+    $('#shipping-cost').val(mship);
+    var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+    ttotal = parseFloat(ttotal) + Number(addons);
+    // alert(ttotal);
+    if (ttotal % 1 != 0) {
+      ttotal = ttotal.toFixed(2);
+    }
+    if (pos == 0) {
+      $('#final-cost').html('₹' + ttotal);
+    } else {
+      $('#final-cost').html(ttotal + '₹');
+    }
 
-  //   var stype = $(this).attr('id');
+    var stype = $(this).attr('id');
 
-  //   console.log(stype);
-
-
-  //   if (stype == 'free-shepping1') {
-  //     if (time <= "00:01" && time >= "17:00") {
-  //       $(".shipping_date").attr('min', next_date);
-  //     }
-  //     $(".free-sheppin1").css("display", "block");
-  //     $(".free-sheppin2").css("display", "none");
-  //     $(".free-sheppin3").css("display", "none");
-
-  //   }
-  //   if (stype == 'free-shepping2') {
-
-  //     $(".free-sheppin2").css("display", "block");
-  //     $(".free-sheppin1").css("display", "none");
-  //     $(".free-sheppin3").css("display", "none");
-
-  //   }
-
-  //   if (stype == 'free-shepping3') {
-
-  //     if (time <= "00:01" && time >= "19:59") {
-  //       $(".shipping_date").attr('min', next_date);
-  //     }
-  //     // alert("lksdahflk");
-  //     $(".free-sheppin3").css("display", "block");
-  //     $(".free-sheppin1").css("display", "none");
-  //     $(".free-sheppin2").css("display", "none");
-  //   }
-
-  //   $('#grandtotal').val(ttotal);
+    console.log(stype);
 
 
+    if (stype == 'free-shepping1') {
+      if (time <= "00:01" && time >= "17:00") {
+        $(".shipping_date").attr('min', next_date);
+      }
+      $(".free-sheppin1").css("display", "block");
+      $(".free-sheppin2").css("display", "none");
+      $(".free-sheppin3").css("display", "none");
 
-  // })
+    }
+    if (stype == 'free-shepping2') {
 
-  // $('.packing').on('click', function () {
-  //   mpack = $(this).val();
-  //   var addons = '0';
-  //   $('#packing-cost').val(mpack);
-  //   var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
-  //   ttotal = parseFloat(ttotal) + Number(addons);
-  //   if (ttotal % 1 != 0) {
-  //     ttotal = ttotal.toFixed(2);
-  //   }
+      $(".free-sheppin2").css("display", "block");
+      $(".free-sheppin1").css("display", "none");
+      $(".free-sheppin3").css("display", "none");
 
-  //   if (pos == 0) {
-  //     $('#final-cost').html('₹' + ttotal);
-  //   } else {
-  //     $('#final-cost').html(ttotal + '₹');
-  //   }
+    }
 
+    if (stype == 'free-shepping3') {
 
-  //   $('#grandtotal').val(ttotal);
+      if (time <= "00:01" && time >= "19:59") {
+        $(".shipping_date").attr('min', next_date);
+      }
+      // alert("lksdahflk");
+      $(".free-sheppin3").css("display", "block");
+      $(".free-sheppin1").css("display", "none");
+      $(".free-sheppin2").css("display", "none");
+    }
 
-  // })
-
-  // $("#check-coupon-form").on('submit', function () {
-  //   var val = $("#code").val();
-  //   var total = $("#grandtotal").val();
-  //   var ship = 0;
-  //   $.ajax({
-  //     type: "GET",
-  //     url: mainurl + "/carts/coupon/check",
-  //     data: {
-  //       code: val,
-  //       total: total,
-  //       shipping_cost: ship
-  //     },
-  //     success: function (data) {
-  //       if (data == 0) {
-  //         toastr.error(langg.no_coupon);
-  //         $("#code").val("");
-  //       } else if (data == 2) {
-  //         toastr.error(langg.already_coupon);
-  //         $("#code").val("");
-  //       } else {
-  //         $("#check-coupon-form").toggle();
-  //         $(".discount-bar").removeClass('d-none');
-
-  //         if (pos == 0) {
-  //           $('#total-cost').html('₹' + data[0]);
-  //           $('#discount').html('₹' + data[2]);
-  //         } else {
-  //           $('#total-cost').html(data[0] + '₹');
-  //           $('#discount').html(data[2] + '₹');
-  //         }
-  //         $('#grandtotal').val(data[0]);
-  //         $('#tgrandtotal').val(data[0]);
-  //         $('#coupon_code').val(data[1]);
-  //         $('#coupon_discount').val(data[2]);
-  //         if (data[4] != 0) {
-  //           $('.dpercent').html('(' + data[4] + ')');
-  //         } else {
-  //           $('.dpercent').html('');
-  //         }
+    $('#grandtotal').val(ttotal);
 
 
-  //         var ttotal = parseFloat($('#grandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
-  //         ttotal = parseFloat(ttotal);
-  //         if (ttotal % 1 != 0) {
-  //           ttotal = ttotal.toFixed(2);
-  //         }
 
-  //         if (pos == 0) {
-  //           $('#final-cost').html('₹' + ttotal)
-  //         } else {
-  //           $('#final-cost').html(ttotal + '₹')
-  //         }
+  })
 
-  //         toastr.success(langg.coupon_found);
-  //         $("#code").val("");
-  //       }
-  //     }
-  //   });
-  //   return false;
-  // });
+  $('.packing').on('click', function () {
+    mpack = $(this).val();
+    var addons = '0';
+    $('#packing-cost').val(mpack);
+    var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+    ttotal = parseFloat(ttotal) + Number(addons);
+    if (ttotal % 1 != 0) {
+      ttotal = ttotal.toFixed(2);
+    }
+
+    if (pos == 0) {
+      $('#final-cost').html('₹' + ttotal);
+    } else {
+      $('#final-cost').html(ttotal + '₹');
+    }
+
+
+    $('#grandtotal').val(ttotal);
+
+  })
+
+  $("#check-coupon-form").on('submit', function () {
+    var val = $("#code").val();
+    var total = $("#grandtotal").val();
+    var ship = 0;
+    $.ajax({
+      type: "GET",
+      url: mainurl + "/carts/coupon/check",
+      data: {
+        code: val,
+        total: total,
+        shipping_cost: ship
+      },
+      success: function (data) {
+        if (data == 0) {
+          toastr.error(langg.no_coupon);
+          $("#code").val("");
+        } else if (data == 2) {
+          toastr.error(langg.already_coupon);
+          $("#code").val("");
+        } else {
+          $("#check-coupon-form").toggle();
+          $(".discount-bar").removeClass('d-none');
+
+          if (pos == 0) {
+            $('#total-cost').html('₹' + data[0]);
+            $('#discount').html('₹' + data[2]);
+          } else {
+            $('#total-cost').html(data[0] + '₹');
+            $('#discount').html(data[2] + '₹');
+          }
+          $('#grandtotal').val(data[0]);
+          $('#tgrandtotal').val(data[0]);
+          $('#coupon_code').val(data[1]);
+          $('#coupon_discount').val(data[2]);
+          if (data[4] != 0) {
+            $('.dpercent').html('(' + data[4] + ')');
+          } else {
+            $('.dpercent').html('');
+          }
+
+
+          var ttotal = parseFloat($('#grandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
+          ttotal = parseFloat(ttotal);
+          if (ttotal % 1 != 0) {
+            ttotal = ttotal.toFixed(2);
+          }
+
+          if (pos == 0) {
+            $('#final-cost').html('₹' + ttotal)
+          } else {
+            $('#final-cost').html(ttotal + '₹')
+          }
+
+          toastr.success(langg.coupon_found);
+          $("#code").val("");
+        }
+      }
+    });
+    return false;
+  });
 
   // Password Checking
 
@@ -287,14 +287,7 @@
 
   });
 
-  $("#ship-diff-address1").on("change", function () {
-    if (this.checked) {
-      $('.ship-diff-addres-area1').removeClass('d-none');
-    } else {
-      $('.ship-diff-addres-area1').addClass('d-none');
-    }
-
-  });
+  
 
 
   // Shipping Address Checking Ends

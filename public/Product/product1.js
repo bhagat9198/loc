@@ -396,12 +396,7 @@ const enterKeyFun = e => {
 
 reviewFormHTML.addEventListener('keypress', enterKeyFun);
 
-const productOrder = () => {
-  
-}
-
 const buyNowBtnHTML = document.querySelector('#buyNowBtn');
-const addToCartBtnHTML = document.querySelector('#addToCartBtn');
 
 buyNowBtnHTML.addEventListener('click', () => {
   costWithAddonsHTML.innerHTML = TOTAL_COST;
