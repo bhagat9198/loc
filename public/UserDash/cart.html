@@ -8,14 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lake of Cakes</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
+  <meta name="theme-color" content="#a15a55">
   <link rel="stylesheet" href="../assets/css/all.css">
   <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/styles.css">
+  <!-- <link rel="stylesheet" href="../assets/css/styles.php"> -->
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
-  <link rel="stylesheet" href="../assets//css/randomStyles.css">
-  <link rel="stylesheet" href="../assets/css/animate.css">
-  <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
-  <link rel="stylesheet" href="assets/css/animation.css">
+  <link rel="stylesheet" href="../assets/css/products.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css">
 
 </head>
 
@@ -23,133 +24,180 @@
   th {
     color: gray;
   }
+
+  .responsiveTags {
+    font-size: 15px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .responsiveTags {
+      font-size: 10px;
+
+    }
+
+    .responsiveDiv {
+      padding: 4px;
+
+    }
+
+    .responsiveImage {
+      width: 40px !important;
+    }
+
+    .pname {
+      font-size: 7px;
+    }
+  }
+
+  .crtimg {
+    width: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .pname {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+  }
 </style>
 
 <body style="overflow-x: hidden !important; ">
   <section id="nav-section-loader"></section>
 
   <section class="cartpage" style="border-radius: 20px;">
-   
-      <div class="row" style="padding: 20px !important">
-        <div class="col-lg-8">
-          <div class="left-area">
-            <div class="cart-table">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th class="d-sm-nones">Product </th>
-                    
-                    <th class="d-sm-nones" width="30%">Details</th>
-                    <th class="d-sm-nones">Unit Price</th>
-                    <th class="d-sm-nones">Sub Total</th>
-                    <th class="d-sm-nones">RE</th>
-                    <th class="d-sm-nones">Select</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="cremove3831">
-                    <td >
-                      
-                        <img
-                          src="https://i1.fnp.com/images/pr/l/v20191113144513/gems-on-top-black-forest-cake-half-kg_1.jpg"
-                          alt="" style="width: 60px ;object-fit: cover;">
-                        <p class="name"><a href="/item/cake365-plm9053dyi">cake365</a></p>
-                    
-                    </td>
-                    <td class="namess">
-                      <b>Weight : </b> 1<br>
-                      <b>Shape :</b>Heart<br>
-                      <b>Flavour :</b>Default<br>
-                      <b>Cost :</b>100
-                    </td>
-                    <td class="unit-price quantity names">
-                      <div class="qty">
-                        <ul>
-                          <input type="hidden" class="size_price" value="1720">
-                          <li>
-                            <span class="qtminus1 reducing">
-                              <i class="fa fa-minus"></i>
-                            </span>
-                          </li>
-                          <li>
-                            <span class="qttotal1" id="qty3831">1</span>
-                          </li>
-                          <li>
-                            <span class="qtplus1 adding">
-                              <i class="fa fa-plus"></i>
-                            </span>
-                          </li>
-                        </ul>
-                      </div>
-                    </td>
-                    <td class="total-price">
-                      <p id="prc3831">
-                        ₹1720
-                      </p>
-                    </td>
-                   
-                    <td>
 
-                      <span class="qtplus1 adding">
-                        <i class="fa fa-trash"></i> </span>
+    <div class="row" style="padding: 10px !important">
+      <div class="col-lg-8">
+        <div class="left-area">
+          <div class="cart-table">
+            <table class="table" style="background-color: antiquewhite;">
+              <thead>
+                <tr style="text-align: center;">
+                  <th class="d-sm-nones">Product</th>
 
-                      </span>
+                  <th class="d-sm-nones" width="30%">Details</th>
+                  <th class="d-sm-nones" style="text-align: left;">Quantity</th>
+                  <th class="d-sm-nones">Sub Total</th>
+                  <th class="d-sm-nones">Delete</th>
+                  <th class="d-sm-nones">Select</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="cremove3831">
+                  <td>
 
-                    </td>
-                    <td>
-                      <input type="checkbox" style="background-color: red; display: block;">
-                    </td>
-                  </tr>
+                    <img
+                      src="https://i1.fnp.com/images/pr/l/v20191113144513/gems-on-top-black-forest-cake-half-kg_1.jpg"
+                      alt="" class=" crtimg responsiveImage">
+                    <p class="pname"><a href="/item/cake365-plm9053dyi">cake365</a></p>
 
-                </tbody>
-              </table>
-            </div>
+                  </td>
+                  <td class="responsiveTags" style="text-align: center;">
+
+
+                    <b>Weight </b> 1 Kg<br>
+
+                    <b>Shape</b> Round<br>
+
+                    <b>Flavour</b> Default<br>
+
+                    <b>Prize</b> 200Rs
+
+
+                  </td>
+                  <td class="unit-price quantity names">
+                    <div class="qty ">
+                      <ul>
+                        <input type="hidden" class="size_price" value="1720">
+                        <li>
+                          <span class="qtminus1 reducing">
+                            <i class="fa fa-minus"></i>
+                          </span>
+                        </li>
+                        <li>
+                          <span class="qttotal1" id="qty3831">1</span>
+                        </li>
+                        <li>
+                          <span class="qtplus1 adding">
+                            <i class="fa fa-plus"></i>
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td class="total-price">
+                    <p id="prc3831" style="text-align: center;">
+                      ₹1720
+                    </p>
+                  </td>
+
+                  <td>
+
+                    <span class="qtplus1 adding">
+                      <center><i class="fa fa-trash"></i>
+                    </span></center>
+                    </span>
+
+                  </td>
+                  <td>
+                    <center> <input type="checkbox" style="background-color: red; display: block;"></center>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
           </div>
         </div>
-        <input type="hidden" class="addonss_price" value="0">
-        <div class="col-lg-4">
-          <div class="right-area">
-            <div class="order-box">
-              <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
-              <ul class="order-list">
-                <li>
-                  <p>
-                    Total MRP
-                  </p>
-                  <P>
-                    <b class="cart-total ctt">₹1720</b>
-
-                  </P>
-                </li>
-                <li>
-                  <p>
-                    Discount
-                  </p>
-                  <P>
-                    <b class="discount">₹0</b>
-                    <input type="hidden" id="d-val" value="₹0">
-                  </P>
-                </li>
-                <li style="display:none">
-                  <p>
-                    Tax
-                  </p>
-                  <P>
-                    <b>0%</b>
-                  </P>
-                </li>
-              </ul>
-              <div class="total-price">
+      </div>
+      <input type="hidden" class="addonss_price" value="0">
+      <div class="col-lg-4">
+        <div class="right-area">
+          <div class="order-box">
+            <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
+            <ul class="order-list">
+              <li>
                 <p>
-                  Total
+                  Total MRP
                 </p>
-                <p>
-                  <span class="main-total">₹1720</span>
-                </p>
+                <P>
+                  <b class="cart-total ctt">₹1720</b>
 
-              </div>
-              <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all taxes)</span></p><br>
-              <!-- <div class="cupon-box">
+                </P>
+              </li>
+              <li>
+                <p>
+                  Discount
+                </p>
+                <P>
+                  <b class="discount">₹0</b>
+                  <input type="hidden" id="d-val" value="₹0">
+                </P>
+              </li>
+              <li style="display:none">
+                <p>
+                  Tax
+                </p>
+                <P>
+                  <b>0%</b>
+                </P>
+              </li>
+            </ul>
+            <div class="total-price">
+              <p>
+                Total
+              </p>
+              <p>
+                <span class="main-total">₹1720</span>
+              </p>
+
+            </div>
+            <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all
+                taxes)</span></p><br>
+            <!-- <div class="cupon-box">
                 <div id="coupon-link">
                   Have a promotion code?
                 </div>
@@ -159,85 +207,110 @@
                   <button type="submit">Apply</button>
                 </form>
               </div> -->
-              <a data-target="#addonsModal" data-toggle="modal" class="order-btn" style="background-color: rgb(255, 105, 125);border-radius: 5px;">
-                Checkout
-                <i class="fa fa-arrow-right"></i>
-              </a>
-            </div>
+            <a data-target="#addonsModal" data-toggle="modal" class="order-btn"
+              style="background-color: rgb(255, 105, 125);border-radius: 5px;">
+              Checkout
+              <i class="fa fa-arrow-right"></i>
+            </a>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
-  <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header"
-          style="background-color: rgb(197, 143, 42);padding: 20px !important;">
-          <h4 class="modal-title text-center tb" style="color:#fff;">Add Extra Love For Your Loved
-            Ones</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        <div class="modal-body" style="height: 500px;                    overflow-y: scroll;">
-          <div class="container-fluid">
-            <div class="row" id="allAddons">
-              <div class="col-md-3 col-6 mt-3">
-                <a class="item" for="add_addons[]"
-                  style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-                  <input type="checkbox" name="add_addons[]" class="add_addons " data-id="28"
-                    value="28"
-                    style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
-                  <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
-                    <img class="img-fluid"
-                      src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg"
-                      alt="" style="width:100%;object-fit: cover;">
-                  </div>
-                  <div class="info" style="height: 88px; ">
-                    <h5 class="name responsiveName"
-                      style="text-align: center !important;float: inherit;font-size: 12px;">Party
-                      popper</h5>
+  <section class="product-details-page" style="background: whitesmoke;">
 
-                    <h4 class="price"
-                      style="text-align: center !important;float: inherit;font-size: 13px;">₹ 70
-                    </h4>
-                    <li class="d-block count ">
-                      <div class="qty">
-                        <ul>
-                          <li>
-                            <span class="qtminus">
-                              <i class="fa fa-minus"></i>
-                            </span>
-                          </li>
-                          <li>
-                            <span class="qttotal">1</span>
-                          </li>
-                          <li>
-                            <span class="qtplus">
-                              <i class="fa fa-plus"></i>
-                            </span>
-                          </li>
-                        </ul>
+
+
+    <div class="col-lg-7">
+      <div class="right-area">
+        <div class="product-info">
+          <h4 class="product-name"></h4>
+
+
+          <div class="info-meta-3">
+            <ul class="meta-list">
+
+
+              <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header" style="background-color: rgb(197, 143, 42);padding: 20px !important;">
+                      <h4 class="modal-title text-center tb" style="color:#fff;">Add Extra Love For Your Loved
+                        Ones</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body" style="height: 500px;                    overflow-y: scroll;">
+                      <div class="container-fluid">
+                        <div class="row" id="allAddons">
+                          <div class="col-md-3 col-6 mt-3">
+                            <a class="item" for="add_addons[]"
+                              style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+                              <input type="checkbox" name="add_addons[]" class="add_addons " data-id="28" value="28"
+                                style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
+                              <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+                                <img class="img-fluid"
+                                  src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg"
+                                  alt="" style="width:100%;object-fit: cover;">
+                              </div>
+                              <div class="info" style="height: 88px; ">
+                                <h5 class="name responsiveName"
+                                  style="text-align: center !important;float: inherit;font-size: 12px;">Party
+                                  popper</h5>
+
+                                <h4 class="price" style="text-align: center !important;float: inherit;font-size: 13px;">
+                                  ₹ 70
+                                </h4>
+                                <li class="d-block count ">
+                                  <div class="qty">
+                                    <ul>
+                                      <li>
+                                        <span class="qtminus">
+                                          <i class="fa fa-minus"></i>
+                                        </span>
+                                      </li>
+                                      <li>
+                                        <span class="qttotal">1</span>
+                                      </li>
+                                      <li>
+                                        <span class="qtplus">
+                                          <i class="fa fa-plus"></i>
+                                        </span>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </li>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
                       </div>
-                    </li>
+                    </div>
+                    <div class="modal-footer">
+                      <a id="qaddcrt" href="javascript:;"
+                        style="border-radius: 0px; background: #fff; border: 0px;display: flex;">
+                        <h5 style="padding: 20px ;font-weight: 900;"> Total Prize :₹ <span id="cost-with-addons"></span>
+                        </h5>
+                        <button type="button" class="btn btn-secondary" id="prod_with_addons"
+                          style="background-color: #b32443;">CONTINUE WITH ADDONS</button>
+                      </a>
+                    </div>
                   </div>
-                </a>
-              </div> 
-            </div>
+                </div>
+              </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <a id="qaddcrt" href="javascript:;"
-            style="border-radius: 0px; background: #fff; border: 0px;display: flex;">
-            <h5 style="padding: 20px ;font-weight: 900;"> Total Prize :₹ <span
-                id="cost-with-addons"></span></h5>
-            <button type="button" class="btn btn-secondary" id="prod_with_addons"
-              style="background-color: #b32443;">CONTINUE WITH ADDONS</button>
-          </a>
         </div>
       </div>
     </div>
-  </div>
+
+
+
+
+
+
+  </section>
+
 
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
 </body>
