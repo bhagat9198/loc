@@ -131,7 +131,9 @@
       for (let i of snapshotDocs) {
 
         var doc = i.data();
-        
+        if(doc.Password==undefined){
+          continue;
+        }
         if ((doc.Email).toUpperCase() == email.toUpperCase() && atob(doc.Password) == password) {
           count++;
           key = i;

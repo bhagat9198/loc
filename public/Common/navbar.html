@@ -101,10 +101,10 @@
                   <li>
                     <ul class="" style="padding-left: 10px;">
                       <li class="nav-item dropdown">
-                        <a class=" dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <img src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
-                            style="width: 30px ;object-fit: cover;padding: 2px;" class="rounded-circle">
+                            style="width: 30px ;height: 30px; object-fit: cover;padding: 2px;" class="rounded-circle">
 
                         </a>
                         <div class="dropdown-menu" style="padding: 10px; margin-left:-50%;margin-top:4%;"
@@ -119,7 +119,7 @@
                             </a>
                           </div>
                           <hr>
-                          <a class="dropdown-item" href=""><i class="fa fa-user"></i> Profile</a>
+                          <a class="dropdown-item" href="" onclick="checkifUser()"><i class="fa fa-user"></i> Profile</a>
                           <hr>
                           <a class="dropdown-item" href="#"><i class="fa fa-truck"></i> Track Orders</a>
                           <hr>
@@ -1024,6 +1024,13 @@
 <script>
   var checkUser;
   var timecount = 0;
+  function checkifUser(){
+    if(checkUser==null ||checkUser =="null"){
+      window.location="/Auth/login.html"
+    }else{
+      window.location="/UserDash/customerProfile.html"
+    }
+  }
   const inter = setInterval(function () {
     timecount++;
     if (timecount == 10) {
