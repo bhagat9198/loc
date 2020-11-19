@@ -38,7 +38,6 @@
                 <thead>
                   <tr>
                     <th class="d-sm-nones">Product </th>
-                    
                     <th class="d-sm-nones" width="30%">Details</th>
                     <th class="d-sm-nones">Unit Price</th>
                     <th class="d-sm-nones">Sub Total</th>
@@ -46,15 +45,13 @@
                     <th class="d-sm-nones">Select</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr class="cremove3831">
+                <tbody id="cartBody">
+                  <!-- <tr class="cremove3831">
                     <td >
-                      
                         <img
                           src="https://i1.fnp.com/images/pr/l/v20191113144513/gems-on-top-black-forest-cake-half-kg_1.jpg"
                           alt="" style="width: 60px ;object-fit: cover;">
                         <p class="name"><a href="/item/cake365-plm9053dyi">cake365</a></p>
-                    
                     </td>
                     <td class="namess">
                       <b>Weight : </b> 1<br>
@@ -87,66 +84,42 @@
                         ₹1720
                       </p>
                     </td>
-                   
                     <td>
-
                       <span class="qtplus1 adding">
                         <i class="fa fa-trash"></i> </span>
-
                       </span>
-
                     </td>
                     <td>
                       <input type="checkbox" style="background-color: red; display: block;">
                     </td>
-                  </tr>
-
+                  </tr> -->
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-        <input type="hidden" class="addonss_price" value="0">
         <div class="col-lg-4">
           <div class="right-area">
-            <div class="order-box">
+            <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to checkout</div>
+            <div class="order-box" style="display: none;">
               <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
               <ul class="order-list">
-                <li>
+                <!-- <li>
                   <p>
                     Total MRP
                   </p>
                   <P>
                     <b class="cart-total ctt">₹1720</b>
-
                   </P>
-                </li>
-                <li>
-                  <p>
-                    Discount
-                  </p>
-                  <P>
-                    <b class="discount">₹0</b>
-                    <input type="hidden" id="d-val" value="₹0">
-                  </P>
-                </li>
-                <li style="display:none">
-                  <p>
-                    Tax
-                  </p>
-                  <P>
-                    <b>0%</b>
-                  </P>
-                </li>
+                </li> -->
               </ul>
               <div class="total-price">
                 <p>
                   Total
                 </p>
                 <p>
-                  <span class="main-total">₹1720</span>
+                  <span class="cart-total"></span>
                 </p>
-
               </div>
               <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all taxes)</span></p><br>
               <!-- <div class="cupon-box">
