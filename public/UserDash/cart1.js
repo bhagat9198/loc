@@ -162,8 +162,8 @@ const displayCart = async () => {
         <p data-index="${index}" id="subprice_${rand}">${prodPrice}</p>
       </td>
       <td>
-        <span class="qtplus1 adding" style="cursor:pointer" data-id="${rand}" data-index="${index}" onclick="deleteCartProd(event)">
-          <i class="fa fa-trash" data-index="${index}" data-id="${rand}"></i> </span>
+        <span class="qtplus1 adding" style="cursor:pointer" data-id="${rand}" data-index="${index}" data-cartid="${prod.cartId}" onclick="deleteCartProd(event)">
+          <i class="fa fa-trash" data-cartid="${prod.cartId}" data-index="${index}" data-id="${rand}"></i> </span>
         </span>
       </td>
       <td>
@@ -177,6 +177,8 @@ const displayCart = async () => {
 
 
 const deleteCartProd = e => {
+  const cartId = e.target.dataset.cartid;
+  console.log(cartId);
   let counter = e.target.dataset.index;
   let id = e.target.dataset.id;
   console.log(id);
@@ -191,6 +193,7 @@ const deleteCartProd = e => {
   }
   console.log('done');
   document.querySelector(`#row__${id}`).remove();
+  updateSelectedProds(cartId, 0, 'del');
 }
 
 const SELECTED_PRODS = [];
@@ -208,17 +211,28 @@ const selectProds = (e, current) => {
   displayCheckout();
 }
 
-const updateSelectedProds = (id, qty) => {
+const updateSelectedProds = (id, qty, del = 'data') => {
   let c = -1;
-  for(let sp of SELECTED_PRODS) {
-    c++;
-    if(+sp.cartId === +id) {
-      // console.log(sp.cartId, id);
-      SELECTED_PRODS[c].qty = qty;
+  console.log(del);
+    for(let sp of SELECTED_PRODS) {
+      console.log(sp.cartId, id)
+      c++;
+      if(+sp.cartId === +id) {
+        alert(del)
+        if(del == "del") {
+          // console.log(sp.cartId, id);
+          SELECTED_PRODS.splice(c, 1);
+          console.log(SELECTED_PRODS);
+        } else {
+          alert(del);
+          SELECTED_PRODS[c].qty = qty;
+        }
+        // console.log(sp.cartId, id);
+      }
     }
-  }
-  // console.log(SELECTED_PRODS);
-  displayCheckout();
+    // console.log(SELECTED_PRODS);
+    displayCheckout();
+
 }
 
 const calculateSubPrice = id => {
@@ -266,25 +280,32 @@ const cartTotalHTML = document.querySelector('.cart-total');
 const emptyCheckoutHTML = document.querySelector('#empty-checkout');
 const orderBoxHTML = document.querySelector('.order-box');
 const displayCheckout = () => {
-  emptyCheckoutHTML.style.display = 'none';
-  orderBoxHTML.style.display = 'block';
-  let li = '';
-  let total = 0;
-  SELECTED_PRODS.map(p => {
-    let pPrice = +p.qty * +p.price;
-    total = total + pPrice;
-    li += `
-    <li>
-      <p>
-        ${p.name}
-      </p>
-      <P>
-        <b class="cart-total ctt">₹${pPrice}</b>
-      </P>
-    </li>
-    `;
-  })
-
-  orderListHTML.innerHTML = `${li}`;
-  cartTotalHTML.innerHTML = `₹${total}`;
+  if(SELECTED_PRODS.length > 0) {
+    emptyCheckoutHTML.style.display = 'none';
+    orderBoxHTML.style.display = 'block';
+    let li = '';
+    let total = 0;
+    console.log(SELECTED_PRODS);
+    SELECTED_PRODS.map(p => {
+      let pPrice = +p.qty * +p.price;
+      total = total + pPrice;
+      li += `
+      <li>
+        <p>
+          ${p.name}
+        </p>
+        <P>
+          <b class="cart-total ctt">₹${pPrice}</b>
+        </P>
+      </li>
+      `;
+    })
+  
+    orderListHTML.innerHTML = `${li}`;
+    cartTotalHTML.innerHTML = `₹${total}`;
+  } else {
+    emptyCheckoutHTML.style.display = 'block';
+    orderBoxHTML.style.display = 'none';
+  }
+  
 }
