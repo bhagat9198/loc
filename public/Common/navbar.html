@@ -576,7 +576,7 @@
         </nav>
       </aside>
       <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
-        <div class="row">
+        <div class="row" style="margin-left: 0px !important;">
           <div class="col-md-1"></div>
           <div class="col-md-10 col-12 p-0 mt-3 ml-4">
             <div class="input-group mb-2 mt-2">
@@ -697,17 +697,17 @@
                   </div>
 
                   <div class="dropdown-cart-action">
-                    <a href="" class="mybtn1" style="background-color: rgb(20, 113, 167);">Checkout</a>
+                    <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: rgb(20, 113, 167);">View In Cart</a>
                   </div>
                 </div>
               </div>
             </li>
-            <li class="wishlist" data-toggle="tooltip" data-placement="top" title="Wish">
+            <!-- <li class="wishlist" data-toggle="tooltip" data-placement="top" title="Wish">
               <a href="javascript:;" data-toggle="modal" id="wish-btn" data-target="#comment-log-reg" class="wish">
                 <i class="fa fa-heart"></i>
                 <span id="wishlist-count">0</span>
               </a>
-            </li>
+            </li> -->
 
 
 
@@ -1062,6 +1062,7 @@
           counter++;
 
           userDoc = doc.data();
+          document.getElementById("cart-count").innerHTML=userDoc.cart.length
           if (userDoc.UserName == null) {
             userDoc.UserName = "User@LOC";
           }

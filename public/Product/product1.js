@@ -598,6 +598,10 @@ const addToCart = async(e) => {
       });
     }
     await userRef.update(docData);
+    document.getElementById("success").style.display="block"
+    setTimeout(function(){
+      document.getElementById("success").style.display="none"
+    },2000)
     console.log('updated');
   });
   console.log('done');

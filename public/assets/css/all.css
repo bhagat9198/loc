@@ -14900,7 +14900,7 @@ ul.attributes li a:hover {
         width: 100%
     }
     .owl-carousel .owl-item img {
-        height: 200px;
+        /* height: 200px; */
         width: 600px !important;
         object-fit:fill;
        
@@ -35232,7 +35232,7 @@ p.product-unit-price {
     }
     .cartpage .left-area .cart-table .table td,
     .table th {
-        /* padding: 0.25rem !important; */
+        padding: 10px !important;
     }
     .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-1 .title {
         font-size: 34px;

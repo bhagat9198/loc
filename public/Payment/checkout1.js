@@ -176,7 +176,8 @@ const calculatePricing = (discount = 0) => {
 };
 
 const coupanApplyHTML = document.querySelector("#coupanApply");
-
+var appliedCoupan;
+ let cType, cAmt, discount;
 const checkCoupon = async (e) => {
   let coupanDetails, coupanId;
   let flag = false;
@@ -191,6 +192,7 @@ const checkCoupon = async (e) => {
         coupanDetails = docData;
         coupanId = coupanId;
         flag = true;
+        appliedCoupan=code;
         break;
       }
     }
@@ -199,26 +201,50 @@ const checkCoupon = async (e) => {
   if (flag) {
     console.log("flag", coupanDetails);
     // add snackbar
-    let cType, cAmt, discount;
+   
     if (coupanDetails.category === "percentage") {
+
       cType = "percentage";
       cAmt = coupanDetails.amount;
 
       discount = +basicPriceCost * (+cAmt / 100);
+
     } else {
+
       cType = "price";
       cAmt = coupanDetails.amount;
       discount = +cAmt;
+      document.getElementById("success").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("success").style.display = "none";
+        document.getElementById("applied").innerHTML="Applied &nbsp;"+appliedCoupan +' &nbsp;<i style="color: red; cursor:pointer" onclick="removeCoupan()" class="fa fa-times"></i>';
+        document.getElementById("applied").style.display="block";
+        $("#coupon-form,#check-coupon-form").toggle();
+        document.getElementById("coupon-link").style.display="none"
+      }, 2000)
+
+    
     }
     console.log(discount, typeof discount);
     calculatePricing(discount);
     coupanApplyHTML.disable = true;
-    document.querySelector("#code").disabled = true;
+    document.querySelector("#code").value = "";
+    
   } else {
     // invalid
+    document.getElementById("fail").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("fail").style.display = "none";
+    }, 2000)
   }
 };
-
+function removeCoupan(){
+  discount -= cAmt;
+  
+  document.getElementById("applied").style.display="none";
+  calculatePricing(discount);
+  document.getElementById("coupon-link").style.display="block"
+}
 coupanApplyHTML.addEventListener("click", checkCoupon);
 
 const form1ShippingHTML = document.querySelector("#form1-shipping");
@@ -261,12 +287,12 @@ const form1 = (e) => {
   if (shipDiffAddress.checked) {
     SHIPPING_DATA.differtAddress = true;
     SHIPPING_DATA.alt_name = shipping_name;
-    SHIPPING_DATA.alt_phone = shipping_phone; 
+    SHIPPING_DATA.alt_phone = shipping_phone;
     SHIPPING_DATA.alt_address = shipping_address;
     SHIPPING_DATA.alt_landmark = shipping_landmark;
     SHIPPING_DATA.alt_country = shipping_country;
     SHIPPING_DATA.alt_city = shipping_city;
-    SHIPPING_DATA.alt_zip = shipping_zip; 
+    SHIPPING_DATA.alt_zip = shipping_zip;
   } else {
     SHIPPING_DATA.differtAddress = false;
   }
@@ -300,7 +326,7 @@ const setDateAndTime = () => {
 
   console.log(shipVal);
   if (shipVal === "free") {
-    
+
     shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
     // console.log(hours);
     perfectHoursHTML.style.display = "none";
@@ -478,12 +504,12 @@ shippingDateHTML.addEventListener("change", changeDate);
 document.querySelectorAll('input[name=shipping]').forEach(el => {
   el.addEventListener('change', e => {
     console.log(e.target.value);
-    if(e.target.value === 'free') {
+    if (e.target.value === 'free') {
       finalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
-    } else if(e.target.value === 'perfect') {
-      let temp = TOTAL_COST + 150; 
+    } else if (e.target.value === 'perfect') {
+      let temp = TOTAL_COST + 150;
       finalCostHTML.innerHTML = `₹ ${temp}`;
-    } else if(e.target.value === 'midnight') {
+    } else if (e.target.value === 'midnight') {
       let temp = TOTAL_COST + 200;
       finalCostHTML.innerHTML = `₹ ${temp}`;
     } else {
