@@ -564,22 +564,6 @@ kbd kbd {
     font-weight: 700
 }
 
-pre {
-    display: block;
-    font-size: 87.5%;
-    color: #212529
-}
-
-pre code {
-    font-size: inherit;
-    color: inherit;
-    word-break: normal
-}
-
-.pre-scrollable {
-    max-height: 340px;
-    overflow-y: scroll
-}
 
 .container {
     width: 100%;
@@ -35248,7 +35232,7 @@ p.product-unit-price {
     }
     .cartpage .left-area .cart-table .table td,
     .table th {
-        padding: 0.25rem !important;
+        /* padding: 0.25rem !important; */
     }
     .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-1 .title {
         font-size: 34px;

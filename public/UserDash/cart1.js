@@ -130,12 +130,12 @@ const displayCart = async () => {
       <td >
           <img
             src="${product.mainImgUrl}"
-            alt="Lake of Lakes " style="width: 60px ;object-fit: cover;">
-          <p class="name"><a href="../Product/product.html?prod=${
+            alt="Lake of Lakes " class=" crtimg responsiveImage">
+          <p class="pname"><a class="pname" href="../Product/product.html?prod=${
             prod.prodId
           }&&cat=${prod.cat}">${product.name}</a></p>
       </td>
-      <td class="namess">
+      <td class="responsiveTags" style="text-align: center;">
         ${prod.pricing.weight ? cakeDetails : ""}
         <b>Cost :</b> <span id="eachprice__${rand}">₹${prodPrice}</span>
       </td>
@@ -163,11 +163,11 @@ const displayCart = async () => {
       </td>
       <td>
         <span class="qtplus1 adding" style="cursor:pointer" data-id="${rand}" data-index="${index}" data-cartid="${prod.cartId}" onclick="deleteCartProd(event)">
-          <i class="fa fa-trash" data-cartid="${prod.cartId}" data-index="${index}" data-id="${rand}"></i> </span>
+         <center> <i class="fa fa-trash" data-cartid="${prod.cartId}" data-index="${index}" data-id="${rand}"></i> </center></span>
         </span>
       </td>
       <td>
-        <input type="checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;">
+       <center> <input type="checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;"></center>
       </td>
     </tr>
     `;
