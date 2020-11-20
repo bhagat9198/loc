@@ -202,7 +202,7 @@ const displayProds = async (arrProds) => {
   for (let p of arrProds) {
     // console.log(p);
     card += `
-			<div class="col-lg-2  col-6 pb-3 pt-2">
+			<div class="col-lg-2  col-6 pb-3 pt-2" >
 				<a href="../Product/product.html?prod=${p.prodId}&&cat=${
       p.prodData.wholeCategory.split("__")[0]
     }" class="item">

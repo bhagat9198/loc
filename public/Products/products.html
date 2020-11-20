@@ -30,14 +30,21 @@
 <style>
 	@media only screen and (max-width:700px ){
 		.responsive-sec{
-			display: none !important; 
-			visibility: hidden;
+			/* display: none !important; 
+			visibility: hidden; */
+			padding: 10px;
+		}
+		.responsive-secP{
+			display: none !important;
 		}
 		.responsive-image{
 			object-fit: contain !important;	
 		}
 		.responsive-name{
 			font-size: 40px !important;
+		}
+		.catHead{
+			background-color: transparent !important;
 		}
 	}
 </style>
@@ -70,16 +77,16 @@
 			
 
 					<div class="item-filter">
-						<div style="float: left;position: relative;padding: 10px;background-color: rgb(211, 203, 191);width: 100%;margin: 1%;border-radius: 10px;">
+						<div class="catHead" style="float: left;position: relative;padding: 10px;background-color: rgb(211, 203, 191);width: 100%;margin: 1%;border-radius: 10px;">
 							<h3 class="productHeading">Please wait Loading.. </h3>
 						</div>
 		
 						<ul class="filter-list responsive-sec" style="float: right;">
 							<li class="item-short-area">
-								<p>Sort By :</p>
+								<p class="responsive-secP">Filters</p>
 								<select id="sortby" name="sort" class="short-item" style="border-radius: 5px;">
 									<!--<option value="date_desc">Latest Product</option>-->
-									<option value="date_desc">Popularity</option>
+									<option value="date_desc">Sort By</option>
 									<!--<option value="date_asc">Oldest Product</option>-->
 									<!--<option value="price_asc">Lowest Price</option>-->
 									<option value="price_asc">Price - Low To High</option>

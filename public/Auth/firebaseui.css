@@ -1121,6 +1121,7 @@ dialog.fixed {
 
 .firebaseui-list-item {
     direction: ltr;
+    margin-left: 50px !important;
     margin: 0;
     padding: 0;
     text-align: left
