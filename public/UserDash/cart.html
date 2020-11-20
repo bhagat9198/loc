@@ -140,10 +140,10 @@
         </div>
         <div class="col-lg-4">
           <div class="right-area">
-            <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to checkout</div>
-            <div class="order-box" style="display: none;">
+            <div class="order-box" >
               <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
               <ul class="order-list">
+                <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to checkout</div>
                 <!-- <li>
                   <p>
                     Total MRP
@@ -158,7 +158,7 @@
                   Total
                 </p>
                 <P>
-                  <span class="cart-total"></span>
+                  <span class="cart-total">₹ 0</span>
                 </P>
               </li>
               <li style="display:none">
@@ -177,11 +177,11 @@
                   <button type="submit">Apply</button>
                 </form>
               </div> -->
-            <a data-target="#addonsModal" data-toggle="modal" class="order-btn" id="checkoutBtn" 
-              style="background-color: rgb(255, 105, 125);border-radius: 5px;">
+            <button data-target="#addonsModal" data-toggle="modal" class="order-btn" id="checkoutBtn" disabled
+              style="background-color: transparent;color: red;outline: none; border: 1px solid red; border-radius: 5px; text-align: center; vertical-align: middle !important;"> 
               Checkout
               <i class="fa fa-arrow-right"></i>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -258,7 +258,7 @@
                         <h5 style="padding: 20px ;font-weight: 900;"> Total Prize :₹ <span id="cost-with-addons"></span>
                         </h5>
                         <button type="button" class="btn btn-secondary" id="prod_with_addons"
-                          style="background-color: #b32443;">CONTINUE WITH ADDONS</button>
+                          style="background-color: #b32443;">CHECKOUT WITH ADDONS</button>
                       </a>
                     </div>
                   </div>

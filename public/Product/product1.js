@@ -532,32 +532,60 @@ const buyProd = async (e) => {
   await userRef.get().then(async (doc) => {
     let docData = doc.data();
     if (docData.orders) {
-      docData.orders.push({
-        prodId: PRODUCT_ID,
-        cat: CATEGORY_ID,
-        message: document.querySelector("#prodMsg").value,
-        heart: HEART,
-        eggless: EGGLESS,
-        pricing: WEIGHT_PRICE,
-        qty: PROD_QTY,
+      let cake = null;
+      if (WEIGHT_PRICE.weight) {
+        cake = {};
+        cake.heart = HEART;
+        cake.eggless = EGGLESS;
+        cake.weight = WEIGHT_PRICE.weight;
+      }
+      let orderData = {
         orderId: orderId,
-        addAddons: addonsSelected,
-        status: false,
-      });
+        status: "selected",
+        type: "single",
+        addons: addonsSelected,
+        products: [
+          {
+            prodId: PRODUCT_ID,
+            cat: CATEGORY_ID,
+            message: document.querySelector("#prodMsg").value,
+            qty: PROD_QTY,
+          },
+        ]
+      }
+      if(cake) {
+        orderData.products[0].cake = cake;
+        console.log(orderData);
+      }
+      docData.orders.push(orderData);
     } else {
       docData.orders = [];
-      docData.orders.push({
-        prodId: PRODUCT_ID,
-        cat: CATEGORY_ID,
-        message: document.querySelector("#prodMsg").value,
-        heart: HEART,
-        eggless: EGGLESS,
-        pricing: WEIGHT_PRICE,
-        qty: PROD_QTY,
+      let cake = null;
+      if (WEIGHT_PRICE.weight) {
+        cake = {};
+        cake.heart = HEART;
+        cake.eggless = EGGLESS;
+        cake.weight = WEIGHT_PRICE.weight;
+      }
+      let orderData = {
         orderId: orderId,
-        addAddons: addonsSelected,
-        status: false,
-      });
+        status: "selected",
+        type: "single",
+        addons: addonsSelected,
+        products: [
+          {
+            prodId: PRODUCT_ID,
+            cat: CATEGORY_ID,
+            message: document.querySelector("#prodMsg").value,
+            qty: PROD_QTY,
+          },
+        ]
+      }
+      if(cake) {
+        orderData.products[0].cake = cake;
+      }
+      console.log(orderData);
+      docData.orders.push(orderData);
     }
     await userRef.update(docData);
   });
@@ -568,7 +596,7 @@ prodWithAddonsHTML.addEventListener("click", buyProd);
 
 const addToCartBtnHTML = document.querySelector("#addToCartBtn");
 
-const addToCart = async(e) => {
+const addToCart = async (e) => {
   await checkAuth();
   const cartId = Math.random();
   await userRef.get().then(async (doc) => {
@@ -598,13 +626,13 @@ const addToCart = async(e) => {
       });
     }
     await userRef.update(docData);
-    document.getElementById("success").style.display="block"
-    setTimeout(function(){
-      document.getElementById("success").style.display="none"
-    },2000)
-    console.log('updated');
+    document.getElementById("success").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("success").style.display = "none";
+    }, 2000);
+    console.log("updated");
   });
-  console.log('done');
+  console.log("done");
 };
 
 addToCartBtnHTML.addEventListener("click", addToCart);

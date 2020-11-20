@@ -118,33 +118,33 @@
 
                           <div class="col-lg-6">
                             <input class="form-control" type="text" name="name" id="uname" placeholder="Full Name"
-                              value="" required>
+                              value="bhagat" required>
                           </div>
                           <div class="col-lg-6">
                             <input class="form-control phoneee" type="text" id="uphone" name="phone" maxlength="10"
-                              placeholder="Phone Number" value="" required onkeypress="return onlyNumber(event)">
+                              placeholder="Phone Number" value="23564" required onkeypress="return onlyNumber(event)">
                           </div>
                           <div class="col-lg-6">
                             <input class="form-control" type="text" id="uemail" name="email" placeholder="Email"
-                              value="" required>
+                              value="b@b.com" required>
                           </div>
                           <div class="col-lg-6">
                             <input class="form-control" type="text" id="uaddress" name="address" placeholder="Address"
-                              value="" required>
+                              value="xdvfcgbvhnm" required>
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control" type="text" name="landmark" placeholder="Landmark">
+                            <input class="form-control" type="text" name="landmark" placeholder="Landmark" required value="dfcghbjk">
                           </div>
                           <div class="col-lg-6">
-                            <input type="text" readonly="readonly" class="form-control customer_country"
+                            <input type="text" readonly="readonly" class="form-control customer_country" required
                               name="customer_country" value="India">
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control" type="text" name="city" value="Lucknow" readonly="readonly">
+                            <input class="form-control" type="text" name="city" required value="Lucknow" readonly="readonly">
                           </div>
                           <div class="col-lg-6">
                             <input class="form-control" type="text" name="zip" id="locality" placeholder="Pin Code"
-                              value="" required>
+                              value="560097" required>
                             <div id="postal_code"></div>
                           </div>
                         </div>
@@ -220,12 +220,12 @@
                 <div class="content-box">
                   <div class="content">
                     <div class="order-area">
-                      <div class="order-item">
+                      <!-- <div class="order-item">
                         <div class="product-img">
                           <div class="d-flex">
                             <img src=" //lakeofcakes.com/assets/images/products/1598604187M48yYCke.png" height="80"
                               width="80" class="p-1">
-                          </div>
+                          </div> 
                         </div>
                         <div class="product-content">
                           <p class="name"><a href="//lakeofcakes.com/item/5-star-chocolate-bouquet-loc12557"
@@ -244,13 +244,13 @@
                             </p>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                     <div class="row">
                       <div class="col-lg-12 mt-3">
                         <div class="bottom-area">
                           <a href="javascript:;" id="step1-btn" class="mybtn1 mr-3 3">Back</a>
-                          <a href="javascript:;" id="step3-btn" class="mybtn1 4">Continue</a>
+                          <a href="javascript:;" id="step3-btn" class="mybtn1 4" id="prodFinal" onclick="displayShippingInfo(event)">Continue</a>
                         </div>
                       </div>
                     </div>
@@ -273,15 +273,41 @@
                           <p id="shipping_location"></p>
                         </li>
                         <li>
+                          <p id="shipping_landmark"></p>
+                        </li>
+                        <li>
                           <p id="shipping_phone"></p>
                         </li>
                         <li>
                           <p id="shipping_email"></p>
                         </li>
+                        <li>
+                          <p id="shipping_msg"></p>
+                        </li>
                       </ul>
+                      <div id="alt-address" style="display: none;">
+                        <h4 class="title">
+                          Alternative Shipping Info
+                        </h4>
+                        <ul class="info-list">
+                          <li>
+                            <p id="alt_shipping_user"></p>
+                          </li>
+                          <li>
+                            <p id="alt_shipping_location"></p>
+                          </li>
+                          <li>
+                            <p id="alt_shipping_landmark"></p>
+                          </li>
+                          <li>
+                            <p id="alt_shipping_phone"></p>
+                          </li>
+                          <li>
+                            <p id="alt_shipping_email"></p>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-
-
                     <div class="row">
                       <div class="col-lg-12 mt-3">
                         <div class="bottom-area">
@@ -333,8 +359,7 @@
                             <div class="perfect-hours" id="perfect-hours" style="display: none;">
                               <input type="radio" name="shipping_time" id="perfect_10" value="10">Between 10 AM to 11 AM
                               <br>
-                              <input type="radio" name="shipping_time" id="perfect_11" value="11">Between 11 AM to 12
-                              Noon <br>
+                              <input type="radio" name="shipping_time" id="perfect_11" value="11">Between 11 AM to 12 Noon <br>
                               <input type="radio" name="shipping_time" id="perfect_12" value="12">Between 12 Noon to 1
                               PM <br>
                               <input type="radio" name="shipping_time" id="perfect_1" value="1">Between 1 PM to 2 PM
@@ -364,7 +389,7 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary contn" data-dismiss="modal" id="registerTime"
+                  <button type="button" class="btn btn-secondary contn" data-dismiss="modal" id="registerTime" disabled
                     style="background-color:rgb(230, 56, 3)">CONTINUE</button>
                 </div>
               </div>
@@ -378,17 +403,28 @@
             <div class="order-box">
               <h4 class="title">PRICE DETAILS</h4>
               <ul class="order-list">
-                <li>
+                <small>Basic Price</small>
+                <span id="bp-span">
+                </span>
+                <!-- <li>
                   <p>
                     Basic Price
                   </p>
                   <P>
                     <b class="bp" id="bp"></b>
                   </P>
-                </li>
-                <span id="extra-price">
-
-                </span>
+                </li> -->
+              </ul>
+              <div class="total-price">
+                <p>
+                  Sub Total
+                </p>
+                <p>
+                  <span id="sub-total-cost"></span>
+                </p>
+              </div>
+              <span id="discount"></span>
+              <!-- <ul class="order-list">
                 <li>
                   <p>
                     Discount
@@ -400,21 +436,23 @@
               </ul>
               <div class="total-price">
                 <p>
-                  Sub Total
+                  After Discount
                 </p>
                 <p>
                   <span id="discount-cost"></span>
                 </p>
-              </div>
+              </div> -->
               <ul class="order-list">
-                <li>
+                <small>GST Price</small>
+                <span id="gst"></span>
+                <!-- <li>
                   <p>
                     GST
                   </p>
                   <P>
                     <b class="gst" id="gst"></b>
                   </P>
-                </li>
+                </li> -->
                 <li>
                   <p>
                     Addons
@@ -589,15 +627,15 @@
     $('#pills-step3-tab').removeClass('disabled');
     $('#pills-step3-tab').click();
 
-    var shipping_user = !$('input[name="shipping_name"]').val() ? $('input[name="name"]').val() : $('input[name="shipping_name"]').val();
-    var shipping_location = !$('input[name="shipping_address"]').val() ? $('input[name="address"]').val() : $('input[name="shipping_address"]').val();
-    var shipping_phone = !$('input[name="shipping_phone"]').val() ? $('input[name="phone"]').val() : $('input[name="shipping_phone"]').val();
-    var shipping_email = !$('input[name="shipping_email"]').val() ? $('input[name="email"]').val() : $('input[name="shipping_email"]').val();
+    // var shipping_user = !$('input[name="shipping_name"]').val() ? $('input[name="name"]').val() : $('input[name="shipping_name"]').val();
+    // var shipping_location = !$('input[name="shipping_address"]').val() ? $('input[name="address"]').val() : $('input[name="shipping_address"]').val();
+    // var shipping_phone = !$('input[name="shipping_phone"]').val() ? $('input[name="phone"]').val() : $('input[name="shipping_phone"]').val();
+    // var shipping_email = !$('input[name="shipping_email"]').val() ? $('input[name="email"]').val() : $('input[name="shipping_email"]').val();
 
-    $('#shipping_user').html('<i class="fas fa-user"></i>' + shipping_user);
-    $('#shipping_location').html('<i class="fas fas fa-map-marker-alt"></i>' + shipping_location);
-    $('#shipping_phone').html('<i class="fas fa-phone"></i>' + shipping_phone);
-    $('#shipping_email').html('<i class="fas fa-envelope"></i>' + shipping_email);
+    // $('#shipping_user').html('<i class="fas fa-user"></i>' + shipping_user);
+    // $('#shipping_location').html('<i class="fas fas fa-map-marker-alt"></i>' + shipping_location);
+    // $('#shipping_phone').html('<i class="fas fa-phone"></i>' + shipping_phone);
+    // $('#shipping_email').html('<i class="fas fa-envelope"></i>' + shipping_email);
 
     $('#pills-step1-tab').addClass('active');
     $('#pills-step2-tab').addClass('active');
@@ -634,7 +672,6 @@
 
 
   $(document).on('submit', '#step1-form', function () {
-
     var val = $('#sub').val();
     var total = $('#grandtotal').val();
     total = Math.round(total);
@@ -659,16 +696,13 @@
       return false;
     }
     else {
-
       return true;
     }
   });
 
 
   $(".customer_country").val('India').trigger('change');
-
   function onlyNumber(evt) {
-
     var charCode = (evt.which) ? evt.which : event.keyCode
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
@@ -686,7 +720,6 @@
   var modalVisited = 0;
   $(".mybtn1").click(function () {
     if (btnc == 0) {
-
       let name = document.querySelector('#uname').value;
       let email = document.querySelector('#uemail').value;
       let phone = document.querySelector('#uphone').value;
