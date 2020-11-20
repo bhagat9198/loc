@@ -60,8 +60,7 @@
 
 
 <section class="top-header top-nav" style="background: #f1f1f1;">
-  <div class="container-fluid remove-padding topnaves"
-    style="background: #f1f1f1;;
+  <div class="container-fluid remove-padding topnaves" style="background: #f1f1f1;;
     background-size: 617px; background-image: url();height: 35px !important;padding: 0px !important;">
     <div class="container topcnt">
       <div class="row" style="justify-content: flex-end;">
@@ -119,7 +118,8 @@
                             </a>
                           </div>
                           <hr>
-                          <a class="dropdown-item" href="" onclick="checkifUser()"><i class="fa fa-user"></i> Profile</a>
+                          <a class="dropdown-item" href="" onclick="checkifUser()"><i class="fa fa-user"></i>
+                            Profile</a>
                           <hr>
                           <a class="dropdown-item" href="#"><i class="fa fa-truck"></i> Track Orders</a>
                           <hr>
@@ -576,7 +576,7 @@
         </nav>
       </aside>
       <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
-        <div class="row">
+        <div class="row" style="margin-left: 0px !important;">
           <div class="col-md-1"></div>
           <div class="col-md-10 col-12 p-0 mt-3 ml-4">
             <div class="input-group mb-2 mt-2">
@@ -644,9 +644,9 @@
         <div class="helpful-links mt-md-3 cartres">
           <ul class="helpful-links-inner" style="display: flex;">
             <li class="my-dropdown" data-toggle="tooltip" data-placement="top" title="Cart">
-              <a href="javascript:;" class="cart carticon">
+              <a href="#cart" class="cart carticon">
                 <div class="icon">
-                  <i class="fa fa-shopping-cart"></i>
+                  <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
                   <span class="cart-quantity" id="cart-count">0</span>
                 </div>
 
@@ -697,17 +697,17 @@
                   </div>
 
                   <div class="dropdown-cart-action">
-                    <a href="" class="mybtn1" style="background-color: rgb(20, 113, 167);">Checkout</a>
+                    <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: rgb(20, 113, 167);">View In Cart</a>
                   </div>
                 </div>
               </div>
             </li>
-            <li class="wishlist" data-toggle="tooltip" data-placement="top" title="Wish">
+            <!-- <li class="wishlist" data-toggle="tooltip" data-placement="top" title="Wish">
               <a href="javascript:;" data-toggle="modal" id="wish-btn" data-target="#comment-log-reg" class="wish">
                 <i class="fa fa-heart"></i>
                 <span id="wishlist-count">0</span>
               </a>
-            </li>
+            </li> -->
 
 
 
@@ -1013,22 +1013,29 @@
     $('.drobt0').removeClass('colapse');
   }
 
-  
 
 
 
-  
+
+
 </script>
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
   var checkUser;
   var timecount = 0;
-  function checkifUser(){
-    if(checkUser==null ||checkUser =="null"){
-      window.location="/Auth/login.html"
-    }else{
-      window.location="/UserDash/customerProfile.html"
+  function checkifUser() {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      window.location = "/UserDash/customerProfile.html"
+    }
+  }
+  function redirectToCart() {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      window.location = "/UserDash/cart.html"
     }
   }
   const inter = setInterval(function () {
@@ -1055,11 +1062,12 @@
           counter++;
 
           userDoc = doc.data();
+          document.getElementById("cart-count").innerHTML=userDoc.cart.length
           if (userDoc.UserName == null) {
             userDoc.UserName = "User@LOC";
           }
-        
-          if (userDoc.Image == null || userDoc.Image=="null" ||userDoc.Image==undefined) {
+
+          if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
             userDoc.Image = "../assets/images/userIcon.png"
           }
 
@@ -1113,7 +1121,7 @@
 </style>
 
 <script>
-  
+
   $(".drobt").click(function () {
     if ($('.drobt0').hasClass('drobt1')) {
       $('.drobt0').removeClass('drobt1');

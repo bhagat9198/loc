@@ -28,6 +28,24 @@
     z-index: 999;
   }
 
+  input[type=radio]:checked~.check {
+    border: 5px solid #ff0d6a !important;
+  }
+
+  input[type=radio]:checked~.check::before {
+    background: #ff9e0d !important;
+  }
+
+  input[type=radio]:checked~label {
+    color: #81247d !important;
+  }
+
+  .checkoutRadio {
+    font-size: 15px;
+    font-weight: 700;
+
+  }
+
   @media only screen and (min-width:900px) {
     #sectionPayment {
       background-image: url('https://img.wallpapersafari.com/desktop/1680/1050/64/85/9cgUjb.jpg') !important;
@@ -56,7 +74,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link disabled"  id="pills-step2-tab"  data-toggle="pill" href="#pills-step2" role="tab"
+                  <a class="nav-link disabled" id="pills-step2-tab" data-toggle="pill" href="#pills-step2" role="tab"
                     aria-controls="pills-step2" aria-selected="false">
                     <span>2</span> Orders
                     <i class="fas fa-dolly"></i>
@@ -91,7 +109,7 @@
                           </div>
                         </div>
                       </div> -->
-                    <form id="form1-shipping">
+                    <form id="form1-shipping" class="checkoutform">
                       <div class="billing-address">
                         <h5 class="title">
                           Recipient / Shipping Details
@@ -99,17 +117,20 @@
                         <div class="row">
 
                           <div class="col-lg-6">
-                            <input class="form-control" type="text" name="name" placeholder="Full Name" value="">
+                            <input class="form-control" type="text" name="name" id="uname" placeholder="Full Name"
+                              value="" required>
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control phoneee" type="text" name="phone" maxlength="10"
-                              placeholder="Phone Number" value="" onkeypress="return onlyNumber(event)">
+                            <input class="form-control phoneee" type="text" id="uphone" name="phone" maxlength="10"
+                              placeholder="Phone Number" value="" required onkeypress="return onlyNumber(event)">
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control" type="text" name="email" placeholder="Email" value="">
+                            <input class="form-control" type="text" id="uemail" name="email" placeholder="Email"
+                              value="" required>
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control" type="text" name="address" placeholder="Address" value="">
+                            <input class="form-control" type="text" id="uaddress" name="address" placeholder="Address"
+                              value="" required>
                           </div>
                           <div class="col-lg-6">
                             <input class="form-control" type="text" name="landmark" placeholder="Landmark">
@@ -123,7 +144,7 @@
                           </div>
                           <div class="col-lg-6">
                             <input class="form-control" type="text" name="zip" id="locality" placeholder="Pin Code"
-                              value="">
+                              value="" required>
                             <div id="postal_code"></div>
                           </div>
                         </div>
@@ -185,7 +206,7 @@
                       <div class="row">
                         <div class="col-lg-12  mt-3">
                           <div class="bottom-area paystack-area-btn">
-                            <button type="submit" class="mybtn1 2">Choose Date and Time </button>
+                            <button type="submit" class="mybtn1 2">Proceed </button>
                           </div>
                         </div>
                       </div>
@@ -239,9 +260,7 @@
               <div class="tab-pane fade" id="pills-step3" role="tabpanel" aria-labelledby="pills-step3-tab">
                 <div class="content-box">
                   <div class="content">
-                    <div class="submit-loader">
-                      <img src="//lakeofcakes.com/assets/images/loading_large.gif" alt="">
-                    </div>
+
                     <div class="billing-info-area ">
                       <h4 class="title">
                         Shipping Info
@@ -261,57 +280,14 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="payment-information">
-                      <h4 class="title">
-                        Payment Info
-                      </h4>
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="nav flex-column" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link payment">
-                              <div class="icon">
-                                <span class="radio"></span>
-                              </div>
-                              <p>
-                                UPI,VISA,MASTER,RUPAY
-                                <small>
-                                  Secure Payment Through RazorPay
-                                </small>
-                              </p>
-                            </a>
-                            <a class="nav-link payment">
-                              <div class="icon">
-                                <span class="radio"></span>
-                              </div>
-                              <p>
-                                Mobile Money
-                                <small>
-                                  Pay via your Mobile Money.
-                                </small>
-                              </p>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="col-lg-12">
-                          <div class="pay-area d-none">
-                            <div class="tab-content" id="v-pills-tabContent">
-                              <div class="tab-pane fade" id="v-pills-tab6" role="tabpanel"
-                                aria-labelledby="v-pills-tab6-tab">
-                              </div>
-                              <div class="tab-pane fade" id="v-pills-tab46" role="tabpanel"
-                                aria-labelledby="v-pills-tab46-tab">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
 
                     <div class="row">
                       <div class="col-lg-12 mt-3">
                         <div class="bottom-area">
                           <a href="javascript:;" id="step2-btn" class="mybtn1 mr-3 5">Back</a>
-                          <button type="submit" id="final-btn" class="mybtn1 1">Continue</button>
+                          <a href="/Payment/Razonpay.html"> <button type="submit" id="final-btn"
+                              class="mybtn1 1">Proceed to Pay</button></a>
                         </div>
                       </div>
                     </div>
@@ -325,8 +301,9 @@
           <div class="modal fade" id="myModal1">
             <div class="modal-dialog modal-md">
               <div class="modal-content">
-                <div class="modal-header" style="background-color: #f00;">
-                  <h4 class="modal-title text-center tb" style="color:#fff;">Select Date and Time
+                <div class="modal-header" style="background-color: rgb(204, 136, 58);padding: 20px !important;">
+                  <h4 class="modal-title text-center tb" style="color:#fff;font-weight: 700;">Select your Shipping Date
+                    & Time
                   </h4>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
@@ -334,19 +311,22 @@
                   <div class="container-fluid">
                     <div class="">
                       <div class="row">
-                        <div class="col-md-6 mt-3">
+                        <div class="col-md-6 mt-3" style="background-color: rgba(212, 221, 202, 0.4);">
                           <div class="form-group">
-                            <label>Delivery Date</label><br />
-                            <small>Select the date first</small>
+                            <label style="font-weight: 700;padding: 10px !important;">Select Delivery Date</label><br />
+
                             <input type="date" name="shipping_date" id="shipping_date" placeholder="Shipping date"
                               max="2090-12-31" class="form-control shipping_date">
                           </div>
                         </div>
                         <div class="col-md-6 mt-3">
                           <div class="form-group">
-                            <label>Delivery Time</label>
+                            <label
+                              style="font-weight: 700;padding: 10px !important;text-align:center !important;">Delivery
+                              Time</label>
                             <div class="free-hours" id="free-hours" style="display: none;">
-                              <input type="radio" name="shipping_time" value="Free">Between 10 AM to 8 PM <br>
+                              <input type="radio" name="shipping_time" value="Free" class="checkoutRadio">Between 10 AM
+                              to 8 PM <br>
                             </div>
                             <div id="time-error" style="color: #f00; display: none;">Sorry!! you cant book for today 😶
                               <br /> Select next day date or upcoming day date.</div>
@@ -384,7 +364,8 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary contn" data-dismiss="modal" id="registerTime" style="background-color: #3CB324;">CONTINUE</button>
+                  <button type="button" class="btn btn-secondary contn" data-dismiss="modal" id="registerTime"
+                    style="background-color:rgb(230, 56, 3)">CONTINUE</button>
                 </div>
               </div>
             </div>
@@ -463,6 +444,10 @@
                   <input type="text" placeholder="Coupon Code" id="code" name="code">
                   <button id="coupanApply">Apply</button>
                 </div>
+                
+                <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="success">Coupon Applied Successfully <i class="fa fa-check"></i> </h5>
+                <h5 style="font-weight:800;font-size: 15px;padding: 20px;display: none;color: rgb(128, 0, 0);" id="fail">Invalid Coupan </h5>
+                <h5 style="font-weight:700;font-size: 15px;padding:5px;display: none;color: rgb(126, 223, 88);border-radius: 0px; width: 50%;margin-left: auto;margin-right: auto; border: 1px solid black;margin-top: 2%;" id="applied">Loading.. </h5>
               </div>
               <div class="packeging-area">
                 <h4 class="title">Shipping Method</h4>
@@ -535,8 +520,208 @@
     }
   });
 
+  var ck = 0;
 
-  
+  $('.checkoutform').on('submit', function (e) {
+
+    if (ck == 0 && modalVisited == 1) {
+
+      e.preventDefault();
+      document.getElementById("registerTime").addEventListener("click", function () {
+        if (document.getElementById("free-shepping1").checked) {
+          document.getElementById("free-shepping2").disabled = "true"
+          document.getElementById("free-shepping3").disabled = "true"
+        }
+        else if (document.getElementById("free-shepping2").checked) {
+
+          document.getElementById("free-shepping1").disabled = "true"
+          document.getElementById("free-shepping3").disabled = "true"
+        } else {
+          document.getElementById("free-shepping1").disabled = "true"
+          document.getElementById("free-shepping2").disabled = "true"
+        }
+        $('#pills-step2-tab').removeClass('disabled');
+        $('#pills-step2-tab').click();
+      })
+
+
+    } else {
+
+
+    }
+    $('#pills-step1-tab').addClass('active');
+  });
+
+  $('#step1-btn').on('click', function () {
+
+    document.getElementById("free-shepping1").disabled = false
+    document.getElementById("free-shepping2").disabled = false
+    document.getElementById("free-shepping3").disabled = false
+    $('#pills-step1-tab').removeClass('active');
+    $('#pills-step2-tab').removeClass('active');
+    $('#pills-step3-tab').removeClass('active');
+    $('#pills-step2-tab').addClass('disabled');
+    $('#pills-step3-tab').addClass('disabled');
+
+    $('#pills-step1-tab').click();
+
+  });
+
+  // Step 2 btn DONE
+
+  $('#step2-btn').on('click', function () {
+    $('#pills-step3-tab').removeClass('active');
+    $('#pills-step1-tab').removeClass('active');
+    $('#pills-step2-tab').removeClass('active');
+    $('#pills-step3-tab').addClass('disabled');
+    $('#pills-step2-tab').click();
+    $('#pills-step1-tab').addClass('active');
+
+  });
+
+  $('#step3-btn').on('click', function () {
+    if ($('a.payment:first').data('val') == 'paystack') {
+      $('.checkoutform').prop('id', 'step1-form');
+    }
+    else {
+      $('.checkoutform').prop('id', '');
+    }
+    $('#pills-step3-tab').removeClass('disabled');
+    $('#pills-step3-tab').click();
+
+    var shipping_user = !$('input[name="shipping_name"]').val() ? $('input[name="name"]').val() : $('input[name="shipping_name"]').val();
+    var shipping_location = !$('input[name="shipping_address"]').val() ? $('input[name="address"]').val() : $('input[name="shipping_address"]').val();
+    var shipping_phone = !$('input[name="shipping_phone"]').val() ? $('input[name="phone"]').val() : $('input[name="shipping_phone"]').val();
+    var shipping_email = !$('input[name="shipping_email"]').val() ? $('input[name="email"]').val() : $('input[name="shipping_email"]').val();
+
+    $('#shipping_user').html('<i class="fas fa-user"></i>' + shipping_user);
+    $('#shipping_location').html('<i class="fas fas fa-map-marker-alt"></i>' + shipping_location);
+    $('#shipping_phone').html('<i class="fas fa-phone"></i>' + shipping_phone);
+    $('#shipping_email').html('<i class="fas fa-envelope"></i>' + shipping_email);
+
+    $('#pills-step1-tab').addClass('active');
+    $('#pills-step2-tab').addClass('active');
+  });
+
+  $('#final-btn').on('click', function () {
+    ck = 1;
+  })
+
+
+  $('.payment').on('click', function () {
+
+    if ($(this).data('val') == 'paystack') {
+      $('.checkoutform').prop('id', 'step1-form');
+    }
+    else {
+      $('.checkoutform').prop('id', '');
+    }
+    $('.checkoutform').prop('action', $(this).data('form'));
+    $('.pay-area #v-pills-tabContent .tab-pane.fade').not($(this).attr('href')).html('');
+    var show = $(this).data('show');
+    if (show != 'no') {
+      $('.pay-area').removeClass('d-none');
+    }
+    else {
+      $('.pay-area').addClass('d-none');
+    }
+    $($(this).attr('href')).load($(this).data('href'), function () {
+
+    });
+
+
+  })
+
+
+  $(document).on('submit', '#step1-form', function () {
+
+    var val = $('#sub').val();
+    var total = $('#grandtotal').val();
+    total = Math.round(total);
+    if (val == 0) {
+      var handler = PaystackPop.setup({
+        key: 'pk_test_162a56d42131cbb01932ed0d2c48f9cb99d8e8e2',
+        email: $('input[name=email]').val(),
+        amount: total * 100,
+        currency: "INR",
+        ref: '' + Math.floor((Math.random() * 1000000000) + 1),
+        callback: function (response) {
+          $('#ref_id').val(response.reference);
+          $('#sub').val('1');
+          $('#final-btn').click();
+        },
+        onClose: function () {
+          window.location.reload();
+
+        }
+      });
+      handler.openIframe();
+      return false;
+    }
+    else {
+
+      return true;
+    }
+  });
+
+
+  $(".customer_country").val('India').trigger('change');
+
+  function onlyNumber(evt) {
+
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+
+  $('.phoneee').on('input propertychange paste', function (e) {
+    var reg = /^0+/gi;
+    if (this.value.match(reg)) {
+      this.value = this.value.replace(reg, '');
+    }
+  });
+  var btnc = 0;
+  var modalVisited = 0;
+  $(".mybtn1").click(function () {
+    if (btnc == 0) {
+
+      let name = document.querySelector('#uname').value;
+      let email = document.querySelector('#uemail').value;
+      let phone = document.querySelector('#uphone').value;
+      let address = document.querySelector('#uaddress').value;
+      let pin = document.querySelector('#locality').value;
+
+      if (name != "" && email != "" && phone != "" && address != "" && pin != "") {
+        if (document.getElementById("free-shepping1").checked) {
+          $("#myModal1").modal('show');
+          document.getElementById("free-hours").style.display = "block"
+          modalVisited = 1;
+        }
+        else if (document.getElementById("free-shepping2").checked) {
+          $("#myModal1").modal('show');
+          document.getElementById("perfect-hours").style.display = "block"
+          modalVisited = 1
+        } else {
+          $("#myModal1").modal('show');
+          document.getElementById("midnight-hours").style.display = "block"
+          modalVisited = 1
+        }
+      } else {
+
+      }
+
+
+    }
+
+  });
+
+  $(".contn").click(function () {
+
+    btnc = 1;
+  });
+
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
