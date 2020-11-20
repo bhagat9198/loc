@@ -14900,7 +14900,7 @@ ul.attributes li a:hover {
         width: 100%
     }
     .owl-carousel .owl-item img {
-        /* height: 200px; */
+        height: 200px;
         width: 600px !important;
         object-fit:fill;
        
@@ -34361,7 +34361,7 @@ input.form-control.card-elements {
 }
 
 .item {
-    border: 3px solid rgb(254 255 254)!important;
+    /* border: 3px solid rgb(254 255 254)!important; */
     box-shadow: 0px 1px 5px #00000029;
 }
 
@@ -35535,7 +35535,7 @@ p.product-unit-price {
         margin: 0px;
     }
     .logo-header .helpful-links ul li {
-        margin-right: 10px;
+        margin-right: 20px;
     }
     .logo-header .helpful-links ul li:last-child {
         margin-right: 0px;

@@ -1,4 +1,6 @@
 <style>
+
+
   .autocomplete {
     position: relative;
     display: inline-block !important;
@@ -54,6 +56,21 @@
   .autocomplete-active {
     background-color: DodgerBlue !important;
     color: #ffffff;
+  }
+
+  @media only screen and (max-width: 600px)  {
+    .responsiveIcon1{
+      /* margin: auto;
+      padding: 0px; */
+      margin-left: 32%;
+    }
+  
+  }
+  @media only screen and (min-width:700px ) {
+    .responsiveIcon2{
+    display: block !important;
+    }
+    
   }
 </style>
 
@@ -613,15 +630,18 @@
 
             
             
-                <li class="nav-item dropdown" style="margin-top: 14%;">
+                <li class="nav-item dropdown" style="margin-top: 15%;">
                   <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
-                      style="width: 30px ;height: 30px; object-fit: cover;padding: px;" class="rounded-circle">
+                    <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
+                      style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
 
                   </a>
                   
-                  <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff;box-shadow: gray;"
+                  <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
+                  inset 0 -3em 3em rgba(0,0,0,0.1), 
+                        0 0  0 2px rgb(255,255,255),
+                        0.3em 0.3em 1em rgba(0,0,0,0.3);"
                     data-toggle="dropdown" aria-labelledby="navbarDropdownMenuLink">
                     <div style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
                       <a class="dropdown-item" href="#">
@@ -646,7 +666,7 @@
                 </li>
            
      
-            <li class="my-dropdown" data-toggle="tooltip" data-placement="top" title="Cart">
+            <li class="my-dropdown responsiveIcon2" style="display: none;" data-toggle="tooltip" data-placement="top" title="Cart">
               <a href="#cart" class="cart carticon">
                 <div class="icon">
                   <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
@@ -705,7 +725,7 @@
                 </div>
               </div>
             </li>
-            <!-- <li class="wishlist" data-toggle="tooltip" data-placement="top" title="Wish">
+             <!-- <li class="wishlist" data-toggle="tooltip" data-placement="top" title="Wish">
               <a href="javascript:;" data-toggle="modal" id="wish-btn" data-target="#comment-log-reg" class="wish">
                 <i class="fa fa-heart"></i>
                 <span id="wishlist-count">0</span>
@@ -1007,6 +1027,8 @@
     </div>
   </div>
 </div>
+
+<script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
 <script>
 
   function hidenavigation() {
