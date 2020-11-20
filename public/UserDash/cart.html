@@ -155,16 +155,15 @@
               </ul>
               <div class="total-price">
                 <p>
-                  Discount
+                  Total
                 </p>
                 <P>
-                  <b class="discount">₹0</b>
-                  <input type="hidden" id="d-val" value="₹0">
+                  <span class="cart-total"></span>
                 </P>
               </li>
               <li style="display:none">
                 <p>
-                  <span class="cart-total"></span>
+                  
                 </p>
               </div>
               <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all taxes)</span></p><br>
@@ -178,7 +177,7 @@
                   <button type="submit">Apply</button>
                 </form>
               </div> -->
-            <a data-target="#addonsModal" data-toggle="modal" class="order-btn"
+            <a data-target="#addonsModal" data-toggle="modal" class="order-btn" id="checkoutBtn" 
               style="background-color: rgb(255, 105, 125);border-radius: 5px;">
               Checkout
               <i class="fa fa-arrow-right"></i>
@@ -198,12 +197,8 @@
       <div class="right-area">
         <div class="product-info">
           <h4 class="product-name"></h4>
-
-
           <div class="info-meta-3">
             <ul class="meta-list">
-
-
               <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
@@ -215,15 +210,14 @@
                     <div class="modal-body" style="height: 500px;                    overflow-y: scroll;">
                       <div class="container-fluid">
                         <div class="row" id="allAddons">
-                          <div class="col-md-3 col-6 mt-3">
+                          <!-- <div class="col-md-3 col-6 mt-3">
                             <a class="item" for="add_addons[]"
                               style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
                               <input type="checkbox" name="add_addons[]" class="add_addons " data-id="28" value="28"
                                 style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
                               <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
                                 <img class="img-fluid"
-                                  src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg"
-                                  alt="" style="width:100%;object-fit: cover;">
+                                  src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg"  alt="Lake of Cakes" style="width:100%;object-fit: cover;">
                               </div>
                               <div class="info" style="height: 88px; ">
                                 <h5 class="name responsiveName"
@@ -254,7 +248,7 @@
                                 </li>
                               </div>
                             </a>
-                          </div>
+                          </div> -->
                         </div>
                       </div>
                     </div>

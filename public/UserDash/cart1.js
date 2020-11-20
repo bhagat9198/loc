@@ -213,18 +213,15 @@ const selectProds = (e, current) => {
 
 const updateSelectedProds = (id, qty, del = 'data') => {
   let c = -1;
-  console.log(del);
     for(let sp of SELECTED_PRODS) {
-      console.log(sp.cartId, id)
+      // console.log(sp.cartId, id)
       c++;
       if(+sp.cartId === +id) {
-        alert(del)
         if(del == "del") {
           // console.log(sp.cartId, id);
           SELECTED_PRODS.splice(c, 1);
-          console.log(SELECTED_PRODS);
+          // console.log(SELECTED_PRODS);
         } else {
-          alert(del);
           SELECTED_PRODS[c].qty = qty;
         }
         // console.log(sp.cartId, id);
@@ -279,16 +276,17 @@ const orderListHTML = document.querySelector('.order-list');
 const cartTotalHTML = document.querySelector('.cart-total');
 const emptyCheckoutHTML = document.querySelector('#empty-checkout');
 const orderBoxHTML = document.querySelector('.order-box');
+let TOTAL = 0;
+
 const displayCheckout = () => {
   if(SELECTED_PRODS.length > 0) {
     emptyCheckoutHTML.style.display = 'none';
     orderBoxHTML.style.display = 'block';
     let li = '';
-    let total = 0;
     console.log(SELECTED_PRODS);
     SELECTED_PRODS.map(p => {
       let pPrice = +p.qty * +p.price;
-      total = total + pPrice;
+      TOTAL = TOTAL + pPrice;
       li += `
       <li>
         <p>
@@ -302,10 +300,121 @@ const displayCheckout = () => {
     })
   
     orderListHTML.innerHTML = `${li}`;
-    cartTotalHTML.innerHTML = `₹${total}`;
+    cartTotalHTML.innerHTML = `₹${TOTAL}`;
   } else {
     emptyCheckoutHTML.style.display = 'block';
     orderBoxHTML.style.display = 'none';
   }
-  
 }
+
+
+const checkoutBtnHTML = document.querySelector('#checkoutBtn');
+const allAddonsHTML = document.querySelector('#allAddons');
+const costWithAddonsHTML = document.querySelector("#cost-with-addons");
+
+let ADDONS_REF;
+let ADDONS_DETAILS = [];
+
+const addonModal = e => {
+  ADDONS_REF = db.collection('addons');
+  ADDONS_REF.get()
+  .then((snapshots) => {
+    let snapshotDocs = snapshots.docs;
+    let card = "";
+    snapshotDocs.map((doc, index) => {
+      // card += displayAddon(doc);
+      let docData = doc.data();
+      ADDONS_DETAILS.push({
+        qty: 1,
+        price: +docData.price,
+        checked: false,
+        id: doc.id,
+      });
+      card += `
+    <div class="col-md-3 col-6 mt-3">
+      <a class="item"
+        style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+        <input type="checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
+          style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
+        <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+          <img class="img-fluid"
+            src="${docData.imgUrl}"
+            alt="" style="width:100%;object-fit: cover;">
+        </div>
+        <div class="info" style="height: 88px; ">
+          <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">
+            ${docData.name}
+          </h5>
+          <h4 class="price"
+            style="text-align: center !important;float: inherit;font-size: 13px;">₹ ${docData.price}
+          </h4>
+          <li class="d-block count ">
+            <div class="qty">
+              <ul>
+                <li>
+                  <span class="qtminus" data-id="addon__minus__${doc.id}" data-index="${index}" onclick="decAddon(event)">
+                    <i class="fa fa-minus" data-id="addon__minus__${doc.id}" data-index="${index}"></i>
+                  </span>
+                </li>
+                <li>
+                  <span class="qttotal" id="addon__qty__${doc.id}" data-index="${index}">${ADDONS_DETAILS[index].qty}</span>
+                </li>
+                <li>
+                  <span class="qtplus" data-id="addon__add__${doc.id}" data-index="${index}" onclick="addAddon(event)">
+                    <i class="fa fa-plus" data-id="addon__add__${doc.id}" data-index="${index}"></i>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </div>
+      </a>
+    </div>
+    `;
+    });
+    allAddonsHTML.innerHTML = card;
+  });
+  costWithAddonsHTML.innerHTML = TOTAL;
+}
+
+checkoutBtnHTML.addEventListener('click', addonModal);
+
+const calAddonPrice = () => {
+  let totalAddonPrice = 0;
+  ADDONS_DETAILS.map((el) => {
+    if (el.checked) {
+      totalAddonPrice += el.price * el.qty;
+    }
+  });
+  console.log(totalAddonPrice, TOTAL);
+  costWithAddonsHTML.innerHTML = +totalAddonPrice + +TOTAL;
+};
+
+const buyAddon = (e, current) => {
+  let index = e.target.value;
+  console.log(ADDONS_DETAILS);
+  console.log(ADDONS_DETAILS[index]);
+  ADDONS_DETAILS[index].checked = current.checked;
+  console.log(TOTAL);
+  calAddonPrice();
+};
+
+const addAddon = (e) => {
+  let id = e.target.dataset.id.split("__")[2];
+  let index = e.target.dataset.index;
+  ADDONS_DETAILS[index].qty++;
+  document.querySelector(`#addon__qty__${id}`).innerHTML =
+    ADDONS_DETAILS[index].qty;
+  calAddonPrice();
+};
+
+const decAddon = (e) => {
+  let id = e.target.dataset.id.split("__")[2];
+  let index = e.target.dataset.index;
+  if (ADDONS_DETAILS[index].qty > 1) {
+    ADDONS_DETAILS[index].qty--;
+  }
+  document.querySelector(`#addon__qty__${id}`).innerHTML =
+    ADDONS_DETAILS[index].qty;
+  calAddonPrice();
+};
