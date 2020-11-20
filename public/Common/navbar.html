@@ -97,41 +97,7 @@
                           Us</strong></span>
                     </a>
                   </li>
-                  <li>
-                    <ul class="" style="padding-left: 10px;">
-                      <li class="nav-item dropdown">
-                        <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <img src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
-                            style="width: 30px ;height: 30px; object-fit: cover;padding: 2px;" class="rounded-circle">
-
-                        </a>
-                        <div class="dropdown-menu" style="padding: 10px; margin-left:-50%;margin-top:4%;"
-                          data-toggle="dropdown" aria-labelledby="navbarDropdownMenuLink">
-                          <div
-                            style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
-                            <a class="dropdown-item" href="#">
-                              <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest!
-                                Login to continue</h4>
-                              <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
-                              </center>
-                            </a>
-                          </div>
-                          <hr>
-                          <a class="dropdown-item" href="" onclick="checkifUser()"><i class="fa fa-user"></i>
-                            Profile</a>
-                          <hr>
-                          <a class="dropdown-item" href="#"><i class="fa fa-truck"></i> Track Orders</a>
-                          <hr>
-                          <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> My Orders</a>
-                          <hr>
-                          <a class="dropdown-item" href="#" id="hideLogOut" onclick="logOut()"><i
-                              class="fa fa-sign-out"></i>
-                            Logout</a>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
+          
                 </ul>
               </div>
             </div>
@@ -577,14 +543,14 @@
       </aside>
       <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
         <div class="row" style="margin-left: 0px !important;">
-          <div class="col-md-1"></div>
+         
           <div class="col-md-10 col-12 p-0 mt-3 ml-4">
             <div class="input-group mb-2 mt-2">
-              <div id="searchForm" class="search-form" style="display: inline-flex; width: 100%;">
-                <div class="autocomplete" style="width:300px;">
+              <div id="searchForm" class="search-form" style="display: inline-flex; width: 500px;">
+                <div class="autocomplete" style="important;width:900px;">
                   <input class="form-control" type="text" id="searchBar" onkeyup=searchIfvalue(event) name="searchBar"
                     placeholder="Search: Cakes , Flowers ,Gifts..."
-                    style="border-radius: 15px 0px 0px 15px;border: none;">
+                    style="border-radius: 15px 0px 0px 15px;border: 0.5px solid black;">
                 </div>
                 <!-- <div class="autocomplete">
                   <div id="myInputautocomplete-list" class="autocomplete-items">
@@ -642,7 +608,44 @@
       </div>
       <div class="col-lg-1 col-sm-3 col-3 remove-padding order-lg-last">
         <div class="helpful-links mt-md-3 cartres">
+
           <ul class="helpful-links-inner" style="display: flex;">
+
+            
+            
+                <li class="nav-item dropdown" style="margin-top: 14%;">
+                  <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
+                      style="width: 30px ;height: 30px; object-fit: cover;padding: px;" class="rounded-circle">
+
+                  </a>
+                  
+                  <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff;box-shadow: gray;"
+                    data-toggle="dropdown" aria-labelledby="navbarDropdownMenuLink">
+                    <div style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
+                      <a class="dropdown-item" href="#">
+                        <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest!
+                          Login to continue</h4>
+                        <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
+                        </center>
+                      </a>
+                    </div>
+                    
+                    <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="" onclick="checkifUser()"><i class="fa fa-user"></i>
+                      Profile</a>
+                    
+                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"><i class="fa fa-truck"></i> Track Orders</a>
+                    
+                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"><i class="fa fa-shopping-cart"></i> My Orders</a>
+                 
+                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#" id="hideLogOut" onclick="logOut()"><i
+                        class="fa fa-power-off"></i>
+                      Logout</a>
+                  </div>
+                </li>
+           
+     
             <li class="my-dropdown" data-toggle="tooltip" data-placement="top" title="Cart">
               <a href="#cart" class="cart carticon">
                 <div class="icon">

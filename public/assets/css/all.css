@@ -28826,8 +28826,8 @@ nav button {
     /* justify-content: flex-end; */
     /* text-align: right; */
     justify-content: space-between;
-    margin-bottom: -4px;
-    padding-top: 15px;
+    /* margin-bottom: -4px;
+    padding-top: 15px; */
 }
 
 .sub-categori .right-area .item-filter .filter-list {
