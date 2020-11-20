@@ -28,6 +28,13 @@
     z-index: 999;
   }
 
+  label {
+    color: red !important;
+    font-weight: 900 !important;
+
+
+  }
+
   input[type=radio]:checked~.check {
     border: 5px solid #ff0d6a !important;
   }
@@ -52,6 +59,11 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
+  }
+
+  .bold {
+    font-weight: 600;
+    padding: 6px !important;
   }
 </style>
 
@@ -133,14 +145,16 @@
                               value="xdvfcgbvhnm" required>
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control" type="text" name="landmark" placeholder="Landmark" required value="dfcghbjk">
+                            <input class="form-control" type="text" name="landmark" placeholder="Landmark" required
+                              value="dfcghbjk">
                           </div>
                           <div class="col-lg-6">
                             <input type="text" readonly="readonly" class="form-control customer_country" required
                               name="customer_country" value="India">
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control" type="text" name="city" required value="Lucknow" readonly="readonly">
+                            <input class="form-control" type="text" name="city" required value="Lucknow"
+                              readonly="readonly">
                           </div>
                           <div class="col-lg-6">
                             <input class="form-control" type="text" name="zip" id="locality" placeholder="Pin Code"
@@ -250,7 +264,8 @@
                       <div class="col-lg-12 mt-3">
                         <div class="bottom-area">
                           <a href="javascript:;" id="step1-btn" class="mybtn1 mr-3 3">Back</a>
-                          <a href="javascript:;" id="step3-btn" class="mybtn1 4" id="prodFinal" onclick="displayShippingInfo(event)">Continue</a>
+                          <a href="javascript:;" id="step3-btn" class="mybtn1 4" id="prodFinal"
+                            onclick="displayShippingInfo(event)">Continue</a>
                         </div>
                       </div>
                     </div>
@@ -265,46 +280,81 @@
                       <h4 class="title">
                         Shipping Info
                       </h4>
-                      <ul class="info-list">
-                        <li>
-                          <p id="shipping_user"></p>
-                        </li>
-                        <li>
-                          <p id="shipping_location"></p>
-                        </li>
-                        <li>
-                          <p id="shipping_landmark"></p>
-                        </li>
-                        <li>
-                          <p id="shipping_phone"></p>
-                        </li>
-                        <li>
-                          <p id="shipping_email"></p>
-                        </li>
-                        <li>
-                          <p id="shipping_msg"></p>
-                        </li>
+                      <ul class="info-list ">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="row">
+                              <div class="col-lg-6 col-sm-2">
+                                <li>
+                                  <label>Name :</label>
+                                  <p class="bold" id="shipping_user"></p>
+                                </li>
+                                <li>
+                                  <label>Address :</label>
+                                  <p class="bold" id="shipping_location"></p>
+                                </li>
+                                <li>
+                                  <label>Landmark:</label>
+                                  <p class="bold" id="shipping_landmark"></p>
+                                </li>
+
+                              </div>
+                              <div class="col-lg-6 col-sm-2">
+                                <li>
+                                  <label>Phone:</label>
+                                  <p class="bold" id="shipping_phone"></p>
+                                </li>
+                                <li>
+                                  <label>Email :</label>
+                                  <p class="bold" id="shipping_email"></p>
+                                </li>
+                                <li>
+                                  <label>Message :</label>
+                                  <p class="bold" id="shipping_msg"></p>
+                                </li>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
                       </ul>
                       <div id="alt-address" style="display: none;">
                         <h4 class="title">
                           Alternative Shipping Info
                         </h4>
                         <ul class="info-list">
-                          <li>
-                            <p id="alt_shipping_user"></p>
-                          </li>
-                          <li>
-                            <p id="alt_shipping_location"></p>
-                          </li>
-                          <li>
-                            <p id="alt_shipping_landmark"></p>
-                          </li>
-                          <li>
-                            <p id="alt_shipping_phone"></p>
-                          </li>
-                          <li>
-                            <p id="alt_shipping_email"></p>
-                          </li>
+
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="row">
+                                <div class="col-lg-6">
+                                  <li>
+                                    <label>Name</label>
+                                    <p class="bold" id="alt_shipping_user"></p>
+                                  </li>
+                                  <li>
+                                    <label>Address</label>
+                                    <p iclass="bold" id="alt_shipping_location"></p>
+                                  </li>
+                                  <li>
+                                    <label>Landmark</label>
+                                    <p class="bold" id="alt_shipping_landmark"></p>
+                                  </li>
+                                </div>
+                                <div class="col-lg-6">
+                                  <li>
+                                    <label>Phone :</label>
+                                    <p class="bold" id="alt_shipping_phone"></p>
+                                  </li>
+                                  <li>
+                                    <label>Email :</label>
+                                    <p class="bold" id="alt_shipping_email"></p>
+                                  </li>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </ul>
                       </div>
                     </div>
@@ -359,7 +409,8 @@
                             <div class="perfect-hours" id="perfect-hours" style="display: none;">
                               <input type="radio" name="shipping_time" id="perfect_10" value="10">Between 10 AM to 11 AM
                               <br>
-                              <input type="radio" name="shipping_time" id="perfect_11" value="11">Between 11 AM to 12 Noon <br>
+                              <input type="radio" name="shipping_time" id="perfect_11" value="11">Between 11 AM to 12
+                              Noon <br>
                               <input type="radio" name="shipping_time" id="perfect_12" value="12">Between 12 Noon to 1
                               PM <br>
                               <input type="radio" name="shipping_time" id="perfect_1" value="1">Between 1 PM to 2 PM
@@ -482,10 +533,14 @@
                   <input type="text" placeholder="Coupon Code" id="code" name="code">
                   <button id="coupanApply">Apply</button>
                 </div>
-                
-                <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="success">Coupon Applied Successfully <i class="fa fa-check"></i> </h5>
-                <h5 style="font-weight:800;font-size: 15px;padding: 20px;display: none;color: rgb(128, 0, 0);" id="fail">Invalid Coupan </h5>
-                <h5 style="font-weight:700;font-size: 15px;padding:5px;display: none;color: rgb(126, 223, 88);border-radius: 0px; width: 50%;margin-left: auto;margin-right: auto; border: 1px solid black;margin-top: 2%;" id="applied">Loading.. </h5>
+
+                <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="success">
+                  Coupon Applied Successfully <i class="fa fa-check"></i> </h5>
+                <h5 style="font-weight:800;font-size: 15px;padding: 20px;display: none;color: rgb(128, 0, 0);"
+                  id="fail">Invalid Coupan </h5>
+                <h5
+                  style="font-weight:700;font-size: 15px;padding:5px;display: none;color: rgb(126, 223, 88);border-radius: 0px; width: 50%;margin-left: auto;margin-right: auto; border: 1px solid black;margin-top: 2%;"
+                  id="applied">Loading.. </h5>
               </div>
               <div class="packeging-area">
                 <h4 class="title">Shipping Method</h4>
