@@ -219,7 +219,7 @@ const calculateBill = async(discount = 0) => {
     let gstPercent = 0;
     
     gstPercent = +p.pdata.gst;
-    gstPrice = Math.round(+basicPrices[counter] * (+gstPercent/100));
+    gstPrice = Math.round((+basicPrices[counter] * +p.qty) * (+gstPercent/100));
 
     let pName = p.pdata.name;
     gst += `
