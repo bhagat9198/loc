@@ -495,6 +495,7 @@ const checkoutProds = async(e) => {
   console.log(USER_REF);
   USER_DETAILS.orders.push(checkoutCart);
   await USER_REF.update(USER_DETAILS);
+  window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
   
 };
 
