@@ -31,6 +31,7 @@ if (localStorage.getItem("locLoggedInUser") == "null") {
       window.location.href = "./../Auth/login.html";
     } else {
       USER_ID = localStorage.getItem("locLoggedInUser");
+      // window.location.href = "./r.html";
       checkOrderId();
     }
   });
@@ -715,6 +716,12 @@ const displayShippingInfo = e => {
     alt_shipping_phoneHTML.innerHTML = SHIPPING_DATA.alt_phone;
   }
 
+
+  const finalBtnSpanHTML = document.querySelector('#finalBtnSpan');
+  finalBtnSpanHTML.innerHTML = `
+  <a href="./payment.html?checkout=${CHECKOUT_ID}"> 
+    <button type="submit" id="final-btn" class="mybtn1 1">Proceed to Pay </button>
+  </a>`;
 }
 
 // prodFinalHTML.addEventListener('click', displayShippingInfo);
