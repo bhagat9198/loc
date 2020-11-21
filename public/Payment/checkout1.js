@@ -31,6 +31,7 @@ if (localStorage.getItem("locLoggedInUser") == "null") {
       window.location.href = "./../Auth/login.html";
     } else {
       USER_ID = localStorage.getItem("locLoggedInUser");
+      // window.location.href = "./r.html";
       checkOrderId();
     }
   });
@@ -219,7 +220,7 @@ const calculateBill = async(discount = 0) => {
     let gstPercent = 0;
     
     gstPercent = +p.pdata.gst;
-    gstPrice = Math.round(+basicPrices[counter] * (+gstPercent/100));
+    gstPrice = Math.round((+basicPrices[counter] * +p.qty) * (+gstPercent/100));
 
     let pName = p.pdata.name;
     gst += `
@@ -716,6 +717,12 @@ const displayShippingInfo = e => {
     alt_shipping_emailHTML = SHIPPING_DATA.alt_email;
   }
 
+
+  const finalBtnSpanHTML = document.querySelector('#finalBtnSpan');
+  finalBtnSpanHTML.innerHTML = `
+  <a href="./payment.html?checkout=${CHECKOUT_ID}"> 
+    <button type="submit" id="final-btn" class="mybtn1 1">Proceed to Pay </button>
+  </a>`;
 }
 
 // prodFinalHTML.addEventListener('click', displayShippingInfo);

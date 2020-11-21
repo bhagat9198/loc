@@ -362,8 +362,8 @@
                       <div class="col-lg-12 mt-3">
                         <div class="bottom-area">
                           <a href="javascript:;" id="step2-btn" class="mybtn1 mr-3 5">Back</a>
-                          <a href="/Payment/Razonpay.html"> <button type="submit" id="final-btn"
-                              class="mybtn1 1">Proceed to Pay</button></a>
+                          <span id="finalBtnSpan"></span>
+                          
                         </div>
                       </div>
                     </div>
@@ -407,6 +407,12 @@
                             <div id="time-error" style="color: #f00; display: none;">Sorry!! you cant book for today 😶
                               <br /> Select next day date or upcoming day date.</div>
                             <div class="perfect-hours" id="perfect-hours" style="display: none;">
+                              <div class="quiz" id="quiz" data-toggle="buttons">
+                                <label class="element-animation1 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">1 One</label>
+                                <label class="element-animation2 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">2 Two</label>
+                                <label class="element-animation3 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">3 Three</label>
+                                <label class="element-animation4 btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4">4 Four</label>
+                            </div>
                               <input type="radio" name="shipping_time" id="perfect_10" value="10">Between 10 AM to 11 AM
                               <br>
                               <input type="radio" name="shipping_time" id="perfect_11" value="11">Between 11 AM to 12

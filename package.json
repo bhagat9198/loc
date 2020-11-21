@@ -1,0 +1,23 @@
+{
+  "name": "loc-main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "try.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bhagatsingh1998/loc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bhagatsingh1998/loc/issues"
+  },
+  "homepage": "https://github.com/Bhagatsingh1998/loc#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "crypto": "^1.0.1"
+  }
+}
