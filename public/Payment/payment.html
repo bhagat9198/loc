@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lake of Cakes</title>
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../assets/css/all.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/styles.css">
@@ -14,7 +15,8 @@
   <link rel="stylesheet" href="../assets/css/animate.css">
   <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-  <link rel="stylesheet" href="assets/css/animation.css"> -->
+  <link rel="stylesheet" href="assets/css/animation.css">
+  <!-- <script src="https://checkout.razorpay.com/v1/checkout.js"></script> -->
 </head>
 
 <style>
@@ -27,189 +29,36 @@
     vertical-align: middle;
   }
 </style>
+
 <body>
-  <!-- <section id="nav-section-loader"></section> -->
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-  <button id="rzp-button1">Pay INR 2000</button>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <section id="nav-section-loader"></section>
+  <!-- <button id="rzp-button1">PAY ME</button> -->
+
+  <div id="aaa">dftghjkl</div>
+  
+  <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebaseui.js"></script> -->
-<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
-      authDomain: "lake-of-cakes.firebaseapp.com",
-      databaseURL: "https://lake-of-cakes.firebaseio.com",
-      projectId: "lake-of-cakes",
-      storageBucket: "lake-of-cakes.appspot.com",
-      messagingSenderId: "779843608951",
-      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
-      measurementId: "G-5ER0QF0FDW"
-    };
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
-  
-  
-  <script>
-    console.log("payment1.js");
-  // import axios from './node_modules/axios/dist/axios';
-  const db = firebase.firestore();
-  let CHECKOUT_ID;
-  let INDEX = -1;
-  
-  if (localStorage.getItem("locLoggedInUser") == "null") {
-    window.location.href = "./../Auth/login.html";
-  } else {
-    const getParams = async (url) => {
-      var params = {};
-      var parser = document.createElement("a");
-      parser.href = url;
-      var query = parser.search.substring(1);
-      var vars = query.split("&&");
-      for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split("=");
-        params[pair[0]] = decodeURIComponent(pair[1]);
-      }
-      return params;
-    };
-    
-    getParams(window.location.href).then(async (response) => {
-      CHECKOUT_ID = response.checkout;
-      if (!CHECKOUT_ID) {
-        window.location.href = "./../Auth/login.html";
-      } else {
-        USER_ID = localStorage.getItem("locLoggedInUser");
-        // window.location.href = "./r.html";
-        checkOrderId();
-      }
-    });
-  }
-  
-  const checkOrderId = async () => {
-    USER_REF = await db.collection("Customers").doc(USER_ID);
-    await USER_REF.get().then((doc) => {
-      let docData = doc.data();
-      USER_DETAILS = docData;
-      // console.log(USER_DETAILS);
-    });
-    // console.log(USER_DETAILS);
-    let checkFlag = false;
-    for (let o of USER_DETAILS.orders) {
-      INDEX++;
-      if (+o.orderId === +CHECKOUT_ID) {
-        checkFlag = true
-        // await allProductsDetails();
-        console.log('done');
-        break;
-      }
-    }
-    if(checkFlag === false) {
-      window.location.href = "./../index.html";
-    }
-  }
-  
-  
-  
-  
-  let RES;
-  const options = {
-    "key": "rzp_test_dHcwJXc68x8Abm", // Enter the Key ID generated from the Dashboard
-    "amount": "100", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    "currency": "INR",
-    "name": "LAKE OF CAKES",
-    "description": "HAPPY SHOPPING",
-    "image": "./../assets/images/logo.png",
-    "order_id": CHECKOUT_ID, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "handler": function (response){
-      alert(response.razorpay_signature)
-      console.log(response);
-      orderComplete(response);
-        // alert(response.razorpay_payment_id);
-        // alert(response.razorpay_order_id);
-    },
-    "prefill": {
-        "name": "Gaurav Kumar",
-        "email": "gaurav.kumar@example.com",
-        "contact": "9999999999"
-    },
-    "notes": {
-        "address": "Razorpay Corporate Office"
-    },
-    "theme": {
-        "color": "#f00"
-    }
-  };
-  const rzp1 = new Razorpay(options);
-  rzp1.on('payment.failed', function (response){
-    // alert(response.error.code);
-    // alert(response.error.description);
-    // alert(response.error.source);
-    // alert(response.error.step);
-    // alert(response.error.reason);
-    // alert(response.error.metadata.order_id);
-    // alert(response.error.metadata.payment_id);
-    console.log(response);
-    console.log(response.error);
-  });
-  
-  // rzp1.open();
-  
-  document.querySelector('#rzp-button1').addEventListener('click', e => {
-    e.preventDefault();
-    rzp1.open();
-  })
-  
-  const orderComplete = data => {
-    console.log(data);
-    console.log(data.razorpay_payment_id);
-    console.log(data.razorpay_signature);
-  
-    // const checkPayment = firebase.functions().httpsCallable('checkPayment');
-    // checkPayment({
-    //   razorpay_payment_id : data.razorpay_payment_id,
-    //   razorpay_order_id : data.razorpay_order_id,
-    //   razorpay_signature : data.razorpay_order_id
-    // }).then(res => {
-    //   console.log(response);
-    // })
-  
-    // let res = checkPayment(data);
-    // console.log(res);
-    let d = {
-      payment_id: data.razorpay_payment_id,
-      sig: data.razorpay_signature,
-      razorpay_order_id: data.razorpay_order_id,
-    }
-  
-    let options = { 
-      method: 'POST', 
-      headers: { 
-          'Content-Type':  
-              'application/json;charset=utf-8' 
-      }, 
-      body: JSON.stringify(d)
-  } 
-  console.log(options);
-  
-    fetch('http://localhost:3000/payment', options ).then(response => {
-      console.log(response);
-      response.json();
-    }).then(data => console.log(data))
-  }
-  </script>
-  <!-- <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer> -->
-</body>
+<script>
+	var firebaseConfig = {
+		apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+		authDomain: "lake-of-cakes.firebaseapp.com",
+		databaseURL: "https://lake-of-cakes.firebaseio.com",
+		projectId: "lake-of-cakes",
+		storageBucket: "lake-of-cakes.appspot.com",
+		messagingSenderId: "779843608951",
+		appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+		measurementId: "G-5ER0QF0FDW"
+	};
+	firebase.initializeApp(firebaseConfig);
+	firebase.analytics();
+</script>
 
+<script src="./payment1.js"></script>
 
-
-
-
-
-
-<!-- <script src="./payment1.js"></script> -->
 </html>
-

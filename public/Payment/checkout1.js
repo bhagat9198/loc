@@ -37,7 +37,6 @@ if (localStorage.getItem("locLoggedInUser") == "null") {
   });
 }
 
-
 const checkOrderId = async () => {
   USER_REF = await db.collection("Customers").doc(USER_ID);
   await USER_REF.get().then((doc) => {
@@ -50,28 +49,28 @@ const checkOrderId = async () => {
   for (let o of USER_DETAILS.orders) {
     INDEX++;
     if (+o.orderId === +CHECKOUT_ID) {
-      checkFlag = true
+      checkFlag = true;
       await allProductsDetails();
-      console.log('done');
+      console.log("done");
       break;
     }
   }
-  if(checkFlag === false) {
+  if (checkFlag === false) {
     window.location.href = "./../index.html";
   }
-}
+};
 
-const allProductsDetails = async() => {
-  for(let p of USER_DETAILS.orders[INDEX].products) {
+const allProductsDetails = async () => {
+  for (let p of USER_DETAILS.orders[INDEX].products) {
     prodRef = await db.collection(p.cat).doc(p.prodId);
     prodRefs.push(prodRef);
-    await prodRef.get().then(doc => {
+    await prodRef.get().then((doc) => {
       let docData = doc.data();
       p.pdata = docData;
-    })
+    });
   }
   calculateBill();
-}
+};
 
 // const bpHTML = document.querySelector("#bp");
 // const gstHTML = document.querySelector("#gst");
@@ -81,63 +80,63 @@ const allProductsDetails = async() => {
 
 // }
 
-const bpSpanHTML = document.querySelector('#bp-span');
-const discountHTML = document.querySelector('#discount');
-const subTotalCostHTML = document.querySelector('#sub-total-cost');
-const gstHTML = document.querySelector('#gst');
-const addonCostHTML = document.querySelector('#addon-cost');
-const costHTML = document.querySelector('#cost');
+const bpSpanHTML = document.querySelector("#bp-span");
+const discountHTML = document.querySelector("#discount");
+const subTotalCostHTML = document.querySelector("#sub-total-cost");
+const gstHTML = document.querySelector("#gst");
+const addonCostHTML = document.querySelector("#addon-cost");
+const costHTML = document.querySelector("#cost");
 let basicPrices = [];
 
-const calculateBill = async(discount = 0) => {
+const calculateBill = async (discount = 0) => {
   TOTAL_COST = 0;
   console.log(USER_DETAILS.orders[INDEX]);
-  let bp = '';  
+  let bp = "";
 
-  for(let p of USER_DETAILS.orders[INDEX].products) {
+  for (let p of USER_DETAILS.orders[INDEX].products) {
     let totalProdPrice = 0;
     let basicPrice = 0;
     let heartPrice = 0;
     let egglessPrice = 0;
 
-    if(p.cake) {
+    if (p.cake) {
       cake = true;
 
-      for(let w of p.pdata.weights) {
-        if(w.cakeWeight === 'half') {
+      for (let w of p.pdata.weights) {
+        if (w.cakeWeight === "half") {
           basicPrice = w.weightPrice;
           break;
-        } else  if(w.cakeWeight === 'one') {
+        } else if (w.cakeWeight === "one") {
           basicPrice = w.weightPrice;
           break;
-        } else  if(w.cakeWeight === 'oneHlaf') {
+        } else if (w.cakeWeight === "oneHlaf") {
           basicPrice = w.weightPrice;
           break;
-        } else  if(w.cakeWeight === 'two') {
+        } else if (w.cakeWeight === "two") {
           basicPrice = w.weightPrice;
           break;
-        } else  if(w.cakeWeight === 'three') {
+        } else if (w.cakeWeight === "three") {
           basicPrice = w.weightPrice;
           break;
-        } else  if(w.cakeWeight === 'four') {
+        } else if (w.cakeWeight === "four") {
           basicPrice = w.weightPrice;
           break;
-        } else  if(w.cakeWeight === 'five') {
+        } else if (w.cakeWeight === "five") {
           basicPrice = w.weightPrice;
           break;
-        } else  if(w.cakeWeight === 'six') {
+        } else if (w.cakeWeight === "six") {
           basicPrice = w.weightPrice;
           break;
         } else {
-          console.log('invalid');
+          console.log("invalid");
         }
       }
 
-      if(p.cake.eggless) {
-        egglessPrice = p.pdata.type.price
+      if (p.cake.eggless) {
+        egglessPrice = p.pdata.type.price;
       }
 
-      if(p.cake.heart) {
+      if (p.cake.heart) {
         heartPrice = p.pdata.shapes[0].shapePrice;
       }
       // console.log(basicPrice, egglessPrice, heartPrice);
@@ -158,14 +157,14 @@ const calculateBill = async(discount = 0) => {
       <P>
         <b>₹ ${totalProdPrice}</b>
       </P>
-    </li>`; 
+    </li>`;
     TOTAL_COST = TOTAL_COST + totalProdPrice;
   }
   bpSpanHTML.innerHTML = bp;
   subTotalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
   console.log(discount);
   let dis;
-  if(discount === 0) {
+  if (discount === 0) {
     dis = `
     <ul class="order-list">
       <li>
@@ -212,15 +211,15 @@ const calculateBill = async(discount = 0) => {
   }
   discountHTML.innerHTML = dis;
 
-  let gst = '';
+  let gst = "";
   let counter = -1;
-  for(p of USER_DETAILS.orders[INDEX].products) {
+  for (p of USER_DETAILS.orders[INDEX].products) {
     counter++;
     let gstPrice = 0;
     let gstPercent = 0;
-    
+
     gstPercent = +p.pdata.gst;
-    gstPrice = Math.round((+basicPrices[counter] * +p.qty) * (+gstPercent/100));
+    gstPrice = Math.round(+basicPrices[counter] * +p.qty * (+gstPercent / 100));
 
     let pName = p.pdata.name;
     gst += `
@@ -234,17 +233,21 @@ const calculateBill = async(discount = 0) => {
     </li>
     `;
     TOTAL_COST = TOTAL_COST + gstPrice;
-  } 
+  }
   gstHTML.innerHTML = gst;
 
-  if(USER_DETAILS.orders[INDEX].addons) {
+  if (USER_DETAILS.orders[INDEX].addons) {
     let addonsPrice = 0;
-    if(USER_DETAILS.orders[INDEX].addons.length > 0) {
-      for(add of USER_DETAILS.orders[INDEX].addons) {
-        await db.collection('addons').doc(add.id).get().then(addDoc => {
-          let addData = addDoc.data();
-          addonsPrice = addonsPrice + (addData.price * add.qty);
-        })
+    if (USER_DETAILS.orders[INDEX].addons.length > 0) {
+      for (add of USER_DETAILS.orders[INDEX].addons) {
+        await db
+          .collection("addons")
+          .doc(add.id)
+          .get()
+          .then((addDoc) => {
+            let addData = addDoc.data();
+            addonsPrice = addonsPrice + addData.price * add.qty;
+          });
       }
     }
     addonCostHTML.innerHTML = `₹ ${addonsPrice}`;
@@ -253,11 +256,11 @@ const calculateBill = async(discount = 0) => {
 
   costHTML.innerHTML = `₹ ${TOTAL_COST}`;
   finalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
-}
+};
 
 const coupanApplyHTML = document.querySelector("#coupanApply");
 var appliedCoupan;
- let cType, cAmt, discount;
+let cType, cAmt, discount;
 const checkCoupon = async (e) => {
   let coupanDetails, coupanId;
   let flag = false;
@@ -272,14 +275,14 @@ const checkCoupon = async (e) => {
         coupanDetails = docData;
         coupanId = coupanId;
         flag = true;
-        appliedCoupan=code;
+        appliedCoupan = code;
         break;
       }
     }
   });
 
   if (flag) {
-    let totalSubTotal = document.querySelector('#sub-total-cost').innerHTML;
+    let totalSubTotal = document.querySelector("#sub-total-cost").innerHTML;
     console.log(totalSubTotal);
     totalSubTotal = totalSubTotal.substring(2);
     console.log(totalSubTotal);
@@ -296,36 +299,38 @@ const checkCoupon = async (e) => {
       document.getElementById("success").style.display = "block";
       setTimeout(function () {
         document.getElementById("success").style.display = "none";
-        document.getElementById("applied").innerHTML="Applied &nbsp;"+appliedCoupan +' &nbsp;<i style="color: red; cursor:pointer" onclick="removeCoupan()" class="fa fa-times"></i>';
-        document.getElementById("applied").style.display="block";
+        document.getElementById("applied").innerHTML =
+          "Applied &nbsp;" +
+          appliedCoupan +
+          ' &nbsp;<i style="color: red; cursor:pointer" onclick="removeCoupan()" class="fa fa-times"></i>';
+        document.getElementById("applied").style.display = "block";
         $("#coupon-form,#check-coupon-form").toggle();
-        document.getElementById("coupon-link").style.display="none"
-      }, 2000)
+        document.getElementById("coupon-link").style.display = "none";
+      }, 2000);
     }
     console.log(discount, typeof discount);
     calculateBill(+discount);
     coupanApplyHTML.disable = true;
     document.querySelector("#code").value = "";
-    
   } else {
     // invalid
     document.getElementById("fail").style.display = "block";
     setTimeout(function () {
       document.getElementById("fail").style.display = "none";
-    }, 2000)
+    }, 2000);
   }
 };
 
-function removeCoupan(){
-  discount -= cAmt;  
-  document.getElementById("applied").style.display="none";
+function removeCoupan() {
+  discount -= cAmt;
+  document.getElementById("applied").style.display = "none";
   calculateBill(discount);
-  document.getElementById("coupon-link").style.display="block"
+  document.getElementById("coupon-link").style.display = "block";
 }
 coupanApplyHTML.addEventListener("click", checkCoupon);
 
 const form1ShippingHTML = document.querySelector("#form1-shipping");
-const finalCostHTML = document.querySelector('#final-cost');
+const finalCostHTML = document.querySelector("#final-cost");
 const SHIPPING_DATA = {};
 
 const form1 = (e) => {
@@ -353,7 +358,7 @@ const form1 = (e) => {
   const order_notes = form1ShippingHTML["order_notes"].value;
   setDateAndTime();
   $("#myModal1").modal("show");
-  document.querySelector('#registerTime').disabled = true;
+  document.querySelector("#registerTime").disabled = true;
   SHIPPING_DATA.name = name;
   SHIPPING_DATA.phone = phone;
   SHIPPING_DATA.email = email;
@@ -362,7 +367,7 @@ const form1 = (e) => {
   SHIPPING_DATA.country = customer_country;
   SHIPPING_DATA.city = city;
   SHIPPING_DATA.zip = zip;
-  SHIPPING_DATA.message = order_notes || 'No Message Added';
+  SHIPPING_DATA.message = order_notes || "No Message Added";
 
   if (shipDiffAddress.checked) {
     SHIPPING_DATA.differtAddress = true;
@@ -396,7 +401,7 @@ let hours = date.getHours();
 
 const setDateAndTime = () => {
   console.log(SHIPPING_DATA);
-  $("input[type=date]").val("")
+  $("input[type=date]").val("");
   // hours = 19;
   shippingDateHTML.setAttribute("min", `${year}-${month}-${day}`);
 
@@ -406,7 +411,6 @@ const setDateAndTime = () => {
 
   console.log(shipVal);
   if (shipVal === "free") {
-
     shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
     // console.log(hours);
     perfectHoursHTML.style.display = "none";
@@ -511,14 +515,14 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_7").disabled = true;
         document.querySelector("#perfect_8").disabled = true;
       } else {
-        console.log('invalid');
+        console.log("invalid");
       }
     } else {
       shippingDateHTML.setAttribute("min", `${year}-${month}-${day + 1}`);
       timeErrorHTML.style.display = "block";
     }
   } else if (shipVal === "midnight") {
-    finalCostHTML.innerHTML = ``
+    finalCostHTML.innerHTML = ``;
     shippingDateHTML.value = `${year}-${month}-${day}`;
     freeHoursHTML.style.display = "none";
     midnightHoursHTML.style.display = "none";
@@ -580,59 +584,57 @@ const changeDate = (e) => {
 
 shippingDateHTML.addEventListener("change", changeDate);
 
+document.querySelectorAll("input[name=shipping_time]").forEach((el) => {
+  el.addEventListener("change", (e) => {
+    document.querySelector("#registerTime").disabled = false;
+  });
+});
 
-
-document.querySelectorAll('input[name=shipping_time]').forEach(el => {
-  el.addEventListener('change', e => {
-    document.querySelector('#registerTime').disabled = false;
-  })
-})
-
-document.querySelectorAll('input[name=shipping]').forEach(el => {
-  el.addEventListener('change', e => {
+document.querySelectorAll("input[name=shipping]").forEach((el) => {
+  el.addEventListener("change", (e) => {
     console.log(e.target.value);
-    if (e.target.value === 'free') {
+    if (e.target.value === "free") {
       finalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
-    } else if (e.target.value === 'perfect') {
+    } else if (e.target.value === "perfect") {
       let temp = TOTAL_COST + 150;
       finalCostHTML.innerHTML = `₹ ${temp}`;
-    } else if (e.target.value === 'midnight') {
+    } else if (e.target.value === "midnight") {
       let temp = TOTAL_COST + 200;
       finalCostHTML.innerHTML = `₹ ${temp}`;
     } else {
-      console.log('invalid');
+      console.log("invalid");
     }
-  })
-})
+  });
+});
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const registerTimeHTML = document.querySelector('#registerTime');
-const orderAreaHTML = document.querySelector('.order-area');
+const registerTimeHTML = document.querySelector("#registerTime");
+const orderAreaHTML = document.querySelector(".order-area");
 
-const prodSummary = e => {
-  let card = '';
+const prodSummary = (e) => {
+  let card = "";
   let counter = -1;
-  USER_DETAILS.orders[INDEX].products.map(p => {
+  USER_DETAILS.orders[INDEX].products.map((p) => {
     counter++;
-    let cakeLabels = '';
-    if(p.cake) {
+    let cakeLabels = "";
+    if (p.cake) {
       let weightNum;
-      if(p.cake.weight === 'half') {
+      if (p.cake.weight === "half") {
         weightNum = 0.5;
-      } else if(p.cake.weight === 'one') {
+      } else if (p.cake.weight === "one") {
         weightNum = 1;
-      } else if(p.cake.weight === 'oneHalf') {
+      } else if (p.cake.weight === "oneHalf") {
         weightNum = 1.5;
-      } else if(p.cake.weight === 'two') {
+      } else if (p.cake.weight === "two") {
         weightNum = 2;
-      } else if(p.cake.weight === 'three') {
+      } else if (p.cake.weight === "three") {
         weightNum = 3;
-      } else if(p.cake.weight === 'four') {
+      } else if (p.cake.weight === "four") {
         weightNum = 4;
-      } else if(p.cake.weight === 'five') {
+      } else if (p.cake.weight === "five") {
         weightNum = 5;
-      } else if(p.cake.weight === 'six') {
+      } else if (p.cake.weight === "six") {
         weightNum = 6;
       } else {
         weightNum = 0;
@@ -645,11 +647,11 @@ const prodSummary = e => {
       </div>
       <div class="total-price">
         <h5 class="label">Shape : </h5>
-        <p>${p.cake.heart ? 'Opted' : 'Not Opted'}</p>
+        <p>${p.cake.heart ? "Opted" : "Not Opted"}</p>
       </div>
       <div class="total-price">
         <h5 class="label">Eggless : </h5>
-        <p>${p.cake.eggless ? 'Opted' : 'Not Opted'}</p>
+        <p>${p.cake.eggless ? "Opted" : "Not Opted"}</p>
       </div>
       `;
     }
@@ -674,32 +676,35 @@ const prodSummary = e => {
       </div>
     </div>
     `;
-  })
+  });
 
   orderAreaHTML.innerHTML = card;
-}
-registerTimeHTML.addEventListener('click', prodSummary);
-
+};
+registerTimeHTML.addEventListener("click", prodSummary);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
 // const prodFinalHTML = document.querySelector('#prodFinal');
 
-const shipping_userHTML = document.querySelector('#shipping_user');
-const shipping_locationHTML = document.querySelector('#shipping_location');
-const shipping_landmarkHTML = document.querySelector('#shipping_landmark');
-const shipping_phoneHTML = document.querySelector('#shipping_phone');
-const shipping_emailHTML = document.querySelector('#shipping_email');
-const shipping_msgHTML = document.querySelector('#shipping_msg');
+const shipping_userHTML = document.querySelector("#shipping_user");
+const shipping_locationHTML = document.querySelector("#shipping_location");
+const shipping_landmarkHTML = document.querySelector("#shipping_landmark");
+const shipping_phoneHTML = document.querySelector("#shipping_phone");
+const shipping_emailHTML = document.querySelector("#shipping_email");
+const shipping_msgHTML = document.querySelector("#shipping_msg");
 
-const alt_shipping_userHTML = document.querySelector('#alt_shipping_user');
-const alt_shipping_locationHTML = document.querySelector('#alt_shipping_location');
-const alt_shipping_landmarkHTML = document.querySelector('#alt_shipping_landmark');
-const alt_shipping_phoneHTML = document.querySelector('#alt_shipping_phone');
-const alt_shipping_emailHTML = document.querySelector('#alt_shipping_email');
+const alt_shipping_userHTML = document.querySelector("#alt_shipping_user");
+const alt_shipping_locationHTML = document.querySelector(
+  "#alt_shipping_location"
+);
+const alt_shipping_landmarkHTML = document.querySelector(
+  "#alt_shipping_landmark"
+);
+const alt_shipping_phoneHTML = document.querySelector("#alt_shipping_phone");
+const alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
 
-const altAddressHTML = document.querySelector('#alt-address');
-const displayShippingInfo = e => {
+const altAddressHTML = document.querySelector("#alt-address");
+const displayShippingInfo = (e) => {
   console.log(SHIPPING_DATA);
   shipping_userHTML.innerHTML = SHIPPING_DATA.name;
   shipping_locationHTML.innerHTML = SHIPPING_DATA.address;
@@ -708,8 +713,8 @@ const displayShippingInfo = e => {
   shipping_emailHTML.innerHTML = SHIPPING_DATA.email;
   shipping_msgHTML.innerHTML = SHIPPING_DATA.message;
 
-  if(SHIPPING_DATA.differtAddress) {
-    altAddressHTML.style.display = 'block';
+  if (SHIPPING_DATA.differtAddress) {
+    altAddressHTML.style.display = "block";
     alt_shipping_userHTML.innerHTML = SHIPPING_DATA.alt_name;
     alt_shipping_locationHTML.innerHTML = SHIPPING_DATA.alt_address;
     alt_shipping_landmarkHTML.innerHTML = SHIPPING_DATA.alt_landmark;
@@ -717,12 +722,60 @@ const displayShippingInfo = e => {
     alt_shipping_emailHTML = SHIPPING_DATA.alt_email;
   }
 
+  let mainData = {
+    amount: TOTAL_COST,
+    name: USER_DETAILS.UserName,
+  };
+  let options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(mainData),
+  };
 
-  const finalBtnSpanHTML = document.querySelector('#finalBtnSpan');
-  finalBtnSpanHTML.innerHTML = `
-  <a href="./payment.html?checkout=${CHECKOUT_ID}"> 
-    <button type="submit" id="final-btn" class="mybtn1 1">Proceed to Pay </button>
-  </a>`;
-}
+  let RAZ_ORDER;
+  fetch("http://localhost:3500/checkout", options)
+    .then((res) => {
+      return res.json();
+    })
+    .then((resData) => {
+      console.log(resData);
+      RAZ_ORDER = resData.orderId;
+
+    //   document.querySelector('#aaa').innerHTML = `
+    // <form action="http://localhost:3500/payment" method="POST" id="abcd"> 
+    // <script
+    //     src="https://checkout.razorpay.com/v1/checkout.js"
+    //     data-key="rzp_test_E92aTxXOy18B5Y" 
+    //     data-amount="500" 
+    //     data-currency="INR"
+    //     data-order_id="${RAZ_ORDER}"
+    //     data-buttontext="Pay with Razorpay"
+    //     data-name="Acme Corp"
+    //     data-description="Test transaction"
+    //     data-image=""
+    //     data-prefill.name="Gaurav Kumar"
+    //     data-prefill.email="gaurav.kumar@example.com"
+    //     data-prefill.contact="9999999999"
+    //     data-theme.color="#F37254"
+    // ></script>
+    // <input type="hidden" custom="Hidden Element" name="hidden">
+    // </form>
+    // `;
+    // console.log(document.querySelector('#aaa').innerHTML);
+
+      const finalBtnSpanHTML = document.querySelector("#finalBtnSpan");
+      finalBtnSpanHTML.innerHTML = `
+      <a href="./payment.html?checkout=${CHECKOUT_ID}&&orderId=${RAZ_ORDER}"> 
+        <button type="submit" id="final-btn" class="mybtn1 1">Proceed to Pay </button>
+      </a>`;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  
+};
 
 // prodFinalHTML.addEventListener('click', displayShippingInfo);

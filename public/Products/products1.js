@@ -4,7 +4,7 @@ const db = firebase.firestore();
 const storageService = firebase.storage();
 
 const allProductsHTML = document.querySelector("#allProducts");
-const productHeadingHTML = document.querySelector('.productHeading');
+const productHeadingHTML = document.querySelector('#productHeading');
 const topSuggestionHTML = document.querySelector("#top-suggestion");
 let CAT, SUB, CHILD, TAG, USER;
 

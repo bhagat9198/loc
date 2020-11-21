@@ -50,7 +50,7 @@ console.log("navbar1.js");
     let liMob = '';
     for (let doc of snapshotDocs) {
       let docData = doc.data();
-      console.log(docData);
+      // console.log(docData);
    
       let subCat = extractSubCat(docData, doc.id);
       // let imgPath = await extractImgURL(`categories/${doc.id}/${docData.img}`);
