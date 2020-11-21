@@ -354,16 +354,19 @@
           <div class="col-md-10 col-12 p-0 mt-3 ml-4">
             <div class="input-group mb-2 mt-2">
               <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
-                <div class="autocomplete" >
-                  <input class="form-control" type="text" id="searchBar" onkeyup=searchIfvalue(event) name="searchBar"
+                <div class="autocomplete" style="width: 100%;" >
+                  <input class="form-control" style="width: 100% !important;
+                  border: none;
+                  border-bottom: 1px solid black;
+                  border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeyup=searchIfvalue(event) name="searchBar"
                     placeholder="Search: Cakes , Flowers ,Gifts..."
-                    style="border-radius: 5px 0px 0px 5px;">
+                   >
                 </div>
                 
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" onclick="searchByBtn('searchBar')"
-                    style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background: rgb(218, 22, 22); border: #F00;"><i
-                      class="fa fa-search" style="color:#fff"></i></button>
+                    style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent;color:; border: #F00;"><i
+                      class="fa fa-search" style="color:black"></i></button>
                 </div>
               </form>
             </div>
