@@ -21,11 +21,11 @@
 	<script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
 
 	<meta name="theme-color" content="#a15a55">
-	<link rel="stylesheet" href="../assets/css/all.css">
+	<link rel="stylesheet" href="../assets/css/oldall.css">
 	<link rel="stylesheet" href="../assets/css/base.css">
 	<link rel="stylesheet" href="../assets/css/styles.php">
 	<link rel="stylesheet" href="../assets/css/mega-menu.css">
-	<link rel="stylesheet" href="../assets/css/products.css">
+		<!-- <link rel="stylesheet" href="../assets/css/products.css"> -->
 </head>
 <style>
 	@media only screen and (max-width:700px ){
@@ -34,6 +34,7 @@
 			visibility: hidden; */
 			padding: 10px;
 		}
+		
 		.responsive-secP{
 			display: none !important;
 		}
@@ -46,7 +47,34 @@
 		.catHead{
 			background-color: transparent !important;
 		}
+
 	}
+	@media only screen and (min-width: 800px) {
+		.responsive-image{
+			width:400px !important; 
+			height:300px !important;
+			object-fit:cover;
+			
+		
+		}
+	}
+	@media only screen and (max-width: 768px) {
+		.responsive-image{
+			width:250px !important; 
+			height: 150px !important;
+			object-fit:cover !important;
+			
+		
+		}
+		.responsive-sec{
+			display: none;
+		}
+		.responsive-price{
+			font-size: 13px !important;
+		}
+	}
+	
+	
 </style>
 <body style="overflow-x: hidden !important; ">
 	<section id="nav-section-loader"></section>
@@ -69,35 +97,48 @@
 					</div>
 				</div>
 			</div>
+		</div>
 	</section>
+	
+	<div class="breadcrumb-area">
+        <div class="container-fluid" style="background: #fff; padding: 16px 18px; border-radius: 5px; width: 98%;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="pages">
+                        <li>
+                            <a style="font-size: 18px;font-weight:800;">Cakes</a>
+                        </li>
 
-	<section class="sub-categori" style="padding: 5px 0px 1px; background:#f5f5f5;">
-		<div class="col-lg-12 order-first order-lg-last ajax-loader-parent" style="background: #fff; border-radius: 5px;">
-			<div class="right-area" id="app">
-			
-
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+	<section class="sub-categori" style="padding: 10px ; background:#f5f5f5;">
+		<div class="container-fluid">
+		<div class="col-lg-12 order-first order-lg-last ajax-loader-parent"
+				style="background: #fff; border-radius: 5px;">
+				<div class="right-area" id="app">
 					<div class="item-filter">
-						<div class="catHead" style="float: left;position: relative;padding: 10px;background-color: rgb(211, 203, 191);width: 100%;margin: 1%;border-radius: 10px;">
-							<h3 class="productHeading">Please wait Loading.. </h3>
-						</div>
-		
-						<ul class="filter-list responsive-sec" style="float: right;">
+						<ul class="filter-list ">
 							<li class="item-short-area">
-								<p class="responsive-secP">Filters</p>
-								<select id="sortby" name="sort" class="short-item" style="border-radius: 5px;">
-									<!--<option value="date_desc">Latest Product</option>-->
-									<option value="date_desc">Sort By</option>
-									<!--<option value="date_asc">Oldest Product</option>-->
-									<!--<option value="price_asc">Lowest Price</option>-->
-									<option value="price_asc">Price - Low To High</option>
-									<option value="price_desc">Price - High To Low</option>
-								</select>
-							</li>
+                                <p>Sort By :</p>
+                                <select id="sortby" name="sort" class="short-item">
+                                    <!--<option value="date_desc">Latest Product</option>-->
+                                    <option value="date_desc">Popularity</option>
+                                    <!--<option value="date_asc">Oldest Product</option>-->
+                                    <!--<option value="price_asc">Lowest Price</option>-->
+                                    <option value="price_asc">Price - Low To High</option>
+                                    <option value="price_desc">Price - High To Low</option>
+                                </select>
+                            </li>
 						</ul>
 					</div>
+				</div>
 
 				<div class="categori-item-area">
 					<div class="row" id="allProducts">
+						
 						<!-- <div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">

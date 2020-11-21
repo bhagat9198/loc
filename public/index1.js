@@ -64,7 +64,7 @@ db.collection("sections")
       } else {
         row += `
    
-      <div class="col-lg-3 col-md-3  remove-padding revealOnScroll"  data-animation="slideInRight">
+      <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
             <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
           }&&tag=${docData[card].tag}">
@@ -83,6 +83,7 @@ db.collection("sections")
 
 // fixed section 2
 const fixedSection2Row = document.querySelector("#fixed-section2-row");
+const fixedSection21Row = document.querySelector("#fixed-section21-row");
 db.collection("sections")
   .doc("fixed2")
   .onSnapshot((doc) => {
@@ -116,7 +117,7 @@ db.collection("sections")
         <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
         }&&tag=${card.tag}" class="">
           <div class="iconimg">
-            <img class="comimg" src="${docData[card].imgUrl}"
+            <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${docData[card].imgUrl}"
               class="card-img-top img-fluid" alt="...">
           </div>
           <div class="card-body cbc text-center">
@@ -129,6 +130,7 @@ db.collection("sections")
     `;
     }
     fixedSection2Row.innerHTML = row;
+    fixedSection21Row.innerHTML = row;
   });
 
 // fixed section 3

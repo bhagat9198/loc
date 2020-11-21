@@ -714,6 +714,7 @@ const displayShippingInfo = e => {
     alt_shipping_locationHTML.innerHTML = SHIPPING_DATA.alt_address;
     alt_shipping_landmarkHTML.innerHTML = SHIPPING_DATA.alt_landmark;
     alt_shipping_phoneHTML.innerHTML = SHIPPING_DATA.alt_phone;
+    alt_shipping_emailHTML = SHIPPING_DATA.alt_email;
   }
 
 
