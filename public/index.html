@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lake of Cakes</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+
   <link rel="stylesheet" href="./assets/css/all.css">
   <link rel="stylesheet" href="./assets/css/base.css">
   <link rel="stylesheet" href="./assets/css/styles.css">
@@ -21,48 +21,95 @@
   <link rel="stylesheet" href="assets/css/animation.css">
 </head>
 <style>
-.top-grid-head{
-	background:url(./assets/images/header-bg1.png);
-	min-height:101px;
-  text-align:center;
-  width: 100%;
-  background-size:contain;
-  z-index: 999;
-}
-.darkmode-toggle{
-  z-index: 999 !important;
-}
+  .top-grid-head {
+    background: url(./assets/images/header-bg1.png);
+    min-height: 101px;
+    text-align: center;
+    width: 100%;
+    background-size: contain;
+    z-index: 999;
+  }
+
+  .darkmode-toggle {
+    z-index: 999 !important;
+  }
+
+  @media only screen and (max-width: 370px) {
+    .scres {
+      padding: 5px 0px 0px 20px !important;
+    }
+  }
+
+  @media only screen and (min-width:769px) {
+
+    .responsive-sec {
+      display: none !important;
+    }
+
+    .responsive-sec2 {
+      display: block !important;
+     
+    }
+  }
+
+  @media only screen and (max-width:768px) {
+
+    .responsive-sec {
+      padding: 5px 0px 0px 5px !important;
+      display: block !important;
+    }
+    .responsive-sec2{
+      display: none !important;
+    }
+
+  }
 </style>
 
 <body style="overflow-x: hidden !important; ">
 
-  <div id="loading">
+  <!-- <div id="loading">
     <img id="loading-image" src="./assets/images/Spinner-1s-200px.gif" alt="Loading..." />
-  </div>
+  </div> -->
 
   <section id="nav-section-loader"></section>
 
   <!-- SLIDER -->
+  <section class=" slider-buttom-category d-md-block responsive-sec" style="background: rgba(219, 216, 166, 0.3);">
+    <div class="container scres" style="overflow-x: overlay; padding: 5px 0px 0px 70px;">
+
+      <div class="row rows " id="fixed-section2-row" style="justify-content:space-evenly; flex-wrap: nowrap;">
+
+      </div>
+    </div>
+  </section>
 
   <section class="hero-area">
-    
+
     <div class="hero-area-slider">
       <div class="intro-carousel">
       </div>
       <div class="base">
-     
+
       </div>
     </div>
-    
+
   </section>
-</div>
-  <br>
+  </div>
+
 
   <!-- SECTION1 -->
 
+  <section class=" slider-buttom-category d-md-block responsive-sec2" style="background: rgba(219, 216, 166, 0.3);">
+    <div class="container scres" style="overflow-x: overlay; padding: 15px 0px 0px 90px;">
+
+      <div class="row rows " id="fixed-section21-row" style="justify-content:space-evenly; flex-wrap: nowrap;">
+
+      </div>
+    </div>
+  </section>
   <section class="banner-section"
     style="background: linear-gradient(rgba(138, 29, 101, 0.5), rgba(209, 85, 54, 0.616)),url('./assets/images/top-grid-bg.png');;">
-    
+
     <h3 class="bannerheading fadeIn" id="fixed-section1-heading">Choose the Best Joy</h3>
     <div class="container-fluid">
       <div class="row" id="fixed-section1-row">
@@ -79,9 +126,9 @@
       </div>
     </div>
   </section>
-  
 
-  <section class="" style="position: absolute;margin-top: -2%;">
+
+  <section class="responsive-sec2" style="position: absolute;margin-top: -2%; ">
     <div class="contain ">
       <div class="remoding">
         <div class="img">
@@ -94,32 +141,14 @@
       </div>
     </div>
   </section>
-  <br>
   
+
 
   <!-- SECTION 2-->
-  <section class="roundedborder d-md-block">
-    <div class="container scres" style="overflow-x: overlay; padding: 5px 0px 0px 20px;">
-      
-      <div class="row rows " id="fixed-section2-row" style="justify-content:space-evenly; flex-wrap: nowrap;">
-        <!-- <div class="sc-common-padding colxl2">
-          <div class="card cardc align-items-center">
-            <a href="///category/cakes" class="">
-              <div class="iconimg">
-                <img class="comimg" src="                  class="card-img-top img-fluid" alt="...">
-              </div>
-              <div class="card-body cbc text-center">
-                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">Cakes</h5>
-              </div>
-            </a>
-          </div>
-        </div> -->
-      </div>
-    </div>
-  </section>
+
   <br>
 
-  
+
 
   <!-- SECTION 3 -->
   <section class="categori-item typeofcakes-section clothing-and-Apparel-Area">
@@ -155,7 +184,7 @@
     </div>
   </section>
   <div class="top-grid-head"></div>
- 
+
   <!-- fixed section 4 -->
   <section class="trending">
     <div class="container-fluid">
@@ -223,7 +252,7 @@
   </section>
 
   <!-- fixed section 6 -->
-  
+
   <section class="categori-items bestseller">
     <div class="container-fluid">
       <div class="row ">
@@ -517,7 +546,7 @@
     </div>
 
   </section>
- 
+
   <!-- fixed section 9 -->
   <section class="banner-section"
     style="background:linear-gradient(rgba(16, 115, 133, 0.1), rgba(141, 106, 8, 0.616));">
@@ -543,20 +572,14 @@
 <script src="./assets/js/jquery.js"></script>
 
 <script type="text/javascript">
- 
-  $(window).load(function() {
-  
-   
-    $('#loading').hide();
-  });
 
 
 </script>
 <script type="text/javascript">
-  
+
 
   $('#nav-section-loader').load('./Common/navbar.html');
-  
+
 
   setTimeout(() => {
     $('#footer-section-loader').load('./Common/files.html');
@@ -574,7 +597,7 @@
 <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
 
 <script>
-  
+
   var firebaseConfig = {
     apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
     authDomain: "lake-of-cakes.firebaseapp.com",

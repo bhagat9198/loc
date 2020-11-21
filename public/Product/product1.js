@@ -295,7 +295,7 @@ const displayWeights = (makedWeight) => {
             src="${PROD_DETAILS.mainImgUrl}"
             alt="Lake of cakes"
             style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
-          <label class="custom-control-label" for="${rand}" style="font-weight: 700;">${weightNum} kg</label>
+          <label class="custom-control-label" for="${rand}" style="font-weight: 400;">${weightNum} kg</label>
         </div>
         `;
       });
