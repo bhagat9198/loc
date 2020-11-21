@@ -13,30 +13,9 @@
 
   <script>
     function reetik() {
-      var options = {
-        "key": "rzp_test_dHcwJXc68x8Abm", // Enter the Key ID generated from the Dashboard
-        "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        "currency": "INR",
-        "name": "Acme Corp",
-        "description": "Test Transaction",
-        "image": "https://example.com/your_logo", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        "handler": function (response) {
-          alert(response.razorpay_payment_id);
-          alert(response.razorpay_order_id);
-          alert(response.razorpay_signature)
-        },
-        "prefill": {
-          "name": "Gaurav Kumar",
-          "email": "gaurav.kumar@example.com",
-          "contact": "9999999999"
-        },
-        "notes": {
-          "address": "Razorpay Corporate Office"
-        },
-        "theme": {
-          "color": "#3399cc"
-        }
-      }
+      var options = { "key": "rzp_test_dHcwJXc68x8Abm", "amount": 99800, "name": "Lake of Cakes Order", "description": "Lake of Cakes Order", "prefill": { "name": "Reetik Chitragupt", "email": "reetikchitragupt.17is@saividya.ac.in", "contact": "7355670645" }, "notes": { "address": "Behind Scout press Gandhi Nagar basti", "merchant_order_id": "V6tm1602849698" }, "theme": { "color": "{#ff0000}" }, "order_id": "order_FpZ71TUDw6TV9z" };
+     
+       
 
       var rzp1 = new Razorpay(options);
       rzp1.open();
