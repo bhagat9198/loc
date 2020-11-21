@@ -8,6 +8,7 @@
   <meta name="keywords" content="Lake">
   <meta name="author" content="CrossHex_ BHAGAT SINGH _ REETIK CHRITRAGUPT">
   <title>Lake of Cakes | Description</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
   <meta name="theme-color" content="#a15a55">
@@ -15,18 +16,219 @@
   <link rel="stylesheet" href="../assets/css/base.css">
   <!-- <link rel="stylesheet" href="../assets/css/styles.php"> -->
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
-  <link rel="stylesheet" href="../assets/css/products.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- <link rel="stylesheet" href="../assets/css/products.css"> -->
+
   <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css">
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 </head>
 
+<style>
+  
+.item {
+    border: 3px solid rgb(254 255 254)!important;
+    box-shadow: 0px 1px 5px #00000029;
+    overflow: hidden;
+    display: block;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+}
+
+.item:hover {
+    overflow: hidden;
+    display: block;
+    position: relative;
+    z-index: 9;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    -ms-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.item .item-img {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.item .item-img img {
+    width: 100%;
+    height: auto;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+}
+
+.item:hover .item-img img {
+    transform: scale(1.2);
+}
+
+.item .item-img .sell-area {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    height: 100%;
+    display: block;
+    z-index: 3;
+}
+
+.item .item-img .sell-area .sale {
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fff;
+    z-index: 1;
+    padding: 0px 8px 0px 15px;
+    border-radius: 50px 0px 0px 50px;
+    display: block;
+    margin-top: 5px;
+}
+
+.item .item-img .extra-list {
+    position: absolute;
+    top: 20px;
+    left: 0px;
+    opacity: 0;
+    z-index: 1;
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+}
+
+.item .item-img .extra-list ul li span {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50px;
+    font-size: 14px;
+    margin-bottom: 7px;
+    border: 1px solid #ff5500;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    background: #ff5500;
+    -webkit-transition: 0.3s ease-in;
+    -moz-transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+    transition: 0.3s ease-in;
+}
+
+.item .item-img .extra-list ul li span:hover {
+    background: #ff5500;
+    border-color: #ff5500;
+    color: #fff;
+}
+
+.item .info {
+    position: relative;
+    top: 0;
+    height: 125px;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding: 0px 25px 10px;
+    -webkit-transition: all linear .3s;
+    -moz-transition: all linear .3s;
+    -o-transition: all linear .3s;
+    transition: all linear .3s;
+    background: rgba(255, 255, 255, 0.90);
+}
+
+.item .info .stars {
+    display: block;
+    text-align: center;
+}
+
+.item .info .stars ul {
+    display: inline-block;
+}
+
+.item .info .stars ul li {
+    display: inline-block;
+}
+
+.item .info .stars ul li i {
+    font-size: 12px;
+    color: #ff5500;
+}
+
+.item .info .price {
+    font-size: 18px;
+ 
+    font-weight: 700;
+
+}
+
+.item .info .name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+
+    /*height: 41px;*/
+}
+
+.item:hover .extra-list {
+    left: 20px;
+    opacity: 1;
+}
+
+.item .item-cart-area {
+    position: absolute;
+    display: none;
+    text-align: center;
+    width: 100%;
+    left: 0px;
+}
+
+.item .add-to-cart-btn {
+    font-size: 14px;
+    font-weight: 600;
+    background: #ff5500;
+    color: #fff;
+    border: 1px solid #ff5500;
+    padding: 3px 0px;
+    width: 140px;
+    display: block;
+    border-radius: 50px;
+    margin-top: 0px;
+    z-index: 9;
+    margin: 5px auto;
+    opacity: 0;
+    -webkit-transition: all linear .3s;
+    -moz-transition: all linear .3s;
+    -o-transition: all linear .3s;
+    transition: all linear .3s;
+}
+
+.item .add-to-cart-btn:hover {
+    background: none;
+    color: #ff5500;
+}
+
+.item:hover .add-to-cart-btn {
+    opacity: 1;
+}
+
+.item:hover .info {
+    top: 0px;
+    -webkit-transition: all linear .3s;
+    -moz-transition: all linear .3s;
+    -o-transition: all linear .3s;
+    transition: all linear .3s;
+}
+
+</style>
+
 <body style="overflow-x: hidden !important; ">
   <section id="nav-section-loader"></section>
   <section class="product-details-page" style="background: whitesmoke;">
-    <div class="" style="background: white; padding:46px 28px; border-radius: 5px;">
+    <div class="container" style="background: white; padding:16px 18px; border-radius: 5px;">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-9">
           <div class="row">
             <div class="col-lg-5 col-md-12" id="whole-img-block">
               <div class="xzoom-container">
@@ -85,7 +287,7 @@
                     </small>
                     <small style="color: green; font-size: 12px; ">(20% off)</small>
                     </p>
-                    <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;">(Inclusive all taxes)</span>
+                    <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;">(Inclusive of all taxes)</span>
                     </p>
                     <p>
                       <span style="font-size: 13px; cursor: pointer;  font-weight: 600;color: #1e4794e6;">
@@ -184,7 +386,7 @@
                         <div>
                           <label class="">Give your message too😍😇</label>
                           <input type="text" class="values form-control message_cart" name="message" id="prodMsg"
-                            placeholder="Enter a name/message (Max 30 Characters)" maxlength="20"
+                            placeholder="Enter a name/message (Max 30 Characters)" maxlength="30"
                             style="height: 3em;width: 82%;">
                         </div>
                       </div>
@@ -194,11 +396,12 @@
                         style="border-radius: 15px;line-height: 35px;  padding:10px 73px;background: #09192c; border: 1px solid #ac2664; color:#fff;"
                         class="btn btn-primary btns">Add to Cart
                       </button>
-                      
+
                       <button type="button" id="buyNowBtn"
                         style="border-radius: 15px;line-height: 35px;  padding:10px 76.5px;background: rgb(60,179,36); border: 1px solid rgb(60,179,36); color:#fff;"
                         class="btn btn-primary btns" data-toggle="modal" data-target="#addonsModal">Buy Now</button>
-                        <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="success">Added To Cart Successfully <i class="fa fa-check"></i> </h5>
+                      <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;"
+                        id="success">Added To Cart Successfully <i class="fa fa-check"></i> </h5>
                       <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
@@ -274,7 +477,7 @@
           </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <div class="row">
             <div class="col-md-12">
               <img src="//lakeofcakes.com/assets/front/images/topsafe.png">
@@ -291,7 +494,51 @@
             <div class="col-md-6 col-sm-6 col-6 remove-padding">
               <img src="//lakeofcakes.com/assets/front/images/4.png">
             </div>
+            <div class="com-md-12 socialdiv">
+              <div class="right-area">
+                <div class="product-info">
 
+                  <div class="social-links social-sharing a2a_kit a2a_kit_size_32">
+                    <ul class="link-list social-links">
+                      <!-- <li>
+                        <a class="facebook a2a_button_facebook" href="">
+                          <i class="fab fa-facebook-f"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="twitter a2a_button_instagram" href="" style="background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+">
+                          <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li> -->
+                      <!--<li>-->
+
+
+
+                      <!--</li>-->
+                      <li>
+                        <a class="pinterest a2a_button_pinterest" href="">
+                          <i class="fab fa-pinterest-p"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <script async src="//static.addtoany.com/menu/page.js"></script>
+
+                  <p class="p-sku">
+                    Product LOC: <span class="idno">piv9764ndw</span>
+                  </p>
+                  <!-- <div class="report-area">
+                    <a href="javascript:;" data-toggle="modal" data-target="#comment-log-reg"><i
+                        class="fas fa-flag"></i> Report This Item</a>
+                  </div> -->
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -366,56 +613,68 @@
         </div>
       </div>
 
-
-
-      <div class="trending" style="padding:20px">
-        <div class="" style="background: #f3f2f1;border-radius: 15px;">
-          <div class="row">
-            <div class="col-lg-12 " style="padding: 30px;">
-              <div class="section-top">
-                <h2 class="section-title">
-                  You May Also Like
-                </h2>
-              </div>
-            </div>
-          </div>
-          <div class="container-fluid">
-
+      <div class="trending">
+        <div class="container" style="background: #f7f7f7;border-radius: 5px;">
             <div class="row">
-              <div class="col-lg-12">
-                <div class="row" id="fixed-section7-row">
-
-                  <div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
-                    <a href="../Product/product.html?prod=${p.prodId}" class="item">
-                      <div class="item-img">
-                        <div class="extra-list">
-                          <ul>
-                            <li>
-                              <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
-                                data-target="#comment-log-reg" data-placement="right">
-                                <i class="fa fa-heart"></i>
-                              </span>
-                            </li>
-                          </ul>
-                        </div>
-                        <img class="img-fluid"
-                          src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/rainbow-cake760x580.jpg?ext=.jpg"
-                          alt="Lake of cakes ${p.prodData.name}">
-                      </div>
-                      <div class="info" style="height: 100px !important;">
-                        <h5 class="name" style="font-size: 15px;">Product Name</h5>
-                        <br>
-                        <h5 ></h5>
-                        <h5 class="discount" style="font-size: 16px;">₹ 1197 <small><del>2000</del></small></h5>
-                      </div>
-                    </a>
-                  </div>
+                <div class="col-lg-12 remove-padding">
+                    <div class="section-top">
+                        <h2 class="section-title">
+                            You May Also Like
+                        </h2>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+            <div class="row">
+                <div class="col-lg-12 remove-padding">
+                    <div class="trending-item-slider">
+                     
+
+                        <a href="//lakeofcakes.com/item/heart-shape-chocolate-cake-uey2120b3u" class="item">
+                            <div class="item-img">
+                                <div class="extra-list">
+                                    <ul>
+                                        <li>
+                                            <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
+                                                id="wish-btn" data-target="#comment-log-reg" data-placement="right">
+                                                <i class="icofont-heart-alt"></i>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <img class="img-fluid" style="width: 500px !important;"
+                                    src="//lakeofcakes.com/assets/images/thumbnails/1598242235oN6nnV6e.jpg" alt="">
+                            </div>
+                            <div class="info">
+                                <div class="stars">
+                                    <div class="ratings">
+                                        <div class="empty-stars"></div>
+                                        <div class="full-stars" style="width:0%"></div>
+                                    </div>
+                                </div>
+                                <h5 class="" style="font-size: 1em;color: black;">heart shape Chocolate Cake</h5>
+                                <h4 class="" style="text-align: center;font-size: 1em;font-weight: 600;">₹499 <del><small>₹799 </small></del></h4>
+                       
+                                <!-- <div class="item-cart-area">
+                                    <span class="add-to-cart add-to-cart-btn"
+                                        data-href="//lakeofcakes.com/addcart/237">
+                                        <i class="icofont-cart"></i> Add To Cart
+                                    </span>
+                                    <span class="add-to-cart-quick add-to-cart-btn"
+                                        data-href="//lakeofcakes.com/addtocart/237">
+                                        <i class="icofont-cart"></i> Buy Now
+                                    </span>
+                                </div> -->
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </div>
+    </div>
+
+     
   </section>
 
 
@@ -424,7 +683,10 @@
 </body>
 
 
-<script src="../assets/js/jquery.js"></script>
+  <script src="../assets/js/jquery.js"></script>
+  <script src="../assets/js/jquery-ui.min.js"></script>
+  <script src="../assets/js/plugin.js"></script>
+  <script src="../assets/js/main2.js"></script>
 <script type="text/javascript">
   $('#nav-section-loader').load('../Common/navbar.html');
 </script>
@@ -465,6 +727,10 @@
 <script src="./product1.js"></script>
 <script src="../Common/navbar1.js"></script>
 <script>
+
+
+   
+    
   $(document).ready(function () {
     $(".nav-tabs a").click(function () {
       $(this).tab('show');
