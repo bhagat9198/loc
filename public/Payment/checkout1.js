@@ -704,6 +704,8 @@ const alt_shipping_phoneHTML = document.querySelector("#alt_shipping_phone");
 const alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
 
 const altAddressHTML = document.querySelector("#alt-address");
+
+let RAZ_ORDER_ID;
 const displayShippingInfo = (e) => {
   console.log(SHIPPING_DATA);
   shipping_userHTML.innerHTML = SHIPPING_DATA.name;
@@ -734,48 +736,147 @@ const displayShippingInfo = (e) => {
     body: JSON.stringify(mainData),
   };
 
-  let RAZ_ORDER;
-  fetch("http://localhost:3500/checkout", options)
+
+  fetch("https://raz-pay.herokuapp.com/checkout", options)
     .then((res) => {
       return res.json();
     })
     .then((resData) => {
       console.log(resData);
-      RAZ_ORDER = resData.orderId;
-
-    //   document.querySelector('#aaa').innerHTML = `
-    // <form action="http://localhost:3500/payment" method="POST" id="abcd"> 
-    // <script
-    //     src="https://checkout.razorpay.com/v1/checkout.js"
-    //     data-key="rzp_test_E92aTxXOy18B5Y" 
-    //     data-amount="500" 
-    //     data-currency="INR"
-    //     data-order_id="${RAZ_ORDER}"
-    //     data-buttontext="Pay with Razorpay"
-    //     data-name="Acme Corp"
-    //     data-description="Test transaction"
-    //     data-image=""
-    //     data-prefill.name="Gaurav Kumar"
-    //     data-prefill.email="gaurav.kumar@example.com"
-    //     data-prefill.contact="9999999999"
-    //     data-theme.color="#F37254"
-    // ></script>
-    // <input type="hidden" custom="Hidden Element" name="hidden">
-    // </form>
-    // `;
-    // console.log(document.querySelector('#aaa').innerHTML);
+      RAZ_ORDER_ID = resData.orderId;
 
       const finalBtnSpanHTML = document.querySelector("#finalBtnSpan");
       finalBtnSpanHTML.innerHTML = `
-      <a href="./payment.html?checkout=${CHECKOUT_ID}&&orderId=${RAZ_ORDER}"> 
+      <a href="./payment.html?checkout=${CHECKOUT_ID}&&orderId=${RAZ_ORDER_ID}"> 
         <button type="submit" id="final-btn" class="mybtn1 1">Proceed to Pay </button>
       </a>`;
     })
     .catch((error) => {
       console.log(error);
     });
-
-  
 };
 
 // prodFinalHTML.addEventListener('click', displayShippingInfo);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+let options;
+
+// options = {
+//   key: "rzp_test_irSg3itoRV9kt3", // Enter the Key ID generated from the Dashboard
+//   currency: "INR",
+//   name: "LAKE OF CAKES",
+//   description: "HAPPY SHOPPING",
+//   image: "./../assets/images/logo.png",
+//   order_id: RAZ_ORDER_ID, 
+//   handler: function (response) {
+//     RES = response;
+//     alert(response.razorpay_signature);
+//     console.log(response);
+//     orderComplete(response);
+//     // alert(response.razorpay_payment_id);
+//     // alert(response.razorpay_order_id);
+//   },
+//   prefill: {
+//     name: "Gaurav Kumar",
+//     email: "gaurav.kumar@example.com",
+//     contact: "9999999999",
+//   },
+//   notes: {
+//     address: "Razorpay Corporate Office",
+//   },
+//   theme: {
+//     color: "#f00",
+//   },
+// };
+let rzp1;
+// document.querySelector("#rzp-button1").addEventListener("click", (e) => {
+//   e.preventDefault();
+//   console.log(options);
+//   rzp1 = new Razorpay(options);
+//   rzp1.open();
+// });
+
+
+const exeRazPay = e => {
+  e.preventDefault();
+  console.log(RAZ_ORDER_ID);
+  console.log(options);
+  alert(TOTAL_COST);
+  let t = parseInt(TOTAL_COST) * 100;
+  console.log(typeof(t));
+  alert(t);
+
+  options = {
+    key: "rzp_test_irSg3itoRV9kt3", // Enter the Key ID generated from the Dashboard
+    amount: "1000", 
+    currency: "INR",
+    name: "LAKE OF CAKES",
+    description: "HAPPY SHOPPING",
+    image: "./../assets/images/logo.png",
+    order_id: RAZ_ORDER_ID, 
+    handler: function (response) {
+      RES = response;
+      alert(response.razorpay_signature);
+      console.log(response);
+      orderComplete(response);
+      // alert(response.razorpay_payment_id);
+      // alert(response.razorpay_order_id);
+    },
+    prefill: {
+      name: `${USER_DETAILS.name}`,
+      email: `${USER_DETAILS.email}`,
+      contact: "9999999999",
+    },
+    notes: {
+      address: "Razorpay Corporate Office",
+    },
+    theme: {
+      color: "#f00",
+    },
+  };
+  console.log(options);
+  rzp1 = new Razorpay(options);
+  rzp1.open();
+  rzp1.on("payment.failed", function (response) {
+    alert(response.error.code);
+    alert(response.error.description);
+    alert(response.error.source);
+    alert(response.error.step);
+    alert(response.error.reason);
+    alert(response.error.metadata.order_id);
+    alert(response.error.metadata.payment_id);
+    console.log(response);
+    console.log(response.error);
+  });
+}
+
+
+const orderComplete = (data) => {
+  console.log(data);
+
+  let options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(data),
+  };
+
+  let RAZ_ORDER;
+  fetch("https://raz-pay.herokuapp.com/payment", options)
+    .then((res) => {
+      return res.json();
+    })
+    .then((resData) => {
+      console.log(resData);
+      console.log(resData);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
