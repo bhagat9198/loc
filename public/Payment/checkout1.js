@@ -737,6 +737,7 @@ const displayShippingInfo = (e) => {
   };
 
 
+  // fetch("https://raz-pay.herokuapp.com/checkout", options)
   fetch("https://raz-pay.herokuapp.com/checkout", options)
     .then((res) => {
       return res.json();
@@ -747,7 +748,7 @@ const displayShippingInfo = (e) => {
 
       const finalBtnSpanHTML = document.querySelector("#finalBtnSpan");
       finalBtnSpanHTML.innerHTML = `
-      <a href="./payment.html?checkout=${CHECKOUT_ID}&&orderId=${RAZ_ORDER_ID}"> 
+      <a href="javascript;;"> 
         <button type="submit" id="final-btn" class="mybtn1 1">Proceed to Pay </button>
       </a>`;
     })
