@@ -5,31 +5,169 @@ let INDEX = -1;
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-var name1= urlParams.get(('checkout'));
-var randomid= urlParams.get(('orderId'));
+var name1 = urlParams.get("checkout");
+var randomid = urlParams.get("orderId").toString();
 console.log(name1, randomid);
 
-document.querySelector('#aaa').innerHTML = `
-    <form action="http://localhost:3500/payment" method="POST" id="abcd"> 
-    <script
-        src="https://checkout.razorpay.com/v1/checkout.js"
-        data-key="rzp_test_E92aTxXOy18B5Y" 
-        data-amount="500" 
-        data-currency="INR"
-        data-order_id="${randomid}"
-        data-buttontext="Pay with Razorpay"
-        data-name="Acme Corp"
-        data-description="Test transaction"
-        data-image=""
-        data-prefill.name="Gaurav Kumar"
-        data-prefill.email="gaurav.kumar@example.com"
-        data-prefill.contact="9999999999"
-        data-theme.color="#F37254"
-    ></script>
-    <input type="hidden" custom="Hidden Element" name="hidden">
-    </form>
-    `;
-    console.log(document.querySelector('#aaa').innerHTML);
+let options;
+
+options = {
+  key: "rzp_test_irSg3itoRV9kt3", // Enter the Key ID generated from the Dashboard
+  amount: "100", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+  currency: "INR",
+  name: "LAKE OF CAKES",
+  description: "HAPPY SHOPPING",
+  image: "./../assets/images/logo.png",
+  order_id: randomid, 
+  handler: function (response) {
+    RES = response;
+    alert(response.razorpay_signature);
+    console.log(response);
+    orderComplete(response);
+    // alert(response.razorpay_payment_id);
+    // alert(response.razorpay_order_id);
+  },
+  prefill: {
+    name: "Gaurav Kumar",
+    email: "gaurav.kumar@example.com",
+    contact: "9999999999",
+  },
+  notes: {
+    address: "Razorpay Corporate Office",
+  },
+  theme: {
+    color: "#f00",
+  },
+};
+
+let rzp1;
+// rzp1 = new Razorpay(options);
+// rzp1.open();
+
+// rzp1.on("payment.failed", function (response) {
+  // alert(response.error.code);
+  // alert(response.error.description);
+  // alert(response.error.source);
+  // alert(response.error.step);
+  // alert(response.error.reason);
+  // alert(response.error.metadata.order_id);
+  // alert(response.error.metadata.payment_id);
+//   console.log(response);
+//   console.log(response.error);
+// });
+
+// rzp1.open();
+
+document.querySelector("#rzp-button1").addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log(options);
+  rzp1 = new Razorpay(options);
+  rzp1.open();
+});
+
+
+const orderComplete = (data) => {
+  console.log(data);
+
+  let options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(data),
+  };
+
+  let RAZ_ORDER;
+  fetch("http://localhost:3500/payment", options)
+    .then((res) => {
+      return res.json();
+    })
+    .then((resData) => {
+      console.log(resData);
+      console.log(resData);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+// var options = { "key": "rzp_test_E92aTxXOy18B5Y",
+// "amount": 99800,
+//  "name": "Lake of Cakes Order",
+// "description": "Lake of Cakes Order", "prefill": { "name": "Reetik Chitragupt", "email": "reetikchitragupt.17is@saividya.ac.in", "contact": "7355670645" }, "notes": { "address": "Behind Scout press Gandhi Nagar basti", "merchant_order_id": "V6tm1602849698" }, "theme": { "color": "{#ff0000}" }, "order_id": randomid };
+
+// options.handler = function (response) {
+//   document.getElementById('razorpay_payment_id').value = response.razorpay_payment_id;
+//   document.getElementById('razorpay_signature').value = response.razorpay_signature;
+//   document.razorpayform.submit();
+// };
+
+// // Boolean whether to show image inside a white frame. (default: true)
+// options.theme.image_padding = false;
+
+// options.modal = {
+//   ondismiss: function () {
+//       window.location.assign("./../index.html");
+//   },
+//   // Boolean indicating whether pressing escape key
+//   // should close the checkout form. (default: true)
+//   escape: true,
+
+//   // Boolean indicating whether clicking translucent blank
+//   // space outside checkout form should close the form. (default: false)
+//   backdropclose: false
+// };
+
+// var rzp = new Razorpay(options);
+
+// //document.getElementById('rzp-button1').onclick = function(e){
+// rzp.open();
+// // e.preventDefault();
+// //}
+
+// document.querySelector('#aaaa').innerHTML = `<button>hello</button>`
+//     document.querySelector('#f').setAttribute('data-lol', 123);
+//     console.log(document.querySelector('#f'));
+// document.querySelector('#abcd').innerHTML = `
+// <script
+//         src="https://checkout.razorpay.com/v1/checkout.js"
+//         data-key="rzp_test_E92aTxXOy18B5Y"
+//         data-amount="500"
+//         data-currency="INR"
+//         data-order_id="${randomid}"
+//         data-buttontext="Pay with Razorpay"
+//         data-name="Acme Corp"
+//         data-description="Test transaction"
+//         data-image=""
+//         data-prefill.name="Gaurav Kumar"
+//         data-prefill.email="gaurav.kumar@example.com"
+//         data-prefill.contact="9999999999"
+//         data-theme.color="#F37254"
+//     ></script>
+//     <input type="hidden" custom="Hidden Element" name="hidden">
+// `;
+//   console.log(document.querySelector('#abcd'));
+// document.querySelector("#aaa").innerHTML = `sdrgfthygjukiytrfdesrtfy
+// <form action="http://localhost:3500/payment" method="POST" id="abcd">
+// <script
+//     src="https://checkout.razorpay.com/v1/checkout.js"
+//     data-key="rzp_test_E92aTxXOy18B5Y"
+//     data-amount="500"
+//     data-currency="INR"
+//     data-order_id="${randomid}"
+//     data-buttontext="Pay with Razorpay"
+//     data-name="Acme Corp"
+//     data-description="Test transaction"
+//     data-image=""
+//     data-prefill.name="Gaurav Kumar"
+//     data-prefill.email="gaurav.kumar@example.com"
+//     data-prefill.contact="9999999999"
+//     data-theme.color="#F37254"
+// ></script>
+// <input type="hidden" custom="Hidden Element" name="hidden">
+// </form>
+// <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+// `;
+// console.log(document.querySelector("#aaa").innerHTML);
 
 // if (localStorage.getItem("locLoggedInUser") == "null") {
 //   window.location.href = "./../Auth/login.html";
@@ -57,11 +195,11 @@ document.querySelector('#aaa').innerHTML = `
 
 //     console.log(document.querySelector('#aaa'));
 //     document.querySelector('#aaa').innerHTML = `
-//     <form action="http://localhost:3500/payment" method="POST" id="abcd"> 
+//     <form action="http://localhost:3500/payment" method="POST" id="abcd">
 //     <script
 //         src="https://checkout.razorpay.com/v1/checkout.js"
-//         data-key="rzp_test_E92aTxXOy18B5Y" 
-//         data-amount="500" 
+//         data-key="rzp_test_E92aTxXOy18B5Y"
+//         data-amount="500"
 //         data-currency="INR"
 //         data-order_id="${ORDER_ID}"
 //         data-buttontext="Pay with Razorpay"
@@ -110,7 +248,6 @@ document.querySelector('#aaa').innerHTML = `
 //   }
 // };
 
-
 // let options; let rzp1;
 
 // function setRaz() {
@@ -147,8 +284,6 @@ document.querySelector('#aaa').innerHTML = `
 // rzp1.open();
 // }
 
-
-
 // rzp1.on("payment.failed", function (response) {
 //   // alert(response.error.code);
 //   // alert(response.error.description);
@@ -167,7 +302,7 @@ document.querySelector('#aaa').innerHTML = `
 //   e.preventDefault();
 //   console.log(ORDER_ID);
 //   setRaz();
-  
+
 // });
 
 // const orderComplete = (data) => {
@@ -175,17 +310,17 @@ document.querySelector('#aaa').innerHTML = `
 //   console.log(data.razorpay_payment_id);
 //   console.log(data.razorpay_signature);
 
-  // const checkPayment = firebase.functions().httpsCallable('checkPayment');
-  // checkPayment({
-  //   razorpay_payment_id : data.razorpay_payment_id,
-  //   razorpay_order_id : data.razorpay_order_id,
-  //   razorpay_signature : data.razorpay_order_id
-  // }).then(res => {
-  //   console.log(response);
-  // })
+// const checkPayment = firebase.functions().httpsCallable('checkPayment');
+// checkPayment({
+//   razorpay_payment_id : data.razorpay_payment_id,
+//   razorpay_order_id : data.razorpay_order_id,
+//   razorpay_signature : data.razorpay_order_id
+// }).then(res => {
+//   console.log(response);
+// })
 
-  // let res = checkPayment(data);
-  // console.log(res);
+// let res = checkPayment(data);
+// console.log(res);
 //   let d = {
 //     payment_id: data.razorpay_payment_id,
 //     sig: data.razorpay_signature,

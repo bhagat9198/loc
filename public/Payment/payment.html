@@ -30,12 +30,49 @@
   }
 </style>
 
+
+
 <body>
   <section id="nav-section-loader"></section>
-  <!-- <button id="rzp-button1">PAY ME</button> -->
+  <button id="rzp-button1">PAY ME</button>
+  <form action="http://localhost:3500/payment" method="POST" id="abcd"> 
+    <!-- <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="rzp_test_E92aTxXOy18B5Y" 
+        data-amount="500" 
+        data-currency="INR"
+        data-order_id="${randomid}"
+        data-buttontext="Pay with Razorpay"
+        data-name="Acme Corp"
+        data-description="Test transaction"
+        data-image=""
+        data-prefill.name="Gaurav Kumar"
+        data-prefill.email="gaurav.kumar@example.com"
+        data-prefill.contact="9999999999"
+        data-theme.color="#F37254"
+    ></script> -->
+    <!-- <input type="hidden" custom="Hidden Element" name="hidden"> -->
+    <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+    <input type="hidden" name="razorpay_signature" id="razorpay_signature">
+    </form>
+  <div id="aaaa"></div>
 
-  <div id="aaa">dftghjkl</div>
+  <form  id="f" 
+  data-id="lol"
+  >
+    <input type="text">
+  </form>
   
+  <div id="aaa"></div>
+
+  <script src="//checkout.razorpay.com/v1/checkout.js"></script>
+  <form>
+    <script src = "https://cdn.razorpay.com/static/widget/payment-button.js"
+    data-payment_button_id = "pl_FNmjTJSGXBYIfp"
+    data-button_text = "Buy Now"
+    data-button_theme = "brand-color">
+    </script>
+    </form>
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
 </body>
 
