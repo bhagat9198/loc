@@ -737,21 +737,25 @@ const displayShippingInfo = (e) => {
   };
 
 
-  fetch("https://raz-pay.herokuapp.com/checkout", options)
+  // fetch("https://raz-pay.herokuapp.com/checkout", options)
+  fetch("http://localhost:3500/checkout", options)
     .then((res) => {
+     
       return res.json();
     })
     .then((resData) => {
       console.log(resData);
+      alert(resData +"sssss")
       RAZ_ORDER_ID = resData.orderId;
 
       const finalBtnSpanHTML = document.querySelector("#finalBtnSpan");
       finalBtnSpanHTML.innerHTML = `
-      <a href="./payment.html?checkout=${CHECKOUT_ID}&&orderId=${RAZ_ORDER_ID}"> 
+      <a href="javascript;;"> 
         <button type="submit" id="final-btn" class="mybtn1 1">Proceed to Pay </button>
       </a>`;
     })
     .catch((error) => {
+      alert(error)
       console.log(error);
     });
 };
@@ -812,7 +816,7 @@ const exeRazPay = e => {
   alert(t);
 
   options = {
-    key: "rzp_test_irSg3itoRV9kt3", // Enter the Key ID generated from the Dashboard
+    key: "rzp_test_VkBZNRiEBUKNu5", 
     amount: "1000", 
     currency: "INR",
     name: "LAKE OF CAKES",
@@ -868,7 +872,7 @@ const orderComplete = (data) => {
   };
 
   let RAZ_ORDER;
-  fetch("https://raz-pay.herokuapp.com/payment", options)
+  fetch("http://localhost:3500/payment", options)
     .then((res) => {
       return res.json();
     })
