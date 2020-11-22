@@ -205,61 +205,10 @@
    -->
 
 
-  <script type="text/javascript">
-    $(function () {
-      $('.textarea1').summernote();
-      $('.textarea2').summernote();
-    })
-
-    $(document).on('click', '.remove-img', function () {
-      var id = $(this).find('input[type=hidden]').val();
-      $('#galval' + id).remove();
-      $(this).parent().parent().remove();
-    });
-
-    $(document).on('click', '#prod_gallery', function () {
-      $('#product-sub-imgs').click();
-      $('.selected-image .row').html('');
-      $('#add-product').find('.removegal').val(0);
-    });
-
-    $("#product-sub-imgs").change(function () {
-      var total_file = document.getElementById("product-sub-imgs").files.length;
-      for (var i = 0; i < total_file; i++) {
-        $('.selected-image .row').append('<div class="col-sm-6">' +
-          '<div class="img gallery-img">' +
-          '<span class="remove-img"><i class="fas fa-times"></i>' +
-          '<input type="hidden" value="' + i + '">' +
-          '</span>' +
-          '<a href="' + URL.createObjectURL(event.target.files[i]) + '" target="_blank">' +
-          '<img src="' + URL.createObjectURL(event.target.files[i]) + '" alt="gallery image">' +
-          '</a>' +
-          '</div>' +
-          '</div> '
-        );
-
-        $('#add-product').append('<input type="hidden" name="galval[]" id="galval' + i +
-          '" class="removegal" value="' + i + '">')
-      }
-    });
-  </script>
 
   <script>
     // Tags
-    $("#product-tag-btn").on("click", function () {
-      $("#feature-section").append(
-        "" +
-        '<div class="feature-area">' +
-        '<span class="remove feature-remove"><i class="fas fa-times"></i></span>' +
-        '<div  class="row">' +
-        '<div class="col-lg-12">' +
-        '<input type="text" name="product-tag" class="input-field" placeholder="Enter Your Keyword">' +
-        "</div>" +
-        "</div>" +
-        "</div>" +
-        ""
-      );
-    });
+
 
     $(document).on("click", ".feature-remove", function () {
       $(this.parentNode).remove();
@@ -267,15 +216,7 @@
   </script>
 
   <script>
-    document.getElementById("product-category").addEventListener('change', function (e) {
-      var val = document.querySelector('#product-category').value;
-      // console.log(val);
-      if (val.toUpperCase().includes('CAKE')) {
-        document.getElementById("cake-attributes").style.display = "block"
-      } else {
-        document.getElementById("cake-attributes").style.display = "none"
-      }
-    });
+   
 
     function readURL(input) {
       if (input.files && input.files[0]) {
