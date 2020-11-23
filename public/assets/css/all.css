@@ -8334,7 +8334,7 @@ button.bg-dark:hover {
 
 .mb-4,
 .my-4 {
-    margin-bottom: 1.5rem!important
+    margin-bottom: 1.5rem!important;
 }
 
 .ml-4,
@@ -14896,10 +14896,10 @@ ul.attributes li a:hover {
         width: 100%
     }
     .owl-carousel .owl-item img {
-        /* height: 200px; */
-        width: 600px !important;
-        object-fit:fill;
-       
+        height: 170px;
+        width: 500px !important;
+        object-fit:cover;
+        background-color:whitesmoke;
     }
 }
 
@@ -36263,4 +36263,10 @@ section.phone-and-accessories.categori-item {
 }
 .slider-buttom-category .sc-common-padding {
     padding: 3px 3px!important;
+}
+@media only screen and (max-width:768px){
+    .ml-4 {
+        margin-left: 2.5rem !important;
+        
+    }
 }

@@ -59,7 +59,7 @@ div.ruby-menu-demo-header {
 }
 
 .road {
-  background: url(//lakeofcakes.com/assets/front/images/df.jpg) bottom no-repeat !important;
+  background: url() bottom no-repeat !important;
   /*background-size: contain !important;*/
   width: 100%;
   /*max-width: 892px;*/
@@ -73,7 +73,7 @@ div.ruby-menu-demo-header {
 }
 
 .bottom-grass {
-  background: url(//lakeofcakes.com/assets/front/images/bottom-grass.png) bottom;
+  background: url() bottom;
   background-size: contain !important;
   /* max-width: 892px; */
   width: 100%;
@@ -87,7 +87,7 @@ div.ruby-menu-demo-header {
 /*Blue Truck*/
 
 .blue_truck {
-  background: url(//lakeofcakes.com/assets/front/images/blue-truck.png) no-repeat center center;
+  background: url() no-repeat center center;
   height: 168px;
   background-size: contain;
   width: 235px;
@@ -112,7 +112,7 @@ div.ruby-menu-demo-header {
 }
 
 .blue_truck .blue_truck_rim_one, .blue_truck .blue_truck_rim_two {
-  background: url(//lakeofcakes.com/assets/front/images/pickup-rim.png) no-repeat center center;
+  background: url() no-repeat center center;
   background-size: cover;
   height: 30px;
   width: 30px;
@@ -164,7 +164,7 @@ div.ruby-menu-demo-header {
 /*Green Truck*/
 
 .green_truck {
-  background: url(//lakeofcakes.com/assets/front/images/green-truck.png) no-repeat center center;
+  background: url() no-repeat center center;
   height: 93px;
   background-size: contain;
   width: 235px;
@@ -189,7 +189,7 @@ div.ruby-menu-demo-header {
 }
 
 .green_truck .green_truck_rim_one, .green_truck .green_truck_rim_two {
-  background: url(//lakeofcakes.com/assets/front/images/pickup-rim.png) no-repeat center center;
+  background: url() no-repeat center center;
   background-size: cover;
   height: 30px;
   width: 30px;

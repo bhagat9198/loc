@@ -7,18 +7,22 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lake of Cakes</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
   <link rel="stylesheet" href="./assets/css/all.css">
   <link rel="stylesheet" href="./assets/css/base.css">
   <link rel="stylesheet" href="./assets/css/styles.css">
   <link rel="stylesheet" href="./assets/css/mega-menu.css">
-  <link rel="stylesheet" href="./assets//css/randomStyles.css">
+  <!-- <link rel="stylesheet" href="./assets//css/randomStyles.css"> -->
 
   <link rel="stylesheet" href="./assets/css/animate.css">
-  <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+
 
   <link rel="stylesheet" href="assets/css/animation.css">
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+  <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
 </head>
 <style>
   .top-grid-head {
@@ -48,7 +52,7 @@
 
     .responsive-sec2 {
       display: block !important;
-     
+
     }
   }
 
@@ -58,10 +62,83 @@
       padding: 5px 0px 0px 5px !important;
       display: block !important;
     }
-    .responsive-sec2{
+
+    .skeleton.block {
+      width: auto;
+      height: 100px !important;
+    }
+
+    .responsive-sec2 {
       display: none !important;
     }
 
+  }
+
+
+  .skeleton {
+    background: linear-gradient(90deg, #ededed, #ffffff, #ededed);
+    animation-name: load;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: forwards;
+    animation-timing-function: linear;
+    background-size: 200% 100%;
+  }
+
+  .skeleton.block {
+    width: auto;
+    
+  }
+
+  .skeleton.block.small {
+    width: 150px;
+  }
+
+  .skeleton.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  .loaders {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .loaders>*+* {
+    margin-top: 1rem;
+  }
+
+  .loader {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    padding: 1rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  .loader>*+* {
+    margin-left: 1rem;
+  }
+
+  .skeleton-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skeleton-group>*+* {
+    margin-top: 1rem;
+  }
+
+  @keyframes load {
+    from {
+      background-position: 100% 0%;
+    }
+
+    to {
+      background-position: -100% 0%;
+    }
   }
 </style>
 
@@ -71,13 +148,937 @@
     <img id="loading-image" src="./assets/images/Spinner-1s-200px.gif" alt="Loading..." />
   </div> -->
 
-  <section id="nav-section-loader"></section>
+  <section id="nav-section-loader">
+
+    <style>
+      .autocomplete {
+        position: relative;
+        display: inline-block !important;
+      }
+    
+      input {
+        border: 1px solid transparent;
+        background-color: #f1f1f1;
+        padding: 10px;
+        font-size: 16px;
+    
+      }
+    
+      input[type=text] {
+        background-color: #f1f1f1;
+        width: 100%;
+    
+      }
+    
+      input[type=submit] {
+        background-color: DodgerBlue;
+        color: rgb(131, 56, 56);
+        cursor: pointer;
+      }
+    
+      .autocomplete-items {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+        /* font-style: italic; */
+      }
+    
+      .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+        /* font-style: italic; */
+      }
+    
+      /*when hovering an item:*/
+      .autocomplete-items div:hover {
+        background-color: #e9e9e9;
+      }
+    
+      /*when navigating through the items using the arrow keys:*/
+      .autocomplete-active {
+        background-color: DodgerBlue !important;
+        color: #ffffff;
+      }
+    
+      @media only screen and (max-width: 600px) {
+        .responsiveIcon1 {
+          /* margin: auto;
+          padding: 0px; */
+          margin-left: 32%;
+        }
+    
+      }
+    
+      @media only screen and (min-width:700px) {
+        .responsiveIcon2 {
+          display: block !important;
+        }
+    
+      }
+    </style>
+    
+    
+    
+    <section class="top-header top-nav" style="background: #f1f1f1;">
+      <div class="container-fluid remove-padding topnaves" style="background: #f1f1f1;;
+        background-size: 617px; background-image: url();height: 35px !important;padding: 0px !important;">
+        <div class="container topcnt">
+          <div class="row" style="justify-content: flex-end;">
+            <div class="">
+              <div class="content">
+                <div class="left-content">
+                </div>
+                <div class="right-content">
+                  <div class="list" style="padding: 6px 10px 100px;">
+                    <ul style="padding-right: 10px;">
+                      <li>
+                        <a type="button" data-toggle="modal" data-target="#topoffer"
+                          style="background: rgb(209, 96, 96); padding: 0px 20px; position: relative;border:1px solid black;border-radius: 10px;">
+                          <span class="sign-in" style="font-size: 14px; color: #fff;">
+                            <i class="fa fa-gift" aria-hidden="true"></i> OFFER</span>
+                        </a>
+                      </li>
+    
+                      <li><a href="#" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
+                              class="fa fa-gift" aria-hidden="true" style="color: rgb(235, 48, 79);"></i>
+                            COUPONS</span> </a>
+                      </li> &nbsp;
+                      <li><a href="tel:9598891097" class="track-btn"><span class="sign-in"
+                            style="font-size: 14px; color: #000;"><i class="fa fa-phone" aria-hidden="true"
+                              style="color: rgb(235, 48, 79);"></i>
+                            9598891097</span> </a>
+                      </li> &nbsp;
+                      <li><a href="mailto:lakeofcakess@gmail.com" class="track-btn"><span class="sign-in"
+                            style="font-size: 14px; color: #000;"><i class="fa fa-envelope" aria-hidden="true"
+                              style="color: rgb(235, 48, 79);"></i>
+                              Email</span> </a>
+                      </li> &nbsp;
+    
+                      
+    
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <section class="logo-header">
+      <div class="container-fluid logoheder">
+        <div class="row ">
+          <div class="col-lg-3 col-sm-6 col-6 log remove-padding">
+            <div class="logo">
+              <a href="/index.html">
+                <img src="/assets/images/logo.png" alt="Logo Lake of cakes" style="width: 350px;">
+              </a>
+            </div>
+          </div>
+          <label class="drover drobt" for="responsive-nav" onclick="shownavigation()">☰</label>
+          <aside class="drobt0 drobt1 colapse" id="" style="overflow-y: scroll !important;">
+    
+            <div class="logo-area">
+              <div class="logo">
+                <a href="/index.html">
+                  <img src="/assets/images/logo-min.png" alt="Logo Lake of cakes" style="width: 350px;">
+                </a>
+              </div>
+              <i class="fa fa-times" style="float: right; position: relative;padding: 10px;margin-left: 20%;"
+                onclick="hidenavigation()"></i>
+            </div>
+            <div class="menu-container">
+              <div class="menu">
+                <ul id="whole-navigation-mobile">
+    
+              
+                  
+                </ul>
+              </div>
+              <hr>
+              <div class="nav-collapsible">
+                <a href="#">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span>
+                          <img src="/assets/images/MidnightDelivery.png" alt="Lake of Cakes midnight" style="width: 25px;">
+                        </span>
+                      </div>
+                      <div class="col-8 col-sm-8 col-md-8 p-0">
+                        <span style="position: relative; top: 4px;">Midnight </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible">
+                <a href="#">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span>
+                          <img src="/assets/images/chef.png" alt="Lake of Cakes Chef" style="width: 25px;">
+                        </span>
+                      </div>
+                      <div class="col-8 col-sm-8 col-md-8 p-0">
+                        <span style="position: relative; top: 4px;">Be A Chef </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible">
+                <a href="#">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span>
+                          <img style="width: 25px;" src="../assets/images/reminder.png" alt="">
+                        </span>
+                      </div>
+                      <div class="col-8 col-sm-8 col-md-8 p-0">
+                        <span style="position: relative; top: 4px;">Reminder </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <hr>
+              <div class="nav-collapsible">
+                <a href="#">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Help </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible">
+                <a href="#">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Contact us </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible">
+                <a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Track Orders </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible">
+                <a data-toggle="modal" data-target="#topoffer">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Offers </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible">
+                <a href="/Common/coupens.html">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Coupons </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible">
+                <a href="#">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Privacy Policy </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible">
+                <a href="#">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Delivery & Returns</span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible">
+                collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Login/Signup</span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+            </div>
+          </aside>
+          <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-10 col-12 p-0 mt-3 ml-4">
+                <div class="input-group mb-2 mt-2">
+                  <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
+                    <div class="autocomplete" style="width: 100%;" >
+                      <input class="form-control" style="width: 100% !important;
+                      border: none;
+                      border-bottom: 1px solid ;
+                      border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeyup=searchIfvalue(event) name="searchBar"
+                        placeholder="Search: Cakes , Flowers ,Gifts..."
+                       >
+                    </div>
+                    
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" onclick="searchByBtn('searchBar')"
+                        style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent;color:; border: #F00;"><i
+                          class="fa fa-search" style="color:red"></i></button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+    
+          <div
+            class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
+            <ul style="display: inline-flex;">
+              <li>
+                <a href="#">
+                  <div class="text-center">
+                    <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
+                    <div
+                      style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                      Midnight</div>
+                  </div>
+                </a>
+              </li>
+              <li style="padding: 0px 28px;">
+                <a href="#">
+                  <img src="/assets/images/chef.png" style="width:50px;object-fit: cover;">
+                  <div
+                    style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                    BE A CHEF</div>
+                </a>
+              </li>
+              <li>
+                <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
+                    <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
+                  <div
+                    style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                    REMINDER</div>
+                </a>
+              </li>
+            </ul>
+    
+    
+    
+    
+          </div>
+          <div class="col-lg-1 col-sm-3 col-3 remove-padding order-lg-last">
+            <div class="helpful-links mt-md-3 cartres">
+    
+              <ul class="helpful-links-inner" style="display: flex;">
+    
+    
+    
+                <li class="nav-item dropdown" style="margin-top: 13%;">
+                  <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
+                      style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
+    
+                  </a>
+    
+                  <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
+                      inset 0 -3em 3em rgba(0,0,0,0.1), 
+                            0 0  0 2px rgb(255,255,255),
+                            0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown"
+                    aria-labelledby="navbarDropdownMenuLink">
+                    <div
+                      style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
+                      <a class="dropdown-item" href="#">
+                        <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest!
+                          Login to continue</h4>
+                        <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
+                        </center>
+                      </a>
+                    </div>
+    
+                    <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href=""
+                      onclick="checkifUser()"><i class="fa fa-user"></i>
+                      Profile</a>
+    
+                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"><i
+                        class="fa fa-truck"></i> Track Orders</a>
+    
+                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"><i
+                        class="fa fa-shopping-cart"></i> My Orders</a>
+    
+                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"
+                      id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
+                      Logout</a>
+                  </div>
+                </li>
+    
+    
+                <li class="my-dropdown responsiveIcon2" style="display: none;" data-toggle="tooltip" data-placement="top"
+                  title="Cart">
+                  <a href="#cart" class="cart carticon">
+                    <div class="icon">
+                      <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
+                      <span class="cart-quantity" id="cart-count">0</span>
+                    </div>
+    
+                  </a>
+                  <div class="my-dropdown-menu" id="cart-items">
+                    <div class="dropdownmenu-wrapper">
+                      <div class="dropdown-cart-header">
+                        <span class="item-no">
+                          <span class="cart-quantity">
+                            1
+                          </span> Product(s)
+                        </span>
+    
+                      </div>
+                      <ul class="dropdown-cart-products">
+                        <li class="product cremove3461">
+                          <figure class="product-image-container">
+                            <a href="" class="product-image">
+                              <img src=""
+                                style="width: 50px; object-fit:cover;" alt="product">
+                            </a>
+    
+                          </figure>
+                          <div class="product-details">
+                            <div class="content">
+                              <a href="">
+                                <h4 class="product-title">Black Forest</h4>
+                              </a>
+    
+                              <span class="cart-product-info">
+                                <span class="cart-product-qty" id="cqt3461">4</span><span></span>
+                                x <span id="prct3461">₹400</span>
+                              </span>
+                            </div>
+                          </div>
+    
+    
+                        </li>
+                      </ul>
+    
+                      <div class="dropdown-cart-total">
+                        <span>Total</span>
+    
+                        <span class="cart-total-price">
+                          <span class="cart-total">₹1600
+                          </span>
+                        </span>
+                      </div>
+    
+                      <div class="dropdown-cart-action">
+                        <a href="" onclick="redirectToCart()" class="mybtn1"
+                          style="background-color: rgb(20, 113, 167);">View In Cart</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+      
+    
+    
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="mainmenu-area mainmenu-bb">
+    
+    
+      <div class="col-lg-12 col-md-12 categorimenu-wrapper p-0" style="z-index: 5;">
+        <div class="desktopmenu">
+          <div class="menu-container">
+            <div class="menu">
+              <ul id="whole-navigation-pc">
+                <!-- <li><a href="#">Cakes</a>
+                  <ul>
+                    <li><a href="#">School</a>
+                      <ul>
+                        <li><a href="#">Lidership</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Lidership</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Lidership</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Careers</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Flowers</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#"></a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Empty sub</a>
+                      <ul>
+                        <li><img src="https://placeimg.com/300/200/people"></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Flowers</a>
+                  <ul>
+                    <li><a href="#">School</a>
+                      <ul>
+                        <li><a href="#">Lidership</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Careers</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Empty sub</a>
+                      <ul>
+                        <li><img src="https://placeimg.com/300/200/people"></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Combos</a>
+                  <ul>
+                    <li><a href="#">School</a>
+                      <ul>
+                        <li><a href="#">Lidership</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Careers</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Empty sub</a>
+                      <ul>
+                        <li><img src="https://placeimg.com/300/200/people"></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Chocolate</a>
+                  <ul>
+                    <li><a href="#">School</a>
+                      <ul>
+                        <li><a href="#">Lidership</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Careers</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Empty sub</a>
+                      <ul>
+                        <li><img src="https://placeimg.com/300/200/people"></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Birthday</a>
+                  <ul>
+                    <li><a href="#">School</a>
+                      <ul>
+                        <li><a href="#">Lidership</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Careers</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Empty sub</a>
+                      <ul>
+                        <li><img src="https://placeimg.com/300/200/people"></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Aniversary</a>
+                  <ul>
+                    <li><a href="#">School</a>
+                      <ul>
+                        <li><a href="#">Lidership</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Careers</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Empty sub</a>
+                      <ul>
+                        <li><img src="https://placeimg.com/300/200/people"></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Ocassion</a>
+                  <ul>
+                    <li><a href="#">School</a>
+                      <ul>
+                        <li><a href="#">Lidership</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Careers</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Empty sub</a>
+                      <ul>
+                        <li><img src="https://placeimg.com/300/200/people"></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Gifts</a>
+                  <ul>
+                    <li><a href="#">School</a>
+                      <ul>
+                        <li><a href="#">Lidership</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Locations</a></li>
+                        <li><a href="#">Careers</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Study</a>
+                      <ul>
+                        <li><a href="#">Undergraduate</a></li>
+                        <li><a href="#">Masters</a></li>
+                        <li><a href="#">International</a></li>
+                        <li><a href="#">Online</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Empty sub</a>
+                      <ul>
+                        <li><img src="https://placeimg.com/300/200/people"></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+ 
+  
+  </section>
 
   <!-- SLIDER -->
   <section class=" slider-buttom-category d-md-block responsive-sec" style="background: rgba(219, 216, 166, 0.3);">
     <div class="container scres" style="overflow-x: overlay; padding: 5px 0px 0px 70px;">
 
       <div class="row rows " id="fixed-section2-row" style="justify-content:space-evenly; flex-wrap: nowrap;">
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -86,7 +1087,20 @@
   <section class="hero-area">
 
     <div class="hero-area-slider">
-      <div class="intro-carousel">
+      <div class="intro-carousel post">
+        <a href="#">
+          <div class="intro-content slide-one avatar">
+            <img class="line" src="">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="slider-content skeleton block">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>`
       </div>
       <div class="base">
 
@@ -99,30 +1113,153 @@
 
   <!-- SECTION1 -->
 
-  <section class=" slider-buttom-category d-md-block responsive-sec2" style="background: rgba(219, 216, 166, 0.3);">
-    <div class="container scres" style="overflow-x: overlay; padding: 15px 0px 0px 90px;">
 
-      <div class="row rows " id="fixed-section21-row" style="justify-content:space-evenly; flex-wrap: nowrap;">
+
+
+
+
+
+  <section class=" slider-buttom-category d-md-block responsive-sec2" style="background: rgba(219, 216, 166, 0.3);">
+    <div class=" container scres" style="overflow-x: overlay; padding: 15px 0px 0px 90px;">
+
+      <div class=" row rows " id="fixed-section21-row" style="justify-content:space-evenly; flex-wrap: nowrap;">
+
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class=" sc-common-padding colxl2 ">
+          <div class=" card cardc align-items-center ">
+            <a href="" class="">
+              <div class=" iconimg ">
+                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+              </div>
+              <div class="card-body cbc text-center">
+                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
 
       </div>
     </div>
   </section>
-  <section class="banner-section"
-    style="background: linear-gradient(rgba(138, 29, 101, 0.5), rgba(209, 85, 54, 0.616)),url('./assets/images/top-grid-bg.png');;">
+  <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);;;">
 
     <h3 class="bannerheading fadeIn" id="fixed-section1-heading">Choose the Best Joy</h3>
     <div class="container-fluid">
       <div class="row" id="fixed-section1-row">
-        <!-- <div class="col-lg-3 col-md-3 col-6 remove-padding">
+        <div class="col-lg-3 col-md-3 col-6 remove-padding">
           <div class="left">
             <a class="banner-effect imgca" href="product.html" target="_blank">
               <img class="imgc"
-                src="2020-10-11 at 10.09.33 PM (1).jpeg"
-                alt="">
+                src="assets/images/skeleton.gif"
+                >
             </a>
           </div>
-        </div> -->
-
+        </div>
+        <div class="col-lg-3 col-md-3 col-6 remove-padding">
+          <div class="left">
+            <a class="banner-effect imgca" href="product.html" target="_blank">
+              <img class="imgc"
+                src="assets/images/skeleton.gif"
+                >
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6 remove-padding">
+          <div class="left">
+            <a class="banner-effect imgca" href="product.html" target="_blank">
+              <img class="imgc"
+                src="assets/images/skeleton.gif"
+                >
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6 remove-padding">
+          <div class="left">
+            <a class="banner-effect imgca" href="product.html" target="_blank">
+              <img class="imgc"
+                src="assets/images/skeleton.gif"
+                >
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -133,15 +1270,13 @@
       <div class="remoding">
         <div class="img">
           <a class="" href="#">
-            <img class="img-fuid"
-              src="https://terameracake.com/wp-content/themes/bakery/assets/images/background/up.png" alt=""
-              style="background-repeat: repeat;width: 1600px;height: 100px;">
+            <img class="img-fuid" src="" alt="" style="background-repeat: repeat;width: 1600px;height: 100px;">
           </a>
         </div>
       </div>
     </div>
   </section>
-  
+
 
 
   <!-- SECTION 2-->
@@ -154,7 +1289,7 @@
   <section class="categori-item typeofcakes-section clothing-and-Apparel-Area">
     <div class="container-fluid">
       <div class="row" id="fixed-section3-row">
-        <!-- <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center">
           <h3 class="mb-3 bannerheading" id="fixed-section3-heading" style="font-weight: 700;font-size: 30px">Choose
             your happiness with
             our Cakes</h3>
@@ -162,28 +1297,49 @@
         <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
           <div class="aside">
             <a class="banner-effect imgca" href="bbb" target="_blank">
-              <img class="imgc" src="" alt="">
+              <img class="imgc" src="assets/images/skeleton.gif" >
             </a>
           </div>
-        </div> -->
+        </div>
+        <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
+          <div class="aside">
+            <a class="banner-effect imgca" href="bbb" target="_blank">
+              <img class="imgc" src="assets/images/skeleton.gif" >
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
+          <div class="aside">
+            <a class="banner-effect imgca" href="bbb" target="_blank">
+              <img class="imgc" src="assets/images/skeleton.gif" >
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
+          <div class="aside">
+            <a class="banner-effect imgca" href="bbb" target="_blank">
+              <img class="imgc" src="assets/images/skeleton.gif" >
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     </div>
   </section>
 
   <!-- hard coded -->
-  <section class="">
+  <section class=" responsive-sec2">
     <div class="container-fluid p-0 ">
       <div class="remove-padding">
         <div class="img">
           <a class="banner-effect2" href="#">
-            <video class="img-fluid" src="./assets/images/fastdelivery.mp4" autoplay muted loop playsinline></video>
+            <video class="img-fluid" src="" autoplay muted loop playsinline></video>
           </a>
         </div>
       </div>
     </div>
   </section>
-  <div class="top-grid-head"></div>
+  <!-- <div class="top-grid-head"></div> -->
 
   <!-- fixed section 4 -->
   <section class="trending">
@@ -211,7 +1367,7 @@
                       </li>
                     </ul>
                   </div>
-                  <img class="img-fluid" src="" alt="">
+                  <img class="img-fluid" src="assets/images/skeleton.gif" alt="">
                 </div>
                 <div class="info">
                   <div class="stars">
@@ -226,6 +1382,7 @@
                   </div>
                 </div>
               </a> -->
+              
             </div>
           </div>
         </div>
@@ -236,16 +1393,31 @@
   <section class="categori-item gardenofflower">
     <div class="container-fluid">
       <div class="row" id="fixed-section5-row">
-        <!-- <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center">
           <h3 class="mb-3"  style="font-weight: 700;font-size: 30px">Garden of Flowers</h3>
         </div>
         <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3">
           <div class="aside">
             <a class="banner-effect imgca" href="abcd" target="_blank">
-              <img class="imgc" src="es.jpg" alt="">
+              <img class="imgc" src="assets/images/skeleton.gif" alt="">
             </a>
           </div>
-        </div> -->
+          <div class="aside">
+            <a class="banner-effect imgca" href="abcd" target="_blank">
+              <img class="imgc" src="assets/images/skeleton.gif" alt="">
+            </a>
+          </div>
+          <div class="aside">
+            <a class="banner-effect imgca" href="abcd" target="_blank">
+              <img class="imgc" src="assets/images/skeleton.gif" alt="">
+            </a>
+          </div>
+          <div class="aside">
+            <a class="banner-effect imgca" href="abcd" target="_blank">
+              <img class="imgc" src="assets/images/skeleton.gif" alt="">
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     </div>
@@ -387,6 +1559,67 @@
       </div>
     </div>
   </section>
+  <!-- <section class="categori-item clothing-and-Apparel-Area">
+    <div class="container-fluid p-0">
+      <div class="p-3 pr-sm-01" style="background: #ffbabd;">
+
+        <div class="col-lg-12" style="background: #fff;">
+          <div class="row">
+            <div class="col-lg-4 col-5 p-sm-0 d-lg-block" style="background: #ffbabd;">
+              <div class="row">
+                <div class="col-md-5 col-4 p-sm-0" style=" padding-top: 4px; padding-bottom: 4px;">
+                  <img src="assets/front/images/demo/2hrs.png" style="max-width: 81%;">
+                </div>
+                <div class="col-md-7 col-8 p-sm-0">
+                  <div class="aside ml-md-3 mt-md-5">
+                    <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 2rem;">Delivery
+                      In </h3>
+                    <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">2 Hours
+                    </h3>
+                    <p style="color:#000; font-size: 17px; margin-top: 5%;">Express Delivery</p>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8 col-7">
+              <div class="row scres" style="flex-wrap: nowrap !important; overflow-x: scroll;">
+                <div class="com-md-4  remove-padding">
+                  <div class="aside wes"
+                    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
+
+                    <a class="banner-effect" href="abcd" target="_blank">
+                      <img src="//lakeofcakes.com/assets/images/partner/1597241333ezgif.com-webp-to-png (2).png" alt="">
+                    </a>
+                  </div>
+                </div>
+                <div class="com-md-4  remove-padding">
+                  <div class="aside wes"
+                    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
+
+                    <a class="banner-effect" href="//lakeofcakes.com/" target="_blank">
+                      <img src="//lakeofcakes.com/assets/images/partner/1597241409ezgif.com-webp-to-png (3).png" alt="">
+                    </a>
+                  </div>
+                </div>
+                <div class="com-md-4  remove-padding">
+                  <div class="aside wes"
+                    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
+
+                    <a class="banner-effect" href="bjhbhjb" target="_blank">
+                      <img src="//lakeofcakes.com/assets/images/partner/1597241505ezgif.com-webp-to-png (4).png" alt="">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section> -->
 
   <!-- fixed section 8 -->
   <section class="banner-section"
@@ -394,25 +1627,16 @@
     <h3 class="bannerheading" id="fixed-section8-heading"></h3>
     <div class="container-fluid">
       <div class="row" id="fixed-section8-row">
-        <!-- <div class="col-lg-3 col-md-3 col-6 remove-padding">
-          <div class="left">
-            <a class="banner-effect imgca" href="product.html" target="_blank">
-              <img class="imgc" src="https://www.galaxydigitalprint.in/uploaded-files/product-images/03-14.jpg" alt="">
-            </a>
-          </div>
-        </div> -->
+
 
       </div>
     </div>
   </section>
 
-  <!-- haed cooded -->
-  <section class="categori-item clothing-and-Apparel-Area">
+  <!-- <section class="categori-item clothing-and-Apparel-Area">
     <div class="container-fluid p-0">
       <div class="p-3" style="background: #274674;">
-        <!--<div class="row">-->
 
-        <!--</div>-->
         <div class="col-lg-12" style="background: #fff;">
           <div class="row">
             <div class="col-lg-8 col-12">
@@ -464,12 +1688,7 @@
                         font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                           aria-hidden="true"></i></button>
                     </a>
-                    <!--<a class="banner-effect mb-10" href="#">-->
 
-                    <!--</a>-->
-                    <!--<a class="banner-effect" href="#">-->
-
-                    <!--</a>-->
                   </div>
                 </div>
                 <div class="col-md-5 col-5" style="background: #fff; padding-top: 13px; padding-bottom: 13px;">
@@ -482,8 +1701,8 @@
         </div>
       </div>
     </div>
-  </section>
-  <section class="categori-item clothing-and-Apparel-Area">
+  </section> -->
+  <!-- <section class="categori-item clothing-and-Apparel-Area">
     <div class="container-fluid p-0">
       <div class="p-3" style="background: #f4b2b6;">
         <div class="col-lg-12" style="background: #fff;">
@@ -545,7 +1764,7 @@
       </div>
     </div>
 
-  </section>
+  </section> -->
 
   <!-- fixed section 9 -->
   <section class="banner-section"
@@ -569,32 +1788,17 @@
 
 </body>
 
-<script src="./assets/js/jquery.js"></script>
-
-<script type="text/javascript">
 
 
-</script>
-<script type="text/javascript">
-
-
-  $('#nav-section-loader').load('./Common/navbar.html');
-
-
-  setTimeout(() => {
-    $('#footer-section-loader').load('./Common/files.html');
-    $('#footer-section-loader').load('./Common/footer.html');
-  }, 1000);
-
-</script>
-
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebaseui.js"></script> -->
-<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script> -->
+<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script> -->
+
+
+<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebaseui.js"></script>
+<script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script> -->
 
 <script>
 
@@ -609,13 +1813,167 @@
     measurementId: "G-5ER0QF0FDW"
   };
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+  // firebase.analytics();
+</script>
+
+<script src="./assets/js/jquery.js"></script>
+
+<script src="/assets/js/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugin.js"></script>
+<script src="/assets/js/xzoom.min.js"></script>
+<script src="/assets/js/jquery.hammer.min.js"></script>
+<script src="/assets/js/setup.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/custom.js"></script>
+
+<script type="text/javascript">
+
+
+  // $('#footer-section-loader').load('/Common/files.html');
+  // $('#nav-section-loader').load('/Common/navbar.html');
+
+
+
 </script>
 
 <script src="./index1.js"></script>
 <script src="./Common/navbar1.js"></script>
 
 <script>
+    
+  $(".drobt").click(function () {
+    if ($('.drobt0').hasClass('drobt1')) {
+      $('.drobt0').removeClass('drobt1');
+      $('.drobt0').addClass('drobt2');
+    } else {
+      $('.drobt0').removeClass('drobt2');
+      $('.drobt0').addClass('drobt1');
+    }
+  });
+</script>
+<script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
+<script>
+
+  function hidenavigation() {
+    $('.drobt0').addClass('colapse');
+  }
+  function shownavigation() {
+    $('.drobt0').removeClass('colapse');
+  }
+
+
+
+
+
+
+</script>
+<script src="/Auth/app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+<script>
+  var checkUser;
+  var timecount = 0;
+  function checkifUser() {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      window.location = "/UserDash/customerProfile.html"
+    }
+  }
+  function redirectToCart() {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      window.location = "/UserDash/cart.html"
+    }
+  }
+  const inter = setInterval(function () {
+    timecount++;
+    if (timecount == 10) {
+      clearInterval(inter)
+
+    }
+    var counter = 0;
+    document.getElementById("hideLogOut").style.display = "none";
+    const db = firebase.firestore();
+    var docData, userDoc;
+
+    db.collection("Customers").onSnapshot(async (snapshots) => {
+      checkUser = window.localStorage.getItem("locLoggedInUser");
+
+      let snapshotDocs = snapshots.docs;
+
+      // var dbref = db.collection('Customers');
+      for (let doc of snapshotDocs) {
+
+        if (checkUser == doc.data().userId) {
+
+          counter++;
+
+          userDoc = doc.data();
+          document.getElementById("cart-count").innerHTML = userDoc.cart.length
+          if (userDoc.UserName == null) {
+            userDoc.UserName = "User@LOC";
+          }
+
+          if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
+            userDoc.Image = "../assets/images/userIcon.png"
+          }
+
+          document.getElementById("logInBtn").style.display = "none";
+          document.getElementById("hideLogOut").style.display = "block";
+          document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
+          document.getElementById("userImg").src = userDoc.Image;
+          break;
+        }
+      }
+
+      if (counter == 0) {
+
+        document.getElementById("hideLogOut").style.display = "none";
+        document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
+        document.getElementById("logInBtn").style.display = "block";
+      }
+
+    });
+
+
+  }, 1000)
+
+
+  function redirectLogin() {
+    window.location = "/Auth/login.html"
+  }
+  function logOut() {
+    let dbref = db.collection('Customers');
+    // firebase.auth().signOut();
+    dbref.doc(checkUser).update({
+      token: "null"
+
+    }).then(function () {
+      window.localStorage.removeItem("locLoggedInUser")
+      // firebase.auth().signOut();
+      location.reload();
+    });
+  }
+</script>
+
+
+<style>
+  .drobt1 {
+    transform: translateX(-101%);
+  }
+
+  .drobt2 {
+    transform: translateX(0%);
+  }
+</style>
+
+
+<script>
+
+  $('#footer-section-loader').load('./Common/footer.html');
   // Icons rotate
   $(function () {
     var $window = $(window),

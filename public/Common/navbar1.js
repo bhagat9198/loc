@@ -115,11 +115,11 @@ console.log("navbar1.js");
   let searchResults = [];
   db.collection('miscellaneous').doc('searchList').get().then(doc => {
     let docData = doc.data();
-    allSearchList = docData.searches;
+    allSearchList = docData.Details;
 
     for (let i of allSearchList) {
 
-      searchResults.push(i.name);
+      searchResults.push(i.Name);
 
     }
 
