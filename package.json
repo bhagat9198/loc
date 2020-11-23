@@ -18,6 +18,9 @@
   "homepage": "https://github.com/Bhagatsingh1998/loc#readme",
   "dependencies": {
     "axios": "^0.21.0",
-    "crypto": "^1.0.1"
+    "create-hmac": "^1.1.7",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.0.0",
+    "razorpay": "^2.0.6"
   }
 }
