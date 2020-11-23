@@ -728,22 +728,24 @@ const displayShippingInfo = (e) => {
   //   amount: TOTAL_COST,
   //   name: USER_DETAILS.UserName,
   // };
-  let options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify({}),
-  };
-  console.log(options);
-  // const checkoutReq = firebase.functions().httpsCallable('checkoutReq');
-  // checkoutReq(mainData).then((res) => {
-  //   RAZ_ORDER_ID = res.orderId;
-  //   console.log(RAZ_ORDER_ID);
-  // }).catch(error => {
-  //   console.log(error);
-  // })
-  // console.log(RAZ_ORDER_ID);
+  // let options = {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json;charset=utf-8",
+  //   },
+  //   body: JSON.stringify({}),
+  // };
+  // console.log(options);
+  const checkoutReq = firebase.functions().httpsCallable('checkoutReq');
+  checkoutReq().then((res) => {
+    console.log(res);
+    console.log(res.data.orderId);
+    RAZ_ORDER_ID = res.data.orderId;
+    console.log(RAZ_ORDER_ID);
+  }).catch(error => {
+    console.log(error);
+  })
+  console.log(RAZ_ORDER_ID);
 
   const finalBtnSpanHTML = document.querySelector("#finalBtnSpan");
       finalBtnSpanHTML.innerHTML = `
@@ -751,22 +753,20 @@ const displayShippingInfo = (e) => {
         <button type="submit" id="final-btn" class="mybtn1 1">Proceed to Pay </button>
       </a>`;
 
-  fetch("https://raz-pay.herokuapp.com/checkout", options)
-  // fetch("http://localhost:3500/checkout", options)
-    .then((res) => {
-     
-      return res.json();
-    })
-    .then((resData) => {
-      console.log('resData', resData);
-      RAZ_ORDER_ID = resData.orderId;
-      alert('RAZ_ORDER_ID', RAZ_ORDER_ID)
-      console.log('RAZ_ORDER_ID', RAZ_ORDER_ID);
-    })
-    .catch((error) => {
-      alert(error)
-      console.log(error);
-    });
+  // fetch("https://raz-pay.herokuapp.com/checkout", options)
+  // // fetch("http://localhost:3500/checkout", options)
+  //   .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((resData) => {
+  //     console.log('resData', resData);
+  //     RAZ_ORDER_ID = resData.orderId;
+  //     alert('RAZ_ORDER_ID', RAZ_ORDER_ID)
+  //     console.log('RAZ_ORDER_ID', RAZ_ORDER_ID);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
 };
 
 // prodFinalHTML.addEventListener('click', displayShippingInfo);
@@ -817,6 +817,7 @@ let rzp1;
 
 const exeRazPay = e => {
   e.preventDefault();
+  console.log('up');
   console.log(RAZ_ORDER_ID);
   console.log(options);
 
@@ -878,22 +879,22 @@ const orderComplete = (data) => {
   };
 
   let RAZ_ORDER;
-  fetch("https://raz-pay.herokuapp.com/payment", options)
-  // fetch("http://localhost:3500/payment", options)
-  .then((res) => {
-      return res.json();
-    })
-    .then((resData) => {
-      console.log(resData);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  // fetch("https://raz-pay.herokuapp.com/payment", options)
+  // // fetch("http://localhost:3500/payment", options)
+  // .then((res) => {
+  //     return res.json();
+  //   })
+  //   .then((resData) => {
+  //     console.log(resData);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
 
-  // const payemnetStatus = firebase.functions().httpsCallable('payemnetStatus');
-  // payemnetStatus(mainData).then((res) => {
-  //   console.log(res);
-  // }).catch(error => {
-  //   console.log(error);
-  // })
+  const payemnetStatus = firebase.functions().httpsCallable('payemnetStatus');
+  payemnetStatus(mainData).then((res) => {
+    console.log(res);
+  }).catch(error => {
+    console.log(error);
+  })
 }
