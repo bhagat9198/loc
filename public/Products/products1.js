@@ -82,7 +82,7 @@ const extractRelvantProds = async () => {
         return;
       } else {
         allProductsArr = [];
-        await dbRef.get().then((docs) => {
+         dbRef.get().then((docs) => {
           let docDocs = docs.docs;
           docDocs.map((el) => {
             let elData = el.data();
@@ -100,7 +100,7 @@ const extractRelvantProds = async () => {
       }
     } else {
       allProductsArr = [];
-      await dbRef.get().then((cateogiers) => {
+       dbRef.get().then((cateogiers) => {
         let cateogiersDocs = cateogiers.docs;
         cateogiersDocs.map((el) => {
           let elDoc = el.data();
@@ -123,7 +123,7 @@ const extractRelvantProds = async () => {
           }
         });
       });
-      await db.collection('categories').doc(CAT).get().then(d => {
+       db.collection('categories').doc(CAT).get().then(d => {
         dd = d.data();
         console.log(dd.name);
         prodHeading = dd.name;
@@ -133,7 +133,7 @@ const extractRelvantProds = async () => {
     return;
   } else {
     console.log("else");
-    await allCatProds();
+     allCatProds();
     productHeadingHTML.innerHTML = 'All Products';
     // console.log(allProductsArr);
     return;
@@ -152,7 +152,7 @@ const extractAllCat = async () => {
 }
 
 const allCatProds = async () => {
-  await db
+   db
     .collection("categories")
     .get()
     .then(async (snapshots) => {
@@ -160,7 +160,7 @@ const allCatProds = async () => {
       for (let doc of snapshotsDocs) {
         let docId = doc.id;
         // console.log(docId);
-        await db
+         db
           .collection(docId)
           .get()
           .then((prods) => {
@@ -262,12 +262,12 @@ const displayTopSuggest = async (arrProds) => {
 const userSearchProds = async () => {
   let searchVal = USER.toUpperCase();
   allProductsArr = [];
-  await extractAllCat();
+   extractAllCat();
   if (searchVal.length >= 3) {
     for (let cat of allCategories) {
-      await db.collection(cat).get().then(async (snapshots) => {
+       db.collection(cat).get().then(async (snapshots) => {
         let snapshotDocs = snapshots.docs;
-        await snapshotDocs.map(doc => {
+        snapshotDocs.map(doc => {
           let docData = doc.data();
           // console.log(docData);
           if (docData.name.toUpperCase().includes(searchVal) ||

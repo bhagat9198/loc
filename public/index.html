@@ -19,6 +19,7 @@
 
 
   <link rel="stylesheet" href="assets/css/animation.css">
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
   <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
@@ -50,8 +51,8 @@
     }
 
     .responsive-sec2 {
-      display: block   !important;
-     
+      display: block !important;
+
     }
   }
 
@@ -61,7 +62,8 @@
       padding: 5px 0px 0px 5px !important;
       display: block !important;
     }
-    .responsive-sec2{
+
+    .responsive-sec2 {
       display: none !important;
     }
 
@@ -110,8 +112,7 @@
       </div>
     </div>
   </section>
-  <section class="banner-section"
-    style="background:rgba(173, 173, 159, 0.3);;;">
+  <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);;;">
 
     <h3 class="bannerheading fadeIn" id="fixed-section1-heading">Choose the Best Joy</h3>
     <div class="container-fluid">
@@ -137,14 +138,14 @@
         <div class="img">
           <a class="" href="#">
             <img class="img-fuid"
-              src="https://terameracake.com/wp-content/themes/bakery/assets/images/background/up.png" alt=""
+              src="" alt=""
               style="background-repeat: repeat;width: 1600px;height: 100px;">
           </a>
         </div>
       </div>
     </div>
   </section>
-  
+
 
 
   <!-- SECTION 2-->
@@ -175,18 +176,18 @@
   </section>
 
   <!-- hard coded -->
-  <section class="">
+  <section class=" responsive-sec2">
     <div class="container-fluid p-0 ">
       <div class="remove-padding">
         <div class="img">
           <a class="banner-effect2" href="#">
-            <video class="img-fluid" src="./assets/images/fastdelivery.mp4" autoplay muted loop playsinline></video>
+            <video class="img-fluid" src="" autoplay muted loop playsinline></video>
           </a>
         </div>
       </div>
     </div>
   </section>
-  <div class="top-grid-head"></div>
+  <!-- <div class="top-grid-head"></div> -->
 
   <!-- fixed section 4 -->
   <section class="trending">
@@ -390,80 +391,67 @@
       </div>
     </div>
   </section>
-  <section class="categori-item clothing-and-Apparel-Area">
+  <!-- <section class="categori-item clothing-and-Apparel-Area">
     <div class="container-fluid p-0">
-        <div class="p-3 pr-sm-01" style="background: #ffbabd;">
-      <!--<div class="row">-->
-      
-      
-      
-      
-      
+      <div class="p-3 pr-sm-01" style="background: #ffbabd;">
 
-      
-      
-      <!--</div>-->
-      <div class="col-lg-12" style="background: #fff;">
-         <div class="row">
-             <div class="col-lg-4 col-5 p-sm-0 d-lg-block" style="background: #ffbabd;">
-                 <div class="row">
-                     <div class="col-md-5 col-4 p-sm-0" style=" padding-top: 4px; padding-bottom: 4px;">
-                          <img src="assets/front/images/demo/2hrs.png" style="max-width: 81%;">
-                     </div>
-                     <div class="col-md-7 col-8 p-sm-0">
-                         <div class="aside ml-md-3 mt-md-5">
-              <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 2rem;">Delivery In </h3>
-              <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">2 Hours</h3>
-              <p style="color:#000; font-size: 17px; margin-top: 5%;">Express Delivery</p>
-             
-            <!--<a class="banner-effect mb-10" href="#">-->
-            
-            <!--</a>-->
-            <!--<a class="banner-effect" href="#">-->
-            
-            <!--</a>-->
-          </div>
-                     </div>
-                 </div>
-        </div>
-        <div class="col-lg-8 col-7">
-          <div class="row scres" style="flex-wrap: nowrap !important; overflow-x: scroll;">
-              <div class="com-md-4  remove-padding">
-                 <div class="aside wes" style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-                
+        <div class="col-lg-12" style="background: #fff;">
+          <div class="row">
+            <div class="col-lg-4 col-5 p-sm-0 d-lg-block" style="background: #ffbabd;">
+              <div class="row">
+                <div class="col-md-5 col-4 p-sm-0" style=" padding-top: 4px; padding-bottom: 4px;">
+                  <img src="assets/front/images/demo/2hrs.png" style="max-width: 81%;">
+                </div>
+                <div class="col-md-7 col-8 p-sm-0">
+                  <div class="aside ml-md-3 mt-md-5">
+                    <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 2rem;">Delivery
+                      In </h3>
+                    <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">2 Hours
+                    </h3>
+                    <p style="color:#000; font-size: 17px; margin-top: 5%;">Express Delivery</p>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8 col-7">
+              <div class="row scres" style="flex-wrap: nowrap !important; overflow-x: scroll;">
+                <div class="com-md-4  remove-padding">
+                  <div class="aside wes"
+                    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
+
                     <a class="banner-effect" href="abcd" target="_blank">
                       <img src="//lakeofcakes.com/assets/images/partner/1597241333ezgif.com-webp-to-png (2).png" alt="">
                     </a>
                   </div>
-                </div><div class="com-md-4  remove-padding">
-                 <div class="aside wes" style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-                
+                </div>
+                <div class="com-md-4  remove-padding">
+                  <div class="aside wes"
+                    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
+
                     <a class="banner-effect" href="//lakeofcakes.com/" target="_blank">
                       <img src="//lakeofcakes.com/assets/images/partner/1597241409ezgif.com-webp-to-png (3).png" alt="">
                     </a>
                   </div>
-                </div><div class="com-md-4  remove-padding">
-                 <div class="aside wes" style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-                
+                </div>
+                <div class="com-md-4  remove-padding">
+                  <div class="aside wes"
+                    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
+
                     <a class="banner-effect" href="bjhbhjb" target="_blank">
                       <img src="//lakeofcakes.com/assets/images/partner/1597241505ezgif.com-webp-to-png (4).png" alt="">
                     </a>
                   </div>
-                </div>						 
-           
-     
-            
-            <!--</a>-->
-     
-           
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      </div>
-      </div>
     </div>
-    
-  </section>
+
+  </section> -->
 
   <!-- fixed section 8 -->
   <section class="banner-section"
@@ -471,25 +459,16 @@
     <h3 class="bannerheading" id="fixed-section8-heading"></h3>
     <div class="container-fluid">
       <div class="row" id="fixed-section8-row">
-        <!-- <div class="col-lg-3 col-md-3 col-6 remove-padding">
-          <div class="left">
-            <a class="banner-effect imgca" href="product.html" target="_blank">
-              <img class="imgc" src="https://www.galaxydigitalprint.in/uploaded-files/product-images/03-14.jpg" alt="">
-            </a>
-          </div>
-        </div> -->
+
 
       </div>
     </div>
   </section>
 
-  <!-- haed cooded -->
-  <section class="categori-item clothing-and-Apparel-Area">
+  <!-- <section class="categori-item clothing-and-Apparel-Area">
     <div class="container-fluid p-0">
       <div class="p-3" style="background: #274674;">
-        <!--<div class="row">-->
 
-        <!--</div>-->
         <div class="col-lg-12" style="background: #fff;">
           <div class="row">
             <div class="col-lg-8 col-12">
@@ -541,12 +520,7 @@
                         font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                           aria-hidden="true"></i></button>
                     </a>
-                    <!--<a class="banner-effect mb-10" href="#">-->
 
-                    <!--</a>-->
-                    <!--<a class="banner-effect" href="#">-->
-
-                    <!--</a>-->
                   </div>
                 </div>
                 <div class="col-md-5 col-5" style="background: #fff; padding-top: 13px; padding-bottom: 13px;">
@@ -559,8 +533,8 @@
         </div>
       </div>
     </div>
-  </section>
-  <section class="categori-item clothing-and-Apparel-Area">
+  </section> -->
+  <!-- <section class="categori-item clothing-and-Apparel-Area">
     <div class="container-fluid p-0">
       <div class="p-3" style="background: #f4b2b6;">
         <div class="col-lg-12" style="background: #fff;">
@@ -622,7 +596,7 @@
       </div>
     </div>
 
-  </section>
+  </section> -->
 
   <!-- fixed section 9 -->
   <section class="banner-section"
@@ -648,8 +622,8 @@
 
 
 
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
 <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script> -->
 <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script> -->
@@ -680,8 +654,8 @@
 
 <script type="text/javascript">
 
-  
-$('#footer-section-loader').load('/Common/files.html');
+
+  $('#footer-section-loader').load('/Common/files.html');
   $('#nav-section-loader').load('/Common/navbar.html');
 
 
@@ -693,7 +667,7 @@ $('#footer-section-loader').load('/Common/files.html');
 
 
 <script>
-  
+
   $('#footer-section-loader').load('./Common/footer.html');
   // Icons rotate
   $(function () {

@@ -42,7 +42,7 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   }
 
   introCarouselHTML.innerHTML = img;
-  
+
 });
 
 // fixed section 1
@@ -306,7 +306,7 @@ db.collection("sections")
     for (let card of docData.prodIds) {
       // console.log(card);
       // console.log(card.cat.split('__')[1], card.id);
-      await db
+      db
         .collection(card.cat.split("__")[0])
         .doc(card.id)
         .get()
@@ -362,7 +362,7 @@ db.collection("sections")
     for (let card of docData.prodIds) {
       // console.log(card);
       // console.log(card.cat.split('__')[1], card.id);
-      await db
+      db
         .collection(card.cat.split("__")[0])
         .doc(card.id)
         .get()
@@ -371,7 +371,7 @@ db.collection("sections")
           let prodData = prod.data();
           // console.log(prodData);
           row += `
-      <div class="col-lg-2 col-md-3 col-6 remove-padding">
+        <div class="col-lg-2 col-md-3 col-6 remove-padding">
         <a class="item" href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]
             }">
           <div class="item-img">
