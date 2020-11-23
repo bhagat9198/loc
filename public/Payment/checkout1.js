@@ -724,20 +724,15 @@ const displayShippingInfo = (e) => {
     alt_shipping_emailHTML = SHIPPING_DATA.alt_email;
   }
 
-  // let mainData = {
-  //   amount: TOTAL_COST,
-  //   name: USER_DETAILS.UserName,
-  // };
-  // let options = {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json;charset=utf-8",
-  //   },
-  //   body: JSON.stringify({}),
-  // };
-  // console.log(options);
+  const checkoutReqData = {
+    userId: USER_ID,
+    order: CHECKOUT_ID,
+  }
+
+  
+
   const checkoutReq = firebase.functions().httpsCallable('checkoutReq');
-  checkoutReq().then((res) => {
+  checkoutReq(checkoutReqData).then((res) => {
     console.log(res);
     console.log(res.data.orderId);
     RAZ_ORDER_ID = res.data.orderId;
@@ -747,26 +742,6 @@ const displayShippingInfo = (e) => {
   })
   console.log(RAZ_ORDER_ID);
 
-  const finalBtnSpanHTML = document.querySelector("#finalBtnSpan");
-      finalBtnSpanHTML.innerHTML = `
-      <a href="javascript;;"> 
-        <button type="submit" id="final-btn" class="mybtn1 1">Proceed to Pay </button>
-      </a>`;
-
-  // fetch("https://raz-pay.herokuapp.com/checkout", options)
-  // // fetch("http://localhost:3500/checkout", options)
-  //   .then((res) => {
-  //     return res.json();
-  //   })
-  //   .then((resData) => {
-  //     console.log('resData', resData);
-  //     RAZ_ORDER_ID = resData.orderId;
-  //     alert('RAZ_ORDER_ID', RAZ_ORDER_ID)
-  //     console.log('RAZ_ORDER_ID', RAZ_ORDER_ID);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
 };
 
 // prodFinalHTML.addEventListener('click', displayShippingInfo);
@@ -778,41 +753,7 @@ const displayShippingInfo = (e) => {
 
 
 let options;
-
-// options = {
-//   key: "rzp_test_irSg3itoRV9kt3", // Enter the Key ID generated from the Dashboard
-//   currency: "INR",
-//   name: "LAKE OF CAKES",
-//   description: "HAPPY SHOPPING",
-//   image: "./../assets/images/logo.png",
-//   order_id: RAZ_ORDER_ID, 
-//   handler: function (response) {
-//     RES = response;
-//     alert(response.razorpay_signature);
-//     console.log(response);
-//     orderComplete(response);
-//     // alert(response.razorpay_payment_id);
-//     // alert(response.razorpay_order_id);
-//   },
-//   prefill: {
-//     name: "Gaurav Kumar",
-//     email: "gaurav.kumar@example.com",
-//     contact: "9999999999",
-//   },
-//   notes: {
-//     address: "Razorpay Corporate Office",
-//   },
-//   theme: {
-//     color: "#f00",
-//   },
-// };
 let rzp1;
-// document.querySelector("#rzp-button1").addEventListener("click", (e) => {
-//   e.preventDefault();
-//   console.log(options);
-//   rzp1 = new Razorpay(options);
-//   rzp1.open();
-// });
 
 
 const exeRazPay = e => {
@@ -870,30 +811,11 @@ const exeRazPay = e => {
 const orderComplete = (data) => {
   console.log(data);
 
-  let options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify(data),
-  };
-
-  let RAZ_ORDER;
-  // fetch("https://raz-pay.herokuapp.com/payment", options)
-  // // fetch("http://localhost:3500/payment", options)
-  // .then((res) => {
-  //     return res.json();
-  //   })
-  //   .then((resData) => {
-  //     console.log(resData);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-
   const payemnetStatus = firebase.functions().httpsCallable('payemnetStatus');
-  payemnetStatus(mainData).then((res) => {
-    console.log(res);
+  payemnetStatus().then((res) => {
+    console.log(res.data);
+    let status = res.data.status;
+
   }).catch(error => {
     console.log(error);
   })
