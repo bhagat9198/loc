@@ -14897,9 +14897,9 @@ ul.attributes li a:hover {
     }
     .owl-carousel .owl-item img {
         height: 170px;
-        width: 600px !important;
-        object-fit:fill;
-       
+        width: 500px !important;
+        object-fit:cover;
+        background-color:whitesmoke;
     }
 }
 

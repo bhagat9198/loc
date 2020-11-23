@@ -915,7 +915,7 @@
 
     }).then(function () {
       window.localStorage.removeItem("locLoggedInUser")
-      firebase.auth().signOut();
+      // firebase.auth().signOut();
       location.reload();
     });
   }
