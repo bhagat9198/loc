@@ -105,9 +105,9 @@ function getUiConfig() {
       // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
     ],
     // Terms of service url.
-    'tosUrl': 'https://www.google.com',
+    'tosUrl': 'https://developers.google.com/terms/api-services-user-data-policy',
     // Privacy policy url.
-    'privacyPolicyUrl': 'https://www.google.com',
+    'privacyPolicyUrl': 'https://developers.google.com/terms/api-services-user-data-policy',
     'credentialHelper': CLIENT_ID && CLIENT_ID != 'YOUR_OAUTH_CLIENT_ID' ?
       firebaseui.auth.CredentialHelper.GOOGLE_YOLO :
       firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM

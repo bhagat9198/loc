@@ -589,7 +589,7 @@ kbd kbd {
 
 @media (min-width:768px) {
     .container {
-        max-width: 720px
+        max-width: 100%;
     }
 }
 
@@ -601,18 +601,24 @@ kbd kbd {
 
 @media (min-width:1200px) {
     .container {
-        max-width: 1140px
+        max-width: 100%;
     }
 }
 
 .container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+.container-fluidProducts {
     width: 100%;
     /* padding-right: 15px;
     padding-left: 15px; */
     margin-right: auto;
     margin-left: auto
 }
-
 .row {
     display: -ms-flexbox;
     display: flex;
@@ -32845,7 +32851,10 @@ section.phone-and-accessories.categori-item {
         max-width: 11.99999%;
     }
 }
-
+@media only screen and (max-width: 768px){
+.ml-4 {
+    margin-left: 2.5rem !important;
+}
 @media screen and (max-width: 575px) {
     .swingimage {
         width: 7rem !important;
@@ -32871,3 +32880,4 @@ section.phone-and-accessories.categori-item {
       width: 70px !important;
     }
 }
+
