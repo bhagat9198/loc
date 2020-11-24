@@ -92,7 +92,7 @@ const calculateBill = async (discount = 0) => {
   TOTAL_COST = 0;
   console.log(USER_DETAILS.orders[INDEX]);
   let bp = "";
-
+  basicPrices = [];
   for (let p of USER_DETAILS.orders[INDEX].products) {
     let totalProdPrice = 0;
     let basicPrice = 0;
@@ -140,13 +140,16 @@ const calculateBill = async (discount = 0) => {
         heartPrice = p.pdata.shapes[0].shapePrice;
       }
       // console.log(basicPrice, egglessPrice, heartPrice);
-      totalProdPrice = Math.round(+basicPrice + +egglessPrice + +heartPrice);
+      totalProdPrice = +basicPrice + +egglessPrice + +heartPrice;
+      totalProdPrice = Number(totalProdPrice.toFixed(2));
       basicPrices.push(totalProdPrice);
     } else {
-      totalProdPrice = Math.round(+p.pdata.sp);
+      totalProdPrice = (+p.pdata.sp);
+      totalProdPrice = Number(totalProdPrice.toFixed(2));
       basicPrices.push(totalProdPrice);
     }
     totalProdPrice = totalProdPrice * +p.qty;
+    totalProdPrice = Number(totalProdPrice.toFixed(2));
 
     let pName = p.pdata.name;
     bp += `
@@ -162,7 +165,9 @@ const calculateBill = async (discount = 0) => {
   }
   bpSpanHTML.innerHTML = bp;
   subTotalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
+
   console.log(discount);
+  console.log(basicPrices);
   let dis;
   if (discount === 0) {
     dis = `
@@ -186,8 +191,18 @@ const calculateBill = async (discount = 0) => {
     </div>
     `;
   } else {
-    console.log(discount);
-    TOTAL_COST = TOTAL_COST - +discount;
+    let subDis = 0;
+    basicPrices.map((el, i) => {
+      let d = el * (+discount/100);
+      d = Number(d.toFixed(2));
+      let eachDis =  el - (d);
+      eachDis = Number(eachDis.toFixed(2));
+      subDis += d;
+      console.log(eachDis);
+      basicPrices[i] = eachDis;
+    });
+    console.log(subDis);
+    TOTAL_COST  = TOTAL_COST - subDis;
     dis = `
     <ul class="order-list">
       <li>
@@ -195,7 +210,7 @@ const calculateBill = async (discount = 0) => {
           Discount
         </p>
         <P>
-          <b id="discount">₹ ${discount}</b>
+          <b id="discount">₹ ${subDis}</b>
         </P>
       </li>
     </ul>
@@ -211,15 +226,17 @@ const calculateBill = async (discount = 0) => {
   }
   discountHTML.innerHTML = dis;
 
+  console.log(basicPrices);
   let gst = "";
   let counter = -1;
   for (p of USER_DETAILS.orders[INDEX].products) {
     counter++;
     let gstPrice = 0;
     let gstPercent = 0;
-
     gstPercent = +p.pdata.gst;
-    gstPrice = Math.round(+basicPrices[counter] * +p.qty * (+gstPercent / 100));
+    gstPrice = (+basicPrices[counter] * +p.qty) * (+gstPercent / 100);
+    console.log( +basicPrices[counter], p.qty, +gstPercent / 100, gstPrice);
+    gstPrice = Number(gstPrice.toFixed(2));
 
     let pName = p.pdata.name;
     gst += `
@@ -240,14 +257,14 @@ const calculateBill = async (discount = 0) => {
     let addonsPrice = 0;
     if (USER_DETAILS.orders[INDEX].addons.length > 0) {
       for (add of USER_DETAILS.orders[INDEX].addons) {
-        await db
-          .collection("addons")
-          .doc(add.id)
-          .get()
-          .then((addDoc) => {
-            let addData = addDoc.data();
-            addonsPrice = addonsPrice + addData.price * add.qty;
-          });
+      await db
+        .collection("addons")
+        .doc(add.id)
+        .get()
+        .then((addDoc) => {
+          let addData = addDoc.data();
+          addonsPrice = addonsPrice + addData.price * add.qty;
+        });
       }
     }
     addonCostHTML.innerHTML = `₹ ${addonsPrice}`;
@@ -259,10 +276,10 @@ const calculateBill = async (discount = 0) => {
 };
 
 const coupanApplyHTML = document.querySelector("#coupanApply");
-var appliedCoupan;
-let cType, cAmt, discount;
+let appliedCoupan;
+let cType, cAmt, discount, COUPAN_ID;
 const checkCoupon = async (e) => {
-  let coupanDetails, coupanId;
+  let coupanDetails;
   let flag = false;
   // const code = checkCouponFormHTML['code'].value;
   const code = document.querySelector("#code").value;
@@ -273,7 +290,7 @@ const checkCoupon = async (e) => {
       let docData = doc.data();
       if (docData.name === code) {
         coupanDetails = docData;
-        coupanId = coupanId;
+        COUPAN_ID = doc.id;
         flag = true;
         appliedCoupan = code;
         break;
@@ -283,19 +300,9 @@ const checkCoupon = async (e) => {
 
   if (flag) {
     let totalSubTotal = document.querySelector("#sub-total-cost").innerHTML;
-    console.log(totalSubTotal);
     totalSubTotal = totalSubTotal.substring(2);
-    console.log(totalSubTotal);
-    console.log("flag", coupanDetails);
-    // add snackbar
-    if (coupanDetails.category === "percentage") {
-      cType = "percentage";
-      cAmt = coupanDetails.amount;
-      discount = +totalSubTotal * (+cAmt / 100);
-    } else {
-      cType = "price";
-      cAmt = coupanDetails.amount;
-      discount = +cAmt;
+    console.log("coupanDetails", coupanDetails);
+      cAmt = +coupanDetails.amount;
       document.getElementById("success").style.display = "block";
       setTimeout(function () {
         document.getElementById("success").style.display = "none";
@@ -307,9 +314,7 @@ const checkCoupon = async (e) => {
         $("#coupon-form,#check-coupon-form").toggle();
         document.getElementById("coupon-link").style.display = "none";
       }, 2000);
-    }
-    console.log(discount, typeof discount);
-    calculateBill(+discount);
+    calculateBill(cAmt);
     coupanApplyHTML.disable = true;
     document.querySelector("#code").value = "";
   } else {
@@ -322,11 +327,11 @@ const checkCoupon = async (e) => {
 };
 
 function removeCoupan() {
-  discount -= cAmt;
   document.getElementById("applied").style.display = "none";
-  calculateBill(discount);
+  calculateBill(0);
   document.getElementById("coupon-link").style.display = "block";
 }
+
 coupanApplyHTML.addEventListener("click", checkCoupon);
 
 const form1ShippingHTML = document.querySelector("#form1-shipping");
@@ -727,20 +732,40 @@ const displayShippingInfo = (e) => {
   const checkoutReqData = {
     userId: USER_ID,
     order: CHECKOUT_ID,
+    formDetails: SHIPPING_DATA
   }
+  let options = { 
+    method: 'POST', 
+    headers: { 
+      'Content-Type': 'application/json;charset=utf-8' 
+    }, 
+    body: JSON.stringify(checkoutReqData) 
+  } 
 
-  
-
-  const checkoutReq = firebase.functions().httpsCallable('checkoutReq');
-  checkoutReq(checkoutReqData).then((res) => {
-    console.log(res);
-    console.log(res.data.orderId);
-    RAZ_ORDER_ID = res.data.orderId;
-    console.log(RAZ_ORDER_ID);
+  fetch('http://localhost:3500/checkout', options).then(r => {
+    console.log(r);
+    return r.json();
+  }).then(mainData => {
+    console.log(mainData);
+    RAZ_ORDER_ID = mainData.orderId;
+    document.querySelector('#rzp-button1').disabled = false;
+    alert(RAZ_ORDER_ID);
   }).catch(error => {
     console.log(error);
   })
-  console.log(RAZ_ORDER_ID);
+  
+
+  // const checkoutReq = firebase.functions().httpsCallable('checkoutReq');
+  // checkoutReq(checkoutReqData).then((res) => {
+  //   console.log(res);
+  //   console.log(res.data.orderId);
+  //   document.querySelector('#rzp-button1').disabled = false;
+  //   RAZ_ORDER_ID = res.data.orderId;
+  //   console.log(RAZ_ORDER_ID);
+  // }).catch(error => {
+  //   console.log(error);
+  // })
+  // console.log(RAZ_ORDER_ID);
 
 };
 
@@ -764,7 +789,7 @@ const exeRazPay = e => {
 
 
   options = {
-    key: "rzp_live_BfdC1FopDqRvQL", // Enter the Key ID generated from the Dashboard
+    key: "rzp_test_VkBZNRiEBUKNu5", // Enter the Key ID generated from the Dashboard
     amount: "1000", 
     currency: "INR",
     name: "LAKE OF CAKES",
@@ -780,12 +805,12 @@ const exeRazPay = e => {
       // alert(response.razorpay_order_id);
     },
     prefill: {
-      name: `a`,
-      email: `a@a.com`,
-      contact: "9999999999",
+      name: `${SHIPPING_DATA.name}`,
+      email: `${SHIPPING_DATA.email}`,
+      contact: `91${SHIPPING_DATA.phone}`,
     },
     notes: {
-      address: "Razorpay Corporate Office",
+      address: `${SHIPPING_DATA.address}`,
     },
     theme: {
       color: "#f00",
@@ -796,12 +821,12 @@ const exeRazPay = e => {
   rzp1.open();
   rzp1.on("payment.failed", function (response) {
     alert(response.error.code);
-    alert(response.error.description);
-    alert(response.error.source);
-    alert(response.error.step);
-    alert(response.error.reason);
-    alert(response.error.metadata.order_id);
-    alert(response.error.metadata.payment_id);
+    // alert(response.error.description);
+    // alert(response.error.source);
+    // alert(response.error.step);
+    // alert(response.error.reason);
+    // alert(response.error.metadata.order_id);
+    // alert(response.error.metadata.payment_id);
     console.log(response);
     console.log(response.error);
   });
@@ -811,12 +836,34 @@ const exeRazPay = e => {
 const orderComplete = (data) => {
   console.log(data);
 
-  const payemnetStatus = firebase.functions().httpsCallable('payemnetStatus');
-  payemnetStatus().then((res) => {
-    console.log(res.data);
-    let status = res.data.status;
+  let options = { 
+    method: 'POST', 
+    headers: { 
+      'Content-Type': 'application/json;charset=utf-8' 
+    }, 
+    body: JSON.stringify(data) 
+  } 
 
+  fetch('http://localhost:3500/payment', options).then(r => {
+    console.log(r);
+    return r.json();
+  }).then(mainData => {
+    console.log(mainData);
+    if(mainData === 'true') {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
   }).catch(error => {
     console.log(error);
   })
+
+  // const payemnetStatus = firebase.functions().httpsCallable('payemnetStatus');
+  // payemnetStatus().then((res) => {
+  //   console.log(res.data);
+  //   let status = res.data.status;
+
+  // }).catch(error => {
+  //   console.log(error);
+  // })
 }
