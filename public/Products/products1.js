@@ -161,19 +161,19 @@ const allCatProds = async () => {
         let docId = doc.id;
         // console.log(docId);
         await db
-          .collection(docId)
-          .get()
-          .then((prods) => {
-            let pdocs = prods.docs;
-            for (let pdoc of pdocs) {
-              // console.log(pdoc.id);
-              allProductsArr.push({
-                prodId: pdoc.id,
-                prodData: pdoc.data(),
-                catId: docId,
-              });
-            }
-          });
+        .collection(docId)
+        .get()
+        .then((prods) => {
+          let pdocs = prods.docs;
+          for (let pdoc of pdocs) {
+            // console.log(pdoc.id);
+            allProductsArr.push({
+              prodId: pdoc.id,
+              prodData: pdoc.data(),
+              catId: docId,
+            });
+          }
+        });
       }
     });
 };
@@ -199,6 +199,7 @@ const displayProds = async (arrProds) => {
   let card = "";
   for (let p of arrProds) {
     // console.log(p);
+    let dis = (+p.prodData.totalPrice/+p.prodData.mrp)*100;
     card += `
 			<div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
 				<a href="../Product/product.html?prod=${p.prodId}&&cat=${p.prodData.wholeCategory.split("__")[0]
@@ -222,11 +223,9 @@ const displayProds = async (arrProds) => {
                 <div class="empty-stars"></div>
                 <div class="full-stars" style="width:0%"></div>
             </div>
-          </div>
-                        
-						<h4 class="price responsive-price ">₹ ${p.prodData.totalPrice} <del><small>₹ 2000</small></del><small style="color:green;font-weight:700;padding:2px">(20 % OFF)</small></h4>
+          </div>       
+						<h4 class="price responsive-price ">₹ ${p.prodData.totalPrice} <del><small>₹ ${p.prodData.mrp}</small></del><small style="color:green;font-weight:700;padding:2px">(${dis} % OFF)</small></h4>
             <h5 class="name responsive-name">${p.prodData.name}</h5>
-
 					</div>
 				</a>
 			</div>

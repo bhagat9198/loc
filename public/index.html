@@ -1802,6 +1802,7 @@
 
 <script>
 
+  window.localStorage.setItem("redirectURL","index.html")
   var firebaseConfig = {
     apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
     authDomain: "lake-of-cakes.firebaseapp.com",
@@ -1828,15 +1829,6 @@
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/custom.js"></script>
 
-<script type="text/javascript">
-
-
-  // $('#footer-section-loader').load('/Common/files.html');
-  // $('#nav-section-loader').load('/Common/navbar.html');
-
-
-
-</script>
 
 <script src="./index1.js"></script>
 <script src="./Common/navbar1.js"></script>
@@ -1873,6 +1865,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
   var checkUser;
+  checkUser = window.localStorage.getItem("locLoggedInUser");
   var timecount = 0;
   function checkifUser() {
     if (checkUser == null || checkUser == "null") {
@@ -1888,18 +1881,14 @@
       window.location = "/UserDash/cart.html"
     }
   }
-  const inter = setInterval(function () {
-    timecount++;
-    if (timecount == 10) {
-      clearInterval(inter)
 
-    }
     var counter = 0;
     document.getElementById("hideLogOut").style.display = "none";
-    const db = firebase.firestore();
+    // const db = firebase.firestore();
     var docData, userDoc;
 
     db.collection("Customers").onSnapshot(async (snapshots) => {
+
       checkUser = window.localStorage.getItem("locLoggedInUser");
 
       let snapshotDocs = snapshots.docs;
@@ -1908,11 +1897,16 @@
       for (let doc of snapshotDocs) {
 
         if (checkUser == doc.data().userId) {
-
+          
           counter++;
 
           userDoc = doc.data();
-          document.getElementById("cart-count").innerHTML = userDoc.cart.length
+          if(userDoc.cart !=undefined && userDoc.cart!="undefined"){
+            document.getElementById("cart-count").innerHTML = userDoc.cart.length;
+          }else{
+            document.getElementById("cart-count").innerHTML = 0;
+          }
+        
           if (userDoc.UserName == null) {
             userDoc.UserName = "User@LOC";
           }
@@ -1939,7 +1933,7 @@
     });
 
 
-  }, 1000)
+ 
 
 
   function redirectLogin() {
@@ -1953,7 +1947,7 @@
 
     }).then(function () {
       window.localStorage.removeItem("locLoggedInUser")
-      // firebase.auth().signOut();
+      firebase.auth().signOut();
       location.reload();
     });
   }
