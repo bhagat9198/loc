@@ -2,11 +2,55 @@ const functions = require("firebase-functions");
 const cryptoHmac = require("create-hmac");
 const Razorpay = require("razorpay");
 const admin = require("firebase-admin");
-admin.initializeApp();
+var firebase = require("firebase");
 
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
+const nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
+
+require('firebase/auth');
+require('firebase/database');
+require('firebase/storage');
+
+
+
+var firebaseConfig = {
+  apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+  authDomain: "lake-of-cakes.firebaseapp.com",
+  databaseURL: "https://lake-of-cakes.firebaseio.com",
+  projectId: "lake-of-cakes",
+  storageBucket: "lake-of-cakes.appspot.com",
+  messagingSenderId: "779843608951",
+  appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+  measurementId: "G-5ER0QF0FDW"
+};
+
+firebase.initializeApp(firebaseConfig);
+var serviceAccount = require("./lakeofcakes.json");
+// const { log } = require('firebase-functions/lib/logger');
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://lake-of-cakes.firebaseio.com"
 // });
+
+var transporter = nodemailer.createTransport({
+
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
+  service: 'gmail',
+  auth: {
+
+    user: 'crosshex.tech@gmail.com',
+    pass: 'hexCrosstech@2020'
+  },
+  tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: false
+  }
+});
+
+
 
 exports.checkoutReq = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
@@ -15,7 +59,7 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
       "only authenticated users can add requests"
     );
   }
-  console.log(data+"OOOOOOOOOOOOOOOOOO");
+  console.log(data + "OOOOOOOOOOOOOOOOOO");
 
   let USER_ID = data.userId;
   let CHECKOUT_ID = data.order;
@@ -159,7 +203,7 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
     "status": "created",
     "created_at": new Date(),
     "currency": "INR",
-    "phone" : data.phone
+    "phone": data.phone
   }
 
   await instance.orders.create(options, (err, order) => {
@@ -198,3 +242,44 @@ exports.payemnetStatus = functions.https.onCall((data, context) => {
   }
   return res.status(200).json(status);
 });
+
+
+
+
+
+// Email Service
+exports.sendEmailAfterOrderConfirmation = functions.firestore.document('/Customers/{userId}').onUpdate(async (change) => {
+  console.log("Came into Function")
+  const newValue = change.after.data();
+
+  // ...or the previous value before this update
+  const previousValue = change.before.data();
+
+  // access a particular field as you would any JS property
+  const name = newValue.name;
+  //Create an options object that contains the time to live for the notification and the priority
+  const mailOptions = {
+    from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
+    to: name.Email,
+  };
+  console.log("SSSSSSSS")
+  // Building Email message.
+  mailOptions.subject = 'Order Confirmation ';
+  //for example
+  mailOptions.html = `<p style="color:black;" >Hello  ` + name + " -->>" + name + "< ------"`</p>`
+
+  console.log("SSSSSSSS")
+  try {
+    console.log("Inside try")
+    transporter.sendMail(mailOptions);
+    console.log('email sent to:', name.Email);
+    transporter.close();
+    console.log(name.Email)
+  } catch (error) {
+    console.error('There was an error while sending the email:' + name.Email, error);
+  }
+
+
+});
+
+

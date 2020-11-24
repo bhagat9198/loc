@@ -242,8 +242,8 @@
                       <li>
                         <a type="button" data-toggle="modal" data-target="#topoffer"
                           style="background: rgb(209, 96, 96); padding: 0px 20px; position: relative;border:1px solid black;border-radius: 10px;">
-                          <span class="sign-in" style="font-size: 14px; color: #fff;">
-                            <i class="fa fa-gift" aria-hidden="true"></i> OFFER</span>
+                          <span class="sign-in" data-toggle="modal" data-target="#modalYT" style="font-size: 14px; color: #fff;">
+                            <i class="fa fa-gift" aria-hidden="true"  ></i> OFFER</span>
                         </a>
                       </li>
     
@@ -1784,6 +1784,55 @@
     </div>
   </section>
 
+  <!--Modal: modalYT-->
+<div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+
+  <!--Content-->
+  <div class="modal-content">
+
+    <!--Body-->
+    <div class="modal-body mb-0 p-0">
+
+      <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="width: 1000px;height:400px;object-fit:cover;" >
+        <img class="embed-responsive-item" style="width: 1000px;height:400px;object-fit: cover;" id="showOffer" src=""
+          allowfullscreen>
+      </div>
+
+    </div>
+
+    <!--Footer-->
+    <div class="modal-footer justify-content-center flex-column flex-md-row">
+      <span class="mr-4">Spread the word!</span>
+      <div>
+        <a type="button" class="btn-floating btn-sm btn-fb">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <!--Twitter-->
+        <a type="button" class="btn-floating btn-sm btn-tw">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <!--Google +-->
+        <a type="button" class="btn-floating btn-sm btn-gplus">
+          <i class="fab fa-google-plus-g"></i>
+        </a>
+        <!--Linkedin-->
+        <a type="button" class="btn-floating btn-sm btn-ins">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+      <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+        data-dismiss="modal">Close</button>
+
+
+    </div>
+
+  </div>
+  <!--/.Content-->
+
+</div>
+</div>
+
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
 
 </body>
@@ -1864,6 +1913,22 @@
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
+
+
+  db.collection("offers").onSnapshot(async (snapshots) => {
+
+     let snapshotDocs = snapshots.docs;
+
+      // var dbref = db.collection('Customers');
+      for (let doc of snapshotDocs) {
+          userDoc = doc.data();
+          if(userDoc.isActivated){
+            document.getElementById("showOffer").src=userDoc.imgUrl;
+          }
+      }
+
+  });
+
   var checkUser;
   checkUser = window.localStorage.getItem("locLoggedInUser");
   var timecount = 0;
