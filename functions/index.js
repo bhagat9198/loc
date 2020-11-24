@@ -40,9 +40,8 @@ var transporter = nodemailer.createTransport({
   secure: true,
   service: 'gmail',
   auth: {
-
-    user: 'crosshex.tech@gmail.com',
-    pass: 'hexCrosstech@2020'
+    user: 'reetikchitragupt@gmail.com',
+    pass: 'myemail797355670645'
   },
   tls: {
     // do not fail on invalid certs
@@ -248,7 +247,7 @@ exports.payemnetStatus = functions.https.onCall((data, context) => {
 
 
 // Email Service
-exports.sendEmailAfterOrderConfirmation = functions.firestore.document('/Customers/{userId}').onUpdate(async (change) => {
+exports.sendEmailAfterOrderConfirmation = functions.firestore.document('Customers/{userId}').onUpdate(async (change) => {
   console.log("Came into Function")
   const newValue = change.after.data();
 
@@ -256,27 +255,29 @@ exports.sendEmailAfterOrderConfirmation = functions.firestore.document('/Custome
   const previousValue = change.before.data();
 
   // access a particular field as you would any JS property
-  const name = newValue.name;
+  const name = newValue.UserName;
+  console.log("--------------------------------------------"+name)
+
   //Create an options object that contains the time to live for the notification and the priority
   const mailOptions = {
     from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
-    to: name.Email,
+    to: newValue.Email,
   };
   console.log("SSSSSSSS")
   // Building Email message.
   mailOptions.subject = 'Order Confirmation ';
   //for example
-  mailOptions.html = `<p style="color:black;" >Hello  ` + name + " -->>" + name + "< ------"`</p>`
+  mailOptions.html = `<p style="color:black;" >Hello</p>`
 
   console.log("SSSSSSSS")
   try {
     console.log("Inside try")
     transporter.sendMail(mailOptions);
-    console.log('email sent to:', name.Email);
+    console.log('email sent to:', newValue.Email);
     transporter.close();
-    console.log(name.Email)
+    console.log(newValue.Email)
   } catch (error) {
-    console.error('There was an error while sending the email:' + name.Email, error);
+    console.error('There was an error while sending the email:' + newValue.Email, error);
   }
 
 
