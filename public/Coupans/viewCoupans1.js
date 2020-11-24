@@ -2,8 +2,22 @@ console.log("viewCoupans.js");
 
 const db = firebase.firestore();
 const coupansTBodyHTML = document.querySelector(".coupans-tBody");
-// const editModalOptionHTML = document.querySelector("#edit-modal");
-// const detailModalOptionHTML = document.querySelector("#detail-modal");
+
+const displayOptions = (isSeleted, data) => {
+  let options = "";
+  if (isSeleted.toString() === "true") {
+    options = `
+      <option value="true" selected>Activated</option>
+      <option value="false">Deactivated</option>
+    `;
+  } else {
+    options = `
+      <option value="true" >Activated</option>
+      <option value="false" selected>Deactivated</option>
+    `;
+  }
+  return options;
+};
 
 function displayRows(data, elHTML = coupansTBodyHTML) {
   // console.log(elHTML);
@@ -11,15 +25,17 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
   data.map((doc) => {
     let docData = doc.data();
     // console.log(docData);
+    
     tRows += `
     <tr role="row" class="odd parent">
       <td tabindex="0">${docData.name}</td>
-      <td>Rs ${docData.amount}</td>
+      <td>${displayDisAmt(docData.category, docData.amount)}</td>
       <td>
         <div class="action-list">
-          <select class="process  drop-success" style="display: block;">
-            <option value="true" selected>Activated</option>
-            <option value="false">Deactivated</option>
+          <select class="process  drop-success" data-id="${
+            doc.id
+          }" onchange="changeStatus(event, this)" style="display: block;">
+            ${displayOptions(docData.isActivated)}
           </select>
         </div>
       </td>
@@ -29,13 +45,17 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
             Actions<i class="fas fa-chevron-down"></i>
           </button>
           <div class="action-list" style="display: none;">
-            <a href="javascript:;" data-id="${doc.id}" onclick="loadEditModal(event)" data-toggle="modal" id="edit-modal" data-target="#coupanEditModal">
+            <a href="javascript:;" data-id="${
+              doc.id
+            }" onclick="loadEditModal(event)" data-toggle="modal" id="edit-modal" data-target="#coupanEditModal">
               <i class="fas fa-edit"></i> Edit
             </a>
-            <a href="javascript:;" data-id="${doc.id}" data-toggle="modal" id="delete-modal" data-target="#confirm-delete" class="delete">
+            <a href="javascript:;" data-id="${doc.id}" class="delete" onclick="deleteCoupan(event)">
               <i class="fas fa-trash-alt"></i>Delete
             </a>
-            <a href="javascript:;" data-toggle="modal" data-id="${doc.id}" onclick="loadDetailModal(event)" id="detail-modal"  data-target="#coupanSystemModal" class="dele">
+            <a href="javascript:;" data-toggle="modal" data-id="${
+              doc.id
+            }" onclick="loadDetailModal(event)" id="detail-modal"  data-target="#coupanSystemModal" class="dele">
               <i class="fa fa-info"></i>Details
             </a>
           </div>
@@ -47,29 +67,48 @@ function displayRows(data, elHTML = coupansTBodyHTML) {
   elHTML.innerHTML = tRows;
 }
 
-// const extractData = async () => {
-//   await db
-//     .collection("coupans")
-//     .get()
-//     .then((snapshot) => {
-//       let snapshotDocs = snapshot.docs;
-//       // console.log(coupansTBodyHTML);
-//       displayRows(snapshotDocs);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
+const displayDisAmt = (coupanCat, amt) => {
+  let discountAmt = '';
+    if(coupanCat === "price") {
+      discountAmt = `₹ ${amt}`;
+    } else {
+      discountAmt = `${amt}%`;
+    }
+  return discountAmt;
+}
 
-// extractData();
+const changeStatus = (e, current) => {
+  console.log(current.value);
+  let docId = e.target.dataset.id;
+  let docRef = db.collection("coupans").doc(docId);
 
-db.collection("coupans")
-  .onSnapshot((snapshot) => {
-    let snapshotDocs = snapshot.docs;
-    // console.log(coupansTBodyHTML);
-    displayRows(snapshotDocs);
-  })
-  
+  docRef.get().then((doc) => {
+    let docData = doc.data();
+
+    docData.isActivated = current.value;
+    docRef.update(docData);
+  });
+};
+
+const deleteCoupan = (e) => {
+  let docId = e.target.dataset.id;
+  db.collection('coupans')
+    .doc(docId)
+    .delete()
+    .then( response => {
+      console.log("Document successfully deleted!");
+    })
+    .catch(error => {
+      console.error("Error removing document: ", error);
+    });
+};
+
+db.collection("coupans").onSnapshot((snapshot) => {
+  let snapshotDocs = snapshot.docs;
+  // console.log(coupansTBodyHTML);
+  displayRows(snapshotDocs);
+});
+
 const loadDetailModal = async (e) => {
   // console.log(e.target.dataset.id);
   const docId = e.target.dataset.id;
@@ -78,6 +117,7 @@ const loadDetailModal = async (e) => {
   const cNameHTML = detailModalHTML.querySelector(".cName");
   const cCategoryHTML = detailModalHTML.querySelector(".cCategory");
   const cAmtHTML = detailModalHTML.querySelector(".cAmt");
+  const pAmtHTML = detailModalHTML.querySelector(".pAmt");
   const cQuantityHTML = detailModalHTML.querySelector(".cQuantity");
   const cFromHTML = detailModalHTML.querySelector(".cFrom");
   const cValidHTML = detailModalHTML.querySelector(".cValid");
@@ -93,6 +133,7 @@ const loadDetailModal = async (e) => {
       cNameHTML.innerHTML = docData.name;
       cCategoryHTML.innerHTML = docData.category;
       cAmtHTML.innerHTML = docData.amount;
+      pAmtHTML.innerHTML = docData.prevAmout || '';
       cQuantityHTML.innerHTML = docData.quantity;
       cFromHTML.innerHTML = docData.validFrom;
       cValidHTML.innerHTML = docData.validTill;
@@ -102,7 +143,7 @@ const loadDetailModal = async (e) => {
 
 const loadEditModal = async (e) => {
   const docId = e.target.dataset.id;
-  console.log(docId);
+  // console.log(docId);
   const editModalFormHTML = document.querySelector("#edit-modal-form");
 
   await db
@@ -115,6 +156,7 @@ const loadEditModal = async (e) => {
       editModalFormHTML["edit-c-desc"].value = docData.desc;
       editModalFormHTML["edit-c-category"].value = docData.category;
       editModalFormHTML["edit-c-amt"].value = docData.amount;
+      editModalFormHTML["edit-c-pamt"].value = docData.prevAmout;
       editModalFormHTML["edit-c-quantity"].value = docData.quantity;
       editModalFormHTML["edit-c-total"].value = docData.totalCoupans;
       editModalFormHTML["edit-c-validFrom"].value = docData.validFrom;
@@ -125,12 +167,12 @@ const loadEditModal = async (e) => {
 
 const submitEdit = (e) => {
   e.preventDefault();
-
   const editModalFormHTML = document.querySelector("#edit-modal-form");
   const name = editModalFormHTML["edit-c-name"].value;
   const desc = editModalFormHTML["edit-c-desc"].value;
   const category = editModalFormHTML["edit-c-category"].value;
   const amount = editModalFormHTML["edit-c-amt"].value;
+  const pAmount = editModalFormHTML["edit-c-pamt"].value;
   const quantity = editModalFormHTML["edit-c-quantity"].value;
   let totalCoupans = editModalFormHTML["edit-c-total"].value;
   const validFrom = editModalFormHTML["edit-c-validFrom"].value;
@@ -146,6 +188,7 @@ const submitEdit = (e) => {
     desc: desc,
     category: category,
     amount: amount,
+    prevAmout: pAmount,
     quantity: quantity,
     totalCoupans: totalCoupans,
     validFrom: validFrom,
@@ -153,7 +196,7 @@ const submitEdit = (e) => {
   };
 
   const updateCoupan = async (data) => {
-    console.log(data);
+    // console.log(data);
     let dbRef = await db.collection("coupans").doc(docId);
     dbRef
       .get()

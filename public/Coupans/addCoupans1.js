@@ -9,8 +9,9 @@ const addCoupan = (e) => {
 
   const coupanName = addCoupanFormHTML["coupan-name"].value;
   const coupanDesc = addCoupanFormHTML["coupan-desc"].value;
-  const coupanCat = addCoupanFormHTML["coupan-cat"].value;
+  const coupanMinAmt = addCoupanFormHTML["coupan-minAmt"].value;
   const coupanAmt = addCoupanFormHTML["coupan-amt"].value;
+  const prevCoupanAmt = addCoupanFormHTML["prev-coupan-amt"].value;
   const coupanQuantity = addCoupanFormHTML["coupan-quantity"].value;
   const numOfCoupans = addCoupanFormHTML["num-of-coupans"].value;
   const dateFrom = addCoupanFormHTML["date-from"].value;
@@ -19,20 +20,22 @@ const addCoupan = (e) => {
   const wholeCoupan = {
     name: coupanName,
     desc: coupanDesc,
-    category: coupanCat,
+    minAmt: coupanMinAmt,
     amount: coupanAmt,
+    prevAmout: prevCoupanAmt,
     quantity: coupanQuantity,
     totalCoupans: numOfCoupans || 'unlimited',
     validFrom: dateFrom,
     validTill: dateTill,
+    isActivated: "true"
   };
 
   const addCoupanReq = async(data) => {
-    console.log(data);
+    // console.log(data);
     await db.collection("coupans")
       .add(data)
       .then((savedData) => {
-        console.log(savedData);
+        // console.log(savedData);
       })
       .catch((error) => {
         console.log(error);

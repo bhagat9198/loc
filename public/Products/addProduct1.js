@@ -457,22 +457,55 @@ const addProductForm = (event) => {
           id: Math.random(),
           type: 'prodName'
         }
-        searchData.searches.push(searchName);
+        
         let searchSno = {
           name: response.prodData.sno,
           id: Math.random(),
           type: 'prodId',
           prodId: response.dataId
         }
-        searchData.searches.push(searchSno);
+        
         response.prodData.tags.split(',').map(tt => {
-          searchData.searches.push({
-            name: tt,
-            id: Math.random(),
-            type: 'tag'
-          })
+          let tagFlag = 0;
+          for(let s of searchData.searches) { 
+            if(s.name === tt) {
+              tagFlag++;
+              break;
+            }
+          }
+
+          if(tagFlag === 0) {
+            searchData.searches.push({
+              name: tt,
+              id: Math.random(),
+              type: 'tag'
+            })
+          }
         })
-        console.log(searchData);
+
+        let flag = 0;
+        for(let s of searchData.searches) {
+          if(s.name == searchName.name) {
+            flag = 1;
+            break;
+          }
+        }
+        if(flag === 0) {
+          searchData.searches.push(searchName);
+        }
+
+        let snoFlag = 0;
+        for(let s of searchData.searches) {
+          if(s.name == searchSno.name) {
+            snoFlag = 1;
+            break;
+          }
+        }
+        if(snoFlag === 0) {
+          searchData.searches.push(searchSno);
+        }
+
+        // console.log(searchData);
         searchRef.update(searchData);
       })
     })

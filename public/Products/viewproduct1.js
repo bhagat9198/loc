@@ -78,7 +78,7 @@ async function displayRows(snapshotDocs, allCatData) {
     let imgUrl = docData.mainImgUrl;
     tRows += `
     <tr role="row" class="odd parent">
-        <td tabindex="0" >${docData.name}<br><small>ID: ${docData.sno}</small></td>
+        <td tabindex="0" >${docData.name}<br><small>ID: ${docData.sno}</small><br /> <small><strong>CHEX:</strong> ${id}</small></td>
         <td><img src="${imgUrl}"></td>
         <td>${catData.scname}</td>
         <td>${catData.ccname}</td>
@@ -733,7 +733,7 @@ const submitEditForm = (event) => {
     productPolicy,
     productMainImg;
 
-  let productTags = [];
+  let productTags;
   let productAddons = [];
   let productSubImgs = [];
   let cakeWeights = [];
@@ -758,9 +758,11 @@ const submitEditForm = (event) => {
   //     productAddons.push(addon.value);
   //   });
 
-  editProduct.querySelectorAll('input[name="product-tag"]').forEach((tag) => {
-    productTags.push(tag.value);
-  });
+  // .forEach((tag) => {
+  //   productTags.push(tag.value);
+  // });
+
+  productTags = editProduct.querySelector('input[name="product-tag"]').value;
 
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
@@ -867,9 +869,11 @@ const submitEditForm = (event) => {
       suburlss.push(el.src);
     });
   }
-  console.log(productSubImgs);
+  // console.log(productSubImgs);
   // alert(productDescription)
   // alert(productPolicy)
+
+  console.log();
   let wholeProduct = {
     name: productName,
     sno: productSno,
@@ -970,7 +974,6 @@ const submitEditForm = (event) => {
           subImgsUrl.push(subUrl);
         }
       }
-      console.log('sdfghgfd');
       // editProduct.reset();
       // showSnack();
       // function showSnack() {
@@ -1017,9 +1020,71 @@ const submitEditForm = (event) => {
           }
           console.log(docData);
           await docRef.update(docData);
-          location.reload();
+          
         });
       }
+
+      const searchRef = db.collection('miscellaneous').doc('searchList');
+      searchRef.get().then(async(seachDoc) => {
+        let searchData = seachDoc.data();
+        let searchName = {
+          name: response.prodData.name,
+          id: Math.random(),
+          type: 'prodName'
+        }
+        
+        let searchSno = {
+          name: response.prodData.sno,
+          id: Math.random(),
+          type: 'prodId',
+          prodId: response.dataId
+        }
+        console.log(response.prodData);
+        response.prodData.tags.split(',').map(tt => {
+          let tagFlag = 0;
+          for(let s of searchData.searches) { 
+            if(s.name === tt) {
+              tagFlag++;
+              break;
+            }
+          }
+
+          if(tagFlag === 0) {
+            searchData.searches.push({
+              name: tt,
+              id: Math.random(),
+              type: 'tag'
+            })
+          }
+        })
+
+        let flag = 0;
+        for(let s of searchData.searches) {
+          if(s.name == searchName.name) {
+            flag = 1;
+            break;
+          }
+        }
+        if(flag === 0) {
+          searchData.searches.push(searchName);
+        }
+
+        let snoFlag = 0;
+        for(let s of searchData.searches) {
+          if(s.name == searchSno.name) {
+            snoFlag = 1;
+            break;
+          }
+        }
+        if(snoFlag === 0) {
+          searchData.searches.push(searchSno);
+        }
+
+        console.log(searchData);
+        await searchRef.update(searchData);
+        location.reload();
+      })
+
 
       editProduct.querySelector(".alert-success").textContent = "Product Saved";
       editProduct.querySelector(".alert-success").style.display = "block";

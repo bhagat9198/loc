@@ -9,6 +9,7 @@ const sliderTbodyHTML = document.querySelector(".slider-tbody");
 let sliderImg;
 
 const extractImgURL = async (imgPath) => {
+  // console.log(imgPath);
   let imgUrl;
   await storageService
     .ref(imgPath)
@@ -26,7 +27,7 @@ const displayRows = async (docs) => {
   let tRows = "";
   for (let doc of docs) {
     let docData = doc.data();
-    console.log(docData);
+    // console.log(docData);
     let docId = doc.id;
     let status=docData.isActivated;
     var dispVal1,dispVal2,dataval1,dataval2;
@@ -68,14 +69,14 @@ const displayRows = async (docs) => {
       </td>
     </tr>`;
   }
-  console.log(tRows);
+  // console.log(tRows);
   sliderTbodyHTML.innerHTML = tRows;
 };
 function deleteSlider(id){
   let ans=confirm("Are you  sure to delete the Slider")
   if(ans){
     db.collection("sliders").doc(id).delete().then(function () {
-      console.log("Slider successfully deleted!");
+      // console.log("Slider successfully deleted!");
 
     }).catch(function (error) {
       console.error("Error removing user: ", error);
@@ -106,6 +107,7 @@ function statusUpdated(dropId,id){
    
   }
 }
+
 db.collection("sliders").onSnapshot((snapshot) => {
   let snapshotDocs = snapshot.docs;
   displayRows(snapshotDocs);
@@ -129,6 +131,7 @@ const addSlider = (e) => {
       .then((snapshot) => {
         docId = snapshot.id;
       });
+      // console.log(data, docId);
     return { data: data, docId: docId };
   };
   addSliderReq(wholdeSliderData)
@@ -142,11 +145,9 @@ const addSlider = (e) => {
       docRef.get().then(snapshot => {
         let docData = snapshot.data();
         docData.imgUrl = imgUrl;
-
         docRef.update(docData);
       })
       sliderImg = null;
-      console.log("done");
     })
     .catch((error) => {
       console.log(error);
@@ -156,5 +157,5 @@ addSliderFormHTML.addEventListener("submit", addSlider);
 
 sliderFileHTML.addEventListener("change", (e) => {
   sliderImg = e.target.files[0];
-  console.log(sliderImg);
+  // console.log(sliderImg);
 });

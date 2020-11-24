@@ -1,4 +1,4 @@
-console.log("addOns.js");
+// console.log("addOns.js");
 const db = firebase.firestore();
 const storageService = firebase.storage();
 
@@ -9,7 +9,7 @@ let addonImg;
 let allAddonsData;
 
 const addAddon = (event) => {
-  console.log(event);
+  // console.log(event);
   // event.preventDefault();
   event.preventDefault();
 
@@ -33,11 +33,11 @@ const addAddon = (event) => {
       .collection("addons")
       .add(data)
       .then((dataSaved) => {
-        console.log(dataSaved);
+        // console.log(dataSaved);
         docId = dataSaved.id;
       })
       .catch((error) => {
-        console.log(error);
+        alert(error);
       });
     return {docId:docId, docData: data};
   }
@@ -49,7 +49,7 @@ const addAddon = (event) => {
       await storageService.ref(`addons/${response.docId}/${response.docData.img}`).getDownloadURL().then(url => {
         imgUrl = url;
       }).catch(error => {
-        console.log(error);
+        alert(error);
       })
       // console.log(response);
 
@@ -57,22 +57,23 @@ const addAddon = (event) => {
       docRef.get().then(async(snapshot) => {
         let docData = snapshot.data();
         docData.imgUrl = imgUrl;
-        console.log(docData);
+        // console.log(docData);
         await docRef.update(docData);
+        addonForm.reset();
       }).catch(error => {
-        console.log(error);
+        alert(error);
       });
 
     })
     .catch((error) => {
-      console.log(error);
+      alert(error);
     });
 };
 addonForm.addEventListener("submit", addAddon);
 
 addonForm.querySelector('#addon-img').addEventListener('change', (e) => {
   addonImg = e.target.files[0];
-  console.log(addonImg);
+  // console.log(addonImg);
 })
 
 async function extractImgUrl(imgPath) {
@@ -81,31 +82,36 @@ async function extractImgUrl(imgPath) {
     imgUrl = url;
   })
   .catch(error => {
-    console.log(error);
+    alert(error);
   });
 
   return imgUrl;
 }
 
 
-const extractData = async () => {
-  let allData;
-  await db
-    .collection("addons")
-    .get()
-    .then((snapshots) => {
-      // console.log(snapshots.docs);
-      let snapshotsDocs = snapshots.docs;
-      // allAddonsData = snapshotsDocs;
+// const extractData = async () => {
+//   let allData;
+//   await db
+//     .collection("addons")
+//     .get()
+//     .then((snapshots) => {
+//       // console.log(snapshots.docs);
+//       let snapshotsDocs = snapshots.docs;
+//       // allAddonsData = snapshotsDocs;
 
-      allData = snapshotsDocs;
-    });
+//       allData = snapshotsDocs;
+//     });
   
-    return allData;
-}
+//     return allData;
+// }
 
-extractData().then( async(response) => {
+// extractData().then( async(response) => {
+
   // console.log(response);
+
+db.collection('addons').onSnapshot(async(snapshots) => {
+  let response = snapshots.docs;
+  allAddonsData = response;
   let tRows = '';
   for(let doc of response) {
     let docData = doc.data();
@@ -189,3 +195,15 @@ function statusUpdated(dropId,id){
    
   }
 }
+
+const calculateTotal = e => {
+  let gst = addonForm["addon-gst"];
+  let sp = addonForm["addon-sp"];
+  // console.log(gst, sp);
+  if(gst.value && sp.value) {
+    addonForm["addon-total-price"].value = Math.round(+sp.value + (+sp.value * (+gst.value/100)));
+  }
+}
+
+addonForm["addon-sp"].addEventListener('keyup', calculateTotal);
+addonForm["addon-gst"].addEventListener('keyup', calculateTotal);
