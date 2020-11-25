@@ -44,8 +44,8 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
   console.log('userDetails', userDetails);
   console.log('index', index);
   for (let p of userDetails.orders[index].products) {
-    prodRef = db.collection(p.cat).doc(p.prodId);
-    prodRef.get().then((doc) => {
+    prodRef = admin.firestore().collection(p.cat).doc(p.prodId);
+    await prodRef.get().then((doc) => {
       let docData = doc.data();
       p.pdata = docData;
       return;
@@ -53,6 +53,7 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
       console.log(error);
     })
   }
+  // await Promise.all(userDetails.orders[index].products);
 
   let basicPrices = [];
 
@@ -112,7 +113,8 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
     TOTAL_COST = TOTAL_COST + totalProdPrice;
   }
 
-  for (p of USER_DETAILS.orders[INDEX].products) {
+  let counter = -1;
+  for (p of userDetails.orders[index].products) {
     counter++;
     let gstPrice = 0;
     let gstPercent = 0;
@@ -125,7 +127,7 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
   if (userDetails.orders[index].addons) {
     if (userDetails.orders[index].addons.length > 0) {
       for (addon of userDetails.orders[index].addons) {
-        admin.firestore
+        admin.firestore()
           .collection("addons")
           .doc(addon.id)
           .get()
@@ -150,14 +152,10 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
   console.log(data);
 
   let options = {
-    "entity": "order",
-    "amount": TOTAL_COST,
-    "amount_paid": 0,
-    "amount_due": TOTAL_COST,
-    "receipt": USER_DETAILS.name,
-    "status": "created",
-    "created_at": new Date(),
-    "currency": "INR",
+    amount: 100,  
+		currency: "INR",
+		receipt: "order_rcptid_11",
+		payment_capture: '0'
   }
 
   await instance.orders.create(options, (err, order) => {
