@@ -678,7 +678,7 @@
                     <div class="row">
                       <div class="col-lg-12 mt-3">
                         <div class="bottom-area">
-                          <a href="javascript:;" id="step1-btn" class="mybtn1 mr-3 3">Back</a>
+                          <a href="javascript:;" id="step1-btn" class="mybtn1 mr-3 3" onclick="undisableCoupan(event)">Back</a>
                           <a href="javascript:;" id="step3-btn" class="mybtn1 4" id="prodFinal"
                             onclick="displayShippingInfo(event)">Continue</a>
                         </div>
@@ -817,15 +817,12 @@
                             <div class="free-hours" id="free-hours" style="display: none;">
                               <label class="element-animation1 btn btn-lg btn-primary btn-block"><span
                                   class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" value="Free"
-                                  class="checkoutRadio">&nbsp;&nbsp;Between 10 AM
+                                  type="radio" name="shipping_time" value="free" class="checkoutRadio">&nbsp;&nbsp;Between 10 AM
                                 to 8 PM </label>
                             </div>
                             <div id="time-error" style="color: #f00; display: none;">Sorry!! you cant book for today 😶
                               <br /> Select next day date or upcoming day date.</div>
                             <div class="perfect-hours" id="perfect-hours" style="display: none;">
-
-
                               <label class="element-animation1 btn btn-lg btn-primary btn-block"><span
                                   class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
                                   type="radio" name="shipping_time" id="perfect_10" value="10">&nbsp;&nbsp;Between 10 AM
@@ -892,7 +889,7 @@
                             <div class="midnight-hours" id="midnight-hours" style="display: none;">
                               <label class="element-animation1 btn btn-lg btn-primary btn-block"><span
                                   class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" value="Midnight">&nbsp;&nbsp;11:30 PM to 11:59 PM
+                                  type="radio" name="shipping_time" value="midnight">&nbsp;&nbsp;11:30 PM to 11:59 PM
                               </label>
                             </div>
                           </div>
