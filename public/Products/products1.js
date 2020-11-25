@@ -255,18 +255,21 @@ const displayTopSuggest = async (arrProds) => {
         let catDetailData = catDetail.data();
         console.log(catDetailData);
         card += `
-        <div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
-          <a href="./products.html?cat=${cimg.id}" class="item">
-            <div class="item-img">
-              <img class="responsive-image" src="${cimgData.imgs[rand].url}" alt="Lake of cakes">
-            </div>
-            <div class="info" style="height: 130px !important;background-color:gay"> 
-              <h5 class="name responsive-name">${catDetailData.name}</h5>
-            </div>
-          </a>
-        </div>`;
+        <div class="col-lg-2 ">
+        <a href="../Product/products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important ">
+          <div class="" >
+            <img class="" style="width:220px;height:210px;object-fit:cover" src="${cimgData.imgs[rand].url}" alt="Lake of cakes ">
+          </div>
+          <div>
+            <div class="info" style="height: 20px !important;border-radius:50px;width:70%; margin-left:auto;margin-right:auto;display:block;"> 
+            <h5 class="name responsive-name" >${catDetailData.name}</h5>
+          </div>
+        </div>
+        </a>
+      </div>`
       })
     }
+  
     topSuggestionHTML.innerHTML = card;
   })
 };
