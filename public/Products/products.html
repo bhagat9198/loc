@@ -945,16 +945,16 @@
 					<div class="item-filter">
 						<ul class="filter-list ">
 							<li class="item-short-area">
-                                <p>Sort By :</p>
-                                <select id="sortby" name="sort" class="short-item">
-                                    <!--<option value="date_desc">Latest Product</option>-->
-                                    <option value="date_desc">Popularity</option>
-                                    <!--<option value="date_asc">Oldest Product</option>-->
-                                    <!--<option value="price_asc">Lowest Price</option>-->
-                                    <option value="price_asc">Price - Low To High</option>
-                                    <option value="price_desc">Price - High To Low</option>
-                                </select>
-                            </li>
+								<p>Sort By :</p>
+								<select id="sortby" name="sort" onchange="sortProducts(event, this)" class="short-item">
+										<!--<option value="date_desc">Latest Product</option>-->
+										<option value="popular">Popularity</option>
+										<!--<option value="date_asc">Oldest Product</option>-->
+										<!--<option value="price_asc">Lowest Price</option>-->
+										<option value="low">Price - Low To High</option>
+										<option value="high">Price - High To Low</option>
+								</select>
+							</li>
 						</ul>
 					</div>
 				</div>
