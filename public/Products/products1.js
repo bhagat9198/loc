@@ -256,7 +256,7 @@ const displayTopSuggest = async (arrProds) => {
         console.log(catDetailData);
         card += `
         <div class="col-lg-2 ">
-        <a href="../Product/products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important ">
+        <a href="./products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important ">
           <div class="" >
             <img class="" style="width:220px;height:210px;object-fit:cover" src="${cimgData.imgs[rand].url}" alt="Lake of cakes ">
           </div>

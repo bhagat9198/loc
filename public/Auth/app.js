@@ -234,10 +234,20 @@ firebase.auth().onAuthStateChanged(function(user) {
           user ? handleSignedInUser(user) : handleSignedOutUser();
           let goTo=window.localStorage.getItem("redirectURL");
          
-          if(goTo!=null &&(goTo!="null"))
-            window.location=goTo;
-          else
+          if(goTo!=null &&(goTo!="null")){
+            if(goTo=="index.html"){
+              window.location="/index.html"
+            }else{
+              window.location=goTo;
+            }
+        
+          }
+ 
+          else{
+   
             window.location="/index.html"
+          }
+         
           break;
          
          
@@ -276,10 +286,15 @@ firebase.auth().onAuthStateChanged(function(user) {
     }else{
       let goTo=window.localStorage.getItem("redirectURL");
     
-      if(goTo!=null &&(goTo!="null"))
+      if(goTo!=null &&(goTo!="null")){
         window.location=goTo;
-      else
+      }
+
+
+      else{
         window.location="/index.html"
+      }
+      
     }
 
   }
