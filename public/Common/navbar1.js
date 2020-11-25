@@ -2,20 +2,6 @@ console.log("navbar1.js");
 
   const wholeNavigationPcHTML = document.querySelector('#whole-navigation-pc');
 
-  // const extractImgURL = async (imgPath) => {
-  //   let imgUrl;
-  //   await storageService
-  //     .ref(imgPath)
-  //     .getDownloadURL()
-  //     .then((url) => {
-  //       imgUrl = url;
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  //   return imgUrl;
-  // };
-
   const extractChildCat = (data, subId, docId) => {
     let childLi = '';
     data.childCategories.map(doc => {
@@ -29,7 +15,6 @@ console.log("navbar1.js");
   }
 
   const extractSubCat = (data, docId) => {
-    // console.log(data);
     let subLi = '';
     data.subCategory.map((doc) => {
       // let docData = doc.data();
@@ -48,46 +33,50 @@ console.log("navbar1.js");
     let snapshotDocs = snapshots.docs;
     let li = '';
     let liMob = '';
+    let tempArr = [];
     for (let doc of snapshotDocs) {
       let docData = doc.data();
       // console.log(docData);
-   
-      let subCat = extractSubCat(docData, doc.id);
-      // let imgPath = await extractImgURL(`categories/${doc.id}/${docData.img}`);
-      // let imgPath = '';
+      tempArr.push({ d: docData, dId: doc.id});
+    }
+
+    tempArr.sort(function(a,b) {
+      return (+b.d.priority) - (+a.d.priority) ;
+    })
+
+    for(let data of tempArr) {
+      let subCat = extractSubCat(data.d, data.dId);
       li += `
-    <li >
-      <a href="/Products/products.html?cat=${doc.id}">${docData.name}</a>
-      <ul>
-        ${subCat}
-        <li>
-          <ul>
-            <li><img class="navimage" src="${docData.imgUrl}"></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    `;
-      liMob += `
-    <li >
-      <a href="#">${docData.name}<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
-      <ul>
-        ${subCat}
-        <li>
-          <ul>
-            <li><img class="navimage" src="${docData.imgUrl}"></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    `;
+      <li >
+        <a href="/Products/products.html?cat=${data.d.dId}">${data.d.name}</a>
+        <ul>
+          ${subCat}
+          <li>
+            <ul>
+              <li><img class="navimage" src="${data.d.imgUrl}"></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      `;
+        liMob += `
+      <li >
+        <a href="#">${data.d.name}<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
+        <ul>
+          ${subCat}
+          <li>
+            <ul>
+              <li><img class="navimage" src="${data.d.imgUrl}"></li>
+            </ul>
+          </li>
+        </ul>
+      </li>`;
     }
     const wholeNavigationPcHTML = document.querySelector('#whole-navigation-pc');
     wholeNavigationPcHTML.innerHTML = li;
     const wholeNavigationMobile = document.querySelector('#whole-navigation-mobile');
     wholeNavigationMobile.innerHTML = liMob;
     $(".menu > ul > li").hover(function (e) {
-      
       if ($(window).width() > 943) {
         $(this).children("ul").stop(true, false).fadeToggle(150);
         e.preventDefault();
@@ -100,7 +89,6 @@ console.log("navbar1.js");
       }
     });
     $(".menu-mobile").click(function (e) {
-  
       $(".menu > ul").toggleClass('show-on-mobile');
       e.preventDefault();
     });

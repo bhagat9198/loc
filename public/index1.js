@@ -73,7 +73,6 @@ db.collection("sections")
             </a>
           </div>
         </div>
-       
       `;
       }
     }
@@ -84,54 +83,45 @@ db.collection("sections")
 // fixed section 2
 const fixedSection2Row = document.querySelector("#fixed-section2-row");
 const fixedSection21Row = document.querySelector("#fixed-section21-row");
-db.collection("sections")
-  .doc("fixed2")
-  .onSnapshot((doc) => {
-    let docData = doc.data();
-    let sortArr = [];
-    // console.log(docData);
-    for (let card in docData) {
-      // console.log(card);
-      if (card === "title") continue;
-      sortArr.push(card);
-    }
-    sortArr.map((el, index) => {
-      for (let i = 0; i < sortArr.length - index - 1; i++) {
-        if (sortArr[i] === "title") {
-          continue;
-        }
-        if (docData[sortArr[i]].priority > docData[sortArr[i + 1]].priority) {
-          let temp = sortArr[i];
-          sortArr[i] = sortArr[i + 1];
-          sortArr[i + 1] = temp;
-        }
-      }
-    });
+db.collection("sections").doc("fixed2").onSnapshot((doc) => {
+  let docData = doc.data();
+  let sortArr = [];
 
-    let row = "";
-    for (let card of sortArr) {
-      row += `
-    
-    <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
-      <div class="card cardc align-items-center">
-        <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
-        }&&tag=${card.tag}" class="">
-          <div class="iconimg">
-            <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${docData[card].imgUrl}"
-              class="card-img-top img-fluid" alt="...">
-          </div>
-          <div class="card-body cbc text-center">
-            <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${docData[card].cat.split("__")[1]
-        }</h5>
-          </div>
-        </a>
-      </div>
+  for (let card in docData) {
+    if (card === "title") continue;
+    sortArr.push(docData[card]);
+  }
+  // console.log(sortArr);
+
+  sortArr.sort(function(a, b) {
+    return (+b.priority) - (+a.priority) ;
+  })
+
+  // console.log(sortArr);
+
+  let row = "";
+  for (let card of sortArr) {
+  row += `
+  <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
+    <div class="card cardc align-items-center">
+      <a href="./Products/products.html?cat=${card.cat.split("__")[0]
+      }&&tag=${card.tag}" class="">
+        <div class="iconimg">
+          <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${card.imgUrl}"
+            class="card-img-top img-fluid" alt="...">
+        </div>
+        <div class="card-body cbc text-center">
+          <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${card.cat.split("__")[1]
+      }</h5>
+        </div>
+      </a>
     </div>
-    `;
-    }
-    fixedSection2Row.innerHTML = row;
-    fixedSection21Row.innerHTML = row;
-  });
+  </div>
+  `;
+  }
+  fixedSection2Row.innerHTML = row;
+  fixedSection21Row.innerHTML = row;
+});
 
 // fixed section 3
 const fixedSection3Row = document.querySelector("#fixed-section3-row");

@@ -7,6 +7,7 @@ const allProductsHTML = document.querySelector("#allProducts");
 const productHeadingHTML = document.querySelector('#productHeading');
 const topSuggestionHTML = document.querySelector("#top-suggestion");
 let CAT, SUB, CHILD, TAG, USER;
+let TEMP_ARR = [];
 
 var getParams = async (url) => {
   var params = {};
@@ -39,15 +40,16 @@ getParams(window.location.href).then(async (response) => {
   // console.log(allProductsArr);
   if (allProductsArr.length > 0) {
     let randAllProdsArr = arrayRandom(allProductsArr);
-    let suggestProdArr = [];
-    if (allProductsArr.length > 6) {
-      for (let i = 0; i < 6; i++) {
-        let randElIndex = Math.floor(Math.random() * allProductsArr.length);
-        suggestProdArr.push(randAllProdsArr[randElIndex]);
-        randAllProdsArr.splice(randElIndex, 1);
-      }
-      displayTopSuggest(suggestProdArr);
-    }
+    TEMP_ARR = randAllProdsArr.slice();
+    // let suggestProdArr = [];
+    // if (allProductsArr.length > 6) {
+    //   for (let i = 0; i < 6; i++) {
+    //     let randElIndex = Math.floor(Math.random() * allProductsArr.length);
+    //     suggestProdArr.push(randAllProdsArr[randElIndex]);
+    //     randAllProdsArr.splice(randElIndex, 1);
+    //   }
+      displayTopSuggest(randAllProdsArr);
+    // }
     displayProds(randAllProdsArr);
   } else {
     allProductsHTML.innerHTML = 'No products Found';
@@ -237,26 +239,30 @@ const displayProds = async (arrProds) => {
 };
 
 const displayTopSuggest = async (arrProds) => {
+  // console.log(arrProds);
+  let dbCatImgRef = db.collection('miscellaneous').doc('catImgs').collection('catImgs');
   let card = "";
-  for (let p of arrProds) {
-    let pcat = p.prodData.wholeCategory.split("__")[0];
-    card += `
-    <div class="col-lg-2 ">
-      <a href="../Product/product.html?prod=${p.prodId}&&cat=${pcat}" class="item">
-      
-        <div class="" >
-          <img class="" style="width:220px;height:200px;object-fit:cover" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.mainImgUrl}">
-        </div>
-        <div class="info" style="height: 60px !important;">
-          <h5 class="nameTop">${p.prodData.name}</h5>
-        </div>
-      </a>
-    </div>
-    `;
-  }
-  topSuggestionHTML.innerHTML = card;
+   dbCatImgRef.get().then(catImgSnaps => {
+    let catImgSnapsDocs = catImgSnaps.docs;
+    for(let cimg of catImgSnapsDocs) {
+      let cimgData = cimg.data();
+      console.log(cimgData);
+      let rand = Math.floor(Math.random() * ((cimgData.imgs.length -1) - 0 +1)) - 0;
+      console.log(rand);
+      console.log(cimgData.imgs);
+      card += `
+      <div class="col-lg-2 ">
+        <a href="../Product/products.html?cat=${cimg.id}" class="item">
+          <div class="" >
+            <img class="" style="width:220px;height:200px;object-fit:cover" src="${cimgData.imgs[rand].url}" alt="Lake of cakes ">
+          </div>
+        </a>
+      </div>
+      `;
+    }
+    topSuggestionHTML.innerHTML = card;
+  })
 };
-
 
 const userSearchProds = async () => {
   let searchVal = USER.toUpperCase();
@@ -291,5 +297,36 @@ const userSearchProds = async () => {
     allCatProds()
   } else {
     productHeadingHTML.innerHTML = `Products for "${USER}"`;
+  }
+}
+
+const sortProducts = (e, current) => {
+  // console.log(e, current.value);
+  if(current.value === 'popular') {
+    let temp = TEMP_ARR.slice();
+    console.log('aa');
+    displayProds(temp)
+  } else if(current.value === 'low') {
+    let temp = TEMP_ARR.slice();
+    function compare( a, b ) {
+      a = a.prodData.mrp;
+      b = b.prodData.mrp;
+      return a - b;
+    }
+    
+    temp.sort( compare );
+    displayProds(temp);
+
+  } else if(current.value === 'high') {
+    let temp = TEMP_ARR.slice();
+    function compare( a, b ) {
+      a = a.prodData.mrp;
+      b = b.prodData.mrp;
+      return b - a;
+    }
+    temp.sort( compare );
+    displayProds(temp);
+  } else {
+    console.log('invalid');
   }
 }

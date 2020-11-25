@@ -23,18 +23,17 @@
 </head>
 
 <style>
-  
-.item {
-    border: 3px solid rgb(254 255 254)!important;
+  .item {
+    border: 3px solid rgb(254 255 254) !important;
     box-shadow: 0px 1px 5px #00000029;
     overflow: hidden;
     display: block;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
-}
+  }
 
-.item:hover {
+  .item:hover {
     overflow: hidden;
     display: block;
     position: relative;
@@ -44,36 +43,36 @@
     -ms-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-}
+  }
 
-.item .item-img {
+  .item .item-img {
     position: relative;
     overflow: hidden;
     text-align: center;
-}
+  }
 
-.item .item-img img {
+  .item .item-img img {
     width: 100%;
     height: auto;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
-}
+  }
 
-.item:hover .item-img img {
+  .item:hover .item-img img {
     transform: scale(1.2);
-}
+  }
 
-.item .item-img .sell-area {
+  .item .item-img .sell-area {
     position: absolute;
     top: 20px;
     right: 0px;
     height: 100%;
     display: block;
     z-index: 3;
-}
+  }
 
-.item .item-img .sell-area .sale {
+  .item .item-img .sell-area .sale {
     height: 22px;
     text-align: center;
     line-height: 22px;
@@ -86,9 +85,9 @@
     border-radius: 50px 0px 0px 50px;
     display: block;
     margin-top: 5px;
-}
+  }
 
-.item .item-img .extra-list {
+  .item .item-img .extra-list {
     position: absolute;
     top: 20px;
     left: 0px;
@@ -97,9 +96,9 @@
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
-}
+  }
 
-.item .item-img .extra-list ul li span {
+  .item .item-img .extra-list ul li span {
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -115,15 +114,15 @@
     -moz-transition: 0.3s ease-in;
     -o-transition: 0.3s ease-in;
     transition: 0.3s ease-in;
-}
+  }
 
-.item .item-img .extra-list ul li span:hover {
+  .item .item-img .extra-list ul li span:hover {
     background: #ff5500;
     border-color: #ff5500;
     color: #fff;
-}
+  }
 
-.item .info {
+  .item .info {
     position: relative;
     top: 0;
     height: 125px;
@@ -136,55 +135,55 @@
     -o-transition: all linear .3s;
     transition: all linear .3s;
     background: rgba(255, 255, 255, 0.90);
-}
+  }
 
-.item .info .stars {
+  .item .info .stars {
     display: block;
     text-align: center;
-}
+  }
 
-.item .info .stars ul {
+  .item .info .stars ul {
     display: inline-block;
-}
+  }
 
-.item .info .stars ul li {
+  .item .info .stars ul li {
     display: inline-block;
-}
+  }
 
-.item .info .stars ul li i {
+  .item .info .stars ul li i {
     font-size: 12px;
     color: #ff5500;
-}
+  }
 
-.item .info .price {
+  .item .info .price {
     font-size: 18px;
- 
+
     font-weight: 700;
 
-}
+  }
 
-.item .info .name {
+  .item .info .name {
     font-size: 15px;
     font-weight: 600;
     color: #555;
 
     /*height: 41px;*/
-}
+  }
 
-.item:hover .extra-list {
+  .item:hover .extra-list {
     left: 20px;
     opacity: 1;
-}
+  }
 
-.item .item-cart-area {
+  .item .item-cart-area {
     position: absolute;
     display: none;
     text-align: center;
     width: 100%;
     left: 0px;
-}
+  }
 
-.item .add-to-cart-btn {
+  .item .add-to-cart-btn {
     font-size: 14px;
     font-weight: 600;
     background: #ff5500;
@@ -202,25 +201,24 @@
     -moz-transition: all linear .3s;
     -o-transition: all linear .3s;
     transition: all linear .3s;
-}
+  }
 
-.item .add-to-cart-btn:hover {
+  .item .add-to-cart-btn:hover {
     background: none;
     color: #ff5500;
-}
+  }
 
-.item:hover .add-to-cart-btn {
+  .item:hover .add-to-cart-btn {
     opacity: 1;
-}
+  }
 
-.item:hover .info {
+  .item:hover .info {
     top: 0px;
     -webkit-transition: all linear .3s;
     -moz-transition: all linear .3s;
     -o-transition: all linear .3s;
     transition: all linear .3s;
-}
-
+  }
 </style>
 
 <body style="overflow-x: hidden !important; ">
@@ -285,7 +283,8 @@
                     </small>
                     <small style="color: green; font-size: 12px; " id="disPercent">(20% off)</small>
                     </p>
-                    <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;">(Inclusive of all taxes)</span>
+                    <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;">(Inclusive of all
+                        taxes)</span>
                     </p>
                     <p>
                       <span style="font-size: 13px; cursor: pointer;  font-weight: 600;color: #1e4794e6;">
@@ -401,7 +400,7 @@
                       </div>
                       <div class="product-attributes my-2">
                         <div>
-                          <label class="">Give your message too😍😇</label>
+                          <label >Give your message too😍😇</label>
                           <input type="text" class="values form-control message_cart" name="message" id="prodMsg"
                             placeholder="Enter a name/message (Max 30 Characters)" maxlength="30"
                             style="height: 3em;width: 82%;">
@@ -560,7 +559,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
         </div>
       </div>
 
-      <div class="" style="background: #ffffff; border-radius: 5px; margin-top: 5px;padding: 5px;     ">
+      <div  style="background: #ffffff; border-radius: 5px; margin-top: 5px;padding: 5px;     ">
         <div class="row">
           <div class="col-lg-12">
 
@@ -632,66 +631,51 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
 
       <div class="trending">
         <div class="container" style="background: #f7f7f7;border-radius: 5px;">
-            <div class="row">
-                <div class="col-lg-12 remove-padding">
-                    <div class="section-top">
-                        <h2 class="section-title">
-                            You May Also Like
-                        </h2>
-                    </div>
-                </div>
+          <div class="row">
+            <div class="col-lg-12 remove-padding">
+              <div class="section-top">
+                <h2 class="section-title">
+                  You May Also Like
+                </h2>
+              </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 remove-padding">
-                    <div class="trending-item-slider">
-                     
-
-                        <a href="" class="item">
-                            <div class="item-img">
-                                <div class="extra-list">
-                                    <ul>
-                                        <li>
-                                            <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
-                                                id="wish-btn" data-target="#comment-log-reg" data-placement="right">
-                                                <i class="icofont-heart-alt"></i>
-                                            </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <img class="img-fluid" style="width: 500px !important;"
-                                    src="" alt="">
-                            </div>
-                            <div class="info">
-                                <div class="stars">
-                                    <div class="ratings">
-                                        <div class="empty-stars"></div>
-                                        <div class="full-stars" style="width:0%"></div>
-                                    </div>
-                                </div>
-                                <h5 class="" style="font-size: 1em;color: black;">heart shape Chocolate Cake</h5>
-                                <h4 class="" style="text-align: center;font-size: 1em;font-weight: 600;">₹499 <del><small>₹799 </small></del></h4>
-                       
-                                <!-- <div class="item-cart-area">
-                                    <span class="add-to-cart add-to-cart-btn"
-                                        data-href="addcart/237">
-                                        <i class="icofont-cart"></i> Add To Cart
-                                    </span>
-                                    <span class="add-to-cart-quick add-to-cart-btn"
-                                        data-href="addtocart/237">
-                                        <i class="icofont-cart"></i> Buy Now
-                                    </span>
-                                </div> -->
-                            </div>
-                        </a>
-
+          </div>
+          <div class="row">
+            <div class="col-lg-12 remove-padding">
+              <div class="trending-item-slider">
+                <!-- <a href="" class="item">
+                  <div class="item-img">
+                    <div class="extra-list">
+                      <ul>
+                        <li>
+                          <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
+                            data-target="#comment-log-reg" data-placement="right">
+                            <i class="icofont-heart-alt"></i>
+                          </span>
+                        </li>
+                      </ul>
                     </div>
-                </div>
-
+                    <img class="img-fluid" style="width: 500px !important;" src="" alt="">
+                  </div>
+                  <div class="info">
+                    <div class="stars">
+                      <div class="ratings">
+                        <div class="empty-stars"></div>
+                        <div class="full-stars" style="width:0%"></div>
+                      </div>
+                    </div>
+                    <h5  style="font-size: 1em;color: black;">heart shape Chocolate Cake</h5>
+                    <h4  style="text-align: center;font-size: 1em;font-weight: 600;">₹499 <del><small>₹799</small></del></h4>
+                  </div>
+                </a> -->
+              </div>
             </div>
+
+          </div>
         </div>
-    </div>
+      </div>
 
-     
+
   </section>
 
 
@@ -700,27 +684,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
 </body>
 
 
-  <script src="../assets/js/jquery.js"></script>
-  <script src="../assets/js/jquery-ui.min.js"></script>
-  <script src="../assets/js/plugin.js"></script>
-  <script src="../assets/js/main2.js"></script>
-  <script src="/assets/js/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
-  <script src="/assets/js/bootstrap.min.js"></script>
-  <script src="/assets/js/plugin.js"></script>
-  <script src="/assets/js/xzoom.min.js"></script>
-  <script src="/assets/js/jquery.hammer.min.js"></script>
-  <script src="/assets/js/setup.js"></script>
-  <script src="/assets/js/main.js"></script>
-  <script src="/assets/js/custom.js"></script>
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/jquery-ui.min.js"></script>
+<script src="../assets/js/plugin.js"></script>
+<script src="../assets/js/main2.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/plugin.js"></script>
+<script src="/assets/js/xzoom.min.js"></script>
+<script src="/assets/js/jquery.hammer.min.js"></script>
+<script src="/assets/js/setup.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/custom.js"></script>
 <script type="text/javascript">
   $('#nav-section-loader').load('../Common/navbar.html');
 </script>
 <script type="text/javascript">
-
-    // $('#footer-section-loader').load('../Common/files.html');
-    $('#footer-section-loader').load('../Common/footer.html');
-
+  // $('#footer-section-loader').load('../Common/files.html');
+  $('#footer-section-loader').load('../Common/footer.html');
 </script>
 
 <script type="text/javascript">
@@ -753,10 +735,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
 <script src="./product1.js"></script>
 <script src="../Common/navbar1.js"></script>
 <script>
-
-
-   
-    
   $(document).ready(function () {
     $(".nav-tabs a").click(function () {
       $(this).tab('show');

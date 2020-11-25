@@ -28,6 +28,7 @@ getParams(window.location.href).then(async (response) => {
   if (PRODUCT_ID && CATEGORY_ID) {
     PROD_DETAILS = await extractProdDetails();
     displayProduct(PROD_DETAILS);
+    displaySuggestions()
   }
 });
 
@@ -61,7 +62,7 @@ let TOTAL_COST = 0,
   WEIGHT_PRICE = {};
 
 const displayProduct = (prodData) => {
-  console.log(prodData);
+  // console.log(prodData);
 
   document.querySelector('.idno').innerHTML = PRODUCT_ID;
 
@@ -132,7 +133,7 @@ const displayProduct = (prodData) => {
   // sizepriceHTML.innerHTML = prodData.totalPrice;
 
   // totalCost = +prodData.totalPrice;
-  console.log(prodData.mrp);
+  // console.log(prodData.mrp);
   // prodPrevPriceHTML.innerHTML = `&#8377; ${prodData.mrp}`;
   // totalCost = +prodData.totalPrice;
   // totalPrevPrice = +prodData.mrp;
@@ -198,7 +199,7 @@ const calculatePrice = () => {
     TOTAL_COST = +WEIGHT_PRICE.current;
     TOTAL_PREV_PRICE = +WEIGHT_PRICE.previous;
   }
-  console.log(TOTAL_COST, TOTAL_PREV_PRICE);
+  // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
   // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
 
   if (HEART) {
@@ -263,7 +264,7 @@ const displayWeights = (makedWeight) => {
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
         } else if (weight.cakeWeight === "one") {
-          console.log(weight.cakeWeight);
+          // console.log(weight.cakeWeight);
           weightNum = "1";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
@@ -313,7 +314,7 @@ const displayWeights = (makedWeight) => {
           selected = "checked";
           disPercentHTML.innerHTML = `(${Math.round((+price/+pprice)*100)}% OFF)`;
         }
-        console.log(WEIGHT_PRICE);
+        // console.log(WEIGHT_PRICE);
         weightCard += `
         <div class="custom-control custom-radio" style="margin-right: 15px;">
           <input type="radio"  ${selected} id="${rand}" name="cake-weight-option"  data-weight="${weightName}"   onchange="cakeWeight(event, this)" class="custom-control-input product-attr">
@@ -492,7 +493,7 @@ db.collection("addons")
     `;
     });
     allAddonsHTML.innerHTML = card;
-    console.log(TOTAL_COST);
+    // console.log(TOTAL_COST);
   });
 
 const calAddonPrice = () => {
@@ -675,3 +676,56 @@ const addToCart = async (e) => {
 };
 
 addToCartBtnHTML.addEventListener("click", addToCart);
+
+const displaySuggestions = async() => {
+  const trendingItemsHTML = document.querySelector('.trending-item-slider');
+  console.log(CATEGORY_ID);
+  let allProds = [];
+  let r =  db.collection(CATEGORY_ID);
+  r.get().then(async(prodSnaps) => {
+    let prodSnapsDocs = prodSnaps.docs;
+    let snapSize = prodSnapsDocs.length;
+    // console.log(prodSnapsDocs.length);
+    let rand = Math.floor(Math.random() * (snapSize - 8 + 0 + 1));
+    console.log(rand);
+    prodSnapsDocs.map(p => {
+      allProds.push(p.id);
+    })
+
+    let card = '';
+    for(let counter = 0; counter < 8; counter++) {
+      await db.collection(CATEGORY_ID).doc(allProds[counter + rand]).get().then(pdataRaw => {
+        let pdata = pdataRaw.data();
+        console.log(pdata.mainImgUrl);
+        card += `
+        <a href="./product.html?prod=${allProds[counter + rand]}&&cat=${CATEGORY_ID}" class="item">
+          <div class="item-img">
+            <div class="extra-list">
+              <ul>
+                <li>
+                  <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
+                    data-target="#comment-log-reg" data-placement="right">
+                    <i class="icofont-heart-alt"></i>
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <img class="img-fluid" style="width: 500px !important;" src="${pdata.mainImgUrl}" alt="LAKE OF CAKES">
+          </div>
+          <div class="info">
+            <div class="stars">
+              <div class="ratings">
+                <div class="empty-stars"></div>
+                <div class="full-stars" style="width:0%"></div>
+              </div>
+            </div>
+            <h5 style="font-size: 1em;color: black;">${pdata.name}</h5>
+            <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${pdata.sp} <del><small>₹ ${pdata.mrp}</small></del></h4>
+          </div>
+        </a>
+        `; 
+      })
+    }
+    trendingItemsHTML.innerHTML = card;
+  })
+}
