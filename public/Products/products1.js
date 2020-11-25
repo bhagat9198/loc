@@ -232,8 +232,7 @@ const displayProds = async (arrProds) => {
             <h5 class="name responsive-name">${p.prodData.name}</h5>
 					</div>
 				</a>
-			</div>
-			`;
+			</div>`;
     // console.log(card);
   }
   // console.log(card);
@@ -244,23 +243,29 @@ const displayTopSuggest = async (arrProds) => {
   // console.log(arrProds);
   let dbCatImgRef = db.collection('miscellaneous').doc('catImgs').collection('catImgs');
   let card = "";
-   dbCatImgRef.get().then(catImgSnaps => {
+   dbCatImgRef.get().then(async(catImgSnaps) => {
     let catImgSnapsDocs = catImgSnaps.docs;
     for(let cimg of catImgSnapsDocs) {
       let cimgData = cimg.data();
-      console.log(cimgData);
+      // console.log(cimgData);
       let rand = Math.floor(Math.random() * ((cimgData.imgs.length -1) - 0 +1)) - 0;
-      console.log(rand);
-      console.log(cimgData.imgs);
-      card += `
-      <div class="col-lg-2 ">
-        <a href="../Product/products.html?cat=${cimg.id}" class="item">
-          <div class="" >
-            <img class="" style="width:220px;height:200px;object-fit:cover" src="${cimgData.imgs[rand].url}" alt="Lake of cakes ">
-          </div>
-        </a>
-      </div>
-      `;
+      // console.log(rand);
+      // console.log(cimgData.imgs);
+      await db.collection('categories').doc(cimg.id).get().then(catDetail => {
+        let catDetailData = catDetail.data();
+        console.log(catDetailData);
+        card += `
+        <div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
+          <a href="./products.html?cat=${cimg.id}" class="item">
+            <div class="item-img">
+              <img class="responsive-image" src="${cimgData.imgs[rand].url}" alt="Lake of cakes">
+            </div>
+            <div class="info" style="height: 130px !important;background-color:gay"> 
+              <h5 class="name responsive-name">${catDetailData.name}</h5>
+            </div>
+          </a>
+        </div>`;
+      })
     }
     topSuggestionHTML.innerHTML = card;
   })

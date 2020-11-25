@@ -49,7 +49,7 @@ console.log("navbar1.js");
       let subCat = extractSubCat(data.d, data.dId);
       li += `
       <li >
-        <a href="/Products/products.html?cat=${data.d.dId}">${data.d.name}</a>
+        <a href="/Products/products.html?cat=${data.dId}">${data.d.name}</a>
         <ul>
           ${subCat}
           <li>
