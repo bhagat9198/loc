@@ -71,6 +71,9 @@
     .responsive-sec2 {
       display: none !important;
     }
+    .imgresponsive{
+      object-fit: contain !important;
+    }
 
   }
 
@@ -242,8 +245,8 @@
                       <li>
                         <a type="button" data-toggle="modal" data-target="#topoffer"
                           style="background: rgb(209, 96, 96); padding: 0px 20px; position: relative;border:1px solid black;border-radius: 10px;">
-                          <span class="sign-in" style="font-size: 14px; color: #fff;">
-                            <i class="fa fa-gift" aria-hidden="true"></i> OFFER</span>
+                          <span class="sign-in" data-toggle="modal" data-target="#modalYT" style="font-size: 14px; color: #fff;">
+                            <i class="fa fa-gift" aria-hidden="true"  ></i> OFFER</span>
                         </a>
                       </li>
     
@@ -423,7 +426,7 @@
                   <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Offers </span>
+                        <span style="position: relative; top: 4px;"  data-toggle="modal" data-target="#modalYT">Offers </span>
                       </div>
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span style="position: relative; top: 8px;">
@@ -1784,6 +1787,55 @@
     </div>
   </section>
 
+  <!--Modal: modalYT-->
+<div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+
+  <!--Content-->
+  <div class="modal-content">
+
+    <!--Body-->
+    <div class="modal-body mb-0 p-0">
+
+      <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;"  >
+        <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;"  id="showOffer" src=""
+          allowfullscreen>
+      </div>
+
+    </div>
+
+    <!--Footer-->
+    <div class="modal-footer justify-content-center flex-column flex-md-row">
+      <span class="mr-4">Spread the word!</span>
+      <div>
+        <a type="button" class="btn-floating btn-sm btn-fb">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <!--Twitter-->
+        <a type="button" class="btn-floating btn-sm btn-tw">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <!--Google +-->
+        <a type="button" class="btn-floating btn-sm btn-gplus">
+          <i class="fab fa-google-plus-g"></i>
+        </a>
+        <!--Linkedin-->
+        <a type="button" class="btn-floating btn-sm btn-ins">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+      <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+        data-dismiss="modal">Close</button>
+
+
+    </div>
+
+  </div>
+  <!--/.Content-->
+
+</div>
+</div>
+
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
 
 </body>
@@ -1802,6 +1854,7 @@
 
 <script>
 
+  window.localStorage.setItem("redirectURL","index.html")
   var firebaseConfig = {
     apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
     authDomain: "lake-of-cakes.firebaseapp.com",
@@ -1828,15 +1881,6 @@
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/custom.js"></script>
 
-<script type="text/javascript">
-
-
-  // $('#footer-section-loader').load('/Common/files.html');
-  // $('#nav-section-loader').load('/Common/navbar.html');
-
-
-
-</script>
 
 <script src="./index1.js"></script>
 <script src="./Common/navbar1.js"></script>
@@ -1872,7 +1916,24 @@
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
+
+
+  db.collection("offers").onSnapshot(async (snapshots) => {
+
+     let snapshotDocs = snapshots.docs;
+
+      // var dbref = db.collection('Customers');
+      for (let doc of snapshotDocs) {
+          userDoc = doc.data();
+          if(userDoc.isActivated){
+            document.getElementById("showOffer").src=userDoc.imgUrl;
+          }
+      }
+
+  });
+
   var checkUser;
+  checkUser = window.localStorage.getItem("locLoggedInUser");
   var timecount = 0;
   function checkifUser() {
     if (checkUser == null || checkUser == "null") {
@@ -1888,18 +1949,14 @@
       window.location = "/UserDash/cart.html"
     }
   }
-  const inter = setInterval(function () {
-    timecount++;
-    if (timecount == 10) {
-      clearInterval(inter)
 
-    }
     var counter = 0;
     document.getElementById("hideLogOut").style.display = "none";
-    const db = firebase.firestore();
+    // const db = firebase.firestore();
     var docData, userDoc;
 
     db.collection("Customers").onSnapshot(async (snapshots) => {
+
       checkUser = window.localStorage.getItem("locLoggedInUser");
 
       let snapshotDocs = snapshots.docs;
@@ -1908,11 +1965,16 @@
       for (let doc of snapshotDocs) {
 
         if (checkUser == doc.data().userId) {
-
+          
           counter++;
 
           userDoc = doc.data();
-          document.getElementById("cart-count").innerHTML = userDoc.cart.length
+          if(userDoc.cart !=undefined && userDoc.cart!="undefined"){
+            document.getElementById("cart-count").innerHTML = userDoc.cart.length;
+          }else{
+            document.getElementById("cart-count").innerHTML = 0;
+          }
+        
           if (userDoc.UserName == null) {
             userDoc.UserName = "User@LOC";
           }
@@ -1939,7 +2001,7 @@
     });
 
 
-  }, 1000)
+ 
 
 
   function redirectLogin() {
@@ -1953,7 +2015,7 @@
 
     }).then(function () {
       window.localStorage.removeItem("locLoggedInUser")
-      // firebase.auth().signOut();
+      firebase.auth().signOut();
       location.reload();
     });
   }
