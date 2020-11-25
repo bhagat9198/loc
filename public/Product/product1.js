@@ -51,6 +51,8 @@ const productIsstookHTML = document.querySelector(".product-isstook");
 const reviewCountHTML = document.querySelector(".review-count");
 const prodPriceHTML = document.querySelector("#sizeprice");
 const prodPrevPriceHTML = document.querySelector("#prod-prevPrice");
+const disPercentHTML = document.querySelector('#disPercent');
+
 let PROD_QTY = 1;
 let TOTAL_COST = 0,
   TOTAL_PREV_PRICE = 0,
@@ -60,6 +62,9 @@ let TOTAL_COST = 0,
 
 const displayProduct = (prodData) => {
   console.log(prodData);
+
+  document.querySelector('.idno').innerHTML = PRODUCT_ID;
+
   let big = `
     <img class="xzoom5" id="xzoom-magnific"  
       src="${prodData.mainImgUrl}"
@@ -104,6 +109,7 @@ const displayProduct = (prodData) => {
       In Stock
     </p>
     `;
+    document.querySelector('#buyNowBtn').disabled = false;
   } else {
     productIsstookHTML.innerHTML = `
     <p>
@@ -161,6 +167,23 @@ const displayProduct = (prodData) => {
     `;
   }
 
+  if(prodData.flavours) {
+    if(prodData.flavours.length > 0) {
+      const cakeFlavourHTML = document.querySelector('#cake-flavour');
+      let card = '';
+      prodData.flavours.map(flav => {
+        card += `
+        <div class="custom-control custom-radio" style="margin-right: 25px;">
+          <input type="radio" checked id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
+          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;">${flav}</label>
+        </div>
+        `;
+      })
+
+      cakeFlavourHTML.innerHTML = card;
+    }
+  }
+
   const prodDescHTML = document.querySelector("#prod-desc");
   prodDescHTML.innerHTML = `${prodData.descriptions}`;
   const prodPolicyHTML = document.querySelector("#prod-policy");
@@ -175,7 +198,7 @@ const calculatePrice = () => {
     TOTAL_COST = +WEIGHT_PRICE.current;
     TOTAL_PREV_PRICE = +WEIGHT_PRICE.previous;
   }
-  // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
+  console.log(TOTAL_COST, TOTAL_PREV_PRICE);
   // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
 
   if (HEART) {
@@ -240,6 +263,7 @@ const displayWeights = (makedWeight) => {
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
         } else if (weight.cakeWeight === "one") {
+          console.log(weight.cakeWeight);
           weightNum = "1";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
@@ -287,8 +311,9 @@ const displayWeights = (makedWeight) => {
           WEIGHT_PRICE.previous = pprice;
           WEIGHT_PRICE.weight = weightName;
           selected = "checked";
+          disPercentHTML.innerHTML = `(${Math.round((+price/+pprice)*100)}% OFF)`;
         }
-        calculatePrice();
+        console.log(WEIGHT_PRICE);
         weightCard += `
         <div class="custom-control custom-radio" style="margin-right: 15px;">
           <input type="radio"  ${selected} id="${rand}" name="cake-weight-option"  data-weight="${weightName}"   onchange="cakeWeight(event, this)" class="custom-control-input product-attr">
@@ -300,7 +325,7 @@ const displayWeights = (makedWeight) => {
         </div>
         `;
       });
-
+      calculatePrice();
       allCakesWeightsHTML.innerHTML = weightCard;
     }
   }
@@ -539,6 +564,7 @@ const buyProd = async (e) => {
         cake.heart = HEART;
         cake.eggless = EGGLESS;
         cake.weight = WEIGHT_PRICE.weight;
+        cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
       }
       let orderData = {
         orderId: orderId,
@@ -563,11 +589,14 @@ const buyProd = async (e) => {
       docData.orders = [];
       let cake = null;
       if (WEIGHT_PRICE.weight) {
+        console.log(WEIGHT_PRICE.weight);
         cake = {};
         cake.heart = HEART;
         cake.eggless = EGGLESS;
         cake.weight = WEIGHT_PRICE.weight;
+        cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
       }
+
       let orderData = {
         orderId: orderId,
         status: "selected",
@@ -602,6 +631,13 @@ const addToCart = async (e) => {
   const cartId = Math.random();
   await userRef.get().then(async (doc) => {
     let docData = doc.data();
+    let f;
+    if(WEIGHT_PRICE.weight) {
+      f = document.querySelector('input[name=cake-flavour]:checked').value;
+    } else {
+      f = false;
+    }
+
     if (docData.cart) {
       docData.cart.push({
         prodId: PRODUCT_ID,
@@ -612,6 +648,7 @@ const addToCart = async (e) => {
         pricing: WEIGHT_PRICE,
         qty: PROD_QTY,
         cartId: cartId,
+        flavour:  f,
       });
     } else {
       docData.cart = [];
@@ -624,6 +661,7 @@ const addToCart = async (e) => {
         pricing: WEIGHT_PRICE,
         qty: PROD_QTY,
         cartId: cartId,
+        flavour: f,
       });
     }
     await userRef.update(docData);

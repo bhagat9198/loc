@@ -100,56 +100,33 @@ const calculateBill = async (discount = 0) => {
     let egglessPrice = 0;
 
     if (p.cake) {
-      cake = true;
-
+      console.log(p);
       for (let w of p.pdata.weights) {
-        if (w.cakeWeight === "half") {
+        console.log(w);
+        if (w.cakeWeight === p.cake.weight) {
           basicPrice = w.weightPrice;
           break;
-        } else if (w.cakeWeight === "one") {
-          basicPrice = w.weightPrice;
-          break;
-        } else if (w.cakeWeight === "oneHlaf") {
-          basicPrice = w.weightPrice;
-          break;
-        } else if (w.cakeWeight === "two") {
-          basicPrice = w.weightPrice;
-          break;
-        } else if (w.cakeWeight === "three") {
-          basicPrice = w.weightPrice;
-          break;
-        } else if (w.cakeWeight === "four") {
-          basicPrice = w.weightPrice;
-          break;
-        } else if (w.cakeWeight === "five") {
-          basicPrice = w.weightPrice;
-          break;
-        } else if (w.cakeWeight === "six") {
-          basicPrice = w.weightPrice;
-          break;
-        } else {
-          console.log("invalid");
-        }
+        } 
+        console.log(basicPrice);
       }
 
       if (p.cake.eggless) {
-        egglessPrice = p.pdata.type.price;
+        egglessPrice = p.pdata.type.price ;
       }
 
       if (p.cake.heart) {
         heartPrice = p.pdata.shapes[0].shapePrice;
       }
       // console.log(basicPrice, egglessPrice, heartPrice);
-      totalProdPrice = +basicPrice + +egglessPrice + +heartPrice;
+      totalProdPrice = (+basicPrice + +egglessPrice + +heartPrice) * (+p.qty);
+      console.log(basicPrice, egglessPrice, heartPrice, totalProdPrice);
       totalProdPrice = Number(totalProdPrice.toFixed(2));
       basicPrices.push(totalProdPrice);
     } else {
-      totalProdPrice = (+p.pdata.sp);
+      totalProdPrice = (+p.pdata.sp) * (+p.qty);
       totalProdPrice = Number(totalProdPrice.toFixed(2));
       basicPrices.push(totalProdPrice);
     }
-    totalProdPrice = totalProdPrice * +p.qty;
-    totalProdPrice = Number(totalProdPrice.toFixed(2));
 
     let pName = p.pdata.name;
     bp += `
@@ -162,6 +139,7 @@ const calculateBill = async (discount = 0) => {
       </P>
     </li>`;
     TOTAL_COST = TOTAL_COST + totalProdPrice;
+    TOTAL_COST = Number(TOTAL_COST.toFixed(2));
   }
   bpSpanHTML.innerHTML = bp;
   subTotalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
@@ -193,7 +171,9 @@ const calculateBill = async (discount = 0) => {
   } else {
     let subDis = 0;
     basicPrices.map((el, i) => {
+      console.log(el);
       let d = el * (+discount/100);
+      console.log(d);
       d = Number(d.toFixed(2));
       let eachDis =  el - (d);
       eachDis = Number(eachDis.toFixed(2));
@@ -203,6 +183,7 @@ const calculateBill = async (discount = 0) => {
     });
     console.log(subDis);
     TOTAL_COST  = TOTAL_COST - subDis;
+    TOTAL_COST = Number(TOTAL_COST.toFixed(2));
     dis = `
     <ul class="order-list">
       <li>
@@ -234,8 +215,8 @@ const calculateBill = async (discount = 0) => {
     let gstPrice = 0;
     let gstPercent = 0;
     gstPercent = +p.pdata.gst;
-    gstPrice = (+basicPrices[counter] * +p.qty) * (+gstPercent / 100);
-    console.log( +basicPrices[counter], p.qty, +gstPercent / 100, gstPrice);
+    gstPrice = +basicPrices[counter] * (+gstPercent / 100);
+    console.log( +basicPrices[counter], +gstPercent / 100, gstPrice);
     gstPrice = Number(gstPrice.toFixed(2));
 
     let pName = p.pdata.name;
@@ -267,8 +248,10 @@ const calculateBill = async (discount = 0) => {
         });
       }
     }
+    addonsPrice  = Number(addonsPrice.toFixed(2));
     addonCostHTML.innerHTML = `₹ ${addonsPrice}`;
     TOTAL_COST = TOTAL_COST + addonsPrice;
+    TOTAL_COST = Math.round(TOTAL_COST);
   }
 
   costHTML.innerHTML = `₹ ${TOTAL_COST}`;
@@ -277,30 +260,34 @@ const calculateBill = async (discount = 0) => {
 
 const coupanApplyHTML = document.querySelector("#coupanApply");
 let appliedCoupan;
-let cType, cAmt, discount, COUPAN_ID;
+let cType, cAmt, discount, COUPAN_ID = null;
 const checkCoupon = async (e) => {
   let coupanDetails;
   let flag = false;
   // const code = checkCouponFormHTML['code'].value;
   const code = document.querySelector("#code").value;
+  let totalSubTotal = document.querySelector("#sub-total-cost").innerHTML;
+  totalSubTotal = Number(totalSubTotal.substring(2));
+  
   let coupanRef = await db.collection("coupans");
   await coupanRef.get().then((snapshots) => {
     let snapshotDocs = snapshots.docs;
     for (let doc of snapshotDocs) {
       let docData = doc.data();
       if (docData.name === code) {
-        coupanDetails = docData;
-        COUPAN_ID = doc.id;
-        flag = true;
-        appliedCoupan = code;
-        break;
+        if(docData.minAmt.toString() <= totalSubTotal.toString()) {
+          console.log(docData.minAmt, totalSubTotal);
+          coupanDetails = docData;
+          COUPAN_ID = doc.id;
+          flag = true;
+          appliedCoupan = code;
+          break;
+        }
       }
     }
   });
 
   if (flag) {
-    let totalSubTotal = document.querySelector("#sub-total-cost").innerHTML;
-    totalSubTotal = totalSubTotal.substring(2);
     console.log("coupanDetails", coupanDetails);
       cAmt = +coupanDetails.amount;
       document.getElementById("success").style.display = "block";
@@ -363,6 +350,9 @@ const form1 = (e) => {
   const order_notes = form1ShippingHTML["order_notes"].value;
   setDateAndTime();
   $("#myModal1").modal("show");
+  document.querySelectorAll('input[name=shipping_time]').forEach(e => e.checked = false)
+
+
   document.querySelector("#registerTime").disabled = true;
   SHIPPING_DATA.name = name;
   SHIPPING_DATA.phone = phone;
@@ -658,8 +648,13 @@ const prodSummary = (e) => {
         <h5 class="label">Eggless : </h5>
         <p>${p.cake.eggless ? "Opted" : "Not Opted"}</p>
       </div>
+      <div class="total-price">
+        <h5 class="label">Flavour : </h5>
+        <p>${p.cake.flavour ? p.cake.flavour : "Not Opted"}</p>
+      </div>
       `;
     }
+
     card += `
     <div class="order-item">
       <div class="product-img">
@@ -705,10 +700,9 @@ const alt_shipping_locationHTML = document.querySelector(
 const alt_shipping_landmarkHTML = document.querySelector(
   "#alt_shipping_landmark"
 );
-const alt_shipping_phoneHTML = document.querySelector("#alt_shipping_phone");
-const alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
-
-const altAddressHTML = document.querySelector("#alt-address");
+let alt_shipping_phoneHTML = document.querySelector("#alt_shipping_phone");
+let alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
+let altAddressHTML = document.querySelector("#alt-address");
 
 let RAZ_ORDER_ID;
 const displayShippingInfo = (e) => {
@@ -729,10 +723,28 @@ const displayShippingInfo = (e) => {
     alt_shipping_emailHTML = SHIPPING_DATA.alt_email;
   }
 
+  if(!COUPAN_ID) {
+    COUPAN_ID = false;
+  }
+
+  let razName, razEmail, razAddress, razPhone;
+  if(SHIPPING_DATA.shipDiffAddress) {
+    razName = SHIPPING_DATA.alt_name,
+    razEmail = SHIPPING_DATA.email,
+    razPhone = SHIPPING_DATA.alt_phone,
+    razAddress = SHIPPING_DATA.alt_address
+  } else {
+    razName = SHIPPING_DATA.name,
+    razEmail = SHIPPING_DATA.email,
+    razPhone = SHIPPING_DATA.phone,
+    razAddress = SHIPPING_DATA.address
+  }
+
   const checkoutReqData = {
     userId: USER_ID,
     order: CHECKOUT_ID,
-    formDetails: SHIPPING_DATA
+    coupan: COUPAN_ID,
+    name: razName
   }
   let options = { 
     method: 'POST', 
@@ -742,7 +754,7 @@ const displayShippingInfo = (e) => {
     body: JSON.stringify(checkoutReqData) 
   } 
 
-  fetch('http://localhost:3500/checkout', options).then(r => {
+  fetch('https://raz-pay.herokuapp.com/checkout', options).then(r => {
     console.log(r);
     return r.json();
   }).then(mainData => {
@@ -775,19 +787,27 @@ const displayShippingInfo = (e) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-let options;
+let options = '';
 let rzp1;
 
-
 const exeRazPay = e => {
+  let razName, razEmail, razAddress, razPhone;
+  if(SHIPPING_DATA.shipDiffAddress) {
+    razName = SHIPPING_DATA.alt_name,
+    razEmail = SHIPPING_DATA.email,
+    razPhone = SHIPPING_DATA.alt_phone,
+    razAddress = SHIPPING_DATA.alt_address
+  } else {
+    razName = SHIPPING_DATA.name,
+    razEmail = SHIPPING_DATA.email,
+    razPhone = SHIPPING_DATA.phone,
+    razAddress = SHIPPING_DATA.address
+  }
+
   e.preventDefault();
   console.log('up');
   console.log(RAZ_ORDER_ID);
   console.log(options);
-
-
   options = {
     key: "rzp_test_VkBZNRiEBUKNu5", // Enter the Key ID generated from the Dashboard
     amount: "1000", 
@@ -805,12 +825,12 @@ const exeRazPay = e => {
       // alert(response.razorpay_order_id);
     },
     prefill: {
-      name: `${SHIPPING_DATA.name}`,
-      email: `${SHIPPING_DATA.email}`,
-      contact: `91${SHIPPING_DATA.phone}`,
+      name: razName,
+      email: razEmail,
+      contact: `91${razPhone}`,
     },
     notes: {
-      address: `${SHIPPING_DATA.address}`,
+      address: razAddress,
     },
     theme: {
       color: "#f00",
@@ -835,16 +855,23 @@ const exeRazPay = e => {
 
 const orderComplete = (data) => {
   console.log(data);
-
+  let addtionalData = {
+    ...data,
+    userId: USER_ID,
+    order: CHECKOUT_ID,
+    coupan: COUPAN_ID,
+    formData: SHIPPING_DATA
+  }
   let options = { 
     method: 'POST', 
     headers: { 
       'Content-Type': 'application/json;charset=utf-8' 
     }, 
-    body: JSON.stringify(data) 
+    body: JSON.stringify(addtionalData) 
   } 
 
-  fetch('http://localhost:3500/payment', options).then(r => {
+  // fetch('http://localhost:3500/payment', options).then(r => {
+  fetch('https://raz-pay.herokuapp.com/payment', options).then(r => {
     console.log(r);
     return r.json();
   }).then(mainData => {

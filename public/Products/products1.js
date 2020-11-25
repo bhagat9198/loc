@@ -199,7 +199,7 @@ const displayProds = async (arrProds) => {
   let card = "";
   for (let p of arrProds) {
     // console.log(p);
-    let dis = (+p.prodData.totalPrice/+p.prodData.mrp)*100;
+    let dis = Math.round((+p.prodData.totalPrice/+p.prodData.mrp)*100);
     card += `
 			<div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
 				<a href="../Product/product.html?prod=${p.prodId}&&cat=${p.prodData.wholeCategory.split("__")[0]

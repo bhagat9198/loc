@@ -455,8 +455,7 @@ const checkoutProds = async(e) => {
   });
 
   let checkoutCart;
-
-  let orderId = Math.random();
+  let orderId = `${Math.random()}`;
   if (SELECTED_PRODS.length > 0) {
     checkoutCart = {
       orderId: orderId,
@@ -466,35 +465,42 @@ const checkoutProds = async(e) => {
       products: [],
     };
   }
+
   SELECTED_PRODS.map((sp) => {
     let counter = -1;
+
     for (let c of USER_DETAILS.cart) {
       counter++;
       if (c.cartId === sp.cartId) {
+        console.log(c);
         let cake;
         let pdata = {
           prodId: c.prodId,
           cat: c.cat,
           message: c.message,
-          qty: c.qty,
+          qty: sp.qty,
         };
         if (c.pricing.weight) {
           cake = {};
           cake.heart = c.heart;
           cake.eggless = c.eggless;
           cake.weight = c.pricing.weight;
+          // cake.flavour = c.flavour;
           pdata.cake = cake;
         }
         checkoutCart.products.push(pdata);
-        USER_DETAILS.cart.splice(counter, 1);
       }
     }
   });
-  // console.log(checkoutCart);
 
-  console.log(USER_REF);
-  USER_DETAILS.orders.push(checkoutCart);
+  if(USER_DETAILS.orders) {
+    USER_DETAILS.orders.push(checkoutCart);
+  } else {
+    USER_DETAILS.orders = [];
+    USER_DETAILS.orders.push(checkoutCart);
+  }
   await USER_REF.update(USER_DETAILS);
+  // console.log(USER_DETAILS);
   window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
   
 };
