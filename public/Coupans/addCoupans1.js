@@ -9,7 +9,7 @@ const addCoupan = (e) => {
 
   const coupanName = addCoupanFormHTML["coupan-name"].value;
   const coupanDesc = addCoupanFormHTML["coupan-desc"].value;
-  const coupanCat = addCoupanFormHTML["coupan-cat"].value;
+  const coupanMinAmt = addCoupanFormHTML["coupan-minAmt"].value;
   const coupanAmt = addCoupanFormHTML["coupan-amt"].value;
   const prevCoupanAmt = addCoupanFormHTML["prev-coupan-amt"].value;
   const coupanQuantity = addCoupanFormHTML["coupan-quantity"].value;
@@ -20,7 +20,7 @@ const addCoupan = (e) => {
   const wholeCoupan = {
     name: coupanName,
     desc: coupanDesc,
-    category: coupanCat,
+    minAmt: coupanMinAmt,
     amount: coupanAmt,
     prevAmout: prevCoupanAmt,
     quantity: coupanQuantity,
