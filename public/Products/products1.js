@@ -125,8 +125,10 @@ const extractRelvantProds = async () => {
           }
         });
       });
+      console.log(CAT);
       await db.collection('categories').doc(CAT).get().then(d => {
         dd = d.data();
+        console.log(dd);
         console.log(dd.name);
         prodHeading = dd.name;
       })

@@ -45,6 +45,7 @@ console.log("navbar1.js");
     })
 
     for(let data of tempArr) {
+      console.log(data);
       let subCat = extractSubCat(data.d, data.dId);
       li += `
       <li >
