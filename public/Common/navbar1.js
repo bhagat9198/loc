@@ -51,6 +51,7 @@ console.log("navbar1.js");
     for (let doc of snapshotDocs) {
       let docData = doc.data();
       // console.log(docData);
+   
       let subCat = extractSubCat(docData, doc.id);
       // let imgPath = await extractImgURL(`categories/${doc.id}/${docData.img}`);
       // let imgPath = '';
@@ -114,11 +115,11 @@ console.log("navbar1.js");
   let searchResults = [];
   db.collection('miscellaneous').doc('searchList').get().then(doc => {
     let docData = doc.data();
-    allSearchList = docData.searches;
+    allSearchList = docData.Details;
 
     for (let i of allSearchList) {
 
-      searchResults.push(i.name);
+      searchResults.push(i.Name);
 
     }
 

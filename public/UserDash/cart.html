@@ -15,7 +15,7 @@
   <!-- <link rel="stylesheet" href="../assets/css/styles.php"> -->
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
   <link rel="stylesheet" href="../assets/css/products.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
   <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css">
 
 </head>
@@ -45,7 +45,7 @@
     }
 
     .pname {
-      font-size: 7px;
+      font-size: 9px !important;
     }
   }
 
@@ -68,20 +68,20 @@
 <body style="overflow-x: hidden !important; ">
   <section id="nav-section-loader"></section>
 
-  <section class="cartpage" style="border-radius: 20px;">
-   
-      <div class="row" style="padding: 20px !important">
+  <section class="cartpage" style="border-radius: 0px;">
+   <h5 style="padding-left: 10px;font-weight: 600;">Your Cart</h5>
+      <div class="row" style="padding: 10px !important; background-color:rgb(197, 143, 42,0.1) !important;" >
         <div class="col-lg-8">
           <div class="left-area">
             <div class="cart-table">
-              <table class="table">
+              <table class="table" style="background-color:transparent;">
                 <thead>
-                  <tr>
+                  <tr style="text-align: center;">
                     <th class="d-sm-nones">Product </th>
                     <th class="d-sm-nones" width="30%">Details</th>
-                    <th class="d-sm-nones">Unit Price</th>
+                    <th class="d-sm-nones" style="text-align: left;">Unit Price</th>
                     <th class="d-sm-nones">Sub Total</th>
-                    <th class="d-sm-nones">RE</th>
+                    <th class="d-sm-nones">Delete</th>
                     <th class="d-sm-nones">Select</th>
                   </tr>
                 </thead>
@@ -140,10 +140,10 @@
         </div>
         <div class="col-lg-4">
           <div class="right-area">
-            <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to checkout</div>
-            <div class="order-box" style="display: none;">
+            <div class="order-box" >
               <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
               <ul class="order-list">
+                <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to checkout</div>
                 <!-- <li>
                   <p>
                     Total MRP
@@ -153,18 +153,17 @@
                   </P>
                 </li> -->
               </ul>
-              <!-- <div class="total-price">
+              <div class="total-price">
                 <p>
-                  Discount
+                  Total
                 </p>
                 <P>
-                  <b class="discount">₹0</b>
-                  <input type="hidden" id="d-val" value="₹0">
+                  <span class="cart-total">₹ 0</span>
                 </P>
               </li> -->
               <li style="display:none">
                 <p>
-                  <span class="cart-total"></span>
+                  
                 </p>
               </div>
               <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all taxes)</span></p><br>
@@ -178,11 +177,11 @@
                   <button type="submit">Apply</button>
                 </form>
               </div> -->
-            <a data-target="#addonsModal" data-toggle="modal" class="order-btn"
-              style="background-color: rgb(255, 105, 125);border-radius: 5px;">
+            <button data-target="#addonsModal" data-toggle="modal" class="order-btn" id="checkoutBtn" disabled
+              style="background-color: transparent;color: red;outline: none; border: 1px solid red; border-radius: 5px; text-align: center; vertical-align: middle !important;"> 
               Checkout
               <i class="fa fa-arrow-right"></i>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -198,12 +197,8 @@
       <div class="right-area">
         <div class="product-info">
           <h4 class="product-name"></h4>
-
-
           <div class="info-meta-3">
             <ul class="meta-list">
-
-
               <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
@@ -212,18 +207,17 @@
                         Ones</h4>
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <div class="modal-body" style="height: 500px;                    overflow-y: scroll;">
+                    <div class="modal-body" style="height: 500px;overflow-y: scroll;">
                       <div class="container-fluid">
                         <div class="row" id="allAddons">
-                          <div class="col-md-3 col-6 mt-3">
+                          <!-- <div class="col-md-3 col-6 mt-3">
                             <a class="item" for="add_addons[]"
                               style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
                               <input type="checkbox" name="add_addons[]" class="add_addons " data-id="28" value="28"
                                 style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
                               <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
                                 <img class="img-fluid"
-                                  src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg"
-                                  alt="" style="width:100%;object-fit: cover;">
+                                  src="https://res.cloudinary.com/interflora/f_auto,q_auto,t_prodl/products/p-the-love-story-flowers-box-110730-m.jpg"  alt="Lake of Cakes" style="width:100%;object-fit: cover;">
                               </div>
                               <div class="info" style="height: 88px; ">
                                 <h5 class="name responsiveName"
@@ -254,7 +248,7 @@
                                 </li>
                               </div>
                             </a>
-                          </div>
+                          </div> -->
                         </div>
                       </div>
                     </div>
@@ -264,7 +258,7 @@
                         <h5 style="padding: 20px ;font-weight: 900;"> Total Prize :₹ <span id="cost-with-addons"></span>
                         </h5>
                         <button type="button" class="btn btn-secondary" id="prod_with_addons"
-                          style="background-color: #b32443;">CONTINUE WITH ADDONS</button>
+                          style="background-color: #b32443;">CHECKOUT WITH ADDONS</button>
                       </a>
                     </div>
                   </div>

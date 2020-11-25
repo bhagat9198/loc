@@ -105,9 +105,9 @@ function getUiConfig() {
       // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
     ],
     // Terms of service url.
-    'tosUrl': 'https://www.google.com',
+    'tosUrl': 'https://developers.google.com/terms/api-services-user-data-policy',
     // Privacy policy url.
-    'privacyPolicyUrl': 'https://www.google.com',
+    'privacyPolicyUrl': 'https://developers.google.com/terms/api-services-user-data-policy',
     'credentialHelper': CLIENT_ID && CLIENT_ID != 'YOUR_OAUTH_CLIENT_ID' ?
       firebaseui.auth.CredentialHelper.GOOGLE_YOLO :
       firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM
@@ -197,7 +197,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   var counter = 0;
   let getUserStatus=window.localStorage.getItem("locLoggedInUser")
-
+  
+  console.log(user)
     // $('#hideLogOut').addEventListener("click",function(){
     //   alert(8)
     // })
@@ -207,8 +208,9 @@ firebase.auth().onAuthStateChanged(function(user) {
    
     // alert("0000")
   
-  if (user != null ) {
-    
+  if (user!=null && user!="null") {
+
+   
     db.collection("Customers").onSnapshot(async (snapshots) => {
     
       let snapshotDocs = snapshots.docs;
@@ -230,7 +232,12 @@ firebase.auth().onAuthStateChanged(function(user) {
           window.localStorage.setItem("locLoggedInUser",doc.id)
           counter++;
           user ? handleSignedInUser(user) : handleSignedOutUser();
-          window.location="../index.html"
+          let goTo=window.localStorage.getItem("redirectURL");
+         
+          if(goTo!=null &&(goTo!="null"))
+            window.location=goTo;
+          else
+            window.location="/index.html"
           break;
          
          
@@ -259,6 +266,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
   } else {
+   
     // window.localStorage.clear("locLoggedInUser")
 
     if( getUserStatus=="null" || getUserStatus==null){
@@ -266,7 +274,12 @@ firebase.auth().onAuthStateChanged(function(user) {
       window.localStorage.setItem("locLoggedInUser",null)
       user ? handleSignedInUser(user) : handleSignedOutUser();
     }else{
-      window.location="/index.html"
+      let goTo=window.localStorage.getItem("redirectURL");
+    
+      if(goTo!=null &&(goTo!="null"))
+        window.location=goTo;
+      else
+        window.location="/index.html"
     }
 
   }

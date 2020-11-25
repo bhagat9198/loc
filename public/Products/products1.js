@@ -4,7 +4,7 @@ const db = firebase.firestore();
 const storageService = firebase.storage();
 
 const allProductsHTML = document.querySelector("#allProducts");
-const productHeadingHTML = document.querySelector('.productHeading');
+const productHeadingHTML = document.querySelector('#productHeading');
 const topSuggestionHTML = document.querySelector("#top-suggestion");
 let CAT, SUB, CHILD, TAG, USER;
 
@@ -31,7 +31,7 @@ getParams(window.location.href).then(async (response) => {
   TAG = response.tag;
   USER = response.user;
 
-  if(!USER) {
+  if (!USER) {
     await extractRelvantProds();
   } else {
     await userSearchProds();
@@ -40,7 +40,7 @@ getParams(window.location.href).then(async (response) => {
   if (allProductsArr.length > 0) {
     let randAllProdsArr = arrayRandom(allProductsArr);
     let suggestProdArr = [];
-    if(allProductsArr.length > 6) {
+    if (allProductsArr.length > 6) {
       for (let i = 0; i < 6; i++) {
         let randElIndex = Math.floor(Math.random() * allProductsArr.length);
         suggestProdArr.push(randAllProdsArr[randElIndex]);
@@ -104,15 +104,15 @@ const extractRelvantProds = async () => {
         let cateogiersDocs = cateogiers.docs;
         cateogiersDocs.map((el) => {
           let elDoc = el.data();
-          if(TAG) {
+          if (TAG) {
             // console.log(elDoc);
-            if(elDoc.tags.includes(TAG)) {
+            if (elDoc.tags.includes(TAG)) {
               // console.log(elDoc.tags);
               allProductsArr.push({
                 prodId: elDoc.id,
                 prodData: elDoc,
                 catId: CAT,
-              });  
+              });
             }
           } else {
             allProductsArr.push({
@@ -142,7 +142,7 @@ const extractRelvantProds = async () => {
 
 let allCategories = [];
 
-const extractAllCat = async() => {
+const extractAllCat = async () => {
   await db.collection("categories").get().then(snapshots => {
     let snapDocs = snapshots.docs;
     snapDocs.map(snap => {
@@ -161,19 +161,19 @@ const allCatProds = async () => {
         let docId = doc.id;
         // console.log(docId);
         await db
-          .collection(docId)
-          .get()
-          .then((prods) => {
-            let pdocs = prods.docs;
-            for (let pdoc of pdocs) {
-              // console.log(pdoc.id);
-              allProductsArr.push({
-                prodId: pdoc.id,
-                prodData: pdoc.data(),
-                catId: docId,
-              });
-            }
-          });
+        .collection(docId)
+        .get()
+        .then((prods) => {
+          let pdocs = prods.docs;
+          for (let pdoc of pdocs) {
+            // console.log(pdoc.id);
+            allProductsArr.push({
+              prodId: pdoc.id,
+              prodData: pdoc.data(),
+              catId: docId,
+            });
+          }
+        });
       }
     });
 };
@@ -199,11 +199,11 @@ const displayProds = async (arrProds) => {
   let card = "";
   for (let p of arrProds) {
     // console.log(p);
+    let dis = Math.round((+p.prodData.totalPrice/+p.prodData.mrp)*100);
     card += `
-			<div class="col-lg-2  col-6 pb-3 pt-2">
-				<a href="../Product/product.html?prod=${p.prodId}&&cat=${
-      p.prodData.wholeCategory.split("__")[0]
-    }" class="item">
+			<div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
+				<a href="../Product/product.html?prod=${p.prodId}&&cat=${p.prodData.wholeCategory.split("__")[0]
+      }" class="item">
 					<div class="item-img">
 						<div class="extra-list">
 							<ul>
@@ -215,15 +215,17 @@ const displayProds = async (arrProds) => {
 								</li>
 							</ul>
 						</div>
-						<img class="responsive-image"  style="width:220px;height:200px;object-fit:cover" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
+						<img class="responsive-image" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
 					</div>
-					<div class="info" style="height: 100px !important;">
-						<h5 class="name responsive-name">${p.prodData.name}</h5>
-            <br>
-            <br>
-						<h4 class="price ">₹ ${p.prodData.totalPrice} <del><small>₹ 2000</small></del></h4>
-						<br>
-						<h5 class="discount">Discount : 20 % OFF</h5>
+          <div class="info" style="height: 130px !important;background-color:gay">
+          <div class="stars">
+            <div class="ratings">
+                <div class="empty-stars"></div>
+                <div class="full-stars" style="width:0%"></div>
+            </div>
+          </div>       
+						<h4 class="price responsive-price ">₹ ${p.prodData.totalPrice} <del><small>₹ ${p.prodData.mrp}</small></del><small style="color:green;font-weight:700;padding:2px">(${dis} % OFF)</small></h4>
+            <h5 class="name responsive-name">${p.prodData.name}</h5>
 					</div>
 				</a>
 			</div>
@@ -256,36 +258,36 @@ const displayTopSuggest = async (arrProds) => {
 };
 
 
-const userSearchProds = async() => {
+const userSearchProds = async () => {
   let searchVal = USER.toUpperCase();
   allProductsArr = [];
   await extractAllCat();
-  if(searchVal.length >= 3) {
-    for(let cat of allCategories) {
-      await db.collection(cat).get().then(async(snapshots) => {
+  if (searchVal.length >= 3) {
+    for (let cat of allCategories) {
+      await db.collection(cat).get().then(async (snapshots) => {
         let snapshotDocs = snapshots.docs;
         await snapshotDocs.map(doc => {
           let docData = doc.data();
           // console.log(docData);
-          if(docData.name.toUpperCase().includes(searchVal) ||
-             docData.sno.toUpperCase().includes(searchVal) ||
-             docData.tags.toString().toUpperCase().includes(searchVal) ||
-             docData.wholeCategory.split('__')[1].toString().toUpperCase().includes(searchVal) ||
-             docData.wholeChildCategory.split('__')[3].toString().toUpperCase().includes(searchVal) ||
-             docData.wholeSubCategory.split('__')[2].toString().toUpperCase().includes(searchVal)
+          if (docData.name.toUpperCase().includes(searchVal) ||
+            docData.sno.toUpperCase().includes(searchVal) ||
+            docData.tags.toString().toUpperCase().includes(searchVal) ||
+            docData.wholeCategory.split('__')[1].toString().toUpperCase().includes(searchVal) ||
+            docData.wholeChildCategory.split('__')[3].toString().toUpperCase().includes(searchVal) ||
+            docData.wholeSubCategory.split('__')[2].toString().toUpperCase().includes(searchVal)
           )
-          allProductsArr.push({
-            prodId: doc.id,
-            prodData: docData,
-            catId: cat,
-          });
+            allProductsArr.push({
+              prodId: doc.id,
+              prodData: docData,
+              catId: cat,
+            });
 
         })
       })
     }
   }
 
-  if(allProductsArr.length === 0) {
+  if (allProductsArr.length === 0) {
     allCatProds()
   } else {
     productHeadingHTML.innerHTML = `Products for "${USER}"`;

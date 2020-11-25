@@ -4,7 +4,7 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "site":"lake-of-cakes",
+    "site": "lake-of-cakes",
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -14,5 +14,8 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "functions": {
+   
   }
 }

@@ -589,7 +589,7 @@ kbd kbd {
 
 @media (min-width:768px) {
     .container {
-        max-width: 720px
+        max-width: 100%;
     }
 }
 
@@ -601,7 +601,7 @@ kbd kbd {
 
 @media (min-width:1200px) {
     .container {
-        max-width: 1140px
+        max-width: 100%;
     }
 }
 
@@ -1960,7 +1960,7 @@ kbd kbd {
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -4791,8 +4791,8 @@ input[type=submit].btn-block {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: .25rem
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
 }
 
 .card>hr {
@@ -4811,17 +4811,13 @@ input[type=submit].btn-block {
 }
 
 .card-body {
-    -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    padding: 1.25rem
+    padding: 1.25rem;
 }
 
 .card-title {
     margin-bottom: .75rem;
-    background-color:rgba(190, 33, 46, 0.7);
-    border-radius: 10px;
-    color: wheat;
-    padding: 5px;
+
 
 }
 
@@ -8338,7 +8334,7 @@ button.bg-dark:hover {
 
 .mb-4,
 .my-4 {
-    margin-bottom: 1.5rem!important
+    margin-bottom: 1.5rem!important;
 }
 
 .ml-4,
@@ -14900,10 +14896,10 @@ ul.attributes li a:hover {
         width: 100%
     }
     .owl-carousel .owl-item img {
-        height: 200px;
-        width: 600px !important;
-        object-fit:fill;
-       
+        height: 170px;
+        width: 500px !important;
+        object-fit:cover;
+        background-color:whitesmoke;
     }
 }
 
@@ -24160,7 +24156,7 @@ select:focus {
 .section-top {
     margin-bottom: 12px;
     padding-bottom: 0px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.10); */
     display: block;
     width: 100%;
     position: relative;
@@ -25835,8 +25831,8 @@ nav button {
     -moz-transition: all linear .3s;
     -o-transition: all linear .3s;
     transition: all linear .3s;
-    background: rgba(211, 206, 176, 0.9);
-    
+    /* background: rgba(211, 206, 176, 0.9);
+     */
 }
 
 .item .info .stars {
@@ -26290,6 +26286,7 @@ nav button {
     background-repeat: no-repeat;
     background-size: cover;
     padding: 50px 0px 50px;
+    margin-top:-6%;
 }
 
 .banner-section img {
@@ -26380,8 +26377,19 @@ nav button {
     -o-transition: 0.3s ease-in;
     transition: 0.3s ease-in;
     width:370px;
-    height:200px;
+    height: 200px;
     object-fit:cover;
+}
+
+@media only screen and (max-width:768px){
+    .banner-effect img {
+        max-width:100% !important;
+        width:480px !important;
+        height: 100px;
+        object-fit:cover;
+        
+    }
+    
 }
 
 .banner-effect:hover img {
@@ -28826,8 +28834,8 @@ nav button {
     /* justify-content: flex-end; */
     /* text-align: right; */
     justify-content: space-between;
-    margin-bottom: -4px;
-    padding-top: 15px;
+    /* margin-bottom: -4px;
+    padding-top: 15px; */
 }
 
 .sub-categori .right-area .item-filter .filter-list {
@@ -29006,7 +29014,7 @@ nav button {
 ------------------------------*/
 
 .cartpage {
-    padding: 50px 0px 54px;
+    padding: 20px 0px 34px;
 }
 
 .cartpage .left-area .table thead {
@@ -32880,9 +32888,7 @@ input[type=checkbox]:checked:disabled+label:before {
 /*  Slider buttom Category Start */
 
 .slider-buttom-category {
-    /* padding-top: 30px;
-    border-radius: 100px; */
-    /* background: linear-gradient(rgba(255,255,255,.1), rgba(69, 182, 163, 0.616)), url("https://i.pinimg.com/originals/34/ec/65/34ec654e0194df001227ac5d105637f6.jpg"); */
+    padding-top: 30px;
 }
 
 .slider-buttom-category .single-category {
@@ -34161,7 +34167,7 @@ nav .menu li a {
     font-weight: 500;
     color: #fff;
     border-radius: 50px;
-    padding: 3px 15px;
+    padding: 3px 6px;
     background: none;
 }
 
@@ -35066,7 +35072,7 @@ p.product-unit-price {
         margin-top: 50px;
     }
     .cartpage {
-        padding: 70px 0px 70px;
+        padding: 30px 0px 30px;
     }
     .product-details-page .categori .section-top {
         margin-top: 40px;
@@ -35232,7 +35238,7 @@ p.product-unit-price {
     }
     .cartpage .left-area .cart-table .table td,
     .table th {
-        /* padding: 0.25rem !important; */
+        padding: 10px !important;
     }
     .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-1 .title {
         font-size: 34px;
@@ -36253,5 +36259,14 @@ section.phone-and-accessories.categori-item {
      .cardc {
       transition: all 2s ease;
       width: 70px !important;
+    }
+}
+.slider-buttom-category .sc-common-padding {
+    padding: 3px 3px!important;
+}
+@media only screen and (max-width:768px){
+    .ml-4 {
+        margin-left: 2.5rem !important;
+        
     }
 }

@@ -16,7 +16,7 @@
   <!-- New Navbar Link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="mega-menu.css">
-  <link rel="icon" type="image/x-icon" href="//lakeofcakes.com/assets/images/1596886304logo for favicon.PNG" />
+  <!-- <link rel="icon" type="image/x-icon" href="//lakeofcakes.com/assets/images/1596886304logo for favicon.PNG" /> -->
 
 
   <meta name="theme-color" content="#a15a55">
@@ -37,7 +37,8 @@
     <div class="workinghny-form-grid">
       <div class="wrapper">
         <div class="logo">
-          <h1><a class="brand-logo" href="index.html"><span>Hi !!</span>Guest</a></h1>
+          <!-- <h1><a class="brand-logo" href="index.html"><span>Hi !!</span>Guest</a></h1> -->
+          <img src="../assets/images/logo.png" alt="" style="width: 400px;object-fit: contain;">
           <!-- if logo is image enable this   
                         <a class="brand-logo" href="#index.html">
                             <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
@@ -84,7 +85,7 @@
           <div class="form-right-inf">
 
             <div class="login-form-content">
-              <h2>Where to?</h2>
+              <h2 style="text-align: center;padding: 10px !important;">Login</h2>
 
               <div class="one-frm">
 
@@ -151,7 +152,13 @@
         window.localStorage.setItem("locLoggedInUser", key.data().userId)
 
         setTimeout(function () {
-          window.location = "/index.html";
+          let goTo=window.localStorage.getItem("redirectURL");
+   
+          if(goTo!=null &&(goTo!="null"))
+            window.location=goTo;
+          else
+            window.location="/index.html"
+   
 
         }, 100)
 

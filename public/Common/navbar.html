@@ -55,13 +55,28 @@
     background-color: DodgerBlue !important;
     color: #ffffff;
   }
+
+  @media only screen and (max-width: 600px) {
+    .responsiveIcon1 {
+      /* margin: auto;
+      padding: 0px; */
+      margin-left: 32%;
+    }
+
+  }
+
+  @media only screen and (min-width:700px) {
+    .responsiveIcon2 {
+      display: block !important;
+    }
+
+  }
 </style>
 
 
 
 <section class="top-header top-nav" style="background: #f1f1f1;">
-  <div class="container-fluid remove-padding topnaves"
-    style="background: #f1f1f1;;
+  <div class="container-fluid remove-padding topnaves" style="background: #f1f1f1;;
     background-size: 617px; background-image: url();height: 35px !important;padding: 0px !important;">
     <div class="container topcnt">
       <div class="row" style="justify-content: flex-end;">
@@ -70,8 +85,8 @@
             <div class="left-content">
             </div>
             <div class="right-content">
-              <div class="list" style="padding: 1px;">
-                <ul style="padding: 1px;">
+              <div class="list" style="padding: 6px 10px 100px;">
+                <ul style="padding-right: 10px;">
                   <li>
                     <a type="button" data-toggle="modal" data-target="#topoffer"
                       style="background: rgb(209, 96, 96); padding: 0px 20px; position: relative;border:1px solid black;border-radius: 10px;">
@@ -84,54 +99,19 @@
                           class="fa fa-gift" aria-hidden="true" style="color: rgb(235, 48, 79);"></i>
                         COUPONS</span> </a>
                   </li> &nbsp;
+                  <li><a href="tel:9598891097" class="track-btn"><span class="sign-in"
+                        style="font-size: 14px; color: #000;"><i class="fa fa-phone" aria-hidden="true"
+                          style="color: rgb(235, 48, 79);"></i>
+                        9598891097</span> </a>
+                  </li> &nbsp;
+                  <li><a href="mailto:lakeofcakess@gmail.com" class="track-btn"><span class="sign-in"
+                        style="font-size: 14px; color: #000;"><i class="fa fa-envelope" aria-hidden="true"
+                          style="color: rgb(235, 48, 79);"></i>
+                          Email</span> </a>
+                  </li> &nbsp;
 
+                  
 
-                  <li><a href="" class="sign-log"><span class="sign-in"
-                        style="font-size: 14px; color: #000; text-decoration: underline; "><i class="fa fa-phone"
-                          style="color: rgb(51, 165, 51);"></i>&nbsp;<strong>+91
-                          9598891097</strong></span>
-                    </a>
-                  </li>
-                  <li><a href="mailto:lakeofcakess@gmail.com" class="sign-log"><span class="sign-in"
-                        style="font-size: 14px; color: #000; "><i class="fa fa-envelope"
-                          style="color: rgb(214, 150, 55);"></i>&nbsp;<strong>Email
-                          Us</strong></span>
-                    </a>
-                  </li>
-                  <li>
-                    <ul class="" style="padding-left: 10px;">
-                      <li class="nav-item dropdown">
-                        <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <img src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
-                            style="width: 30px ;height: 30px; object-fit: cover;padding: 2px;" class="rounded-circle">
-
-                        </a>
-                        <div class="dropdown-menu" style="padding: 10px; margin-left:-50%;margin-top:4%;"
-                          data-toggle="dropdown" aria-labelledby="navbarDropdownMenuLink">
-                          <div
-                            style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
-                            <a class="dropdown-item" href="#">
-                              <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest!
-                                Login to continue</h4>
-                              <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
-                              </center>
-                            </a>
-                          </div>
-                          <hr>
-                          <a class="dropdown-item" href="" onclick="checkifUser()"><i class="fa fa-user"></i> Profile</a>
-                          <hr>
-                          <a class="dropdown-item" href="#"><i class="fa fa-truck"></i> Track Orders</a>
-                          <hr>
-                          <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> My Orders</a>
-                          <hr>
-                          <a class="dropdown-item" href="#" id="hideLogOut" onclick="logOut()"><i
-                              class="fa fa-sign-out"></i>
-                            Logout</a>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -159,7 +139,7 @@
         <div class="logo-area">
           <div class="logo">
             <a href="/index.html">
-              <img src="/assets/images/logo.png" alt="Logo Lake of cakes" style="width: 350px;">
+              <img src="/assets/images/logo-min.png" alt="Logo Lake of cakes" style="width: 350px;">
             </a>
           </div>
           <i class="fa fa-times" style="float: right; position: relative;padding: 10px;margin-left: 20%;"
@@ -169,214 +149,8 @@
           <div class="menu">
             <ul id="whole-navigation-mobile">
 
-              <!-- <li >
-                <a>Cakes<i class="fas fa-chevron-down" style="margin-left: 0%;float: right;"></i></a>
-                <ul>
-                  <li><a href="#">School</a>
-                    <ul>
-                      <li><a href="#">Lidership</a></li>
-                      <li><a href="#">History</a></li>
-                      <li><a href="#">Locations</a></li>
-                      <li><a href="#">Careers</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Flowers</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#"></a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Empty sub</a>
-                    <ul>
-                      <li><img src="https://placeimg.com/300/200/people"></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li> -->
-
-              <!-- 
-                  <li><a href="#">Empty sub</a>
-                    <ul>
-                      <li><img src="https://placeimg.com/300/200/people"></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li> -->
-              <!-- <li><a href="#">Chocolate<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
-                <ul>
-                  <li><a href="#">School</a>
-                    <ul>
-                      <li><a href="#">Lidership</a></li>
-                      <li><a href="#">History</a></li>
-                      <li><a href="#">Locations</a></li>
-                      <li><a href="#">Careers</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Empty sub</a>
-                    <ul>
-                      <li><img src="https://placeimg.com/300/200/people"></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="#">Birthday<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
-                <ul>
-                  <li><a href="#">School</a>
-                    <ul>
-                      <li><a href="#">Lidership</a></li>
-                      <li><a href="#">History</a></li>
-                      <li><a href="#">Locations</a></li>
-                      <li><a href="#">Careers</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Empty sub</a>
-                    <ul>
-                      <li><img src="https://placeimg.com/300/200/people"></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="#">Aniversary<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
-                <ul>
-                  <li><a href="#">School</a>
-                    <ul>
-                      <li><a href="#">Lidership</a></li>
-                      <li><a href="#">History</a></li>
-                      <li><a href="#">Locations</a></li>
-                      <li><a href="#">Careers</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Empty sub</a>
-                    <ul>
-                      <li><img src="https://placeimg.com/300/200/people"></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="#">Ocassion<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
-                <ul>
-                  <li><a href="#">School</a>
-                    <ul>
-                      <li><a href="#">Lidership</a></li>
-                      <li><a href="#">History</a></li>
-                      <li><a href="#">Locations</a></li>
-                      <li><a href="#">Careers</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Empty sub</a>
-                    <ul>
-                      <li><img src="https://placeimg.com/300/200/people"></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="#">Gifts<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
-                <ul>
-                  <li><a href="#">School</a>
-                    <ul>
-                      <li><a href="#">Lidership</a></li>
-                      <li><a href="#">History</a></li>
-                      <li><a href="#">Locations</a></li>
-                      <li><a href="#">Careers</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Study</a>
-                    <ul>
-                      <li><a href="#">Undergraduate</a></li>
-                      <li><a href="#">Masters</a></li>
-                      <li><a href="#">International</a></li>
-                      <li><a href="#">Online</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Empty sub</a>
-                    <ul>
-                      <li><img src="https://placeimg.com/300/200/people"></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li> -->
+          
+              
             </ul>
           </div>
           <hr>
@@ -386,7 +160,7 @@
                 <div class="row pl-3">
                   <div class="col-2 col-sm-2 col-md-2 p-0">
                     <span>
-                      <img src="/assets/images/MidnightDelivery.png" alt="Lake of Cakes midnight" style="width: 125px;">
+                      <img src="/assets/images/MidnightDelivery.png" alt="Lake of Cakes midnight" style="width: 25px;">
                     </span>
                   </div>
                   <div class="col-8 col-sm-8 col-md-8 p-0">
@@ -557,8 +331,7 @@
             </a>
           </div>
           <div class="nav-collapsible">
-            <a href="//lakeofcakes.com/user/login">
-              <label for="nav-collapsible-1" style="width: 100%;">
+            collapsible-1" style="width: 100%;">
                 <div class="row pl-3">
                   <div class="col-10 col-sm-10 col-md-10 p-0">
                     <span style="position: relative; top: 4px;">Login/Signup</span>
@@ -573,29 +346,28 @@
             </a>
           </div>
         </div>
-        </nav>
       </aside>
       <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
         <div class="row">
           <div class="col-md-1"></div>
           <div class="col-md-10 col-12 p-0 mt-3 ml-4">
             <div class="input-group mb-2 mt-2">
-              <div id="searchForm" class="search-form" style="display: inline-flex; width: 100%;">
-                <div class="autocomplete" style="width:300px;">
-                  <input class="form-control" type="text" id="searchBar" onkeyup=searchIfvalue(event) name="searchBar"
+              <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
+                <div class="autocomplete" style="width: 100%;" >
+                  <input class="form-control" style="width: 100% !important;
+                  border: none;
+                  border-bottom: 1px solid ;
+                  border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeyup=searchIfvalue(event) name="searchBar"
                     placeholder="Search: Cakes , Flowers ,Gifts..."
-                    style="border-radius: 15px 0px 0px 15px;border: none;">
+                   >
                 </div>
-                <!-- <div class="autocomplete">
-                  <div id="myInputautocomplete-list" class="autocomplete-items">
-                  </div>
-                </div> -->
+                
                 <div class="input-group-append">
                   <button class="btn btn-outline-secondary" onclick="searchByBtn('searchBar')"
-                    style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background: rgb(218, 22, 22); border: #F00;"><i
-                      class="fa fa-search" style="color:#fff"></i></button>
+                    style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent;color:; border: #F00;"><i
+                      class="fa fa-search" style="color:red"></i></button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -625,10 +397,7 @@
           </li>
           <li>
             <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
-              <div>
                 <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
-
-              </div>
               <div
                 style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
                 REMINDER</div>
@@ -642,11 +411,56 @@
       </div>
       <div class="col-lg-1 col-sm-3 col-3 remove-padding order-lg-last">
         <div class="helpful-links mt-md-3 cartres">
+
           <ul class="helpful-links-inner" style="display: flex;">
-            <li class="my-dropdown" data-toggle="tooltip" data-placement="top" title="Cart">
-              <a href="javascript:;" class="cart carticon">
+
+
+
+            <li class="nav-item dropdown" style="margin-top: 13%;">
+              <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
+                  style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
+
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
+                  inset 0 -3em 3em rgba(0,0,0,0.1), 
+                        0 0  0 2px rgb(255,255,255),
+                        0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown"
+                aria-labelledby="navbarDropdownMenuLink">
+                <div
+                  style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
+                  <a class="dropdown-item" href="#">
+                    <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest!
+                      Login to continue</h4>
+                    <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
+                    </center>
+                  </a>
+                </div>
+
+                <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href=""
+                  onclick="checkifUser()"><i class="fa fa-user"></i>
+                  Profile</a>
+
+                <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"><i
+                    class="fa fa-truck"></i> Track Orders</a>
+
+                <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"><i
+                    class="fa fa-shopping-cart"></i> My Orders</a>
+
+                <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"
+                  id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
+                  Logout</a>
+              </div>
+            </li>
+
+
+            <li class="my-dropdown responsiveIcon2" style="display: none;" data-toggle="tooltip" data-placement="top"
+              title="Cart">
+              <a href="#cart" class="cart carticon">
                 <div class="icon">
-                  <i class="fa fa-shopping-cart"></i>
+                  <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
                   <span class="cart-quantity" id="cart-count">0</span>
                 </div>
 
@@ -665,7 +479,7 @@
                     <li class="product cremove3461">
                       <figure class="product-image-container">
                         <a href="" class="product-image">
-                          <img src="//lakeofcakes.com/assets/images/products/1601547238ON97VlRe.png"
+                          <img src=""
                             style="width: 50px; object-fit:cover;" alt="product">
                         </a>
 
@@ -697,18 +511,13 @@
                   </div>
 
                   <div class="dropdown-cart-action">
-                    <a href="" class="mybtn1" style="background-color: rgb(20, 113, 167);">Checkout</a>
+                    <a href="" onclick="redirectToCart()" class="mybtn1"
+                      style="background-color: rgb(20, 113, 167);">View In Cart</a>
                   </div>
                 </div>
               </div>
             </li>
-            <li class="wishlist" data-toggle="tooltip" data-placement="top" title="Wish">
-              <a href="javascript:;" data-toggle="modal" id="wish-btn" data-target="#comment-log-reg" class="wish">
-                <i class="fa fa-heart"></i>
-                <span id="wishlist-count">0</span>
-              </a>
-            </li>
-
+  
 
 
           </ul>
@@ -1004,6 +813,8 @@
     </div>
   </div>
 </div>
+
+<script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
 <script>
 
   function hidenavigation() {
@@ -1013,22 +824,29 @@
     $('.drobt0').removeClass('colapse');
   }
 
-  
 
 
 
-  
+
+
 </script>
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
   var checkUser;
   var timecount = 0;
-  function checkifUser(){
-    if(checkUser==null ||checkUser =="null"){
-      window.location="/Auth/login.html"
-    }else{
-      window.location="/UserDash/customerProfile.html"
+  function checkifUser() {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      window.location = "/UserDash/customerProfile.html"
+    }
+  }
+  function redirectToCart() {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      window.location = "/UserDash/cart.html"
     }
   }
   const inter = setInterval(function () {
@@ -1055,11 +873,12 @@
           counter++;
 
           userDoc = doc.data();
+          document.getElementById("cart-count").innerHTML = userDoc.cart.length
           if (userDoc.UserName == null) {
             userDoc.UserName = "User@LOC";
           }
-        
-          if (userDoc.Image == null || userDoc.Image=="null" ||userDoc.Image==undefined) {
+
+          if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
             userDoc.Image = "../assets/images/userIcon.png"
           }
 
@@ -1113,7 +932,7 @@
 </style>
 
 <script>
-  
+
   $(".drobt").click(function () {
     if ($('.drobt0').hasClass('drobt1')) {
       $('.drobt0').removeClass('drobt1');
