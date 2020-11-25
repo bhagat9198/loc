@@ -71,6 +71,9 @@
     .responsive-sec2 {
       display: none !important;
     }
+    .imgresponsive{
+      object-fit: contain !important;
+    }
 
   }
 
@@ -423,7 +426,7 @@
                   <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Offers </span>
+                        <span style="position: relative; top: 4px;"  data-toggle="modal" data-target="#modalYT">Offers </span>
                       </div>
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span style="position: relative; top: 8px;">
@@ -1794,8 +1797,8 @@
     <!--Body-->
     <div class="modal-body mb-0 p-0">
 
-      <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="width: 1000px;height:400px;object-fit:cover;" >
-        <img class="embed-responsive-item" style="width: 1000px;height:400px;object-fit: cover;" id="showOffer" src=""
+      <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;"  >
+        <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;"  id="showOffer" src=""
           allowfullscreen>
       </div>
 
