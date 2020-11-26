@@ -21,6 +21,7 @@
 	<script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
 
 	<meta name="theme-color" content="#a15a55">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="../assets/css/oldall.css">
 	<link rel="stylesheet" href="../assets/css/base.css">
 	<link rel="stylesheet" href="../assets/css/styles.php">
@@ -28,6 +29,37 @@
 		<!-- <link rel="stylesheet" href="../assets/css/products.css"> -->
 </head>
 <style>
+
+	
+.skeleton {
+    background: linear-gradient(90deg, #d84f4f, #6e1717, #ededed);
+    animation-name: load;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: forwards;
+    animation-timing-function: linear;
+    background-size: 200% 100%;
+  }
+
+  .skeleton.block {
+    width: auto;
+    
+  }
+
+  .skeleton.block.small {
+    width: 150px;
+  }
+
+
+  @keyframes load {
+    from {
+      background-position: 100% 0%;
+    }
+
+    to {
+      background-position: -100% 0%;
+    }
+  }
 	@media only screen and (max-width:700px ){
 		.responsive-sec{
 			/* display: none !important; 
