@@ -78,7 +78,9 @@ async function displayRows(snapshotDocs, allCatData) {
     let imgUrl = docData.mainImgUrl;
     tRows += `
     <tr role="row" class="odd parent">
-        <td tabindex="0" >${docData.name}<br><small>ID: ${docData.sno}</small><br /> <small><strong>CHEX:</strong> ${id}</small></td>
+        <td tabindex="0" >${docData.name}<br><small>ID: ${
+      docData.sno
+    }</small><br /> <small><strong>CHEX:</strong> ${id}</small></td>
         <td><img src="${imgUrl}"></td>
         <td>${catData.scname}</td>
         <td>${catData.ccname}</td>
@@ -95,14 +97,20 @@ async function displayRows(snapshotDocs, allCatData) {
               Actions<i class="fas fa-chevron-down"></i>
             </button>
             <div class="action-list" style="display: none;">
-              <a href="" data-catid="${catId}" data-id="${d.id}" onclick="editDetails(event)" data-toggle="modal" data-target="#editProductModal">
+              <a href="" data-catid="${catId}" data-id="${
+      d.id
+    }" onclick="editDetails(event)" data-toggle="modal" data-target="#editProductModal">
                 <i class="fas fa-edit"></i> Edit
               </a>            
-              <a data-catid="${catId}" data-id="${d.id}" onclick="deleteProduct(event)"><i class="fas fa-trash-alt" ></i>
+              <a data-catid="${catId}" data-id="${
+      d.id
+    }" onclick="deleteProduct(event)"><i class="fas fa-trash-alt" ></i>
                   Delete
                 </a>
                 <a href="javascript:;"
-                data-toggle="modal" data-target="#details-modal" data-catid="${catId}" data-id="${d.id}" onclick="extractDetails(event, this)" class="option-details">
+                data-toggle="modal" data-target="#details-modal" data-catid="${catId}" data-id="${
+      d.id
+    }" onclick="extractDetails(event, this)" class="option-details">
                 <i class="fa fa-info"></i>
                   Details
                 </a>
@@ -115,8 +123,6 @@ async function displayRows(snapshotDocs, allCatData) {
   // console.log(tRows);
   return tRows;
 }
-
-
 
 const displayOptions = (isSeleted, data) => {
   let options = "";
@@ -140,141 +146,145 @@ const changeStatus = (e, current) => {
   let docId = e.target.dataset.id;
   let catId = e.target.dataset.catid;
 
-  db.collection(catId).doc(docId).update('isActivated', current.value).then(() => {
-    console.log('state updated');
-  }).catch(error => {
-    alert('Error : ', error);
-  })
-}
+  db.collection(catId)
+    .doc(docId)
+    .update("isActivated", current.value)
+    .then(() => {
+      console.log("state updated");
+    })
+    .catch((error) => {
+      alert("Error : ", error);
+    });
+};
 
 const deleteProduct = (e) => {
   console.log(e);
-  let answer = confirm('Are you sure you want to delete the product?');
+  let answer = confirm("Are you sure you want to delete the product?");
   if (answer) {
     let docId = e.target.dataset.id;
     let catId = e.target.dataset.catid;
 
     let prodData;
     let docRef = db.collection(catId).doc(docId);
-    docRef.get().then(doc => {
-      let docData = doc.data();
-      prodData = docData;
-      console.log(docData.mainImg);
-      return storageService.ref(`${catId}/${docId}/${docData.mainImg}`).delete();
-    }).then(async (mainImgDelete) => {
-      console.log(mainImgDelete);
-      console.log(prodData);
-      for (let subImg of prodData.subImgs) {
-        console.log(subImg);
-        await storageService.ref(`${catId}/${docId}/${subImg}`).delete();
-      }
-      return docRef.delete();
-    }).then(() => {
-      // console.log('all deleted');
-      extractData();
-    }).catch(error => {
-
-      alert('error', error);
-      console.log(error);
-    })
-  }
-}
-const extractData = async () => {
-  await db
-    .collection("categories")
-    .get()
-    .then((snapshot) => {
-      let snapshotDocs = snapshot.docs;
-      snapshotDocs.map((doc) => {
+    docRef
+      .get()
+      .then((doc) => {
         let docData = doc.data();
-        allCategoriesData.push({ data: docData, id: doc.id });
+        prodData = docData;
+        console.log(docData.mainImg);
+        return storageService
+          .ref(`${catId}/${docId}/${docData.mainImg}`)
+          .delete();
+      })
+      .then(async (mainImgDelete) => {
+        console.log(mainImgDelete);
+        console.log(prodData);
+        for (let subImg of prodData.subImgs) {
+          console.log(subImg);
+          await storageService.ref(`${catId}/${docId}/${subImg}`).delete();
+        }
+        return docRef.delete();
+      })
+      .then(() => {
+        // console.log('all deleted');
+        extractData();
+      })
+      .catch((error) => {
+        alert("error", error);
+        console.log(error);
       });
-    });
+  }
+};
+// const extractData = async () => {
+db.collection("categories")
+.onSnapshot((snapshot) => {
+  let snapshotDocs = snapshot.docs;
+  snapshotDocs.map((doc) => {
+    let docData = doc.data();
+    allCategoriesData.push({ data: docData, id: doc.id });
+  });
+  displayTables();
+});
+
+const displayTables = async() => {
   var tableID;
   const displayAllCat = document.querySelector("#displayAllCat");
   let tRows = "";
   $("#displayAllCat").empty();
   for (let cat of allCategoriesData) {
     productNav.innerHTML += `
-    <li style="padding: 10px;list-style:square;margin:auto 2%">
-      <a class="scrollTo" href="#${cat.id}">${cat.data.name.toUpperCase()}</a>
-    </li>`;
+      <li style="padding: 10px;list-style:square;margin:auto 2%">
+        <a class="scrollTo" href="#${cat.id}">${cat.data.name.toUpperCase()}</a>
+      </li>`;
 
     $("#tbody" + cat.id).empty();
     tRows = "";
-    displayAllCat.innerHTML += `
-    <div class="product-area" id="${cat.id}" style="padding-top:0px;">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="mr-table allproduct">
-            <div class="table-title">
-              <div class="row">
-                <div class="col-sm-5"><h2> ${cat.data.name} </h2></div>
-                <div class="col-sm-7">
-                  <a  class="btn btn-secondary" id="myInput${cat.id}" class="searchBar" onclick=myFunction("myInput${cat.id}","myTable${cat.id}","table-responsive${cat.id}")><i class="material-icons" style="color:black">&#xE147;</i>
-                    <span style="color:black">Enable Attribute</span></a>
-                <a class="btn btn-secondary" onclick=createPDF("myTable`+ cat.id + `","` + cat.data.name + `")><i class="material-icons" style="color:black">&#xE24D;</i>
-                    <span style="color:black">Export to Pdf</span></a>
+    displayAllCat.innerHTML +=
+    `
+      <div class="product-area" id="${cat.id}" style="padding-top:0px;">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mr-table allproduct">
+              <div class="table-title">
+                <div class="row">
+                  <div class="col-sm-5"><h2> ${cat.data.name} </h2></div>
+                  <div class="col-sm-7">
+                    <a  class="btn btn-secondary" id="myInput${cat.id}" class="searchBar" onclick=myFunction("myInput${cat.id}","myTable${cat.id}","table-responsive${cat.id}")><i class="material-icons" style="color:black">&#xE147;</i>
+                      <span style="color:black">Enable Attribute</span></a>
+                  <a class="btn btn-secondary" onclick=createPDF("myTable${cat.id}","${cat.data.name}")><i class="material-icons" style="color:black">&#xE24D;</i>
+                      <span style="color:black">Export to Pdf</span></a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="alert alert-success validation" style="display: none;">
-              <button type="button" class="close alert-close"><span>×</span></button>
-              <p class="text-left"></p>
-            </div>
-            <div class="table-responsive${cat.id}">
-              <table id="myTable${cat.id}" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-                <div class="row btn-area"></div>
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Image</th>
-                    <th>Sub-Category</th>
-                    <th>Child-Category</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                    <th>Options</th>
-                  </tr>
-                </thead>
-                <tbody id="tbody${cat.id}">
-                  <tr>
-                    <td>Loading Rows......Please Wait</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-        </div>
-    </div>
-        
-  <br>
-        
-    `;
-
-
+              <div class="alert alert-success validation" style="display: none;">
+                <button type="button" class="close alert-close"><span>×</span></button>
+                <p class="text-left"></p>
+              </div>
+              <div class="table-responsive${cat.id}">
+                <table id="myTable${cat.id}" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                  <div class="row btn-area"></div>
+                  <thead>
+                    <tr>
+                      <th>Product Name</th>
+                      <th>Image</th>
+                      <th>Sub-Category</th>
+                      <th>Child-Category</th>
+                      <th>Price</th>
+                      <th>Status</th>
+                      <th>Options</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody${cat.id}">
+                    <tr>
+                      <td>Loading Rows......Please Wait</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+      </div> 
+    <br> `;
     const tbodys = document.querySelector("#tbody" + cat.id);
-    console.log(tbodys);
     await db
       .collection(cat.id)
       .get()
       .then(async (snapshots) => {
         let snapshotsDocs = snapshots.docs;
         tRows += await displayRows(snapshotsDocs, allCategoriesData);
-
       });
     if (tRows != "") {
       tbodys.innerHTML = tRows;
     } else {
-
-      $('#tbodys').empty();
+      $("#tbodys").empty();
       tbodys.innerHTML =
         '<h3 class="responsive-text" style="text-align:center;font-weight:700;padding:5px">OoPS!!! No Data Found</h3>';
     }
   }
-
 };
 
 
-extractData();
+
+// extractData();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -327,9 +337,7 @@ const extractDetails = async (e, current) => {
       pDescHTML.innerHTML = doc.descriptions;
       pPrivacyHTML.innerHTML = doc.policy;
       let imgsPath = [];
-      let url = await extractImgUrl(
-        `${catId}/${snapshot.id}/${doc.mainImg}`
-      );
+      let url = await extractImgUrl(`${catId}/${snapshot.id}/${doc.mainImg}`);
       imgsPath.push(url);
       console.log(imgsPath);
 
@@ -340,7 +348,7 @@ const extractDetails = async (e, current) => {
       }
 
       console.log(imgsPath);
-      pImgsHTML.innerHTML = '';
+      pImgsHTML.innerHTML = "";
       imgsPath.map((i) => {
         pImgsHTML.innerHTML += `
         <div class="col-lg-2">
@@ -354,7 +362,6 @@ const extractDetails = async (e, current) => {
     });
 };
 
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // edit
@@ -362,8 +369,12 @@ const extractDetails = async (e, current) => {
 const editModal = document.querySelector("#editProductModal");
 let editProduct = editModal.querySelector("#add-product");
 const productCategoryHTML = editProduct.querySelector("#product-category");
-const productSubCategoryHTML = editProduct.querySelector("#product-sub-category");
-const productChildCategoryHTML = editProduct.querySelector("#product-child-category");
+const productSubCategoryHTML = editProduct.querySelector(
+  "#product-sub-category"
+);
+const productChildCategoryHTML = editProduct.querySelector(
+  "#product-child-category"
+);
 
 // const allAddonsHTML = editProduct.querySelector("#all-addons");
 
@@ -380,7 +391,7 @@ const catSelect = async (data) => {
         let docData = doc.data();
         // console.log(docData);
         // console.log(docData.name.includes(data));
-        if (doc.id == data.split('__')[0]) {
+        if (doc.id == data.split("__")[0]) {
           // console.log(doc.id, data.split('__')[0]);
           options += `
           <option selected  value="${doc.id}__${docData.name}">${docData.name}</option>`;
@@ -466,7 +477,7 @@ let editProductDetails;
 let editProductId;
 var count = 0;
 const editDetails = async (e) => {
-  document.getElementById("setCat").value =""
+  document.getElementById("setCat").value = "";
   // document.getElementById("setCat").value=""
   document.getElementById("add-product").reset();
   count++;
@@ -485,6 +496,8 @@ const editDetails = async (e) => {
     .doc(docId)
     .get()
     .then(async (snapshot) => {
+      
+      console.log(snapshot);
       let doc = snapshot.data();
       editProductDetails = doc;
       editProductId = snapshot.id;
@@ -494,7 +507,10 @@ const editDetails = async (e) => {
       let ccatId = doc.wholeChildCategory.split("__")[2];
       let catData = catDetails(catId, scatId, ccatId);
 
+      console.log(doc.bannerType, doc.bannerTypeColor);
       editProduct["product-name"].value = doc.name;
+      editProduct["product-type"].value = doc.bannerType || '';
+      editProduct["product-type-color"].value = doc.bannerTypeColor || '';
       editProduct["product-sno"].value = doc.sno;
 
       let wcat = `${catData.cId}__${catData.cname}`;
@@ -513,6 +529,8 @@ const editDetails = async (e) => {
               editProduct["cake-weight-half"].checked = true;
               editProduct["cake-price-half"].value = weight.weightPrice;
               editProduct["cake-prevPrice-half"].value = weight.weightPrevPrice;
+              console.log(editProduct);
+              console.log(editProduct["cake-prevPrice-half"].value);
             } else if (weight.cakeWeight === "one") {
               editProduct["cake-weight-one"].checked = true;
               editProduct["cake-price-one"].value = weight.weightPrice;
@@ -520,7 +538,7 @@ const editDetails = async (e) => {
             } else if (weight.cakeWeight === "oneHalf") {
               editProduct["cake-weight-oneHalf"].checked = true;
               editProduct["cake-price-oneHalf"].value = weight.weightPrice;
-              editProduct["cake-prevPrice-oneHalf"].value =
+              editProduct["cake-prevPrice-oneHalf"].value = weight.weightPrevPrice
                 weight.weightPrevPrice;
             } else if (weight.cakeWeight === "two") {
               editProduct["cake-weight-two"].checked = true;
@@ -529,7 +547,7 @@ const editDetails = async (e) => {
             } else if (weight.cakeWeight === "three") {
               editProduct["cake-weight-three"].checked = true;
               editProduct["cake-price-three"].value = weight.weightPrice;
-              editProduct["cake-prevPrice-three"].value =
+              editProduct["cake-prevPrice-three"].value = weight.weightPrevPrice;
                 weight.weightPrevPrice;
             } else if (weight.cakeWeight === "four") {
               editProduct["cake-weight-four"].checked = true;
@@ -597,8 +615,6 @@ const editDetails = async (e) => {
 
       // }
 
-
-
       $("#galleryImagesDisp").empty();
       if (doc.subImgs) {
         for (var i = 0; i < doc.subImgs.length; i++) {
@@ -619,65 +635,52 @@ const editDetails = async (e) => {
       }
       let mImgUrl = doc.mainImgUrl;
 
-
       let mImg = `
       <img id="putImage" src="${mImgUrl}" alt=" image" />
       `;
       mainImgSpanHTML.innerHTML = mImg;
       $(".textarea1").summernote("reset");
       $(".textarea2").summernote("reset");
-      // $("#productDesc").summernote(
-      //   "pasteHTML", ""
 
-      // );
-      // $("#productPolicy").summernote(
-      //   "pasteHTML", ""
-
-      // );
-      // productDescDetail.innerHTML=""
-      // var productDescDetail = document.createElement('div');
-
-      // productDescDetail.innerHTML = doc.descriptions;
-      // alert(doc.descriptions)
-
-      while (doc.descriptions.includes('<p><br></p>') || doc.descriptions.startsWith('<p><br></p>')) {
-
-        doc.descriptions = doc.descriptions.replace('<p><br></p>', '')
+      while (
+        doc.descriptions.includes("<p><br></p>") ||
+        doc.descriptions.startsWith("<p><br></p>")
+      ) {
+        doc.descriptions = doc.descriptions.replace("<p><br></p>", "");
       }
 
-      while (doc.descriptions.includes('<p><br></p>') || doc.descriptions.endsWith('<p><br></p>')) {
-
-        doc.descriptions = doc.descriptions.replace(new RegExp('<p><br></p>$'), '')
+      while (
+        doc.descriptions.includes("<p><br></p>") ||
+        doc.descriptions.endsWith("<p><br></p>")
+      ) {
+        doc.descriptions = doc.descriptions.replace(
+          new RegExp("<p><br></p>$"),
+          ""
+        );
       }
-      while (doc.policy.startsWith('<p><br></p>') || doc.policy.includes('<p><br></p>')) {
-
-        doc.policy = doc.policy.replace('<p><br></p>', '')
+      while (
+        doc.policy.startsWith("<p><br></p>") ||
+        doc.policy.includes("<p><br></p>")
+      ) {
+        doc.policy = doc.policy.replace("<p><br></p>", "");
       }
 
-      while (doc.policy.endsWith('<p><br></p>') || doc.policy.includes('<p><br></p>')) {
-
-        doc.policy = doc.policy.replace(new RegExp('<p><br></p>$'), '')
+      while (
+        doc.policy.endsWith("<p><br></p>") ||
+        doc.policy.includes("<p><br></p>")
+      ) {
+        doc.policy = doc.policy.replace(new RegExp("<p><br></p>$"), "");
       }
-      $("#productDesc").summernote(
-        "editor.pasteHTML", doc.descriptions
-
-      );
+      $("#productDesc").summernote("editor.pasteHTML", doc.descriptions);
 
       // $('#productPolicy').reset();
-      $("#productPolicy").summernote(
-        "editor.pasteHTML", doc.policy
-
-      );
+      $("#productPolicy").summernote("editor.pasteHTML", doc.policy);
       // document.getElementById("setCat").value = "HELOO";
       // $('#setCat').tagsinput('removeAll');
-      document.getElementById("setCat").value = doc.tags
-  
-     
-
-    
+      document.getElementById("setCat").value = doc.tags;
+      alert(doc.tags)
       //# sourceMappingURL=bootstrap-tagsinput.min.js.
       // editProduct["product-tag"].value = doc.tags;
-
 
       // tagger(document.querySelector("#setCat"), {
       //   allow_spaces: true,
@@ -686,8 +689,6 @@ const editDetails = async (e) => {
       //     return false;
       //   },
       // });
-
-
     })
     .catch((error) => {
       console.log(error);
@@ -700,12 +701,9 @@ function deleteImage(e) {
   const imgId = e.target.dataset.imgid;
   const imgIndex = e.target.dataset.index;
   // console.log(imgIndex);
-  $('#' + imgId).remove();
+  $("#" + imgId).remove();
   deleteSubImgs.push(imgIndex);
-
 }
-
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -715,12 +713,14 @@ function deleteImage(e) {
 let subImgs, mainImg;
 
 const submitEditForm = (event) => {
-
   // console.log(editProduct);
   let editProduct = document.querySelector("#add-product");
+  console.log(editProduct);
   // console.log("edit form submit");
   event.preventDefault();
   let productName,
+    bannerType,
+    bannerTypeColor,
     productSno,
     productCategory,
     productSubCategory,
@@ -742,11 +742,12 @@ const submitEditForm = (event) => {
   let weightPrice, cakeType;
 
   productName = editProduct["product-name"].value;
+  bannerType = editProduct["product-type"].value;
+  bannerTypeColor = editProduct["product-type-color"].value;
   productSno = editProduct["product-sno"].value;
   productCategory = editProduct["product-category"].value;
   productSubCategory = editProduct["product-sub-category"].value;
   productChildCategory = editProduct["product-child-category"].value;
-  console.log(productCategory);
   productMRP = editProduct["product-mrp"].value;
   productSP = editProduct["product-sp"].value;
   productGST = editProduct["product-gst"].value;
@@ -763,6 +764,7 @@ const submitEditForm = (event) => {
   // });
 
   productTags = editProduct.querySelector('input[name="product-tag"]').value;
+  console.log(productTags);
 
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
@@ -772,34 +774,38 @@ const submitEditForm = (event) => {
       .querySelectorAll('input[name="cake-weight"]')
       .forEach((weight) => {
         if (weight.checked) {
+          let wPrevPrice = 0;
           if (weight.value == "half") {
             weightPrice = editProduct["cake-price-half"].value;
-            // console.log(weightPrice);
+            wPrevPrice = editProduct["cake-prevPrice-half"].value;
+            console.log(editProduct);
+              console.log(editProduct["cake-prevPrice-half"].value);
           } else if (weight.value === "one") {
             weightPrice = editProduct["cake-price-one"].value;
-            weightPrice = editProduct["cake-prevPrice-one"].value;
+            wPrevPrice = editProduct["cake-prevPrice-one"].value;
           } else if (weight.value === "oneHalf") {
             weightPrice = editProduct["cake-price-oneHalf"].value;
-            weightPrice = editProduct["cake-prevPrice-oneHalf"].value;
+            wPrevPrice = editProduct["cake-prevPrice-oneHalf"].value;
           } else if (weight.value === "two") {
             weightPrice = editProduct["cake-price-two"].value;
-            weightPrice = editProduct["cake-prevPrice-two"].value;
+            wPrevPrice = editProduct["cake-prevPrice-two"].value;
           } else if (weight.value === "three") {
             weightPrice = editProduct["cake-price-three"].value;
-            weightPrice = editProduct["cake-prevPrice-three"].value;
+            wPrevPrice = editProduct["cake-prevPrice-three"].value;
           } else if (weight.value === "four") {
             weightPrice = editProduct["cake-price-four"].value;
-            weightPrice = editProduct["cake-prevPrice-four"].value;
+            wPrevPrice = editProduct["cake-prevPrice-four"].value;
           } else if (weight.value === "five") {
             weightPrice = editProduct["cake-price-five"].value;
-            weightPrice = editProduct["cake-prevPrice-five"].value;
+            wPrevPrice = editProduct["cake-prevPrice-five"].value;
           } else {
             weightPrice = editProduct["cake-price-six"].value;
-            weightPrice = editProduct["cake-prevPrice-six"].value;
+            wPrevPrice = editProduct["cake-prevPrice-six"].value;
           }
           let data = {
             cakeWeight: weight.value,
             weightPrice: weightPrice,
+            weightPrevPrice: wPrevPrice
           };
 
           cakeWeights.push(data);
@@ -869,13 +875,12 @@ const submitEditForm = (event) => {
       suburlss.push(el.src);
     });
   }
-  // console.log(productSubImgs);
-  // alert(productDescription)
-  // alert(productPolicy)
 
-  console.log();
+  
   let wholeProduct = {
     name: productName,
+    bannerType: bannerType,
+    bannerTypeColor: bannerTypeColor,
     sno: productSno,
     wholeCategory: productCategory,
     wholeSubCategory: productSubCategory,
@@ -893,6 +898,8 @@ const submitEditForm = (event) => {
     isActivated: true,
     subImgsUrl: suburlss,
   };
+  console.log(editProduct.querySelector('input[name=cake-prevPrice-half]').value);
+  console.log(wholeProduct);
 
   if (productCategory.toUpperCase().includes("CAKES")) {
     wholeProduct.weights = cakeWeights || "";
@@ -922,9 +929,11 @@ const submitEditForm = (event) => {
     //     console.log(error);
     //   });
     dataId = editProductId;
-    console.log(data.wholeCategory.split('__')[0], editProductId);
+    console.log(data.wholeCategory.split("__")[0], editProductId);
 
-    let docRef = await db.collection(data.wholeCategory.split('__')[0].toString()).doc(editProductId);
+    let docRef = await db
+      .collection(data.wholeCategory.split("__")[0].toString())
+      .doc(editProductId);
     docRef.get().then(async (snapshot) => {
       let docData = snapshot.data();
       docData = data;
@@ -944,12 +953,16 @@ const submitEditForm = (event) => {
         console.log(mainImg);
         await storageService
           .ref(
-            `${response.prodData.wholeCategory.split('__')[0]}/${response.dataId}/${response.prodData.mainImg}`
+            `${response.prodData.wholeCategory.split("__")[0]}/${
+              response.dataId
+            }/${response.prodData.mainImg}`
           )
           .put(mainImg);
         console.log("uploading done");
         mainImgUrl = await extractImgUrl(
-          `${response.prodData.wholeCategory.split('__')[0]}/${response.dataId}/${response.prodData.mainImg}`
+          `${response.prodData.wholeCategory.split("__")[0]}/${
+            response.dataId
+          }/${response.prodData.mainImg}`
         );
         console.log(mainImgUrl);
       }
@@ -964,11 +977,13 @@ const submitEditForm = (event) => {
           let id = response.dataId;
           // await uploadImg(id, name, img);
           await storageService
-            .ref(`${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`)
+            .ref(
+              `${response.prodData.wholeCategory.split("__")[0]}/${id}/${name}`
+            )
             .put(img);
-          console.log('stored');
+          console.log("stored");
           let subUrl = await extractImgUrl(
-            `${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`
+            `${response.prodData.wholeCategory.split("__")[0]}/${id}/${name}`
           );
           console.log(subUrl);
           subImgsUrl.push(subUrl);
@@ -986,7 +1001,7 @@ const submitEditForm = (event) => {
       // }
       if (subImgs || mainImg) {
         let docRef = await db
-          .collection(response.prodData.wholeCategory.split('__')[0])
+          .collection(response.prodData.wholeCategory.split("__")[0])
           .doc(response.dataId);
 
         await docRef.get().then(async (doc) => {
@@ -1001,90 +1016,102 @@ const submitEditForm = (event) => {
           if (deleteSubImgs) {
             if (deleteSubImgs.length > 0) {
               for (let el of deleteSubImgs) {
-                console.log(el);
-                console.log(docData.subImgs);
-                console.log(`${docData.wholeCategory.split('__')[0]}/${doc.id}/${docData.subImgs[el]}`);
-                await storageService.ref(`${docData.wholeCategory.split('__')[0]}/${doc.id}/${docData.subImgs[el]}`).delete().then(d => {
+                console.log(
+                  `${docData.wholeCategory.split("__")[0]}/${doc.id}/${
+                    docData.subImgs[el]
+                  }`
+                );
+                await storageService
+                .ref(
+                  `${docData.wholeCategory.split("__")[0]}/${doc.id}/${
+                    docData.subImgs[el]
+                  }`
+                )
+                .delete()
+                .then((d) => {
                   console.log(d);
-                  console.log('deleted');
+                  console.log("deleted");
                   docData.subImgs.splice(el, 1);
                   docData.subImgsUrl.splice(el, 1);
-
-                }).catch(error => {
-                  console.log(error);
-                  alert(error)
                 })
-
+                .catch((error) => {
+                  console.log(error);
+                  alert(error);
+                });
               }
             }
           }
           console.log(docData);
           await docRef.update(docData);
-          
         });
       }
 
-      const searchRef = db.collection('miscellaneous').doc('searchList');
-      searchRef.get().then(async(seachDoc) => {
-        let searchData = seachDoc.data();
-        let searchName = {
-          name: response.prodData.name,
-          id: Math.random(),
-          type: 'prodName'
-        }
+      // const searchRef = db.collection("miscellaneous").doc("searchList");
+      // searchRef.get().then(async (seachDoc) => {
+      //   let searchData = seachDoc.data();
+      //   console.log(searchData);
+      //   let searchName = {
+      //     name: response.prodData.name,
+      //     id: Math.random(),
+      //     type: "prodName",
+      //   };
+
+      //   let searchSno = {
+      //     name: response.prodData.sno,
+      //     id: Math.random(),
+      //     type: "prodId",
+      //     prodId: response.dataId,
+      //   };
+      //   console.log(response.prodData);
+      //   if(response.prodData.tags) {
+      //     response.prodData.tags.split(",").map((tt) => {
+      //       let tagFlag = 0;
+      //       for (let s of searchData.searches) {
+      //         if (s.name === tt) {
+      //           tagFlag++;
+      //           break;
+      //         }
+      //       }
+  
+      //       if (tagFlag === 0) {
+      //         searchData.searches.push({
+      //           name: tt,
+      //           id: Math.random(),
+      //           type: "tag",
+      //         });
+      //       }
+      //     });
+      //   }
+
+      //   let flag = 0;
+      //   if(searchData.searches) {
+      //     for (let s of searchData.searches) {
+      //       if (s.name == searchName.name) {
+      //         flag = 1;
+      //         break;
+      //       }
+      //     }
+      //     if (flag === 0) {
+      //       searchData.searches.push(searchName);
+      //     }
         
-        let searchSno = {
-          name: response.prodData.sno,
-          id: Math.random(),
-          type: 'prodId',
-          prodId: response.dataId
-        }
-        console.log(response.prodData);
-        response.prodData.tags.split(',').map(tt => {
-          let tagFlag = 0;
-          for(let s of searchData.searches) { 
-            if(s.name === tt) {
-              tagFlag++;
-              break;
-            }
-          }
 
-          if(tagFlag === 0) {
-            searchData.searches.push({
-              name: tt,
-              id: Math.random(),
-              type: 'tag'
-            })
-          }
-        })
+      //     let snoFlag = 0;
+      //     for (let s of searchData.searches) {
+      //       if (s.name == searchSno.name) {
+      //         snoFlag = 1;
+      //         break;
+      //       }
+      //     }
+      //     if (snoFlag === 0) {
+      //       searchData.searches.push(searchSno);
+      //     }
+      //   }
 
-        let flag = 0;
-        for(let s of searchData.searches) {
-          if(s.name == searchName.name) {
-            flag = 1;
-            break;
-          }
-        }
-        if(flag === 0) {
-          searchData.searches.push(searchName);
-        }
-
-        let snoFlag = 0;
-        for(let s of searchData.searches) {
-          if(s.name == searchSno.name) {
-            snoFlag = 1;
-            break;
-          }
-        }
-        if(snoFlag === 0) {
-          searchData.searches.push(searchSno);
-        }
-
-        console.log(searchData);
-        await searchRef.update(searchData);
-        location.reload();
-      })
-
+      //   console.log(searchData);
+      //   searchRef.update(searchData);
+      //   // location.reload();
+      // });
 
       editProduct.querySelector(".alert-success").textContent = "Product Saved";
       editProduct.querySelector(".alert-success").style.display = "block";
