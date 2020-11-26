@@ -231,11 +231,7 @@ const displayTables = async() => {
                   <div class="col-sm-7">
                     <a  class="btn btn-secondary" id="myInput${cat.id}" class="searchBar" onclick=myFunction("myInput${cat.id}","myTable${cat.id}","table-responsive${cat.id}")><i class="material-icons" style="color:black">&#xE147;</i>
                       <span style="color:black">Enable Attribute</span></a>
-                  <a class="btn btn-secondary" onclick=createPDF("myTable` +
-      cat.id +
-      `","` +
-      cat.data.name +
-      `")><i class="material-icons" style="color:black">&#xE24D;</i>
+                  <a class="btn btn-secondary" onclick=createPDF("myTable${cat.id}","${cat.data.name}")><i class="material-icons" style="color:black">&#xE24D;</i>
                       <span style="color:black">Export to Pdf</span></a>
                   </div>
                 </div>
@@ -268,9 +264,7 @@ const displayTables = async() => {
           </div>
       </div> 
     <br> `;
-
     const tbodys = document.querySelector("#tbody" + cat.id);
-    console.log(tbodys);
     await db
       .collection(cat.id)
       .get()
@@ -287,6 +281,8 @@ const displayTables = async() => {
     }
   }
 };
+
+
 
 // extractData();
 
@@ -500,6 +496,8 @@ const editDetails = async (e) => {
     .doc(docId)
     .get()
     .then(async (snapshot) => {
+      
+      console.log(snapshot);
       let doc = snapshot.data();
       editProductDetails = doc;
       editProductId = snapshot.id;
@@ -509,7 +507,10 @@ const editDetails = async (e) => {
       let ccatId = doc.wholeChildCategory.split("__")[2];
       let catData = catDetails(catId, scatId, ccatId);
 
+      console.log(doc.bannerType, doc.bannerTypeColor);
       editProduct["product-name"].value = doc.name;
+      editProduct["product-type"].value = doc.bannerType || '';
+      editProduct["product-type-color"].value = doc.bannerTypeColor || '';
       editProduct["product-sno"].value = doc.sno;
 
       let wcat = `${catData.cId}__${catData.cname}`;
@@ -528,6 +529,8 @@ const editDetails = async (e) => {
               editProduct["cake-weight-half"].checked = true;
               editProduct["cake-price-half"].value = weight.weightPrice;
               editProduct["cake-prevPrice-half"].value = weight.weightPrevPrice;
+              console.log(editProduct);
+              console.log(editProduct["cake-prevPrice-half"].value);
             } else if (weight.cakeWeight === "one") {
               editProduct["cake-weight-one"].checked = true;
               editProduct["cake-price-one"].value = weight.weightPrice;
@@ -535,7 +538,7 @@ const editDetails = async (e) => {
             } else if (weight.cakeWeight === "oneHalf") {
               editProduct["cake-weight-oneHalf"].checked = true;
               editProduct["cake-price-oneHalf"].value = weight.weightPrice;
-              editProduct["cake-prevPrice-oneHalf"].value =
+              editProduct["cake-prevPrice-oneHalf"].value = weight.weightPrevPrice
                 weight.weightPrevPrice;
             } else if (weight.cakeWeight === "two") {
               editProduct["cake-weight-two"].checked = true;
@@ -544,7 +547,7 @@ const editDetails = async (e) => {
             } else if (weight.cakeWeight === "three") {
               editProduct["cake-weight-three"].checked = true;
               editProduct["cake-price-three"].value = weight.weightPrice;
-              editProduct["cake-prevPrice-three"].value =
+              editProduct["cake-prevPrice-three"].value = weight.weightPrevPrice;
                 weight.weightPrevPrice;
             } else if (weight.cakeWeight === "four") {
               editProduct["cake-weight-four"].checked = true;
@@ -638,19 +641,6 @@ const editDetails = async (e) => {
       mainImgSpanHTML.innerHTML = mImg;
       $(".textarea1").summernote("reset");
       $(".textarea2").summernote("reset");
-      // $("#productDesc").summernote(
-      //   "pasteHTML", ""
-
-      // );
-      // $("#productPolicy").summernote(
-      //   "pasteHTML", ""
-
-      // );
-      // productDescDetail.innerHTML=""
-      // var productDescDetail = document.createElement('div');
-
-      // productDescDetail.innerHTML = doc.descriptions;
-      // alert(doc.descriptions)
 
       while (
         doc.descriptions.includes("<p><br></p>") ||
@@ -688,7 +678,7 @@ const editDetails = async (e) => {
       // document.getElementById("setCat").value = "HELOO";
       // $('#setCat').tagsinput('removeAll');
       document.getElementById("setCat").value = doc.tags;
-
+      alert(doc.tags)
       //# sourceMappingURL=bootstrap-tagsinput.min.js.
       // editProduct["product-tag"].value = doc.tags;
 
@@ -725,9 +715,12 @@ let subImgs, mainImg;
 const submitEditForm = (event) => {
   // console.log(editProduct);
   let editProduct = document.querySelector("#add-product");
+  console.log(editProduct);
   // console.log("edit form submit");
   event.preventDefault();
   let productName,
+    bannerType,
+    bannerTypeColor,
     productSno,
     productCategory,
     productSubCategory,
@@ -749,11 +742,12 @@ const submitEditForm = (event) => {
   let weightPrice, cakeType;
 
   productName = editProduct["product-name"].value;
+  bannerType = editProduct["product-type"].value;
+  bannerTypeColor = editProduct["product-type-color"].value;
   productSno = editProduct["product-sno"].value;
   productCategory = editProduct["product-category"].value;
   productSubCategory = editProduct["product-sub-category"].value;
   productChildCategory = editProduct["product-child-category"].value;
-  console.log(productCategory);
   productMRP = editProduct["product-mrp"].value;
   productSP = editProduct["product-sp"].value;
   productGST = editProduct["product-gst"].value;
@@ -770,6 +764,7 @@ const submitEditForm = (event) => {
   // });
 
   productTags = editProduct.querySelector('input[name="product-tag"]').value;
+  console.log(productTags);
 
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
@@ -779,34 +774,38 @@ const submitEditForm = (event) => {
       .querySelectorAll('input[name="cake-weight"]')
       .forEach((weight) => {
         if (weight.checked) {
+          let wPrevPrice = 0;
           if (weight.value == "half") {
             weightPrice = editProduct["cake-price-half"].value;
-            // console.log(weightPrice);
+            wPrevPrice = editProduct["cake-prevPrice-half"].value;
+            console.log(editProduct);
+              console.log(editProduct["cake-prevPrice-half"].value);
           } else if (weight.value === "one") {
             weightPrice = editProduct["cake-price-one"].value;
-            weightPrice = editProduct["cake-prevPrice-one"].value;
+            wPrevPrice = editProduct["cake-prevPrice-one"].value;
           } else if (weight.value === "oneHalf") {
             weightPrice = editProduct["cake-price-oneHalf"].value;
-            weightPrice = editProduct["cake-prevPrice-oneHalf"].value;
+            wPrevPrice = editProduct["cake-prevPrice-oneHalf"].value;
           } else if (weight.value === "two") {
             weightPrice = editProduct["cake-price-two"].value;
-            weightPrice = editProduct["cake-prevPrice-two"].value;
+            wPrevPrice = editProduct["cake-prevPrice-two"].value;
           } else if (weight.value === "three") {
             weightPrice = editProduct["cake-price-three"].value;
-            weightPrice = editProduct["cake-prevPrice-three"].value;
+            wPrevPrice = editProduct["cake-prevPrice-three"].value;
           } else if (weight.value === "four") {
             weightPrice = editProduct["cake-price-four"].value;
-            weightPrice = editProduct["cake-prevPrice-four"].value;
+            wPrevPrice = editProduct["cake-prevPrice-four"].value;
           } else if (weight.value === "five") {
             weightPrice = editProduct["cake-price-five"].value;
-            weightPrice = editProduct["cake-prevPrice-five"].value;
+            wPrevPrice = editProduct["cake-prevPrice-five"].value;
           } else {
             weightPrice = editProduct["cake-price-six"].value;
-            weightPrice = editProduct["cake-prevPrice-six"].value;
+            wPrevPrice = editProduct["cake-prevPrice-six"].value;
           }
           let data = {
             cakeWeight: weight.value,
             weightPrice: weightPrice,
+            weightPrevPrice: wPrevPrice
           };
 
           cakeWeights.push(data);
@@ -876,13 +875,12 @@ const submitEditForm = (event) => {
       suburlss.push(el.src);
     });
   }
-  // console.log(productSubImgs);
-  // alert(productDescription)
-  // alert(productPolicy)
 
-  console.log();
+  
   let wholeProduct = {
     name: productName,
+    bannerType: bannerType,
+    bannerTypeColor: bannerTypeColor,
     sno: productSno,
     wholeCategory: productCategory,
     wholeSubCategory: productSubCategory,
@@ -900,6 +898,8 @@ const submitEditForm = (event) => {
     isActivated: true,
     subImgsUrl: suburlss,
   };
+  console.log(editProduct.querySelector('input[name=cake-prevPrice-half]').value);
+  console.log(wholeProduct);
 
   if (productCategory.toUpperCase().includes("CAKES")) {
     wholeProduct.weights = cakeWeights || "";
@@ -1016,30 +1016,28 @@ const submitEditForm = (event) => {
           if (deleteSubImgs) {
             if (deleteSubImgs.length > 0) {
               for (let el of deleteSubImgs) {
-                console.log(el);
-                console.log(docData.subImgs);
                 console.log(
                   `${docData.wholeCategory.split("__")[0]}/${doc.id}/${
                     docData.subImgs[el]
                   }`
                 );
                 await storageService
-                  .ref(
-                    `${docData.wholeCategory.split("__")[0]}/${doc.id}/${
-                      docData.subImgs[el]
-                    }`
-                  )
-                  .delete()
-                  .then((d) => {
-                    console.log(d);
-                    console.log("deleted");
-                    docData.subImgs.splice(el, 1);
-                    docData.subImgsUrl.splice(el, 1);
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                    alert(error);
-                  });
+                .ref(
+                  `${docData.wholeCategory.split("__")[0]}/${doc.id}/${
+                    docData.subImgs[el]
+                  }`
+                )
+                .delete()
+                .then((d) => {
+                  console.log(d);
+                  console.log("deleted");
+                  docData.subImgs.splice(el, 1);
+                  docData.subImgsUrl.splice(el, 1);
+                })
+                .catch((error) => {
+                  console.log(error);
+                  alert(error);
+                });
               }
             }
           }
@@ -1048,72 +1046,72 @@ const submitEditForm = (event) => {
         });
       }
 
-      const searchRef = db.collection("miscellaneous").doc("searchList");
-      searchRef.get().then(async (seachDoc) => {
-        let searchData = seachDoc.data();
-        let searchName = {
-          name: response.prodData.name,
-          id: Math.random(),
-          type: "prodName",
-        };
+      // const searchRef = db.collection("miscellaneous").doc("searchList");
+      // searchRef.get().then(async (seachDoc) => {
+      //   let searchData = seachDoc.data();
+      //   console.log(searchData);
+      //   let searchName = {
+      //     name: response.prodData.name,
+      //     id: Math.random(),
+      //     type: "prodName",
+      //   };
 
-        let searchSno = {
-          name: response.prodData.sno,
-          id: Math.random(),
-          type: "prodId",
-          prodId: response.dataId,
-        };
-        console.log(response.prodData);
-        if(response.prodData.tags) {
-          response.prodData.tags.split(",").map((tt) => {
-            let tagFlag = 0;
-            for (let s of searchData.searches) {
-              if (s.name === tt) {
-                tagFlag++;
-                break;
-              }
-            }
+      //   let searchSno = {
+      //     name: response.prodData.sno,
+      //     id: Math.random(),
+      //     type: "prodId",
+      //     prodId: response.dataId,
+      //   };
+      //   console.log(response.prodData);
+      //   if(response.prodData.tags) {
+      //     response.prodData.tags.split(",").map((tt) => {
+      //       let tagFlag = 0;
+      //       for (let s of searchData.searches) {
+      //         if (s.name === tt) {
+      //           tagFlag++;
+      //           break;
+      //         }
+      //       }
   
-            if (tagFlag === 0) {
-              searchData.searches.push({
-                name: tt,
-                id: Math.random(),
-                type: "tag",
-              });
-            }
-          });
-        }
+      //       if (tagFlag === 0) {
+      //         searchData.searches.push({
+      //           name: tt,
+      //           id: Math.random(),
+      //           type: "tag",
+      //         });
+      //       }
+      //     });
+      //   }
+
+      //   let flag = 0;
+      //   if(searchData.searches) {
+      //     for (let s of searchData.searches) {
+      //       if (s.name == searchName.name) {
+      //         flag = 1;
+      //         break;
+      //       }
+      //     }
+      //     if (flag === 0) {
+      //       searchData.searches.push(searchName);
+      //     }
         
 
-        let flag = 0;
-        if(searchData.searches) {
-          for (let s of searchData.searches) {
-            if (s.name == searchName.name) {
-              flag = 1;
-              break;
-            }
-          }
-          if (flag === 0) {
-            searchData.searches.push(searchName);
-          }
-        
+      //     let snoFlag = 0;
+      //     for (let s of searchData.searches) {
+      //       if (s.name == searchSno.name) {
+      //         snoFlag = 1;
+      //         break;
+      //       }
+      //     }
+      //     if (snoFlag === 0) {
+      //       searchData.searches.push(searchSno);
+      //     }
+      //   }
 
-          let snoFlag = 0;
-          for (let s of searchData.searches) {
-            if (s.name == searchSno.name) {
-              snoFlag = 1;
-              break;
-            }
-          }
-          if (snoFlag === 0) {
-            searchData.searches.push(searchSno);
-          }
-        }
-
-        console.log(searchData);
-        await searchRef.update(searchData);
-        location.reload();
-      });
+      //   console.log(searchData);
+      //   searchRef.update(searchData);
+      //   // location.reload();
+      // });
 
       editProduct.querySelector(".alert-success").textContent = "Product Saved";
       editProduct.querySelector(".alert-success").style.display = "block";

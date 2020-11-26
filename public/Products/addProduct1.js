@@ -180,6 +180,7 @@ const addProductForm = (event) => {
  
   event.preventDefault();
   let productName,
+  productType, productTypeColor,
     productSno,
     productCategory,
     productSubCategory,
@@ -201,6 +202,8 @@ const addProductForm = (event) => {
   let weightPrice, cakeType, weightPrevPrice;
 
   productName = addProduct["product-name"].value;
+  productType = addProduct["product-type"].value;
+  productTypeColor = addProduct["product-type-color"].value;
   productSno = addProduct["product-sno"].value;
   productCategory = addProduct["product-category"].value;
   productSubCategory = addProduct["product-sub-category"].value;
@@ -313,6 +316,8 @@ const addProductForm = (event) => {
 
   let wholeProduct = {
     name: productName,
+    bannerType: productType,
+    bannerTypeColor: productTypeColor,
     sno: productSno,
     wholeCategory: productCategory,
     wholeSubCategory: productSubCategory,
