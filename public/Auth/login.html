@@ -155,7 +155,11 @@
           let goTo=window.localStorage.getItem("redirectURL");
    
           if(goTo!=null &&(goTo!="null"))
-            window.location=goTo;
+          if(goTo=="index.html"){
+              window.location="/index.html"
+            }else{
+              window.location=goTo;
+            }
           else
             window.location="/index.html"
    

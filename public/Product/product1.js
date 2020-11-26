@@ -67,14 +67,17 @@ const displayProduct = (prodData) => {
   document.querySelector('.idno').innerHTML = PRODUCT_ID;
 
   let big = `
-    <img class="xzoom5" id="xzoom-magnific"  
+  <span class="zoom" id="ex1">
+    <img   
       src="${prodData.mainImgUrl}"
       xoriginal = "${prodData.mainImgUrl}"
       alt="Lake of cakes"
-    /> 
+      </span> 
   `;
   // console.log(big);
   bigImgHolderHTML.innerHTML = big;
+		
+  $('#ex1').zoom();
 
   let imgs = `
   <a
@@ -90,7 +93,7 @@ const displayProduct = (prodData) => {
       prodData.subImgsUrl.map((subUrl) => {
         imgs += `
         <a
-          href="${subUrl}">
+          href="#!">
           <img class="xzoom-gallery5"  onclick="imgChange(event, this)" width="70" style="object-fit: contain;"
             src="${subUrl}"
             alt="Lake of cakes">
@@ -372,19 +375,23 @@ const displaySuggestion = () => {
 };
 
 const imgChange = (e, current) => {
+
   // console.log(current);
   let imgUrl = current.src;
   console.log(imgUrl);
   // bigImgHolderHTML.innerHTML = '';
   let big = `
-  <img class="xzoom5" id="xzoom-magnific"  
+  <span class="zoom" id="ex11">
+  <img   
       src="${imgUrl}"
-      xoriginal = "${imgUrl}"
       alt="Lake of cakes"
     /> 
+    </span>
   `;
+ 
 
   bigImgHolderHTML.innerHTML = big;
+  $('#ex11').zoom();
   console.log(document.querySelector("#whole-img-block"));
 };
 
@@ -456,7 +463,7 @@ db.collection("addons")
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
         <input type="checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
           style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
-        <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+        <div class="item-img  "  style="max-height:150px ;>
           <img class="img-fluid"
             src="${docData.imgUrl}"
             alt="" style="width:100%;object-fit: cover;">
@@ -710,7 +717,7 @@ const displaySuggestions = async() => {
                 </li>
               </ul>
             </div>
-            <img class="img-fluid" style="width: 500px !important;" src="${pdata.mainImgUrl}" alt="LAKE OF CAKES">
+            <img class="img-fluid" style="width: 500px !important; height:200px " src="${pdata.mainImgUrl}" alt="LAKE OF CAKES">
           </div>
           <div class="info">
             <div class="stars">
@@ -727,5 +734,36 @@ const displaySuggestions = async() => {
       })
     }
     trendingItemsHTML.innerHTML = card;
+    var $trending_slider = $('.trending-item-slider');
+    $trending_slider.owlCarousel({
+      items: 4,
+      autoplay: true,
+      margin: 10,
+      loop: true,
+      dots: true,
+      nav: true,
+      center: false,
+      autoplayHoverPause: true,
+      navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+      smartSpeed: 600,
+      responsive: {
+        0: {
+          items: 2,
+        },
+        414: {
+          items: 2,
+        },
+        768: {
+          items: 3,
+        },
+        992: {
+          items: 5
+        },
+        1200: {
+          items: 6
+        }
+      }
+    });
+
   })
 }
