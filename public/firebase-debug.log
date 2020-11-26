@@ -1,0 +1,44 @@
+[debug] [2020-11-25T20:14:49.310Z] ----------------------------------------------------------------------
+[debug] [2020-11-25T20:14:49.313Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Lenovo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2020-11-25T20:14:49.313Z] CLI Version:   8.16.2
+[debug] [2020-11-25T20:14:49.313Z] Platform:      win32
+[debug] [2020-11-25T20:14:49.313Z] Node Version:  v14.9.0
+[debug] [2020-11-25T20:14:49.323Z] Time:          Thu Nov 26 2020 01:44:49 GMT+0530 (India Standard Time)
+[debug] [2020-11-25T20:14:49.323Z] ----------------------------------------------------------------------
+[debug] [2020-11-25T20:14:49.323Z] 
+[debug] [2020-11-25T20:14:49.334Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-25T20:14:49.335Z] > authorizing via signed-in user
+[debug] [2020-11-25T20:14:49.335Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-11-25T20:14:49.340Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-11-25T20:14:49.341Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-11-25T20:15:10.974Z] [iam] error while checking permissions, command may fail: FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2020-11-25T20:15:10.978Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-11-25T20:15:10.979Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-11-25T20:15:32.009Z] Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+[debug] [2020-11-25T20:15:32.695Z] FirebaseError: Authentication Error: Your credentials are no longer valid. Please run firebase login --reauth
+
+For CI servers and headless environments, generate a new token with firebase login:ci
+    at Object.<anonymous> (C:\Users\Lenovo\AppData\Roaming\npm\node_modules\firebase-tools\lib\auth.js:23:32)
+    at Module._compile (internal/modules/cjs/loader.js:1075:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1096:10)
+    at Module.load (internal/modules/cjs/loader.js:940:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:781:14)
+    at Module.require (internal/modules/cjs/loader.js:964:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at Object.<anonymous> (C:\Users\Lenovo\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\hosting\github.js:20:16)
+    at Module._compile (internal/modules/cjs/loader.js:1075:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1096:10)
+    at Module.load (internal/modules/cjs/loader.js:940:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:781:14)
+    at Module.require (internal/modules/cjs/loader.js:964:19)
+    at require (internal/modules/cjs/helpers.js:88:18)
+    at Object.<anonymous> (C:\Users\Lenovo\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\hosting\index.js:7:24)
+    at Module._compile (internal/modules/cjs/loader.js:1075:30)
+[error] 
+[error] Error: Failed to get Firebase project lake-of-cakes. Please make sure the project exists and your account has permission to access it.
