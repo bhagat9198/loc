@@ -201,7 +201,14 @@ const arrayRandom = (arr) => {
 const displayProds = async (arrProds) => {
   // console.log(arrProds);
   let card = "";
+  let banner,bcolor;
   for (let p of arrProds) {
+    if(p.prodData.bannerType !=undefined){
+      banner=p.prodData.bannerType;
+      bcolor=p.prodData.bannerTypeColor;
+    }else{
+      banner="";
+    }
     // console.log(p);
     let dis = Math.round((+p.prodData.totalPrice/+p.prodData.mrp)*100);
     card += `
@@ -218,7 +225,16 @@ const displayProds = async (arrProds) => {
 									</span>
 								</li>
 							</ul>
-						</div>
+            </div>
+            <span class="w3-tag w3-display-topleft" style=" ;border-radius:10px;
+            background: linear-gradient(90deg, #d84f4f, #6e1717, #ededed);
+            animation-name: load;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-direction: forwards;
+            animation-timing-function: linear;
+            background-size: 200% 100%;
+            " >`+banner+`</span>
 						<img class="responsive-image" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
 					</div>
           <div class="info" style="height: 130px !important;background-color:gay">
