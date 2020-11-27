@@ -39,18 +39,12 @@ getParams(window.location.href).then(async (response) => {
   }
   // console.log(allProductsArr);
   if (allProductsArr.length > 0) {
-    let randAllProdsArr = arrayRandom(allProductsArr);
-    TEMP_ARR = randAllProdsArr.slice();
-    // let suggestProdArr = [];
-    // if (allProductsArr.length > 6) {
-    //   for (let i = 0; i < 6; i++) {
-    //     let randElIndex = Math.floor(Math.random() * allProductsArr.length);
-    //     suggestProdArr.push(randAllProdsArr[randElIndex]);
-    //     randAllProdsArr.splice(randElIndex, 1);
-    //   }
-      displayTopSuggest(randAllProdsArr);
-    // }
-    displayProds(randAllProdsArr);
+    // let randAllProdsArr = arrayRandom(allProductsArr);
+    // TEMP_ARR = randAllProdsArr.slice();
+    // displayTopSuggest(randAllProdsArr);
+
+    // displayProds(randAllProdsArr);
+    displayProds(allProductsArr);
   } else {
     allProductsHTML.innerHTML = 'No products Found';
   }
@@ -80,7 +74,7 @@ const extractRelvantProds = async () => {
             }
           });
         });
-        console.log(allProductsArr);
+        // console.log(allProductsArr);
         return;
       } else {
         allProductsArr = [];
@@ -125,11 +119,11 @@ const extractRelvantProds = async () => {
           }
         });
       });
-      console.log(CAT);
+      // console.log(CAT);
       await db.collection('categories').doc(CAT).get().then(d => {
         dd = d.data();
-        console.log(dd);
-        console.log(dd.name);
+        // console.log(dd);
+        // console.log(dd.name);
         prodHeading = dd.name;
       })
       productHeadingHTML.innerHTML = prodHeading;
@@ -209,8 +203,23 @@ const displayProds = async (arrProds) => {
     }else{
       banner="";
     }
-    // console.log(p);
-    let dis = Math.round((+p.prodData.totalPrice/+p.prodData.mrp)*100);
+    let dis = Math.round(100 - ((+p.prodData.totalPrice/+p.prodData.mrp)*100));
+
+    let starsDiv = `
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `;
+    if(p.prodData.reviews) {
+      let stars = [];
+      p.prodData.reviews.map(star => {
+        stars.push(star.rating.split('__')[0]);
+      })
+      starsDiv = starRating(stars);
+    }
+
     card += `
 			<div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
 				<a href="../Product/product.html?prod=${p.prodId}&&cat=${p.prodData.wholeCategory.split("__")[0]
@@ -226,8 +235,9 @@ const displayProds = async (arrProds) => {
 								</li>
 							</ul>
             </div>
-            <span class="w3-tag w3-display-topleft" style=" ;border-radius:10px;
-            background: linear-gradient(90deg, `+bcolor+`, `+bcolor+`, #ededed);
+            <span class="w3-tag w3-display-topleft" style="border-radius:10px;
+            background: linear-gradient(90deg, ${p.prodData.bannerTypeColorStart ? p.prodData.bannerTypeColorStart.toString() : ''}, ${p.prodData.bannerTypeColorEnd ? p.prodData.bannerTypeColorEnd.toString() : ''}, #ededed);
+            
             animation-name: load;
             animation-duration: 1.5s;
             animation-iteration-count: infinite;
@@ -239,16 +249,21 @@ const displayProds = async (arrProds) => {
 						<img class="responsive-image" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
 					</div>
           <div class="info" style="height: 130px !important;background-color:gay">
-          <div class="stars">
-            <div class="ratings">
-                <div class="empty-stars"></div>
-                <div class="full-stars" style="width:0%"></div>
-            </div>
-          </div>       
-						<h4 class="price responsive-price ">₹ ${p.prodData.totalPrice} <del><small>₹ ${p.prodData.mrp}</small></del><small style="color:green;font-weight:700;padding:2px">(${dis} % OFF)</small></h4>
+            <style>
+            .checked {
+              color: orange;
+            }
+            </style>
+            <div class="stars">
+              <div class="ratings">
+                ${starsDiv}
+              </div>
+            </div>       
+            <h4 class="price responsive-price ">₹ ${p.prodData.totalPrice} <del><small>₹ ${p.prodData.mrp}</small></del><small style="color:green;font-weight:700;padding:2px">(${dis} % OFF)</small></h4>
             <h5 class="name responsive-name">${p.prodData.name}</h5>
-					</div>
-				</a>
+          </div>
+        </a>
+      </div>
 			</div>`;
     // console.log(card);
   }
@@ -270,7 +285,7 @@ const displayTopSuggest = async (arrProds) => {
       // console.log(cimgData.imgs);
       await db.collection('categories').doc(cimg.id).get().then(catDetail => {
         let catDetailData = catDetail.data();
-        console.log(catDetailData);
+        // console.log(catDetailData);
         card += `
         <div class="col-lg-2 ">
         <a href="./products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important ">

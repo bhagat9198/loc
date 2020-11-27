@@ -45,7 +45,7 @@ console.log("navbar1.js");
     })
 
     for(let data of tempArr) {
-      console.log(data);
+      // console.log(data);
       let subCat = extractSubCat(data.d, data.dId);
       li += `
       <li >
@@ -260,5 +260,78 @@ console.log("navbar1.js");
 
 
 
+{/* <div class="extra-list">
+  <ul>
+    <li>
+      <span rel-toggle="tooltip" title="LAKE OF CAKES" style="cursor: pointer;"  onclick="easyAddToCart(event)">
+        <i class="fa fa-shopping-cart"></i>
+      </span>
+    </li>
+  </ul>
+</div> */}
+
+const easyAddToCart = () => {
+  console.log('addToCart');
+}
 
 
+const starRating = (startArr) => {
+  let starsSum = 0;
+  startArr.map(starNum => {
+    starsSum += +starNum;
+  })
+  let startsDiv = '';
+  starsAvg = Math.round(starsSum/startArr.length);
+  if(starsAvg = 0) {
+    startsDiv = `
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `;
+  } else if(starsAvg = 1) {
+    startsDiv = `
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `;
+  } else if(starsAvg = 2) {
+    startsDiv = `
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `;
+  } else if(starsAvg = 3) {
+    startsDiv = `
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `;
+  } else if(starsAvg = 4) {
+    startsDiv = `
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    `;
+  } else if(starsAvg = 5) {
+    startsDiv = `
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    `;
+  } else {
+    startsDiv = '';
+  }
+  return startsDiv;
+} 

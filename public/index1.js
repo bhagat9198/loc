@@ -173,40 +173,29 @@ db.collection("sections")
       let docRef = db
         .collection(card.cat.toString().split("__")[0])
         .doc(card.id.toString());
-      // console.log(docRef)
       await docRef.get().then((prod) => {
         // console.log(prod);
         let prodData = prod.data();
         // console.log(prodData);
-
+        if(!prodData) {
+          return;
+        }
         row += `
-          <a href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]
-          }" class="item">
+          <div class="item">
             <div class="item-img">
-              <div class="extra-list">
-                <ul>
-                  <li>  
-                    <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
-                      data-target="#comment-log-reg" data-placement="right">
-                      <i class="fa fa-heart"></i>
-                    </span>
-                  </li>
-                </ul>
-              </div>
               <img class="img-fluid" src="${prodData.mainImgUrl}" >
             </div>
-            <div class="info">
-              <div class="stars">
-                <h5 class="contactless"> Contactless delivery</h5>
+            <a href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]}"
+              <div class="info">
+                <div class="stars">
+                  <h5 class="contactless"> Contactless delivery</h5>
+                </div>
+                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
+                <h5 class="name">${prodData.name}</h5>
+                <div class="item-cart-area"></div>
               </div>
-              <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp
-          }</small></del></h4>
-              <h5 class="name">${prodData.name}</h5>
-              <div class="item-cart-area">
-                
-              </div>
-            </div>
-          </a>
+            </a>
+          </div>
           `;
       });
       // }
@@ -242,8 +231,6 @@ db.collection("sections")
         }
       }
     });
-
-
   });
 
 // fixed section 5
@@ -293,46 +280,36 @@ db.collection("sections")
     let docData = doc.data();
     let row = "";
     fixedSection6Heading.innerHTML = docData.title;
-    for (let card of docData.prodIds) {
-      // console.log(card);
-      // console.log(card.cat.split('__')[1], card.id);
-      db
+    for(let card of docData.prodIds) {
+      await db
         .collection(card.cat.split("__")[0])
         .doc(card.id)
         .get()
         .then((prod) => {
-          // console.log(prod);
           let prodData = prod.data();
-
+          if(!prodData) {
+            return;
+          }
           // console.log(prodData);
+          // console.log(prodData.wholeCategory.split("__")[0]);
+          let t = prodData.wholeCategory.split("__")[0];
           row += `
-      <div class="col-lg-2 col-md-3 col-6 remove-padding">
-        <a class="item" href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]
-            }">
-          <div class="item-img">
-            <div class="extra-list">
-              <ul>
-                <li>
-                  <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                    data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
-                    <i class="fa fa-heart"></i>
-                  </span>
-                </li>
-              </ul>
+          <div class="col-lg-2 col-md-3 col-6 remove-padding">
+            <div class="item">
+              <div class="item-img">
+                <img class="img-fluid" src="${prodData.mainImgUrl}">
+              </div>
+              <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
+                  <h5 class="name">${prodData.name}</h5>
+                </div>
+              </a>
             </div>
-            <img class="img-fluid" src="${prodData.mainImgUrl}">
           </div>
-          <div class="info">
-            <div class="stars">
-            </div>
-            <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp
-            }</small></del></h4>
-            <h5 class="name">${prodData.name}</h5>
-           
-          </div>
-        </a>
-      </div>
-      `;
+          `;
         });
     }
     fixedSection6Row.innerHTML = row;
@@ -350,44 +327,32 @@ db.collection("sections")
     let row = "";
     fixedSection7Heading.innerHTML = docData.title;
     for (let card of docData.prodIds) {
-      // console.log(card);
       // console.log(card.cat.split('__')[1], card.id);
-      db
+      await db
         .collection(card.cat.split("__")[0])
         .doc(card.id)
         .get()
         .then((prod) => {
-          // console.log(prod);
           let prodData = prod.data();
-          // console.log(prodData);
+          if(!prodData) {
+            return;
+          }
           row += `
-        <div class="col-lg-2 col-md-3 col-6 remove-padding">
-        <a class="item" href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]
-            }">
-          <div class="item-img">
-            <div class="extra-list">
-              <ul>
-                <li>
-                  <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                    data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
-                    <i class="fa fa-heart"></i>
-                  </span>
-                </li>
-              </ul>
+          <div class="col-lg-2 col-md-3 col-6 remove-padding">
+          <div class="item" >
+            <div class="item-img">
+              <img class="img-fluid" src="${prodData.mainImgUrl}">
             </div>
-            <img class="img-fluid" src="${prodData.mainImgUrl}">
+            <a href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]}">
+              <div class="info">
+                <div class="stars"></div>
+                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
+                <h5 class="name">${prodData.name}</h5>
+              </div>
+            </a>
           </div>
-          <div class="info">
-            <div class="stars">
-            </div>
-            <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp
-            }</small></del></h4>
-            <h5 class="name">${prodData.name}</h5>
-           
-          </div>
-        </a>
-      </div>
-      `;
+        </div>
+        `;
         });
     }
     fixedSection7Row.innerHTML = row;
@@ -452,7 +417,3 @@ db.collection("sections")
     }
     fixedSection9Row.innerHTML = row;
   });
-
-const addToCart = (e) => {
-  console.log("Added To Cart");
-};

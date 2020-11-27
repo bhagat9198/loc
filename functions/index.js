@@ -200,7 +200,8 @@ const calBill = async(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTim
       addonCost: addonCost,
       shipeType: shipCat,
       shipDate: dateDelivery,
-      shipTime: timeDelivery
+      shipTime: timeDelivery,
+      orderAt : new Date()
     }).then(s => {
       // console.log('saved', s);
     }).catch(error => {
@@ -354,7 +355,117 @@ exports.sendEmailAfterOrderConfirmation = functions.firestore.document('Customer
     console.error('There was an error while sending the email:' + newValue.Email, error);
   }
 
-
 });
 
+
+exports.createUser = functions.firestore
+    .document('Customers/{userId}')
+    .onCreate((snap, context) => {
+  console.log("Came into Function")
+  const newValue = snap.data();
+
+  // ...or the previous value before this update
+  // const previousValue = change.before.data();
+
+  // access a particular field as you would any JS property
+  const name = newValue.UserName;
+  console.log("--------------------------------------------"+name)
+
+  //Create an options object that contains the time to live for the notification and the priority
+  const mailOptions = {
+    from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
+    to: newValue.Email,
+  };
+  console.log("SSSSSSSS")
+  // Building Email message.
+  mailOptions.subject = 'Welcome to lakeofcakes';
+  //for example
+  mailOptions.html =`
+<div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b>Hi `+newValue.UserName+`,</b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b><br></b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b> 
+</b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">Thank you for signing up with </span><u><span style="font-size: 10.02pt; font-family: TimesNewRoman, Bold; font-weight: bold;">Lakeofcakes.com</span><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">!</span></u></div><div><u><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><br></span></u></div><div><u><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"> 
+</span></u></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">Visiting our site just click Login or My Account at the top of page and then enter your e-mail &amp; password.</span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><br></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"> 
+</span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">When you log in to your account, you will be able to do the following : 
+</span></div><ul><li><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"> – Proceed through checkout faster when making a purchase 
+</span></li><li><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"> – Check the status of orders 
+</span></li><li><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"> – View past orders 
+</span></li><li><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"> – Make changes to your account information 
+</span></li><li><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"> – Change your password 
+</span></li></ul><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b>Further Help : 
+</b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">email us – info@lakeofcakes.com or call at +91 9598891097</span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><br></span></div><div style="text-align: center; "><span style="font-family: TimesNewRoman, Bold; font-size: 12pt; font-weight: bold;">Explore Our Categories&nbsp;</span></div><div style="text-align: center;"><br></div>
+
+<div class="alignRow" style="width:35%;margin-right: auto;margin-left: auto;display: block;border:1px solid red">
+<div style="border:1px solid red"><div style="float: left;
+
+   padding: 10px;"><div style="text-align: center;">&nbsp; &nbsp;<img src="https://www.tastytweets.in/BackEndImage/ProductImages/regular-cakes-black-forest-tasty-tweets.jpg" alt="Snow" width="70" height="70">&nbsp;</div>
+<p style="text-align: center;border:1px solid red">
+	Cakes
+</p>	
+</div>
+<div style="float: left;
+
+   padding: 10px;"><div style="text-align: center;"><img src="https://5.imimg.com/data5/JU/RF/MY-8545911/wedding-bouquet-500x500.jpg" alt="Forest" width="70" height="70">&nbsp;</div>
+<p style="text-align: center;border:1px solid red">
+	Flowers
+</p>
+</div>
+<div style="float: left;
+
+   padding: 10px;"><div style="text-align: center;"><img src="https://res.cloudinary.com/groceryncart/image/upload/v1563106438/Stores/Store50/Product/Premium-Cake-combo-red-carnation-flowers6231758431555.png" alt="Mountains" width="70" height="70">&nbsp;</div>
+<p style="text-align: center;border:1px solid red">
+	Combos
+</p>
+</div>
+<div style="float: left;
+
+   padding: 10px;"><div style="text-align: center;"><img src="https://img.icons8.com/plasticine/2x/chocolate-bar.png" alt="Snow" width="70" height="70">&nbsp;</div>
+<p style="text-align: center;border:1px solid red">
+	Chocolate
+</p>
+</div>
+<div style="float: left;
+
+   padding: 10px;"><div style="text-align: center;">&nbsp; &nbsp;<img src="https://img.icons8.com/cotton/2x/birthday.png" alt="Snow" width="70" height="70">&nbsp;</div>
+<p style="text-align: center;border:1px solid red">
+	Birthday
+</p>
+</div>
+<div style="float: left;
+
+   padding: 10px;"><div style="text-align: center;"><img src="https://cdn0.iconfinder.com/data/icons/party-human-1/66/50-512.png" alt="Snow" width="70" height="70">&nbsp;</div>
+<p style="text-align: center;border:1px solid red">
+	Aniversary
+</p>
+</div>
+<div style="float: left;
+
+   padding: 10px;"><div style="text-align: center;"><img src="https://cdn3.iconfinder.com/data/icons/baby-essentials-black-white/512/Baby_Shower_BW-512.png" alt="Snow" width="70" height="70">&nbsp;</div>
+<p style="text-align: center;border:1px solid red">
+Occassions
+</p>
+</div>
+<div style="float: left;
+
+   padding: 10px;"><div style="text-align: center;"><img src="https://cdn2.iconfinder.com/data/icons/christmas-filled-outline-1/512/christmas_holiday_merry_xmas_tree_5-512.png" alt="Snow" width="70" height="70">&nbsp;</div>
+<p style="text-align: center;border:1px solid red">
+	Gifts
+</p>
+</div>
+
+</div></div>
+
+  `
+
+  console.log("SSSSSSSS")
+  try {
+    console.log("Inside try")
+    transporter.sendMail(mailOptions);
+    console.log('email sent to:', newValue.Email);
+    transporter.close();
+    console.log(newValue.Email)
+  } catch (error) {
+    console.error('There was an error while sending the email:' + newValue.Email, error);
+  }
+
+
+});
 
