@@ -195,15 +195,44 @@ const arrayRandom = (arr) => {
 const displayProds = async (arrProds) => {
   // console.log(arrProds);
   let card = "";
+  let banner,bcolor;
   for (let p of arrProds) {
+    if(p.prodData.bannerType !=undefined){
+      banner=p.prodData.bannerType;
+      bcolor=p.prodData.bannerTypeColor;
+    }else{
+      banner="";
+    }
+    console.log(p);
     let dis = Math.round((+p.prodData.totalPrice/+p.prodData.mrp)*100);
+    console.log(p.prodData.bannerTypeColor);
     card += `
-      <div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
-      <div class="item">
-        <div class="item-img">
-          <img class="responsive-image" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
-        </div>
-        <a href="../Product/product.html?prod=${p.prodId}&&cat=${p.prodData.wholeCategory.split("__")[0]}" >
+			<div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
+				<a href="../Product/product.html?prod=${p.prodId}&&cat=${p.prodData.wholeCategory.split("__")[0]
+      }" class="item">
+					<div class="item-img">
+						<div class="extra-list">
+							<ul>
+								<li>
+									<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
+										data-target="#comment-log-reg" data-placement="right">
+										<i class="fa fa-heart"></i>
+									</span>
+								</li>
+							</ul>
+            </div>
+            <span class="w3-tag w3-display-topleft" style="border-radius:10px;
+            background: linear-gradient(90deg, ${p.prodData.bannerTypeColor ? p.prodData.bannerTypeColor.toString() : ''}, #6e1717, #ededed);
+            
+            animation-name: load;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-direction: forwards;
+            animation-timing-function: linear;
+            background-size: 200% 100%;
+            " >`+banner+`</span>
+						<img class="responsive-image" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
+					</div>
           <div class="info" style="height: 130px !important;background-color:gay">
             <div class="stars">
               <div class="ratings">
