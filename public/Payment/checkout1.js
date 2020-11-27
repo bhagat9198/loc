@@ -616,7 +616,7 @@ const undisableCoupan = e => {
 const registerTimeHTML = document.querySelector("#registerTime");
 const orderAreaHTML = document.querySelector(".order-area");
 
-const prodSummary = (e) => {
+const prodSummary = async(e) => {
   document.querySelector('#coupanApply').disabled = true;
   let card = "";
   let counter = -1;
@@ -687,6 +687,32 @@ const prodSummary = (e) => {
     </div>
     `;
   });
+
+  for(let addonProd of USER_DETAILS.orders[INDEX].addons) {
+    await db.collection('addons').doc(addonProd.id).get().then(addonDoc => {
+      let addonData = addonDoc.data();
+      card += `
+      <div class="order-item">
+        <div class="product-img">
+          <div class="d-flex">
+            <img src="${addonData.imgUrl}" height="80"  width="80" class="p-1">
+          </div> 
+        </div>
+        <div class="product-content">
+          <p class="name"><a href="../Product/product.html?cat=${p.cat}&&prod=${p.prodId}"
+              target="_blank">${addonData.name}</a></p>
+          <div class="unit-price">
+            <h5 class="label">Price : </h5><p>₹${addonData.price}</p>
+          </div>
+          <div class="quantity">
+            <h5 class="label">Quantity : </h5>
+            <span class="qttotal">${addonProd.qty} </span>
+          </div>
+        </div>
+      </div>
+      `;
+    })
+  }
 
   orderAreaHTML.innerHTML = card;
 };
