@@ -180,7 +180,7 @@ const addProductForm = (event) => {
  
   event.preventDefault();
   let productName,
-  productType, productTypeColor,
+    productType, productTypeColorStart, productTypeColorEnd,
     productSno,
     productCategory,
     productSubCategory,
@@ -203,7 +203,8 @@ const addProductForm = (event) => {
 
   productName = addProduct["product-name"].value;
   productType = addProduct["product-type"].value;
-  productTypeColor = addProduct["product-type-color"].value;
+  productTypeColorStart = addProduct["product-type-color-start"].value;
+  productTypeColorEnd = addProduct["product-type-color-end"].value;
   productSno = addProduct["product-sno"].value;
   productCategory = addProduct["product-category"].value;
   productSubCategory = addProduct["product-sub-category"].value;
@@ -317,7 +318,8 @@ const addProductForm = (event) => {
   let wholeProduct = {
     name: productName,
     bannerType: productType,
-    bannerTypeColor: productTypeColor,
+    bannerTypeColorStart: productTypeColorStart,
+    bannerTypeColorEnd: productTypeColorEnd,
     sno: productSno,
     wholeCategory: productCategory,
     wholeSubCategory: productSubCategory,

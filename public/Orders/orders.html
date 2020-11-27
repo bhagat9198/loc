@@ -193,9 +193,7 @@
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="table-responsiv">
-
                           <table id="example2" class="table table-hover dt-responsive" cellspacing="0" width="100%">
-
                             <thead>
                               <tr>
                                 <th>Order Id</th>
@@ -206,8 +204,8 @@
                                 <th>Invoice</th>
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr role="row" class="odd parent">
+                            <tbody id="orders-rows">
+                              <!-- <tr role="row" class="odd parent">
                                 <td tabindex="0">C4REDLOC</td>
                                 <td>
                                   22/12/2020
@@ -222,7 +220,6 @@
                                       data-target="#OrderDetailsModal">
                                       Order Details
                                     </button>
-
                                   </div>
                                 </td>
                                 <td>
@@ -234,7 +231,6 @@
                                       <a href="./AddProduct.html" data-toggle="modal" data-target="#InvoiceModal">
                                         <i class="fas fa-file-invoice"></i> View Invoice
                                       </a>
-
                                       <a href="javascript:;" data-toggle="modal" data-target="#confirm-delete"
                                         class="delete">
                                         <i class="fa fa-check"></i>
@@ -245,121 +241,13 @@
                                         <i class="fa fa-ban"></i>
                                         Reject Order
                                       </a>
-                                      </a>
                                     </div>
-
-
-                                  </div>
-
-                                </td>
-
-
-                              </tr>
-
-                              <tr role="row" class="odd parent">
-                                <td tabindex="0">C4REDLOC</td>
-                                <td>
-                                  2
-                                </td>
-                                <td>
-                                  <p style="background-color: rgb(70, 177, 27);color: white;border-radius: 20px;">
-                                    Completed
-                                  </p>
-                                </td>
-                                <td>100 Rs</td>
-                                <td>
-                                  <div class="godropdown">
-                                    <button class="go-dropdown-toggle" data-toggle="modal"
-                                      data-target="#OrderDetailsModal">
-                                      Order Details
-                                    </button>
-
                                   </div>
                                 </td>
-                                <td>
-                                  <div class="godropdown">
-                                    <button class="go-dropdown-toggle">
-                                      Actions<i class="fas fa-chevron-down"></i>
-                                    </button>
-                                    <div class="action-list" style="display: none;width: 100%;">
-                                      <a href="./AddProduct.html" data-toggle="modal" data-target="#InvoiceModal">
-                                        <i class="fas fa-file-invoice"></i> View Invoice
-                                      </a>
-
-                                      <a href="javascript:;" data-toggle="modal" data-target="#confirm-delete"
-                                        class="delete">
-                                        <i class="fa fa-check"></i>
-                                        Complete Order
-                                      </a>
-                                      <a href="javascript:;" data-toggle="modal" data-target="#CoupenSystemModal"
-                                        class="dele">
-                                        <i class="fa fa-ban"></i>
-                                        Reject Order
-                                      </a>
-                                      </a>
-                                    </div>
-
-
-                                  </div>
-
-                                </td>
-
-
-                              </tr>
-                              <tr role="row" class="odd parent">
-                                <td tabindex="0">C4REDLOC</td>
-                                <td>
-                                  2
-                                </td>
-                                <td>
-                                  <p style="background-color: rgb(255, 0, 0);color: white;border-radius: 20px;">Rejected
-                                  </p>
-                                </td>
-                                <td>100 Rs</td>
-                                <td>
-                                  <div class="godropdown">
-                                    <button class="go-dropdown-toggle" data-toggle="modal"
-                                      data-target="#OrderDetailsModal">
-                                      Order Details
-                                    </button>
-
-                                  </div>
-                                </td>
-                                <td>
-                                  <div class="godropdown">
-                                    <button class="go-dropdown-toggle">
-                                      Actions<i class="fas fa-chevron-down"></i>
-                                    </button>
-                                    <div class="action-list" style="display: none;width: 100%;">
-                                      <a href="./AddProduct.html" data-toggle="modal" data-target="#InvoiceModal">
-                                        <i class="fas fa-file-invoice"></i> View Invoice
-                                      </a>
-
-                                      <a href="javascript:;" data-toggle="modal" data-target="#confirm-delete"
-                                        class="delete">
-                                        <i class="fa fa-check"></i>
-                                        Complete Order
-                                      </a>
-                                      <a href="javascript:;" data-toggle="modal" data-target="#CoupenSystemModal"
-                                        class="dele">
-                                        <i class="fa fa-ban"></i>
-                                        Reject Order
-                                      </a>
-                                      </a>
-                                    </div>
-
-
-                                  </div>
-
-                                </td>
-
-
-                              </tr>
-
+                              </tr> -->
                             </tbody>
                           </table>
                         </div>
-
                         <div id="OrderDetailsModal" class="modal fade" tabindex="-1" role="dialog"
                           aria-labelledby="gridModalLabel">
                           <div class="modal-dialog modal-lg .modal-dialog-scrollable " role="document">
@@ -377,7 +265,7 @@
                                     <div class="card-header" id="headingOne" style="background-color: wheat;">
                                       <h5 class="mb-0">
                                         <button class="btn btn-link" style="color: tomato; font-weight: 900; ">
-                                          Product
+                                          Products Details
                                         </button>
                                       </h5>
                                     </div>
@@ -396,10 +284,11 @@
                                               <th scope="col">Flavour</th>
                                               <th scope="col">Eggless</th>
                                               <th scope="col">Quantity</th>
+                                              <th scope="col">Message</th>
                                             </tr>
                                           </thead>
-                                          <tbody>
-                                            <tr>
+                                          <tbody id="product-details">
+                                            <!-- <tr>
                                               <td><img
                                                   src="https://tatyanaseverydayfood.com/wp-content/uploads/2018/02/Strawberry-Tuxedo-Cake-4.jpg"
                                                   style="width: 50px; object-fit: cover;" alt=""></td>
@@ -409,22 +298,9 @@
                                               <td>Black Forest</td>
                                               <td>Yes</td>
                                               <td>2</td>
-                                            </tr>
-                                            <tr>
-                                              <td><img
-                                                  src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-                                                  style="width: 50px; object-fit: cover;" alt=""></td>
-                                              <td>LOC123123231323</td>
-                                              <td>Flower</td>
-                                              <td>--</td>
-                                              <td>--</td>
-                                              <td>--</td>
-                                              <td>2</td>
-                                            </tr>
+                                            </tr> -->
                                           </tbody>
                                         </table>
-
-
                                       </div>
                                     </div>
                                   </div>
@@ -433,7 +309,7 @@
                                       style="background-color: rgb(179, 221, 245);">
                                       <h5 class="mb-0">
                                         <button class="btn btn-link" style="color: tomato; font-weight: 900; ">
-                                          Products Price Breakup
+                                          Price Breakup
                                         </button>
                                       </h5>
                                     </div>
@@ -446,27 +322,22 @@
                                           <thead>
                                             <tr>
                                               <th scope="col">Basic Price</th>
-                                              <th scope="col">QTY</th>
                                               <th scope="col">Discount %</th>
                                               <th scope="col">New Price</th>
                                               <th scope="col">GST</th>
                                               <th scope="col">Total Price</th>
                                             </tr>
                                           </thead>
-                                          <tbody>
-                                            <tr>
+                                          <tbody id="product-price">
+                                            <!-- <tr>
                                               <td>Rs 339</td>
-                                              <td>2</td>
                                               <td>20 %</td>
                                               <td>239</td>
                                               <td>19 %</td>
                                               <td>300</td>
-                                            </tr>
-
+                                            </tr> -->
                                           </tbody>
                                         </table>
-
-
                                       </div>
                                     </div>
                                   </div>
@@ -475,7 +346,7 @@
                                       style="background-color: rgb(224, 179, 245);">
                                       <h5 class="mb-0">
                                         <button class="btn btn-link" style="color: tomato; font-weight: 900; ">
-                                          Add-ons
+                                          Total
                                         </button>
                                       </h5>
                                     </div>
@@ -483,42 +354,114 @@
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                       data-parent="#accordion">
                                       <div class="card-body">
-
                                         <table class="table">
                                           <thead>
                                             <tr>
-                                              <th scope="col">Image</th>
-                                              <th scope="col">Addon Name</th>
-                                              <th scope="col">QTY</th>
-                                              <th scope="col">Price</th>
-                                              <th scope="col">Total Price</th>
+                                              <th scope="col">Name</th>
+                                              <th scope="col">Total</th>
                                             </tr>
                                           </thead>
-                                          <tbody>
-                                            <tr>
-                                              <td><img
-                                                  src="https://tatyanaseverydayfood.com/wp-content/uploads/2018/02/Strawberry-Tuxedo-Cake-4.jpg"
-                                                  style="width: 50px; object-fit: cover;" alt=""></td>
+                                          <tbody id="prods-total">
+                                            <!-- <tr>
                                               <td>PArty Popper</td>
                                               <td>2</td>
-                                              <td>239 Rs</td>
-                                              <td>300 Rs</td>
-                                            </tr>
-
+                                            </tr> -->
                                           </tbody>
                                         </table>
-
-
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card">
+                                    <div class="card-header" id="headingOne"
+                                      style="background-color: rgb(179, 245, 201);">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: tomato; font-weight: 900; ">
+                                          User Details
+                                        </button>
+                                      </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                      data-parent="#accordion">
+                                      <div class="card-body">
+                                        <div>
+                                          <h3 style="text-align: center; padding: 10px !important;">Order Person Details</h3>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Name</b></div>
+                                            <div class="col-lg-9">User</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b> Email</b></div>
+                                            <div class="col-lg-9">User@user.com</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Phone Number</b> </div>
+                                            <div class="col-lg-9">1234567890</div>
+                                          </div>
+                                        </div>
+                                        <hr />
+                                        <div>
+                                          <h3  style="text-align: center; padding: 10px !important;">Order Made for</h3>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Name</b></div>
+                                            <div class="col-lg-9">User</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b> Email</b></div>
+                                            <div class="col-lg-9">User@user.com</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Phone Number</b> </div>
+                                            <div class="col-lg-9">1234567890</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Address</b> </div>
+                                            <div class="col-lg-9">1234567890</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Landmark</b> </div>
+                                            <div class="col-lg-9">1234567890</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>ZipCode</b> </div>
+                                            <div class="col-lg-9">1234567890</div>
+                                          </div>
+                                        </div>
+                                        <hr />
+                                        <div>
+                                          <h5  style="text-align: center; padding: 10px !important;">Alternate Address</h5>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Name</b></div>
+                                            <div class="col-lg-9">User</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b> Email</b></div>
+                                            <div class="col-lg-9">User@user.com</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Phone Number</b> </div>
+                                            <div class="col-lg-9">1234567890</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Address</b> </div>
+                                            <div class="col-lg-9">1234567890</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Landmark</b> </div>
+                                            <div class="col-lg-9">1234567890</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>ZipCode</b> </div>
+                                            <div class="col-lg-9">1234567890</div>
+                                          </div>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default waves-effect waves-light"
                                   data-dismiss="modal">Close</button>
-
                               </div>
                             </div>
                           </div>
@@ -747,12 +690,37 @@
         reader.readAsDataURL(input.files[0]);
       }
     }
-    // Gallery Section Insert
-    $('#example2').DataTable({
-      "responsive": true,
-      "autoWidth": false,
+    $(document).on('click', '.godropdown .go-dropdown-toggle', function () {
+      $('.godropdown .action-list').hide();
+      var $this = $(this);
+      $this.next('.action-list').toggle();
+
     });
+    // Gallery Section Insert
+  
   </script>
 </body>
+
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+    authDomain: "lake-of-cakes.firebaseapp.com",
+    databaseURL: "https://lake-of-cakes.firebaseio.com",
+    projectId: "lake-of-cakes",
+    storageBucket: "lake-of-cakes.appspot.com",
+    messagingSenderId: "779843608951",
+    appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+    measurementId: "G-5ER0QF0FDW"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<script src="./orders1.js"></script>
 
 </html>
