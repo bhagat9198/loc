@@ -507,10 +507,11 @@ const editDetails = async (e) => {
       let ccatId = doc.wholeChildCategory.split("__")[2];
       let catData = catDetails(catId, scatId, ccatId);
 
-      console.log(doc.bannerType, doc.bannerTypeColor);
+      // console.log(doc.bannerType, doc.bannerTypeColor);
       editProduct["product-name"].value = doc.name;
       editProduct["product-type"].value = doc.bannerType || '';
-      editProduct["product-type-color"].value = doc.bannerTypeColor || '';
+      editProduct["product-type-color-start"].value = doc.bannerTypeColorStart || '';
+      editProduct["product-type-color-end"].value = doc.bannerTypeColorEnd || '';
       editProduct["product-sno"].value = doc.sno;
 
       let wcat = `${catData.cId}__${catData.cname}`;
@@ -720,7 +721,7 @@ const submitEditForm = (event) => {
   event.preventDefault();
   let productName,
     bannerType,
-    bannerTypeColor,
+    bannerTypeColorStart, bannerTypeColorEnd,
     productSno,
     productCategory,
     productSubCategory,
@@ -743,7 +744,8 @@ const submitEditForm = (event) => {
 
   productName = editProduct["product-name"].value;
   bannerType = editProduct["product-type"].value;
-  bannerTypeColor = editProduct["product-type-color"].value;
+  bannerTypeColorStart = editProduct["product-type-color-start"].value;
+  bannerTypeColorEnd = editProduct["product-type-color-end"].value;
   productSno = editProduct["product-sno"].value;
   productCategory = editProduct["product-category"].value;
   productSubCategory = editProduct["product-sub-category"].value;
@@ -880,7 +882,8 @@ const submitEditForm = (event) => {
   let wholeProduct = {
     name: productName,
     bannerType: bannerType,
-    bannerTypeColor: bannerTypeColor,
+    bannerTypeColorStart: bannerTypeColorStart,
+    bannerTypeColorEnd: bannerTypeColorEnd,
     sno: productSno,
     wholeCategory: productCategory,
     wholeSubCategory: productSubCategory,
