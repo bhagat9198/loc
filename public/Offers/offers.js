@@ -118,6 +118,7 @@ const addSlider = (e) => {
   const wholdeSliderData = {
   
     img: imgName,
+    isActivated:true
   };
 
   const addSliderReq = async (data) => {
