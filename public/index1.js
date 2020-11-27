@@ -231,8 +231,6 @@ db.collection("sections")
         }
       }
     });
-
-
   });
 
 // fixed section 5
@@ -305,8 +303,7 @@ db.collection("sections")
                 <div class="info">
                   <div class="stars">
                   </div>
-                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp
-                  }</small></del></h4>
+                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
                   <h5 class="name">${prodData.name}</h5>
                 </div>
               </a>
@@ -337,11 +334,9 @@ db.collection("sections")
         .get()
         .then((prod) => {
           let prodData = prod.data();
-          // console.log(prodData);
           if(!prodData) {
             return;
           }
-          // console.log(prodData);
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
           <div class="item" >

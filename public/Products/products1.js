@@ -203,9 +203,23 @@ const displayProds = async (arrProds) => {
     }else{
       banner="";
     }
-    console.log(p);
-    let dis = Math.round((+p.prodData.totalPrice/+p.prodData.mrp)*100);
-    console.log(p.prodData.bannerTypeColor);
+    let dis = Math.round(100 - ((+p.prodData.totalPrice/+p.prodData.mrp)*100));
+
+    let starsDiv = `
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `;
+    if(p.prodData.reviews) {
+      let stars = [];
+      p.prodData.reviews.map(star => {
+        stars.push(star.rating.split('__')[0]);
+      })
+      starsDiv = starRating(stars);
+    }
+
     card += `
 			<div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
 				<a href="../Product/product.html?prod=${p.prodId}&&cat=${p.prodData.wholeCategory.split("__")[0]
@@ -222,7 +236,7 @@ const displayProds = async (arrProds) => {
 							</ul>
             </div>
             <span class="w3-tag w3-display-topleft" style="border-radius:10px;
-            background: linear-gradient(90deg, ${p.prodData.bannerTypeColor ? p.prodData.bannerTypeColor.toString() : ''}, #6e1717, #ededed);
+            background: linear-gradient(90deg, ${p.prodData.bannerTypeColorStart ? p.prodData.bannerTypeColorStart.toString() : ''}, ${p.prodData.bannerTypeColorEnd ? p.prodData.bannerTypeColorEnd.toString() : ''}, #ededed);
             
             animation-name: load;
             animation-duration: 1.5s;
@@ -234,10 +248,14 @@ const displayProds = async (arrProds) => {
 						<img class="responsive-image" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
 					</div>
           <div class="info" style="height: 130px !important;background-color:gay">
+            <style>
+            .checked {
+              color: orange;
+            }
+            </style>
             <div class="stars">
               <div class="ratings">
-                <div class="empty-stars"></div>
-                <div class="full-stars" ></div>
+                ${starsDiv}
               </div>
             </div>       
             <h4 class="price responsive-price ">₹ ${p.prodData.totalPrice} <del><small>₹ ${p.prodData.mrp}</small></del><small style="color:green;font-weight:700;padding:2px">(${dis} % OFF)</small></h4>
