@@ -45,7 +45,7 @@ console.log("navbar1.js");
     })
 
     for(let data of tempArr) {
-      console.log(data);
+      // console.log(data);
       let subCat = extractSubCat(data.d, data.dId);
       li += `
       <li >
@@ -260,5 +260,16 @@ console.log("navbar1.js");
 
 
 
+{/* <div class="extra-list">
+  <ul>
+    <li>
+      <span rel-toggle="tooltip" title="LAKE OF CAKES" style="cursor: pointer;"  onclick="easyAddToCart(event)">
+        <i class="fa fa-shopping-cart"></i>
+      </span>
+    </li>
+  </ul>
+</div> */}
 
-
+const easyAddToCart = () => {
+  console.log('addToCart');
+}
