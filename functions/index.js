@@ -26,6 +26,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
+
 const calBill = async(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTime, optional = null) => {
 
   let userRef = await admin.firestore().collection("Customers").doc(USER_ID);
@@ -201,7 +202,8 @@ const calBill = async(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTim
       shipeType: shipCat,
       shipDate: dateDelivery,
       shipTime: timeDelivery,
-      orderAt : new Date()
+      orderAt : new Date(),
+      total:TOTAL_COST
     }).then(s => {
       // console.log('saved', s);
     }).catch(error => {
@@ -342,7 +344,57 @@ exports.sendEmailAfterOrderConfirmation = functions.firestore.document('Customer
   // Building Email message.
   mailOptions.subject = 'Order Confirmation ';
   //for example
-  mailOptions.html = `<p style="color:black;" >Hello</p>`
+  mailOptions.html = `
+  <h3><b>Complete your order with 10% discount</b>&nbsp;</h3>
+  <p><br></p>
+  <div style="text-align: center; "><img
+          src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6"
+          style="width: 263.921px; height: 65.1px;"></div>
+  <div style="text-align: center; "><br></div>
+  <div style="text-align: center; "><br></div>
+  <div style="text-align: left;">
+      <div style="text-align: center;"><b>Hi `+newValue.UserName+`,&nbsp;</b></div>
+      <div style="text-align: center;"><b><br></b></div>
+      <div style="text-align: center;">You were trying to shopping with us and to place an order for a gift for your
+          loved ones. Have&nbsp;</div>
+      <div style="text-align: center;">you faced any issue in doing so? In case you came across any issue or concern,
+          just reply back&nbsp;</div>
+      <div style="text-align: center; ">to this email. We would be happy to resolve your issue.</div>
+      <h4 style="text-align: center; "><b><span style="font-family: &quot;Times New Roman&quot;;">While visiting our
+                  website for place your order and get 10% off by entering</span><br><span
+                  style="font-family: &quot;Times New Roman&quot;;">LOC10 coupon code (order value 499 &amp;
+                  above)</span></b></h4>
+     
+  </div>
+
+  <center>
+      <table style="border: 2px solid red;padding: 30px;">
+          <tr style="padding: 20px;margin: 15%;">
+            <th>Product Image</th>
+            <th>Name</th>
+
+      
+            
+          </tr>
+          <tr style="padding: 20px;margin: 15%;">
+            <td><img src="https://t8x8a5p2.stackpathcdn.com/wp-content/uploads/2018/05/Birthday-Cake-Recipe-Image-720x720.jpg" width="90" alt=""></td>
+            <td>cake ssjsjjjsdsd</td>
+         
+         
+          </tr>
+          <tr style="padding: 20px;margin: 15%;">
+              <td><img src="https://t8x8a5p2.stackpathcdn.com/wp-content/uploads/2018/05/Birthday-Cake-Recipe-Image-720x720.jpg" width="90" alt=""></td>
+              <td>cake jasadasd</td>
+          
+          </tr>
+        
+        </table>
+        <h3 style="background-color: red;color: white;margin-left: 40%;margin-right: 40%;display: block;">Complete Your Order Now</h3>
+        <small>*Please ignore this Mail if order already placed.</small>
+        <br>
+        <h4 style="font-weight: 800;">Call +91 - 9598891097</h4>
+  </center>
+  `
 
   console.log("SSSSSSSS")
   try {
