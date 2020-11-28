@@ -337,13 +337,76 @@ const starRating = (startArr) => {
 } 
 
 
-let cartItemsHTML = document.querySelector('#cart-items');
-
+let cartModalHTML = document.querySelector('#cart-modal')
+let flag = 0;
+let cartModalProds = '';
 if(localStorage.getItem("locLoggedInUser")) {
-  let a = localStorage.getItem("locLoggedInUser")
-  
-} else {
-  console.log(localStorage.getItem("locLoggedInUser"));
+  // let a = localStorage.getItem("locLoggedInUser")
+  let uId = localStorage.getItem("locLoggedInUser");
+  db.collection('Customers').doc(uId).onSnapshot(async(userDoc)  => {
+    let userData = userDoc.data();
+    if(userData.cart) {
+      flag = 1;
+      let cartSize = userData.cart.length;
+      console.log(cartSize);
+      cartModalProds = `
+      <a href="#cart" class="cart carticon">
+        <div class="icon" onclick="redirectToCart()">
+          <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
+          <span onclick="redirectToCart()" class="cart-quantity" id="cart-count">${cartSize}</span>
+        </div>
+      </a>
+      <div class="my-dropdown-menu" id="cart-items">
+      `;
+      for(cartProd of userData.cart) {
+        console.log(cartProd);
+        await db.collection(cartProd.cat).doc(cartProd.prodId).get().then(pDoc => {
+          let pData = pDoc.data();
+          cartModalProds += `
+          <ul class="dropdown-cart-products">
+            <li class="product cremove3461">
+              <figure class="product-image-container">
+                <a href="javascript;" class="product-image">
+                  <img src="${pData.mainImgUrl}"
+                    style="width: 50px; object-fit:cover;" alt="Lake of Cakes">
+                </a>
+              </figure>
+              <div class="product-details">
+                <div class="content">
+                  <a href="javascript;">
+                    <h4 class="product-title">${pData.name}</h4>
+                  </a>
+                  <span class="cart-product-info">
+                    <span class="cart-product-qty" id="cqt3461">${cartProd.qty}</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+          `;
+        })
+      }
+      cartModalProds += `
+      <div onclick="redirectToCart()" class="dropdown-cart-action">
+            <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: rgb(20, 113, 167);">View In Cart</a>
+          </div>
+        </div>
+      </div>
+      `;
+    }
+    cartModalHTML.innerHTML = cartModalProds;
+  }) 
 }
 
-db.collection('Customers').doc()
+if(flag === 0) {
+  cartModalProds = `
+  <a href="#cart" class="cart carticon">
+    <div class="icon" onclick="redirectToCart()">
+      <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
+      <span onclick="redirectToCart()" class="cart-quantity" id="cart-count">0</span>
+    </div>
+  </a>
+  <div class="my-dropdown-menu" id="cart-items">
+  `;
+
+  cartModalHTML.innerHTML = cartModalProds;
+}
