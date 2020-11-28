@@ -376,15 +376,14 @@
                                       style="background-color: rgb(179, 245, 201);">
                                       <h5 class="mb-0">
                                         <button class="btn btn-link" style="color: tomato; font-weight: 900; ">
-                                          User Details
+                                          Account from which order is made
                                         </button>
                                       </h5>
                                     </div>
                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                       data-parent="#accordion">
-                                      <div class="card-body">
-                                        <div>
-                                          <h3 style="text-align: center; padding: 10px !important;">Order Person Details</h3>
+                                      <div class="card-body" id="userDetails">
+                                        <!-- <div>
                                           <div class="row">
                                             <div class="col-lg-3"><b>Name</b></div>
                                             <div class="col-lg-9">User</div>
@@ -397,10 +396,23 @@
                                             <div class="col-lg-3"><b>Phone Number</b> </div>
                                             <div class="col-lg-9">1234567890</div>
                                           </div>
-                                        </div>
-                                        <hr />
-                                        <div>
-                                          <h3  style="text-align: center; padding: 10px !important;">Order Made for</h3>
+                                        </div> -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card">
+                                    <div class="card-header" id="headingOne"
+                                      style="background-color: rgb(255, 246, 127);">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: tomato; font-weight: 900; ">
+                                          Order made for
+                                        </button>
+                                      </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                      data-parent="#accordion">
+                                      <div class="card-body" id="orderFor">
+                                        <!-- <div>
                                           <div class="row">
                                             <div class="col-lg-3"><b>Name</b></div>
                                             <div class="col-lg-9">User</div>
@@ -453,7 +465,36 @@
                                             <div class="col-lg-3"><b>ZipCode</b> </div>
                                             <div class="col-lg-9">1234567890</div>
                                           </div>
-                                        </div>
+                                        </div> -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card">
+                                    <div class="card-header" id="headingOne"
+                                      style="background-color: rgb(179, 191, 245);">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link" style="color: tomato; font-weight: 900; ">
+                                          Order Type
+                                        </button>
+                                      </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                      data-parent="#accordion">
+                                      <div class="card-body" id="orderType">
+                                        <!-- <div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Type</b></div>
+                                            <div class="col-lg-9">User</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Time</b></div>
+                                            <div class="col-lg-9">User@user.com</div>
+                                          </div>
+                                          <div class="row">
+                                            <div class="col-lg-3"><b>Date</b> </div>
+                                            <div class="col-lg-9">1234567890</div>
+                                          </div>
+                                        </div> -->
                                       </div>
                                     </div>
                                   </div>
@@ -620,7 +661,6 @@
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default waves-effect waves-light"
                                   data-dismiss="modal">Close</button>
-
                               </div>
                             </div>
                           </div>
@@ -678,23 +718,13 @@
   <!-- PAGE SCRIPTS -->
   <!-- <script src="../assets/dist/js/pages/dashboard2.js"></script> -->
   <script type="text/javascript">
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
+    $(document).on('click', '.godropdown .go-dropdown-toggle', function () {
+  $('.godropdown .action-list').hide();
+  var $this = $(this);
+  $this.next('.action-list').toggle();
 
-        reader.onload = function (e) {
-          $('#blah')
-            .attr('src', e.target.result);
-        };
+});
 
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-    // Gallery Section Insert
-    $('#example2').DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
   </script>
 </body>
 
