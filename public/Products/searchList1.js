@@ -1,6 +1,5 @@
 
 const db = firebase.firestore();
-const storageService = firebase.storage();
 
 const addCategoryForm = document.querySelector("#add-category-form");
 const categoryNameDropdownHTML = addCategoryForm.querySelector(

@@ -185,47 +185,51 @@
       <div class="content-wrapper">
         <h4 style="padding: 10px;font-weight: bold;">Footer</h4>
         <div class="col-lg-12">
-          <div class="add-product-content">
-            <h4 class="MainHeading">Edit About Page</h4>
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="product-description">
-                  <div class="body-area">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <div class="summernote">summernote 1</div>
+          <form id="about-form">
+            <div class="add-product-content">
+              <h4 class="MainHeading">Edit About Page</h4>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="product-description">
+                    <div class="body-area">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <input class="summernote" type="text" name="about-text"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="left-area">
-                <h4 class="heading" style="text-align: center; padding: 10px;">Head Image</h4>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="left-area">
+                  <h4 class="heading" style="text-align: center; padding: 10px;">Head Image</h4>
+                </div>
+                <div class="text-center">
+                  <input type='file' id="slider-file" name="slider-file" class="mybtn1" onchange="readURL(this);" />
+                </div>
               </div>
-              <div class="text-center">
-                <input type='file' id="slider-file" name="slider-file" class="mybtn1" onchange="readURL(this);" />
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="panel panel-body" style="background-color:gray">
-                <div class="span4  text-center" id=""
-                  style="width: 100%; height: 426px; border: 1px dashed #ddd; background: #f1f1f1;">
-                  <i class="icofont-upload-alt"></i>
-                  <img id="blah" src="../../assets/images/slide1.jpeg"
-                    style="width:1280px;height: 426px;object-fit: contain;" />
+              <div class="col-lg-12">
+                <div class="panel panel-body" style="background-color:gray">
+                  <div class="span4  text-center" id=""
+                    style="width: 100%; height: 426px; border: 1px dashed #ddd; background: #f1f1f1;">
+                    <i class="icofont-upload-alt"></i>
+                    <img id="blah" src="../../assets/images/slide1.jpeg"
+                      style="width:1280px;height: 426px;object-fit: contain;" />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12 text-center">
-              <button class="addProductSubmit-btn" type="submit" style="padding: 10px; margin: 10px;">Push Data</button>
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <button class="addProductSubmit-btn" type="submit" style="padding: 10px; margin: 10px;">Push Data</button>
+              </div>
             </div>
           </div>
+        </form>
+      </div>
     </section>
     <section id="admin-footer-load"></section>
   </div>
@@ -319,6 +323,6 @@
   firebase.analytics();
 </script>
 
-<script src="./orders1.js"></script>
+<script src="./about.js"></script>
 
 </html>
