@@ -80,6 +80,65 @@ db.collection("sections")
   });
 
 
+// user defined sliders
+const userDefinedSliderHTML = document.querySelector("#user-defined-slider");
+
+let userSilderRef = db.collection('sections').doc('slider').collection('slider');
+userSilderRef.get().then(async(sliderSnaps) => {
+  let wholeUserSlider = '';
+  let sliderSnapsDocs = sliderSnaps.docs;
+  for(let sliderDocs of sliderSnapsDocs) {  
+  let docData = sliderDocs.data();
+    let eachUserSlider = `
+    <section class="trending"> 
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 remove-padding">
+          <div class="text-center">
+            <h3 class="section-title bannerheading" style="color: #ffffff !important;" id="fixed-section4-heading"
+              style=" font-weight: 700;font-size: 30px"> ${docData.title}
+            </h3>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="trending-item-slider" id="fixed-section4-row">
+    `;
+
+    let row = "";
+    for (let card of docData.card) {
+      await db.collection(card.category).doc(card.id).get().then(pd => {
+        let pdata = pd.data();
+        row += `
+        <a href="./Product/product.html?cat=${card.category}&&prod=${card.id}" class="item">
+          <div class="item-img">
+            <img class="img-fluid" src="${pdata.mainImgUrl}" alt="Lake of cakes">
+          </div>
+          <div class="info">
+            <div class="stars">
+              <h5 class="contactless"> Contactless delivery</h5>
+            </div>
+            <h4 class="price">₹${pdata.sp} <del><small>₹ ${pdata.mrp}</small></del></h4>
+            <h5 class="name">${pdata.name}</h5>
+            <div class="item-cart-area">
+              <span class="add-to-cart-quick add-to-cart-btn" data-href="///addtocart/331">
+                <i class="icofont-cart"></i> Order Now
+              </span>
+            </div>
+          </div>
+        </a>
+        `;
+      })
+    }
+    eachUserSlider = eachUserSlider + row+ ` </div></div></div></div></section>`;
+    wholeUserSlider += eachUserSlider;
+  };
+  userDefinedSliderHTML.innerHTML = wholeUserSlider; 
+});
+
+
+
+
 // fixed section 2
 const fixedSection2Row = document.querySelector("#fixed-section2-row");
 const fixedSection21Row = document.querySelector("#fixed-section21-row");
@@ -156,6 +215,50 @@ db.collection("sections")
     }
     fixedSection3Row.innerHTML = title + row;
   });
+
+
+
+// user defined 4cards
+
+const userDefined4cardsHTML = document.querySelector('#user-defined-4cards');
+
+let cards4Ref = db.collection('sections').doc('4cards').collection('4cards');
+
+cards4Ref.get().then(cards4Snaps => {
+  let cards4SnapsDocs = cards4Snaps.docs;
+  let wholecard4 = '';
+
+  for(let card4Doc of cards4SnapsDocs) {
+    let card4Data = card4Doc.data();
+    console.log(card4Data);
+    let eachCard4 = `
+    <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);;;">
+      <h3 class="bannerheading fadeIn" id="fixed-section1-heading">${card4Data.title}</h3>
+      <div class="container-fluid">
+        <div class="row" id="fixed-section1-row">
+    `;
+
+    let row = '';
+    for(let c of card4Data.card) {
+      console.log(card4Data.category);
+      row += `
+      <div class="col-lg-3 col-md-3 col-6 remove-padding">
+        <div class="left">
+          <a class="banner-effect imgca" href="./Products/products.html?cat=${card4Data.category}&&tag=${c.tag}" target="_blank">
+            <img class="imgc" src="${c.imgUrl}" alt="Lake of cakes">
+          </a>
+        </div>
+      </div>
+      `;
+    }
+    eachCard4 = eachCard4 + row + `</div></div></section>`;
+    wholecard4 += eachCard4;
+  }
+
+  userDefined4cardsHTML.innerHTML = wholecard4;
+})
+
+
 
 // fixed section 4
 
@@ -315,6 +418,60 @@ db.collection("sections")
     fixedSection6Row.innerHTML = row;
   });
 
+const userDefinedAnimationHTML = document.querySelector('#user-defined-animation');
+let userAnimationRef = db.collection('sections').doc('animation').collection('animation');
+userAnimationRef.get().then(imgSnaps => {
+  let imgSnapsDocs = imgSnaps.docs;
+  let wholeImg = '';
+  for(let imgDoc of imgSnapsDocs) {
+    let imgData = imgDoc.data();
+    let eachImg = `
+    <section>
+      <div class="container-fluid p-0  ">
+        <div class="remove-padding">
+          <div class="img">
+            <a class="banner-effect2" href="./Products/products.html?cat=${imgData.category}">
+              <video width="100%" height="300px" class="img-fluid" alt="Lake of Cakes" controls autoplay loop muted>
+                <source src="${imgData.card.animationUrl}" type="video/mp4">
+              </video>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    `;
+    wholeImg += eachImg;
+  }
+  console.log(wholeImg);
+  userDefinedAnimationHTML.innerHTML = wholeImg;
+})
+
+const userDefinedImgHTML = document.querySelector('#user-defined-img');
+let userImgRef = db.collection('sections').doc('img').collection('img');
+userImgRef.get().then(imgSnaps => {
+  let imgSnapsDocs = imgSnaps.docs;
+  let wholeImg = '';
+  for(let imgDoc of imgSnapsDocs) {
+    let imgData = imgDoc.data();
+    let eachImg = `
+    <section>
+      <div class="container-fluid p-0  ">
+        <div class="remove-padding">
+          <div class="img">
+            <a class="banner-effect2" href="./Products/products.html?cat=${imgData.category}">
+              <img class="img-fluid" src="${imgData.card.imgUrl}" alt="Lake of Cakes">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    `;
+    wholeImg += eachImg;
+  }
+  userDefinedImgHTML.innerHTML = wholeImg;
+})
+
+
 // fixed section 7
 
 const fixedSection7Heading = document.querySelector("#fixed-section7-heading");
@@ -387,6 +544,72 @@ db.collection("sections")
     }
     fixedSection8Row.innerHTML = row;
   });
+
+
+// user section card 6
+
+const userDefined6cardsHTML = document.querySelector('#user-defined-6cards');
+
+let cards6Ref =  db.collection('sections').doc('6cards').collection('6cards');
+cards6Ref.get().then(async(card6Snaps) => {
+  let card6SnapsDocs = card6Snaps.docs;
+  let wholecard6 = '';
+
+  for(card6Doc of card6SnapsDocs) {
+    let card6Data = card6Doc.data();
+    let eachcard6 = `
+    <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12 remove-padding">
+            <div class="row">
+              <div class="col-md-4 text-center"></div>
+              <div class="col-md-4 text-center">
+                <h3 class="section-title" id="fixed-section7-heading" style="font-weight: 700;font-size: 30px">${card6Data.title}
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row" id="fixed-section7-row">
+    `;
+
+    let row = '';
+    for(let c of card6Data.card) {
+      await db.collection(c.category).doc(c.id).get().then(pd => {
+        let pdata = pd.data();
+        row += `
+        <div class="col-lg-2 col-md-3 col-6 remove-padding">
+          <a href="./Product/product.html?cat=${c.category}&&prod=${c.id}" class="item">
+            <div class="item-img">
+              <img class="img-fluid" src="${pdata.mainImgUrl}" alt="Lake of Cakes">
+            </div>
+            <div class="info">
+              <div class="stars">
+              </div>
+              <h4 class="price">₹${pdata.sp}</h4>
+              <h5 class="name">${pdata.name}</h5>
+              <div class="item-cart-area">
+                <span class="add-to-cart-quick add-to-cart-btn" data-href="///addtocart/331">
+                  <i class="icofont-cart"></i> Buy Now
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+        `;
+      })
+    }
+
+    eachcard6 = eachcard6 + row + `</div></div></div></div></section>`;
+    wholecard6 += eachcard6;
+  }
+
+  userDefined6cardsHTML.innerHTML = wholecard6;
+})
+
 
 // fixed section 9
 

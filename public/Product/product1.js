@@ -133,15 +133,6 @@ const displayProduct = (prodData) => {
     `;
   }
 
-  // sizepriceHTML.innerHTML = prodData.totalPrice;
-
-  // totalCost = +prodData.totalPrice;
-  // console.log(prodData.mrp);
-  // prodPrevPriceHTML.innerHTML = `&#8377; ${prodData.mrp}`;
-  // totalCost = +prodData.totalPrice;
-  // totalPrevPrice = +prodData.mrp;
-  // calculatePrice("qty");
-
   document.querySelector("#prod-qty").innerHTML = PROD_QTY;
   if (prodData.wholeCategory.toUpperCase().includes("CAKE")) {
     document.querySelectorAll(".cake-attribute").forEach((el) => {
@@ -576,7 +567,7 @@ const buyProd = async (e) => {
       }
       let orderData = {
         orderId: orderId,
-        status: "selected",
+        status: "rejected",
         type: "single",
         addons: addonsSelected,
         products: [
@@ -607,7 +598,7 @@ const buyProd = async (e) => {
 
       let orderData = {
         orderId: orderId,
-        status: "selected",
+        status: "rejected",
         type: "single",
         addons: addonsSelected,
         products: [

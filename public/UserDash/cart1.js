@@ -459,7 +459,7 @@ const checkoutProds = async(e) => {
   if (SELECTED_PRODS.length > 0) {
     checkoutCart = {
       orderId: orderId,
-      status: "selected",
+      status: "rejected",
       type: "cart",
       addons: addonsSelected,
       products: [],
