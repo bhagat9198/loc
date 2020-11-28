@@ -611,21 +611,19 @@
                 <li class="my-dropdown responsiveIcon2" style="display: none;" data-toggle="tooltip" data-placement="top"
                   title="Cart">
                   <a href="#cart" class="cart carticon">
-                    <div class="icon">
+                    <div class="icon" onclick="redirectToCart()">
                       <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
-                      <span class="cart-quantity" id="cart-count">0</span>
+                      <span onclick="redirectToCart()" class="cart-quantity" id="cart-count">0</span>
                     </div>
-    
                   </a>
                   <div class="my-dropdown-menu" id="cart-items">
-                    <div class="dropdownmenu-wrapper">
+                    <!-- <div class="dropdownmenu-wrapper">
                       <div class="dropdown-cart-header">
                         <span class="item-no">
                           <span class="cart-quantity">
                             1
                           </span> Product(s)
                         </span>
-    
                       </div>
                       <ul class="dropdown-cart-products">
                         <li class="product cremove3461">
@@ -634,44 +632,26 @@
                               <img src=""
                                 style="width: 50px; object-fit:cover;" alt="product">
                             </a>
-    
                           </figure>
                           <div class="product-details">
                             <div class="content">
                               <a href="">
                                 <h4 class="product-title">Black Forest</h4>
                               </a>
-    
                               <span class="cart-product-info">
                                 <span class="cart-product-qty" id="cqt3461">4</span><span></span>
                                 x <span id="prct3461">₹400</span>
                               </span>
                             </div>
                           </div>
-    
-    
                         </li>
                       </ul>
-    
-                      <div class="dropdown-cart-total">
-                        <span>Total</span>
-    
-                        <span class="cart-total-price">
-                          <span class="cart-total">₹1600
-                          </span>
-                        </span>
+                      <div onclick="redirectToCart()" class="dropdown-cart-action">
+                        <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: rgb(20, 113, 167);">View In Cart</a>
                       </div>
-    
-                      <div class="dropdown-cart-action">
-                        <a href="" onclick="redirectToCart()" class="mybtn1"
-                          style="background-color: rgb(20, 113, 167);">View In Cart</a>
-                      </div>
-                    </div>
+                    </div> -->
                   </div>
                 </li>
-      
-    
-    
               </ul>
             </div>
           </div>
