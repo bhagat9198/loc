@@ -335,3 +335,15 @@ const starRating = (startArr) => {
   }
   return startsDiv;
 } 
+
+
+let cartItemsHTML = document.querySelector('#cart-items');
+
+if(localStorage.getItem("locLoggedInUser")) {
+  let a = localStorage.getItem("locLoggedInUser")
+  
+} else {
+  console.log(localStorage.getItem("locLoggedInUser"));
+}
+
+db.collection('Customers').doc()
