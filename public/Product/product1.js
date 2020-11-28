@@ -567,7 +567,7 @@ const buyProd = async (e) => {
       }
       let orderData = {
         orderId: orderId,
-        status: "selected",
+        status: "rejected",
         type: "single",
         addons: addonsSelected,
         products: [
@@ -598,7 +598,7 @@ const buyProd = async (e) => {
 
       let orderData = {
         orderId: orderId,
-        status: "selected",
+        status: "rejected",
         type: "single",
         addons: addonsSelected,
         products: [
