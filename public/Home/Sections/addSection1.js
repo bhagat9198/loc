@@ -20,9 +20,9 @@ const extractCategories = async () => {
       let snapshotDocs = snapshot.docs;
       snapshotDocs.map((doc) => {
         let docData = doc.data();
-        allCategories.push(docData.name);
+        allCategories.push(doc.id);
         options += `
-      <option value="${docData.name}" >${docData.name}</option>
+      <option value="${doc.id}" >${docData.name}</option>
       `;
       });
       options += `
@@ -51,7 +51,7 @@ const extractImgURL = async (imgPath) => {
 };
 
 const extractProducts = async (data) => {
-  // console.log(data);
+  console.log(data);
   if (allCategories.includes(data)) {
     let tRows = "";
 
@@ -62,22 +62,22 @@ const extractProducts = async (data) => {
         let snapshotDocs = snapshot.docs;
         for (let doc of snapshotDocs) {
           let docData = doc.data();
-          // console.log(docData);
+          console.log(docData);
           let imgPath = "";
-          if (docData.mainImg) {
-            imgPath = `${data}/${doc.id}/${docData.mainImg}`;
-            imgPath = await extractImgURL(imgPath);
-          }
+          // if (docData.mainImg) {
+          //   imgPath = `${data}/${doc.id}/${docData.mainImg}`;
+          //   imgPath = await extractImgURL(imgPath);
+          // }
           // console.log(imgPath);
           tRows += `
           <tr>
             <td>
               <img
-                src="${imgPath}" />
+                src="${docData.mainImgUrl}" />
             </td>
             <td>${docData.name}</td>
             <td>${docData.sno}</td>
-            <td> <input type="checkbox" name="products-list" id="${doc.id}" value="${doc.id}__${docData.category}" /></td>
+            <td> <input type="checkbox" name="products-list" id="${doc.id}" value="${doc.id}__${docData.wholeCategory.split('__')[0]}" /></td>
           </tr>
           `;
         }
@@ -95,11 +95,12 @@ addSectionFormHTML["section-category"].addEventListener("change", (e) => {
 
 let img1, img2, img3, img4, imgBanner, animationBanner;
 addSectionFormHTML
-.querySelector("#product-img-1").addEventListener("change", (e) => {
-  // console.log(e.target.files);
-  // console.log(e.target.files[0]);
-  img1 = e.target.files[0];
-});
+  .querySelector("#product-img-1")
+  .addEventListener("change", (e) => {
+    // console.log(e.target.files);
+    // console.log(e.target.files[0]);
+    img1 = e.target.files[0];
+  });
 addSectionFormHTML
   .querySelector("#product-img-2")
   .addEventListener("change", (e) => {
@@ -182,13 +183,14 @@ const addSection = (e) => {
     addSectionFormHTML
       .querySelectorAll("input[name='products-list']:checked")
       .forEach((prod) => {
-        // console.log(prod.value);
+        console.log(prod);
+        console.log(prod.value);
         productsSelected.push({
-          id: prod.value.substring(0,20),
+          id: prod.value.substring(0, 20),
           category: prod.value.substring(22),
         });
       });
-    if(productsSelected.length > 6) {
+    if (productsSelected.length > 6) {
       productsSelected.length = 6;
     }
   } else if (sectionType === "slider") {
@@ -199,32 +201,32 @@ const addSection = (e) => {
       .forEach((prod) => {
         // console.log(prod.value);
         productsSelected.push({
-          id: prod.value.substring(0,20),
+          id: prod.value.substring(0, 20),
           category: prod.value.substring(22),
         });
       });
   } else if (sectionType === "img") {
     console.log("img");
-    productsSelected = '';
+    productsSelected = "";
     productsSelected = {
       img: imgBanner.name,
     };
   } else if (sectionType === "animation") {
     console.log("animation");
-    productsSelected = ''
+    productsSelected = "";
     productsSelected = {
-      animation: animationBanner.name
-    }
+      animation: animationBanner.name,
+    };
   } else {
     console.log("invalid");
   }
 
   let wholeSectionData = {
-    title: sectionName || '',
-    type: sectionType || '',
-    category: sectioncategory || '',
-    colorTL: colorTopLeft || '',
-    colorBR: colorBottomRight || '',
+    title: sectionName || "",
+    type: sectionType || "",
+    category: sectioncategory || "",
+    colorTL: colorTopLeft || "",
+    colorBR: colorBottomRight || "",
     card: productsSelected || [],
   };
   // console.log(wholeSectionData);
@@ -232,77 +234,160 @@ const addSection = (e) => {
   async function addSectionFun(data) {
     // console.log(data);
     let dataId;
-    await db
-      .collection("sections")
-      .add(data)
-      .then((dataSaved) => {
-        console.log(dataSaved);
-        dataId = dataSaved.id;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    return { data: data, dataId: dataId };
+
+    if (wholeSectionData.type === "4") {
+      await db
+        .collection("sections")
+        .doc("4cards")
+        .collection("4cards")
+        .add(data)
+        .then((dataSaved) => {
+          console.log(dataSaved);
+          dataId = dataSaved.id;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      return { data: data, dataId: dataId };
+    } else if (wholeSectionData.type === "6") {
+      await db
+        .collection("sections")
+        .doc("6cards")
+        .collection("6cards")
+        .add(data)
+        .then((dataSaved) => {
+          console.log(dataSaved);
+          dataId = dataSaved.id;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      return { data: data, dataId: dataId };
+    } else if (wholeSectionData.type === "img") {
+      await db
+        .collection("sections")
+        .doc("img")
+        .collection("img")
+        .add(data)
+        .then((dataSaved) => {
+          console.log(dataSaved);
+          dataId = dataSaved.id;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      return { data: data, dataId: dataId };
+    } else if (wholeSectionData.type === "slider") {
+      await db
+        .collection("sections")
+        .doc("slider")
+        .collection("slider")
+        .add(data)
+        .then((dataSaved) => {
+          console.log(dataSaved);
+          dataId = dataSaved.id;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      return { data: data, dataId: dataId };
+    } else if (wholeSectionData.type === "animation") {
+      await db
+        .collection("sections")
+        .doc("animation")
+        .collection("animation")
+        .add(data)
+        .then((dataSaved) => {
+          console.log(dataSaved);
+          dataId = dataSaved.id;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      return { data: data, dataId: dataId };
+    } else {
+      console.log("invalid");
+    }
   }
 
   addSectionFun(wholeSectionData)
-    .then(async(response) => {
+    .then(async (response) => {
       console.log("done");
-      
-      if(response.data.type === "4") {
+
+      if (response.data.type === "4") {
         let imgUrl;
         let counter = 0;
-        for(let img of response.data.card) {
-          if(img.imgNo === 1) {
-            await firebaseStorage.ref(`sections/${response.dataId}/${img.img}`).put(img1);
-          } else if(img.imgNo === 2) {
-            await firebaseStorage.ref(`sections/${response.dataId}/${img.img}`).put(img2);
-          } else if(img.imgNo === 3) {
-            await firebaseStorage.ref(`sections/${response.dataId}/${img.img}`).put(img3);
-          } else if(img.imgNo === 4) {
-            await firebaseStorage.ref(`sections/${response.dataId}/${img.img}`).put(img4);
+        for (let img of response.data.card) {
+          if (img.imgNo === 1) {
+            await firebaseStorage
+              .ref(`sections/4cards/4cards/${response.dataId}/${img.img}`)
+              .put(img1);
+          } else if (img.imgNo === 2) {
+            await firebaseStorage
+              .ref(`sections/4cards/4cards/${response.dataId}/${img.img}`)
+              .put(img2);
+          } else if (img.imgNo === 3) {
+            await firebaseStorage
+              .ref(`sections/4cards/4cards/${response.dataId}/${img.img}`)
+              .put(img3);
+          } else if (img.imgNo === 4) {
+            await firebaseStorage
+              .ref(`sections/4cards/4cards/${response.dataId}/${img.img}`)
+              .put(img4);
           } else {
-            console.log('invalid');
+            console.log("invalid");
           }
-          imgUrl = await extractImgURL(`sections/${response.dataId}/${img.img}`);
 
-          let docRef = await db.collection('sections').doc(response.dataId);
-          await docRef.get().then(async(snapshot) => {
+          imgUrl = await extractImgURL(
+            `sections/4cards/4cards/${response.dataId}/${img.img}`
+          );
+
+          let docRef = await db.collection("sections").doc('4cards').collection('4cards').doc(response.dataId);
+          await docRef.get().then(async (snapshot) => {
             let docData = snapshot.data();
             docData.card[counter].imgUrl = imgUrl;
             console.log(docData);
 
             await docRef.update(docData);
-          })
+          });
           counter++;
         }
-      } else if(response.data.type === "img") {
-        await firebaseStorage.ref(`sections/${response.dataId}/${response.data.card.img}`).put(imgBanner);
-        let imgUrl = await extractImgURL(`sections/${response.dataId}/${response.data.card.img}`)
-        let docRef = await db.collection('sections').doc(response.dataId);
-        await docRef.get().then(async(snapshot) => {
+      } else if (response.data.type === "img") {
+        await firebaseStorage
+          .ref(`sections/img/img/${response.dataId}/${response.data.card.img}`)
+          .put(imgBanner);
+        let imgUrl = await extractImgURL(
+          `sections/img/img/${response.dataId}/${response.data.card.img}`
+        );
+        
+        let docRef = await db.collection("sections").doc('img').collection('img').doc(response.dataId);
+        await docRef.get().then(async (snapshot) => {
           let docData = snapshot.data();
           docData.card.imgUrl = imgUrl;
           console.log(docData);
 
           await docRef.update(docData);
-        })
-      } else if(response.data.type === "animation") {
+        });
+      } else if (response.data.type === "animation") {
         console.log(response.data.card.animation);
-        await firebaseStorage.ref(`sections/${response.dataId}/${response.data.card.animation}`).put(animationBanner);
+        await firebaseStorage
+          .ref(`sections/${response.dataId}/${response.data.card.animation}`)
+          .put(animationBanner);
         console.log(animationBanner);
-        let animationUrl = await extractImgURL(`sections/${response.dataId}/${response.data.card.animation}`);
+        let animationUrl = await extractImgURL(
+          `sections/${response.dataId}/${response.data.card.animation}`
+        );
         console.log(animationUrl);
-        let docRef = await db.collection('sections').doc(response.dataId);
-        await docRef.get().then(async(snapshot) => {
+        let docRef = await db.collection("sections").doc('animation').collection('animation').doc(response.dataId);
+        await docRef.get().then(async (snapshot) => {
           let docData = snapshot.data();
           docData.card.animationUrl = animationUrl;
           console.log(docData);
 
           await docRef.update(docData);
-        })
+        });
       }
-      console.log('done');
+      console.log("done");
       addSectionFormHTML.reset();
     })
     .catch((error) => {
