@@ -237,14 +237,12 @@ const displayProds = async (arrProds) => {
             </div>
             <span class="w3-tag w3-display-topleft" style="border-radius:10px;
             background: linear-gradient(90deg, ${p.prodData.bannerTypeColorStart ? p.prodData.bannerTypeColorStart.toString() : ''}, ${p.prodData.bannerTypeColorEnd ? p.prodData.bannerTypeColorEnd.toString() : ''}, #ededed);
-            
             animation-name: load;
             animation-duration: 1.5s;
             animation-iteration-count: infinite;
             animation-direction: forwards;
             animation-timing-function: linear;
             background-size: 200% 100%;
-            
             " >`+banner+`</span>
 						<img class="responsive-image" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
 					</div>

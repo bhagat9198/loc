@@ -72,7 +72,6 @@ const displayProduct = (prodData) => {
       src="${prodData.mainImgUrl}"
       xoriginal = "${prodData.mainImgUrl}"
       alt="Lake of cakes"
-      
       </span> 
   `;
   // console.log(big);
@@ -82,7 +81,7 @@ const displayProduct = (prodData) => {
 
   let imgs = `
   <a
-    href="#!">
+    href="${prodData.mainImgUrl}">
     <img onclick="imgChange(event, this)" class="xzoom-gallery5" width="70" style="object-fit: contain;"
       src="${prodData.mainImgUrl}"
       alt="Lake of cakes"
@@ -95,7 +94,7 @@ const displayProduct = (prodData) => {
         imgs += `
         <a
           href="#!">
-          <imG class="xzoom-gallery5" onclick="imgChange(event, this)" width="70" style="object-fit: contain"
+          <img class="xzoom-gallery5"  onclick="imgChange(event, this)" width="70" style="object-fit: contain;"
             src="${subUrl}"
             alt="Lake of cakes">
         </a>
@@ -104,7 +103,6 @@ const displayProduct = (prodData) => {
     }
   }
   prodSubImgsHTML.innerHTML = imgs;
-  // $('#ex12').zoom();
 
   productNameHTML.innerHTML = prodData.name;
 
@@ -383,19 +381,17 @@ const imgChange = (e, current) => {
   console.log(imgUrl);
   // bigImgHolderHTML.innerHTML = '';
   let big = `
-  <span class="zoom" id="ex1" >
+  <span class="zoom" id="ex11">
   <img   
       src="${imgUrl}"
       alt="Lake of cakes"
-      xoriginal = "${imgUrl}"
-      style="width:420px !important:object-fit:cover"
     /> 
     </span>
   `;
  
 
   bigImgHolderHTML.innerHTML = big;
-  $('#ex1').zoom();
+  $('#ex11').zoom();
   console.log(document.querySelector("#whole-img-block"));
 };
 
