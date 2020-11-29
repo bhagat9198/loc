@@ -27,7 +27,7 @@ firebase.initializeApp(firebaseConfig);
 
 
 
-const calBill = async(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTime, optional = null) => {
+const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTime, optional = null) => {
 
   let userRef = await admin.firestore().collection("Customers").doc(USER_ID);
   let userDetails;
@@ -74,11 +74,11 @@ const calBill = async(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTim
         if (w.cakeWeight === p.cake.weight) {
           basicPrice = w.weightPrice;
           break;
-        } 
+        }
       }
 
       if (p.cake.eggless) {
-        egglessPrice = p.pdata.type.price ;
+        egglessPrice = p.pdata.type.price;
       }
 
       if (p.cake.heart) {
@@ -95,7 +95,7 @@ const calBill = async(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTim
     }
     TOTAL_COST = TOTAL_COST + totalProdPrice;
     TOTAL_COST = Number(TOTAL_COST.toFixed(2));
-  }  
+  }
   // console.log(TOTAL_COST);    
   // console.log('basicPrices', basicPrices);
   let bpArr = basicPrices.slice();
@@ -104,21 +104,21 @@ const calBill = async(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTim
   basicPrices.map(p => {
     totalSubTotal += +p;
   })
-  if(coupan) {
+  if (coupan) {
     let totalDis = 0;
     await admin.firestore().collection('coupans').doc(coupan).get().then(doc => {
       let docData = doc.data();
-        if(docData.minAmt <= totalSubTotal) {
-          basicPrices.map((el, i) => {
-            let d = el * (+docData.amount/100);
-            d = Number(d.toFixed(2));
-            disArr.push(d);
-            let eachDis =  el - (d);
-            eachDis = Number(eachDis.toFixed(2));
-            basicPrices[i] = eachDis;
-            totalDis += d;
-          });
-        }
+      if (docData.minAmt <= totalSubTotal) {
+        basicPrices.map((el, i) => {
+          let d = el * (+docData.amount / 100);
+          d = Number(d.toFixed(2));
+          disArr.push(d);
+          let eachDis = el - (d);
+          eachDis = Number(eachDis.toFixed(2));
+          basicPrices[i] = eachDis;
+          totalDis += d;
+        });
+      }
     })
     TOTAL_COST = TOTAL_COST - totalDis;
     TOTAL_COST = Number(TOTAL_COST.toFixed(2));
@@ -172,7 +172,7 @@ const calBill = async(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTim
     let shipData = shipDoc.data();
     // console.log(shipData);
     shipData.shipTypes.map(ship => {
-      if(ship.type === shipeType) {
+      if (ship.type === shipeType) {
         shipTimeCost = ship.charge;
         shipCat = ship.type;
         timeDelivery = shipTime;
@@ -187,7 +187,7 @@ const calBill = async(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTim
     delete pp.pdata;
   })
 
-  if(optional.shipping) {
+  if (optional.shipping) {
     admin.firestore().collection('orders').add({
       orderId: optional.orderId,
       paymentId: optional.paymentId,
@@ -202,9 +202,9 @@ const calBill = async(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTim
       shipeType: shipCat,
       shipDate: dateDelivery,
       shipTime: timeDelivery,
-      orderAt : (new Date()).toString(),
-      total:TOTAL_COST,
-      status:"pending"
+      orderAt: (new Date()).toString(),
+      total: TOTAL_COST,
+      status: "pending"
     }).then(s => {
       // console.log('saved', s);
     }).catch(error => {
@@ -223,7 +223,7 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
     );
   }
   console.log(data);
-  
+
   const USER_ID = data.userId;
   const CHECKOUT_ID = data.order;
   const coupan = data.coupan;
@@ -249,10 +249,10 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
   console.log(data);
 
   const options = {
-		amount: TOTAL_COST * 100,
-		currency: "INR",
-		receipt: data.name,
-	}; 
+    amount: TOTAL_COST * 100,
+    currency: "INR",
+    receipt: data.name,
+  };
 
   await instance.orders.create(options, (err, order) => {
     if (err) {
@@ -265,7 +265,7 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
   return options;
 });
 
-exports.payemnetStatus = functions.https.onCall(async(data, context) => {
+exports.payemnetStatus = functions.https.onCall(async (data, context) => {
   if (!context.auth) {
     throw new functions.https.HttpsError(
       'unauthenticated',
@@ -274,7 +274,7 @@ exports.payemnetStatus = functions.https.onCall(async(data, context) => {
   }
   console.log(data);
   const razorpay_payment_id = data.razorpay_payment_id;
-	const razorpay_order_id = data.razorpay_order_id;
+  const razorpay_order_id = data.razorpay_order_id;
   const razorpay_signature = data.razorpay_signature;
   const USER_ID = data.userId;
   const CHECKOUT_ID = data.order;
@@ -283,13 +283,13 @@ exports.payemnetStatus = functions.https.onCall(async(data, context) => {
   const shipeType = data.type;
   const shipDate = data.date;
   const shipTime = data.time;
-   
-	const dataKey = razorpay_order_id + '|' + razorpay_payment_id; 
+
+  const dataKey = razorpay_order_id + '|' + razorpay_payment_id;
   const expectSig = cryptoHmac('sha256', 'T4Lx7KUbbfPaIHvRWQsxx4WL').update(dataKey.toString()).digest('hex');
   let status = false;
-	if(expectSig === razorpay_signature) {
+  if (expectSig === razorpay_signature) {
     // console.log('razorpay_signature', razorpay_signature);
-    status = "true";  
+    status = "true";
     let shippingData = {
       paymentId: razorpay_payment_id,
       orderId: razorpay_order_id,
@@ -298,8 +298,8 @@ exports.payemnetStatus = functions.https.onCall(async(data, context) => {
       shipping: true
     }
     await calBill(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTime, shippingData);
-  } else {  
-    console.log('razorpay_signature', razorpay_signature);  
+  } else {
+    console.log('razorpay_signature', razorpay_signature);
     status = "false";
   }
   return status;
@@ -325,16 +325,18 @@ var transporter = nodemailer.createTransport({
 
 
 // Email Service
-exports.sendEmailAfterOrderConfirmation = functions.firestore.document('Customers/{userId}').onUpdate(async (change) => {
+exports.sendEmailAfterReject = functions.firestore.document('Customers/{userId}').onUpdate(async (change) => {
   console.log("Came into Function")
   const newValue = change.after.data();
 
   // ...or the previous value before this update
   const previousValue = change.before.data();
 
+  console.log(previousValue)
+  console.log(newValue)
   // access a particular field as you would any JS property
   const name = newValue.UserName;
-  console.log("--------------------------------------------"+name)
+  console.log("--------------------------------------------" + name)
 
   //Create an options object that contains the time to live for the notification and the priority
   const mailOptions = {
@@ -354,7 +356,7 @@ exports.sendEmailAfterOrderConfirmation = functions.firestore.document('Customer
   <div style="text-align: center; "><br></div>
   <div style="text-align: center; "><br></div>
   <div style="text-align: left;">
-      <div style="text-align: center;"><b>Hi `+newValue.UserName+`,&nbsp;</b></div>
+      <div style="text-align: center;"><b>Hi `+ newValue.UserName + `,&nbsp;</b></div>
       <div style="text-align: center;"><b><br></b></div>
       <div style="text-align: center;">You were trying to shopping with us and to place an order for a gift for your
           loved ones. Have&nbsp;</div>
@@ -412,29 +414,29 @@ exports.sendEmailAfterOrderConfirmation = functions.firestore.document('Customer
 
 
 exports.createUser = functions.firestore
-    .document('Customers/{userId}')
-    .onCreate((snap, context) => {
-  console.log("Came into Function")
-  const newValue = snap.data();
+  .document('Customers/{userId}')
+  .onCreate((snap, context) => {
+    console.log("Came into Function")
+    const newValue = snap.data();
 
-  // ...or the previous value before this update
-  // const previousValue = change.before.data();
+    // ...or the previous value before this update
+    // const previousValue = change.before.data();
 
-  // access a particular field as you would any JS property
-  const name = newValue.UserName;
-  console.log("--------------------------------------------"+name)
+    // access a particular field as you would any JS property
+    const name = newValue.UserName;
+    console.log("--------------------------------------------" + name)
 
-  //Create an options object that contains the time to live for the notification and the priority
-  const mailOptions = {
-    from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
-    to: newValue.Email,
-  };
-  console.log("SSSSSSSS")
-  // Building Email message.
-  mailOptions.subject = 'Welcome to lakeofcakes';
-  //for example
-  mailOptions.html =`
-<div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b>Hi `+newValue.UserName+`,</b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b><br></b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b> 
+    //Create an options object that contains the time to live for the notification and the priority
+    const mailOptions = {
+      from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
+      to: newValue.Email,
+    };
+    console.log("SSSSSSSS")
+    // Building Email message.
+    mailOptions.subject = 'Welcome to lakeofcakes';
+    //for example
+    mailOptions.html = `
+<div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b>Hi `+ newValue.UserName + `,</b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b><br></b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b> 
 </b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">Thank you for signing up with </span><u><span style="font-size: 10.02pt; font-family: TimesNewRoman, Bold; font-weight: bold;">Lakeofcakes.com</span><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">!</span></u></div><div><u><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><br></span></u></div><div><u><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"> 
 </span></u></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">Visiting our site just click Login or My Account at the top of page and then enter your e-mail &amp; password.</span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><br></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"> 
 </span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">When you log in to your account, you will be able to do the following : 
@@ -508,6 +510,195 @@ Occassions
 
   `
 
+    console.log("SSSSSSSS")
+    try {
+      console.log("Inside try")
+      transporter.sendMail(mailOptions);
+      console.log('email sent to:', newValue.Email);
+      transporter.close();
+      console.log(newValue.Email)
+    } catch (error) {
+      console.error('There was an error while sending the email:' + newValue.Email, error);
+    }
+
+
+  });
+
+
+exports.sendEmailAfterConfirmation = functions.firestore.document('Customers/{userId}').onUpdate(async (change) => {
+  console.log("Came into Function")
+  const newValue = change.after.data();
+
+  // ...or the previous value before this update
+  const previousValue = change.before.data();
+
+
+
+  console.log(Object.keys(previousValue))
+  console.log(Object.keys(newValue))
+
+
+  // access a particular field as you would any JS property
+  const name = newValue.UserName;
+  console.log("--------------------------------------------" + name)
+
+  //Create an options object that contains the time to live for the notification and the priority
+  const mailOptions = {
+    from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
+    to: newValue.Email,
+  };
+  console.log("SSSSSSSS")
+  // Building Email message.
+  mailOptions.subject = 'Order Confirmation ';
+  //for example
+  let duplicate = "";
+  console.log(Object.keys(newValue.orders))
+  for (let o of newValue.orders) {
+    console.log("Success")
+    if (o.status == "success") {
+      console.log("Success222222")
+      duplicate += `<tr style="padding: 20px;margin: 15%;text-align: center;">
+      <td style="border: 2px solid black;"><img
+              src="https://t8x8a5p2.stackpathcdn.com/wp-content/uploads/2018/05/Birthday-Cake-Recipe-Image-720x720.jpg"
+              width="90" alt=""></td>
+      <td style="border: 2px solid black;">cake ssjsjjjsdsd
+      <pre>
+Weight : 0.5 Kg 
+Shape : Round 
+Eggless : No 
+Flavour : Strawberry 
+Message : Happy Anniversary Love 
+Perfect Hours : 4:00 pm
+Qty : 1
+      </pre>
+      </td>
+
+
+  </tr>
+  <tr style="padding: 20px;margin: 15%;text-align: center;">
+      <td style="border: 2px solid black;"><img
+              src="https://t8x8a5p2.stackpathcdn.com/wp-content/uploads/2018/05/Birthday-Cake-Recipe-Image-720x720.jpg"
+              width="90" alt=""></td>
+      <td style="border: 2px solid black">cake jasadasd</td>
+      
+
+  </tr>
+`
+    }
+    console.log(duplicate)
+
+  }
+
+  console.log("CAME INTO CONDITION")
+  mailOptions.html = `<div style="width: 100%;display:flex;border: 2px solid red; ">
+
+  <div style="width: 80%"><img
+          src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6"
+          style="width: 263.921px; height: 65.1px;"></div>
+  <div style="margin: 1%;right:0;"><span style="font-size: 20px;">Order</span> <b
+          style="font-size: 20px;">Placed</b></div>
+</div>
+
+<div style="width: 100%;display:flex;">
+
+  <div style="width: 80%;margin: 1%;"> Hi Gurdeep singh,<br>Your order has been successfully placed.</div>
+  <div style="margin: 1%;right:0;"><span style="font-size: 20px;"></span> <b style="font-size: 15px;">Order placed
+          on Nov 27, 2020 at (1:25 PM)</b></div>
+</div>
+
+<div style="text-align: center; "><br></div>
+<div style="text-align: center; "><br></div>
+<div style="text-align: left;">
+
+  <div style="text-align: center;"><b><br></b></div>
+  <div style="text-align: left;">
+      <h5 style="text-align: center; ">
+          <font face="Times New Roman"><b>We are committed to serving you with utmost regard for your and your
+                  product's safety. Hence, please&nbsp;</b></font>
+
+          <font face="Times New Roman"><b>note, the delivery time of your order may change due to traffic &amp;
+                  natural calamities (like rain, storm, fog&nbsp;</b></font>
+
+          <h5 style="text-align: center; ">
+              <font face="Times New Roman"><b>etc.) AND based on the government's zonal advisory in your area
+                      regarding COVID-19.</b></font>
+          </h5>
+
+  </div>
+
+</div>
+
+<center>
+
+  <div style="width: 90%;display:flex;border: 4px solid red;">
+
+      <div style="width: 90%;margin: 1%;"><img
+              src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/Capture.PNG?alt=media&token=4140cc7f-c7cb-47be-846c-d0e9fadc46a9"
+              width="350" style=" @media only screen and (min-width:900px) {
+          width:900px !important;object-fit:cover;
+      }   object-fit:cover;" alt=""></div>
+  </div>
+  <div style="margin: 1%;right:0;border: 2px solid brown;"><span style="font-size: 20px;"></span>
+      <pre>
+Delivery By :Fri, Nov 27, 2020 
+      4:00 pm - 5:00 pm
+      <br><b>Delivery Address</b>
+      <Br>
+Gurdeep Singh Juneja 
+'Jeet Villa' 551 Jha/97/1, Ramnagar Bhilawan, 
+Alambagh, Lucknow 
+Near Baby Ice Cream 
+Lucknow, Uttar Pradesh, 226005
+       <br>
+Amount Paid :Rs 2093
+          </pre>
+  </div>
+  <table style="border: 2px solid orange;padding: 30px;width: 100%;">
+      <thead style="padding: 20px;margin: 15%;">
+          <th>Product Image</th>
+          <th>Name</th>
+      </thead>
+      `+ duplicate + `
+  </table>
+  <table style="float: right;margin-right: 5%;font-size: 20px;">
+      <b><tr>
+          <td>Item(s) total (including GST)</td>
+          <td>1947</td>
+      </tr>
+      <tr>
+          <td>Perfect Hours Charges </td>
+          <td> 150</td>
+      </tr></b>
+      <tr>
+          <td style="font-weight: 800;">Amount Paid</td>
+          <td style="font-weight: 800;">3535</td>
+      </tr>
+  </table>
+
+  
+</center>
+<br>
+<Br>
+<br>
+<br>
+<div>
+  <h4 style="margin-top: 8%;">
+      Thank you for shopping with <b>Lake of Cakes!</b>
+  </h4>
+</div>
+
+<div style="width: 100%;display:flex; ">
+
+  <div style="width: 80%"><img
+          src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6"
+          style="width: 263.921px; height: 65.1px;"></div>
+  <div style="margin: 1%;right:0;">
+      <img
+          src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6"
+          style="width: 263.921px; height: 65.1px;">
+  </div>
+</div>`
+
   console.log("SSSSSSSS")
   try {
     console.log("Inside try")
@@ -519,6 +710,4 @@ Occassions
     console.error('There was an error while sending the email:' + newValue.Email, error);
   }
 
-
 });
-
