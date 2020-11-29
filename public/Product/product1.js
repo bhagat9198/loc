@@ -21,10 +21,9 @@ var getParams = async (url) => {
 };
 
 getParams(window.location.href).then(async (response) => {
-  console.log(response);
   PRODUCT_ID = response.prod;
   CATEGORY_ID = response.cat;
-  console.log(PRODUCT_ID, CATEGORY_ID);
+  // console.log(PRODUCT_ID, CATEGORY_ID);
   if (PRODUCT_ID && CATEGORY_ID) {
     PROD_DETAILS = await extractProdDetails();
     displayProduct(PROD_DETAILS);
@@ -33,7 +32,7 @@ getParams(window.location.href).then(async (response) => {
 });
 
 const extractProdDetails = () => {
-  console.log(CATEGORY_ID, PRODUCT_ID);
+  // console.log(CATEGORY_ID, PRODUCT_ID);
   return db
     .collection(CATEGORY_ID)
     .doc(PRODUCT_ID)
@@ -306,7 +305,10 @@ const displayWeights = (makedWeight) => {
           WEIGHT_PRICE.previous = pprice;
           WEIGHT_PRICE.weight = weightName;
           selected = "checked";
-          disPercentHTML.innerHTML = `(${Math.round((+price/+pprice)*100)}% OFF)`;
+          // console.log(Math.round((+price/+pprice)*100));
+          let dis = 100 - (Math.round((+price/+pprice)*100));
+          console.log(dis);
+          disPercentHTML.innerHTML = `(${dis}% OFF)`;
         }
         // console.log(WEIGHT_PRICE);
         weightCard += `
@@ -408,9 +410,9 @@ const reviewForm = (e) => {
     }
     dbRef.update(docData);
     reviewFormHTML.reset();
-    console.log("updated");
+    // console.log("updated");
   });
-  console.log("done");
+  // console.log("done");
 };
 
 reviewFormHTML.addEventListener("submit", reviewForm);
@@ -442,7 +444,7 @@ const addons_details = [];
     snapshotDocs.map(async(doc, index) => {
       // card += displayAddon(doc);
       let docData = doc.data();
-      console.log(docData);
+      // console.log(docData);
       addons_details.push({
         qty: 1,
         price: +docData.price,
@@ -492,7 +494,6 @@ const addons_details = [];
     `;
     });
 
-    console.log(card);
     allAddonsHTML.innerHTML = card;
     // console.log(TOTAL_COST);
   });
@@ -694,7 +695,7 @@ addToCartBtnHTML.addEventListener("click", addToCart);
 
 const displaySuggestions = async() => {
   const trendingItemsHTML = document.querySelector('.trending-item-slider');
-  console.log(CATEGORY_ID);
+  // console.log(CATEGORY_ID);
   let allProds = [];
   let r =  db.collection(CATEGORY_ID);
   r.get().then(async(prodSnaps) => {
@@ -702,7 +703,7 @@ const displaySuggestions = async() => {
     let snapSize = prodSnapsDocs.length;
     // console.log(prodSnapsDocs.length);
     let rand = Math.floor(Math.random() * (snapSize - 8 + 0 + 1));
-    console.log(rand);
+    // console.log(rand);
     prodSnapsDocs.map(p => {
       allProds.push(p.id);
     })
@@ -711,7 +712,7 @@ const displaySuggestions = async() => {
     for(let counter = 0; counter < 8; counter++) {
       await db.collection(CATEGORY_ID).doc(allProds[counter + rand]).get().then(pdataRaw => {
         let pdata = pdataRaw.data();
-        console.log(pdata.mainImgUrl);
+        // console.log(pdata.mainImgUrl);
         card += `
         <a href="./product.html?prod=${allProds[counter + rand]}&&cat=${CATEGORY_ID}" class="item">
           <div class="item-img">

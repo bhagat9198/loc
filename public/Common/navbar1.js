@@ -348,7 +348,7 @@ if(localStorage.getItem("locLoggedInUser")) {
     if(userData.cart) {
       flag = 1;
       let cartSize = userData.cart.length;
-      console.log(cartSize);
+      // console.log(cartSize);
       cartModalProds = `
       <a href="#cart" class="cart carticon">
         <div class="icon" onclick="redirectToCart()">
@@ -359,7 +359,7 @@ if(localStorage.getItem("locLoggedInUser")) {
       <div class="my-dropdown-menu" id="cart-items">
       `;
       for(cartProd of userData.cart) {
-        console.log(cartProd);
+        // console.log(cartProd);
         await db.collection(cartProd.cat).doc(cartProd.prodId).get().then(pDoc => {
           let pData = pDoc.data();
           cartModalProds += `
