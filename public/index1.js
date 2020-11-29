@@ -121,8 +121,7 @@ userSilderRef.get().then(async(sliderSnaps) => {
               <h5 class="contactless"> Contactless delivery</h5>
             </div>
             <h4 class="price">₹${pdata.sp} <del><small>₹ ${pdata.mrp}</small></del></h4>
-            <h5 class="name">${pdata.name}</h5>
-            
+            <h5 class="name">${pdata.name}</h5>  
           </div>
         </a>
         `;
@@ -447,6 +446,7 @@ db.collection("sections")
               </a>
             </div>
           </div>
+          
           `;
         });
     }
