@@ -556,10 +556,11 @@ exports.sendEmailAfterConfirmation = functions.firestore.document('Customers/{us
   for (let o of newValue.orders) {
     console.log("Success")
     if (o.status == "success") {
+      
       console.log("Success222222")
       duplicate += `<tr style="padding: 20px;margin: 15%;text-align: center;">
       <td style="border: 2px solid black;"><img
-              src="https://t8x8a5p2.stackpathcdn.com/wp-content/uploads/2018/05/Birthday-Cake-Recipe-Image-720x720.jpg"
+              src="${}"
               width="90" alt=""></td>
       <td style="border: 2px solid black;">cake ssjsjjjsdsd
       <pre>
