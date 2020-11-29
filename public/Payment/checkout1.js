@@ -939,10 +939,33 @@ const orderComplete = (data) => {
   // })
 
   const payemnetStatus = firebase.functions().httpsCallable('payemnetStatus');
-  payemnetStatus(addtionalData).then((res) => {
+  payemnetStatus(addtionalData).then(async(res) => {
     // console.log(res.data);
     if(res.data === 'true') {
       console.log('index');
+      let userRef =  await db.collection('Customers').doc(USER_ID);
+     await userRef.get().then(userDoc => {
+        let userData = userDoc.data();
+        for(let uo of userData.orders) {
+          if(+uo.orderId === +CHECKOUT_ID) {
+            let shipData = {
+              type: shippingType,
+              date: document.querySelector('input[name=shipping_date]').value,
+              time: document.querySelector('input[name=shipping_time]:checked').value
+            }
+            uo.status = 'success';
+            uo.success = {
+              orderTime: (new Date()).toString(),
+              shippingData: SHIPPING_DATA,
+              ...shipData,
+              totalCost: TOTAL_COST
+            }
+            userRef.update(userData);
+            break;
+          }
+        }
+      })
+
     } else {
       console.log('same page reload');
     }

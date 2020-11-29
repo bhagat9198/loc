@@ -553,41 +553,71 @@ exports.sendEmailAfterConfirmation = functions.firestore.document('Customers/{us
   //for example
   let duplicate = "";
   console.log(Object.keys(newValue.orders))
+  let delivertTypePrice = 0;
+  let timeStamp, timeDate, dTime, shipingData, totalCost, deliverType;
+
   for (let o of newValue.orders) {
     console.log("Success")
     if (o.status == "success") {
-      console.log("Success222222")
-      duplicate += `<tr style="padding: 20px;margin: 15%;text-align: center;">
-      <td style="border: 2px solid black;"><img
-              src="https://t8x8a5p2.stackpathcdn.com/wp-content/uploads/2018/05/Birthday-Cake-Recipe-Image-720x720.jpg"
-              width="90" alt=""></td>
-      <td style="border: 2px solid black;">cake ssjsjjjsdsd
-      <pre>
-Weight : 0.5 Kg 
-Shape : Round 
-Eggless : No 
-Flavour : Strawberry 
-Message : Happy Anniversary Love 
-Perfect Hours : 4:00 pm
-Qty : 1
-      </pre>
-      </td>
-
-
-  </tr>
-  <tr style="padding: 20px;margin: 15%;text-align: center;">
-      <td style="border: 2px solid black;"><img
-              src="https://t8x8a5p2.stackpathcdn.com/wp-content/uploads/2018/05/Birthday-Cake-Recipe-Image-720x720.jpg"
-              width="90" alt=""></td>
-      <td style="border: 2px solid black">cake jasadasd</td>
+      console.log("Success222222");
+      for(op of o.products) {
+        let opRef = admin.firestore().collection(op.cat).doc(op.prodId);
+        await opRef.get().then(opDoc => {
+          let cake = '';
+          if(op.cake) {
+            cake = `
+            <pre>
+            Weight : ${op.cake.weight} Kg 
+            Shape : ${op.cake.heart ? 'Heart' : 'Not Opted'}
+            Eggless : ${op.cake.eggless ? 'Opted' : 'Not Opted'}
+            Flavour : ${op.cake.flavour} 
+            `;
+          }
+          let opData = opDoc.data();
+          duplicate += `
+          <tr style="padding: 20px;margin: 15%;text-align: center;">
+            <td style="border: 2px solid black;"><img
+                    src="${opData.mainImgUrl}"
+                    width="90" alt=""></td>
+            <td style="border: 2px solid black;">${opData.name}
+            ${cake}
+            Message : ${op.message}
+            Qty : ${op.qty}
+            </pre>
+            </td>
+        </tr>
+          `
+        })
+      }
       
-
-  </tr>
-`
     }
-    console.log(duplicate)
+    console.log(duplicate);
+    timeStamp = o.success.orderTime;
+    totalCost = o.success.totalCost;
+    deliverType = o.success.type;
+    if(deliverType === 'free') {
+      dTime = '8:00AM to 5:00pM'
+    } else if(deliverType === 'perfect') {
+      dTime = timeStamp
+    } else {
+      dTime = `11:30PM to 12:00AM`
+    }
+
+    timeDate = o.success.date;
+    await admin.firestore().collection('miscellaneous').doc('shipTimePrice').get().then(shipPriceDoc => {
+      let shipPriceData = shipPriceDoc.data();
+      for(sp of shipPriceData.shipTypes) {
+        if(sp.type === deliverType) {
+          delivertTypePrice = +sp.charge;
+        }
+      }
+    })
+
+    shipingData = o.success.shippingData;
+
 
   }
+
 
   console.log("CAME INTO CONDITION")
   mailOptions.html = `<div style="width: 100%;display:flex;border: 2px solid red; ">
@@ -601,9 +631,9 @@ Qty : 1
 
 <div style="width: 100%;display:flex;">
 
-  <div style="width: 80%;margin: 1%;"> Hi Gurdeep singh,<br>Your order has been successfully placed.</div>
+  <div style="width: 80%;margin: 1%;"> Hi ${newValue.UserName},<br>Your order has been successfully placed.</div>
   <div style="margin: 1%;right:0;"><span style="font-size: 20px;"></span> <b style="font-size: 15px;">Order placed
-          on Nov 27, 2020 at (1:25 PM)</b></div>
+          on ${timeStamp}</b></div>
 </div>
 
 <div style="text-align: center; "><br></div>
@@ -630,27 +660,25 @@ Qty : 1
 
 <center>
 
-  <div style="width: 90%;display:flex;border: 4px solid red;">
-
-      <div style="width: 90%;margin: 1%;"><img
+  <div style="width: 80%;display:flex;border: 4px solid red;">
+      <div style="width: 80%;margin: 1%;"><img
               src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/Capture.PNG?alt=media&token=4140cc7f-c7cb-47be-846c-d0e9fadc46a9"
-              width="350" style=" @media only screen and (min-width:900px) {
+              width="330" style=" @media only screen and (min-width:900px) {
           width:900px !important;object-fit:cover;
       }   object-fit:cover;" alt=""></div>
   </div>
   <div style="margin: 1%;right:0;border: 2px solid brown;"><span style="font-size: 20px;"></span>
       <pre>
-Delivery By :Fri, Nov 27, 2020 
-      4:00 pm - 5:00 pm
+      Delivery By :${timeDate}
+      ${dTime}
       <br><b>Delivery Address</b>
       <Br>
-Gurdeep Singh Juneja 
-'Jeet Villa' 551 Jha/97/1, Ramnagar Bhilawan, 
-Alambagh, Lucknow 
-Near Baby Ice Cream 
-Lucknow, Uttar Pradesh, 226005
+${shipingData.differtAddress ? shipingData.alt_name : shipingData.name}
+${shipingData.differtAddress ? shippingData.alt_address : shippingData.address}
+Lucknow 
+Lucknow, Uttar Pradesh, ${shipingData.differtAddress ? shipingData.alt_zip :  shippingData.zip}
        <br>
-Amount Paid :Rs 2093
+Amount Paid :Rs ${totalCost}
           </pre>
   </div>
   <table style="border: 2px solid orange;padding: 30px;width: 100%;">
@@ -663,15 +691,15 @@ Amount Paid :Rs 2093
   <table style="float: right;margin-right: 5%;font-size: 20px;">
       <b><tr>
           <td>Item(s) total (including GST)</td>
-          <td>1947</td>
+          <td>${totalCost - delivertTypePrice}</td>
       </tr>
       <tr>
           <td>Perfect Hours Charges </td>
-          <td> 150</td>
+          <td>${delivertTypePrice}</td>
       </tr></b>
       <tr>
           <td style="font-weight: 800;">Amount Paid</td>
-          <td style="font-weight: 800;">3535</td>
+          <td style="font-weight: 800;">${totalCost}</td>
       </tr>
   </table>
 
