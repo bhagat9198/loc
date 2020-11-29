@@ -246,3 +246,84 @@
     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
 [error] 
 [error] Error: Server Error. connect ETIMEDOUT 216.58.200.138:443
+[debug] [2020-11-29T07:21:59.706Z] ----------------------------------------------------------------------
+[debug] [2020-11-29T07:21:59.708Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Lenovo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2020-11-29T07:21:59.709Z] CLI Version:   8.16.2
+[debug] [2020-11-29T07:21:59.709Z] Platform:      win32
+[debug] [2020-11-29T07:21:59.709Z] Node Version:  v14.9.0
+[debug] [2020-11-29T07:21:59.719Z] Time:          Sun Nov 29 2020 12:51:59 GMT+0530 (India Standard Time)
+[debug] [2020-11-29T07:21:59.720Z] ----------------------------------------------------------------------
+[debug] [2020-11-29T07:21:59.720Z] 
+[debug] [2020-11-29T07:21:59.733Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-29T07:21:59.733Z] > authorizing via signed-in user
+[debug] [2020-11-29T07:21:59.734Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-11-29T07:21:59.736Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-11-29T07:21:59.737Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-11-29T07:22:00.214Z] <<< HTTP RESPONSE 200 {"date":"Sun, 29 Nov 2020 07:21:59 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-11-29T07:22:00.219Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lake-of-cakes:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-11-29T07:22:01.916Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 29 Nov 2020 07:22:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1197","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-11-29T07:22:01.920Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lake-of-cakes  
+ 
+[debug] [2020-11-29T07:22:02.527Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 29 Nov 2020 07:22:01 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'lake-of-cakes'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-11-29T07:22:08.860Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/lake-of-cakes/versions  
+ {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-11-29T07:22:30.451Z] Error: connect ETIMEDOUT 216.58.200.138:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 216.58.200.138:443
+[debug] [2020-11-29T07:23:09.030Z] ----------------------------------------------------------------------
+[debug] [2020-11-29T07:23:09.032Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Lenovo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2020-11-29T07:23:09.032Z] CLI Version:   8.16.2
+[debug] [2020-11-29T07:23:09.032Z] Platform:      win32
+[debug] [2020-11-29T07:23:09.032Z] Node Version:  v14.9.0
+[debug] [2020-11-29T07:23:09.033Z] Time:          Sun Nov 29 2020 12:53:09 GMT+0530 (India Standard Time)
+[debug] [2020-11-29T07:23:09.033Z] ----------------------------------------------------------------------
+[debug] [2020-11-29T07:23:09.033Z] 
+[debug] [2020-11-29T07:23:09.040Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-29T07:23:09.041Z] > authorizing via signed-in user
+[debug] [2020-11-29T07:23:09.041Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-11-29T07:23:09.044Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lake-of-cakes:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-11-29T07:23:10.554Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 29 Nov 2020 07:23:09 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1184","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-11-29T07:23:10.559Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lake-of-cakes  
+ 
+[debug] [2020-11-29T07:23:11.103Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 29 Nov 2020 07:23:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'lake-of-cakes'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-11-29T07:23:18.419Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/lake-of-cakes/versions  
+ {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-11-29T07:23:34.851Z] ----------------------------------------------------------------------
+[debug] [2020-11-29T07:23:34.853Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Lenovo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2020-11-29T07:23:34.853Z] CLI Version:   8.16.2
+[debug] [2020-11-29T07:23:34.853Z] Platform:      win32
+[debug] [2020-11-29T07:23:34.853Z] Node Version:  v14.9.0
+[debug] [2020-11-29T07:23:34.854Z] Time:          Sun Nov 29 2020 12:53:34 GMT+0530 (India Standard Time)
+[debug] [2020-11-29T07:23:34.855Z] ----------------------------------------------------------------------
+[debug] [2020-11-29T07:23:34.855Z] 
+[debug] [2020-11-29T07:23:34.863Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-11-29T07:23:34.863Z] > authorizing via signed-in user
+[debug] [2020-11-29T07:23:34.863Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-11-29T07:23:34.867Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lake-of-cakes:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-11-29T07:23:36.458Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 29 Nov 2020 07:23:35 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1161","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-11-29T07:23:36.461Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lake-of-cakes  
+ 
+[debug] [2020-11-29T07:23:36.961Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 29 Nov 2020 07:23:36 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'lake-of-cakes'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-11-29T07:23:39.901Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/lake-of-cakes/versions  
+ {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-11-29T07:24:01.292Z] Error: connect ETIMEDOUT 216.58.200.138:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 216.58.200.138:443

@@ -189,8 +189,8 @@ var handleSignedOutUser = function () {
 // Listen to change in auth state so it displays the correct UI for when
 // the user is signed in or not.
 firebase.auth().onAuthStateChanged(function(user) {
-  document.getElementById('loading').style.display = 'none';
-  document.getElementById('loaded').style.display = 'block';
+  // document.getElementById('loading').style.display = 'none';
+  // document.getElementById('loaded').style.display = 'block';
 
   const db = firebase.firestore();
  
@@ -350,13 +350,13 @@ var initApp = function () {
   //   'click', signInWithRedirect);
   // document.getElementById('sign-in-with-popup').addEventListener(
   //   'click', signInWithPopup);
-  document.getElementById('sign-out').addEventListener('click', function () {
-    firebase.auth().signOut();
-  });
-  document.getElementById('delete-account').addEventListener(
-    'click', function () {
-      deleteAccount();
-    });
+  // document.getElementById('sign-out').addEventListener('click', function () {
+  //   firebase.auth().signOut();
+  // });
+  // document.getElementById('delete-account').addEventListener(
+  //   'click', function () {
+  //     deleteAccount();
+  //   });
 
   // document.getElementById('recaptcha-normal').addEventListener(
   //   'change', handleConfigChange);
