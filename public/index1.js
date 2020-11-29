@@ -81,6 +81,7 @@ db.collection("sections")
 // user defined sliders
 const userDefinedSliderHTML = document.querySelector("#user-defined-slider");
 
+<<<<<<< HEAD
 let userSilderRef = db
   .collection("sections")
   .doc("slider")
@@ -91,6 +92,16 @@ userSilderRef.get().then(async (sliderSnaps) => {
   let sliderSnapsDocs = sliderSnaps.docs;
   for (let sliderDocs of sliderSnapsDocs) {
     let docData = sliderDocs.data();
+=======
+let userSilderRef = db.collection('sections').doc('slider').collection('slider');
+var datass="NO";
+userSilderRef.get().then(async(sliderSnaps) => {
+  let wholeUserSlider = '';
+  let sliderSnapsDocs = sliderSnaps.docs;
+  for(let sliderDocs of sliderSnapsDocs) {  
+  let docData = sliderDocs.data();
+  datass="YES"
+>>>>>>> e8fbe91f9663dce92873f61d2700a706ad8db16b
     let eachUserSlider = `
     <section class="trending"> 
     <div class="container-fluid">
@@ -130,12 +141,7 @@ userSilderRef.get().then(async (sliderSnaps) => {
               <h5 class="contactless"> Contactless delivery</h5>
             </div>
             <h4 class="price">₹${pdata.sp} <del><small>₹ ${pdata.mrp}</small></del></h4>
-            <h5 class="name">${pdata.name}</h5>
-            <div class="item-cart-area">
-              <span class="add-to-cart-quick add-to-cart-btn" data-href="///addtocart/331">
-                <i class="icofont-cart"></i> Order Now
-              </span>
-            </div>
+            <h5 class="name">${pdata.name}</h5>  
           </div>
         </a>
         `;
@@ -144,45 +150,42 @@ userSilderRef.get().then(async (sliderSnaps) => {
     eachUserSlider =
       eachUserSlider + row + ` </div></div></div></div></section>`;
     wholeUserSlider += eachUserSlider;
-  }
-
-  userDefinedSliderHTML.innerHTML = wholeUserSlider;
-  if ((flag = 1)) {
-    console.log('aaaaa');
-    var $trending_slider = $(".trending-item-slider");
+  };
+  userDefinedSliderHTML.innerHTML = wholeUserSlider; 
+  if(datass=="YES"){
+    var $trending_slider = $('.trending-item-slider');
     $trending_slider.owlCarousel({
-      items: 4,
-      autoplay: true,
-      margin: 10,
-      loop: true,
-      dots: true,
-      nav: true,
-      center: false,
-      autoplayHoverPause: true,
-      navText: [
-        "<i class='fa fa-angle-left'></i>",
-        "<i class='fa fa-angle-right'></i>",
-      ],
-      smartSpeed: 600,
-      responsive: {
-        0: {
-          items: 2,
-        },
-        414: {
-          items: 2,
-        },
-        768: {
-          items: 3,
-        },
-        992: {
-          items: 5,
-        },
-        1200: {
-          items: 6,
-        },
-      },
+        items: 4,
+        autoplay: true,
+        margin: 10,
+        loop: true,
+        dots: true,
+        nav: true,
+        center: false,
+        autoplayHoverPause: true,
+        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+        smartSpeed: 800,
+        responsive: {
+            0: {
+                items: 2,
+            },
+            414: {
+                items: 2,
+            },
+            768: {
+                items: 3,
+            },
+            992: {
+                items: 5
+            },
+            1200: {
+                items: 6
+            }
+        }
     });
   }
+ 
+  
 });
 
 // fixed section 2
@@ -333,13 +336,17 @@ db.collection("sections")
           return;
         }
         row += `
-          <div class="item">
+          <a href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]}" class="item">
             <div class="item-img">
               <img class="img-fluid" src="${prodData.mainImgUrl}" >
             </div>
+<<<<<<< HEAD
             <a href="./Product/product.html?prod=${prod.id}&&cat=${
           prodData.wholeCategory.split("__")[0]
         }"
+=======
+            
+>>>>>>> e8fbe91f9663dce92873f61d2700a706ad8db16b
               <div class="info">
                 <div class="stars">
                   <h5 class="contactless"> Contactless delivery</h5>
@@ -348,15 +355,18 @@ db.collection("sections")
           prodData.mrp
         }</small></del></h4>
                 <h5 class="name">${prodData.name}</h5>
-                <div class="item-cart-area"></div>
+               
               </div>
-            </a>
+          
           </div>
+          </a>
+      
           `;
       });
       // }
     }
     fixedSection4Row.innerHTML = row;
+<<<<<<< HEAD
     var $trending_slider = $(".trending-item-slider");
     $trending_slider.owlCarousel({
       items: 4,
@@ -389,6 +399,37 @@ db.collection("sections")
           items: 6,
         },
       },
+=======
+        var $trending_slider = $('.trending-item-slider');
+    $trending_slider.owlCarousel({
+        items: 4,
+        autoplay: true,
+        margin: 10,
+        loop: true,
+        dots: true,
+        nav: true,
+        center: false,
+        autoplayHoverPause: true,
+        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+        smartSpeed: 800,
+        responsive: {
+            0: {
+                items: 2,
+            },
+            414: {
+                items: 2,
+            },
+            768: {
+                items: 3,
+            },
+            992: {
+                items: 5
+            },
+            1200: {
+                items: 6
+            }
+        }
+>>>>>>> e8fbe91f9663dce92873f61d2700a706ad8db16b
     });
   });
 
@@ -469,6 +510,7 @@ db.collection("sections")
               </a>
             </div>
           </div>
+          
           `;
         });
     }
