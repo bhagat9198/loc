@@ -104,7 +104,8 @@ console.log("navbar1.js");
   let searchResults = [];
   db.collection('miscellaneous').doc('searchList').get().then(doc => {
     let docData = doc.data();
-    allSearchList = docData.Details;
+    allSearchList = docData.Detail
+    s;
 
     for (let i of allSearchList) {
 
