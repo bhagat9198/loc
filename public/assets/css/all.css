@@ -26312,7 +26312,14 @@ nav button {
     width: 100%;
     overflow: hidden;
     border: 1px groove black;
-    border-radius: 30px;
+
+}
+.banner-effectImage {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+ 
 }
 .banner-effect2 {
     position: relative;
@@ -26376,6 +26383,16 @@ nav button {
 
 
 .banner-effect img {
+    -webkit-transition: 0.3s ease-in;
+    -moz-transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+    transition: 0.3s ease-in;
+    width:370px;
+    height: 200px;
+    object-fit:cover;
+}
+
+.banner-effectImage img {
     -webkit-transition: 0.3s ease-in;
     -moz-transition: 0.3s ease-in;
     -o-transition: 0.3s ease-in;
