@@ -25666,8 +25666,10 @@ nav button {
     height: 100%;
     background: url(../images/aside-img/accessories.jpg);
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: fixed;
     background-size: cover;
+    background-attachment: fixed;
+    position: fixed;
 }
 
 .categori-item {
@@ -25675,7 +25677,9 @@ nav button {
      background: linear-gradient(rgba(223, 214, 214, 0.6), rgba(245, 138, 96, 0.616)), url("../images/flowerbg.jpg");
      background-repeat: no-repeat;
      background-size: cover;
-
+     background-position: fixed;
+     background-size: cover;
+     background-attachment: fixed;
 
   
 }
@@ -36267,6 +36271,13 @@ section.phone-and-accessories.categori-item {
 @media only screen and (max-width:768px){
     .ml-4 {
         margin-left: 2.5rem !important;
+        
+    }
+}
+@media  only screen and (width:1280px){
+    .responsiveIcon1{
+        width: 30px !important;
+        height:30px !important;
         
     }
 }

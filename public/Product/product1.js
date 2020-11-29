@@ -178,6 +178,36 @@ const displayProduct = (prodData) => {
       cakeFlavourHTML.innerHTML = card;
     }
   }
+  while (
+    prodData.descriptions.includes("<p><br></p>") ||
+    prodData.descriptions.startsWith("<p><br></p>")
+  ) {
+    prodData.descriptions = prodData.descriptions.replace("<p><br></p>", "");
+  }
+
+  while (
+    prodData.descriptions.includes("<p><br></p>") ||
+    prodData.descriptions.endsWith("<p><br></p>")
+  ) {
+    prodData.descriptions = prodData.descriptions.replace(
+      new RegExp("<p><br></p>$"),
+      ""
+    );
+  }
+  while (
+    prodData.policy.startsWith("<p><br></p>") ||
+    prodData.policy.includes("<p><br></p>")
+  ) {
+  
+    prodData.policy = prodData.policy.replace("<p><br></p>", "");
+  }
+
+  while (
+    prodData.policy.endsWith("<p><br></p>") ||
+    prodData.policy.includes("<p><br></p>")
+  ) {
+    prodData.policy = prodData.policy.replace(new RegExp("<p><br></p>$"), "");
+  }
 
   const prodDescHTML = document.querySelector("#prod-desc");
   prodDescHTML.innerHTML = `${prodData.descriptions}`;
