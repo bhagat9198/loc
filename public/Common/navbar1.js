@@ -363,12 +363,13 @@ if(localStorage.getItem("locLoggedInUser")) {
         await db.collection(cartProd.cat).doc(cartProd.prodId).get().then(pDoc => {
           let pData = pDoc.data();
           cartModalProds += `
+          <div class="dropdownmenu-wrapper">
           <ul class="dropdown-cart-products">
             <li class="product cremove3461">
               <figure class="product-image-container">
-                <a href="javascript;" class="product-image">
+                <a href="/UserDash/cart.html" class="product-image">
                   <img src="${pData.mainImgUrl}"
-                    style="width: 50px; object-fit:cover;" alt="Lake of Cakes">
+                    style="width: 70px; object-fit:cover;margin:4%" alt="Lake of Cakes">
                 </a>
               </figure>
               <div class="product-details">
@@ -382,12 +383,13 @@ if(localStorage.getItem("locLoggedInUser")) {
               </div>
             </li>
           </ul>
+          </div>
           `;
         })
       }
       cartModalProds += `
       <div onclick="redirectToCart()" class="dropdown-cart-action">
-            <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: rgb(20, 113, 167);">View In Cart</a>
+            <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: rgb(20, 113, 167);margin-left:auto;margin-right:auto">View In Cart</a>
           </div>
         </div>
       </div>
