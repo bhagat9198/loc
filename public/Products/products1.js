@@ -39,12 +39,12 @@ getParams(window.location.href).then(async (response) => {
   }
   // console.log(allProductsArr);
   if (allProductsArr.length > 0) {
-    // let randAllProdsArr = arrayRandom(allProductsArr);
-    // TEMP_ARR = randAllProdsArr.slice();
-    // displayTopSuggest(randAllProdsArr);
+    let randAllProdsArr = arrayRandom(allProductsArr);
+    TEMP_ARR = randAllProdsArr.slice();
+    displayTopSuggest(randAllProdsArr);
 
-    // displayProds(randAllProdsArr);
-    displayProds(allProductsArr);
+    displayProds(randAllProdsArr);
+    // displayProds(allProductsArr);
   } else {
     allProductsHTML.innerHTML = 'No products Found';
   }
