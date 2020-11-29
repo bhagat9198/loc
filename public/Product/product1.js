@@ -434,14 +434,15 @@ const allAddonsHTML = document.querySelector("#allAddons");
 const costWithAddonsHTML = document.querySelector("#cost-with-addons");
 
 const addons_details = [];
-db.collection("addons")
+ db.collection("addons")
   .get()
   .then((snapshots) => {
     let snapshotDocs = snapshots.docs;
     let card = "";
-    snapshotDocs.map((doc, index) => {
+    snapshotDocs.map(async(doc, index) => {
       // card += displayAddon(doc);
       let docData = doc.data();
+      console.log(docData);
       addons_details.push({
         qty: 1,
         price: +docData.price,
@@ -449,15 +450,15 @@ db.collection("addons")
         id: doc.id,
       });
       card += `
-    <div class="col-md-3 col-6 mt-3">
+      <div class="col-md-3 col-6 mt-3">
       <a class="item"
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
         <input type="checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
           style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
-        <div class="item-img  "  style="max-height:150px ;>
+        <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
           <img class="img-fluid"
             src="${docData.imgUrl}"
-            alt="" style="width:100%;object-fit: cover;">
+            alt="Lake of cakes" style="width:100%;object-fit: cover;">
         </div>
         <div class="info" style="height: 88px; ">
           <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">
@@ -490,6 +491,8 @@ db.collection("addons")
     </div>
     `;
     });
+
+    console.log(card);
     allAddonsHTML.innerHTML = card;
     // console.log(TOTAL_COST);
   });
@@ -558,12 +561,19 @@ const buyProd = async (e) => {
     let docData = doc.data();
     if (docData.orders) {
       let cake = null;
+      let f;
+      if(WEIGHT_PRICE.weight) {
+        f = document.querySelector('input[name=cake-flavour]:checked').value;
+      } else {
+        f = false;
+      }
       if (WEIGHT_PRICE.weight) {
         cake = {};
         cake.heart = HEART;
         cake.eggless = EGGLESS;
         cake.weight = WEIGHT_PRICE.weight;
-        cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
+        // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
+        cake.flavour = f;
       }
       let orderData = {
         orderId: orderId,
@@ -589,11 +599,18 @@ const buyProd = async (e) => {
       let cake = null;
       if (WEIGHT_PRICE.weight) {
         console.log(WEIGHT_PRICE.weight);
+        let f;
+        if(WEIGHT_PRICE.weight) {
+          f = document.querySelector('input[name=cake-flavour]:checked').value;
+        } else {
+          f = false;
+        }
         cake = {};
         cake.heart = HEART;
         cake.eggless = EGGLESS;
         cake.weight = WEIGHT_PRICE.weight;
-        cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
+        // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
+        cake.flavour = f;
       }
 
       let orderData = {

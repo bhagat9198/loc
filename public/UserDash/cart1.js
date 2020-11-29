@@ -363,7 +363,7 @@ const addonModal = (e) => {
         <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
           <img class="img-fluid"
             src="${docData.imgUrl}"
-            alt="" style="width:100%;object-fit: cover;">
+            alt="lake of cakes" style="width:100%;object-fit: cover;">
         </div>
         <div class="info" style="height: 88px; ">
           <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">
