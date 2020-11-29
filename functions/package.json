@@ -13,6 +13,7 @@
   },
   "main": "index.js",
   "dependencies": {
+    "bootstrap": "^4.5.3",
     "create-hmac": "^1.1.7",
     "firebase": "^8.1.1",
     "firebase-admin": "^9.2.0",
