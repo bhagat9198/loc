@@ -1661,3 +1661,522 @@ db.collection("sections")
       fForm9HTML["f9-t4"].value = docData.card4.tag;
     }
   });
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const fForm4Imgs1HTML = document.querySelector('#fForm4Imgs1');
+
+const f4img1File0HTML = document.querySelector('#f4img1-file0');
+const f4img1File1HTML = document.querySelector('#f4img1-file1');
+const f4img1File2HTML = document.querySelector('#f4img1-file2');
+const f4img1File3HTML = document.querySelector('#f4img1-file3');
+const f4img1File4HTML = document.querySelector('#f4img1-file4');
+
+let f4Imgs1file0, f4Imgs1file1, f4Imgs1file2, f4Imgs1file3, f4Imgs1file4; 
+const fForm4Img1 = async(e) => {
+  e.preventDefault();
+
+  let dbImg4Ref = db.collection('sections').doc('img41');
+
+  const title = fForm4Imgs1HTML['f4img1-title'].value;
+  const img4cat0 = fForm4Imgs1HTML['f4img1-cat0'].value;
+  const img4cat1 = fForm4Imgs1HTML['f4img1-cat1'].value;
+  const img4cat2 = fForm4Imgs1HTML['f4img1-cat2'].value;
+  const img4cat3 = fForm4Imgs1HTML['f4img1-cat3'].value;
+  const img4cat4 = fForm4Imgs1HTML['f4img1-cat4'].value;
+  const img4tag0 = fForm4Imgs1HTML['f4img1-t0'].value;
+  const img4tag1 = fForm4Imgs1HTML['f4img1-t1'].value;
+  const img4tag2 = fForm4Imgs1HTML['f4img1-t2'].value;
+  const img4tag3 = fForm4Imgs1HTML['f4img1-t3'].value;
+  const img4tag4 = fForm4Imgs1HTML['f4img1-t4'].value;
+  let img0, img1, img2, img3, img4, imgUrl0, imgUrl1, imgUrl2, imgUrl3, imgUrl4;
+
+  if(f4Imgs1file0) {
+    img0 = `${Math.random()}__${f4Imgs1file0.name}`;
+    await storageService.ref(`sections/img41/${img0}`).put(f4Imgs1file0);
+    await storageService.ref(`sections/img41/${img0}`).getDownloadURL().then(url => {
+      imgUrl0 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+  if(f4Imgs1file1) {
+    img1 = `${Math.random()}__${f4Imgs1file1.name}`;
+    await storageService.ref(`sections/img41/${img1}`).put(f4Imgs1file1);
+    await storageService.ref(`sections/img41/${img1}`).getDownloadURL().then(url => {
+      imgUrl1 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+  if(f4Imgs1file2) {
+    img2 = `${Math.random()}__${f4Imgs1file2.name}`;
+    await storageService.ref(`sections/img41/${img2}`).put(f4Imgs1file2);
+    await storageService.ref(`sections/img41/${img2}`).getDownloadURL().then(url => {
+      imgUrl2 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+  if(f4Imgs1file3) {
+
+    img3 = `${Math.random()}__${f4Imgs1file3.name}`;
+    console.log(f4Imgs1file3);
+    await storageService.ref(`sections/img41/${img3}`).put(f4Imgs1file3);
+    await storageService.ref(`sections/img41/${img3}`).getDownloadURL().then(url => {
+      imgUrl3 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+  if(f4Imgs1file4) {
+    img4 = `${Math.random()}__${f4Imgs1file4.name}`;
+    await storageService.ref(`sections/img41/${img4}`).put(f4Imgs1file4);
+    await storageService.ref(`sections/img41/${img4}`).getDownloadURL().then(url => {
+      imgUrl4 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+
+  dbImg4Ref.get().then(img4Doc => {
+    let img4Data = img4Doc.data();
+
+    img4Data.title = title;
+    if(img0) {
+      img4Data.mainImg = {
+        img: img0,
+        imgUrl: imgUrl0,
+        cat: img4cat0,
+        tag: img4tag0,
+        active: true,
+      }
+    }
+    if(img1) {
+      img4Data.subImgs[0] = {
+        img: img1,
+        imgUrl: imgUrl1,
+        cat: img4cat1,
+        tag: img4tag1,
+        active: true,
+      }
+    }
+    if(img2) {
+      img4Data.subImgs[1] = {
+        img: img2,
+        imgUrl: imgUrl2,
+        cat: img4cat2,
+        tag: img4tag2,
+        active: true,
+      }
+    }
+    if(img3) {
+      img4Data.subImgs[2] = {
+        img: img3,
+        imgUrl: imgUrl3,
+        cat: img4cat3,
+        tag: img4tag3,
+        active: true,
+      }
+    }
+    if(img4) {
+      img4Data.subImgs[3] = {
+        img: img4,
+        imgUrl: imgUrl4,
+        cat: img4cat4,
+        tag: img4tag4,
+        active: true,
+      }
+    }
+    console.log(img4Data);
+    dbImg4Ref.update(img4Data);
+    fForm4Imgs1HTML.reset();
+  })
+}
+
+fForm4Imgs1HTML.addEventListener('submit', fForm4Img1);
+
+const f4Img1uploadFile0 = e => {
+  f4Imgs1file0 = e.target.files[0];
+}
+
+const f4Img1uploadFile1 = e => {
+  f4Imgs1file1 = e.target.files[0];
+}
+
+const f4Img1uploadFile2 = e => {
+  f4Imgs1file2 = e.target.files[0];
+}
+
+const f4Img1uploadFile3 = e => {
+  f4Imgs1file3 = e.target.files[0];
+}
+
+const f4Img1uploadFile4 = e => {
+  f4Imgs1file4 = e.target.files[0];
+}
+
+f4img1File0HTML.addEventListener('change', f4Img1uploadFile0);
+f4img1File1HTML.addEventListener('change', f4Img1uploadFile1);
+f4img1File2HTML.addEventListener('change', f4Img1uploadFile2);
+f4img1File3HTML.addEventListener('change', f4Img1uploadFile3);
+f4img1File4HTML.addEventListener('change', f4Img1uploadFile4);
+
+db.collection('sections').doc('img41').onSnapshot(img41Doc => {
+  let img41Data = img41Doc.data();
+  console.log(img41Data);
+  fForm4Imgs1HTML['f4img1-title'].value = img41Data.title;
+  if(img41Data.mainImg) {
+    fForm4Imgs1HTML.querySelector('#f4img1-img0').src = img41Data.mainImg.imgUrl;
+    fForm4Imgs1HTML['f4img1-cat0'].value = img41Data.mainImg.cat;
+    fForm4Imgs1HTML['f4img1-t0'].value = img41Data.mainImg.tag;
+  }
+  if(img41Data.subImgs.length > 0) {
+    if(img41Data.subImgs[0]) {
+      fForm4Imgs1HTML.querySelector(`#f4img1-img1`).src = img41Data.subImgs[0].imgUrl;
+      fForm4Imgs1HTML[`f4img1-cat1`].value = img41Data.subImgs[0].cat;
+      fForm4Imgs1HTML[`f4img1-t1`].value = img41Data.subImgs[0].tag;
+    }
+    if(img41Data.subImgs[1]) {
+      fForm4Imgs1HTML.querySelector(`#f4img1-img2`).src = img41Data.subImgs[1].imgUrl;
+      fForm4Imgs1HTML[`f4img1-cat2`].value = img41Data.subImgs[1].cat;
+      fForm4Imgs1HTML[`f4img1-t2`].value = img41Data.subImgs[1].tag;
+    }
+    if(img41Data.subImgs[2]) {
+      fForm4Imgs1HTML.querySelector(`#f4img1-img3`).src = img41Data.subImgs[2].imgUrl;
+      fForm4Imgs1HTML[`f4img1-cat3`].value = img41Data.subImgs[2].cat;
+      fForm4Imgs1HTML[`f4img1-t3`].value = img41Data.subImgs[2].tag;
+    }
+    if(img41Data.subImgs[3]) {
+      fForm4Imgs1HTML.querySelector(`#f4img1-img4`).src = img41Data.subImgs[3].imgUrl;
+      fForm4Imgs1HTML[`f4img1-cat4`].value = img41Data.subImgs[3].cat;
+      fForm4Imgs1HTML[`f4img1-t4`].value = img41Data.subImgs[3].tag;
+    }
+  }
+})
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const fForm4Imgs2HTML = document.querySelector('#fForm4Imgs2');
+
+const f4img2File0HTML = document.querySelector('#f4img2-file0');
+const f4img2File1HTML = document.querySelector('#f4img2-file1');
+const f4img2File2HTML = document.querySelector('#f4img2-file2');
+const f4img2File3HTML = document.querySelector('#f4img2-file3');
+const f4img2File4HTML = document.querySelector('#f4img2-file4');
+
+let f4Imgs2file0, f4Imgs2file1, f4Imgs2file2, f4Imgs2file3, f4Imgs2file4; 
+const fForm4Img2 = async(e) => {
+  e.preventDefault();
+
+  let dbImg4Ref = db.collection('sections').doc('img42');
+
+  const title = fForm4Imgs2HTML['f4img2-title'].value;
+  const img4cat0 = fForm4Imgs2HTML['f4img2-cat0'].value;
+  const img4cat1 = fForm4Imgs2HTML['f4img2-cat1'].value;
+  const img4cat2 = fForm4Imgs2HTML['f4img2-cat2'].value;
+  const img4cat3 = fForm4Imgs2HTML['f4img2-cat3'].value;
+  const img4cat4 = fForm4Imgs2HTML['f4img2-cat4'].value;
+  const img4tag0 = fForm4Imgs2HTML['f4img2-t0'].value;
+  const img4tag1 = fForm4Imgs2HTML['f4img2-t1'].value;
+  const img4tag2 = fForm4Imgs2HTML['f4img2-t2'].value;
+  const img4tag3 = fForm4Imgs2HTML['f4img2-t3'].value;
+  const img4tag4 = fForm4Imgs2HTML['f4img2-t4'].value;
+  let img0, img1, img2, img3, img4, imgUrl0, imgUrl1, imgUrl2, imgUrl3, imgUrl4;
+
+  if(f4Imgs2file0) {
+    img0 = `${Math.random()}__${f4Imgs2file0.name}`;
+    await storageService.ref(`sections/img42/${img0}`).put(f4Imgs2file0);
+    await storageService.ref(`sections/img42/${img0}`).getDownloadURL().then(url => {
+      imgUrl0 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+  if(f4Imgs2file1) {
+    img1 = `${Math.random()}__${f4Imgs2file1.name}`;
+    await storageService.ref(`sections/img42/${img1}`).put(f4Imgs2file1);
+    await storageService.ref(`sections/img42/${img1}`).getDownloadURL().then(url => {
+      imgUrl1 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+  if(f4Imgs2file2) {
+    img2 = `${Math.random()}__${f4Imgs2file2.name}`;
+    await storageService.ref(`sections/img42/${img2}`).put(f4Imgs2file2);
+    await storageService.ref(`sections/img42/${img2}`).getDownloadURL().then(url => {
+      imgUrl2 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+  if(f4Imgs2file3) {
+    img3 = `${Math.random()}__${f4Imgs2file3.name}`
+    console.log(f4Imgs1file3);
+    await storageService.ref(`sections/img42/${img3}`).put(f4Imgs2file3);
+    await storageService.ref(`sections/img42/${img3}`).getDownloadURL().then(url => {
+      imgUrl3 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+  if(f4Imgs2file4) {
+    img4 = `${Math.random()}__${f4Imgs2file4.name}`;
+    await storageService.ref(`sections/img42/${img4}`).put(f4Imgs2file4);
+    await storageService.ref(`sections/img42/${img4}`).getDownloadURL().then(url => {
+      imgUrl4 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+
+  dbImg4Ref.get().then(img4Doc => {
+    let img4Data = img4Doc.data();
+
+    img4Data.title = title;
+    if(img0) {
+      img4Data.mainImg = {
+        img: img0,
+        imgUrl: imgUrl0,
+        cat: img4cat0,
+        tag: img4tag0,
+        active: true,
+      }
+    }
+    if(img1) {
+      img4Data.subImgs[0] = {
+        img: img1,
+        imgUrl: imgUrl1,
+        cat: img4cat1,
+        tag: img4tag1,
+        active: true,
+      }
+    }
+    if(img2) {
+      img4Data.subImgs[1] = {
+        img: img2,
+        imgUrl: imgUrl2,
+        cat: img4cat2,
+        tag: img4tag2,
+        active: true,
+      }
+    }
+    if(img3) {
+      img4Data.subImgs[2] = {
+        img: img3,
+        imgUrl: imgUrl3,
+        cat: img4cat3,
+        tag: img4tag3,
+        active: true,
+      }
+    }
+    if(img4) {
+      img4Data.subImgs[3] = {
+        img: img4,
+        imgUrl: imgUrl4,
+        cat: img4cat4,
+        tag: img4tag4,
+        active: true,
+      }
+    }
+    console.log(img4Data);
+    dbImg4Ref.update(img4Data);
+    fForm4Imgs2HTML.reset();
+  })
+}
+
+fForm4Imgs2HTML.addEventListener('submit', fForm4Img2);
+
+const f4Img2uploadFile0 = e => {
+  f4Imgs2file0 = e.target.files[0];
+}
+
+const f4Img2uploadFile1 = e => {
+  f4Imgs2file1 = e.target.files[0];
+}
+
+const f4Img2uploadFile2 = e => {
+  f4Imgs2file2 = e.target.files[0];
+}
+
+const f4Img2uploadFile3 = e => {
+  f4Imgs2file3 = e.target.files[0];
+}
+
+const f4Img2uploadFile4 = e => {
+  f4Imgs2file4 = e.target.files[0];
+}
+
+f4img2File0HTML.addEventListener('change', f4Img2uploadFile0);
+f4img2File1HTML.addEventListener('change', f4Img2uploadFile1);
+f4img2File2HTML.addEventListener('change', f4Img2uploadFile2);
+f4img2File3HTML.addEventListener('change', f4Img2uploadFile3);
+f4img2File4HTML.addEventListener('change', f4Img2uploadFile4);
+
+db.collection('sections').doc('img42').onSnapshot(img42Doc => {
+  let img42Data = img42Doc.data();
+  console.log(img42Data);
+  fForm4Imgs2HTML['f4img2-title'].value = img42Data.title;
+  if(img42Data.mainImg) {
+    fForm4Imgs2HTML.querySelector('#f4img2-img0').src = img42Data.mainImg.imgUrl;
+    fForm4Imgs2HTML['f4img2-cat0'].value = img42Data.mainImg.cat;
+    fForm4Imgs2HTML['f4img2-t0'].value = img42Data.mainImg.tag;
+  }
+  if(img42Data.subImgs.length > 0) {
+    if(img42Data.subImgs[0]) {
+      fForm4Imgs2HTML.querySelector(`#f4img2-img1`).src = img42Data.subImgs[0].imgUrl;
+      fForm4Imgs2HTML[`f4img2-cat1`].value = img42Data.subImgs[0].cat;
+      fForm4Imgs2HTML[`f4img2-t1`].value = img42Data.subImgs[0].tag;
+    }
+    if(img42Data.subImgs[1]) {
+      fForm4Imgs2HTML.querySelector(`#f4img2-img2`).src = img42Data.subImgs[1].imgUrl;
+      fForm4Imgs2HTML[`f4img2-cat2`].value = img42Data.subImgs[1].cat;
+      fForm4Imgs2HTML[`f4img2-t2`].value = img42Data.subImgs[1].tag;
+    }
+    if(img42Data.subImgs[2]) {
+      fForm4Imgs2HTML.querySelector(`#f4img2-img3`).src = img42Data.subImgs[2].imgUrl;
+      fForm4Imgs2HTML[`f4img2-cat3`].value = img42Data.subImgs[2].cat;
+      fForm4Imgs2HTML[`f4img2-t3`].value = img42Data.subImgs[2].tag;
+    }
+    if(img42Data.subImgs[3]) {
+      fForm4Imgs2HTML.querySelector(`#f4img2-img4`).src = img42Data.subImgs[3].imgUrl;
+      fForm4Imgs2HTML[`f4img2-cat4`].value = img42Data.subImgs[3].cat;
+      fForm4Imgs2HTML[`f4img2-t4`].value = img42Data.subImgs[3].tag;
+    }
+  }
+})
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const fForm3Imgs1HTML = document.querySelector('#fForm3Imgs1');
+
+const f3img1File1HTML = document.querySelector('#f3img1-file1');
+const f3img1File2HTML = document.querySelector('#f3img1-file2');
+const f3img1File3HTML = document.querySelector('#f3img1-file3');
+
+let f3Imgs1file1, f3Imgs1file2, f3Imgs1file3; 
+const fForm3Img1 = async(e) => {
+  e.preventDefault();
+
+  let dbImg4Ref = db.collection('sections').doc('img31');
+
+  const title = fForm3Imgs1HTML['f3img1-title'].value;
+
+  const img4cat1 = fForm3Imgs1HTML['f3img1-cat1'].value;
+  const img4cat2 = fForm3Imgs1HTML['f3img1-cat2'].value;
+  const img4cat3 = fForm3Imgs1HTML['f3img1-cat3'].value;
+  const img4tag1 = fForm3Imgs1HTML['f3img1-t1'].value;
+  const img4tag2 = fForm3Imgs1HTML['f3img1-t2'].value;
+  const img4tag3 = fForm3Imgs1HTML['f3img1-t3'].value;
+  let img1, img2, img3, imgUrl1, imgUrl2, imgUrl3;
+
+  if(f3Imgs1file1) {
+    img1 = `${Math.random()}__${f3Imgs1file1.name}`;
+    await storageService.ref(`sections/img31/${img1}`).put(f3Imgs1file1);
+    await storageService.ref(`sections/img31/${img1}`).getDownloadURL().then(url => {
+      imgUrl1 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+  if(f3Imgs1file2) {
+    img2 = `${Math.random()}__${f3Imgs1file2.name}`;
+    await storageService.ref(`sections/img31/${img2}`).put(f3Imgs1file2);
+    await storageService.ref(`sections/img31/${img2}`).getDownloadURL().then(url => {
+      imgUrl2 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+  if(f3Imgs1file3) {
+    img3 = `${Math.random()}__${f3Imgs1file3.name}`
+    console.log(f4Imgs1file3);
+    await storageService.ref(`sections/img31/${img3}`).put(f3Imgs1file3);
+    await storageService.ref(`sections/img31/${img3}`).getDownloadURL().then(url => {
+      imgUrl3 = url;
+    }).catch(error => {
+      console.log(error);
+    })  
+  }
+
+  dbImg4Ref.get().then(img3Doc => {
+    let img3Data = img3Doc.data();
+    img3Data.title = title;
+    if(img1) {
+      img3Data.subImgs[0] = {
+        img: img1,
+        imgUrl: imgUrl1,
+        cat: img4cat1,
+        tag: img4tag1,
+        active: true,
+      }
+    }
+    if(img2) {
+      img3Data.subImgs[1] = {
+        img: img2,
+        imgUrl: imgUrl2,
+        cat: img4cat2,
+        tag: img4tag2,
+        active: true,
+      }
+    }
+    if(img3) {
+      img3Data.subImgs[2] = {
+        img: img3,
+        imgUrl: imgUrl3,
+        cat: img4cat3,
+        tag: img4tag3,
+        active: true,
+      }
+    }
+    console.log(img3Data);
+    dbImg4Ref.update(img3Data);
+    fForm3Imgs1HTML.reset();
+  })
+}
+
+fForm3Imgs1HTML.addEventListener('submit', fForm3Img1);
+
+const f3Img1uploadFile1 = e => {
+  f3Imgs1file1 = e.target.files[0];
+}
+
+const f3Img1uploadFile2 = e => {
+  f3Imgs1file2 = e.target.files[0];
+}
+
+const f3Img1uploadFile3 = e => {
+  f3Imgs1file3 = e.target.files[0];
+}
+
+f3img1File1HTML.addEventListener('change', f3Img1uploadFile1);
+f3img1File2HTML.addEventListener('change', f3Img1uploadFile2);
+f3img1File3HTML.addEventListener('change', f3Img1uploadFile3);
+
+
+db.collection('sections').doc('img31').onSnapshot(img31Doc => {
+  let img31Data = img31Doc.data();
+  console.log(img31Data);
+  fForm3Imgs1HTML['f3img1-title'].value = img31Data.title;
+  if(img31Data.subImgs.length > 0) {
+    if(img31Data.subImgs[0]) {
+      fForm3Imgs1HTML.querySelector(`#f3img1-img1`).src = img31Data.subImgs[0].imgUrl;
+      fForm3Imgs1HTML[`f3img1-cat1`].value = img31Data.subImgs[0].cat;
+      fForm3Imgs1HTML[`f3img1-t1`].value = img31Data.subImgs[0].tag;
+    }
+    if(img31Data.subImgs[1]) {
+      fForm3Imgs1HTML.querySelector(`#f3img1-img2`).src = img31Data.subImgs[1].imgUrl;
+      fForm3Imgs1HTML[`f3img1-cat2`].value = img31Data.subImgs[1].cat;
+      fForm3Imgs1HTML[`f3img1-t2`].value = img31Data.subImgs[1].tag;
+    }
+    if(img31Data.subImgs[2]) {
+      fForm3Imgs1HTML.querySelector(`#f3img1-img3`).src = img31Data.subImgs[2].imgUrl;
+      fForm3Imgs1HTML[`f3img1-cat3`].value = img31Data.subImgs[2].cat;
+      fForm3Imgs1HTML[`f3img1-t3`].value = img31Data.subImgs[2].tag;
+    }
+  }
+})
+
