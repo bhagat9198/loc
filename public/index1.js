@@ -94,14 +94,20 @@ userSilderRef.get().then(async (sliderSnaps) => {
     let docData = sliderDocs.data();
 =======
 let userSilderRef = db.collection('sections').doc('slider').collection('slider');
-var datass="NO";
-userSilderRef.get().then(async(sliderSnaps) => {
+var datass = "NO";
+userSilderRef.get().then(async (sliderSnaps) => {
   let wholeUserSlider = '';
   let sliderSnapsDocs = sliderSnaps.docs;
+<<<<<<< HEAD
   for(let sliderDocs of sliderSnapsDocs) {  
   let docData = sliderDocs.data();
   datass="YES"
 >>>>>>> e8fbe91f9663dce92873f61d2700a706ad8db16b
+=======
+  for (let sliderDocs of sliderSnapsDocs) {
+    let docData = sliderDocs.data();
+    datass = "YES"
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
     let eachUserSlider = `
     <section class="trending"> 
     <div class="container-fluid">
@@ -147,45 +153,49 @@ userSilderRef.get().then(async(sliderSnaps) => {
         `;
         });
     }
+<<<<<<< HEAD
     eachUserSlider =
       eachUserSlider + row + ` </div></div></div></div></section>`;
+=======
+    eachUserSlider = eachUserSlider + row + ` </div></div></div></div></section>`;
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
     wholeUserSlider += eachUserSlider;
   };
-  userDefinedSliderHTML.innerHTML = wholeUserSlider; 
-  if(datass=="YES"){
+  userDefinedSliderHTML.innerHTML = wholeUserSlider;
+  if (datass == "YES") {
     var $trending_slider = $('.trending-item-slider');
     $trending_slider.owlCarousel({
-        items: 4,
-        autoplay: true,
-        margin: 10,
-        loop: true,
-        dots: true,
-        nav: true,
-        center: false,
-        autoplayHoverPause: true,
-        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        smartSpeed: 800,
-        responsive: {
-            0: {
-                items: 2,
-            },
-            414: {
-                items: 2,
-            },
-            768: {
-                items: 3,
-            },
-            992: {
-                items: 5
-            },
-            1200: {
-                items: 6
-            }
+      items: 4,
+      autoplay: true,
+      margin: 10,
+      loop: true,
+      dots: true,
+      nav: true,
+      center: false,
+      autoplayHoverPause: true,
+      navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+      smartSpeed: 800,
+      responsive: {
+        0: {
+          items: 2,
+        },
+        414: {
+          items: 2,
+        },
+        768: {
+          items: 3,
+        },
+        992: {
+          items: 5
+        },
+        1200: {
+          items: 6
         }
+      }
     });
   }
- 
-  
+
+
 });
 
 // fixed section 2
@@ -203,15 +213,27 @@ db.collection("sections")
     }
     // console.log(sortArr);
 
+<<<<<<< HEAD
     sortArr.sort(function (a, b) {
       return +b.priority - +a.priority;
     });
+=======
+  sortArr.sort(function (a, b) {
+    return (+b.priority) - (+a.priority);
+  })
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
 
     // console.log(sortArr);
 
+<<<<<<< HEAD
     let row = "";
     for (let card of sortArr) {
       row += `
+=======
+  let row = "";
+  for (let card of sortArr) {
+    row += `
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
   <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
     <div class="card cardc align-items-center">
       <a href="./Products/products.html?cat=${card.cat.split("__")[0]}&&tag=${
@@ -292,7 +314,11 @@ cards4Ref.get().then((cards4Snaps) => {
         <div class="row" id="fixed-section1-row">
     `;
 
+<<<<<<< HEAD
     let row = "";
+=======
+    let row = '';
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
     for (let c of card4Data.card) {
       console.log(card4Data.category);
       row += `
@@ -367,6 +393,7 @@ db.collection("sections")
     }
     fixedSection4Row.innerHTML = row;
 <<<<<<< HEAD
+<<<<<<< HEAD
     var $trending_slider = $(".trending-item-slider");
     $trending_slider.owlCarousel({
       items: 4,
@@ -401,35 +428,41 @@ db.collection("sections")
       },
 =======
         var $trending_slider = $('.trending-item-slider');
+=======
+    var $trending_slider = $('.trending-item-slider');
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
     $trending_slider.owlCarousel({
-        items: 4,
-        autoplay: true,
-        margin: 10,
-        loop: true,
-        dots: true,
-        nav: true,
-        center: false,
-        autoplayHoverPause: true,
-        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        smartSpeed: 800,
-        responsive: {
-            0: {
-                items: 2,
-            },
-            414: {
-                items: 2,
-            },
-            768: {
-                items: 3,
-            },
-            992: {
-                items: 5
-            },
-            1200: {
-                items: 6
-            }
+      items: 4,
+      autoplay: true,
+      margin: 10,
+      loop: true,
+      dots: true,
+      nav: true,
+      center: false,
+      autoplayHoverPause: true,
+      navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+      smartSpeed: 800,
+      responsive: {
+        0: {
+          items: 2,
+        },
+        414: {
+          items: 2,
+        },
+        768: {
+          items: 3,
+        },
+        992: {
+          items: 5
+        },
+        1200: {
+          items: 6
         }
+<<<<<<< HEAD
 >>>>>>> e8fbe91f9663dce92873f61d2700a706ad8db16b
+=======
+      }
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
     });
   });
 
@@ -526,7 +559,11 @@ let userAnimationRef = db
   .collection("animation");
 userAnimationRef.get().then((imgSnaps) => {
   let imgSnapsDocs = imgSnaps.docs;
+<<<<<<< HEAD
   let wholeImg = "";
+=======
+  let wholeImg = '';
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
   for (let imgDoc of imgSnapsDocs) {
     let imgData = imgDoc.data();
     let eachImg = `
@@ -554,7 +591,11 @@ const userDefinedImgHTML = document.querySelector("#user-defined-img");
 let userImgRef = db.collection("sections").doc("img").collection("img");
 userImgRef.get().then((imgSnaps) => {
   let imgSnapsDocs = imgSnaps.docs;
+<<<<<<< HEAD
   let wholeImg = "";
+=======
+  let wholeImg = '';
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
   for (let imgDoc of imgSnapsDocs) {
     let imgData = imgDoc.data();
     let eachImg = `
@@ -657,7 +698,11 @@ db.collection("sections")
 
 const userDefined6cardsHTML = document.querySelector("#user-defined-6cards");
 
+<<<<<<< HEAD
 let cards6Ref = db.collection("sections").doc("6cards").collection("6cards");
+=======
+let cards6Ref = db.collection('sections').doc('6cards').collection('6cards');
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
 cards6Ref.get().then(async (card6Snaps) => {
   let card6SnapsDocs = card6Snaps.docs;
   let wholecard6 = "";
@@ -683,6 +728,7 @@ cards6Ref.get().then(async (card6Snaps) => {
             <div class="row" id="fixed-section7-row">
     `;
 
+<<<<<<< HEAD
     let row = "";
     for (let c of card6Data.card) {
       await db
@@ -692,6 +738,13 @@ cards6Ref.get().then(async (card6Snaps) => {
         .then((pd) => {
           let pdata = pd.data();
           row += `
+=======
+    let row = '';
+    for (let c of card6Data.card) {
+      await db.collection(c.category).doc(c.id).get().then(pd => {
+        let pdata = pd.data();
+        row += `
+>>>>>>> aacef5280a7a524599df88b2005b430310014542
         <div class="col-lg-2 col-md-3 col-6 remove-padding">
           <a href="./Product/product.html?cat=${c.category}&&prod=${c.id}" class="item">
             <div class="item-img">
@@ -726,7 +779,7 @@ cards6Ref.get().then(async (card6Snaps) => {
 const fixedSection9Heading = document.querySelector("#fixed-section9-heading");
 const fixedSection9Row = document.querySelector("#fixed-section9-row");
 
-db.collection("sections")
+db.collection("section")
   .doc("fixed9")
   .onSnapshot((doc) => {
     let docData = doc.data();
@@ -751,3 +804,176 @@ db.collection("sections")
     }
     fixedSection9Row.innerHTML = row;
   });
+
+
+
+db.collection("sections").doc('img41').onSnapshot(async (imgDoc) => {
+
+
+
+  // var dbref = db.collection('Customers');
+  $('#img4Main').empty()
+  docData = imgDoc.data();
+  document.getElementById("img4Main").innerHTML = `
+        <div class="col-md-7 col-7">
+        <div class="aside" style="margin-left: 13%; margin-top: 7%;">
+          <h3 style="color:#fff; font-weight: 700; font-size: 28px; line-height: 1.5rem;">`+docData.title+`</h3>
+         
+          <p style="color:#fff; font-size: 17px; margin-top: 9%;">Sterling Picks For Partner </p>
+          <a href="./Products/products.html?cat=`+docData.mainImg.cat.split('__')[0]+`">
+            <button type="button" class="btn btn-light wewre" style="font-size: 15px;
+              font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
+                aria-hidden="true"></i></button>
+          </a>
+
+        </div>
+      </div>
+      <div class="col-md-5 col-5" style="background: #fff; padding-top: 13px; padding-bottom: 13px;">
+        <img src="`+docData.mainImg.imgUrl+`">
+      </div>
+        `
+
+        document.getElementById("img42Mainmob").innerHTML = `
+
+ 
+        <div class="bannerMainImage col-md-5 col-5"
+          style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
+          <img class="mt-3 mb-2" src="`+docData.mainImg.imgUrl+`">
+        </div>
+        <div class="col-md-7 col-7">
+          <div class="aside " style="margin-left: 10%; margin-top: 7%;">
+            <h3 style="color:#fff; font-weight: 700; font-size: 28px; line-height: 1.5rem;">`+docData.title+`</h3>
+           
+            <p style="color:#fff; font-size: 17px; margin-top: 9%;">Sterling Picks For Family </p>
+            <a href="./Products/products.html?cat=`+docData.mainImg.cat.split('__')[0]+`">
+              <button type="button" class="btn btn-light" style="font-size: 15px;
+                    font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
+                  aria-hidden="true"></i></button>
+            </a>
+          </div>
+        </div>
+    
+     `
+  $('#img41').empty()
+  for (let i of docData.subImgs) {
+    document.getElementById("img41").innerHTML += `
+          <div class=" col s2 "
+          style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
+          
+          <a href="./Products/products.html?cat=`+i.cat.split('__')[0]+`" style="position: relative;display: block;">
+            <picture>
+              <img class="responsive-img lazyloaded"
+                src="`+ i.imgUrl + `"
+                >
+            </picture>
+  
+            <div class="grow" style="position: absolute;bottom:2%;left: 0; right:0; text-align: center;">
+              <div class="bannerTxt"
+                style="background-color: white;color: #003961;padding: 5px 40px;font-size: 17px; display: inline-block;">
+                `+ i.tag + `
+              </div> 
+            </div>
+          </a>
+        </div>
+          `
+          document.getElementById("img42mob").innerHTML += `
+          <div class=" col s2 "
+          style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
+          
+          <a href="./Products/products.html?cat=`+i.cat.split('__')[0]+`" style="position: relative;display: block;">
+            <picture>
+              <img class="responsive-img lazyloaded"
+                src="`+ i.imgUrl + `"
+                >
+            </picture>
+  
+            <div class="grow" style="position: absolute;bottom:2%;left: 0; right:0; text-align: center;">
+              <div class="bannerTxt"
+                style="background-color: white;color: #003961;padding: 5px 40px;font-size: 17px; display: inline-block;">
+                `+ i.tag + `
+              </div>
+            </div>
+          </a>
+        </div>
+          `
+  }
+});
+
+db.collection("sections").doc('img42').onSnapshot(async (imgDoc) => {
+
+
+
+  // var dbref = db.collection('Customers');
+  $('#img42Main').empty()
+  docData = imgDoc.data();
+  document.getElementById("img42Main").innerHTML = `
+
+ 
+    <div class="bannerMainImage col-md-5 col-5"
+      style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
+      <img class="mt-3 mb-2" src="`+docData.mainImg.imgUrl+`">
+    </div>
+    <div class="col-md-7 col-7">
+      <div class="aside " style="margin-left: 10%; margin-top: 7%;">
+        <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">`+docData.title+`</h3>
+       
+        <p style="color:#000; font-size: 17px; margin-top: 9%;">Sterling Picks For Family </p>
+        <a href="./Products/products.html?cat=`+docData.mainImg.cat.split('__')[0]+`">
+          <button type="button" class="btn btn-light" style="font-size: 15px;
+                font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
+              aria-hidden="true"></i></button>
+        </a>
+      </div>
+    </div>
+
+ `
+
+  $('#img42').empty()
+
+  for (let i of docData.subImgs) {
+    document.getElementById("img42").innerHTML += `
+          <div class=" col s2 "
+          style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
+          
+          <a href="./Products/products.html?cat=`+i.cat.split('__')[0]+`" style="position: relative;display: block;">
+            <picture>
+              <img class="responsive-img lazyloaded"
+                src="`+ i.imgUrl + `"
+                >
+            </picture>
+  
+            <div class="grow" style="position: absolute;bottom:2%;left: 0; right:0; text-align: center;">
+              <div class="bannerTxt"
+                style="background-color: white;color: #003961;padding: 5px 40px;font-size: 17px; display: inline-block;">
+                `+ i.tag + `
+              </div>
+            </div>
+          </a>
+        </div>
+          `
+
+
+  }
+});
+
+
+
+db.collection("sections").doc('img31').onSnapshot(async (imgDoc) => {
+
+  docData = imgDoc.data();
+
+  document.getElementById("speed").innerHTML=docData.title; 
+  for (let i of docData.subImgs) {
+    document.getElementById("img31").innerHTML += `
+    <div class="aside wes"
+    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
+
+    <a class="banner-effect" href="abcd" target="_blank">
+      <img src="`+i.imgUrl+`" alt="">
+    </a>
+  </div>
+          `
+
+
+  }
+});
