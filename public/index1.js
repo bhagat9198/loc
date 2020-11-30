@@ -92,7 +92,7 @@ userSilderRef.get().then(async (sliderSnaps) => {
     let docData = sliderDocs.data();
     datass = "YES"
     let eachUserSlider = `
-    <section class="trending"> 
+    <section class="trending" style="background-image: linear-gradient(to right, ${docData.colorTL}, ${docData.colorBR});"> 
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12 remove-padding">
