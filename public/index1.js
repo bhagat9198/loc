@@ -93,7 +93,6 @@ userSilderRef.get().then(async (sliderSnaps) => {
   for (let sliderDocs of sliderSnapsDocs) {
     let docData = sliderDocs.data();
     if (docData.activated.toString() === "true") {
-      alert(docData.activated)
       datass = "YES";
       let tl = docData.colorTL;
       let br = docData.colorBR;
