@@ -42,6 +42,7 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   }
 
   introCarouselHTML.innerHTML = img;
+
 });
 
 // fixed section 1
@@ -62,11 +63,11 @@ db.collection("sections")
         fixedSection1HeadingHTML.innerHTML = docData[card];
       } else {
         row += `
+   
       <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
-            <a class="banner-effect imgca" href="./Products/products.html?cat=${
-              docData[card].cat.split("__")[0]
-            }&&tag=${docData[card].tag}">
+            <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
+          }&&tag=${docData[card].tag}">
               <img class="imgc"
                 src="${docData[card].imgUrl}">
             </a>
@@ -78,36 +79,18 @@ db.collection("sections")
     fixedSection1RowHTML.innerHTML = row;
   });
 
+
 // user defined sliders
 const userDefinedSliderHTML = document.querySelector("#user-defined-slider");
 
-<<<<<<< HEAD
-let userSilderRef = db
-  .collection("sections")
-  .doc("slider")
-  .collection("slider");
-userSilderRef.get().then(async (sliderSnaps) => {
-  let flag = 0;
-  let wholeUserSlider = "";
-  let sliderSnapsDocs = sliderSnaps.docs;
-  for (let sliderDocs of sliderSnapsDocs) {
-    let docData = sliderDocs.data();
-=======
 let userSilderRef = db.collection('sections').doc('slider').collection('slider');
 var datass = "NO";
 userSilderRef.get().then(async (sliderSnaps) => {
   let wholeUserSlider = '';
   let sliderSnapsDocs = sliderSnaps.docs;
-<<<<<<< HEAD
-  for(let sliderDocs of sliderSnapsDocs) {  
-  let docData = sliderDocs.data();
-  datass="YES"
->>>>>>> e8fbe91f9663dce92873f61d2700a706ad8db16b
-=======
   for (let sliderDocs of sliderSnapsDocs) {
     let docData = sliderDocs.data();
     datass = "YES"
->>>>>>> aacef5280a7a524599df88b2005b430310014542
     let eachUserSlider = `
     <section class="trending"> 
     <div class="container-fluid">
@@ -126,18 +109,9 @@ userSilderRef.get().then(async (sliderSnaps) => {
 
     let row = "";
     for (let card of docData.card) {
-      await db
-        .collection(card.category)
-        .doc(card.id)
-        .get()
-        .then((pd) => {
-          let pdata = pd.data();
-          console.log(pdata);
-          if(docData) {
-            // console.log(docData);
-            flag = 1;
-          }
-          row += `
+      await db.collection(card.category).doc(card.id).get().then(pd => {
+        let pdata = pd.data();
+        row += `
         <a href="./Product/product.html?cat=${card.category}&&prod=${card.id}" class="item">
           <div class="item-img">
             <img class="img-fluid" src="${pdata.mainImgUrl}" alt="Lake of cakes">
@@ -151,14 +125,9 @@ userSilderRef.get().then(async (sliderSnaps) => {
           </div>
         </a>
         `;
-        });
+      })
     }
-<<<<<<< HEAD
-    eachUserSlider =
-      eachUserSlider + row + ` </div></div></div></div></section>`;
-=======
     eachUserSlider = eachUserSlider + row + ` </div></div></div></div></section>`;
->>>>>>> aacef5280a7a524599df88b2005b430310014542
     wholeUserSlider += eachUserSlider;
   };
   userDefinedSliderHTML.innerHTML = wholeUserSlider;
@@ -198,66 +167,52 @@ userSilderRef.get().then(async (sliderSnaps) => {
 
 });
 
+
+
+
+
 // fixed section 2
 const fixedSection2Row = document.querySelector("#fixed-section2-row");
 const fixedSection21Row = document.querySelector("#fixed-section21-row");
-db.collection("sections")
-  .doc("fixed2")
-  .onSnapshot((doc) => {
-    let docData = doc.data();
-    let sortArr = [];
+db.collection("sections").doc("fixed2").onSnapshot((doc) => {
+  let docData = doc.data();
+  let sortArr = [];
 
-    for (let card in docData) {
-      if (card === "title") continue;
-      sortArr.push(docData[card]);
-    }
-    // console.log(sortArr);
+  for (let card in docData) {
+    if (card === "title") continue;
+    sortArr.push(docData[card]);
+  }
+  // console.log(sortArr);
 
-<<<<<<< HEAD
-    sortArr.sort(function (a, b) {
-      return +b.priority - +a.priority;
-    });
-=======
   sortArr.sort(function (a, b) {
     return (+b.priority) - (+a.priority);
   })
->>>>>>> aacef5280a7a524599df88b2005b430310014542
 
-    // console.log(sortArr);
+  // console.log(sortArr);
 
-<<<<<<< HEAD
-    let row = "";
-    for (let card of sortArr) {
-      row += `
-=======
   let row = "";
   for (let card of sortArr) {
     row += `
->>>>>>> aacef5280a7a524599df88b2005b430310014542
   <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
     <div class="card cardc align-items-center">
-      <a href="./Products/products.html?cat=${card.cat.split("__")[0]}&&tag=${
-        card.tag
-      }" class="">
+      <a href="./Products/products.html?cat=${card.cat.split("__")[0]
+      }&&tag=${card.tag}" class="">
         <div class="iconimg">
-          <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${
-            card.imgUrl
-          }"
+          <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${card.imgUrl}"
             class="card-img-top img-fluid" alt="...">
         </div>
         <div class="card-body cbc text-center">
-          <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${
-            card.cat.split("__")[1]
-          }</h5>
+          <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${card.cat.split("__")[1]
+      }</h5>
         </div>
       </a>
     </div>
   </div>
   `;
-    }
-    fixedSection2Row.innerHTML = row;
-    fixedSection21Row.innerHTML = row;
-  });
+  }
+  fixedSection2Row.innerHTML = row;
+  fixedSection21Row.innerHTML = row;
+});
 
 // fixed section 3
 const fixedSection3Row = document.querySelector("#fixed-section3-row");
@@ -280,8 +235,7 @@ db.collection("sections")
       <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3 revealOnScroll" data-animation="fadeInUp >
       <div class="top-grid-head">
         <div class="aside">
-          <a href="./Products/products.html?cat=${
-            docData[card].cat.split("__")[0]
+          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
           }&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
@@ -294,15 +248,17 @@ db.collection("sections")
     fixedSection3Row.innerHTML = title + row;
   });
 
+
+
 // user defined 4cards
 
-const userDefined4cardsHTML = document.querySelector("#user-defined-4cards");
+const userDefined4cardsHTML = document.querySelector('#user-defined-4cards');
 
-let cards4Ref = db.collection("sections").doc("4cards").collection("4cards");
+let cards4Ref = db.collection('sections').doc('4cards').collection('4cards');
 
-cards4Ref.get().then((cards4Snaps) => {
+cards4Ref.get().then(cards4Snaps => {
   let cards4SnapsDocs = cards4Snaps.docs;
-  let wholecard4 = "";
+  let wholecard4 = '';
 
   for (let card4Doc of cards4SnapsDocs) {
     let card4Data = card4Doc.data();
@@ -314,11 +270,7 @@ cards4Ref.get().then((cards4Snaps) => {
         <div class="row" id="fixed-section1-row">
     `;
 
-<<<<<<< HEAD
-    let row = "";
-=======
     let row = '';
->>>>>>> aacef5280a7a524599df88b2005b430310014542
     for (let c of card4Data.card) {
       console.log(card4Data.category);
       row += `
@@ -336,7 +288,9 @@ cards4Ref.get().then((cards4Snaps) => {
   }
 
   userDefined4cardsHTML.innerHTML = wholecard4;
-});
+})
+
+
 
 // fixed section 4
 
@@ -366,20 +320,12 @@ db.collection("sections")
             <div class="item-img">
               <img class="img-fluid" src="${prodData.mainImgUrl}" >
             </div>
-<<<<<<< HEAD
-            <a href="./Product/product.html?prod=${prod.id}&&cat=${
-          prodData.wholeCategory.split("__")[0]
-        }"
-=======
             
->>>>>>> e8fbe91f9663dce92873f61d2700a706ad8db16b
               <div class="info">
                 <div class="stars">
                   <h5 class="contactless"> Contactless delivery</h5>
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
-          prodData.mrp
-        }</small></del></h4>
+                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
                 <h5 class="name">${prodData.name}</h5>
                
               </div>
@@ -392,45 +338,7 @@ db.collection("sections")
       // }
     }
     fixedSection4Row.innerHTML = row;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    var $trending_slider = $(".trending-item-slider");
-    $trending_slider.owlCarousel({
-      items: 4,
-      autoplay: true,
-      margin: 10,
-      loop: true,
-      dots: true,
-      nav: true,
-      center: false,
-      autoplayHoverPause: true,
-      navText: [
-        "<i class='fa fa-angle-left'></i>",
-        "<i class='fa fa-angle-right'></i>",
-      ],
-      smartSpeed: 600,
-      responsive: {
-        0: {
-          items: 2,
-        },
-        414: {
-          items: 2,
-        },
-        768: {
-          items: 3,
-        },
-        992: {
-          items: 5,
-        },
-        1200: {
-          items: 6,
-        },
-      },
-=======
-        var $trending_slider = $('.trending-item-slider');
-=======
     var $trending_slider = $('.trending-item-slider');
->>>>>>> aacef5280a7a524599df88b2005b430310014542
     $trending_slider.owlCarousel({
       items: 4,
       autoplay: true,
@@ -458,11 +366,7 @@ db.collection("sections")
         1200: {
           items: 6
         }
-<<<<<<< HEAD
->>>>>>> e8fbe91f9663dce92873f61d2700a706ad8db16b
-=======
       }
->>>>>>> aacef5280a7a524599df88b2005b430310014542
     });
   });
 
@@ -489,8 +393,7 @@ db.collection("sections")
         row += `
       <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3  revealOnScroll" data-animation="fadeInUp>
         <div class="aside">
-          <a href="./Products/products.html?cat=${
-            docData[card].cat.split("__")[0]
+          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
           }&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
@@ -550,20 +453,11 @@ db.collection("sections")
     fixedSection6Row.innerHTML = row;
   });
 
-const userDefinedAnimationHTML = document.querySelector(
-  "#user-defined-animation"
-);
-let userAnimationRef = db
-  .collection("sections")
-  .doc("animation")
-  .collection("animation");
-userAnimationRef.get().then((imgSnaps) => {
+const userDefinedAnimationHTML = document.querySelector('#user-defined-animation');
+let userAnimationRef = db.collection('sections').doc('animation').collection('animation');
+userAnimationRef.get().then(imgSnaps => {
   let imgSnapsDocs = imgSnaps.docs;
-<<<<<<< HEAD
-  let wholeImg = "";
-=======
   let wholeImg = '';
->>>>>>> aacef5280a7a524599df88b2005b430310014542
   for (let imgDoc of imgSnapsDocs) {
     let imgData = imgDoc.data();
     let eachImg = `
@@ -585,17 +479,13 @@ userAnimationRef.get().then((imgSnaps) => {
   }
   console.log(wholeImg);
   userDefinedAnimationHTML.innerHTML = wholeImg;
-});
+})
 
-const userDefinedImgHTML = document.querySelector("#user-defined-img");
-let userImgRef = db.collection("sections").doc("img").collection("img");
-userImgRef.get().then((imgSnaps) => {
+const userDefinedImgHTML = document.querySelector('#user-defined-img');
+let userImgRef = db.collection('sections').doc('img').collection('img');
+userImgRef.get().then(imgSnaps => {
   let imgSnapsDocs = imgSnaps.docs;
-<<<<<<< HEAD
-  let wholeImg = "";
-=======
   let wholeImg = '';
->>>>>>> aacef5280a7a524599df88b2005b430310014542
   for (let imgDoc of imgSnapsDocs) {
     let imgData = imgDoc.data();
     let eachImg = `
@@ -614,7 +504,8 @@ userImgRef.get().then((imgSnaps) => {
     wholeImg += eachImg;
   }
   userDefinedImgHTML.innerHTML = wholeImg;
-});
+})
+
 
 // fixed section 7
 
@@ -644,14 +535,10 @@ db.collection("sections")
             <div class="item-img">
               <img class="img-fluid" src="${prodData.mainImgUrl}">
             </div>
-            <a href="./Product/product.html?prod=${prod.id}&&cat=${
-            prodData.wholeCategory.split("__")[0]
-          }">
+            <a href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]}">
               <div class="info">
                 <div class="stars"></div>
-                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
-            prodData.mrp
-          }</small></del></h4>
+                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
                 <h5 class="name">${prodData.name}</h5>
               </div>
             </a>
@@ -681,8 +568,7 @@ db.collection("sections")
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
-          <a href="./Products/products.html?cat=${
-            docData[card].cat.split("__")[0]
+          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
           }&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
@@ -694,18 +580,15 @@ db.collection("sections")
     fixedSection8Row.innerHTML = row;
   });
 
+
 // user section card 6
 
-const userDefined6cardsHTML = document.querySelector("#user-defined-6cards");
+const userDefined6cardsHTML = document.querySelector('#user-defined-6cards');
 
-<<<<<<< HEAD
-let cards6Ref = db.collection("sections").doc("6cards").collection("6cards");
-=======
 let cards6Ref = db.collection('sections').doc('6cards').collection('6cards');
->>>>>>> aacef5280a7a524599df88b2005b430310014542
 cards6Ref.get().then(async (card6Snaps) => {
   let card6SnapsDocs = card6Snaps.docs;
-  let wholecard6 = "";
+  let wholecard6 = '';
 
   for (card6Doc of card6SnapsDocs) {
     let card6Data = card6Doc.data();
@@ -728,23 +611,11 @@ cards6Ref.get().then(async (card6Snaps) => {
             <div class="row" id="fixed-section7-row">
     `;
 
-<<<<<<< HEAD
-    let row = "";
-    for (let c of card6Data.card) {
-      await db
-        .collection(c.category)
-        .doc(c.id)
-        .get()
-        .then((pd) => {
-          let pdata = pd.data();
-          row += `
-=======
     let row = '';
     for (let c of card6Data.card) {
       await db.collection(c.category).doc(c.id).get().then(pd => {
         let pdata = pd.data();
         row += `
->>>>>>> aacef5280a7a524599df88b2005b430310014542
         <div class="col-lg-2 col-md-3 col-6 remove-padding">
           <a href="./Product/product.html?cat=${c.category}&&prod=${c.id}" class="item">
             <div class="item-img">
@@ -764,7 +635,7 @@ cards6Ref.get().then(async (card6Snaps) => {
           </a>
         </div>
         `;
-        });
+      })
     }
 
     eachcard6 = eachcard6 + row + `</div></div></div></div></section>`;
@@ -772,7 +643,8 @@ cards6Ref.get().then(async (card6Snaps) => {
   }
 
   userDefined6cardsHTML.innerHTML = wholecard6;
-});
+})
+
 
 // fixed section 9
 
@@ -792,8 +664,7 @@ db.collection("section")
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
-          <a href="./Products/products.html?cat=${
-            docData[card].cat.split("__")[0]
+          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
           }&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
@@ -825,7 +696,6 @@ db.collection("sections").doc('img41').onSnapshot(async (imgDoc) => {
               font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                 aria-hidden="true"></i></button>
           </a>
-
         </div>
       </div>
       <div class="col-md-5 col-5" style="background: #fff; padding-top: 13px; padding-bottom: 13px;">
@@ -834,7 +704,6 @@ db.collection("sections").doc('img41').onSnapshot(async (imgDoc) => {
         `
 
         document.getElementById("img42Mainmob").innerHTML = `
-
  
         <div class="bannerMainImage col-md-5 col-5"
           style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
@@ -907,7 +776,6 @@ db.collection("sections").doc('img42').onSnapshot(async (imgDoc) => {
   $('#img42Main').empty()
   docData = imgDoc.data();
   document.getElementById("img42Main").innerHTML = `
-
  
     <div class="bannerMainImage col-md-5 col-5"
       style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
@@ -925,7 +793,6 @@ db.collection("sections").doc('img42').onSnapshot(async (imgDoc) => {
         </a>
       </div>
     </div>
-
  `
 
   $('#img42').empty()
@@ -967,7 +834,6 @@ db.collection("sections").doc('img31').onSnapshot(async (imgDoc) => {
     document.getElementById("img31").innerHTML += `
     <div class="aside wes"
     style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-
     <a class="banner-effect" href="abcd" target="_blank">
       <img src="`+i.imgUrl+`" alt="">
     </a>
