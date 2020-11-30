@@ -45,22 +45,26 @@ const aboutForm = (e) => {
         .catch((error) => console.log(error));
       console.log(imgUrl);
       let aboutRef = db.collection("footer").doc("about");
-      aboutRef.get().then((doc) => {
+      aboutRef.get().then(async(doc) => {
         let docData = doc.data();
         console.log(docData);
-        if (docData.imgUrl) {
+        if (IMAGE) {
           console.log(docData.imgUrl);
           storageService
             .ref(`footer/about/${docData.img}`)
             .delete()
-            .then(() => {
+            .then( async() => {
               docData.imgUrl = imgUrl;
               docData.img = IMAGE.name;
               console.log(docData);
-              return aboutRef.update(docData);
+              IMAGE = null;
+              await aboutRef.update(docData);
             })
             .then((savedData) => {
               console.log("updated");
+              $("#about-text").summernote("reset");
+    aboutFormHTML.reset();
+    extractData();
             })
             .catch((error) => {
               console.log(error);
@@ -69,13 +73,13 @@ const aboutForm = (e) => {
           docData.imgUrl = imgUrl;
           docData.img = IMAGE.name;
           console.log(docData);
-          return aboutRef.update(docData);
+          await aboutRef.update(docData);
+          $("#about-text").summernote("reset");
+          aboutFormHTML.reset();
+          extractData();
         }
       });
     }
-    $("#about-text").summernote("reset");
-    aboutFormHTML.reset();
-    extractData();
   });
 };
 
@@ -88,9 +92,9 @@ const uploadFile = (e) => {
 };
 sliderFileHTML.addEventListener("change", uploadFile);
 
-// const reduce
 
 const extractData = () => {
+  console.log('aaa');
   db.collection("footer")
     .doc("about")
     .get()
@@ -112,4 +116,4 @@ const extractData = () => {
 //     document.querySelector("#img-preview").src = aboutSnapData.imgUrl;
 //   });
 
-// extractData();
+extractData();
