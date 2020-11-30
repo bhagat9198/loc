@@ -63,6 +63,15 @@
       display: block !important;
     }
 
+    .bannerTxt {
+      font-size: 8px !important;
+      padding: 3px !important;
+    }
+
+    .bannerMainImage {
+      height: 130px !important;
+    }
+
     .skeleton.block {
       width: auto;
       height: 100px !important;
@@ -71,11 +80,13 @@
     .responsive-sec2 {
       display: none !important;
     }
-    .imgresponsive{
+
+    .imgresponsive {
       object-fit: contain !important;
     }
 
   }
+
   .skeleton {
     background: linear-gradient(90deg, #ededed, #ffffff, #ededed);
     animation-name: load;
@@ -88,7 +99,7 @@
 
   .skeleton.block {
     width: auto;
-    
+
   }
 
   .skeleton.block.small {
@@ -156,27 +167,27 @@
         position: relative;
         display: inline-block !important;
       }
-    
+
       input {
         border: 1px solid transparent;
         background-color: #f1f1f1;
         padding: 10px;
         font-size: 16px;
-    
+
       }
-    
+
       input[type=text] {
         background-color: #f1f1f1;
         width: 100%;
-    
+
       }
-    
+
       input[type=submit] {
         background-color: DodgerBlue;
         color: rgb(131, 56, 56);
         cursor: pointer;
       }
-    
+
       .autocomplete-items {
         position: absolute;
         border: 1px solid #d4d4d4;
@@ -189,7 +200,7 @@
         right: 0;
         /* font-style: italic; */
       }
-    
+
       .autocomplete-items div {
         padding: 10px;
         cursor: pointer;
@@ -197,37 +208,37 @@
         border-bottom: 1px solid #d4d4d4;
         /* font-style: italic; */
       }
-    
+
       /*when hovering an item:*/
       .autocomplete-items div:hover {
         background-color: #e9e9e9;
       }
-    
+
       /*when navigating through the items using the arrow keys:*/
       .autocomplete-active {
         background-color: DodgerBlue !important;
         color: #ffffff;
       }
-    
+
       @media only screen and (max-width: 600px) {
         .responsiveIcon1 {
           /* margin: auto;
           padding: 0px; */
           margin-left: 32%;
         }
-    
+
       }
-    
+
       @media only screen and (min-width:700px) {
         .responsiveIcon2 {
           display: block !important;
         }
-    
+
       }
     </style>
-    
-    
-    
+
+
+
     <section class="top-header top-nav" style="background: #f1f1f1;">
       <div class="container-fluid remove-padding topnaves" style="background: #f1f1f1;;
         background-size: 617px; background-image: url();height: 35px !important;padding: 0px !important;">
@@ -243,11 +254,12 @@
                       <li>
                         <a type="button" data-toggle="modal" data-target="#topoffer"
                           style="background: rgb(209, 96, 96); padding: 0px 20px; position: relative;border:1px solid black;border-radius: 10px;">
-                          <span class="sign-in" data-toggle="modal" data-target="#modalYT" style="font-size: 14px; color: #fff;">
-                            <i class="fa fa-gift" aria-hidden="true"  ></i> OFFER</span>
+                          <span class="sign-in" data-toggle="modal" data-target="#modalYT"
+                            style="font-size: 14px; color: #fff;">
+                            <i class="fa fa-gift" aria-hidden="true"></i> OFFER</span>
                         </a>
                       </li>
-    
+
                       <li><a href="#" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
                               class="fa fa-gift" aria-hidden="true" style="color: rgb(235, 48, 79);"></i>
                             COUPONS</span> </a>
@@ -260,7 +272,7 @@
                       <li><a href="mailto:lakeofcakess@gmail.com" class="track-btn"><span class="sign-in"
                             style="font-size: 14px; color: #000;"><i class="fa fa-envelope" aria-hidden="true"
                               style="color: rgb(235, 48, 79);"></i>
-                              Email</span> </a>
+                            Email</span> </a>
                       </li> &nbsp;
                     </ul>
                   </div>
@@ -271,8 +283,8 @@
         </div>
       </div>
     </section>
-    
-    
+
+
     <section class="logo-header">
       <div class="container-fluid logoheder">
         <div class="row ">
@@ -285,7 +297,7 @@
           </div>
           <label class="drover drobt" for="responsive-nav" onclick="shownavigation()">☰</label>
           <aside class="drobt0 drobt1 colapse" id="" style="overflow-y: scroll !important;">
-    
+
             <div class="logo-area">
               <div class="logo">
                 <a href="/index.html">
@@ -307,7 +319,8 @@
                     <div class="row pl-3">
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span>
-                          <img src="/assets/images/MidnightDelivery.png" alt="Lake of Cakes midnight" style="width: 25px;">
+                          <img src="/assets/images/MidnightDelivery.png" alt="Lake of Cakes midnight"
+                            style="width: 25px;">
                         </span>
                       </div>
                       <div class="col-8 col-sm-8 col-md-8 p-0">
@@ -365,7 +378,7 @@
                 </a>
               </div>
               <hr>
-              <div class="nav-collapsible">
+              <!-- <div class="nav-collapsible">
                 <a href="#">
                   <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
@@ -380,7 +393,7 @@
                     </div>
                   </label>
                 </a>
-              </div>
+              </div> -->
               <div class="nav-collapsible">
                 <a href="#">
                   <label for="nav-collapsible-1" style="width: 100%;">
@@ -397,7 +410,7 @@
                   </label>
                 </a>
               </div>
-              <div class="nav-collapsible">
+              <!-- <div class="nav-collapsible">
                 <a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">
                   <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
@@ -412,13 +425,14 @@
                     </div>
                   </label>
                 </a>
-              </div>
+              </div> -->
               <div class="nav-collapsible">
                 <a data-toggle="modal" data-target="#topoffer">
                   <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;"  data-toggle="modal" data-target="#modalYT">Offers </span>
+                        <span style="position: relative; top: 4px;" data-toggle="modal" data-target="#modalYT">Offers
+                        </span>
                       </div>
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span style="position: relative; top: 8px;">
@@ -445,53 +459,7 @@
                   </label>
                 </a>
               </div>
-              <div class="nav-collapsible">
-                <a href="#">
-                  <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Privacy Policy </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
-                </a>
-              </div>
-              <div class="nav-collapsible">
-                <a href="#">
-                  <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Delivery & Returns</span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
-                </a>
-              </div>
-              <div class="nav-collapsible">
-                collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Login/Signup</span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
-                </a>
-              </div>
+             
             </div>
           </aside>
           <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
@@ -500,15 +468,14 @@
               <div class="col-md-10 col-12 p-0 mt-3 ml-4">
                 <div class="input-group mb-2 mt-2">
                   <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
-                    <div class="autocomplete" style="width: 100%;" >
+                    <div class="autocomplete" style="width: 100%;">
                       <input class="form-control" style="width: 100% !important;
                       border: none;
                       border-bottom: 1px solid ;
-                      border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeyup=searchIfvalue(event) name="searchBar"
-                        placeholder="Search: Cakes , Flowers ,Gifts..."
-                       >
+                      border-radius: unset;background-color: transparent;" type="text" id="searchBar"
+                        onkeyup=searchIfvalue(event) name="searchBar" placeholder="Search: Cakes , Flowers ,Gifts...">
                     </div>
-                    
+
                     <div class="input-group-append">
                       <button class="btn btn-outline-secondary" onclick="searchByBtn('searchBar')"
                         style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent;color:; border: #F00;"><i
@@ -519,8 +486,8 @@
               </div>
             </div>
           </div>
-    
-    
+
+
           <div
             class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
             <ul style="display: inline-flex;">
@@ -544,33 +511,33 @@
               </li>
               <li>
                 <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
-                    <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
+                  <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
                   <div
                     style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
                     REMINDER</div>
                 </a>
               </li>
             </ul>
-    
-    
-    
-    
+
+
+
+
           </div>
           <div class="col-lg-1 col-sm-3 col-3 remove-padding order-lg-last">
             <div class="helpful-links mt-md-3 cartres">
-    
+
               <ul class="helpful-links-inner" style="display: flex;">
-    
-    
-    
+
+
+
                 <li class="nav-item dropdown" style="margin-top: 15%;">
                   <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
                       style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
-    
+
                   </a>
-    
+
                   <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
                       inset 0 -3em 3em rgba(0,0,0,0.1), 
                             0 0  0 2px rgb(255,255,255),
@@ -585,25 +552,26 @@
                         </center>
                       </a>
                     </div>
-    
+
                     <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href=""
                       onclick="checkifUser()"><i class="fa fa-user"></i>
                       Profile</a>
-    
-                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"><i
-                        class="fa fa-truck"></i> Track Orders</a>
-    
-                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"><i
-                        class="fa fa-shopping-cart"></i> My Orders</a>
-    
+
+                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
+                      href="#"><i class="fa fa-truck"></i> Track Orders</a>
+
+                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
+                      href="#"><i class="fa fa-shopping-cart"></i> My Orders</a>
+
                     <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"
                       id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
                       Logout</a>
                   </div>
                 </li>
-    
-    
-                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: none;" data-toggle="tooltip" data-placement="top" title="Cart">
+
+
+                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: none;" data-toggle="tooltip"
+                  data-placement="top" title="Cart">
                   <!-- <a href="#cart" class="cart carticon">
                     <div class="icon" onclick="redirectToCart()">
                       <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
@@ -645,10 +613,10 @@
         </div>
       </div>
     </section>
-    
+
     <div class="mainmenu-area mainmenu-bb">
-    
-    
+
+
       <div class="col-lg-12 col-md-12 categorimenu-wrapper p-0" style="z-index: 5;">
         <div class="desktopmenu">
           <div class="menu-container">
@@ -932,9 +900,9 @@
         </div>
       </div>
     </div>
-    
- 
-  
+
+
+
   </section>
 
   <!-- SLIDER -->
@@ -1194,36 +1162,28 @@
         <div class="col-lg-3 col-md-3 col-6 remove-padding">
           <div class="left">
             <a class="banner-effect imgca" href="product.html" target="_blank">
-              <img class="imgc"
-                src="assets/images/skeleton.gif"
-                >
+              <img class="imgc" src="assets/images/skeleton.gif">
             </a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-6 remove-padding">
           <div class="left">
             <a class="banner-effect imgca" href="product.html" target="_blank">
-              <img class="imgc"
-                src="assets/images/skeleton.gif"
-                >
+              <img class="imgc" src="assets/images/skeleton.gif">
             </a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-6 remove-padding">
           <div class="left">
             <a class="banner-effect imgca" href="product.html" target="_blank">
-              <img class="imgc"
-                src="assets/images/skeleton.gif"
-                >
+              <img class="imgc" src="assets/images/skeleton.gif">
             </a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-6 remove-padding">
           <div class="left">
             <a class="banner-effect imgca" href="product.html" target="_blank">
-              <img class="imgc"
-                src="assets/images/skeleton.gif"
-                >
+              <img class="imgc" src="assets/images/skeleton.gif">
             </a>
           </div>
         </div>
@@ -1246,10 +1206,10 @@
 
 
 
-<!-- user defined sliders -->
-<section class="trending-item-slider" id="user-defined-slider">
+  <!-- user defined sliders -->
+  <section class="trending-item-slider" id="user-defined-slider">
 
-  <!-- 
+    <!-- 
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12 remove-padding">
@@ -1295,7 +1255,7 @@
         </div>
       </div> -->
 
-</section>
+  </section>
 
 
   <!-- SECTION 2-->
@@ -1314,28 +1274,28 @@
         <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
           <div class="aside">
             <a class="banner-effect imgca" href="bbb" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif" >
+              <img class="imgc" src="assets/images/skeleton.gif">
             </a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
           <div class="aside">
             <a class="banner-effect imgca" href="bbb" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif" >
+              <img class="imgc" src="assets/images/skeleton.gif">
             </a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
           <div class="aside">
             <a class="banner-effect imgca" href="bbb" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif" >
+              <img class="imgc" src="assets/images/skeleton.gif">
             </a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
           <div class="aside">
             <a class="banner-effect imgca" href="bbb" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif" >
+              <img class="imgc" src="assets/images/skeleton.gif">
             </a>
           </div>
         </div>
@@ -1368,17 +1328,15 @@
           <div class="col-lg-3 col-md-3 col-6 remove-padding">
             <div class="left">
               <a class="banner-effect imgca" href="product.html" target="_blank">
-                <img class="imgc"
-                  src="assets/images/skeleton.gif"
-                  >
+                <img class="imgc" src="assets/images/skeleton.gif">
               </a>
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>
-  
+
   </section>
 
   <section class="categori-items bestseller">
@@ -1411,8 +1369,8 @@
 								style="background:#ff0000;padding: 10px;">View More</button></a>
 					</div> -->
           <div class="row" id="fixed-section6-row">
-            <!-- <div class="col-lg-2 col-md-3 col-6 remove-padding">
-              <a class="item" href="///item/5-star-chocolate-bouquet-loc12557">
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
                 <div class="item-img">
                   <div class="extra-list">
                     <ul>
@@ -1430,21 +1388,142 @@
                 <div class="info">
                   <div class="stars">
                   </div>
-                  <h4 class="price">₹499 <del><small>₹599</small></del></h4>
-                  <h5 class="name">5 star chocolate bouquet</h5>
-                  <div class="item-cart-area">
-                    <span class="add-to-cart-quick add-to-cart-btn" data-href="///addtocart/331">
-                      <i class="icofont-cart"></i> Order Now
-                    </span>
-                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
                 </div>
               </a>
-            </div> -->
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    <ul>
+                      <li>
+                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
+                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
+                          <i class="icofont-heart-alt"></i>
+                        </span>
+
+                      </li>
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    <ul>
+                      <li>
+                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
+                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
+                          <i class="icofont-heart-alt"></i>
+                        </span>
+
+                      </li>
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    <ul>
+                      <li>
+                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
+                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
+                          <i class="icofont-heart-alt"></i>
+                        </span>
+
+                      </li>
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    <ul>
+                      <li>
+                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
+                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
+                          <i class="icofont-heart-alt"></i>
+                        </span>
+
+                      </li>
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    <ul>
+                      <li>
+                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
+                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
+                          <i class="icofont-heart-alt"></i>
+                        </span>
+
+                      </li>
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+                </div>
+              </a>
+            </div>
           </div>
-        
-          
+
+
         </div>
-        
+
       </div>
     </div>
   </section>
@@ -1490,7 +1569,7 @@
                   </div>
                 </div>
               </a> -->
-              
+
             </div>
           </div>
         </div>
@@ -1504,7 +1583,7 @@
     <div class="container-fluid">
       <div class="row" id="fixed-section5-row">
         <div class="col-md-12 text-center">
-          <h3 class="mb-3"  style="font-weight: 700;font-size: 30px">Garden of Flowers</h3>
+          <h3 class="mb-3" style="font-weight: 700;font-size: 30px">Garden of Flowers</h3>
         </div>
         <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3">
           <div class="aside">
@@ -1631,47 +1710,24 @@
             <div class="col-lg-4 col-5 p-sm-0 d-lg-block" style="background: #ffbabd;">
               <div class="row">
                 <div class="col-md-5 col-4 p-sm-0" style=" padding-top: 4px; padding-bottom: 4px;">
-                  <img src="https://www.clipartmax.com/png/middle/122-1221781_free-food-icons-fast-delivery-icon-png.png" style="max-width: 81%;">
+                  <img
+                    src="https://www.searchpng.com/wp-content/uploads/2019/01/Delivery-Boy-Clipart-Png-copy.jpg"
+                    style="max-width: 81%;">
                 </div>
                 <div class="col-md-7 col-8 p-sm-0">
                   <div class="aside ml-md-3 mt-md-5">
-                    <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 2rem;">Delivery
+                    <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 2rem;" id="speed">Delivery
                       In </h3>
-                    <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">2 Hours
-                    </h3>
+                   
                     <p style="color:#000; font-size: 17px; margin-top: 5%;">Express Delivery</p>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-lg-8 col-7">
-              <div class="row scres" style="flex-wrap: nowrap !important; overflow-x: scroll;">
-                <div class="com-md-4  remove-padding">
-                  <div class="aside wes"
-                    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-
-                    <a class="banner-effect" href="abcd" target="_blank">
-                      <img src="//lakeofcakes.com/assets/images/partner/1597241333ezgif.com-webp-to-png (2).png" alt="">
-                    </a>
-                  </div>
-                </div>
-                <div class="com-md-4  remove-padding">
-                  <div class="aside wes"
-                    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-
-                    <a class="banner-effect" href="//lakeofcakes.com/" target="_blank">
-                      <img src="//lakeofcakes.com/assets/images/partner/1597241409ezgif.com-webp-to-png (3).png" alt="">
-                    </a>
-                  </div>
-                </div>
-                <div class="com-md-4  remove-padding">
-                  <div class="aside wes"
-                    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-                    <a class="banner-effect" href="bjhbhjb" target="_blank">
-                      <img src="//lakeofcakes.com/assets/images/partner/1597241505ezgif.com-webp-to-png (4).png" alt="">
-                    </a>
-                  </div>
-                </div>
+              <div class="row scres" style="flex-wrap: nowrap !important; overflow-x: scroll;" id="img31">
+             
+              
               </div>
             </div>
           </div>
@@ -1693,57 +1749,27 @@
   </section>
 
 
-  <section class="clothing-and-Apparel-Area">
+  <section class="clothing-and-Apparel-Area responsive-sec2" >
     <div class="container-fluid p-0">
       <div class="p-3" style="background: #274674;">
-        <div class="col-lg-12" style="background: #fff;">
+        <div class="col-lg-12" style="background: transparent;">
           <div class="row">
             <div class="col-lg-8 col-12">
-              <div class="row">
-                <div class="col-md-3 col-3 remove-padding">
-                  <div class="aside">
-                    <a class="banner-effect" href="hhu" target="_blank">
-                      <img style=""
-                        src="//lakeofcakes.com/assets/images/partner/1597241742ezgif.com-webp-to-png (5).png" alt="">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-3 col-3 remove-padding">
-                  <div class="aside">
-                    <a class="banner-effect" href="abcd" target="_blank">
-                      <img style=""
-                        src="//lakeofcakes.com/assets/images/partner/1597241811ezgif.com-webp-to-png (6).png" alt="">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-3 col-3 remove-padding">
-                  <div class="aside">
-                    <a class="banner-effect" href="//lakeofcakes.com/" target="_blank">
-                      <img style=""
-                        src="//lakeofcakes.com/assets/images/partner/1597241871ezgif.com-webp-to-png (7).png" alt="">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-3 col-3 remove-padding">
-                  <div class="aside">
-                    <a class="banner-effect" href="#" target="_blank">
-                      <img style=""
-                        src="//lakeofcakes.com/assets/images/partner/1597915483Screenshot_2020-08-19 Roses, Teddy Bear amp; Chocolates Bouquet Gift Chocolate Bouquet with Roses and - Ferns N Petals.png"
-                        alt="">
-                    </a>
-                  </div>
-                </div>
+              <div class="row" id="img41">
+
+
               </div>
+
             </div>
             <div class="col-lg-4 col-6 d-none d-lg-block" style="background: #274674;">
-              <div class="row">
-                <div class="col-md-7 col-7">
+              <div class="row" id="img4Main">
+                <!-- <div class="col-md-7 col-7">
                   <div class="aside" style="margin-left: 13%; margin-top: 7%;">
                     <h3 style="color:#fff; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Gift For Your</h3>
                     <h3 style="color:#fff; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Loved Ones</h3>
                     <p style="color:#fff; font-size: 17px; margin-top: 9%;">Sterling Picks For Partner </p>
                     <a href="//lakeofcakes.com/category/gifts2">
-                      <button type="button" class="btn btn-light wewre" style="font-size: 20px;
+                      <button type="button" class="btn btn-light wewre" style="font-size: 15px;
                         font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                           aria-hidden="true"></i></button>
                     </a>
@@ -1752,7 +1778,7 @@
                 </div>
                 <div class="col-md-5 col-5" style="background: #fff; padding-top: 13px; padding-bottom: 13px;">
                   <img src="/assets/images/loved.png">
-                </div>
+                </div> -->
               </div>
 
             </div>
@@ -1760,25 +1786,25 @@
         </div>
       </div>
     </div>
-  </section> 
+  </section>
   <section class=" clothing-and-Apparel-Area">
     <div class="container-fluid p-0">
       <div class="p-3" style="background: #f4b2b6;">
-        <div class="col-lg-12" style="background: #fff;">
+        <div class="col-lg-12" style="background:transparent;">
           <div class="row">
-            <div class="col-lg-4 d-none d-lg-block" style="background: #f4b2b6;">
-              <div class="row">
-                <div class="col-md-5 col-5"
-                  style="background: #fff; padding-top: 22px; padding-bottom: 15px; height: 215px;">
+            <div class="col-lg-4 d-lg-block" style="background: #f4b2b6;">
+              <div class="row" id="img42Main" >
+                <div class="bannerMainImage col-md-5 col-5"
+                  style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
                   <img class="mt-3 mb-2" src="/assets/images/heartpng.png">
                 </div>
                 <div class="col-md-7 col-7">
-                  <div class="aside" style="margin-left: 10%; margin-top: 7%;">
+                  <div class="aside " style="margin-left: 10%; margin-top: 7%;">
                     <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Gift For Your </h3>
                     <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Family</h3>
                     <p style="color:#000; font-size: 17px; margin-top: 9%;">Sterling Picks For Family </p>
                     <a href="//lakeofcakes.com/category/gifts2">
-                      <button type="button" class="btn btn-light" style="font-size: 20px;
+                      <button type="button" class="btn btn-light" style="font-size: 15px;
                             font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                           aria-hidden="true"></i></button>
                     </a>
@@ -1786,36 +1812,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-8 col-12">
-              <div class="row">
-                <div class="col-lg-3 col-md-3 col-3 remove-padding">
-                  <div class="aside">
-                    <a class="banner-effect" href="hhu" target="_blank">
-                      <img src="//lakeofcakes.com/assets/images/partner/1597241916ezgif.com-webp-to-png (8).png" alt="">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-3 remove-padding">
-                  <div class="aside">
-                    <a class="banner-effect" href="abcd" target="_blank">
-                      <img src="//lakeofcakes.com/assets/images/partner/1597242032ezgif.com-webp-to-png (7).png" alt="">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-3 remove-padding">
-                  <div class="aside">
-                    <a class="banner-effect" href="//lakeofcakes.com/" target="_blank">
-                      <img src="//lakeofcakes.com/assets/images/partner/1597242046ezgif.com-webp-to-png (6).png" alt="">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-3 remove-padding">
-                  <div class="aside">
-                    <a class="banner-effect" href="bjhbhjb" target="_blank">
-                      <img src="//lakeofcakes.com/assets/images/partner/1597242450ezgif.com-webp-to-png (5).png" alt="">
-                    </a>
-                  </div>
-                </div>
+            <div class="col-lg-8 col-12 " style="width: 100% !important;">
+              <div class="row" id="img42">
+                
               </div>
             </div>
           </div>
@@ -1826,6 +1825,27 @@
   </section>
 
 
+  <section class=" clothing-and-Apparel-Area responsive-sec" >
+    <div class="container-fluid p-0">
+      <div class="p-3" style="background:#274674;">
+        <div class="col-lg-12" style="background:transparent;">
+          <div class="row">
+            <div class="col-lg-4 d-lg-block" style="background: #274674;;">
+              <div class="row" id="img42Mainmob" >
+               
+              </div>
+            </div>
+            <div class="col-lg-8 col-12 " style="width: 100% !important;">
+              <div class="row" id="img42mob">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
   <!-- user defined section card 6 -->
   <section id="user-defined-6cards">
     <!-- <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
@@ -1910,51 +1930,51 @@
   </section>
 
   <!--Modal: modalYT-->
-<div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-lg" role="document">
+  <div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
 
-  <!--Content-->
-  <div class="modal-content">
+      <!--Content-->
+      <div class="modal-content">
 
-    <!--Body-->
-    <div class="modal-body mb-0 p-0">
+        <!--Body-->
+        <div class="modal-body mb-0 p-0">
 
-      <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;"  >
-        <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;"  id="showOffer" src=""
-          allowfullscreen>
+          <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;">
+            <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;" id="showOffer" src=""
+              allowfullscreen>
+          </div>
+
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer justify-content-center flex-column flex-md-row">
+          <span class="mr-4">Spread the word!</span>
+          <div>
+            <a type="button" class="btn-floating btn-sm btn-fb">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <!--Twitter-->
+            <a type="button" class="btn-floating btn-sm btn-tw">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <!--Google +-->
+            <a type="button" class="btn-floating btn-sm btn-gplus">
+              <i class="fab fa-google-plus-g"></i>
+            </a>
+            <!--Linkedin-->
+            <a type="button" class="btn-floating btn-sm btn-ins">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+          <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+            data-dismiss="modal">Close</button>
+        </div>
+
       </div>
+      <!--/.Content-->
 
     </div>
-
-    <!--Footer-->
-    <div class="modal-footer justify-content-center flex-column flex-md-row">
-      <span class="mr-4">Spread the word!</span>
-      <div>
-        <a type="button" class="btn-floating btn-sm btn-fb">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <!--Twitter-->
-        <a type="button" class="btn-floating btn-sm btn-tw">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <!--Google +-->
-        <a type="button" class="btn-floating btn-sm btn-gplus">
-          <i class="fab fa-google-plus-g"></i>
-        </a>
-        <!--Linkedin-->
-        <a type="button" class="btn-floating btn-sm btn-ins">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </div>
-      <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
-        data-dismiss="modal">Close</button>
-    </div>
-
   </div>
-  <!--/.Content-->
-
-</div>
-</div>
 
   <footer class="footer" id="footer-section-loader" style="background:rgba(10, 46, 100, 0.6);"></footer>
 
@@ -1974,7 +1994,7 @@
 
 <script>
 
-  window.localStorage.setItem("redirectURL","index.html")
+  window.localStorage.setItem("redirectURL", "index.html")
 
   var firebaseConfig = {
     apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
@@ -2006,7 +2026,7 @@
 <script src="./Common/navbar1.js"></script>
 
 <script>
-    
+
   $(".drobt").click(function () {
     if ($('.drobt0').hasClass('drobt1')) {
       $('.drobt0').removeClass('drobt1');
@@ -2035,15 +2055,15 @@
 
   db.collection("offers").onSnapshot(async (snapshots) => {
 
-     let snapshotDocs = snapshots.docs;
+    let snapshotDocs = snapshots.docs;
 
-      // var dbref = db.collection('Customers');
-      for (let doc of snapshotDocs) {
-          userDoc = doc.data();
-          if(userDoc.isActivated){
-            document.getElementById("showOffer").src=userDoc.imgUrl;
-          }
+    // var dbref = db.collection('Customers');
+    for (let doc of snapshotDocs) {
+      userDoc = doc.data();
+      if (userDoc.isActivated) {
+        document.getElementById("showOffer").src = userDoc.imgUrl;
       }
+    }
 
   });
 
@@ -2065,58 +2085,58 @@
     }
   }
 
-    var counter = 0;
-    document.getElementById("hideLogOut").style.display = "none";
-    // const db = firebase.firestore();
-    var docData, userDoc;
+  var counter = 0;
+  document.getElementById("hideLogOut").style.display = "none";
+  // const db = firebase.firestore();
+  var docData, userDoc;
 
-    db.collection("Customers").onSnapshot(async (snapshots) => {
+  db.collection("Customers").onSnapshot(async (snapshots) => {
 
-      checkUser = window.localStorage.getItem("locLoggedInUser");
+    checkUser = window.localStorage.getItem("locLoggedInUser");
 
-      let snapshotDocs = snapshots.docs;
+    let snapshotDocs = snapshots.docs;
 
-      // var dbref = db.collection('Customers');
-      for (let doc of snapshotDocs) {
+    // var dbref = db.collection('Customers');
+    for (let doc of snapshotDocs) {
 
-        if (checkUser == doc.data().userId) {
-          
-          counter++;
+      if (checkUser == doc.data().userId) {
 
-          userDoc = doc.data();
-          if(userDoc.cart !=undefined && userDoc.cart!="undefined"){
-            document.getElementById("cart-count").innerHTML = userDoc.cart.length;
-          }else{
-            document.getElementById("cart-count").innerHTML = 0;
-          }
-        
-          if (userDoc.UserName == null) {
-            userDoc.UserName = "User@LOC";
-          }
+        counter++;
 
-          if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
-            userDoc.Image = "../assets/images/userIcon.png"
-          }
-
-          document.getElementById("logInBtn").style.display = "none";
-          document.getElementById("hideLogOut").style.display = "block";
-          document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
-          document.getElementById("userImg").src = userDoc.Image;
-          break;
+        userDoc = doc.data();
+        if (userDoc.cart != undefined && userDoc.cart != "undefined") {
+          document.getElementById("cart-count").innerHTML = userDoc.cart.length;
+        } else {
+          document.getElementById("cart-count").innerHTML = 0;
         }
+
+        if (userDoc.UserName == null) {
+          userDoc.UserName = "User@LOC";
+        }
+
+        if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
+          userDoc.Image = "../assets/images/userIcon.png"
+        }
+
+        document.getElementById("logInBtn").style.display = "none";
+        document.getElementById("hideLogOut").style.display = "block";
+        document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
+        document.getElementById("userImg").src = userDoc.Image;
+        break;
       }
+    }
 
-      if (counter == 0) {
+    if (counter == 0) {
 
-        document.getElementById("hideLogOut").style.display = "none";
-        document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
-        document.getElementById("logInBtn").style.display = "block";
-      }
+      document.getElementById("hideLogOut").style.display = "none";
+      document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
+      document.getElementById("logInBtn").style.display = "block";
+    }
 
-    });
+  });
 
 
- 
+
 
 
   function redirectLogin() {
@@ -2193,5 +2213,17 @@
     }
     revealOnScroll();
   });
+
+
+
+
+
+
+
+
+
+
+  
 </script>
+
 </html>
