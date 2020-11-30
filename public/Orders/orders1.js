@@ -22,7 +22,7 @@ const displayOrdersTable = () => {
   let counter = -1;
   let row = "";
   for (let order of ORDERS) {
-    // console.log(order);
+    console.log(order);
     counter++;
     let orderStatus;
     if('completed' === order.status) {
