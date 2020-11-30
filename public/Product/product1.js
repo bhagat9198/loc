@@ -1,4 +1,4 @@
-console.log("product1.js");
+// console.log("product1.js");
 
 const db = firebase.firestore();
 const storageService = firebase.storage();
@@ -232,7 +232,6 @@ const calculatePrice = () => {
   // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
   // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
   if (EGGLESS) {
-    console.log("egg");
     TOTAL_COST = TOTAL_COST + +PROD_DETAILS.type.price;
     TOTAL_PREV_PRICE = TOTAL_PREV_PRICE + +PROD_DETAILS.type.price;
   }
@@ -255,7 +254,6 @@ const calculatePrice = () => {
 };
 
 const cakeShape = (e, current) => {
-  console.log(current.value);
   if (current.checked) {
     HEART = true;
     calculatePrice();
@@ -266,10 +264,9 @@ const cakeShape = (e, current) => {
 };
 
 const cakeWeight = (e, current) => {
-  console.log(current.value);
+  // console.log(current.value);
   // let cakeweightIndex = e.target.dataset.weightindex;
   let selectedWeight = e.target.dataset.weight;
-  console.log(selectedWeight);
   displayWeights(selectedWeight);
 };
 
@@ -337,7 +334,6 @@ const displayWeights = (makedWeight) => {
           selected = "checked";
           // console.log(Math.round((+price/+pprice)*100));
           let dis = 100 - (Math.round((+price/+pprice)*100));
-          console.log(dis);
           disPercentHTML.innerHTML = `(${dis}% OFF)`;
         }
         // console.log(WEIGHT_PRICE);
@@ -401,7 +397,7 @@ const imgChange = (e, current) => {
 
   // console.log(current);
   let imgUrl = current.src;
-  console.log(imgUrl);
+  // console.log(imgUrl);
   // bigImgHolderHTML.innerHTML = '';
   let big = `
   <span class="zoom" id="ex11">
@@ -415,7 +411,7 @@ const imgChange = (e, current) => {
 
   bigImgHolderHTML.innerHTML = big;
   $('#ex11').zoom();
-  console.log(document.querySelector("#whole-img-block"));
+  // console.log(document.querySelector("#whole-img-block"));
 };
 
 const reviewFormHTML = document.querySelector("#review-form");
@@ -540,8 +536,6 @@ const calAddonPrice = () => {
 
 const buyAddon = (e, current) => {
   let index = e.target.value;
-  console.log(addons_details);
-  console.log(addons_details[index]);
   addons_details[index].checked = current.checked;
   calAddonPrice();
 };
@@ -622,14 +616,12 @@ const buyProd = async (e) => {
       }
       if(cake) {
         orderData.products[0].cake = cake;
-        console.log(orderData);
       }
       docData.orders.push(orderData);
     } else {
       docData.orders = [];
       let cake = null;
       if (WEIGHT_PRICE.weight) {
-        console.log(WEIGHT_PRICE.weight);
         let f;
         if(WEIGHT_PRICE.weight) {
           f = document.querySelector('input[name=cake-flavour]:checked').value;
@@ -661,7 +653,6 @@ const buyProd = async (e) => {
       if(cake) {
         orderData.products[0].cake = cake;
       }
-      console.log(orderData);
       docData.orders.push(orderData);
     }
     await userRef.update(docData);
@@ -716,9 +707,7 @@ const addToCart = async (e) => {
     setTimeout(function () {
       document.getElementById("success").style.display = "none";
     }, 2000);
-    console.log("updated");
   });
-  console.log("done");
 };
 
 addToCartBtnHTML.addEventListener("click", addToCart);

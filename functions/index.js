@@ -222,7 +222,7 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
       "only authenticated users can add requests"
     );
   }
-  console.log(data);
+  // console.log(data);
 
   const USER_ID = data.userId;
   const CHECKOUT_ID = data.order;
@@ -246,7 +246,7 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
     key_secret: 'T4Lx7KUbbfPaIHvRWQsxx4WL'
   });
 
-  console.log(data);
+  // console.log(data);
 
   const options = {
     amount: TOTAL_COST * 100,
@@ -272,7 +272,7 @@ exports.payemnetStatus = functions.https.onCall(async (data, context) => {
       'only authenticated users can add requests'
     );
   }
-  console.log(data);
+  // console.log(data);
   const razorpay_payment_id = data.razorpay_payment_id;
   const razorpay_order_id = data.razorpay_order_id;
   const razorpay_signature = data.razorpay_signature;
@@ -299,7 +299,6 @@ exports.payemnetStatus = functions.https.onCall(async (data, context) => {
     }
     await calBill(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTime, shippingData);
   } else {
-    console.log('razorpay_signature', razorpay_signature);
     status = "false";
   }
   return status;
@@ -326,24 +325,21 @@ var transporter = nodemailer.createTransport({
 
 // Email Service
 exports.sendEmailAfterReject = functions.firestore.document('Customers/{userId}').onUpdate(async (change) => {
-  console.log("Came into Function")
   const newValue = change.after.data();
 
   // ...or the previous value before this update
   const previousValue = change.before.data();
 
-  console.log(previousValue)
-  console.log(newValue)
+  // console.log(previousValue)
   // access a particular field as you would any JS property
   const name = newValue.UserName;
-  console.log("--------------------------------------------" + name)
+  // console.log(newValue)
 
   //Create an options object that contains the time to live for the notification and the priority
   const mailOptions = {
     from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
     to: newValue.Email,
   };
-  console.log("SSSSSSSS")
   // Building Email message.
   mailOptions.subject = 'Order Confirmation ';
   //for example
@@ -398,40 +394,33 @@ exports.sendEmailAfterReject = functions.firestore.document('Customers/{userId}'
         <h4 style="font-weight: 800;">Call +91 - 9598891097</h4>
   </center>
   `
-
-  console.log("SSSSSSSS")
   try {
-    console.log("Inside try")
+    // console.log("Inside try")
     transporter.sendMail(mailOptions);
     console.log('email sent to:', newValue.Email);
     transporter.close();
-    console.log(newValue.Email)
+    // console.log(newValue.Email)
   } catch (error) {
     console.error('There was an error while sending the email:' + newValue.Email, error);
   }
-
 });
 
 
 exports.createUser = functions.firestore
   .document('Customers/{userId}')
   .onCreate((snap, context) => {
-    console.log("Came into Function")
     const newValue = snap.data();
-
     // ...or the previous value before this update
     // const previousValue = change.before.data();
 
     // access a particular field as you would any JS property
     const name = newValue.UserName;
-    console.log("--------------------------------------------" + name)
 
     //Create an options object that contains the time to live for the notification and the priority
     const mailOptions = {
       from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
       to: newValue.Email,
     };
-    console.log("SSSSSSSS")
     // Building Email message.
     mailOptions.subject = 'Welcome to lakeofcakes';
     //for example
@@ -510,13 +499,11 @@ Occassions
 
   `
 
-    console.log("SSSSSSSS")
     try {
-      console.log("Inside try")
       transporter.sendMail(mailOptions);
       console.log('email sent to:', newValue.Email);
       transporter.close();
-      console.log(newValue.Email)
+      // console.log(newValue.Email)
     } catch (error) {
       console.error('There was an error while sending the email:' + newValue.Email, error);
     }
@@ -526,40 +513,28 @@ Occassions
 
 
 exports.sendEmailAfterConfirmation = functions.firestore.document('Customers/{userId}').onUpdate(async (change) => {
-  console.log("Came into Function")
   const newValue = change.after.data();
 
   // ...or the previous value before this update
   const previousValue = change.before.data();
 
-
-
-  console.log(Object.keys(previousValue))
-  console.log(Object.keys(newValue))
-
-
   // access a particular field as you would any JS property
   const name = newValue.UserName;
-  console.log("--------------------------------------------" + name)
 
   //Create an options object that contains the time to live for the notification and the priority
   const mailOptions = {
     from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
     to: newValue.Email,
   };
-  console.log("SSSSSSSS")
   // Building Email message.
   mailOptions.subject = 'Order Confirmation ';
   //for example
   let duplicate = "";
-  console.log(Object.keys(newValue.orders))
   let delivertTypePrice = 0;
-  let timeStamp, timeDate, dTime, shipingData, totalCost, deliverType;
+  let timeStamp, timeDate, dTime, shippingData, totalCost, deliverType;
 
   for (let o of newValue.orders) {
-    console.log("Success")
     if (o.status == "success") {
-      console.log("Success222222");
       for(op of o.products) {
         let opRef = admin.firestore().collection(op.cat).doc(op.prodId);
         await opRef.get().then(opDoc => {
@@ -591,7 +566,7 @@ exports.sendEmailAfterConfirmation = functions.firestore.document('Customers/{us
       }
       
     }
-    console.log(duplicate);
+    // console.log(duplicate);
     timeStamp = o.success.orderTime;
     totalCost = o.success.totalCost;
     deliverType = o.success.type;
@@ -613,13 +588,12 @@ exports.sendEmailAfterConfirmation = functions.firestore.document('Customers/{us
       }
     })
 
-    shipingData = o.success.shippingData;
+    shippingData = o.success.shippingData;
 
 
   }
 
 
-  console.log("CAME INTO CONDITION")
   mailOptions.html = `<div style="width: 100%;display:flex;border: 2px solid red; ">
 
   <div style="width: 80%"><img
@@ -673,10 +647,10 @@ exports.sendEmailAfterConfirmation = functions.firestore.document('Customers/{us
       ${dTime}
       <br><b>Delivery Address</b>
       <Br>
-${shipingData.differtAddress ? shipingData.alt_name : shipingData.name}
-${shipingData.differtAddress ? shippingData.alt_address : shippingData.address}
+${shippingData.differtAddress ? shippingData.alt_name : shippingData.name}
+${shippingData.differtAddress ? shippingData.alt_address : shippingData.address}
 Lucknow 
-Lucknow, Uttar Pradesh, ${shipingData.differtAddress ? shipingData.alt_zip :  shippingData.zip}
+Lucknow, Uttar Pradesh, ${shippingData.differtAddress ? shippingData.alt_zip :  shippingData.zip}
        <br>
 Amount Paid :Rs ${totalCost}
           </pre>
@@ -727,13 +701,11 @@ Amount Paid :Rs ${totalCost}
   </div>
 </div>`
 
-  console.log("SSSSSSSS")
   try {
-    console.log("Inside try")
     transporter.sendMail(mailOptions);
     console.log('email sent to:', newValue.Email);
     transporter.close();
-    console.log(newValue.Email)
+    // console.log(newValue.Email)
   } catch (error) {
     console.error('There was an error while sending the email:' + newValue.Email, error);
   }

@@ -1,4 +1,4 @@
-console.log("navbar1.js");
+// console.log("navbar1.js");
 
   const wholeNavigationPcHTML = document.querySelector('#whole-navigation-pc');
 
@@ -272,7 +272,7 @@ console.log("navbar1.js");
 </div> */}
 
 const easyAddToCart = () => {
-  console.log('addToCart');
+  // console.log('addToCart');
 }
 
 

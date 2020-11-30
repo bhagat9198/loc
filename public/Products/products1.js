@@ -1,4 +1,4 @@
-console.log("products1.js");
+// console.log("products1.js");
 
 const db = firebase.firestore();
 const storageService = firebase.storage();
@@ -56,9 +56,9 @@ const extractRelvantProds = async () => {
     // console.log(CAT);
     dbRef = db.collection(CAT);
     if (SUB) {
-      console.log(SUB);
+      // console.log(SUB);
       if (CHILD) {
-        console.log(CHILD);
+        // console.log(CHILD);
         await dbRef.get().then((docs) => {
           let docDocs = docs.docs;
           docDocs.map((el) => {
@@ -91,7 +91,7 @@ const extractRelvantProds = async () => {
             }
           });
         });
-        console.log(allProductsArr);
+        // console.log(allProductsArr);
         return;
       }
     } else {
@@ -130,7 +130,6 @@ const extractRelvantProds = async () => {
     }
     return;
   } else {
-    console.log("else");
     await allCatProds();
     productHeadingHTML.innerHTML = 'All Products';
     // console.log(allProductsArr);
@@ -225,16 +224,6 @@ const displayProds = async (arrProds) => {
 				<a href="../Product/product.html?prod=${p.prodId}&&cat=${p.prodData.wholeCategory.split("__")[0]
       }" class="item">
 					<div class="item-img">
-						<div class="extra-list">
-							<ul>
-								<li>
-									<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
-										data-target="#comment-log-reg" data-placement="right">
-										<i class="fa fa-heart"></i>
-									</span>
-								</li>
-							</ul>
-            </div>
             <span class="w3-tag w3-display-topleft" style="border-radius:10px;
             background: linear-gradient(90deg, ${p.prodData.bannerTypeColorStart ? p.prodData.bannerTypeColorStart.toString() : ''}, ${p.prodData.bannerTypeColorEnd ? p.prodData.bannerTypeColorEnd.toString() : ''}, #ededed);
             animation-name: load;
@@ -344,7 +333,6 @@ const sortProducts = (e, current) => {
   // console.log(e, current.value);
   if(current.value === 'popular') {
     let temp = TEMP_ARR.slice();
-    console.log('aa');
     displayProds(temp)
   } else if(current.value === 'low') {
     let temp = TEMP_ARR.slice();
@@ -367,6 +355,6 @@ const sortProducts = (e, current) => {
     temp.sort( compare );
     displayProds(temp);
   } else {
-    console.log('invalid');
+    // console.log('invalid');
   }
 }

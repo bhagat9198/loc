@@ -1433,7 +1433,7 @@ for (let doc of snapshotDocs) {
                                     userimage = userKey.Image;
                                 } else {
                                     await sendimage2();
-                                    console.log(userimage)
+                                    // console.log(userimage)
                                 }
                                 await dbref.doc(userKey.userId).update({
                                     UserName: name,
@@ -1471,7 +1471,7 @@ for (let doc of snapshotDocs) {
                                 userimage = userKey.Image;
                             } else {
                                 await sendimage2();
-                                console.log(userimage)
+                                // console.log(userimage)
                             }
                             await dbref.doc(userKey.userId).update({
                                 UserName: name,
@@ -1564,7 +1564,7 @@ for (let doc of snapshotDocs) {
             async function sendimage2() {
                 const storageService = firebase.storage();
                 var uploadTask = storageService.ref("UserProfileImages/"+userKey.userId+"/"+selectedFile.name+"").put(selectedFile);
-                console.log(selectedFile.getDownloadURL);
+                // console.log(selectedFile.getDownloadURL);
                 await uploadTask.on('state_changed', function (snapshot) {
                     var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     uploader.value = percentage;
@@ -1574,7 +1574,7 @@ for (let doc of snapshotDocs) {
                     switch (snapshot.state) {
                         case firebase.storage.TaskState.PAUSED: // or 'paused'
                             document.getElementById("demo").innerHTML = "Upload Paused";
-                            console.log('Upload is paused');
+                            // console.log('Upload is paused');
                             break;
                         case firebase.storage.TaskState.RUNNING: // or 'running'
                             document.getElementById("demo").innerHTML = "File is uploading" + " " + progress + "%";

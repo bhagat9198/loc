@@ -1,4 +1,4 @@
-console.log("index1.js");
+// console.log("index1.js");
 
 const db = firebase.firestore();
 const storageService = firebase.storage();
@@ -262,7 +262,7 @@ cards4Ref.get().then(cards4Snaps => {
 
   for (let card4Doc of cards4SnapsDocs) {
     let card4Data = card4Doc.data();
-    console.log(card4Data);
+    // console.log(card4Data);
     let eachCard4 = `
     <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);;;">
       <h3 class="bannerheading fadeIn" id="fixed-section1-heading">${card4Data.title}</h3>
@@ -272,7 +272,6 @@ cards4Ref.get().then(cards4Snaps => {
 
     let row = '';
     for (let c of card4Data.card) {
-      console.log(card4Data.category);
       row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
@@ -477,7 +476,7 @@ userAnimationRef.get().then(imgSnaps => {
     `;
     wholeImg += eachImg;
   }
-  console.log(wholeImg);
+  // console.log(wholeImg);
   userDefinedAnimationHTML.innerHTML = wholeImg;
 })
 
@@ -651,10 +650,11 @@ cards6Ref.get().then(async (card6Snaps) => {
 const fixedSection9Heading = document.querySelector("#fixed-section9-heading");
 const fixedSection9Row = document.querySelector("#fixed-section9-row");
 
-db.collection("section")
+db.collection("sections")
   .doc("fixed9")
   .onSnapshot((doc) => {
     let docData = doc.data();
+    // console.log(docData);
     let row = "";
     fixedSection9Heading.innerHTML = docData["title"];
     for (let card in docData) {
