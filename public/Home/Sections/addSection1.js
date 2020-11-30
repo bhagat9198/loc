@@ -228,6 +228,7 @@ const addSection = (e) => {
     colorTL: colorTopLeft || "",
     colorBR: colorBottomRight || "",
     card: productsSelected || [],
+    activated: true
   };
   // console.log(wholeSectionData);
 
@@ -371,11 +372,11 @@ const addSection = (e) => {
       } else if (response.data.type === "animation") {
         console.log(response.data.card.animation);
         await firebaseStorage
-          .ref(`sections/${response.dataId}/${response.data.card.animation}`)
+          .ref(`sections/animation/animation/${response.dataId}/${response.data.card.animation}`)
           .put(animationBanner);
         console.log(animationBanner);
         let animationUrl = await extractImgURL(
-          `sections/${response.dataId}/${response.data.card.animation}`
+          `sections/animation/animation/${response.dataId}/${response.data.card.animation}`
         );
         console.log(animationUrl);
         let docRef = await db.collection("sections").doc('animation').collection('animation').doc(response.dataId);
