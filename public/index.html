@@ -49,6 +49,10 @@
     .responsive-sec {
       display: none !important;
     }
+    
+    .responsive-secCart {
+      display: none !important;
+    }
 
     .responsive-sec2 {
       display: block !important;
@@ -60,6 +64,10 @@
 
     .responsive-sec {
       padding: 5px 0px 0px 5px !important;
+      display: block !important;
+    }
+    .responsive-secCart {
+
       display: block !important;
     }
 
@@ -459,7 +467,7 @@
                   </label>
                 </a>
               </div>
-             
+
             </div>
           </aside>
           <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
@@ -554,14 +562,17 @@
                     </div>
 
                     <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href=""
-                      onclick="checkifUser()"><i class="fa fa-user"></i>
+                      onclick="checkifUser('/UserDash/profile.html')"><i class="fa fa-user"></i>
                       Profile</a>
 
                     <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
-                      href="#"><i class="fa fa-truck"></i> Track Orders</a>
+                      href="#!" onclick="checkifUser('/UserDash/trackOrders.html')"><i class="fa fa-truck"></i> Track Orders</a>
 
                     <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
-                      href="#"><i class="fa fa-shopping-cart"></i> My Orders</a>
+                      href="#!" onclick="checkifUser('/UserDash/profile.html')"><i class="fa fa-shopping-cart"></i> My Orders</a>
+
+                    <a class="dropdown-item responsive-secCart" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
+                      href="#!" onclick="checkifUser('/UserDash/cart.html')"><i class="fa fa-shopping-cart"></i> My Cart</a>
 
                     <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"
                       id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
@@ -1710,15 +1721,15 @@
             <div class="col-lg-4 col-5 p-sm-0 d-lg-block" style="background: #ffbabd;">
               <div class="row">
                 <div class="col-md-5 col-4 p-sm-0" style=" padding-top: 4px; padding-bottom: 4px;">
-                  <img
-                    src="https://www.searchpng.com/wp-content/uploads/2019/01/Delivery-Boy-Clipart-Png-copy.jpg"
+                  <img src="https://www.searchpng.com/wp-content/uploads/2019/01/Delivery-Boy-Clipart-Png-copy.jpg"
                     style="max-width: 81%;">
                 </div>
                 <div class="col-md-7 col-8 p-sm-0">
                   <div class="aside ml-md-3 mt-md-5">
-                    <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 2rem;" id="speed">Delivery
+                    <h3 class="f-17" style="color:#000; font-weight: 700; font-size: 28px; line-height: 2rem;"
+                      id="speed">Delivery
                       In </h3>
-                   
+
                     <p style="color:#000; font-size: 17px; margin-top: 5%;">Express Delivery</p>
                   </div>
                 </div>
@@ -1726,8 +1737,8 @@
             </div>
             <div class="col-lg-8 col-7">
               <div class="row scres" style="flex-wrap: nowrap !important; overflow-x: scroll;" id="img31">
-             
-              
+
+
               </div>
             </div>
           </div>
@@ -1749,7 +1760,7 @@
   </section>
 
 
-  <section class="clothing-and-Apparel-Area responsive-sec2" >
+  <section class="clothing-and-Apparel-Area responsive-sec2">
     <div class="container-fluid p-0">
       <div class="p-3" style="background: #274674;">
         <div class="col-lg-12" style="background: transparent;">
@@ -1793,7 +1804,7 @@
         <div class="col-lg-12" style="background:transparent;">
           <div class="row">
             <div class="col-lg-4 d-lg-block" style="background: #f4b2b6;">
-              <div class="row" id="img42Main" >
+              <div class="row" id="img42Main">
                 <div class="bannerMainImage col-md-5 col-5"
                   style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
                   <img class="mt-3 mb-2" src="/assets/images/heartpng.png">
@@ -1814,7 +1825,7 @@
             </div>
             <div class="col-lg-8 col-12 " style="width: 100% !important;">
               <div class="row" id="img42">
-                
+
               </div>
             </div>
           </div>
@@ -1825,19 +1836,19 @@
   </section>
 
 
-  <section class=" clothing-and-Apparel-Area responsive-sec" >
+  <section class=" clothing-and-Apparel-Area responsive-sec">
     <div class="container-fluid p-0">
       <div class="p-3" style="background:#274674;">
         <div class="col-lg-12" style="background:transparent;">
           <div class="row">
             <div class="col-lg-4 d-lg-block" style="background: #274674;;">
-              <div class="row" id="img42Mainmob" >
-               
+              <div class="row" id="img42Mainmob">
+
               </div>
             </div>
             <div class="col-lg-8 col-12 " style="width: 100% !important;">
               <div class="row" id="img42mob">
-                
+
               </div>
             </div>
           </div>
@@ -2070,11 +2081,11 @@
   var checkUser;
   checkUser = window.localStorage.getItem("locLoggedInUser");
   var timecount = 0;
-  function checkifUser() {
+  function checkifUser(location) {
     if (checkUser == null || checkUser == "null") {
       window.location = "/Auth/login.html"
     } else {
-      window.location = "/UserDash/customerProfile.html"
+      window.location = location
     }
   }
   function redirectToCart() {
@@ -2223,7 +2234,7 @@
 
 
 
-  
+
 </script>
 
 </html>

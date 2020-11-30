@@ -1,4 +1,4 @@
-console.log("product1.js");
+// console.log("product1.js");
 
 const db = firebase.firestore();
 const storageService = firebase.storage();
@@ -21,10 +21,9 @@ var getParams = async (url) => {
 };
 
 getParams(window.location.href).then(async (response) => {
-  console.log(response);
   PRODUCT_ID = response.prod;
   CATEGORY_ID = response.cat;
-  console.log(PRODUCT_ID, CATEGORY_ID);
+  // console.log(PRODUCT_ID, CATEGORY_ID);
   if (PRODUCT_ID && CATEGORY_ID) {
     PROD_DETAILS = await extractProdDetails();
     displayProduct(PROD_DETAILS);
@@ -33,7 +32,7 @@ getParams(window.location.href).then(async (response) => {
 });
 
 const extractProdDetails = () => {
-  console.log(CATEGORY_ID, PRODUCT_ID);
+  // console.log(CATEGORY_ID, PRODUCT_ID);
   return db
     .collection(CATEGORY_ID)
     .doc(PRODUCT_ID)
@@ -233,7 +232,6 @@ const calculatePrice = () => {
   // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
   // console.log(typeof(TOTAL_COST), typeof(TOTAL_PREV_PRICE));
   if (EGGLESS) {
-    console.log("egg");
     TOTAL_COST = TOTAL_COST + +PROD_DETAILS.type.price;
     TOTAL_PREV_PRICE = TOTAL_PREV_PRICE + +PROD_DETAILS.type.price;
   }
@@ -256,7 +254,6 @@ const calculatePrice = () => {
 };
 
 const cakeShape = (e, current) => {
-  console.log(current.value);
   if (current.checked) {
     HEART = true;
     calculatePrice();
@@ -267,10 +264,9 @@ const cakeShape = (e, current) => {
 };
 
 const cakeWeight = (e, current) => {
-  console.log(current.value);
+  // console.log(current.value);
   // let cakeweightIndex = e.target.dataset.weightindex;
   let selectedWeight = e.target.dataset.weight;
-  console.log(selectedWeight);
   displayWeights(selectedWeight);
 };
 
@@ -336,7 +332,9 @@ const displayWeights = (makedWeight) => {
           WEIGHT_PRICE.previous = pprice;
           WEIGHT_PRICE.weight = weightName;
           selected = "checked";
-          disPercentHTML.innerHTML = `(${Math.round((+price/+pprice)*100)}% OFF)`;
+          // console.log(Math.round((+price/+pprice)*100));
+          let dis = 100 - (Math.round((+price/+pprice)*100));
+          disPercentHTML.innerHTML = `(${dis}% OFF)`;
         }
         // console.log(WEIGHT_PRICE);
         weightCard += `
@@ -399,7 +397,7 @@ const imgChange = (e, current) => {
 
   // console.log(current);
   let imgUrl = current.src;
-  console.log(imgUrl);
+  // console.log(imgUrl);
   // bigImgHolderHTML.innerHTML = '';
   let big = `
   <span class="zoom" id="ex11">
@@ -413,7 +411,7 @@ const imgChange = (e, current) => {
 
   bigImgHolderHTML.innerHTML = big;
   $('#ex11').zoom();
-  console.log(document.querySelector("#whole-img-block"));
+  // console.log(document.querySelector("#whole-img-block"));
 };
 
 const reviewFormHTML = document.querySelector("#review-form");
@@ -438,9 +436,9 @@ const reviewForm = (e) => {
     }
     dbRef.update(docData);
     reviewFormHTML.reset();
-    console.log("updated");
+    // console.log("updated");
   });
-  console.log("done");
+  // console.log("done");
 };
 
 reviewFormHTML.addEventListener("submit", reviewForm);
@@ -472,7 +470,7 @@ const addons_details = [];
     snapshotDocs.map(async(doc, index) => {
       // card += displayAddon(doc);
       let docData = doc.data();
-      console.log(docData);
+      // console.log(docData);
       addons_details.push({
         qty: 1,
         price: +docData.price,
@@ -484,7 +482,7 @@ const addons_details = [];
       <a class="item"
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
         <input type="checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
-          style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
+          style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;height:20px;width:30px;">
         <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
           <img class="img-fluid"
             src="${docData.imgUrl}"
@@ -522,7 +520,6 @@ const addons_details = [];
     `;
     });
 
-    console.log(card);
     allAddonsHTML.innerHTML = card;
     // console.log(TOTAL_COST);
   });
@@ -539,8 +536,6 @@ const calAddonPrice = () => {
 
 const buyAddon = (e, current) => {
   let index = e.target.value;
-  console.log(addons_details);
-  console.log(addons_details[index]);
   addons_details[index].checked = current.checked;
   calAddonPrice();
 };
@@ -570,7 +565,7 @@ let userId;
 let userRef;
 const checkAuth = async () => {
   if (!localStorage.getItem("locLoggedInUser")) {
-    window.location.href = "./../Auth/login.html";
+    window.location.href = "/Auth/login.html";
   } else {
     userId = localStorage.getItem("locLoggedInUser");
     userRef = await db.collection("Customers").doc(userId);
@@ -607,7 +602,7 @@ const buyProd = async (e) => {
       }
       let orderData = {
         orderId: orderId,
-        status: "rejected",
+        status: "cancelled",
         type: "single",
         addons: addonsSelected,
         products: [
@@ -621,14 +616,12 @@ const buyProd = async (e) => {
       }
       if(cake) {
         orderData.products[0].cake = cake;
-        console.log(orderData);
       }
       docData.orders.push(orderData);
     } else {
       docData.orders = [];
       let cake = null;
       if (WEIGHT_PRICE.weight) {
-        console.log(WEIGHT_PRICE.weight);
         let f;
         if(WEIGHT_PRICE.weight) {
           f = document.querySelector('input[name=cake-flavour]:checked').value;
@@ -645,7 +638,7 @@ const buyProd = async (e) => {
 
       let orderData = {
         orderId: orderId,
-        status: "rejected",
+        status: "cancelled",
         type: "single",
         addons: addonsSelected,
         products: [
@@ -660,7 +653,6 @@ const buyProd = async (e) => {
       if(cake) {
         orderData.products[0].cake = cake;
       }
-      console.log(orderData);
       docData.orders.push(orderData);
     }
     await userRef.update(docData);
@@ -715,16 +707,14 @@ const addToCart = async (e) => {
     setTimeout(function () {
       document.getElementById("success").style.display = "none";
     }, 2000);
-    console.log("updated");
   });
-  console.log("done");
 };
 
 addToCartBtnHTML.addEventListener("click", addToCart);
 
 const displaySuggestions = async() => {
   const trendingItemsHTML = document.querySelector('.trending-item-slider');
-  console.log(CATEGORY_ID);
+  // console.log(CATEGORY_ID);
   let allProds = [];
   let r =  db.collection(CATEGORY_ID);
   r.get().then(async(prodSnaps) => {
@@ -732,7 +722,7 @@ const displaySuggestions = async() => {
     let snapSize = prodSnapsDocs.length;
     // console.log(prodSnapsDocs.length);
     let rand = Math.floor(Math.random() * (snapSize - 8 + 0 + 1));
-    console.log(rand);
+    // console.log(rand);
     prodSnapsDocs.map(p => {
       allProds.push(p.id);
     })
@@ -741,7 +731,7 @@ const displaySuggestions = async() => {
     for(let counter = 0; counter < 8; counter++) {
       await db.collection(CATEGORY_ID).doc(allProds[counter + rand]).get().then(pdataRaw => {
         let pdata = pdataRaw.data();
-        console.log(pdata.mainImgUrl);
+        // console.log(pdata.mainImgUrl);
         card += `
         <a href="./product.html?prod=${allProds[counter + rand]}&&cat=${CATEGORY_ID}" class="item">
           <div class="item-img">

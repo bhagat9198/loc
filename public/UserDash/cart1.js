@@ -1,4 +1,4 @@
-console.log("cart1.js");
+// console.log("cart1.js");
 
 const db = firebase.firestore();
 const storageService = firebase.storage;
@@ -98,7 +98,7 @@ const displayCart = async () => {
             break;
           }
         } else {
-          console.log("invalid");
+          // console.log("invalid");
         }
       }
     } else {
@@ -196,20 +196,13 @@ const displayCart = async () => {
 
 const deleteCartProd = (e) => {
   const cartId = e.target.dataset.cartid;
-  console.log(cartId);
   let counter = e.target.dataset.index;
   let id = e.target.dataset.id;
-  console.log(id);
   if (+counter === 0 || +counter < USER_DETAILS.cart.length) {
-    console.log(counter);
     let tempCart = USER_DETAILS.cart;
-    console.log(tempCart);
     tempCart.splice(counter, 1);
-    console.log(tempCart);
     USER_REF.update("cart", tempCart);
-    console.log("updated");
   }
-  console.log("done");
   document.querySelector(`#row__${id}`).remove();
   updateSelectedProds(cartId, 0, "del");
 };
@@ -219,10 +212,8 @@ const SELECTED_PRODS = [];
 const selectProds = (e, current) => {
   let counter = e.target.dataset.index;
   if (e.target.checked) {
-    console.log(counter);
     SELECTED_PRODS.push({ ...allProdPrice[counter] });
   } else {
-    console.log(counter);
     SELECTED_PRODS.splice(counter, 1);
   }
   // console.log(SELECTED_PRODS.length);
@@ -231,7 +222,6 @@ const selectProds = (e, current) => {
 };
 
 const updateSelectedProds = (id, qty, del = "data") => {
-  console.log(qty);
   let c = -1;
   for (let sp of SELECTED_PRODS) {
     // console.log(sp.cartId, id)
@@ -257,7 +247,6 @@ const calculateSubPrice = (id) => {
   // console.log(counter);
   let cost = allProdPrice[counter].price;
   let qty = document.querySelector(`#total__${id}`).innerHTML;
-  console.log(cost, qty);
   let totalCost = +cost * +qty;
   subPriceHTML.innerHTML = totalCost;
 };
@@ -299,16 +288,13 @@ const orderBoxHTML = document.querySelector(".order-box");
 let TOTAL = 0;
 
 const displayCheckout = () => {
-  console.log(SELECTED_PRODS);
   if (SELECTED_PRODS.length > 0) {
     emptyCheckoutHTML.style.display = "none";
     checkoutBtnHTML.disabled = false;
     // orderBoxHTML.style.display = 'block';
     let li = "";
-    console.log(SELECTED_PRODS);
     TOTAL = 0;
     SELECTED_PRODS.map((p) => {
-      console.log(p);
       let pPrice = +p.qty * +p.price;
       TOTAL = TOTAL + pPrice;
       li += `
@@ -410,16 +396,12 @@ const calAddonPrice = () => {
       totalAddonPrice += el.price * el.qty;
     }
   });
-  console.log(totalAddonPrice, TOTAL);
   costWithAddonsHTML.innerHTML = +totalAddonPrice + +TOTAL;
 };
 
 const buyAddon = (e, current) => {
   let index = e.target.value;
-  console.log(ADDONS_DETAILS);
-  console.log(ADDONS_DETAILS[index]);
   ADDONS_DETAILS[index].checked = current.checked;
-  console.log(TOTAL);
   calAddonPrice();
 };
 
@@ -459,7 +441,7 @@ const checkoutProds = async(e) => {
   if (SELECTED_PRODS.length > 0) {
     checkoutCart = {
       orderId: orderId,
-      status: "rejected",
+      status: "cancelled",
       type: "cart",
       addons: addonsSelected,
       products: [],
@@ -472,7 +454,6 @@ const checkoutProds = async(e) => {
     for (let c of USER_DETAILS.cart) {
       counter++;
       if (c.cartId === sp.cartId) {
-        console.log(c);
         let cake;
         let pdata = {
           prodId: c.prodId,
@@ -485,7 +466,7 @@ const checkoutProds = async(e) => {
           cake.heart = c.heart;
           cake.eggless = c.eggless;
           cake.weight = c.pricing.weight;
-          // cake.flavour = c.flavour;
+          cake.flavour = c.flavour;
           pdata.cake = cake;
         }
         checkoutCart.products.push(pdata);

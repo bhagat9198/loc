@@ -198,7 +198,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   var counter = 0;
   let getUserStatus=window.localStorage.getItem("locLoggedInUser")
   
-  console.log(user)
+  // console.log(user)
     // $('#hideLogOut').addEventListener("click",function(){
     //   alert(8)
     // })

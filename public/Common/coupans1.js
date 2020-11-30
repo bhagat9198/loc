@@ -1,4 +1,4 @@
-console.log("coupans1.js");
+// console.log("coupans1.js");
 
 const db = firebase.firestore();
 const allcoupansHTML = document.querySelector('#allcoupans');
@@ -28,14 +28,14 @@ db.collection('coupans').onSnapshot(snapshots => {
 const deleteCoupan = id => {
   let coupanRef = db.collection('coupans').doc(id);
   coupanRef.delete().then(deleted => {
-    console.log(deleted);
+    // console.log(deleted);
   }).catch(error => {
     console.log(error);
   })
 }
 
 const displayCard = (docData) => {
-  console.log(docData);
+  // console.log(docData);
 
   let rand1 = Math.random().toString();
   let rand2 = Math.random();

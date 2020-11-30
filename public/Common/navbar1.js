@@ -1,4 +1,4 @@
-console.log("navbar1.js");
+// console.log("navbar1.js");
 
   const wholeNavigationPcHTML = document.querySelector('#whole-navigation-pc');
 
@@ -104,8 +104,7 @@ console.log("navbar1.js");
   let searchResults = [];
   db.collection('miscellaneous').doc('searchList').get().then(doc => {
     let docData = doc.data();
-    allSearchList = docData.Detail
-    s;
+    allSearchList = docData.Details;
 
     for (let i of allSearchList) {
 
@@ -272,7 +271,7 @@ console.log("navbar1.js");
 </div> */}
 
 const easyAddToCart = () => {
-  console.log('addToCart');
+  // console.log('addToCart');
 }
 
 
@@ -349,7 +348,7 @@ if(localStorage.getItem("locLoggedInUser")) {
     if(userData.cart) {
       flag = 1;
       let cartSize = userData.cart.length;
-      console.log(cartSize);
+      // console.log(cartSize);
       cartModalProds = `
       <a href="#cart" class="cart carticon">
         <div class="icon" onclick="redirectToCart()">
@@ -360,7 +359,7 @@ if(localStorage.getItem("locLoggedInUser")) {
       <div class="my-dropdown-menu" id="cart-items">
       `;
       for(cartProd of userData.cart) {
-        console.log(cartProd);
+        // console.log(cartProd);
         await db.collection(cartProd.cat).doc(cartProd.prodId).get().then(pDoc => {
           let pData = pDoc.data();
           cartModalProds += `

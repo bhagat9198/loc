@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
   <link rel="stylesheet" href="../assets//css/randomStyles.css">
   <link rel="stylesheet" href="../assets/css/animate.css">
+  
   <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <link rel="stylesheet" href="assets/css/animation.css">
@@ -35,19 +36,15 @@
 
   }
 
-  @media only screen and (min-width:769px) {
-
-    .responsive-sec {
-      display: none !important;
-    }
+  @media only screen and (max-width:769px) {
 
     .responsive-sec2 {
-      display: block !important;
-
+      bottom: 0;;
+      
     }
   }
 
-  @media only screen and (max-width:768px) {
+  /* @media only screen and (max-width:768px) {
 
     .responsive-sec {
       padding: 5px 0px 0px 5px !important;
@@ -58,7 +55,7 @@
       display: none !important;
     }
 
-  }
+  } */
 
   #qid {
     /* padding: 10px; */
@@ -469,7 +466,7 @@
 
   @media only screen and (min-width:900px) {
     #sectionPayment {
-      background-image: url('https://img.wallpapersafari.com/desktop/1680/1050/64/85/9cgUjb.jpg') !important;
+      background-image: url('https://img.freepik.com/free-vector/elegant-white-background-with-shiny-lines_1017-17580.jpg?size=626&ext=jpg') !important;
       background-repeat: no-repeat;
       background-size: cover;
     }
@@ -477,7 +474,7 @@
 
   .bold {
     font-weight: 600;
-    padding: 6px !important;
+    /* padding: 6px !important; */
   }
 </style>
 
@@ -1301,36 +1298,40 @@
 
   <!-- -------------------------1----------------------------------- -->
   <section id="sectionPayment" class="checkout">
+
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="checkout-area mb-0 pb-0">
-            <div class="checkout-process">
-              <ul class="nav" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="pills-step1-tab" data-toggle="pill" href="#pills-step1" role="tab"
-                    aria-controls="pills-step1" aria-selected="true">
-                    <span>1</span> Shipping
-                    <i class="fa fa-address-card"></i>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" id="pills-step2-tab" data-toggle="pill" href="#pills-step2" role="tab"
-                    aria-controls="pills-step2" aria-selected="false">
-                    <span>2</span> Orders
-                    <i class="fas fa-dolly"></i>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" id="pills-step3-tab" data-toggle="pill" href="#pills-step3" role="tab"
-                    aria-controls="pills-step3" aria-selected="false">
-                    <span>3</span> Payment
-                    <i class="far fa-credit-card"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+      <div class="checkout-area mb-0 pb-0">
+           
+
+      <div class="checkout-process">
+        <ul class="nav" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="pills-step1-tab" data-toggle="pill" href="#pills-step1" role="tab"
+              aria-controls="pills-step1" aria-selected="true">
+              <span>1</span> Shipping
+              <i class="fa fa-address-card"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" id="pills-step2-tab" data-toggle="pill" href="#pills-step2" role="tab"
+              aria-controls="pills-step2" aria-selected="false">
+              <span>2</span> Orders
+              <i class="fas fa-dolly"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" id="pills-step3-tab" data-toggle="pill" href="#pills-step3" role="tab"
+              aria-controls="pills-step3" aria-selected="false">
+              <span>3</span> Payment
+              <i class="far fa-credit-card"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+      <div class="row flex-column-reverse flex-md-row">
+        <div class="col-lg-12 col-sm-push-8">
+         
         </div>
         <div class="col-lg-8">
           <div class="checkout-area">
@@ -1357,7 +1358,7 @@
                         </h5>
                         <div class="row">
 
-                          <div class="col-lg-6">
+                          <div class="col-lg-6 ">
                             <input class="form-control" type="text" name="name" id="uname" placeholder="Full Name"
                               value="bhagat" required>
                           </div>
@@ -1438,10 +1439,10 @@
                           </div>
                         </div>
                       </div>
-                      <div class="order-note mt-3">
+                      <div class="order-note mt-3" style="display: none;">
                         <div class="row">
                           <div class="col-lg-12">
-                            <input type="text" id="Order_Note" class="form-control" name="order_notes"
+                            <input type="text" id="Order_Note" class="form-control" name="order_notes" 
                               placeholder="Order Note (Optional)">
                           </div>
                         </div>
@@ -1514,31 +1515,31 @@
                         <div class="row">
                           <div class="col-lg-12">
                             <div class="row">
-                              <div class="col-lg-6 col-sm-2">
-                                <li>
+                              <div class="col-lg-6 col-sm-2" style="display: inline-block;">
+                                <li style="display: flex;">
                                   <label>Name :</label>
                                   <p class="bold" id="shipping_user"></p>
                                 </li>
-                                <li>
+                                <li style="display: flex;">
                                   <label>Address :</label>
                                   <p class="bold" id="shipping_location"></p>
                                 </li>
-                                <li>
+                                <li style="display: flex;">
                                   <label>Landmark:</label>
                                   <p class="bold" id="shipping_landmark"></p>
                                 </li>
 
                               </div>
                               <div class="col-lg-6 col-sm-2">
-                                <li>
+                                <li style="display: flex;">
                                   <label>Phone:</label>
                                   <p class="bold" id="shipping_phone"></p>
                                 </li>
-                                <li>
+                                <li style="display: flex;">
                                   <label>Email :</label>
                                   <p class="bold" id="shipping_email"></p>
                                 </li>
-                                <li>
+                                <li style="display: flex;">
                                   <label>Message :</label>
                                   <p class="bold" id="shipping_msg"></p>
                                 </li>
@@ -1559,25 +1560,25 @@
                             <div class="col-lg-12">
                               <div class="row">
                                 <div class="col-lg-6">
-                                  <li>
+                                  <li style="display: flex;">
                                     <label>Name</label>
                                     <p class="bold" id="alt_shipping_user"></p>
                                   </li>
-                                  <li>
+                                  <li style="display: flex;">
                                     <label>Address</label>
                                     <p iclass="bold" id="alt_shipping_location"></p>
                                   </li>
-                                  <li>
+                                  <li style="display: flex;">
                                     <label>Landmark</label>
                                     <p class="bold" id="alt_shipping_landmark"></p>
                                   </li>
                                 </div>
                                 <div class="col-lg-6">
-                                  <li>
+                                  <li style="display: flex;">
                                     <label>Phone :</label>
                                     <p class="bold" id="alt_shipping_phone"></p>
                                   </li>
-                                  <li>
+                                  <li style="display: flex;">
                                     <label>Email :</label>
                                     <p class="bold" id="alt_shipping_email"></p>
                                   </li>
@@ -1723,7 +1724,7 @@
         </div>
 
         <!-- -------------------------   PRICING    ------------------------------ -->
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-sm-push-8">
           <div class="right-area">
             <div class="order-box">
               <h4 class="title">PRICE DETAILS</h4>
@@ -1846,19 +1847,12 @@
                 <div class="final-price">
                   <span>Final Price :</span>
                   <span id="final-cost" class="a4"></span>
-                  
                 </div>
-                
-                <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;float:right;">(Inclusive of all
-                    taxes)</span></p>
-                 
+                <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;float:right;">(Inclusive of all taxes)</span></p>
               </div>
-
-              
             </div>
-            
           </div>
-          <button type="" class="mybtn1 2 responsive-sec" style="margin-left:auto ;margin-right: auto !important;display: block;margin-top: 4% !important;padding: -10px !important;" >Proceed </button>
+          <!-- <button type="" class="mybtn1 2 responsive-sec" style="margin-left:auto ;margin-right: auto !important;display: block;margin-top: 4% !important;padding: -10px !important;" >Proceed </button> -->
         </div>
         
       </div>
@@ -2259,10 +2253,7 @@
 		}
   
 	  });
-  
-  
-   
-  
+
   
 	function redirectLogin() {
 	  window.location = "/Auth/login.html"

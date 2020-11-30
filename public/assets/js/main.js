@@ -122,10 +122,10 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
         container: false,
         dropdownEvent: 'hover',
         onOpenDropdown: function(){
-            console.log('open');
+            // console.log('open');
         },
         onCloseDropdown: function(){
-            console.log('close');
+            // console.log('close');
         }
     });
 

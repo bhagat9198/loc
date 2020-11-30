@@ -1,4 +1,4 @@
-console.log("checkout1.js");
+// console.log("checkout1.js");
 
 const db = firebase.firestore();
 const storageService = firebase.storage();
@@ -51,7 +51,6 @@ const checkOrderId = async () => {
     if (+o.orderId === +CHECKOUT_ID) {
       checkFlag = true;
       await allProductsDetails();
-      console.log("done");
       break;
     }
   }
@@ -90,7 +89,7 @@ let basicPrices = [];
 
 const calculateBill = async (discount = 0) => {
   TOTAL_COST = 0;
-  console.log(USER_DETAILS.orders[INDEX]);
+  // console.log(USER_DETAILS.orders[INDEX]);
   let bp = "";
   basicPrices = [];
   for (let p of USER_DETAILS.orders[INDEX].products) {
@@ -100,14 +99,13 @@ const calculateBill = async (discount = 0) => {
     let egglessPrice = 0;
 
     if (p.cake) {
-      console.log(p);
       for (let w of p.pdata.weights) {
-        console.log(w);
+        // console.log(w);
         if (w.cakeWeight === p.cake.weight) {
           basicPrice = w.weightPrice;
           break;
         } 
-        console.log(basicPrice);
+        // console.log(basicPrice);
       }
 
       if (p.cake.eggless) {
@@ -119,7 +117,7 @@ const calculateBill = async (discount = 0) => {
       }
       // console.log(basicPrice, egglessPrice, heartPrice);
       totalProdPrice = (+basicPrice + +egglessPrice + +heartPrice) * (+p.qty);
-      console.log(basicPrice, egglessPrice, heartPrice, totalProdPrice);
+      // console.log(basicPrice, egglessPrice, heartPrice, totalProdPrice);
       totalProdPrice = Number(totalProdPrice.toFixed(2));
       basicPrices.push(totalProdPrice);
     } else {
@@ -144,8 +142,8 @@ const calculateBill = async (discount = 0) => {
   bpSpanHTML.innerHTML = bp;
   subTotalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
 
-  console.log(discount);
-  console.log(basicPrices);
+  // console.log(discount);
+  // console.log(basicPrices);
   let dis;
   if (discount === 0) {
     dis = `
@@ -171,17 +169,17 @@ const calculateBill = async (discount = 0) => {
   } else {
     let subDis = 0;
     basicPrices.map((el, i) => {
-      console.log(el);
+      // console.log(el);
       let d = el * (+discount/100);
-      console.log(d);
+      // console.log(d);
       d = Number(d.toFixed(2));
       let eachDis =  el - (d);
       eachDis = Number(eachDis.toFixed(2));
       subDis += d;
-      console.log(eachDis);
+      // console.log(eachDis);
       basicPrices[i] = eachDis;
     });
-    console.log(subDis);
+    // console.log(subDis);
     TOTAL_COST  = TOTAL_COST - subDis;
     TOTAL_COST = Number(TOTAL_COST.toFixed(2));
     dis = `
@@ -207,7 +205,7 @@ const calculateBill = async (discount = 0) => {
   }
   discountHTML.innerHTML = dis;
 
-  console.log(basicPrices);
+  // console.log(basicPrices);
   let gst = "";
   let counter = -1;
   for (p of USER_DETAILS.orders[INDEX].products) {
@@ -216,7 +214,6 @@ const calculateBill = async (discount = 0) => {
     let gstPercent = 0;
     gstPercent = +p.pdata.gst;
     gstPrice = +basicPrices[counter] * (+gstPercent / 100);
-    console.log( +basicPrices[counter], +gstPercent / 100, gstPrice);
     gstPrice = Number(gstPrice.toFixed(2));
 
     let pName = p.pdata.name;
@@ -275,9 +272,9 @@ const checkCoupon = async (e) => {
     for (let doc of snapshotDocs) {
       let docData = doc.data();
       if (docData.name === code) {
-        console.log(docData.minAmt, totalSubTotal);
+        // console.log(docData.minAmt, totalSubTotal);
         if(+docData.minAmt <= +totalSubTotal) {
-          console.log(docData.minAmt, totalSubTotal);
+          // console.log(docData.minAmt, totalSubTotal);
           coupanDetails = docData;
           COUPAN_ID = doc.id;
           flag = true;
@@ -289,7 +286,7 @@ const checkCoupon = async (e) => {
   });
 
   if (flag) {
-    console.log("coupanDetails", coupanDetails);
+    // console.log("coupanDetails", coupanDetails);
       cAmt = +coupanDetails.amount;
       document.getElementById("success").style.display = "block";
       setTimeout(function () {
@@ -381,6 +378,7 @@ const form1 = (e) => {
   } else {
     SHIPPING_DATA.differtAddress = false;
   }
+  console.log('submitted');
 };
 
 form1ShippingHTML.addEventListener("submit", form1);
@@ -400,7 +398,7 @@ let day = date.getDate();
 let hours = date.getHours();
 
 const setDateAndTime = () => {
-  console.log(SHIPPING_DATA);
+  // console.log(SHIPPING_DATA);
   $("input[type=date]").val("");
   // hours = 19;
   shippingDateHTML.setAttribute("min", `${year}-${month}-${day}`);
@@ -409,7 +407,6 @@ const setDateAndTime = () => {
     .value;
   shippingType = shipVal;
 
-  console.log(shipVal);
   if (shipVal === "free") {
     shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
     // console.log(hours);
@@ -546,7 +543,6 @@ const changeDate = (e) => {
   let orderDate = e.target.value;
   // console.log(orderDate);
   let [y, m, d] = orderDate.split("-");
-  console.log(y, m, d);
   if (+y === +year && +m === +month && +d === +day) {
     setDateAndTime();
   } else {
@@ -592,7 +588,6 @@ document.querySelectorAll("input[name=shipping_time]").forEach((el) => {
 
 document.querySelectorAll("input[name=shipping]").forEach((el) => {
   el.addEventListener("change", (e) => {
-    console.log(e.target.value);
     if (e.target.value === "free") {
       finalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
     } else if (e.target.value === "perfect") {
@@ -742,7 +737,6 @@ let altAddressHTML = document.querySelector("#alt-address");
 
 let RAZ_ORDER_ID;
 const displayShippingInfo = (e) => {
-  console.log(SHIPPING_DATA);
   shipping_userHTML.innerHTML = SHIPPING_DATA.name;
   shipping_locationHTML.innerHTML = SHIPPING_DATA.address;
   shipping_landmarkHTML.innerHTML = SHIPPING_DATA.landmark;
@@ -818,15 +812,12 @@ const displayShippingInfo = (e) => {
 
   const checkoutReq = firebase.functions().httpsCallable('checkoutReq');
   checkoutReq(checkoutReqData).then((res) => {
-    console.log(res);
-    console.log(res.data.orderId);
     document.querySelector('#rzp-button1').disabled = false;
     RAZ_ORDER_ID = res.data.orderId;
-    console.log(RAZ_ORDER_ID);
   }).catch(error => {
     console.log(error);
   })
-  console.log(RAZ_ORDER_ID);
+  // console.log(RAZ_ORDER_ID);
 };
 
 // prodFinalHTML.addEventListener('click', displayShippingInfo);
@@ -853,9 +844,6 @@ const exeRazPay = e => {
   }
 
   e.preventDefault();
-  console.log('up');
-  console.log(RAZ_ORDER_ID);
-  console.log(options);
   options = {
     key: "rzp_test_VkBZNRiEBUKNu5", // Enter the Key ID generated from the Dashboard
     amount: "1000", 
@@ -867,7 +855,6 @@ const exeRazPay = e => {
     handler: function (response) {
       RES = response;
       alert('razorpay_signature', response.razorpay_signature);
-      console.log(response);
       orderComplete(response);
       // alert(response.razorpay_payment_id);
       // alert(response.razorpay_order_id);
@@ -889,8 +876,8 @@ const exeRazPay = e => {
   rzp1.open();
   rzp1.on("payment.failed", function (response) {
     // alert(response.error.code);
-    console.log(response);
-    console.log(response.error);
+    // console.log(response);
+    // console.log(response.error);
   });
 }
 
@@ -906,7 +893,7 @@ const orderComplete = (data) => {
     time: document.querySelector('input[name=shipping_time]:checked').value
   }
 
-  console.log(data);
+  // console.log(data);
   let addtionalData = {
     ...shipData,
     ...data,
@@ -942,7 +929,6 @@ const orderComplete = (data) => {
   payemnetStatus(addtionalData).then(async(res) => {
     // console.log(res.data);
     if(res.data === 'true') {
-      console.log('index');
       let userRef =  await db.collection('Customers').doc(USER_ID);
      await userRef.get().then(userDoc => {
         let userData = userDoc.data();
@@ -965,9 +951,11 @@ const orderComplete = (data) => {
           }
         }
       })
+      location.replace("../index.html");
 
     } else {
-      console.log('same page reload');
+      // console.log('same page reload');
+      window.reload();
     }
   }).catch(error => {
     console.log(error);
