@@ -90,9 +90,13 @@ userSilderRef.get().then(async (sliderSnaps) => {
   let sliderSnapsDocs = sliderSnaps.docs;
   for (let sliderDocs of sliderSnapsDocs) {
     let docData = sliderDocs.data();
-    datass = "YES"
+    console.log(docData);
+    datass = "YES";
+    let tl = docData.colorTL;
+    let br = docData.colorBR;
+    // 
     let eachUserSlider = `
-    <section class="trending" style="background-image: linear-gradient(to right, ${docData.colorTL}, ${docData.colorBR});"> 
+    <section class="trending"  style="background-image: linear-gradient(to right, ${tl}, ${br})!important;"> 
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12 remove-padding">
@@ -262,9 +266,10 @@ cards4Ref.get().then(cards4Snaps => {
 
   for (let card4Doc of cards4SnapsDocs) {
     let card4Data = card4Doc.data();
-    // console.log(card4Data);
+    let tl = card4Data.colorTL;
+    let br = card4Data.colorBR;
     let eachCard4 = `
-    <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);;;">
+    <section class="banner-section"  style="background-image: linear-gradient(to right, ${tl}, ${br})!important;">
       <h3 class="bannerheading fadeIn" id="fixed-section1-heading">${card4Data.title}</h3>
       <div class="container-fluid">
         <div class="row" id="fixed-section1-row">
@@ -591,8 +596,11 @@ cards6Ref.get().then(async (card6Snaps) => {
 
   for (card6Doc of card6SnapsDocs) {
     let card6Data = card6Doc.data();
+    let tl = card6Data.colorTL;
+    let br = card6Data.colorBR;
+    
     let eachcard6 = `
-    <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
+    <section class="categori-item clothing-and-Apparel-Area"  style="background-image: linear-gradient(to right, ${tl}, ${br})!important;">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12 remove-padding">
