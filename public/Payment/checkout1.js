@@ -272,9 +272,9 @@ const checkCoupon = async (e) => {
     for (let doc of snapshotDocs) {
       let docData = doc.data();
       if (docData.name === code) {
-        console.log(docData.minAmt, totalSubTotal);
+        // console.log(docData.minAmt, totalSubTotal);
         if(+docData.minAmt <= +totalSubTotal) {
-          console.log(docData.minAmt, totalSubTotal);
+          // console.log(docData.minAmt, totalSubTotal);
           coupanDetails = docData;
           COUPAN_ID = doc.id;
           flag = true;
@@ -286,7 +286,7 @@ const checkCoupon = async (e) => {
   });
 
   if (flag) {
-    console.log("coupanDetails", coupanDetails);
+    // console.log("coupanDetails", coupanDetails);
       cAmt = +coupanDetails.amount;
       document.getElementById("success").style.display = "block";
       setTimeout(function () {
@@ -378,6 +378,7 @@ const form1 = (e) => {
   } else {
     SHIPPING_DATA.differtAddress = false;
   }
+  console.log('submitted');
 };
 
 form1ShippingHTML.addEventListener("submit", form1);
@@ -397,7 +398,7 @@ let day = date.getDate();
 let hours = date.getHours();
 
 const setDateAndTime = () => {
-  console.log(SHIPPING_DATA);
+  // console.log(SHIPPING_DATA);
   $("input[type=date]").val("");
   // hours = 19;
   shippingDateHTML.setAttribute("min", `${year}-${month}-${day}`);
@@ -406,7 +407,6 @@ const setDateAndTime = () => {
     .value;
   shippingType = shipVal;
 
-  console.log(shipVal);
   if (shipVal === "free") {
     shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
     // console.log(hours);
@@ -543,7 +543,6 @@ const changeDate = (e) => {
   let orderDate = e.target.value;
   // console.log(orderDate);
   let [y, m, d] = orderDate.split("-");
-  console.log(y, m, d);
   if (+y === +year && +m === +month && +d === +day) {
     setDateAndTime();
   } else {
@@ -589,7 +588,6 @@ document.querySelectorAll("input[name=shipping_time]").forEach((el) => {
 
 document.querySelectorAll("input[name=shipping]").forEach((el) => {
   el.addEventListener("change", (e) => {
-    console.log(e.target.value);
     if (e.target.value === "free") {
       finalCostHTML.innerHTML = `₹ ${TOTAL_COST}`;
     } else if (e.target.value === "perfect") {
@@ -739,7 +737,6 @@ let altAddressHTML = document.querySelector("#alt-address");
 
 let RAZ_ORDER_ID;
 const displayShippingInfo = (e) => {
-  console.log(SHIPPING_DATA);
   shipping_userHTML.innerHTML = SHIPPING_DATA.name;
   shipping_locationHTML.innerHTML = SHIPPING_DATA.address;
   shipping_landmarkHTML.innerHTML = SHIPPING_DATA.landmark;

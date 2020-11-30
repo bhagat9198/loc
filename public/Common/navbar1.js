@@ -104,8 +104,7 @@
   let searchResults = [];
   db.collection('miscellaneous').doc('searchList').get().then(doc => {
     let docData = doc.data();
-    allSearchList = docData.Detail
-    s;
+    allSearchList = docData.Details;
 
     for (let i of allSearchList) {
 

@@ -35,7 +35,7 @@
 
   }
 
-  @media only screen and (min-width:769px) {
+  /* @media only screen and (min-width:769px) {
 
     .responsive-sec {
       display: none !important;
@@ -45,9 +45,9 @@
       display: block !important;
 
     }
-  }
+  } */
 
-  @media only screen and (max-width:768px) {
+  /* @media only screen and (max-width:768px) {
 
     .responsive-sec {
       padding: 5px 0px 0px 5px !important;
@@ -58,7 +58,7 @@
       display: none !important;
     }
 
-  }
+  } */
 
   #qid {
     /* padding: 10px; */
@@ -1438,10 +1438,10 @@
                           </div>
                         </div>
                       </div>
-                      <div class="order-note mt-3">
+                      <div class="order-note mt-3" style="display: none;">
                         <div class="row">
                           <div class="col-lg-12">
-                            <input type="text" id="Order_Note" class="form-control" name="order_notes"
+                            <input type="text" id="Order_Note" class="form-control" name="order_notes" 
                               placeholder="Order Note (Optional)">
                           </div>
                         </div>
@@ -1846,19 +1846,12 @@
                 <div class="final-price">
                   <span>Final Price :</span>
                   <span id="final-cost" class="a4"></span>
-                  
                 </div>
-                
-                <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;float:right;">(Inclusive of all
-                    taxes)</span></p>
-                 
+                <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;float:right;">(Inclusive of all taxes)</span></p>
               </div>
-
-              
             </div>
-            
           </div>
-          <button type="" class="mybtn1 2 responsive-sec" style="margin-left:auto ;margin-right: auto !important;display: block;margin-top: 4% !important;padding: -10px !important;" >Proceed </button>
+          <!-- <button type="" class="mybtn1 2 responsive-sec" style="margin-left:auto ;margin-right: auto !important;display: block;margin-top: 4% !important;padding: -10px !important;" >Proceed </button> -->
         </div>
         
       </div>
@@ -2259,10 +2252,7 @@
 		}
   
 	  });
-  
-  
-   
-  
+
   
 	function redirectLogin() {
 	  window.location = "/Auth/login.html"
