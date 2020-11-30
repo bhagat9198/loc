@@ -2,368 +2,203 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Lake of Cakes | Search List</title>
+  <title>Lake of Cakes | Search List</title>
 
+  <link rel="stylesheet" href="../assets/css/bootstrap-coloroicker.css">
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="../../assets/css/bootstrap-coloroicker.css">
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <link href="../assets/css/custom.css" rel="stylesheet" />
+  <link href="../assets/css/responsive.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
-    <link href="../../assets/css/style.css" rel="stylesheet" />
-    <link href="../../assets/css/custom.css" rel="stylesheet" />
-    <link href="../../assets/css/responsive.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <style>
-    .card {
-        padding: 10px;
-        margin: auto;
-        box-shadow: 2px 2px 2px gray;
-        background-color: rgba(202, 22, 22, 0.5);
-        
-    }
-    h5{
-        font-size: 13px;
-        color: black;
-    }
+  .card {
+    padding: 10px;
+    margin: auto;
+    box-shadow: 2px 2px 2px gray;
+    background-color: rgba(202, 22, 22, 0.5);
+  }
+
+  h5 {
+    font-size: 13px;
+    color: black;
+  }
 </style>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-    <div class="wrapper">
-        <section id="admin-nav-load"></section>
-
-        <section class="wrapper">
-            <div class="content-wrapper">
-                <form id="add-category-form">
-                    <div class="col-lg-12">
-                        <div class="add-product-content">
-                            <h4 class="MainHeading">Add Search Keywords</h4>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="product-description">
-                                        <div class="body-area">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="featured-keyword-area">
-                                                                <div class="left-area">
-                                                                    <h4 class="heading">Enter New Search Keyword</h4>
-                                                                </div>
-                                                                <div class="feature-tag-top-filds">
-                                                                    <div class="feature-area">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-12">
-                                                                                <input type="text" name="category-name"
-                                                                                    class="input-field"
-                                                                                    placeholder="Eg. Red Rose Flowers">
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-lg-4">
-                                                            <div class="featured-keyword-area">
-                                                                <div class="left-area">
-                                                                    <h4 class="heading">Select Category from List</h4>
-                                                                </div>
-                                                                <div class="feature-tag-top-filds">
-                                                                    <div class="feature-area">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-12">
-                                                                                <select id="category-name-dropdown"
-                                                                                    name="category-name-dropdown">
-                                                                                    <!-- <option selected disabled value="">Select Category</option>
+  <div class="wrapper">
+    <section id="admin-nav-load"></section>
+    <section class="wrapper">
+      <div class="content-wrapper">
+        <form id="add-searchList-form">
+          <div class="col-lg-12">
+            <div class="add-product-content">
+              <h4 class="MainHeading">Add Search Keywords</h4>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="product-description">
+                    <div class="body-area">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="featured-keyword-area">
+                                <div class="left-area">
+                                  <h4 class="heading">Enter New Search Keyword</h4>
+                                </div>
+                                <div class="feature-tag-top-filds">
+                                  <div class="feature-area">
+                                    <div class="row">
+                                      <div class="col-lg-12">
+                                        <input type="text" name="searchlist-name" class="input-field"
+                                          placeholder="Eg. Red Rose Flowers">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-lg-4">
+                              <div class="featured-keyword-area">
+                                <div class="left-area">
+                                  <h4 class="heading">Select Category from List</h4>
+                                </div>
+                                <div class="feature-tag-top-filds">
+                                  <div class="feature-area">
+                                    <div class="row">
+                                      <div class="col-lg-12">
+                                        <select id="category-name-dropdown" required name="category-name-dropdown">
+                                          <!-- <option selected disabled value="">Select Category</option>
                                           <option value=" Cakes"> Cakes</option>
                                           <option value=" Flowers"> Flowers </option> -->
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="featured-keyword-area">
-                                                                <div class="left-area">
-                                                                    <h4 class="heading">Select Sub - Category from List
-                                                                    </h4>
-                                                                </div>
-                                                                <div class="feature-tag-top-filds">
-                                                                    <div class="feature-area">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-12">
-                                                                                <select id="sub-category-name-dropdown"
-                                                                                    name="sub-category-name-dropdown">
-
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="row">
-                                                        <div class="col-lg-12 text-center">
-                                                            <input class="addProductSubmit-btn" type="submit"
-                                                                value="Push Keyword">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <h3 id="successCategory"
-                                                                style="text-align: center;background-color: rgb(89, 151, 89);padding: 5px;border-radius: 20px;display:none ;">
-                                                                Search List Added Sucessfully</h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </select>
+                                      </div>
                                     </div>
+                                  </div>
                                 </div>
+                              </div>
                             </div>
-                </form>
-            </div>
-            <br>
-            <form id="add-category-form2">
-                <div class="col-lg-12">
-                    <div class="add-product-content">
-                        <h4 class="MainHeading">All Active Search Kewords</h4>
-                        <div class="row">
+                            <div class="col-lg-4">
+                              <div class="featured-keyword-area">
+                                <div class="left-area">
+                                  <h4 class="heading">Select Sub - Category from List
+                                  </h4>
+                                </div>
+                                <div class="feature-tag-top-filds">
+                                  <div class="feature-area">
+                                    <div class="row">
+                                      <div class="col-lg-12">
+                                        <select id="sub-category-name-dropdown" name="sub-category-name-dropdown">
+                                            <!-- <option selected disabled value="">Select Category</option>
+                                            <option value=" Cakes"> Cakes</option>
+                                            <option value=" Flowers"> Flowers </option> -->
+                                        </select>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 text-center">
+                              <input class="addProductSubmit-btn" type="submit" value="Push Keyword">
+                            </div>
+                          </div>
+                          <div class="row">
                             <div class="col-lg-12">
-                                <div class="product-description">
-                                    <div class="body-area">
-                                        <div class="row" style="padding: 10px;">
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i style="cursor: pointer;" class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2" style="margin-bottom:2%">
-                                                <div class="card">
-                                                    <i class="fa fa-thumb-tack"></i>
-                                                    <h5><span>Cakes By Teddy</span>&nbsp;<i class="fa fa-trash"></i></h5>
-                                                    
-                                                    <small><span>Cat:</span>Cake</small>
-                                                    <small><span>SubCat:</span>By Types</small>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                              <h3 id="successCategory"
+                                style="text-align: center;background-color: rgb(89, 151, 89);padding: 5px;border-radius: 20px;display:none ;">
+                                Search List Added Sucessfully
+                              </h3>
                             </div>
+                          </div>
                         </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-    </div>
-    </form>
+              </div>
+            </div>
+          </form>
+        </div>
+        <br>
+        <div class="col-lg-12">
+          <div class="add-product-content">
+            <h4 class="MainHeading">All Active Search Kewords</h4>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="product-description">
+                  <div class="body-area">
+                    <div class="row" id="all-searchlists" style="padding: 10px;">
+                      <!-- <div class="col-lg-2" style="margin-bottom:2%">
+                        <div class="card">
+                          <i class="fa fa-thumb-tack"></i>
+                          <h5><span>Cakes By Teddy</span>&nbsp;<i style="cursor: pointer;" class="fa fa-trash"></i></h5>
+                          <small><span>Cat:</span>Cake</small>
+                          <small><span>SubCat:</span>By Types</small>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-
     <section id="admin-footer-load"></section>
-    </div>
+  </div>
+
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript">
+    $('#admin-nav-load').load('../Common/navbar.html');
+    $('#admin-footer-load').load('../Common/footer.html');
+  </script>
+
+  <script src="../assets/plugins/jquery/jquery.min.js"></script>
+  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <script src="../assets/js/adminlte.js"></script>
+  <script src="../assets/js/demo.js"></script>
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jqueryui.min.js"></script>
+  <script src="../assets/js/plugin.js"></script>
+  <script src="../assets/js/myscript.js"></script>
+  <script src="../assets/js/adminlte.min.js"></script>
 
 
-    <script src="../../assets/js/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript">
-        $('#admin-nav-load').load('/Common/navbar.html');
-        $('#admin-footer-load').load('/Common/footer.html');
-    </script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+      authDomain: "lake-of-cakes.firebaseapp.com",
+      databaseURL: "https://lake-of-cakes.firebaseio.com",
+      projectId: "lake-of-cakes",
+      storageBucket: "lake-of-cakes.appspot.com",
+      messagingSenderId: "779843608951",
+      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+      measurementId: "G-5ER0QF0FDW"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
 
-
-    <script src="../../assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="../../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../assets/js/adminlte.js"></script>
-
-    <!-- OPTIONAL SCRIPTS -->
-    <script src="../../assets/js/demo.js"></script>
-
-    <!-- PAGE PLUGINS -->
-    <!-- jQuery Mapael -->
-
-    <script src="../../assets/js/jquery-1.12.4.min.js"></script>
-    <!-- <script src="../../assets/js/vue.js"></script> -->
-    <script src="../../assets/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/jqueryui.min.js"></script>
-
-
-    <script src="../../assets/js/plugin.js"></script>
-
-
-
-
-    <!-- AJAX Js-->
-    <script src="../../assets/js/myscript.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../assets/js/adminlte.min.js"></script>
-    <!-- Summernote -->
-
-
-
-
-
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-    <script>
-        var firebaseConfig = {
-            apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
-            authDomain: "lake-of-cakes.firebaseapp.com",
-            databaseURL: "https://lake-of-cakes.firebaseio.com",
-            projectId: "lake-of-cakes",
-            storageBucket: "lake-of-cakes.appspot.com",
-            messagingSenderId: "779843608951",
-            appId: "1:779843608951:web:48c6afe1773e2b395e8172",
-            measurementId: "G-5ER0QF0FDW"
-        };
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-    </script>
-
-    <script src="./searchList1.js"></script>
+  <script src="./searchList1.js"></script>
 
 </body>
 

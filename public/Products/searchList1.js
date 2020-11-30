@@ -1,156 +1,141 @@
-
 const db = firebase.firestore();
 
-const addCategoryForm = document.querySelector("#add-category-form");
-const categoryNameDropdownHTML = addCategoryForm.querySelector(
-    "#category-name-dropdown"
+const addSearchListFormHTML = document.querySelector("#add-searchList-form");
+const dbRef =  db.collection('miscellaneous').doc('searchList');
+let searchListArr = [];
+let allCatArr = [];
+
+dbRef.onSnapshot(searchDoc => {
+  let searchData = searchDoc.data();
+  searchListArr = searchData.Details;
+})
+
+const addSearchList = (e) => {
+  e.preventDefault();
+  let name = addSearchListFormHTML['searchlist-name'].value;
+  let cat, subCat;
+  cat = addSearchListFormHTML['category-name-dropdown'].value;
+  subCat = addSearchListFormHTML['sub-category-name-dropdown'].value || '';
+
+  let data = {
+    Name : name,
+    Category : cat,
+    SubCategory: subCat,
+    id: new Date().valueOf()
+  }
+  console.log(data);
+  searchListArr.push(data);
+  // dbRef.get().then()
+  console.log(searchListArr);
+  dbRef.update('Details', searchListArr);
+  displaySearchLists();
+};
+
+addSearchListFormHTML.addEventListener("submit", addSearchList);
+
+// const addCategoryNoSubmit = (e) => {
+//   if (e.keyCode === 13) {
+//     e.preventDefault();
+//   }
+// };
+
+// addSearchListFormHTML.addEventListener("keypress", addCategoryNoSubmit);
+
+const allSearchlistsHTML = document.querySelector('#all-searchlists');
+
+const displaySearchLists = () => {
+  let card = '';
+  searchListArr.map((sl, index) => {
+    let catName, subCatName;
+    // console.log(allCatArr);
+    // let cat = allCatArr.filter( c => sl.Category === c.docId);
+    // console.log(res[0].data.name);
+    for(let cat of allCatArr) {
+      if(cat.docId === sl.Category) {
+        catName = cat.data.name;
+        for(let subCat of cat.data.subCategory) {
+          // console.log(subCat.id, sl.SubCategory.split('__')[1]);
+          if(+subCat.id === +sl.SubCategory.split('__')[1]) {
+            subCatName = subCat.name;
+          }
+        }
+      }
+    }
+
+    card += `
+    <div class="col-lg-2" style="margin-bottom:2%">
+      <div class="card">
+        <i class="fa fa-thumb-tack"></i> 
+        <h5><span>${sl.Name}</span>&nbsp;<i onclick="deleteSearchItem(event)" data-index="${index}" style="cursor: pointer; float: right; font-size: 1.5rem; color: red" class="fa fa-trash"></i></h5>
+        <small><span>Cat:</span>${catName}</small>
+        <small><span>SubCat:</span>${subCatName}</small>
+      </div>
+    </div>
+    `;
+  });
+  allSearchlistsHTML.innerHTML = card;
+}
+
+const deleteSearchItem = e => {
+  let index = e.target.dataset.index;
+  console.log(index);
+
+  searchListArr.splice(+index, 1);
+  displaySearchLists();
+  dbRef.update('Details', searchListArr);
+}
+
+
+const categoryNameDropdownHTML = addSearchListFormHTML.querySelector(
+  "#category-name-dropdown"
 );
-const subCategoryNameDropdownHTML = addCategoryForm.querySelector(
-    "#sub-category-name-dropdown"
+const subCategoryNameDropdownHTML = addSearchListFormHTML.querySelector(
+  "#sub-category-name-dropdown"
 );
 
-let categoryImg;
+categoryNameDropdownHTML.addEventListener("change", (e) => {
+  subCategoryNameDropdownHTML.disabled = false;
+  displaySubCatergories(e.target.value);
+});
 
 const displayCatergories = (data) => {
-    let options = '<option selected value="">Select Category</option>';
-    data.map((doc) => {
-        let docData = doc.data();
-        // console.log(docData);
-        options += `
+  let options = '<option disabled selected value="">Select Category</option>';
+  data.map((doc) => {
+    let docData = doc.data();
+    allCatArr.push({data: docData, docId: doc.id});
+    // console.log(docData);
+    options += `
     <option value="${doc.id}">${docData.name}</option>
     `;
-    });
-    categoryNameDropdownHTML.innerHTML = options;
+  });
+  categoryNameDropdownHTML.innerHTML = options;
+  displaySearchLists();
 };
 
 const displaySubCatergories = async (data) => {
-    let options = "<option selected >Select Sub Category</option>";
-    await db
-        .collection("categories")
-        .doc(data)
-        .get()
-        .then((doc) => {
-            // console.log(doc);
-            let docData = doc.data();
-            docData.subCategory.map(subCat => {
-                // console.log(subCat);
-                options += `
+  let options = "<option disabled selected >Select Sub Category</option>";
+  await db
+    .collection("categories")
+    .doc(data)
+    .get()
+    .then((doc) => {
+      // console.log(doc);
+      let docData = doc.data();
+      docData.subCategory.map((subCat) => {
+        // console.log(subCat);
+        options += `
         <option value="${doc.id}__${subCat.id}">${subCat.name}</option>
         `;
-            });
-            subCategoryNameDropdownHTML.innerHTML = options;
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-};
-
-const extractCategories = async () => {
-    let data;
-    await db
-        .collection("categories")
-        .get()
-        .then((snapshot) => {
-            let snapshotDocs = snapshot.docs;
-            data = snapshotDocs;
-        });
-    return data;
-};
-
-extractCategories()
-    .then((response) => {
-        // console.log(response);
-        displayCatergories(response);
+      });
+      subCategoryNameDropdownHTML.innerHTML = options;
     })
     .catch((error) => {
-        console.log(error);
+      console.log(error);
     });
+};
 
-categoryNameDropdownHTML.addEventListener("change", (e) => {
-    // console.log(e.target.value);
-    subCategoryNameDropdownHTML.disabled = false;
 
-    displaySubCatergories(e.target.value);
+db.collection("categories").onSnapshot((snapshot) => {
+  let snapshotDocs = snapshot.docs;
+  displayCatergories(snapshotDocs);
 });
-
-
-
-const addCategory = (event) => {
-    // event.preventDefault();
-    event.preventDefault();
-    let lower;
-
-    let categoryName = addCategoryForm["category-name"].value;
-    // console.log(categoryName);
-    lower = categoryName.toLowerCase();
-    categoryName = categoryName.charAt(0).toUpperCase() + lower.slice(1);
-
-    //   let subCategoryName = addCategoryForm["sub-category-name"].value;
-    // console.log(subCategoryName);
-    //   lower = subCategoryName.toLowerCase();
-    //   subCategoryName = subCategoryName.charAt(0).toUpperCase() + lower.slice(1);
-
-
-    const categoryNameOption = document.getElementById('category-name-dropdown').value;
-    
-    const subCategoryNameOption = document.querySelector('#sub-category-name-dropdown').value;
-
-    let wholeCategoryData = {
-        Keyword: categoryName,
-        Details: [
-            {
-                Name:categoryName,
-                Category: categoryNameOption,
-                SubCategory: subCategoryNameOption,
-                id: Math.floor(1000000000000000 + Math.random() * 9000000000000000),               
-            },
-        ],
-       
-
-    };
-
-    // console.log(wholeCategoryData);
-    addCategoryReq(wholeCategoryData)
-}
-async function addCategoryReq(data) {
-    console.log(data)
-    alert(8)
-    console.log(data);
-    let docId;
-    await db
-        .collection("miscellaneous").doc("searchList")
-        .set(data)
-        .then((dataSaved) => {
-            alert("DONE")
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-   
-    return { data: data, docId: docId };
-}
-
-
-
-
-
-
-
-
-addCategoryForm.addEventListener("submit", addCategory);
-
-const addCategoryNoSubmit = e => {
-    console.log(e);
-    if (e.keyCode === 13) {
-
-        e.preventDefault();
-    }
-}
-
-// addCategoryForm.addEventListener("keypress", addCategoryNoSubmit);
-
-// addCategoryForm
-//   .querySelector('input[name="category-img"]')
-//   .addEventListener("change", (e) => {
-//     categoryImg = e.target.files[0];
-//   });
