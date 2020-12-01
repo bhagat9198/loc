@@ -1481,10 +1481,111 @@ db.collection("sections")
     }
   });
 
+// ///////////////////////////////////////////////////////////////////////////////////////////////////
+// best seller
+
+const fForm10HTML = document.querySelector("#fForm10");
+
+const form10 = async(e) => {
+  e.preventDefault();
+
+  let docRef = await db.collection('sections').doc('fixed10');
+
+  const f4Title = fForm10HTML["f10-title"].value
+  const f4Id1 = fForm10HTML["f10-id1"].value;
+  const f4Id2 = fForm10HTML["f10-id2"].value;
+  const f4Id3 = fForm10HTML["f10-id3"].value;
+  const f4Id4 = fForm10HTML["f10-id4"].value;
+  const f4Id5 = fForm10HTML["f10-id5"].value;
+  const f4Id6 = fForm10HTML["f10-id6"].value;
+  const f4Id7 = fForm10HTML["f10-id7"].value;
+  const f4Id8 = fForm10HTML["f10-id8"].value;
+
+  const f4Cat1 = fForm10HTML["f10-cat1"].value;
+  const f4Cat2 = fForm10HTML["f10-cat2"].value;
+  const f4Cat3 = fForm10HTML["f10-cat3"].value;
+  const f4Cat4 = fForm10HTML["f10-cat4"].value;
+  const f4Cat5 = fForm10HTML["f10-cat5"].value;
+  const f4Cat6 = fForm10HTML["f10-cat6"].value;
+  const f4Cat7 = fForm10HTML["f10-cat7"].value;
+  const f4Cat8 = fForm10HTML["f10-cat8"].value;
+
+  let userInputs = [
+    { sno: f4Id1, cat: f4Cat1 },
+    { sno: f4Id2, cat: f4Cat2 },
+    { sno: f4Id3, cat: f4Cat3 },
+    { sno: f4Id4, cat: f4Cat4 },
+    { sno: f4Id5, cat: f4Cat5 },
+    { sno: f4Id6, cat: f4Cat6 },
+    { sno: f4Id7, cat: f4Cat7 },
+    { sno: f4Id8, cat: f4Cat8 },
+  ];
+
+  // console.log(userInputs);
+  // userInputs.map(async(ui) => {
+  for(let ui of userInputs) {
+    let c = ui.cat.split('__')[0];
+    // console.log(ui);
+    await db.collection(c).get().then(snapshots => {
+      let snapshotDocs = snapshots.docs;
+      for(let doc of snapshotDocs) {
+        let docData = doc.data();
+        // console.log(docData.category, docData.sno);
+        if(docData.sno === ui.sno) {
+          ui.id = `${doc.id}`;
+          break;
+        } else {
+          ui.id = 'na';
+        }
+      }
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  console.log(userInputs);
+
+  await docRef.get().then(async(snapshot) => {
+    let docData = snapshot.data();
+    console.log(docData);
+    docData.prodIds = userInputs;
+    docData.title = f4Title;
+    console.log(docData);
+    await docRef.update(docData);
+    console.log('updated');
+  })
+
+  console.log('done');
+
+};
+
+fForm10HTML.addEventListener("submit", form10);
+
+db.collection('sections').doc('fixed10').onSnapshot(doc => {
+  let docData = doc.data();
+  // console.log(docData);
+  fForm10HTML["f10-title"].value = docData.title;
+  fForm10HTML["f10-cat1"].value = docData.prodIds[0].cat;
+  fForm10HTML["f10-cat2"].value = docData.prodIds[1].cat;
+  fForm10HTML["f10-cat3"].value = docData.prodIds[2].cat;
+  fForm10HTML["f10-cat4"].value = docData.prodIds[3].cat;
+  fForm10HTML["f10-cat5"].value = docData.prodIds[4].cat;
+  fForm10HTML["f10-cat6"].value = docData.prodIds[5].cat;
+  fForm10HTML["f10-cat7"].value = docData.prodIds[6].cat;
+  fForm10HTML["f10-cat8"].value = docData.prodIds[7].cat;
+  fForm10HTML["f10-id1"].value = docData.prodIds[0].sno;
+  fForm10HTML["f10-id2"].value = docData.prodIds[1].sno;
+  fForm10HTML["f10-id3"].value = docData.prodIds[2].sno;
+  fForm10HTML["f10-id4"].value = docData.prodIds[3].sno;
+  fForm10HTML["f10-id5"].value = docData.prodIds[4].sno;
+  fForm10HTML["f10-id6"].value = docData.prodIds[5].sno;
+  fForm10HTML["f10-id7"].value = docData.prodIds[6].sno;
+  fForm10HTML["f10-id8"].value = docData.prodIds[7].sno;
+});
 
 
-//////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const fForm9HTML = document.querySelector("#fForm9");
 const f9File1HTML = document.querySelector("#f9-file1");
