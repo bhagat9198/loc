@@ -432,6 +432,7 @@ db.collection("sections")
 
 const fixedSection6Heading = document.querySelector("#fixed-section6-heading");
 const fixedSection6Row = document.querySelector("#fixed-section6-row");
+const fixedSection6ViewAll = document.querySelector("#fixed-section6-viewAll");
 
 db.collection("sections")
   .doc("fixed6")
@@ -439,6 +440,7 @@ db.collection("sections")
     let docData = doc.data();
     let row = "";
     fixedSection6Heading.innerHTML = docData.title;
+    let t;
     for (let card of docData.prodIds) {
       await db
         .collection(card.cat.split("__")[0])
@@ -451,7 +453,7 @@ db.collection("sections")
           }
           // console.log(prodData);
           // console.log(prodData.wholeCategory.split("__")[0]);
-          let t = prodData.wholeCategory.split("__")[0];
+          t = prodData.wholeCategory.split("__")[0];
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
             <div class="item">
@@ -472,6 +474,7 @@ db.collection("sections")
           `;
         });
     }
+    fixedSection6ViewAll.href = `./Products/products.html?cat=${t}`;
     fixedSection6Row.innerHTML = row;
   });
 
@@ -543,6 +546,7 @@ userImgRef.get().then((imgSnaps) => {
 
 const fixedSection7Heading = document.querySelector("#fixed-section7-heading");
 const fixedSection7Row = document.querySelector("#fixed-section7-row");
+const fixedSection7ViewAll = document.querySelector("#fixed-section7-viewAll");
 
 db.collection("sections")
   .doc("fixed7")
@@ -550,6 +554,7 @@ db.collection("sections")
     let docData = doc.data();
     let row = "";
     fixedSection7Heading.innerHTML = docData.title;
+    let t;
     for (let card of docData.prodIds) {
       // console.log(card.cat.split('__')[1], card.id);
       await db
@@ -561,15 +566,14 @@ db.collection("sections")
           if (!prodData) {
             return;
           }
+          t = prodData.wholeCategory.split("__")[0];
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
           <div class="item" >
             <div class="item-img">
               <img class="img-fluid" src="${prodData.mainImgUrl}">
             </div>
-            <a href="./Product/product.html?prod=${prod.id}&&cat=${
-            prodData.wholeCategory.split("__")[0]
-          }">
+            <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
               <div class="info">
                 <div class="stars"></div>
                 <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
@@ -583,6 +587,7 @@ db.collection("sections")
         `;
         });
     }
+    fixedSection7ViewAll.href = `./Product/product.html?cat=${t}`;
     fixedSection7Row.innerHTML = row;
   });
 
@@ -923,3 +928,56 @@ db.collection("sections")
           `;
     }
   });
+
+
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////
+// section 10 
+
+const fixedSection10Heading = document.querySelector("#fixed-section10-heading");
+const fixedSection10Row = document.querySelector("#fixed-section10-row");
+const fixedSection10ViewAll = document.querySelector('#fixed-section10-viewAll');
+
+db.collection("sections")
+  .doc("fixed10")
+  .onSnapshot(async (doc) => {
+    let docData = doc.data();
+    let row = "";
+    fixedSection10Heading.innerHTML = docData.title;
+    let t;
+    for (let card of docData.prodIds) {
+      await db
+        .collection(card.cat.split("__")[0])
+        .doc(card.id)
+        .get()
+        .then((prod) => {
+          let prodData = prod.data();
+          if (!prodData) {
+            return;
+          }
+          // console.log(prodData);
+          // console.log(prodData.wholeCategory.split("__")[0]);
+          t = prodData.wholeCategory.split("__")[0];
+          row += `
+          <div class="col-lg-2 col-md-3 col-6 remove-padding">
+            <div class="item">
+              <div class="item-img">
+                <img class="img-fluid" src="${prodData.mainImgUrl}">
+              </div>
+              <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
+                  <h5 class="name">${prodData.name}</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+          `;
+        });
+    }
+    fixedSection10ViewAll.href=`./Products/products.html?cat=${t}`;
+    fixedSection10Row.innerHTML = row;
+  });
+
