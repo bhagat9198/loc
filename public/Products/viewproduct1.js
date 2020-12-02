@@ -1049,72 +1049,72 @@ const submitEditForm = (event) => {
         });
       }
 
-      // const searchRef = db.collection("miscellaneous").doc("searchList");
-      // searchRef.get().then(async (seachDoc) => {
-      //   let searchData = seachDoc.data();
-      //   console.log(searchData);
-      //   let searchName = {
-      //     name: response.prodData.name,
-      //     id: Math.random(),
-      //     type: "prodName",
-      //   };
+      const searchRef = db.collection("miscellaneous").doc("searchProds");
+      searchRef.get().then(async (seachDoc) => {
+        let searchData = seachDoc.data();
+        console.log(searchData);
+        let searchName = {
+          name: response.prodData.name,
+          cat: response.prodData.wholeCategory.split('__')[0],
+          pId: response.dataId,
+          id: Math.random(),
+          type: "prodName",
+        };
 
-      //   let searchSno = {
-      //     name: response.prodData.sno,
-      //     id: Math.random(),
-      //     type: "prodId",
-      //     prodId: response.dataId,
-      //   };
-      //   console.log(response.prodData);
-      //   if(response.prodData.tags) {
-      //     response.prodData.tags.split(",").map((tt) => {
-      //       let tagFlag = 0;
-      //       for (let s of searchData.searches) {
-      //         if (s.name === tt) {
-      //           tagFlag++;
-      //           break;
-      //         }
-      //       }
+        // let searchSno = {
+        //   name: response.prodData.sno,
+        //   id: Math.random(),
+        //   type: "prodId",
+        //   prodId: response.dataId,
+        // };
+        console.log(response.prodData);
+        // if(response.prodData.tags) {
+        //   response.prodData.tags.split(",").map((tt) => {
+        //     let tagFlag = 0;
+        //     for (let s of searchData.searches) {
+        //       if (s.name === tt) {
+        //         tagFlag++;
+        //         break;
+        //       }
+        //     }
   
-      //       if (tagFlag === 0) {
-      //         searchData.searches.push({
-      //           name: tt,
-      //           id: Math.random(),
-      //           type: "tag",
-      //         });
-      //       }
-      //     });
-      //   }
+        //     if (tagFlag === 0) {
+        //       searchData.searches.push({
+        //         name: tt,
+        //         id: Math.random(),
+        //         type: "tag",
+        //       });
+        //     }
+        //   });
+        // }
 
-      //   let flag = 0;
-      //   if(searchData.searches) {
-      //     for (let s of searchData.searches) {
-      //       if (s.name == searchName.name) {
-      //         flag = 1;
-      //         break;
-      //       }
-      //     }
-      //     if (flag === 0) {
-      //       searchData.searches.push(searchName);
-      //     }
-        
+        let flag = 0;
+        if(searchData.searches) {
+          for (let s of searchData.searches) {
+            if (s.name == searchName.name) {
+              flag = 1;
+              break;
+            }
+          }
+          if (flag === 0) {
+            searchData.searches.push(searchName);
+          }
+          // let snoFlag = 0;
+          // for (let s of searchData.searches) {
+          //   if (s.name == searchSno.name) {
+          //     snoFlag = 1;
+          //     break;
+          //   }
+          // }
+          // if (snoFlag === 0) {
+          //   searchData.searches.push(searchSno);
+          // }
+        }
 
-      //     let snoFlag = 0;
-      //     for (let s of searchData.searches) {
-      //       if (s.name == searchSno.name) {
-      //         snoFlag = 1;
-      //         break;
-      //       }
-      //     }
-      //     if (snoFlag === 0) {
-      //       searchData.searches.push(searchSno);
-      //     }
-      //   }
-
-      //   console.log(searchData);
-      //   searchRef.update(searchData);
-      //   // location.reload();
-      // });
+        console.log(searchData);
+        searchRef.update(searchData);
+        // location.reload();
+      });
 
       editProduct.querySelector(".alert-success").textContent = "Product Saved";
       editProduct.querySelector(".alert-success").style.display = "block";
