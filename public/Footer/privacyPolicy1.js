@@ -1,4 +1,4 @@
-console.log("privacyPolicies.js");
+console.log("about.js");
 
 const db = firebase.firestore();
 const storageService = firebase.storage();
@@ -24,7 +24,7 @@ const aboutForm = (e) => {
   };
 
   const submitData = async (submitData) => {
-    let aboutRef = db.collection("footer").doc("about");
+    let aboutRef = db.collection("footer").doc("privacyPolicy");
     aboutRef.get().then(async (doc) => {
       if (doc.exists) {
         await aboutRef.update(submitData);
@@ -36,31 +36,35 @@ const aboutForm = (e) => {
   };
   submitData(data).then(async () => {
     if (IMAGE) {
-      await storageService.ref(`footer/about/${IMAGE.name}`).put(IMAGE);
+      await storageService.ref(`footer/privacyPolicy/${IMAGE.name}`).put(IMAGE);
       let imgUrl;
       await storageService
-        .ref(`footer/about/${IMAGE.name}`)
+        .ref(`footer/privacyPolicy/${IMAGE.name}`)
         .getDownloadURL()
         .then((url) => (imgUrl = url))
         .catch((error) => console.log(error));
       console.log(imgUrl);
-      let aboutRef = db.collection("footer").doc("about");
-      aboutRef.get().then((doc) => {
+      let aboutRef = db.collection("footer").doc("privacyPolicy");
+      aboutRef.get().then(async (doc) => {
         let docData = doc.data();
         console.log(docData);
-        if (docData.imgUrl) {
+        if (IMAGE) {
           console.log(docData.imgUrl);
           storageService
-            .ref(`footer/about/${docData.img}`)
+            .ref(`footer/privacyPolicy/${docData.img}`)
             .delete()
-            .then(() => {
+            .then(async () => {
               docData.imgUrl = imgUrl;
               docData.img = IMAGE.name;
               console.log(docData);
-              return aboutRef.update(docData);
+              IMAGE = null;
+              await aboutRef.update(docData);
             })
             .then((savedData) => {
               console.log("updated");
+              $("#about-text").summernote("reset");
+              aboutFormHTML.reset();
+              extractData();
             })
             .catch((error) => {
               console.log(error);
@@ -69,13 +73,13 @@ const aboutForm = (e) => {
           docData.imgUrl = imgUrl;
           docData.img = IMAGE.name;
           console.log(docData);
-          return aboutRef.update(docData);
+          await aboutRef.update(docData);
+          $("#about-text").summernote("reset");
+          aboutFormHTML.reset();
+          extractData();
         }
       });
     }
-    $("#about-text").summernote("reset");
-    aboutFormHTML.reset();
-    extractData();
   });
 };
 
@@ -88,17 +92,27 @@ const uploadFile = (e) => {
 };
 sliderFileHTML.addEventListener("change", uploadFile);
 
-// const reduce
-
 const extractData = () => {
+  console.log("aaa");
   db.collection("footer")
-    .doc("about")
+    .doc("privacyPolicy")
     .get()
     .then((aboutSnap) => {
       let aboutSnapData = aboutSnap.data();
-      $("#about-text").summernote("editor.pasteHTML", aboutSnapData.note);
-
-      document.querySelector("#img-preview").src = aboutSnapData.imgUrl;
+      setTimeout(() => {
+        $("#about-text").summernote("editor.pasteHTML", aboutSnapData.note);
+        document.querySelector("#img-preview").src = aboutSnapData.imgUrl;
+      }, 1000);
     });
 };
+
+// db.collection("footer")
+//   .doc("about")
+//   .onSnapshot((aboutSnap) => {
+//     let aboutSnapData = aboutSnap.data();
+//     $("#about-text").summernote("editor.pasteHTML", aboutSnapData.note);
+
+//     document.querySelector("#img-preview").src = aboutSnapData.imgUrl;
+//   });
+
 extractData();
