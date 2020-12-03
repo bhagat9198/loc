@@ -61,13 +61,22 @@ db.collection("sections")
       if (card === "title") {
         fixedSection1HeadingHTML.innerHTML = docData[card];
       } else {
+        console.log(docData[card]);
+        let sub ='', child = '';
+        if(docData[card].subCat) {
+          sub = docData[card].subCat.split("__")[0];
+        }
+        if(docData[card].child) {
+          child = docData[card].child.split("__")[0];
+        }
+
         row += `
    
       <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
             <a class="banner-effect imgca" href="./Products/products.html?cat=${
               docData[card].cat.split("__")[0]
-            }&&tag=${docData[card].tag}">
+            }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}">
               <img class="imgc"
                 src="${docData[card].imgUrl}">
             </a>
@@ -188,8 +197,9 @@ db.collection("sections")
   .onSnapshot((doc) => {
     let docData = doc.data();
     let sortArr = [];
-
+    console.log(docData);
     for (let card in docData) {
+      console.log(card);
       if (card === "title") continue;
       sortArr.push(docData[card]);
     }
@@ -200,6 +210,15 @@ db.collection("sections")
     });
 
     // console.log(sortArr);
+
+    // let sub ='', child = '';
+    // console.log(card);
+    // if(card.subCat) {
+    //   sub = card.subCat.split("__")[0];
+    // }
+    // if(card.child) {
+    //   child = card.child.split("__")[0];
+    // }
 
     let row = "";
     for (let card of sortArr) {
@@ -246,13 +265,20 @@ db.collection("sections")
       </div>
       `;
       } else {
+        let sub ='', child = '';
+        if(docData[card].subCat) {
+          sub = docData[card].subCat.split("__")[0];
+        }
+        if(docData[card].child) {
+          child = docData[card].child.split("__")[0];
+        }
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3 revealOnScroll" data-animation="fadeInUp >
       <div class="top-grid-head">
         <div class="aside">
           <a href="./Products/products.html?cat=${
             docData[card].cat.split("__")[0]
-          }&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb">
+          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -264,12 +290,10 @@ db.collection("sections")
     fixedSection3Row.innerHTML = title + row;
   });
 
+
 // user defined 4cards
-
 const userDefined4cardsHTML = document.querySelector("#user-defined-4cards");
-
 let cards4Ref = db.collection("sections").doc("4cards").collection("4cards");
-
 cards4Ref.get().then((cards4Snaps) => {
   let cards4SnapsDocs = cards4Snaps.docs;
   let wholecard4 = "";
@@ -323,9 +347,7 @@ db.collection("sections")
         .collection(card.cat.toString().split("__")[0])
         .doc(card.id.toString());
       await docRef.get().then((prod) => {
-        // console.log(prod);
         let prodData = prod.data();
-        // console.log(prodData);
         if (!prodData) {
           return;
         }
@@ -391,10 +413,9 @@ db.collection("sections")
     });
   });
 
+
 // fixed section 5
-
 const fixedSection5Row = document.querySelector("#fixed-section5-row");
-
 db.collection("sections")
   .doc("fixed5")
   .onSnapshot((doc) => {
@@ -428,8 +449,8 @@ db.collection("sections")
     fixedSection5Row.innerHTML = title + row;
   });
 
-// fixed section 6
 
+// fixed section 6
 const fixedSection6Heading = document.querySelector("#fixed-section6-heading");
 const fixedSection6Row = document.querySelector("#fixed-section6-row");
 const fixedSection6ViewAll = document.querySelector("#fixed-section6-viewAll");
@@ -542,8 +563,8 @@ userImgRef.get().then((imgSnaps) => {
   userDefinedImgHTML.innerHTML = wholeImg;
 });
 
-// fixed section 7
 
+// fixed section 7
 const fixedSection7Heading = document.querySelector("#fixed-section7-heading");
 const fixedSection7Row = document.querySelector("#fixed-section7-row");
 const fixedSection7ViewAll = document.querySelector("#fixed-section7-viewAll");
@@ -591,11 +612,10 @@ db.collection("sections")
     fixedSection7Row.innerHTML = row;
   });
 
-// fixed section 8
 
+// fixed section 8
 const fixedSection8Heading = document.querySelector("#fixed-section8-heading");
 const fixedSection8Row = document.querySelector("#fixed-section8-row");
-
 db.collection("sections")
   .doc("fixed8")
   .onSnapshot((doc) => {
@@ -606,12 +626,20 @@ db.collection("sections")
       // console.log(docData[card]);
       // console.log(docData[card]);
       if (card != "title") {
+        let sub ='', child = '';
+        if(docData[card].subCat) {
+          sub = docData[card].subCat.split("__")[0];
+        }
+        if(docData[card].child) {
+          child = docData[card].child.split("__")[0];
+        }
+
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
           <a href="./Products/products.html?cat=${
             docData[card].cat.split("__")[0]
-          }&&tag=${docData[card].tag}" class="banner-effect imgca">
+          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -622,15 +650,13 @@ db.collection("sections")
     fixedSection8Row.innerHTML = row;
   });
 
+
 // user defined section card 6
-
 const userDefined6cardsHTML = document.querySelector("#user-defined-6cards");
-
 let cards6Ref = db.collection("sections").doc("6cards").collection("6cards");
 cards6Ref.get().then(async (card6Snaps) => {
   let card6SnapsDocs = card6Snaps.docs;
   let wholecard6 = "";
-
   for (card6Doc of card6SnapsDocs) {
     let card6Data = card6Doc.data();
     if (card6Data.activated.toString() === "true") {
@@ -695,6 +721,7 @@ cards6Ref.get().then(async (card6Snaps) => {
   userDefined6cardsHTML.innerHTML = wholecard6;
 });
 
+
 // fixed section 9
 const fixedSection9Heading = document.querySelector("#fixed-section9-heading");
 const fixedSection9Row = document.querySelector("#fixed-section9-row");
@@ -709,12 +736,19 @@ db.collection("sections")
       // console.log(docData[card]);
       // console.log(docData[card]);
       if (card != "title") {
+        let sub ='', child = '';
+        if(card.subCat) {
+          sub = card.subCat.split("__")[0];
+        }
+        if(card.child) {
+          child = card.child.split("__")[0];
+        }
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
           <a href="./Products/products.html?cat=${
             docData[card].cat.split("__")[0]
-          }&&tag=${docData[card].tag}" class="banner-effect imgca">
+          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -725,6 +759,7 @@ db.collection("sections")
     fixedSection9Row.innerHTML = row;
   });
 
+// fixed img 41
 db.collection("sections")
   .doc("img41")
   .onSnapshot(async (imgDoc) => {
@@ -842,6 +877,8 @@ db.collection("sections")
     }
   });
 
+
+// fixed img 42
 db.collection("sections")
   .doc("img42")
   .onSnapshot(async (imgDoc) => {
@@ -908,6 +945,8 @@ db.collection("sections")
     }
   });
 
+
+// fixed img 31
 db.collection("sections")
   .doc("img31")
   .onSnapshot(async (imgDoc) => {

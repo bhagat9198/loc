@@ -4,7 +4,7 @@ const db = firebase.firestore();
 const storageService = firebase.storage();
 
 const allProductsHTML = document.querySelector("#allProducts");
-const productHeadingHTML = document.querySelector('#productHeading');
+const productHeadingHTML = document.querySelector("#productHeading");
 const topSuggestionHTML = document.querySelector("#top-suggestion");
 let CAT, SUB, CHILD, TAG, USER;
 let TEMP_ARR = [];
@@ -35,19 +35,20 @@ getParams(window.location.href).then(async (response) => {
   if (!USER) {
     await extractRelvantProds();
   } else {
-    await userSearchProds();
+    userSearchProds();
   }
   // console.log(allProductsArr);
   if (allProductsArr.length > 0) {
     let randAllProdsArr = arrayRandom(allProductsArr);
     TEMP_ARR = randAllProdsArr.slice();
-    displayTopSuggest(randAllProdsArr);
+    displayTopSuggest();
 
     displayProds(randAllProdsArr);
     // displayProds(allProductsArr);
   } else {
-    allProductsHTML.innerHTML = 'No products Found';
+    allProductsHTML.innerHTML = "No products Found";
   }
+  displayTopSuggest();
 });
 
 const extractRelvantProds = async () => {
@@ -120,18 +121,22 @@ const extractRelvantProds = async () => {
         });
       });
       // console.log(CAT);
-      await db.collection('categories').doc(CAT).get().then(d => {
-        dd = d.data();
-        // console.log(dd);
-        // console.log(dd.name);
-        prodHeading = dd.name;
-      })
+      await db
+        .collection("categories")
+        .doc(CAT)
+        .get()
+        .then((d) => {
+          dd = d.data();
+          // console.log(dd);
+          // console.log(dd.name);
+          prodHeading = dd.name;
+        });
       productHeadingHTML.innerHTML = prodHeading;
     }
     return;
   } else {
     await allCatProds();
-    productHeadingHTML.innerHTML = 'All Products';
+    productHeadingHTML.innerHTML = "All Products";
     // console.log(allProductsArr);
     return;
   }
@@ -140,13 +145,16 @@ const extractRelvantProds = async () => {
 let allCategories = [];
 
 const extractAllCat = async () => {
-  await db.collection("categories").get().then(snapshots => {
-    let snapDocs = snapshots.docs;
-    snapDocs.map(snap => {
-      allCategories.push(snap.id);
-    })
-  })
-}
+  await db
+    .collection("categories")
+    .get()
+    .then((snapshots) => {
+      let snapDocs = snapshots.docs;
+      snapDocs.map((snap) => {
+        allCategories.push(snap.id);
+      });
+    });
+};
 
 const allCatProds = async () => {
   await db
@@ -158,19 +166,51 @@ const allCatProds = async () => {
         let docId = doc.id;
         // console.log(docId);
         await db
-        .collection(docId)
-        .get()
-        .then((prods) => {
-          let pdocs = prods.docs;
-          for (let pdoc of pdocs) {
-            // console.log(pdoc.id);
-            allProductsArr.push({
-              prodId: pdoc.id,
-              prodData: pdoc.data(),
-              catId: docId,
-            });
-          }
-        });
+          .collection(docId)
+          .get()
+          .then(async (prods) => {
+            let pdocs = prods.docs;
+            for (let pdoc of pdocs) {
+              // console.log(pdoc.id);
+
+              //  const searchRef = db
+              //   .collection("miscellaneous")
+              //   .doc("searchProds");
+              // await searchRef.get().then(async (seachDoc) => {
+              //   let searchData = seachDoc.data();
+              //   console.log(searchData);
+              //   let searchName = {
+              //     name: pdoc.data().name,
+              //     cat: pdoc.data().wholeCategory.split("__")[0],
+              //     pId:  pdoc.id,
+              //     id: Math.random(),
+              //     catName: pdoc.data().wholeCategory.split("__")[1],
+              //     type: "prodName",
+              //   };
+              //   let flag = 0;
+              //   if (searchData.searches) {
+              //     for (let s of searchData.searches) {
+              //       if (s.name == searchName.name) {
+              //         flag = 1;
+              //         break;
+              //       }
+              //     }
+              //     if (flag === 0) {
+              //       searchData.searches.push(searchName);
+              //     }
+              //   }
+
+              //   console.log(searchData);
+              //   await searchRef.update(searchData);
+              //   // location.reload();
+              // });
+              allProductsArr.push({
+                prodId: pdoc.id,
+                prodData: pdoc.data(),
+                catId: docId,
+              });
+            }
+          });
       }
     });
 };
@@ -194,15 +234,17 @@ const arrayRandom = (arr) => {
 const displayProds = async (arrProds) => {
   // console.log(arrProds);
   let card = "";
-  let banner,bcolor;
+  let banner, bcolor;
   for (let p of arrProds) {
-    if(p.prodData.bannerType !=undefined){
-      banner=p.prodData.bannerType;
-      bcolor=p.prodData.bannerTypeColor;
-    }else{
-      banner="";
+    if (p.prodData.bannerType != undefined) {
+      banner = p.prodData.bannerType;
+      bcolor = p.prodData.bannerTypeColor;
+    } else {
+      banner = "";
     }
-    let dis = Math.round(100 - ((+p.prodData.totalPrice/+p.prodData.mrp)*100));
+    let dis = Math.round(
+      100 - (+p.prodData.totalPrice / +p.prodData.mrp) * 100
+    );
 
     let starsDiv = `
     <span class="fa fa-star"></span>
@@ -211,28 +253,40 @@ const displayProds = async (arrProds) => {
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
     `;
-    if(p.prodData.reviews) {
+    if (p.prodData.reviews) {
       let stars = [];
-      p.prodData.reviews.map(star => {
-        stars.push(star.rating.split('__')[0]);
-      })
+      p.prodData.reviews.map((star) => {
+        stars.push(star.rating.split("__")[0]);
+      });
       starsDiv = starRating(stars);
     }
 
-    card += `
+    card +=
+      `
 			<div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
-				<a href="../Product/product.html?prod=${p.prodId}&&cat=${p.prodData.wholeCategory.split("__")[0]
+				<a href="../Product/product.html?prod=${p.prodId}&&cat=${
+        p.prodData.wholeCategory.split("__")[0]
       }" class="item">
 					<div class="item-img">
             <span class="w3-tag w3-display-topleft" style="border-radius:10px;
-            background: linear-gradient(90deg, ${p.prodData.bannerTypeColorStart ? p.prodData.bannerTypeColorStart.toString() : ''}, ${p.prodData.bannerTypeColorEnd ? p.prodData.bannerTypeColorEnd.toString() : ''}, #ededed);
+            background: linear-gradient(90deg, ${
+              p.prodData.bannerTypeColorStart
+                ? p.prodData.bannerTypeColorStart.toString()
+                : ""
+            }, ${
+        p.prodData.bannerTypeColorEnd
+          ? p.prodData.bannerTypeColorEnd.toString()
+          : ""
+      }, #ededed);
             animation-name: load;
             animation-duration: 1.5s;
             animation-iteration-count: infinite;
             animation-direction: forwards;
             animation-timing-function: linear;
             background-size: 200% 100%;
-            " >`+banner+`</span>
+            " >` +
+      banner +
+      `</span>
 						<img class="responsive-image" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
 					</div>
           <div class="info" style="height: 130px !important;background-color:gay">
@@ -258,22 +312,30 @@ const displayProds = async (arrProds) => {
   allProductsHTML.innerHTML = card;
 };
 
-const displayTopSuggest = async (arrProds) => {
-  // console.log(arrProds);
-  let dbCatImgRef = db.collection('miscellaneous').doc('catImgs').collection('catImgs');
+const displayTopSuggest = async () => {
+  console.log('hello');
+  let dbCatImgRef = db
+    .collection("miscellaneous")
+    .doc("catImgs")
+    .collection("catImgs");
   let card = "";
-   dbCatImgRef.get().then(async(catImgSnaps) => {
+  dbCatImgRef.get().then(async (catImgSnaps) => {
     let catImgSnapsDocs = catImgSnaps.docs;
-    for(let cimg of catImgSnapsDocs) {
+    for (let cimg of catImgSnapsDocs) {
       let cimgData = cimg.data();
       // console.log(cimgData);
-      let rand = Math.floor(Math.random() * ((cimgData.imgs.length -1) - 0 +1)) - 0;
+      let rand =
+        Math.floor(Math.random() * (cimgData.imgs.length - 1 - 0 + 1)) - 0;
       // console.log(rand);
       // console.log(cimgData.imgs);
-      await db.collection('categories').doc(cimg.id).get().then(catDetail => {
-        let catDetailData = catDetail.data();
-        // console.log(catDetailData);
-        card += `
+      await db
+        .collection("categories")
+        .doc(cimg.id)
+        .get()
+        .then((catDetail) => {
+          let catDetailData = catDetail.data();
+          // console.log(catDetailData);
+          card += `
         <div class="col-lg-2 ">
         <a href="./products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important ">
           <div class="" >
@@ -285,76 +347,111 @@ const displayTopSuggest = async (arrProds) => {
           </div>
         </div>
         </a>
-      </div>`
-      })
+      </div>`;
+        });
+        topSuggestionHTML.innerHTML = card;
     }
-  
-    topSuggestionHTML.innerHTML = card;
-  })
+    // console.log(card);
+    // topSuggestionHTML.innerHTML = card;
+  });
 };
 
 const userSearchProds = async () => {
   let searchVal = USER.toUpperCase();
+  console.log(searchVal);
   allProductsArr = [];
-  await extractAllCat();
-  if (searchVal.length >= 3) {
-    for (let cat of allCategories) {
-      await db.collection(cat).get().then(async (snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        await snapshotDocs.map(doc => {
-          let docData = doc.data();
-          // console.log(docData);
-          if (docData.name.toUpperCase().includes(searchVal) ||
-            docData.sno.toUpperCase().includes(searchVal) ||
-            docData.tags.toString().toUpperCase().includes(searchVal) ||
-            docData.wholeCategory.split('__')[1].toString().toUpperCase().includes(searchVal) ||
-            docData.wholeChildCategory.split('__')[3].toString().toUpperCase().includes(searchVal) ||
-            docData.wholeSubCategory.split('__')[2].toString().toUpperCase().includes(searchVal)
-          )
-            allProductsArr.push({
-              prodId: doc.id,
-              prodData: docData,
-              catId: cat,
-            });
 
-        })
-      })
+  let searchRef = db.collection("miscellaneous").doc("searchProds");
+  await searchRef.get().then(async (searchDoc) => {
+    let searchData = searchDoc.data();
+    for (let p of searchData.searches) {
+      if (
+        p.name.toUpperCase().includes(searchVal) ||
+        p.catName.toUpperCase().includes(searchVal)
+      ) {
+        await db
+          .collection(p.cat)
+          .doc(p.pId)
+          .get()
+          .then((prodDoc) => {
+            let prodData = prodDoc.data();
+            allProductsArr.push({
+              prodId: prodDoc.id,
+              prodData: prodData,
+              catId: prodData.wholeCategory.split("__")[0],
+            });
+          });
+          displayProds(allProductsArr);
+      }
     }
-  }
+  });
 
   if (allProductsArr.length === 0) {
-    allCatProds()
+    allCatProds();
   } else {
     productHeadingHTML.innerHTML = `Products for "${USER}"`;
   }
-}
+  console.log(allProductsArr);
+  return;
+};
 
 const sortProducts = (e, current) => {
   // console.log(e, current.value);
-  if(current.value === 'popular') {
+  if (current.value === "popular") {
     let temp = TEMP_ARR.slice();
-    displayProds(temp)
-  } else if(current.value === 'low') {
+    displayProds(temp);
+  } else if (current.value === "low") {
     let temp = TEMP_ARR.slice();
-    function compare( a, b ) {
+    function compare(a, b) {
       a = a.prodData.mrp;
       b = b.prodData.mrp;
       return a - b;
     }
-    
-    temp.sort( compare );
-    displayProds(temp);
 
-  } else if(current.value === 'high') {
+    temp.sort(compare);
+    displayProds(temp);
+  } else if (current.value === "high") {
     let temp = TEMP_ARR.slice();
-    function compare( a, b ) {
+    function compare(a, b) {
       a = a.prodData.mrp;
       b = b.prodData.mrp;
       return b - a;
     }
-    temp.sort( compare );
+    temp.sort(compare);
     displayProds(temp);
   } else {
     // console.log('invalid');
   }
-}
+};
+
+// ///////////////////////////////////////
+// const searchRef = db
+//   .collection("miscellaneous")
+//   .doc("searchProds");
+// await searchRef.get().then(async (seachDoc) => {
+//   let searchData = seachDoc.data();
+//   console.log(searchData);
+//   let searchName = {
+//     name: pdoc.data().name,
+//     cat: pdoc.data().wholeCategory.split("__")[0],
+//     pId:  pdoc.id,
+//     id: Math.random(),
+//     type: "prodName",
+//   };
+//   let flag = 0;
+//   if (searchData.searches) {
+//     for (let s of searchData.searches) {
+//       if (s.name == searchName.name) {
+//         flag = 1;
+//         break;
+//       }
+//     }
+//     if (flag === 0) {
+//       searchData.searches.push(searchName);
+//     }
+//   }
+
+//   console.log(searchData);
+//   await searchRef.update(searchData);
+//   // location.reload();
+// });
