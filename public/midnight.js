@@ -87,7 +87,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -155,7 +155,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -222,7 +222,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -289,7 +289,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -356,7 +356,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -423,7 +423,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -490,7 +490,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -557,7 +557,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -624,7 +624,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -691,7 +691,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -758,7 +758,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
@@ -825,7 +825,7 @@ const displayCats = () => {
         let row = "";
         for (let prodDoc of docs) {
           i++;
-          if (i > 6) {
+          if (i > 5) {
             break;
           }
           let prodData = prodDoc.data();
