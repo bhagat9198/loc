@@ -24,21 +24,23 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   let img = "";
   for (let doc of snapshotDocs) {
     let docData = doc.data();
-    img += `
-    <a href="#">
-      <div class="intro-content slide-one">
-        <img class=""
-          src="${docData.imgUrl}">
-          <div class="container">
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="slider-content">
-                  </div>
-              </div>
-          </div>
-      </div>
-      </div>
-    </a>`;
+    if(docData.daylight) {
+      img += `
+      <a href="./Products/products.html?cat=${docData.cat}">
+        <div class="intro-content slide-one">
+          <img class=""
+            src="${docData.imgUrl}">
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slider-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </a>`;
+    }
   }
 
   introCarouselHTML.innerHTML = img;
