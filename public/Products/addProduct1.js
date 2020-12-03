@@ -456,65 +456,72 @@ const addProductForm = (event) => {
         document.getElementById("successProduct").style.display = "none";
       }, 5000);
 
-      const searchRef = db.collection('miscellaneous').doc('searchList');
-      searchRef.get().then(seachDoc => {
+      const searchRef = db.collection("miscellaneous").doc("searchProds");
+      searchRef.get().then(async (seachDoc) => {
         let searchData = seachDoc.data();
+        console.log(searchData);
         let searchName = {
           name: response.prodData.name,
+          cat: response.prodData.wholeCategory.split('__')[0],
+          pId: response.dataId,
           id: Math.random(),
-          type: 'prodName'
-        }
-        
-        let searchSno = {
-          name: response.prodData.sno,
-          id: Math.random(),
-          type: 'prodId',
-          prodId: response.dataId
-        }
-        
-        response.prodData.tags.split(',').map(tt => {
-          let tagFlag = 0;
-          for(let s of searchData.searches) { 
-            if(s.name === tt) {
-              tagFlag++;
+          type: "prodName",
+        };
+
+        // let searchSno = {
+        //   name: response.prodData.sno,
+        //   id: Math.random(),
+        //   type: "prodId",
+        //   prodId: response.dataId,
+        // };
+        console.log(response.prodData);
+        // if(response.prodData.tags) {
+        //   response.prodData.tags.split(",").map((tt) => {
+        //     let tagFlag = 0;
+        //     for (let s of searchData.searches) {
+        //       if (s.name === tt) {
+        //         tagFlag++;
+        //         break;
+        //       }
+        //     }
+  
+        //     if (tagFlag === 0) {
+        //       searchData.searches.push({
+        //         name: tt,
+        //         id: Math.random(),
+        //         type: "tag",
+        //       });
+        //     }
+        //   });
+        // }
+
+        let flag = 0;
+        if(searchData.searches) {
+          for (let s of searchData.searches) {
+            if (s.name == searchName.name) {
+              flag = 1;
               break;
             }
           }
-
-          if(tagFlag === 0) {
-            searchData.searches.push({
-              name: tt,
-              id: Math.random(),
-              type: 'tag'
-            })
+          if (flag === 0) {
+            searchData.searches.push(searchName);
           }
-        })
-
-        let flag = 0;
-        for(let s of searchData.searches) {
-          if(s.name == searchName.name) {
-            flag = 1;
-            break;
-          }
-        }
-        if(flag === 0) {
-          searchData.searches.push(searchName);
-        }
-
-        let snoFlag = 0;
-        for(let s of searchData.searches) {
-          if(s.name == searchSno.name) {
-            snoFlag = 1;
-            break;
-          }
-        }
-        if(snoFlag === 0) {
-          searchData.searches.push(searchSno);
+          // let snoFlag = 0;
+          // for (let s of searchData.searches) {
+          //   if (s.name == searchSno.name) {
+          //     snoFlag = 1;
+          //     break;
+          //   }
+          // }
+          // if (snoFlag === 0) {
+          //   searchData.searches.push(searchSno);
+          // }
         }
 
-        // console.log(searchData);
+        console.log(searchData);
         searchRef.update(searchData);
-      })
+        // location.reload();
+      });
     })
     .catch((error) => {
       console.log(error);

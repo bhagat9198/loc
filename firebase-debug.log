@@ -1,0 +1,42 @@
+[debug] [2020-12-02T05:18:47.753Z] ----------------------------------------------------------------------
+[debug] [2020-12-02T05:18:47.755Z] Command:       E:\Program Files\nodejs\node.exe C:\Users\Bhagat Singh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2020-12-02T05:18:47.755Z] CLI Version:   8.16.2
+[debug] [2020-12-02T05:18:47.755Z] Platform:      win32
+[debug] [2020-12-02T05:18:47.755Z] Node Version:  v12.16.2
+[debug] [2020-12-02T05:18:47.756Z] Time:          Wed Dec 02 2020 10:48:47 GMT+0530 (India Standard Time)
+[debug] [2020-12-02T05:18:47.756Z] ----------------------------------------------------------------------
+[debug] [2020-12-02T05:18:47.756Z] 
+[debug] [2020-12-02T05:18:47.762Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-02T05:18:47.763Z] > authorizing via signed-in user
+[debug] [2020-12-02T05:18:47.763Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-12-02T05:18:47.766Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lake-of-cakes:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-12-02T05:18:49.126Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 02 Dec 2020 05:18:48 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1200","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-02T05:18:49.128Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lake-of-cakes  
+ 
+[debug] [2020-12-02T05:18:49.403Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 02 Dec 2020 05:18:48 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-02T05:18:50.684Z] getFunctionsSDKVersion was unable to retrieve 'firebase-functions' version
+[info] 
+[info] === Deploying to 'lake-of-cakes'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-12-02T05:18:50.688Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/admin-lakeofcakes/versions  
+ {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-12-02T05:18:52.515Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 02 Dec 2020 05:18:51 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[admin-lakeofcakes]: beginning deploy... 
+[info] i  hosting[admin-lakeofcakes]: found 436 files in public 
+[debug] [2020-12-02T05:18:52.629Z] [hosting] hash cache [cHVibGlj] stored for 436 files
+[debug] [2020-12-02T05:18:52.629Z] [hosting][hash queue][FINAL] {"max":4,"min":0,"avg":1.6988354140153827,"active":0,"complete":436,"success":436,"errored":0,"retried":0,"total":436,"elapsed":32}
+[debug] [2020-12-02T05:18:52.629Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/admin-lakeofcakes/versions/867b1855d2141aaa:populateFiles  
+ <request body omitted>
+[debug] [2020-12-02T05:18:55.383Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 02 Dec 2020 05:18:54 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-02T05:18:55.395Z] [hosting][populate queue][FINAL] {"max":2757,"min":2757,"avg":2757,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":2767}
+[debug] [2020-12-02T05:18:55.395Z] [hosting] uploads queued: 8
+[debug] [2020-12-02T05:19:16.860Z] [uploadQueue] Retrying task ce3e469e322d2a82d70fa9cf5572244ba34a6e6c5a326bf927ed7ac3378a74d8
+[debug] [2020-12-02T05:19:16.864Z] [uploadQueue] Retrying task 42ab4592c7d7d2ffe294ddbca1ca2f4e9af3cc1adcbc36b49d0777f0dd960fb1
+[debug] [2020-12-02T05:19:16.864Z] [uploadQueue] Retrying task 918a96354f5c6a954791f2eefa3a9a192a3f07f5ccdcef97c827bf1aaf13ec5b
+[debug] [2020-12-02T05:19:16.865Z] [uploadQueue] Retrying task 1c89751c2fde3e169ccc2f271ff7789048da6b6959712280b60c1897df606b6b
+[debug] [2020-12-02T05:19:16.868Z] [uploadQueue] Retrying task 381fbf2812f73928047a44b52995b487c2d4f5666adc0b38aa4479a7917a6b64
+[debug] [2020-12-02T05:19:16.868Z] [uploadQueue] Retrying task d7b75df5f3ea2dc3c219afc9c85a53e192d54d3b441b76a875c2e5ed1db1fa94
+[debug] [2020-12-02T05:19:16.869Z] [uploadQueue] Retrying task 257a259097cabfcddc05a03069078e0dbf0fdc27d32d92db35ec4a571719232e
+[debug] [2020-12-02T05:19:16.869Z] [uploadQueue] Retrying task fd49e7aed1388d37ff0bd38064781612d41b7d598ae1c58f7fa1c27bd97ae121
