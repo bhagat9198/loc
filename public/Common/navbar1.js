@@ -62,7 +62,7 @@
       `;
         liMob += `
       <li >
-        <a href="#">${data.d.name}<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
+        <a href="/Products/products.html?cat=${data.dId}">${data.d.name}">${data.d.name}<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
         <ul>
           ${subCat}
           <li>
