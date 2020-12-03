@@ -397,16 +397,32 @@ let month = date.getMonth() + 1;
 let day = date.getDate();
 let hours = date.getHours();
 
+// console.log(typeof(year), year.toString().length);
+if(year.toString().length !== 4) {
+  window.location.href = `../index.html`;
+}
+if(month.toString().length < 2) {
+  month = `0${month}`;
+  // month = Number(month);
+}
+if(day.toString().length < 2) {
+  day = `0${day}`;
+  // day = Number(day);
+  // console.log(day);
+}
+// console.log(year, month, day);
+
 const setDateAndTime = () => {
   // console.log(SHIPPING_DATA);
-  $("input[type=date]").val("");
+  // $("input[type=date]").val("");
   // hours = 19;
+  console.log(shippingDateHTML);
   shippingDateHTML.setAttribute("min", `${year}-${month}-${day}`);
-
+  console.log(shippingDateHTML);
   let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked')
     .value;
   shippingType = shipVal;
-
+  console.log(shipVal);
   if (shipVal === "free") {
     shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
     // console.log(hours);
