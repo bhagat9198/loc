@@ -1539,6 +1539,7 @@
                               </div>
                             </div>
                           </div>
+                     
                         </div>
 
 
@@ -1586,8 +1587,10 @@
                       <div class="col-lg-12 mt-3">
                         <div class="bottom-area">
                           <a href="javascript:;" id="step2-btn" class="mybtn1 mr-3 5">Back</a>
-                          <button disabled id="rzp-button1" onclick="exeRazPay(event)" class="mybtn1 1">Proceed to Pay </button>
+                          <button disabled id="rzp-button1" onclick="exeRazPay(event)" class="mybtn1 1" disabled>Proceed to Pay </button>
+
                         </div>
+                        <h4 style="padding:10px;font-size: 13px;font-weight: 800;color: black;" id="gettingReady">Please wait getting ready....</h4>
                       </div>
                     </div>
                   </div>
@@ -1950,6 +1953,17 @@
   });
 
   $('#step3-btn').on('click', function () {
+    setTimeout(function(){
+      document.getElementById("gettingReady").innerHTML="Its all set!!Continue to payment ";
+      document.getElementById("gettingReady").style.color="green";
+      setTimeout(function(){
+        document.getElementById("gettingReady").style.display="none"
+      },1000)
+      document.getElementById("rzp-button1").style.disabled=false
+
+      
+
+    },3000)
     if ($('a.payment:first').data('val') == 'paystack') {
       $('.checkoutform').prop('id', 'step1-form');
     }
@@ -1979,7 +1993,7 @@
 
 
   $('.payment').on('click', function () {
-
+    
     if ($(this).data('val') == 'paystack') {
       $('.checkoutform').prop('id', 'step1-form');
     }
