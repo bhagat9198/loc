@@ -42,7 +42,6 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   }
 
   introCarouselHTML.innerHTML = img;
-
 });
 
 // fixed section 1
@@ -62,12 +61,22 @@ db.collection("sections")
       if (card === "title") {
         fixedSection1HeadingHTML.innerHTML = docData[card];
       } else {
+        console.log(docData[card]);
+        let sub ='', child = '';
+        if(docData[card].subCat) {
+          sub = docData[card].subCat.split("__")[0];
+        }
+        if(docData[card].child) {
+          child = docData[card].child.split("__")[0];
+        }
+
         row += `
    
       <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
-            <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
-          }&&tag=${docData[card].tag}">
+            <a class="banner-effect imgca" href="./Products/products.html?cat=${
+              docData[card].cat.split("__")[0]
+            }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}">
               <img class="imgc"
                 src="${docData[card].imgUrl}">
             </a>
@@ -79,20 +88,26 @@ db.collection("sections")
     fixedSection1RowHTML.innerHTML = row;
   });
 
-
 // user defined sliders
 const userDefinedSliderHTML = document.querySelector("#user-defined-slider");
 
-let userSilderRef = db.collection('sections').doc('slider').collection('slider');
+let userSilderRef = db
+  .collection("sections")
+  .doc("slider")
+  .collection("slider");
 var datass = "NO";
 userSilderRef.get().then(async (sliderSnaps) => {
-  let wholeUserSlider = '';
+  let wholeUserSlider = "";
   let sliderSnapsDocs = sliderSnaps.docs;
   for (let sliderDocs of sliderSnapsDocs) {
     let docData = sliderDocs.data();
-    datass = "YES"
-    let eachUserSlider = `
-    <section class="trending"> 
+    if (docData.activated.toString() === "true") {
+      datass = "YES";
+      let tl = docData.colorTL;
+      let br = docData.colorBR;
+      //
+      let eachUserSlider = `
+    <section class="trending"  style="background-image: linear-gradient(to right, ${tl}, ${br})!important;"> 
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12 remove-padding">
@@ -107,11 +122,15 @@ userSilderRef.get().then(async (sliderSnaps) => {
             <div class="trending-item-slider" id="fixed-section4-row">
     `;
 
-    let row = "";
-    for (let card of docData.card) {
-      await db.collection(card.category).doc(card.id).get().then(pd => {
-        let pdata = pd.data();
-        row += `
+      let row = "";
+      for (let card of docData.card) {
+        await db
+          .collection(card.category)
+          .doc(card.id)
+          .get()
+          .then((pd) => {
+            let pdata = pd.data();
+            row += `
         <a href="./Product/product.html?cat=${card.category}&&prod=${card.id}" class="item">
           <div class="item-img">
             <img class="img-fluid" src="${pdata.mainImgUrl}" alt="Lake of cakes">
@@ -125,14 +144,16 @@ userSilderRef.get().then(async (sliderSnaps) => {
           </div>
         </a>
         `;
-      })
+          });
+      }
+      eachUserSlider =
+        eachUserSlider + row + ` </div></div></div></div></section>`;
+      wholeUserSlider += eachUserSlider;
     }
-    eachUserSlider = eachUserSlider + row + ` </div></div></div></div></section>`;
-    wholeUserSlider += eachUserSlider;
-  };
+  }
   userDefinedSliderHTML.innerHTML = wholeUserSlider;
   if (datass == "YES") {
-    var $trending_slider = $('.trending-item-slider');
+    var $trending_slider = $(".trending-item-slider");
     $trending_slider.owlCarousel({
       items: 4,
       autoplay: true,
@@ -142,7 +163,10 @@ userSilderRef.get().then(async (sliderSnaps) => {
       nav: true,
       center: false,
       autoplayHoverPause: true,
-      navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+      navText: [
+        "<i class='fa fa-angle-left'></i>",
+        "<i class='fa fa-angle-right'></i>",
+      ],
       smartSpeed: 800,
       responsive: {
         0: {
@@ -155,64 +179,74 @@ userSilderRef.get().then(async (sliderSnaps) => {
           items: 3,
         },
         992: {
-          items: 5
+          items: 5,
         },
         1200: {
-          items: 6
-        }
-      }
+          items: 6,
+        },
+      },
     });
   }
-
-
 });
-
-
-
-
 
 // fixed section 2
 const fixedSection2Row = document.querySelector("#fixed-section2-row");
 const fixedSection21Row = document.querySelector("#fixed-section21-row");
-db.collection("sections").doc("fixed2").onSnapshot((doc) => {
-  let docData = doc.data();
-  let sortArr = [];
+db.collection("sections")
+  .doc("fixed2")
+  .onSnapshot((doc) => {
+    let docData = doc.data();
+    let sortArr = [];
+    console.log(docData);
+    for (let card in docData) {
+      console.log(card);
+      if (card === "title") continue;
+      sortArr.push(docData[card]);
+    }
+    // console.log(sortArr);
 
-  for (let card in docData) {
-    if (card === "title") continue;
-    sortArr.push(docData[card]);
-  }
-  // console.log(sortArr);
+    sortArr.sort(function (a, b) {
+      return +b.priority - +a.priority;
+    });
 
-  sortArr.sort(function (a, b) {
-    return (+b.priority) - (+a.priority);
-  })
+    // console.log(sortArr);
 
-  // console.log(sortArr);
+    // let sub ='', child = '';
+    // console.log(card);
+    // if(card.subCat) {
+    //   sub = card.subCat.split("__")[0];
+    // }
+    // if(card.child) {
+    //   child = card.child.split("__")[0];
+    // }
 
-  let row = "";
-  for (let card of sortArr) {
-    row += `
+    let row = "";
+    for (let card of sortArr) {
+      row += `
   <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
     <div class="card cardc align-items-center">
-      <a href="./Products/products.html?cat=${card.cat.split("__")[0]
-      }&&tag=${card.tag}" class="">
+      <a href="./Products/products.html?cat=${card.cat.split("__")[0]}&&tag=${
+        card.tag
+      }" class="">
         <div class="iconimg">
-          <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${card.imgUrl}"
+          <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${
+            card.imgUrl
+          }"
             class="card-img-top img-fluid" alt="...">
         </div>
         <div class="card-body cbc text-center">
-          <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${card.cat.split("__")[1]
-      }</h5>
+          <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${
+            card.cat.split("__")[1]
+          }</h5>
         </div>
       </a>
     </div>
   </div>
   `;
-  }
-  fixedSection2Row.innerHTML = row;
-  fixedSection21Row.innerHTML = row;
-});
+    }
+    fixedSection2Row.innerHTML = row;
+    fixedSection21Row.innerHTML = row;
+  });
 
 // fixed section 3
 const fixedSection3Row = document.querySelector("#fixed-section3-row");
@@ -231,12 +265,20 @@ db.collection("sections")
       </div>
       `;
       } else {
+        let sub ='', child = '';
+        if(docData[card].subCat) {
+          sub = docData[card].subCat.split("__")[0];
+        }
+        if(docData[card].child) {
+          child = docData[card].child.split("__")[0];
+        }
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3 revealOnScroll" data-animation="fadeInUp >
       <div class="top-grid-head">
         <div class="aside">
-          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
-          }&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb">
+          <a href="./Products/products.html?cat=${
+            docData[card].cat.split("__")[0]
+          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -249,30 +291,28 @@ db.collection("sections")
   });
 
 
-
 // user defined 4cards
-
-const userDefined4cardsHTML = document.querySelector('#user-defined-4cards');
-
-let cards4Ref = db.collection('sections').doc('4cards').collection('4cards');
-
-cards4Ref.get().then(cards4Snaps => {
+const userDefined4cardsHTML = document.querySelector("#user-defined-4cards");
+let cards4Ref = db.collection("sections").doc("4cards").collection("4cards");
+cards4Ref.get().then((cards4Snaps) => {
   let cards4SnapsDocs = cards4Snaps.docs;
-  let wholecard4 = '';
+  let wholecard4 = "";
 
   for (let card4Doc of cards4SnapsDocs) {
     let card4Data = card4Doc.data();
-    // console.log(card4Data);
-    let eachCard4 = `
-    <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);;;">
+    if (card4Data.activated.toString() === "true") {
+      let tl = card4Data.colorTL;
+      let br = card4Data.colorBR;
+      let eachCard4 = `
+    <section class="banner-section"  style="background-image: linear-gradient(to right, ${tl}, ${br})!important;">
       <h3 class="bannerheading fadeIn" id="fixed-section1-heading">${card4Data.title}</h3>
       <div class="container-fluid">
         <div class="row" id="fixed-section1-row">
     `;
 
-    let row = '';
-    for (let c of card4Data.card) {
-      row += `
+      let row = "";
+      for (let c of card4Data.card) {
+        row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
           <a class="banner-effect imgca" href="./Products/products.html?cat=${card4Data.category}&&tag=${c.tag}" target="_blank">
@@ -281,15 +321,14 @@ cards4Ref.get().then(cards4Snaps => {
         </div>
       </div>
       `;
+      }
+      eachCard4 = eachCard4 + row + `</div></div></section>`;
+      wholecard4 += eachCard4;
     }
-    eachCard4 = eachCard4 + row + `</div></div></section>`;
-    wholecard4 += eachCard4;
   }
 
   userDefined4cardsHTML.innerHTML = wholecard4;
-})
-
-
+});
 
 // fixed section 4
 
@@ -308,14 +347,14 @@ db.collection("sections")
         .collection(card.cat.toString().split("__")[0])
         .doc(card.id.toString());
       await docRef.get().then((prod) => {
-        // console.log(prod);
         let prodData = prod.data();
-        // console.log(prodData);
         if (!prodData) {
           return;
         }
         row += `
-          <a href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]}" class="item">
+          <a href="./Product/product.html?prod=${prod.id}&&cat=${
+          prodData.wholeCategory.split("__")[0]
+        }" class="item">
             <div class="item-img">
               <img class="img-fluid" src="${prodData.mainImgUrl}" >
             </div>
@@ -324,7 +363,9 @@ db.collection("sections")
                 <div class="stars">
                   <h5 class="contactless"> Contactless delivery</h5>
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
+                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
+          prodData.mrp
+        }</small></del></h4>
                 <h5 class="name">${prodData.name}</h5>
                
               </div>
@@ -337,7 +378,7 @@ db.collection("sections")
       // }
     }
     fixedSection4Row.innerHTML = row;
-    var $trending_slider = $('.trending-item-slider');
+    var $trending_slider = $(".trending-item-slider");
     $trending_slider.owlCarousel({
       items: 4,
       autoplay: true,
@@ -347,7 +388,10 @@ db.collection("sections")
       nav: true,
       center: false,
       autoplayHoverPause: true,
-      navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+      navText: [
+        "<i class='fa fa-angle-left'></i>",
+        "<i class='fa fa-angle-right'></i>",
+      ],
       smartSpeed: 800,
       responsive: {
         0: {
@@ -360,19 +404,18 @@ db.collection("sections")
           items: 3,
         },
         992: {
-          items: 5
+          items: 5,
         },
         1200: {
-          items: 6
-        }
-      }
+          items: 6,
+        },
+      },
     });
   });
 
+
 // fixed section 5
-
 const fixedSection5Row = document.querySelector("#fixed-section5-row");
-
 db.collection("sections")
   .doc("fixed5")
   .onSnapshot((doc) => {
@@ -392,7 +435,8 @@ db.collection("sections")
         row += `
       <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3  revealOnScroll" data-animation="fadeInUp>
         <div class="aside">
-          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
+          <a href="./Products/products.html?cat=${
+            docData[card].cat.split("__")[0]
           }&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
@@ -405,10 +449,11 @@ db.collection("sections")
     fixedSection5Row.innerHTML = title + row;
   });
 
-// fixed section 6
 
+// fixed section 6
 const fixedSection6Heading = document.querySelector("#fixed-section6-heading");
 const fixedSection6Row = document.querySelector("#fixed-section6-row");
+const fixedSection6ViewAll = document.querySelector("#fixed-section6-viewAll");
 
 db.collection("sections")
   .doc("fixed6")
@@ -416,6 +461,7 @@ db.collection("sections")
     let docData = doc.data();
     let row = "";
     fixedSection6Heading.innerHTML = docData.title;
+    let t;
     for (let card of docData.prodIds) {
       await db
         .collection(card.cat.split("__")[0])
@@ -428,7 +474,7 @@ db.collection("sections")
           }
           // console.log(prodData);
           // console.log(prodData.wholeCategory.split("__")[0]);
-          let t = prodData.wholeCategory.split("__")[0];
+          t = prodData.wholeCategory.split("__")[0];
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
             <div class="item">
@@ -449,17 +495,25 @@ db.collection("sections")
           `;
         });
     }
+    fixedSection6ViewAll.href = `./Products/products.html?cat=${t}`;
     fixedSection6Row.innerHTML = row;
   });
 
-const userDefinedAnimationHTML = document.querySelector('#user-defined-animation');
-let userAnimationRef = db.collection('sections').doc('animation').collection('animation');
-userAnimationRef.get().then(imgSnaps => {
+// user defined animation
+const userDefinedAnimationHTML = document.querySelector(
+  "#user-defined-animation"
+);
+let userAnimationRef = db
+  .collection("sections")
+  .doc("animation")
+  .collection("animation");
+userAnimationRef.get().then((imgSnaps) => {
   let imgSnapsDocs = imgSnaps.docs;
-  let wholeImg = '';
+  let wholeImg = "";
   for (let imgDoc of imgSnapsDocs) {
     let imgData = imgDoc.data();
-    let eachImg = `
+    if (imgData.activated.toString() === "true") {
+      let eachImg = `
     <section>
       <div class="container-fluid p-0  ">
         <div class="remove-padding">
@@ -474,20 +528,23 @@ userAnimationRef.get().then(imgSnaps => {
       </div>
     </section>
     `;
-    wholeImg += eachImg;
+      wholeImg += eachImg;
+    }
   }
   // console.log(wholeImg);
   userDefinedAnimationHTML.innerHTML = wholeImg;
-})
+});
 
-const userDefinedImgHTML = document.querySelector('#user-defined-img');
-let userImgRef = db.collection('sections').doc('img').collection('img');
-userImgRef.get().then(imgSnaps => {
+// user defined img
+const userDefinedImgHTML = document.querySelector("#user-defined-img");
+let userImgRef = db.collection("sections").doc("img").collection("img");
+userImgRef.get().then((imgSnaps) => {
   let imgSnapsDocs = imgSnaps.docs;
-  let wholeImg = '';
+  let wholeImg = "";
   for (let imgDoc of imgSnapsDocs) {
     let imgData = imgDoc.data();
-    let eachImg = `
+    if (imgData.activated.toString() === "true") {
+      let eachImg = `
     <section>
       <div class="container-fluid p-0  ">
         <div class="remove-padding">
@@ -500,16 +557,17 @@ userImgRef.get().then(imgSnaps => {
       </div>
     </section>
     `;
-    wholeImg += eachImg;
+      wholeImg += eachImg;
+    }
   }
   userDefinedImgHTML.innerHTML = wholeImg;
-})
+});
 
 
 // fixed section 7
-
 const fixedSection7Heading = document.querySelector("#fixed-section7-heading");
 const fixedSection7Row = document.querySelector("#fixed-section7-row");
+const fixedSection7ViewAll = document.querySelector("#fixed-section7-viewAll");
 
 db.collection("sections")
   .doc("fixed7")
@@ -517,6 +575,7 @@ db.collection("sections")
     let docData = doc.data();
     let row = "";
     fixedSection7Heading.innerHTML = docData.title;
+    let t;
     for (let card of docData.prodIds) {
       // console.log(card.cat.split('__')[1], card.id);
       await db
@@ -528,16 +587,19 @@ db.collection("sections")
           if (!prodData) {
             return;
           }
+          t = prodData.wholeCategory.split("__")[0];
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
           <div class="item" >
             <div class="item-img">
               <img class="img-fluid" src="${prodData.mainImgUrl}">
             </div>
-            <a href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]}">
+            <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
               <div class="info">
                 <div class="stars"></div>
-                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
+                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
+            prodData.mrp
+          }</small></del></h4>
                 <h5 class="name">${prodData.name}</h5>
               </div>
             </a>
@@ -546,14 +608,14 @@ db.collection("sections")
         `;
         });
     }
+    fixedSection7ViewAll.href = `./Product/product.html?cat=${t}`;
     fixedSection7Row.innerHTML = row;
   });
 
-// fixed section 8
 
+// fixed section 8
 const fixedSection8Heading = document.querySelector("#fixed-section8-heading");
 const fixedSection8Row = document.querySelector("#fixed-section8-row");
-
 db.collection("sections")
   .doc("fixed8")
   .onSnapshot((doc) => {
@@ -564,11 +626,20 @@ db.collection("sections")
       // console.log(docData[card]);
       // console.log(docData[card]);
       if (card != "title") {
+        let sub ='', child = '';
+        if(docData[card].subCat) {
+          sub = docData[card].subCat.split("__")[0];
+        }
+        if(docData[card].child) {
+          child = docData[card].child.split("__")[0];
+        }
+
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
-          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
-          }&&tag=${docData[card].tag}" class="banner-effect imgca">
+          <a href="./Products/products.html?cat=${
+            docData[card].cat.split("__")[0]
+          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -580,76 +651,80 @@ db.collection("sections")
   });
 
 
-// user section card 6
-
-const userDefined6cardsHTML = document.querySelector('#user-defined-6cards');
-
-let cards6Ref = db.collection('sections').doc('6cards').collection('6cards');
+// user defined section card 6
+const userDefined6cardsHTML = document.querySelector("#user-defined-6cards");
+let cards6Ref = db.collection("sections").doc("6cards").collection("6cards");
 cards6Ref.get().then(async (card6Snaps) => {
   let card6SnapsDocs = card6Snaps.docs;
-  let wholecard6 = '';
-
+  let wholecard6 = "";
   for (card6Doc of card6SnapsDocs) {
     let card6Data = card6Doc.data();
-    let eachcard6 = `
-    <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-lg-12 remove-padding">
-            <div class="row">
-              <div class="col-md-4 text-center"></div>
-              <div class="col-md-4 text-center">
-                <h3 class="section-title" id="fixed-section7-heading" style="font-weight: 700;font-size: 30px">${card6Data.title}
-                </h3>
+    if (card6Data.activated.toString() === "true") {
+      let tl = card6Data.colorTL;
+      let br = card6Data.colorBR;
+
+      let eachcard6 = `
+      <section class="categori-item clothing-and-Apparel-Area"  style="background-image: linear-gradient(to right, ${tl}, ${br})!important;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12 remove-padding">
+              <div class="row">
+                <div class="col-md-4 text-center"></div>
+                <div class="col-md-4 text-center">
+                  <h3 class="section-title" id="fixed-section7-heading" style="font-weight: 700;font-size: 30px">${card6Data.title}
+                  </h3>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="row" id="fixed-section7-row">
-    `;
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="row" id="fixed-section7-row">
+      `;
 
-    let row = '';
-    for (let c of card6Data.card) {
-      await db.collection(c.category).doc(c.id).get().then(pd => {
-        let pdata = pd.data();
-        row += `
-        <div class="col-lg-2 col-md-3 col-6 remove-padding">
-          <a href="./Product/product.html?cat=${c.category}&&prod=${c.id}" class="item">
-            <div class="item-img">
-              <img class="img-fluid" src="${pdata.mainImgUrl}" alt="Lake of Cakes">
-            </div>
-            <div class="info">
-              <div class="stars">
+      let row = "";
+      for (let c of card6Data.card) {
+        await db
+          .collection(c.category)
+          .doc(c.id)
+          .get()
+          .then((pd) => {
+            let pdata = pd.data();
+            row += `
+          <div class="col-lg-2 col-md-3 col-6 remove-padding">
+            <a href="./Product/product.html?cat=${c.category}&&prod=${c.id}" class="item">
+              <div class="item-img">
+                <img class="img-fluid" src="${pdata.mainImgUrl}" alt="Lake of Cakes">
               </div>
-              <h4 class="price">₹${pdata.sp}</h4>
-              <h5 class="name">${pdata.name}</h5>
-              <div class="item-cart-area">
-                <span class="add-to-cart-quick add-to-cart-btn" data-href="///addtocart/331">
-                  <i class="icofont-cart"></i> Buy Now
-                </span>
+              <div class="info">
+                <div class="stars">
+                </div>
+                <h4 class="price">₹${pdata.sp}</h4>
+                <h5 class="name">${pdata.name}</h5>
+                <div class="item-cart-area">
+                  <span class="add-to-cart-quick add-to-cart-btn" data-href="///addtocart/331">
+                    <i class="icofont-cart"></i> Buy Now
+                  </span>
+                </div>
               </div>
-            </div>
-          </a>
-        </div>
-        `;
-      })
+            </a>
+          </div>
+          `;
+          });
+      }
+
+      eachcard6 = eachcard6 + row + `</div></div></div></div></section>`;
+      wholecard6 += eachcard6;
     }
-
-    eachcard6 = eachcard6 + row + `</div></div></div></div></section>`;
-    wholecard6 += eachcard6;
   }
 
   userDefined6cardsHTML.innerHTML = wholecard6;
-})
+});
 
 
 // fixed section 9
-
 const fixedSection9Heading = document.querySelector("#fixed-section9-heading");
 const fixedSection9Row = document.querySelector("#fixed-section9-row");
-
 db.collection("sections")
   .doc("fixed9")
   .onSnapshot((doc) => {
@@ -661,11 +736,19 @@ db.collection("sections")
       // console.log(docData[card]);
       // console.log(docData[card]);
       if (card != "title") {
+        let sub ='', child = '';
+        if(card.subCat) {
+          sub = card.subCat.split("__")[0];
+        }
+        if(card.child) {
+          child = card.child.split("__")[0];
+        }
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
-          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
-          }&&tag=${docData[card].tag}" class="banner-effect imgca">
+          <a href="./Products/products.html?cat=${
+            docData[card].cat.split("__")[0]
+          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -676,22 +759,25 @@ db.collection("sections")
     fixedSection9Row.innerHTML = row;
   });
 
-
-
-db.collection("sections").doc('img41').onSnapshot(async (imgDoc) => {
-
-
-
-  // var dbref = db.collection('Customers');
-  $('#img4Main').empty()
-  docData = imgDoc.data();
-  document.getElementById("img4Main").innerHTML = `
+// fixed img 41
+db.collection("sections")
+  .doc("img41")
+  .onSnapshot(async (imgDoc) => {
+    // var dbref = db.collection('Customers');
+    $("#img4Main").empty();
+    docData = imgDoc.data();
+    document.getElementById("img4Main").innerHTML =
+      `
         <div class="col-md-7 col-7">
         <div class="aside" style="margin-left: 13%; margin-top: 7%;">
-          <h3 style="color:#fff; font-weight: 700; font-size: 28px; line-height: 1.5rem;">`+docData.title+`</h3>
+          <h3 style="color:#fff; font-weight: 700; font-size: 28px; line-height: 1.5rem;">` +
+      docData.title +
+      `</h3>
          
           <p style="color:#fff; font-size: 17px; margin-top: 9%;">Sterling Picks For Partner </p>
-          <a href="./Products/products.html?cat=`+docData.mainImg.cat.split('__')[0]+`">
+          <a href="./Products/products.html?cat=` +
+      docData.mainImg.cat.split("__")[0] +
+      `">
             <button type="button" class="btn btn-light wewre" style="font-size: 15px;
               font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                 aria-hidden="true"></i></button>
@@ -699,22 +785,31 @@ db.collection("sections").doc('img41').onSnapshot(async (imgDoc) => {
         </div>
       </div>
       <div class="col-md-5 col-5" style="background: #fff; padding-top: 13px; padding-bottom: 13px;">
-        <img src="`+docData.mainImg.imgUrl+`">
+        <img src="` +
+      docData.mainImg.imgUrl +
+      `">
       </div>
-        `
+        `;
 
-        document.getElementById("img42Mainmob").innerHTML = `
+    document.getElementById("img42Mainmob").innerHTML =
+      `
  
         <div class="bannerMainImage col-md-5 col-5"
           style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
-          <img class="mt-3 mb-2" src="`+docData.mainImg.imgUrl+`">
+          <img class="mt-3 mb-2" src="` +
+      docData.mainImg.imgUrl +
+      `">
         </div>
         <div class="col-md-7 col-7">
           <div class="aside " style="margin-left: 10%; margin-top: 7%;">
-            <h3 style="color:#fff; font-weight: 700; font-size: 28px; line-height: 1.5rem;">`+docData.title+`</h3>
+            <h3 style="color:#fff; font-weight: 700; font-size: 28px; line-height: 1.5rem;">` +
+      docData.title +
+      `</h3>
            
             <p style="color:#fff; font-size: 17px; margin-top: 9%;">Sterling Picks For Family </p>
-            <a href="./Products/products.html?cat=`+docData.mainImg.cat.split('__')[0]+`">
+            <a href="./Products/products.html?cat=` +
+      docData.mainImg.cat.split("__")[0] +
+      `">
               <button type="button" class="btn btn-light" style="font-size: 15px;
                     font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                   aria-hidden="true"></i></button>
@@ -722,124 +817,206 @@ db.collection("sections").doc('img41').onSnapshot(async (imgDoc) => {
           </div>
         </div>
     
-     `
-  $('#img41').empty()
-  for (let i of docData.subImgs) {
-    document.getElementById("img41").innerHTML += `
+     `;
+    $("#img41").empty();
+    for (let i of docData.subImgs) {
+      document.getElementById("img41").innerHTML +=
+        `
           <div class=" col s2 "
           style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
           
-          <a href="./Products/products.html?cat=`+i.cat.split('__')[0]+`" style="position: relative;display: block;">
+          <a href="./Products/products.html?cat=` +
+        i.cat.split("__")[0] +
+        `" style="position: relative;display: block;">
             <picture>
               <img class="responsive-img lazyloaded"
-                src="`+ i.imgUrl + `"
+                src="` +
+        i.imgUrl +
+        `"
                 >
             </picture>
   
             <div class="grow" style="position: absolute;bottom:2%;left: 0; right:0; text-align: center;">
               <div class="bannerTxt"
                 style="background-color: white;color: #003961;padding: 5px 40px;font-size: 17px; display: inline-block;">
-                `+ i.tag + `
+                ` +
+        i.tag +
+        `
               </div> 
             </div>
           </a>
         </div>
-          `
-          document.getElementById("img42mob").innerHTML += `
+          `;
+      document.getElementById("img42mob").innerHTML +=
+        `
           <div class=" col s2 "
           style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
           
-          <a href="./Products/products.html?cat=`+i.cat.split('__')[0]+`" style="position: relative;display: block;">
+          <a href="./Products/products.html?cat=` +
+        i.cat.split("__")[0] +
+        `" style="position: relative;display: block;">
             <picture>
               <img class="responsive-img lazyloaded"
-                src="`+ i.imgUrl + `"
+                src="` +
+        i.imgUrl +
+        `"
                 >
             </picture>
   
             <div class="grow" style="position: absolute;bottom:2%;left: 0; right:0; text-align: center;">
               <div class="bannerTxt"
                 style="background-color: white;color: #003961;padding: 5px 40px;font-size: 17px; display: inline-block;">
-                `+ i.tag + `
+                ` +
+        i.tag +
+        `
               </div>
             </div>
           </a>
         </div>
-          `
-  }
-});
-
-db.collection("sections").doc('img42').onSnapshot(async (imgDoc) => {
+          `;
+    }
+  });
 
 
-
-  // var dbref = db.collection('Customers');
-  $('#img42Main').empty()
-  docData = imgDoc.data();
-  document.getElementById("img42Main").innerHTML = `
+// fixed img 42
+db.collection("sections")
+  .doc("img42")
+  .onSnapshot(async (imgDoc) => {
+    // var dbref = db.collection('Customers');
+    $("#img42Main").empty();
+    docData = imgDoc.data();
+    document.getElementById("img42Main").innerHTML =
+      `
  
     <div class="bannerMainImage col-md-5 col-5"
       style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
-      <img class="mt-3 mb-2" src="`+docData.mainImg.imgUrl+`">
+      <img class="mt-3 mb-2" src="` +
+      docData.mainImg.imgUrl +
+      `">
     </div>
     <div class="col-md-7 col-7">
       <div class="aside " style="margin-left: 10%; margin-top: 7%;">
-        <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">`+docData.title+`</h3>
+        <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">` +
+      docData.title +
+      `</h3>
        
         <p style="color:#000; font-size: 17px; margin-top: 9%;">Sterling Picks For Family </p>
-        <a href="./Products/products.html?cat=`+docData.mainImg.cat.split('__')[0]+`">
+        <a href="./Products/products.html?cat=` +
+      docData.mainImg.cat.split("__")[0] +
+      `">
           <button type="button" class="btn btn-light" style="font-size: 15px;
                 font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
               aria-hidden="true"></i></button>
         </a>
       </div>
     </div>
- `
+ `;
 
-  $('#img42').empty()
+    $("#img42").empty();
 
-  for (let i of docData.subImgs) {
-    document.getElementById("img42").innerHTML += `
+    for (let i of docData.subImgs) {
+      document.getElementById("img42").innerHTML +=
+        `
           <div class=" col s2 "
           style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
           
-          <a href="./Products/products.html?cat=`+i.cat.split('__')[0]+`" style="position: relative;display: block;">
+          <a href="./Products/products.html?cat=` +
+        i.cat.split("__")[0] +
+        `" style="position: relative;display: block;">
             <picture>
               <img class="responsive-img lazyloaded"
-                src="`+ i.imgUrl + `"
+                src="` +
+        i.imgUrl +
+        `"
                 >
             </picture>
   
             <div class="grow" style="position: absolute;bottom:2%;left: 0; right:0; text-align: center;">
               <div class="bannerTxt"
                 style="background-color: white;color: #003961;padding: 5px 40px;font-size: 17px; display: inline-block;">
-                `+ i.tag + `
+                ` +
+        i.tag +
+        `
               </div>
             </div>
           </a>
         </div>
-          `
+          `;
+    }
+  });
 
 
-  }
-});
+// fixed img 31
+db.collection("sections")
+  .doc("img31")
+  .onSnapshot(async (imgDoc) => {
+    docData = imgDoc.data();
 
-
-
-db.collection("sections").doc('img31').onSnapshot(async (imgDoc) => {
-
-  docData = imgDoc.data();
-
-  document.getElementById("speed").innerHTML=docData.title; 
-  for (let i of docData.subImgs) {
-    document.getElementById("img31").innerHTML += `
+    document.getElementById("speed").innerHTML = docData.title;
+    for (let i of docData.subImgs) {
+      document.getElementById("img31").innerHTML +=
+        `
     <div class="aside wes"
     style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
     <a class="banner-effect" href="abcd" target="_blank">
-      <img src="`+i.imgUrl+`" alt="">
+      <img src="` +
+        i.imgUrl +
+        `" alt="">
     </a>
   </div>
-          `
+          `;
+    }
+  });
 
 
-  }
-});
+
+// //////////////////////////////////////////////////////////////////////////////////////////////////////
+// section 10 
+
+const fixedSection10Heading = document.querySelector("#fixed-section10-heading");
+const fixedSection10Row = document.querySelector("#fixed-section10-row");
+const fixedSection10ViewAll = document.querySelector('#fixed-section10-viewAll');
+
+db.collection("sections")
+  .doc("fixed10")
+  .onSnapshot(async (doc) => {
+    let docData = doc.data();
+    let row = "";
+    fixedSection10Heading.innerHTML = docData.title;
+    let t;
+    for (let card of docData.prodIds) {
+      await db
+        .collection(card.cat.split("__")[0])
+        .doc(card.id)
+        .get()
+        .then((prod) => {
+          let prodData = prod.data();
+          if (!prodData) {
+            return;
+          }
+          // console.log(prodData);
+          // console.log(prodData.wholeCategory.split("__")[0]);
+          t = prodData.wholeCategory.split("__")[0];
+          row += `
+          <div class="col-lg-2 col-md-3 col-6 remove-padding">
+            <div class="item">
+              <div class="item-img">
+                <img class="img-fluid" src="${prodData.mainImgUrl}">
+              </div>
+              <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
+                  <h5 class="name">${prodData.name}</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+          `;
+        });
+    }
+    fixedSection10ViewAll.href=`./Products/products.html?cat=${t}`;
+    fixedSection10Row.innerHTML = row;
+  });
+

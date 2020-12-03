@@ -484,14 +484,14 @@
                       <input class="form-control" style="width: 100% !important;
                       border: none;
                       border-bottom: 1px solid ;
-                      border-radius: unset;background-color: transparent;" type="text" id="searchBar"
-                        onkeyup=searchIfvalue(event) name="searchBar" placeholder="Search: Cakes , Flowers ,Gifts...">
+                      border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeydown="disableEnterKey(event)"
+                        onkeyup=searchByUserInput(event)  name="searchBar" placeholder="Search: Cakes , Flowers ,Gifts...">
                     </div>
 
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" onclick="searchByBtn('searchBar')"
-                        style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent;color:; border: #F00;"><i
-                          class="fa fa-search" style="color:red"></i></button>
+                    <div class="input-group-append" onclick=searchByUserInputBtn(event)>
+                      <button class="btn btn-outline-secondary" onclick=searchByUserInputBtn(event)
+                        style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent; border: #F00;"><i
+                          class="fa fa-search" style="color:red" onclick=searchByUserInputBtn(event)></i></button>
                     </div>
                   </form>
                 </div>
@@ -1063,12 +1063,6 @@
 
   <!-- SECTION1 -->
 
-
-
-
-
-
-
   <section class=" slider-buttom-category d-md-block responsive-sec2" style="background: rgba(219, 216, 166, 0.3);">
     <div class=" container scres" style="overflow-x: overlay; padding: 15px 0px 0px 90px;">
 
@@ -1274,7 +1268,6 @@
 
 
   <!-- SECTION 2-->
-
   <br>
 
   <!-- SECTION 3 -->
@@ -1336,7 +1329,7 @@
 
   <!-- user defined section 4 cards -->
   <section id="user-defined-4cards">
-    <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);;;">
+    <!-- <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);;;">
       <h3 class="bannerheading fadeIn" id="fixed-section1-heading">Choose the Best Joy</h3>
       <div class="container-fluid">
         <div class="row" id="fixed-section1-row">
@@ -1350,8 +1343,7 @@
 
         </div>
       </div>
-    </section>
-
+    </section> -->
   </section>
 
   <section class="categori-items bestseller">
@@ -1363,17 +1355,17 @@
             </div>
             <div class="col-md-4 text-center">
               <h3 class="section-title" id="fixed-section6-heading" style="font-weight: 700;font-size: 30px">
-                Best Seller Cakes
+
               </h3>
             </div>
-            <!-- <div class="col-md-4">
-              <a style="color:white" href="///category/cakes">
+            <div class="col-md-4">
+              <a style="color:white" id="fixed-section6-viewAll" href="///category/cakes">
                 <div class="col l4 s4"
                   style="width: 40%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
                   View ALL
                 </div>
               </a>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
@@ -1388,14 +1380,7 @@
               <a class="item" href="assets/images/skeleton.gif">
                 <div class="item-img">
                   <div class="extra-list">
-                    <ul>
-                      <li>
-                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
-                          <i class="icofont-heart-alt"></i>
-                        </span>
-
-                      </li>
+                    
                     </ul>
                   </div>
                   <img class="img-fluid" src="" alt="">
@@ -1413,14 +1398,7 @@
               <a class="item" href="assets/images/skeleton.gif">
                 <div class="item-img">
                   <div class="extra-list">
-                    <ul>
-                      <li>
-                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
-                          <i class="icofont-heart-alt"></i>
-                        </span>
-
-                      </li>
+                    
                     </ul>
                   </div>
                   <img class="img-fluid" src="" alt="">
@@ -1438,14 +1416,7 @@
               <a class="item" href="assets/images/skeleton.gif">
                 <div class="item-img">
                   <div class="extra-list">
-                    <ul>
-                      <li>
-                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
-                          <i class="icofont-heart-alt"></i>
-                        </span>
-
-                      </li>
+                    
                     </ul>
                   </div>
                   <img class="img-fluid" src="" alt="">
@@ -1632,7 +1603,7 @@
 
 
   <!-- Hard Coded -->
-  <section class="">
+  <!-- <section class="">
     <div class="container-fluid p-0  ">
       <div class="remove-padding">
         <div class="img">
@@ -1642,15 +1613,11 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
 
   <!-- user defined img -->
   <section id="user-defined-img"></section>
-
-  <!-- user defined img -->
-
-
 
   <!-- fixed section 7 -->
   <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
@@ -1664,14 +1631,14 @@
               <h3 class="section-title" id="fixed-section7-heading" style="font-weight: 700;font-size: 30px">
               </h3>
             </div>
-            <!-- <div class="col-md-4">
-              <a style="color:white" href="///category/gifts2">
+            <div class="col-md-4">
+              <a style="color:white" id="fixed-section7-viewAll" href="///category/gifts2">
                 <div class="col l4 s4"
                   style="width: 40%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
                   View ALL
                 </div>
               </a>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
@@ -1763,7 +1730,154 @@
     </div>
   </section>
 
+  <section class="categori-items bestseller">
+    <div class="container-fluid">
+      <div class="row ">
+        <div class="col-lg-12 remove-padding">
+          <div class="row">
+            <div class="col-md-4 text-center">
+            </div>
+            <div class="col-md-4 text-center">
+              <h3 class="section-title" id="fixed-section10-heading" style="font-weight: 700;font-size: 30px">Best
+                Seller
+                Cakes</h3>
+            </div>
+            <div class="col-md-4">
+              <a style="color:white" id="fixed-section10-viewAll" href="///category/cakes">
+                <div class="col l4 s4"
+                  style="width: 40%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
+                  View ALL
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- <div class="text-right mt-3">
+						<a href="//lakeofcakes.com/category/cakes"><button type="button" class="btn btn-danger"
+								style="background:#ff0000;padding: 10px;">View More</button></a>
+          </div> -->
 
+          <div class="row" id="fixed-section10-row">
+            <!-- <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+<<<<<<< HEAD
+=======
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-2 col-md-3 col-6 remove-padding">
+              <a class="item" href="assets/images/skeleton.gif">
+                <div class="item-img">
+                  <div class="extra-list">
+                    
+                    </ul>
+                  </div>
+                  <img class="img-fluid" src="" alt="">
+                </div>
+                <div class="info">
+                  <div class="stars">
+                  </div>
+                  <h4 class="price"><del><small></small></del></h4>
+                  <h5 class="name"></h5>
+
+                </div>
+              </a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+>>>>>>> 6667bd98b743bb1c9bc8c2e935040a0fd62ccb14
   <section class="clothing-and-Apparel-Area responsive-sec2">
     <div class="container-fluid p-0">
       <div class="p-3" style="background: #274674;">
@@ -1802,6 +1916,7 @@
       </div>
     </div>
   </section>
+
   <section class=" clothing-and-Apparel-Area">
     <div class="container-fluid p-0">
       <div class="p-3" style="background: #f4b2b6;">
@@ -1859,8 +1974,8 @@
         </div>
       </div>
     </div>
-
   </section>
+
   <!-- user defined section card 6 -->
   <section id="user-defined-6cards">
     <!-- <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
@@ -1923,9 +2038,6 @@
     </section> -->
   </section>
 
-
-
-
   <!-- fixed section 9 -->
   <section class="banner-section"
     style="background:linear-gradient(rgba(16, 115, 133, 0.1), rgba(141, 106, 8, 0.616));">
@@ -1947,18 +2059,14 @@
   <!--Modal: modalYT-->
   <div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
-
       <!--Content-->
       <div class="modal-content">
-
         <!--Body-->
         <div class="modal-body mb-0 p-0">
-
           <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;">
             <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;" id="showOffer" src=""
               allowfullscreen>
           </div>
-
         </div>
 
         <!--Footer-->
@@ -2008,7 +2116,6 @@
 <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script> -->
 
 <script>
-
   window.localStorage.setItem("redirectURL", "index.html")
 
   var firebaseConfig = {
@@ -2041,7 +2148,6 @@
 <script src="./Common/navbar1.js"></script>
 
 <script>
-
   $(".drobt").click(function () {
     if ($('.drobt0').hasClass('drobt1')) {
       $('.drobt0').removeClass('drobt1');
@@ -2054,20 +2160,17 @@
 </script>
 <script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
 <script>
-
   function hidenavigation() {
     $('.drobt0').addClass('colapse');
   }
+
   function shownavigation() {
     $('.drobt0').removeClass('colapse');
   }
-
 </script>
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
-
-
   db.collection("offers").onSnapshot(async (snapshots) => {
 
     let snapshotDocs = snapshots.docs;
@@ -2085,13 +2188,19 @@
   var checkUser;
   checkUser = window.localStorage.getItem("locLoggedInUser");
   var timecount = 0;
+<<<<<<< HEAD
   function checkifUser(location) {
+=======
+
+  function checkifUser() {
+>>>>>>> 6667bd98b743bb1c9bc8c2e935040a0fd62ccb14
     if (checkUser == null || checkUser == "null") {
       window.location = "/Auth/login.html"
     } else {
       window.location = location
     }
   }
+
   function redirectToCart() {
     if (checkUser == null || checkUser == "null") {
       window.location = "/Auth/login.html"
@@ -2157,6 +2266,7 @@
   function redirectLogin() {
     window.location = "/Auth/login.html"
   }
+
   function logOut() {
     let dbref = db.collection('Customers');
     // firebase.auth().signOut();
@@ -2184,7 +2294,6 @@
 
 
 <script>
-
   $('#footer-section-loader').load('./Common/footer.html');
   // Icons rotate
   $(function () {
@@ -2228,6 +2337,7 @@
     }
     revealOnScroll();
   });
+<<<<<<< HEAD
 
 
 
@@ -2239,6 +2349,8 @@
 
 
 
+=======
+>>>>>>> 6667bd98b743bb1c9bc8c2e935040a0fd62ccb14
 </script>
 
 </html>

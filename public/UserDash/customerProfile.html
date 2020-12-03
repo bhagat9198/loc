@@ -311,16 +311,16 @@
                     <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
                       <div class="autocomplete" style="width: 100%;">
                         <input class="form-control" style="width: 100% !important;
-            border: none;
-            border-bottom: 1px solid ;
-            border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeyup=searchIfvalue(event)
-                          name="searchBar" placeholder="Search: Cakes , Flowers ,Gifts...">
+                        border: none;
+                        border-bottom: 1px solid ;
+                        border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeydown="disableEnterKey(event)"
+                          onkeyup=searchByUserInput(event)  name="searchBar" placeholder="Search: Cakes , Flowers ,Gifts...">
                       </div>
   
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" onclick="searchByBtn('searchBar')"
-                          style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent;color:; border: #F00;"><i
-                            class="fa fa-search" style="color:red"></i></button>
+                      <div class="input-group-append" onclick=searchByUserInputBtn(event)>
+                        <button class="btn btn-outline-secondary" onclick=searchByUserInputBtn(event)
+                          style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent; border: #F00;"><i
+                            class="fa fa-search" style="color:red" onclick=searchByUserInputBtn(event)></i></button>
                       </div>
                     </form>
                   </div>
