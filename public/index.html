@@ -2105,7 +2105,7 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content container">
-        <div class="modal-header" style="width: 100%;">
+        <div class="modal-header reminderHeader" style="width: 100%;">
           <h5 class="modal-title" id="reminderModalLabel"
             style="padding: 10px;text-align: center !important;font-weight: 800;">We will notify you on the selected day
           </h5>
@@ -2130,9 +2130,13 @@
             </div>
           </form>
         </div>
+        <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="reminderMessage">
+          Notification Enabled Successfully<i class="fa fa-check"></i>
+        </h5>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" onclick="sendReminder()">Notify Me</button>
+
         </div>
       </div>
     </div>
@@ -2211,20 +2215,60 @@
     let date = document.querySelector("#reminder-date").value;
     let type = document.querySelector("#reminder-type").value;
     let emailId = document.querySelector("#reminder-email").value;
+    if (date) {
+      if (type) {
 
-    if (emailId.includes("@")) {
-      if (type != "") {
-        db.collection("reminder").add({
-          date: date,
-          type: type,
-          emailId: emailId
-        }).then(function (docRef) {
-         alert("added")
-        })
+        if (emailId.includes("@") && emailId) {
+          if (type != "") {
+            db.collection("reminder").add({
+              date: date,
+              type: type,
+              emailId: emailId
+            }).then(function (docRef) {
+              document.getElementById("reminderMessage").innerHTML = "Notifications enabled successfully"
+              document.getElementById("reminderMessage").style.display = "block"
+              document.getElementById("reminderMessage").style.color = "green"
+              setTimeout(function () {
+                document.getElementById("reminderMessage").style.display = "none"
+                $("#reminderModal").modal('hide');
+              }, 2000)
+            })
+          } else {
+            document.getElementById("reminderMessage").innerHTML = "Server error !! Please try again"
+            document.getElementById("reminderMessage").style.display = "block"
+            document.getElementById("reminderMessage").style.color = "red"
+            setTimeout(function () {
+              document.getElementById("reminderMessage").style.display = "none"
+            }, 2000)
+          }
+        } else {
+          document.getElementById("reminderMessage").innerHTML = "Please enter a valid email id"
+          document.getElementById("reminderMessage").style.display = "block"
+          document.getElementById("reminderMessage").style.color = "red"
+          setTimeout(function () {
+            document.getElementById("reminderMessage").style.display = "none"
+          }, 2000)
+        }
       } else {
+        document.getElementById("reminderMessage").innerHTML = "Please input an occasion type"
+        document.getElementById("reminderMessage").style.display = "block"
+        document.getElementById("reminderMessage").style.color = "red"
+        setTimeout(function () {
+          document.getElementById("reminderMessage").style.display = "none"
+        }, 2000)
       }
+
     } else {
+      document.getElementById("reminderMessage").innerHTML = "Please select a date"
+      document.getElementById("reminderMessage").style.display = "block"
+      document.getElementById("reminderMessage").style.color = "red"
+      setTimeout(function () {
+        document.getElementById("reminderMessage").style.display = "none"
+      }, 2000)
     }
+
+
+
   }
 </script>
 <script src="/Auth/app.js"></script>
