@@ -2214,7 +2214,6 @@
 
     if (emailId.includes("@")) {
       if (type != "") {
-
         db.collection("reminder").add({
           date: date,
           type: type,
@@ -2222,12 +2221,9 @@
         }).then(function (docRef) {
          alert("added")
         })
-
       } else {
-
       }
     } else {
-
     }
   }
 </script>
