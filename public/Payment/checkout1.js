@@ -452,34 +452,34 @@ const setDateAndTime = () => {
       shippingDateHTML.value = `${year}-${month}-${day}`;
       if (hours < 8) {
       } else if (hours < 9) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
       } else if (hours < 10) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
       } else if (hours < 11) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
       } else if (hours < 12) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
       } else if (hours < 13) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
         document.querySelector("#perfect_2").disabled = true;
       } else if (hours < 14) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
         document.querySelector("#perfect_2").disabled = true;
         document.querySelector("#perfect_3").disabled = true;
       } else if (hours < 15) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
@@ -487,7 +487,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_3").disabled = true;
         document.querySelector("#perfect_4").disabled = true;
       } else if (hours < 16) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
@@ -496,7 +496,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_4").disabled = true;
         document.querySelector("#perfect_5").disabled = true;
       } else if (hours < 18) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
@@ -506,7 +506,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_5").disabled = true;
         document.querySelector("#perfect_7").disabled = true;
       } else if (hours < 19) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
@@ -517,7 +517,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_7").disabled = true;
         document.querySelector("#perfect_8").disabled = true;
       } else if (hours < 20) {
-        document.querySelector("#perfect_10").disabled = true;
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
@@ -572,7 +572,7 @@ const changeDate = (e) => {
       midnightHoursHTML.style.display = "none";
       perfectHoursHTML.style.display = "block";
       timeErrorHTML.style.display = "none";
-      document.querySelector("#perfect_10").disabled = false;
+      // document.querySelector("#perfect_10").disabled = false;
       document.querySelector("#perfect_11").disabled = false;
       document.querySelector("#perfect_12").disabled = false;
       document.querySelector("#perfect_1").disabled = false;

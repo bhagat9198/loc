@@ -171,39 +171,6 @@ const allCatProds = async () => {
           .then(async (prods) => {
             let pdocs = prods.docs;
             for (let pdoc of pdocs) {
-              // console.log(pdoc.id);
-
-              //  const searchRef = db
-              //   .collection("miscellaneous")
-              //   .doc("searchProds");
-              // await searchRef.get().then(async (seachDoc) => {
-              //   let searchData = seachDoc.data();
-              //   console.log(searchData);
-              //   let searchName = {
-              //     name: pdoc.data().name,
-              //     cat: pdoc.data().wholeCategory.split("__")[0],
-              //     pId:  pdoc.id,
-              //     id: Math.random(),
-              //     catName: pdoc.data().wholeCategory.split("__")[1],
-              //     type: "prodName",
-              //   };
-              //   let flag = 0;
-              //   if (searchData.searches) {
-              //     for (let s of searchData.searches) {
-              //       if (s.name == searchName.name) {
-              //         flag = 1;
-              //         break;
-              //       }
-              //     }
-              //     if (flag === 0) {
-              //       searchData.searches.push(searchName);
-              //     }
-              //   }
-
-              //   console.log(searchData);
-              //   await searchRef.update(searchData);
-              //   // location.reload();
-              // });
               allProductsArr.push({
                 prodId: pdoc.id,
                 prodData: pdoc.data(),
@@ -313,7 +280,7 @@ const displayProds = async (arrProds) => {
 };
 
 const displayTopSuggest = async () => {
-  console.log('hello');
+  console.log("hello");
   let dbCatImgRef = db
     .collection("miscellaneous")
     .doc("catImgs")
@@ -349,7 +316,7 @@ const displayTopSuggest = async () => {
         </a>
       </div>`;
         });
-        topSuggestionHTML.innerHTML = card;
+      topSuggestionHTML.innerHTML = card;
     }
     // console.log(card);
     // topSuggestionHTML.innerHTML = card;
@@ -358,40 +325,37 @@ const displayTopSuggest = async () => {
 
 const userSearchProds = async () => {
   let searchVal = USER.toUpperCase();
-  console.log(searchVal);
   allProductsArr = [];
+  let locProds = JSON.parse(sessionStorage.getItem("locProds"));
+  // console.log(locProds);
+  // console.log(typeof locProds);
+  locProds = arrayRandom(locProds);
+  for (let p of locProds) {
+    if (
+      p.pname.toUpperCase().includes(searchVal) ||
+      p.cat.toUpperCase().includes(searchVal)
+    ) {
+      let prod = {
+        prodId: p.pid,
+        prodData: {
+          mainImgUrl: p.mainImgUrl,
+          stars: p.stars,
+          wholeCategory: `${p.catId}__${p.cat}`,
+          totalPrice: p.totalPrice,
+        },
+        catId: p.catId,
+      };
+      allProductsArr.push(prod);
 
-  let searchRef = db.collection("miscellaneous").doc("searchProds");
-  await searchRef.get().then(async (searchDoc) => {
-    let searchData = searchDoc.data();
-    for (let p of searchData.searches) {
-      if (
-        p.name.toUpperCase().includes(searchVal) ||
-        p.catName.toUpperCase().includes(searchVal)
-      ) {
-        await db
-          .collection(p.cat)
-          .doc(p.pId)
-          .get()
-          .then((prodDoc) => {
-            let prodData = prodDoc.data();
-            allProductsArr.push({
-              prodId: prodDoc.id,
-              prodData: prodData,
-              catId: prodData.wholeCategory.split("__")[0],
-            });
-          });
-          displayProds(allProductsArr);
-      }
     }
-  });
+  }
 
   if (allProductsArr.length === 0) {
     allCatProds();
   } else {
     productHeadingHTML.innerHTML = `Products for "${USER}"`;
   }
-  console.log(allProductsArr);
+  // console.log(allProductsArr);
   return;
 };
 

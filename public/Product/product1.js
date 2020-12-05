@@ -168,7 +168,7 @@ const displayProduct = (prodData) => {
       prodData.flavours.map(flav => {
         card += `
         <div class="custom-control custom-radio" style="margin-right: 25px;">
-          <input type="radio" checked id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
+          <input type="radio" id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
           <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;">${flav}</label>
         </div>
         `;
@@ -589,6 +589,11 @@ const buyProd = async (e) => {
       let f;
       if(WEIGHT_PRICE.weight) {
         f = document.querySelector('input[name=cake-flavour]:checked').value;
+        if(f) {
+          // user selected the value
+        } else {
+          f = 'Not Selcted';
+        }
       } else {
         f = false;
       }
@@ -625,6 +630,11 @@ const buyProd = async (e) => {
         let f;
         if(WEIGHT_PRICE.weight) {
           f = document.querySelector('input[name=cake-flavour]:checked').value;
+          if(f) {
+            // user selected the value
+          } else {
+            f = 'Not Selcted';
+          }
         } else {
           f = false;
         }
@@ -672,6 +682,11 @@ const addToCart = async (e) => {
     let f;
     if(WEIGHT_PRICE.weight) {
       f = document.querySelector('input[name=cake-flavour]:checked').value;
+      if(f) {
+        // user selected the value
+      } else {
+        f = 'Not Selcted';
+      }
     } else {
       f = false;
     }
@@ -732,6 +747,8 @@ const displaySuggestions = async() => {
       await db.collection(CATEGORY_ID).doc(allProds[counter + rand]).get().then(pdataRaw => {
         let pdata = pdataRaw.data();
         // console.log(pdata.mainImgUrl);
+        let dis = 100 - ((+pdata.totalPrice/+pdata.mrp)*100);
+        dis = Math.round(dis);
         card += `
         <a href="./product.html?prod=${allProds[counter + rand]}&&cat=${CATEGORY_ID}" class="item">
           <div class="item-img">
@@ -755,7 +772,7 @@ const displaySuggestions = async() => {
               </div>
             </div>
             <h5 style="font-size: 1em;color: black;">${pdata.name}</h5>
-            <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${pdata.sp} <del><small>₹ ${pdata.mrp}</small></del></h4>
+            <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${pdata.totalPrice} <small><del>₹ ${pdata.mrp}</del>(${dis}% OFF)</small></h4>
           </div>
         </a>
         `; 

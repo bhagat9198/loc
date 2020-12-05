@@ -24,7 +24,7 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   let img = "";
   for (let doc of snapshotDocs) {
     let docData = doc.data();
-    if(docData.daylight) {
+    if (docData.daylight) {
       img += `
       <a href="./Products/products.html?cat=${docData.cat}">
         <div class="intro-content slide-one">
@@ -64,11 +64,12 @@ db.collection("sections")
         fixedSection1HeadingHTML.innerHTML = docData[card];
       } else {
         console.log(docData[card]);
-        let sub ='', child = '';
-        if(docData[card].subCat) {
+        let sub = "",
+          child = "";
+        if (docData[card].subCat) {
           sub = docData[card].subCat.split("__")[0];
         }
-        if(docData[card].child) {
+        if (docData[card].child) {
           child = docData[card].child.split("__")[0];
         }
 
@@ -132,20 +133,23 @@ userSilderRef.get().then(async (sliderSnaps) => {
           .get()
           .then((pd) => {
             let pdata = pd.data();
+            let dis = 100 - (+pdata.totalPrice / +pdata.mrp) * 100;
+            dis = Math.round(dis);
+
             row += `
-        <a href="./Product/product.html?cat=${card.category}&&prod=${card.id}" class="item">
-          <div class="item-img">
-            <img class="img-fluid" src="${pdata.mainImgUrl}" alt="Lake of cakes">
-          </div>
-          <div class="info">
-            <div class="stars">
-              <h5 class="contactless"> Contactless delivery</h5>
-            </div>
-            <h4 class="price">₹${pdata.sp} <del><small>₹ ${pdata.mrp}</small></del></h4>
-            <h5 class="name">${pdata.name}</h5>  
-          </div>
-        </a>
-        `;
+            <a href="./Product/product.html?cat=${card.category}&&prod=${card.id}" class="item">
+              <div class="item-img">
+                <img class="img-fluid" src="${pdata.mainImgUrl}" alt="Lake of cakes">
+              </div>
+              <div class="info">
+                <div class="stars">
+                  <h5 class="contactless"> Contactless delivery</h5>
+                </div>
+                <h4 class="price">₹${pdata.totalPrice} <del><small>₹ ${pdata.mrp}</small></del>(${dis}% OFF)</h4>
+                <h5 class="name">${pdata.name}</h5>  
+              </div>
+            </a>
+            `;
           });
       }
       eachUserSlider =
@@ -225,26 +229,26 @@ db.collection("sections")
     let row = "";
     for (let card of sortArr) {
       row += `
-  <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
-    <div class="card cardc align-items-center">
-      <a href="./Products/products.html?cat=${card.cat.split("__")[0]}&&tag=${
-        card.tag
-      }" class="">
-        <div class="iconimg">
-          <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${
-            card.imgUrl
-          }"
-            class="card-img-top img-fluid" alt="...">
+      <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
+        <div class="card cardc align-items-center">
+          <a href="./Products/products.html?cat=${
+            card.cat.split("__")[0]
+          }&&tag=${card.tag}" class="">
+            <div class="iconimg">
+              <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${
+                card.imgUrl
+              }"
+                class="card-img-top img-fluid" alt="...">
+            </div>
+            <div class="card-body cbc text-center">
+              <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${
+                card.cat.split("__")[1]
+              }</h5>
+            </div>
+          </a>
         </div>
-        <div class="card-body cbc text-center">
-          <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${
-            card.cat.split("__")[1]
-          }</h5>
-        </div>
-      </a>
-    </div>
-  </div>
-  `;
+      </div>
+      `;
     }
     fixedSection2Row.innerHTML = row;
     fixedSection21Row.innerHTML = row;
@@ -267,11 +271,12 @@ db.collection("sections")
       </div>
       `;
       } else {
-        let sub ='', child = '';
-        if(docData[card].subCat) {
+        let sub = "",
+          child = "";
+        if (docData[card].subCat) {
           sub = docData[card].subCat.split("__")[0];
         }
-        if(docData[card].child) {
+        if (docData[card].child) {
           child = docData[card].child.split("__")[0];
         }
         row += `
@@ -280,7 +285,9 @@ db.collection("sections")
         <div class="aside">
           <a href="./Products/products.html?cat=${
             docData[card].cat.split("__")[0]
-          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb">
+          }&&sub=${sub}&&child=${child}&&tag=${
+          docData[card].tag
+        }" class="banner-effect imgca" href="bbb">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -291,7 +298,6 @@ db.collection("sections")
     }
     fixedSection3Row.innerHTML = title + row;
   });
-
 
 // user defined 4cards
 const userDefined4cardsHTML = document.querySelector("#user-defined-4cards");
@@ -353,6 +359,9 @@ db.collection("sections")
         if (!prodData) {
           return;
         }
+        let dis = 100 - (+prodData.totalPrice / +prodData.mrp) * 100;
+        dis = Math.round(dis);
+
         row += `
           <a href="./Product/product.html?prod=${prod.id}&&cat=${
           prodData.wholeCategory.split("__")[0]
@@ -367,9 +376,8 @@ db.collection("sections")
                 </div>
                 <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
           prodData.mrp
-        }</small></del></h4>
+        }</small></del>(${dis}% OFF)</h4>
                 <h5 class="name">${prodData.name}</h5>
-               
               </div>
           
           </div>
@@ -415,7 +423,6 @@ db.collection("sections")
     });
   });
 
-
 // fixed section 5
 const fixedSection5Row = document.querySelector("#fixed-section5-row");
 db.collection("sections")
@@ -435,22 +442,21 @@ db.collection("sections")
       `;
       } else {
         row += `
-      <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3  revealOnScroll" data-animation="fadeInUp>
-        <div class="aside">
-          <a href="./Products/products.html?cat=${
-            docData[card].cat.split("__")[0]
-          }&&tag=${docData[card].tag}" class="banner-effect imgca">
-            <img class="imgc" src="${docData[card].imgUrl}" alt="">
-          </a>
+        <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3  revealOnScroll" data-animation="fadeInUp>
+          <div class="aside">
+            <a href="./Products/products.html?cat=${
+              docData[card].cat.split("__")[0]
+            }&&tag=${docData[card].tag}" class="banner-effect imgca">
+              <img class="imgc" src="${docData[card].imgUrl}" alt="">
+            </a>
+          </div>
         </div>
-      </div>
-      `;
+        `;
       }
     }
     // console.log(title, row);
     fixedSection5Row.innerHTML = title + row;
   });
-
 
 // fixed section 6
 const fixedSection6Heading = document.querySelector("#fixed-section6-heading");
@@ -477,6 +483,8 @@ db.collection("sections")
           // console.log(prodData);
           // console.log(prodData.wholeCategory.split("__")[0]);
           t = prodData.wholeCategory.split("__")[0];
+          let dis = 100 - (+prodData.totalPrice / +prodData.mrp) * 100;
+          dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
             <div class="item">
@@ -487,7 +495,7 @@ db.collection("sections")
                 <div class="info">
                   <div class="stars">
                   </div>
-                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
+                  <h4 class="price">₹${prodData.totalPrice} <small><del>₹${prodData.mrp}</del>(${dis}%OFF)</small></h4>
                   <h5 class="name">${prodData.name}</h5>
                 </div>
               </a>
@@ -565,7 +573,6 @@ userImgRef.get().then((imgSnaps) => {
   userDefinedImgHTML.innerHTML = wholeImg;
 });
 
-
 // fixed section 7
 const fixedSection7Heading = document.querySelector("#fixed-section7-heading");
 const fixedSection7Row = document.querySelector("#fixed-section7-row");
@@ -590,6 +597,8 @@ db.collection("sections")
             return;
           }
           t = prodData.wholeCategory.split("__")[0];
+          let dis = 100 - (+prodData.totalPrice / +prodData.mrp) * 100;
+          dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
           <div class="item" >
@@ -599,9 +608,7 @@ db.collection("sections")
             <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
               <div class="info">
                 <div class="stars"></div>
-                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
-            prodData.mrp
-          }</small></del></h4>
+                <h4 class="price">₹${prodData.totalPrice} <small><del>₹${prodData.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${prodData.name}</h5>
               </div>
             </a>
@@ -613,7 +620,6 @@ db.collection("sections")
     fixedSection7ViewAll.href = `./Product/product.html?cat=${t}`;
     fixedSection7Row.innerHTML = row;
   });
-
 
 // fixed section 8
 const fixedSection8Heading = document.querySelector("#fixed-section8-heading");
@@ -628,11 +634,12 @@ db.collection("sections")
       // console.log(docData[card]);
       // console.log(docData[card]);
       if (card != "title") {
-        let sub ='', child = '';
-        if(docData[card].subCat) {
+        let sub = "",
+          child = "";
+        if (docData[card].subCat) {
           sub = docData[card].subCat.split("__")[0];
         }
-        if(docData[card].child) {
+        if (docData[card].child) {
           child = docData[card].child.split("__")[0];
         }
 
@@ -641,7 +648,9 @@ db.collection("sections")
         <div class="left">
           <a href="./Products/products.html?cat=${
             docData[card].cat.split("__")[0]
-          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca">
+          }&&sub=${sub}&&child=${child}&&tag=${
+          docData[card].tag
+        }" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -651,7 +660,6 @@ db.collection("sections")
     }
     fixedSection8Row.innerHTML = row;
   });
-
 
 // user defined section card 6
 const userDefined6cardsHTML = document.querySelector("#user-defined-6cards");
@@ -692,6 +700,8 @@ cards6Ref.get().then(async (card6Snaps) => {
           .get()
           .then((pd) => {
             let pdata = pd.data();
+            let dis = 100 - (+pdata.totalPrice / +pdata.mrp) * 100;
+            dis = Math.round(dis);
             row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
             <a href="./Product/product.html?cat=${c.category}&&prod=${c.id}" class="item">
@@ -701,13 +711,8 @@ cards6Ref.get().then(async (card6Snaps) => {
               <div class="info">
                 <div class="stars">
                 </div>
-                <h4 class="price">₹${pdata.sp}</h4>
+                <h4 class="price">₹${pdata.totalPrice} <small><del>₹${pdata.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${pdata.name}</h5>
-                <div class="item-cart-area">
-                  <span class="add-to-cart-quick add-to-cart-btn" data-href="///addtocart/331">
-                    <i class="icofont-cart"></i> Buy Now
-                  </span>
-                </div>
               </div>
             </a>
           </div>
@@ -723,7 +728,6 @@ cards6Ref.get().then(async (card6Snaps) => {
   userDefined6cardsHTML.innerHTML = wholecard6;
 });
 
-
 // fixed section 9
 const fixedSection9Heading = document.querySelector("#fixed-section9-heading");
 const fixedSection9Row = document.querySelector("#fixed-section9-row");
@@ -738,11 +742,12 @@ db.collection("sections")
       // console.log(docData[card]);
       // console.log(docData[card]);
       if (card != "title") {
-        let sub ='', child = '';
-        if(card.subCat) {
+        let sub = "",
+          child = "";
+        if (card.subCat) {
           sub = card.subCat.split("__")[0];
         }
-        if(card.child) {
+        if (card.child) {
           child = card.child.split("__")[0];
         }
         row += `
@@ -750,7 +755,9 @@ db.collection("sections")
         <div class="left">
           <a href="./Products/products.html?cat=${
             docData[card].cat.split("__")[0]
-          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca">
+          }&&sub=${sub}&&child=${child}&&tag=${
+          docData[card].tag
+        }" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -879,7 +886,6 @@ db.collection("sections")
     }
   });
 
-
 // fixed img 42
 db.collection("sections")
   .doc("img42")
@@ -947,7 +953,6 @@ db.collection("sections")
     }
   });
 
-
 // fixed img 31
 db.collection("sections")
   .doc("img31")
@@ -970,14 +975,16 @@ db.collection("sections")
     }
   });
 
-
-
 // //////////////////////////////////////////////////////////////////////////////////////////////////////
-// section 10 
+// section 10
 
-const fixedSection10Heading = document.querySelector("#fixed-section10-heading");
+const fixedSection10Heading = document.querySelector(
+  "#fixed-section10-heading"
+);
 const fixedSection10Row = document.querySelector("#fixed-section10-row");
-const fixedSection10ViewAll = document.querySelector('#fixed-section10-viewAll');
+const fixedSection10ViewAll = document.querySelector(
+  "#fixed-section10-viewAll"
+);
 
 db.collection("sections")
   .doc("fixed10")
@@ -999,6 +1006,8 @@ db.collection("sections")
           // console.log(prodData);
           // console.log(prodData.wholeCategory.split("__")[0]);
           t = prodData.wholeCategory.split("__")[0];
+          let dis = 100 - (+prodData.totalPrice / +prodData.mrp) * 100;
+          dis = Math.random(dis);
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
             <div class="item">
@@ -1018,7 +1027,43 @@ db.collection("sections")
           `;
         });
     }
-    fixedSection10ViewAll.href=`./Products/products.html?cat=${t}`;
+    fixedSection10ViewAll.href = `./Products/products.html?cat=${t}`;
     fixedSection10Row.innerHTML = row;
   });
 
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// storing products in local storage
+
+let LOC = {};
+let AllProds = [];
+db.collection("categories").onSnapshot(async (catSnaps) => {
+  let catSnapsDocs = catSnaps.docs;
+
+  for (let catDoc of catSnapsDocs) {
+    let catData = catDoc.data();
+    await db
+      .collection(catDoc.id)
+      .get()
+      .then((prodSnaps) => {
+        let prodSnapsDocs = prodSnaps.docs;
+        prodSnapsDocs.map((pDoc) => {
+          let pData = pDoc.data();
+          AllProds.push({
+            pid: pDoc.id,
+            cat: catData.name,
+            pname: pData.name,
+            totalPrice: pData.totalPrice,
+            mrp: pData.mrp,
+            catId: catDoc.id,
+            mainImgUrl: pData.mainImgUrl,
+            stars: 5
+          });
+        });
+        console.log(catDoc.id);
+      });
+  }
+  console.log("done");
+  console.log(AllProds);
+  sessionStorage.setItem("locProds", JSON.stringify(AllProds));
+});
