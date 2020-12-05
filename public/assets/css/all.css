@@ -3841,9 +3841,13 @@ input[type=submit].btn-block {
 .custom-control-input:checked~.custom-control-label::before {
     color: #fff;
     border-color: #007bff;
-    background-color: #007bff
+    background-color: #ff1e00
 }
-
+.custom-control-inputEgg:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #007bff;
+    background-color: #1eff00
+}
 .custom-control-input:focus~.custom-control-label::before {
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
 }
@@ -6088,7 +6092,9 @@ a.close.disabled {
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
     pointer-events: auto;
     background-color: #fff;
     background-clip: padding-box;
