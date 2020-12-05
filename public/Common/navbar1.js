@@ -19,10 +19,11 @@
     data.subCategory.map((doc) => {
       // let docData = doc.data();
       let childCat = extractChildCat(doc, doc.id, docId);
+   
       subLi += `
-    <li>
-      <a href="/Products/products.html?cat=${docId}&&sub=${doc.id}">${doc.name}</a>
-      <ul> ${childCat}</ul>
+    <li >
+      <a style="top:0;padding:5px !important;position:sticky;z-index:999 !important;background:white !important" href="/Products/products.html?cat=${docId}&&sub=${doc.id}">${doc.name}</a>
+      <ul style="z-index:0 !important" > ${childCat}</ul>
     </li>
     `;
     })

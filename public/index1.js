@@ -24,7 +24,7 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   let img = "";
   for (let doc of snapshotDocs) {
     let docData = doc.data();
-    if(docData.daylight) {
+    if (docData.daylight) {
       img += `
       <a href="./Products/products.html?cat=${docData.cat}">
         <div class="intro-content slide-one">
@@ -64,11 +64,11 @@ db.collection("sections")
         fixedSection1HeadingHTML.innerHTML = docData[card];
       } else {
         console.log(docData[card]);
-        let sub ='', child = '';
-        if(docData[card].subCat) {
+        let sub = '', child = '';
+        if (docData[card].subCat) {
           sub = docData[card].subCat.split("__")[0];
         }
-        if(docData[card].child) {
+        if (docData[card].child) {
           child = docData[card].child.split("__")[0];
         }
 
@@ -76,9 +76,8 @@ db.collection("sections")
    
       <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
-            <a class="banner-effect imgca" href="./Products/products.html?cat=${
-              docData[card].cat.split("__")[0]
-            }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}">
+            <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
+          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}">
               <img class="imgc"
                 src="${docData[card].imgUrl}">
             </a>
@@ -139,7 +138,7 @@ userSilderRef.get().then(async (sliderSnaps) => {
           </div>
           <div class="info">
             <div class="stars">
-              <h5 class="contactless"> Contactless delivery</h5>
+              <h5 class="contactless"> </h5>
             </div>
             <h4 class="price">₹${pdata.sp} <del><small>₹ ${pdata.mrp}</small></del></h4>
             <h5 class="name">${pdata.name}</h5>  
@@ -227,19 +226,16 @@ db.collection("sections")
       row += `
   <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
     <div class="card cardc align-items-center">
-      <a href="./Products/products.html?cat=${card.cat.split("__")[0]}&&tag=${
-        card.tag
-      }" class="">
+      <a href="./Products/products.html?cat=${card.cat.split("__")[0]}&&tag=${card.tag
+        }" class="">
         <div class="iconimg">
-          <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${
-            card.imgUrl
-          }"
+          <img class="comimg" style="width:300px !important;height:100px;object-fit:cover" src="${card.imgUrl
+        }"
             class="card-img-top img-fluid" alt="...">
         </div>
         <div class="card-body cbc text-center">
-          <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${
-            card.cat.split("__")[1]
-          }</h5>
+          <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${card.cat.split("__")[1]
+        }</h5>
         </div>
       </a>
     </div>
@@ -267,19 +263,18 @@ db.collection("sections")
       </div>
       `;
       } else {
-        let sub ='', child = '';
-        if(docData[card].subCat) {
+        let sub = '', child = '';
+        if (docData[card].subCat) {
           sub = docData[card].subCat.split("__")[0];
         }
-        if(docData[card].child) {
+        if (docData[card].child) {
           child = docData[card].child.split("__")[0];
         }
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3 revealOnScroll" data-animation="fadeInUp >
       <div class="top-grid-head">
         <div class="aside">
-          <a href="./Products/products.html?cat=${
-            docData[card].cat.split("__")[0]
+          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
           }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
@@ -354,20 +349,18 @@ db.collection("sections")
           return;
         }
         row += `
-          <a href="./Product/product.html?prod=${prod.id}&&cat=${
-          prodData.wholeCategory.split("__")[0]
-        }" class="item">
+          <a href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]
+          }" class="item">
             <div class="item-img">
               <img class="img-fluid" src="${prodData.mainImgUrl}" >
             </div>
             
               <div class="info">
                 <div class="stars">
-                  <h5 class="contactless"> Contactless delivery</h5>
+                  <h5 class="contactless"> </h5>
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
-          prodData.mrp
-        }</small></del></h4>
+                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp
+          }</small></del>&nbsp;<small style="color:green">(30% off)</small></h4>
                 <h5 class="name">${prodData.name}</h5>
                
               </div>
@@ -437,8 +430,7 @@ db.collection("sections")
         row += `
       <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3  revealOnScroll" data-animation="fadeInUp>
         <div class="aside">
-          <a href="./Products/products.html?cat=${
-            docData[card].cat.split("__")[0]
+          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
           }&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
@@ -487,7 +479,7 @@ db.collection("sections")
                 <div class="info">
                   <div class="stars">
                   </div>
-                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
+                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del>&nbsp;<small style="color:green">(30% off)</small></h4>
                   <h5 class="name">${prodData.name}</h5>
                 </div>
               </a>
@@ -599,9 +591,8 @@ db.collection("sections")
             <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
               <div class="info">
                 <div class="stars"></div>
-                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
-            prodData.mrp
-          }</small></del></h4>
+                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp
+            }</small></del>&nbsp;<small style="color:green">(30% off)</small></h4>
                 <h5 class="name">${prodData.name}</h5>
               </div>
             </a>
@@ -628,19 +619,18 @@ db.collection("sections")
       // console.log(docData[card]);
       // console.log(docData[card]);
       if (card != "title") {
-        let sub ='', child = '';
-        if(docData[card].subCat) {
+        let sub = '', child = '';
+        if (docData[card].subCat) {
           sub = docData[card].subCat.split("__")[0];
         }
-        if(docData[card].child) {
+        if (docData[card].child) {
           child = docData[card].child.split("__")[0];
         }
 
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
-          <a href="./Products/products.html?cat=${
-            docData[card].cat.split("__")[0]
+          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
           }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
@@ -738,18 +728,17 @@ db.collection("sections")
       // console.log(docData[card]);
       // console.log(docData[card]);
       if (card != "title") {
-        let sub ='', child = '';
-        if(card.subCat) {
+        let sub = '', child = '';
+        if (card.subCat) {
           sub = card.subCat.split("__")[0];
         }
-        if(card.child) {
+        if (card.child) {
           child = card.child.split("__")[0];
         }
         row += `
       <div class="col-lg-3 col-md-3 col-6 remove-padding">
         <div class="left">
-          <a href="./Products/products.html?cat=${
-            docData[card].cat.split("__")[0]
+          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
           }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
@@ -786,7 +775,7 @@ db.collection("sections")
           </a>
         </div>
       </div>
-      <div class="col-md-5 col-5" style="background: #fff; padding-top: 13px; padding-bottom: 13px;">
+      <div class="col-md-5 col-5" style="background: #fff; padding-top: 13px; padding-bottom: 13px;height:200px">
         <img src="` +
       docData.mainImg.imgUrl +
       `">
@@ -813,7 +802,7 @@ db.collection("sections")
       docData.mainImg.cat.split("__")[0] +
       `">
               <button type="button" class="btn btn-light" style="font-size: 15px;
-                    font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
+                    font-weight: 700; margin-top: 5px;margin-bottom:2%">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                   aria-hidden="true"></i></button>
             </a>
           </div>
@@ -907,7 +896,7 @@ db.collection("sections")
       docData.mainImg.cat.split("__")[0] +
       `">
           <button type="button" class="btn btn-light" style="font-size: 15px;
-                font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
+                font-weight: 700; margin-top: 5px; margin-bottom:2%">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
               aria-hidden="true"></i></button>
         </a>
       </div>
@@ -926,6 +915,7 @@ db.collection("sections")
         i.cat.split("__")[0] +
         `" style="position: relative;display: block;">
             <picture>
+            
               <img class="responsive-img lazyloaded"
                 src="` +
         i.imgUrl +
@@ -956,17 +946,27 @@ db.collection("sections")
 
     document.getElementById("speed").innerHTML = docData.title;
     for (let i of docData.subImgs) {
+      
       document.getElementById("img31").innerHTML +=
-        `
-    <div class="aside wes"
-    style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);">
-    <a class="banner-effect" href="abcd" target="_blank">
-      <img src="` +
-        i.imgUrl +
-        `" alt="">
-    </a>
-  </div>
-          `;
+      `
+      <div class=" col s2 "
+      style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
+      
+      <a href="./Products/products.html?cat=` +
+    i.cat.split("__")[0] +
+    `" style="position: relative;display: block;">
+        <picture>
+          <img class="responsive-imgSpeed lazyloaded" style="width:300px;  ;object-fit:cover"
+            src="` +
+    i.imgUrl +
+    `"
+            >
+        </picture>
+
+      
+      </a>
+    </div>
+      `;
     }
   });
 
@@ -1009,7 +1009,7 @@ db.collection("sections")
                 <div class="info">
                   <div class="stars">
                   </div>
-                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
+                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del>&nbsp;<small style="color:green">(30% off)</small></h4>
                   <h5 class="name">${prodData.name}</h5>
                 </div>
               </a>
@@ -1018,7 +1018,7 @@ db.collection("sections")
           `;
         });
     }
-    fixedSection10ViewAll.href=`./Products/products.html?cat=${t}`;
+    fixedSection10ViewAll.href = `./Products/products.html?cat=${t}`;
     fixedSection10Row.innerHTML = row;
   });
 
