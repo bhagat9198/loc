@@ -57,9 +57,10 @@
                               <table id="example1" class="table table-hover dt-responsive" cellspacing="0" width="100%">
                                 <thead>
                                   <tr>
-                                    <th>Name</th>
                                     <th>Slider Image</th>
                                     <th>Category</th>
+                                    <th>Sub Category</th>
+                                    <th>Child Category</th>
                                     <th>Midnight</th>
                                     <th>Daylight</th>
                                     <th>Status</th>
@@ -132,7 +133,21 @@
                               <div class="feature-area">
                                 <div class="row">
                                   <div class="col-lg-12">
-                                    <select id="categories" name="category-name">
+                                    <select id="categories" name="category-name" onchange="changeCat(event, this)">
+                                      <!-- <option selected disabled value="">Select Category</option>
+                                      <option value=" Cakes"> Cakes</option>
+                                      <option value=" Flowers"> Flowers </option> -->
+                                    </select>
+                                  </div>
+                                  <div class="col-lg-12">
+                                    <select id="subCategories" disabled name="sub-category-name" onchange="changeSubCat(event, this)">
+                                      <!-- <option selected disabled value="">Select Category</option>
+                                      <option value=" Cakes"> Cakes</option>
+                                      <option value=" Flowers"> Flowers </option> -->
+                                    </select>
+                                  </div>
+                                  <div class="col-lg-12">
+                                    <select id="childCategories" disabled name="child-category-name">
                                       <!-- <option selected disabled value="">Select Category</option>
                                       <option value=" Cakes"> Cakes</option>
                                       <option value=" Flowers"> Flowers </option> -->

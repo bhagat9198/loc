@@ -49,7 +49,7 @@ const extractImgURL = async (imgPath) => {
 };
 
 const extractProducts = async (data) => {
-  console.log(data);
+  // console.log(data);
   if (allCategories.includes(data)) {
     let tRows = "";
 
@@ -60,7 +60,7 @@ const extractProducts = async (data) => {
         let snapshotDocs = snapshot.docs;
         for (let doc of snapshotDocs) {
           let docData = doc.data();
-          console.log(docData);
+          // console.log(docData);
           let imgPath = "";
           // if (docData.mainImg) {
           //   imgPath = `${data}/${doc.id}/${docData.mainImg}`;
@@ -87,7 +87,7 @@ const extractProducts = async (data) => {
 addSectionFormHTML["section-category"].addEventListener("change", (e) => {
   let selectedCat;
   selectedCat = e.target.value;
-  console.log(selectedCat);
+  // console.log(selectedCat);
   extractProducts(selectedCat);
 });
 
@@ -119,13 +119,13 @@ addSectionFormHTML
   .querySelector("#img-banner")
   .addEventListener("change", (e) => {
     imgBanner = e.target.files[0];
-    console.log(imgBanner);
+    // console.log(imgBanner);
   });
 addSectionFormHTML
   .querySelector("#animation-banner")
   .addEventListener("change", (e) => {
     animationBanner = e.target.files[0];
-    console.log(animationBanner);
+    // console.log(animationBanner);
   });
 
 const addSection = (e) => {
@@ -139,7 +139,7 @@ const addSection = (e) => {
   let productsSelected = [];
 
   if (sectionType === "4") {
-    console.log(4);
+    // console.log(4);
     productsSelected = [];
     let t1 = addSectionFormHTML["product-tag-1"].value;
     let t2 = addSectionFormHTML["product-tag-2"].value;
@@ -174,15 +174,15 @@ const addSection = (e) => {
         imgNo: 4,
       });
     }
-    console.log(productsSelected);
+    // console.log(productsSelected);
   } else if (sectionType === "6") {
-    console.log(6);
+    // console.log(6);
     productsSelected = [];
     addSectionFormHTML
       .querySelectorAll("input[name='products-list']:checked")
       .forEach((prod) => {
-        console.log(prod);
-        console.log(prod.value);
+        // console.log(prod);
+        // console.log(prod.value);
         productsSelected.push({
           id: prod.value.substring(0, 20),
           category: prod.value.substring(22),
@@ -192,7 +192,7 @@ const addSection = (e) => {
       productsSelected.length = 6;
     }
   } else if (sectionType === "slider") {
-    console.log("slider");
+    // console.log("slider");
     productsSelected = [];
     addSectionFormHTML
       .querySelectorAll("input[name='products-list']:checked")
@@ -204,19 +204,19 @@ const addSection = (e) => {
         });
       });
   } else if (sectionType === "img") {
-    console.log("img");
+    // console.log("img");
     productsSelected = "";
     productsSelected = {
       img: imgBanner.name,
     };
   } else if (sectionType === "animation") {
-    console.log("animation");
+    // console.log("animation");
     productsSelected = "";
     productsSelected = {
       animation: animationBanner.name,
     };
   } else {
-    console.log("invalid");
+    // console.log("invalid");
   }
 
   let wholeSectionData = {
@@ -241,7 +241,6 @@ const addSection = (e) => {
         .collection("4cards")
         .add(data)
         .then((dataSaved) => {
-          console.log(dataSaved);
           dataId = dataSaved.id;
         })
         .catch((error) => {
@@ -255,7 +254,6 @@ const addSection = (e) => {
         .collection("6cards")
         .add(data)
         .then((dataSaved) => {
-          console.log(dataSaved);
           dataId = dataSaved.id;
         })
         .catch((error) => {
@@ -269,7 +267,6 @@ const addSection = (e) => {
         .collection("img")
         .add(data)
         .then((dataSaved) => {
-          console.log(dataSaved);
           dataId = dataSaved.id;
         })
         .catch((error) => {
@@ -283,7 +280,6 @@ const addSection = (e) => {
         .collection("slider")
         .add(data)
         .then((dataSaved) => {
-          console.log(dataSaved);
           dataId = dataSaved.id;
         })
         .catch((error) => {
@@ -297,7 +293,6 @@ const addSection = (e) => {
         .collection("animation")
         .add(data)
         .then((dataSaved) => {
-          console.log(dataSaved);
           dataId = dataSaved.id;
         })
         .catch((error) => {
@@ -305,13 +300,13 @@ const addSection = (e) => {
         });
       return { data: data, dataId: dataId };
     } else {
-      console.log("invalid");
+      // console.log("invalid");
     }
   }
 
   addSectionFun(wholeSectionData)
     .then(async (response) => {
-      console.log("done");
+      // console.log("done");
 
       if (response.data.type === "4") {
         let imgUrl;
@@ -345,7 +340,7 @@ const addSection = (e) => {
           await docRef.get().then(async (snapshot) => {
             let docData = snapshot.data();
             docData.card[counter].imgUrl = imgUrl;
-            console.log(docData);
+            // console.log(docData);
 
             await docRef.update(docData);
           });
@@ -363,30 +358,30 @@ const addSection = (e) => {
         await docRef.get().then(async (snapshot) => {
           let docData = snapshot.data();
           docData.card.imgUrl = imgUrl;
-          console.log(docData);
+          // console.log(docData);
 
           await docRef.update(docData);
         });
       } else if (response.data.type === "animation") {
-        console.log(response.data.card.animation);
+        // console.log(response.data.card.animation);
         await firebaseStorage
           .ref(`sections/animation/animation/${response.dataId}/${response.data.card.animation}`)
           .put(animationBanner);
-        console.log(animationBanner);
+        // console.log(animationBanner);
         let animationUrl = await extractImgURL(
           `sections/animation/animation/${response.dataId}/${response.data.card.animation}`
         );
-        console.log(animationUrl);
+        // console.log(animationUrl);
         let docRef = await db.collection("sections").doc('animation').collection('animation').doc(response.dataId);
         await docRef.get().then(async (snapshot) => {
           let docData = snapshot.data();
           docData.card.animationUrl = animationUrl;
-          console.log(docData);
+          // console.log(docData);
 
           await docRef.update(docData);
         });
       }
-      console.log("done");
+      // console.log("done");
       addSectionFormHTML.reset();
     })
     .catch((error) => {

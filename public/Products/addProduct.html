@@ -28,12 +28,14 @@
   .dropdown-item {
     color: black !important;
   }
-  .dropdown-item a{
+
+  .dropdown-item a {
     color: red !important;
     background-color: red !important;
   }
 </style>
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" >
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <section id="admin-nav-load"></section>
   <div class="wrapper">
     <section class="wrapper" style="width: 99% !important;">
@@ -64,8 +66,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input type="text" class="input-field" placeholder="Enter Product Name"
-                              name="product-name">
+                            <input type="text" class="input-field" placeholder="Enter Product Name" name="product-name">
                           </div>
                         </div>
 
@@ -79,13 +80,14 @@
                           <div class="col-lg-12">
                             <div class="row">
                               <div class="col-lg-10">
-                                <input type="text" class="input-field" placeholder="Enter Product Type (Bestseller, Hot)" name="product-type">
+                                <input type="text" class="input-field"
+                                  placeholder="Enter Product Type (Bestseller, Hot)" name="product-type">
                               </div>
                               <div class="col-lg-1">
-                                <input name="product-type-color-start" type="color" >
+                                <input name="product-type-color-start" type="color">
                               </div>
                               <div class="col-lg-1">
-                                <input name="product-type-color-end" type="color" >
+                                <input name="product-type-color-end" type="color">
                               </div>
                             </div>
                           </div>
@@ -98,8 +100,8 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input type="text" class="input-field" placeholder="Enter Product Sku"
-                              name="product-sno" value="LOC">
+                            <input type="text" class="input-field" placeholder="Enter Product Sku" name="product-sno"
+                              value="LOC">
                           </div>
                         </div>
 
@@ -183,7 +185,7 @@
                                       <div class="price-container">
                                         <span class="price-curr">₹</span>
                                         <input type="text" class="input-field price-input" id="cake-prevPrice-half"
-                                          name="cake-prevPrice-half" placeholder="Previous Price" >
+                                          name="cake-prevPrice-half" placeholder="Previous Price">
                                       </div>
                                     </div>
                                   </div>
@@ -435,8 +437,6 @@
                                 </div>
                               </div>
                             </div>
-
-
                           </div>
 
                           <div class="row">
@@ -553,10 +553,7 @@
                                     <label class="custom-control-label" for="cake-flavour-pineapple">Pineapple</label>
                                   </div>
                                 </div>
-
                               </div>
-
-
                               <div class="row mb-0 option-row">
                                 <div class="col-lg-5">
                                   <div class="custom-control custom-checkbox">
@@ -565,7 +562,25 @@
                                     <label class="custom-control-label" for="cake-flavour-strawberry">Strawberry</label>
                                   </div>
                                 </div>
+                              </div>
+                            </div>
+                          </div>
 
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Is It Fondant Cake?*</h4>
+                              </div>
+                            </div>
+                            <div id="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-type-fondant" name="cake-type-fondant"
+                                      value="fondant" class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-type-fondant">Yes</label>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -585,7 +600,7 @@
                               placeholder="INR" min="0">
                           </div>
                         </div>
-                        <div class="row"  >
+                        <div class="row">
                           <div class="col-lg-12">
                             <div class="left-area">
                               <h4 class="heading">
@@ -622,8 +637,8 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input name="product-total-price" readonly id="product-total-price" type="text" class="input-field"
-                              placeholder="INR" min="0">
+                            <input name="product-total-price" readonly id="product-total-price" type="text"
+                              class="input-field" placeholder="INR" min="0">
                           </div>
                         </div>
                       </div>
@@ -661,32 +676,23 @@
                                 <h4 class="heading">Main Display Image*</h4>
                               </div>
                             </div>
-
                             <div class="col-lg-12">
                               <div class="panel panel-body">
                                 <div class="span4  text-center" id="landscape"
                                   style="width: 100%; height: 285px; border: 1px dashed #ddd; background: #f1f1f1;border-radius: 5px;">
-                                  <input type='file' accept="image/*" name="product-main-image"
-                                    id="product-main-image" onchange="readURL(this);" />
+                                  <input type='file' accept="image/*" name="product-main-image" id="product-main-image"
+                                    onchange="readURL(this);" />
                                   <img id="putImage" src="../assets/images/logo.png" alt="your image" />
                                 </div>
                               </div>
                             </div>
                           </div>
-
                           <br>
-
-
                         </div>
-
                       </div>
-
                     </div>
-
                   </div>
-
                 </div>
-
               </div>
               <div class="row">
                 <input type="file" name="product-sub-imgs" class="hidden" id="product-sub-imgs" accept="image/*"
@@ -884,7 +890,7 @@
     $('#admin-footer-load').load('/Common/footer.html');
   </script>
   <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- 
+  <!-- 
   <script src="../assets/js/demo.js"></script> -->
   <script src="../assets/js/tagger.js"></script>
   <!-- <script src="../assets/js/bootstrap.min.js"></script> -->
@@ -922,7 +928,8 @@
           '<input type="hidden" value="' + i + '">' +
           '</span>' +
           '<a href="' + URL.createObjectURL(event.target.files[i]) + '" target="_blank">' +
-          '<img src="' + URL.createObjectURL(event.target.files[i]) + '" alt="gallery image" style="width:300px;object-fit:cover">' +
+          '<img src="' + URL.createObjectURL(event.target.files[i]) +
+          '" alt="gallery image" style="width:300px;object-fit:cover">' +
           '</a>' +
           '</div>' +
           '</div> '
@@ -939,17 +946,17 @@
     tagger(document.querySelector('[name="product-tag"]'), {
       allow_spaces: true,
       allow_duplicates: false,
-      link: function () { return false; }
+      link: function () {
+        return false;
+      }
     });
-
-
   </script>
 
   <script>
     document.getElementById("product-category").addEventListener('change', function (e) {
       var val = document.querySelector('#product-category').value;
       // console.log(val);
-      if (val.toUpperCase().includes('CAKE')) {
+      if (val.toUpperCase().includes('CAKE') || val.toUpperCase().includes('COMBO')) {
         document.getElementById("cake-attributes").style.display = "block"
         // document.querySelectorAll(".cake-attributes1").forEach(el => {
         //   el.style.display = "none";

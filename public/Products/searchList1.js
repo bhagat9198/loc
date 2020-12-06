@@ -23,10 +23,9 @@ const addSearchList = (e) => {
     SubCategory: subCat,
     id: new Date().valueOf()
   }
-  console.log(data);
   searchListArr.push(data);
   // dbRef.get().then()
-  console.log(searchListArr);
+  // console.log(searchListArr);
   dbRef.update('Details', searchListArr);
   displaySearchLists();
 };
@@ -78,7 +77,7 @@ const displaySearchLists = () => {
 
 const deleteSearchItem = e => {
   let index = e.target.dataset.index;
-  console.log(index);
+  // console.log(index);
 
   searchListArr.splice(+index, 1);
   displaySearchLists();

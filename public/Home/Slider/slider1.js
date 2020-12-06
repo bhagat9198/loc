@@ -16,7 +16,7 @@ db.collection('categories').onSnapshot(catSnaps => {
   let options = `<option selected disabled value="">Select Category</option>`;
   catDocs.map(c => {
     let cData = c.data();
-    allCatArr.push({docId: c.id, catName: cData.name});
+    allCatArr.push({docId: c.id, data: cData, });
     options += `<option value="${c.id}"> ${cData.name}</option>`;
   })
   categoriesHTML.innerHTML = options;
@@ -61,17 +61,44 @@ const displayRows = async (docs) => {
     }
     let imgUrl = await extractImgURL(`sliders/${docId}/${docData.img}`);
     let catName = '';
+    let subCatName = '';
+    let childCatName = '';
     for(let c of allCatArr) {
       if(c.docId == docData.cat) {
-        catName = c.catName;
+        console.log(c);
+        catName = c.data.name;
+        if(docData.subCat) {
+          for(let sc of c.data.subCategory) {
+            if(sc.id == docData.subCat) {
+              subCatName  = sc.name;
+
+              if(docData.childCat) {
+                for(let cc of sc.childCategories) {
+                  if(cc.id == docData.childCat) {
+                    childCatName = cc.name;
+                    break;
+                  }
+                }
+              } else {
+                childCatName = 'Not Selected';
+                break;
+              }
+            }
+          }
+        } else {
+          subCatName = 'Not Selected';
+          childCatName = 'Not Selected';
+          break;
+        }
         break;
       }
     }
     tRows += `
     <tr role="row" class="odd parent">
-      <td tabindex="0">${docData.title}<br></td>
       <td><img src="${imgUrl}"></td>
       <td>${catName}</td>
+      <td>${subCatName}</td>
+      <td>${childCatName}</td>
       <td>${docData.midnight ? 'Selected' : 'Not Selected'}</td>
       <td>${docData.daylight ? 'Selected' : 'Not Selected'}</td>
       <td>
@@ -141,11 +168,13 @@ const addSlider = (e) => {
   e.preventDefault();
   const title = addSliderFormHTML["slider-name"].value;
   const catId = addSliderFormHTML['category-name'].value;
+  const subCatId = addSliderFormHTML['sub-category-name'].value;
+  const childCatId = addSliderFormHTML['child-category-name'].value;
   // const midnight = addSliderFormHTML['midnight'].value;
   // const daylight = addSliderFormHTML['daylight'].value;
   const imgName = `${Math.random()}__${sliderImg.name}`;
 
-  console.log(catId, typeof(midnight), midnight, daylight);
+  // console.log(catId, typeof(midnight), midnight, daylight);
   let midnightState = false;
   let daylightState = false;
   if(addSliderFormHTML.querySelector('input[name=midnight]:checked')) {
@@ -155,12 +184,14 @@ const addSlider = (e) => {
     daylightState = true;
   }
 
-  console.log(midnightState);
+  // console.log(midnightState);
 
   const wholdeSliderData = {
     title: title,
     img: imgName,
     cat: catId,
+    subCat: subCatId,
+    childCat: childCatId,
     midnight: midnightState,
     daylight: daylightState
   };
@@ -177,24 +208,24 @@ const addSlider = (e) => {
     return { data: data, docId: docId };
   };
   addSliderReq(wholdeSliderData)
-    .then(async (response) => {
-      await storageService
-        .ref(`sliders/${response.docId}/${response.data.img}`)
-        .put(sliderImg);
-      let imgUrl;
-      imgUrl = await extractImgURL(`sliders/${response.docId}/${response.data.img}`);
-      const docRef = db.collection('sliders').doc(response.docId);
-      docRef.get().then(snapshot => {
-        let docData = snapshot.data();
-        docData.imgUrl = imgUrl;
-        docRef.update(docData);
-      })
-      addSliderFormHTML.reset();
-      sliderImg = null;
+  .then(async (response) => {
+    await storageService
+      .ref(`sliders/${response.docId}/${response.data.img}`)
+      .put(sliderImg);
+    let imgUrl;
+    imgUrl = await extractImgURL(`sliders/${response.docId}/${response.data.img}`);
+    const docRef = db.collection('sliders').doc(response.docId);
+    docRef.get().then(snapshot => {
+      let docData = snapshot.data();
+      docData.imgUrl = imgUrl;
+      docRef.update(docData);
     })
-    .catch((error) => {
-      console.log(error);
-    });
+    addSliderFormHTML.reset();
+    sliderImg = null;
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 };
 addSliderFormHTML.addEventListener("submit", addSlider);
 
@@ -203,3 +234,50 @@ sliderFileHTML.addEventListener("change", (e) => {
   // console.log(sliderImg);
 });
 
+const changeCat = (e, current) => {
+  let val = current.value;
+  // console.log(val);
+  addSliderFormHTML.querySelector('#subCategories').disabled = false;
+  for(c of allCatArr) {
+    // console.log(c);
+    if(c.docId == val) {
+      addSliderFormHTML.querySelector('#subCategories').dataset.catId = val;
+      let subOptions = `<option selected disabled value="">Select Category</option>`;
+      c.data.subCategory.map(sc => {
+        console.log(sc);
+        subOptions += `
+        <option value="${sc.id}"> ${sc.name}</option>
+        `;
+      })
+      addSliderFormHTML.querySelector('#subCategories').innerHTML = subOptions;
+      break;
+    }
+  }
+}
+
+const changeSubCat = (e, current) => {
+  let val = current.value;
+  addSliderFormHTML.querySelector('#childCategories').disabled = false;
+  // console.log(current.dataset);
+  let catId = current.dataset.catId;
+  for(c of allCatArr) {
+    // console.log(c);
+    let childOptions = '';
+    // console.log(c.docId, catId);
+    if(c.docId == catId) {
+      for(let sc of c.data.subCategory) {
+        // console.log(sc.id, val);
+        if(sc.id == val) {
+          childOptions = `<option selected disabled value="">Select Category</option>`;
+          for(let cc of sc.childCategories) {
+            childOptions += `
+              <option value="${cc.id}"> ${cc.name}</option>
+            `;
+          }
+          break;
+        }
+      }
+      addSliderFormHTML.querySelector('#childCategories').innerHTML = childOptions;
+    }
+  }
+}

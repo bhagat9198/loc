@@ -72,7 +72,7 @@ const changeCat = (e, current) => {
   for (let c of allCategories) {
     let cId = val.split("__")[0];
     if (c.docId === cId) {
-      console.log(c);
+      // console.log(c);
       options =
         '<option value="" selected disabled>Select From the List</option>';
       for (let sc of c.data.subCategory) {
@@ -123,7 +123,7 @@ const extractImgUrl = async (imgPath) => {
     .ref(imgPath)
     .getDownloadURL()
     .then((url) => {
-      console.log(url);
+      // console.log(url);
       imgUrl = url;
     })
     .catch((error) => {
@@ -204,7 +204,7 @@ const form1 = async (e) => {
   if (f1File1) {
     f1name = `${Math.random()}__${f1File1.name}`;
     await storageService.ref(`sections/fixed1/${f1name}`).put(f1File1);
-    console.log(f1name);
+    // console.log(f1name);
     img1Url = await extractImgUrl(`sections/fixed1/${f1name}`);
   }
   if (f1File2) {
@@ -258,7 +258,7 @@ const form1 = async (e) => {
       img: f4name,
       imgUrl: img4Url,
     };
-    console.log(docData);
+    // console.log(docData);
     await docRef.update(docData);
     displayForm1();
     // console.log("updated");
@@ -384,9 +384,9 @@ const form2 = async (e) => {
   let docRef = await db.collection("sections").doc("fixed2");
 
   await docRef.get().then((doc) => {
-    console.log(doc);
+    // console.log(doc);
     let docData = doc.data();
-    console.log(docData);
+    // console.log(docData);
     if (docData.card1) {
       if (docData.card1.img) {
         imgName1 = docData.card1.img;
@@ -510,11 +510,11 @@ const form2 = async (e) => {
 
   if (iconImg2) {
     imgName2 = `${Math.random()}__${iconImg2.name}`;
-    console.log(imgName2);
+    // console.log(imgName2);
     await storageService.ref(`sections/fixed2/${imgName2}`).put(iconImg2);
-    console.log(imgName2);
+    // console.log(imgName2);
     iconUrl2 = await extractImgUrl(`sections/fixed2/${imgName2}`);
-    console.log(iconUrl2);
+    // console.log(iconUrl2);
   }
 
   if (iconImg3) {
@@ -612,19 +612,19 @@ const form2 = async (e) => {
       cat: c8,
       priority: p8,
     };
-    console.log(docData);
+    // console.log(docData);
     await docRef.update(docData);
-    console.log("updated");
+    // console.log("updated");
   });
 
-  console.log("done");
+  // console.log("done");
 };
 
 fForm2HTML.addEventListener("submit", form2);
 
 const iconChange1 = (e) => {
   iconImg1 = e.target.files[0];
-  console.log(iconImg1);
+  // console.log(iconImg1);
 };
 
 const iconChange2 = (e) => {
@@ -862,12 +862,12 @@ const form3 = async (e) => {
       img: f4name,
       imgUrl: img4Url,
     };
-    console.log(docData);
+    // console.log(docData);
     await docRef.update(docData);
     displayForm3();
-    console.log("updated");
+    // console.log("updated");
   });
-  console.log("done");
+  // console.log("done");
 };
 
 fForm3HTML.addEventListener("submit", form3);
@@ -995,19 +995,19 @@ const form4 = async (e) => {
       });
   }
 
-  console.log(userInputs);
+  // console.log(userInputs);
 
   await docRef.get().then(async (snapshot) => {
     let docData = snapshot.data();
-    console.log(docData);
+    // console.log(docData);
     docData.prodIds = userInputs;
     docData.title = f4Title;
-    console.log(docData);
+    // console.log(docData);
     await docRef.update(docData);
-    console.log("updated");
+    // console.log("updated");
   });
 
-  console.log("done");
+  // console.log("done");
 };
 
 fForm4HTML.addEventListener("submit", form4);
@@ -1146,9 +1146,9 @@ const form5 = async (e) => {
   const t6 = fForm5HTML["f5-t6"].value;
 
   if (f5File1) {
-    console.log(f5File1);
+    // console.log(f5File1);
     f1name = `${Math.random()}__${f5File1.name}`;
-    console.log(f1name);
+    // console.log(f1name);
     await storageService.ref(`sections/fixed5/${f1name}`).put(f5File1);
     img1Url = await extractImgUrl(`sections/fixed5/${f1name}`);
   }
@@ -1229,12 +1229,12 @@ const form5 = async (e) => {
       img: f6name,
       imgUrl: img6Url,
     };
-    console.log(docData);
+    // console.log(docData);
     await docRef.update(docData);
     displayForm5();
-    console.log("updated");
+    // console.log("updated");
   });
-  console.log("done");
+  // console.log("done");
 };
 
 fForm5HTML.addEventListener("submit", form5);
@@ -1476,10 +1476,10 @@ const form7 = async (e) => {
     docData.prodIds = userInputs;
     docData.title = f7Title;
     await docRef.update(docData);
-    console.log("updated");
+    // console.log("updated");
   });
 
-  console.log("done");
+  // console.log("done");
 };
 
 fForm7HTML.addEventListener("submit", form7);
@@ -1639,12 +1639,12 @@ const form8 = async (e) => {
       img: f4name,
       imgUrl: img4Url,
     };
-    console.log(docData);
+    // console.log(docData);
     await docRef.update(docData);
     displayForm8();
-    console.log("updated");
+    // console.log("updated");
   });
-  console.log("done");
+  // console.log("done");
 };
 
 fForm8HTML.addEventListener("submit", form8);
@@ -1773,19 +1773,19 @@ const form10 = async (e) => {
       });
   }
 
-  console.log(userInputs);
+  // console.log(userInputs);
 
   await docRef.get().then(async (snapshot) => {
     let docData = snapshot.data();
-    console.log(docData);
+    // console.log(docData);
     docData.prodIds = userInputs;
     docData.title = f4Title;
-    console.log(docData);
+    // console.log(docData);
     await docRef.update(docData);
-    console.log("updated");
+    // console.log("updated");
   });
 
-  console.log("done");
+  // console.log("done");
 };
 
 fForm10HTML.addEventListener("submit", form10);
@@ -1949,12 +1949,12 @@ const form9 = async (e) => {
       img: f4name,
       imgUrl: img4Url,
     };
-    console.log(docData);
+    // console.log(docData);
     await docRef.update(docData);
     displayForm9();
-    console.log("updated");
+    // console.log("updated");
   });
-  console.log("done");
+  // console.log("done");
 };
 
 fForm9HTML.addEventListener("submit", form9);
@@ -2087,7 +2087,7 @@ const fForm4Img1 = async (e) => {
   }
   if (f4Imgs1file3) {
     img3 = `${Math.random()}__${f4Imgs1file3.name}`;
-    console.log(f4Imgs1file3);
+    // console.log(f4Imgs1file3);
     await storageService.ref(`sections/img41/${img3}`).put(f4Imgs1file3);
     await storageService
       .ref(`sections/img41/${img3}`)
@@ -2162,7 +2162,7 @@ const fForm4Img1 = async (e) => {
         active: true,
       };
     }
-    console.log(img4Data);
+    // console.log(img4Data);
     dbImg4Ref.update(img4Data);
     fForm4Imgs1HTML.reset();
   });
@@ -2200,7 +2200,7 @@ db.collection("sections")
   .doc("img41")
   .onSnapshot((img41Doc) => {
     let img41Data = img41Doc.data();
-    console.log(img41Data);
+    // console.log(img41Data);
     fForm4Imgs1HTML["f4img1-title"].value = img41Data.title;
     if (img41Data.mainImg) {
       fForm4Imgs1HTML.querySelector("#f4img1-img0").src =
@@ -2306,7 +2306,7 @@ const fForm4Img2 = async (e) => {
   }
   if (f4Imgs2file3) {
     img3 = `${Math.random()}__${f4Imgs2file3.name}`;
-    console.log(f4Imgs1file3);
+    // console.log(f4Imgs1file3);
     await storageService.ref(`sections/img42/${img3}`).put(f4Imgs2file3);
     await storageService
       .ref(`sections/img42/${img3}`)
@@ -2381,7 +2381,7 @@ const fForm4Img2 = async (e) => {
         active: true,
       };
     }
-    console.log(img4Data);
+    // console.log(img4Data);
     dbImg4Ref.update(img4Data);
     fForm4Imgs2HTML.reset();
   });
@@ -2419,7 +2419,7 @@ db.collection("sections")
   .doc("img42")
   .onSnapshot((img42Doc) => {
     let img42Data = img42Doc.data();
-    console.log(img42Data);
+    // console.log(img42Data);
     fForm4Imgs2HTML["f4img2-title"].value = img42Data.title;
     if (img42Data.mainImg) {
       fForm4Imgs2HTML.querySelector("#f4img2-img0").src =
@@ -2507,7 +2507,7 @@ const fForm3Img1 = async (e) => {
   }
   if (f3Imgs1file3) {
     img3 = `${Math.random()}__${f3Imgs1file3.name}`;
-    console.log(f4Imgs1file3);
+    // console.log(f4Imgs1file3);
     await storageService.ref(`sections/img31/${img3}`).put(f3Imgs1file3);
     await storageService
       .ref(`sections/img31/${img3}`)
@@ -2550,7 +2550,7 @@ const fForm3Img1 = async (e) => {
         active: true,
       };
     }
-    console.log(img3Data);
+    // console.log(img3Data);
     dbImg4Ref.update(img3Data);
     fForm3Imgs1HTML.reset();
   });
@@ -2578,7 +2578,7 @@ db.collection("sections")
   .doc("img31")
   .onSnapshot((img31Doc) => {
     let img31Data = img31Doc.data();
-    console.log(img31Data);
+    // console.log(img31Data);
     fForm3Imgs1HTML["f3img1-title"].value = img31Data.title;
     if (img31Data.subImgs.length > 0) {
       if (img31Data.subImgs[0]) {
@@ -2602,4 +2602,4 @@ db.collection("sections")
     }
   });
 
-///////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

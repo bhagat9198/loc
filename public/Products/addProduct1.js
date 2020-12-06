@@ -1,4 +1,4 @@
-console.log("AddProduct1.js");
+// console.log("AddProduct1.js");
 
 const db = firebase.firestore();
 
@@ -97,7 +97,7 @@ const displayChildCategory = async (data, elHTML) => {
   // console.log(docId);
   // scId = data.substring(22, 38);
   scId = data.split('__')[1];
-  console.log(scId);
+  // console.log(scId);
 
   let dbRef = await db.collection("categories").doc(docId);
 
@@ -173,7 +173,6 @@ productSubCategoryHTML.addEventListener("change", (e) => {
 //   });
 
 const addProductForm = (event) => {
-  console.log(event);
 
   document.getElementById("successProduct").style.display = "block";
   document.getElementById("successProduct").innerHTML = "Please wait ...Adding the product  &#128513;";
@@ -229,12 +228,12 @@ const addProductForm = (event) => {
   // });
 
   productTags = addProduct["product-tag"].value;
-  console.log(productTags);
+  // console.log(productTags);
 
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
 
-  if (productCategory.toUpperCase().includes("CAKE")) {
+  if (productCategory.toUpperCase().includes("CAKE") || productCategory.toUpperCase().includes("COMBO")) {
     addProduct
       .querySelectorAll('input[name="cake-weight"]')
       .forEach((weight) => {
@@ -242,7 +241,7 @@ const addProductForm = (event) => {
           if (weight.value == "half") {
             weightPrice = addProduct["cake-price-half"].value;
             weightPrevPrice = addProduct["cake-prevPrice-half"].value;
-            console.log(weightPrice);
+            // console.log(weightPrice);
           } else if (weight.value === "one") {
             weightPrice = addProduct["cake-price-one"].value;
             weightPrevPrice = addProduct["cake-prevPrice-one"].value;
@@ -314,6 +313,10 @@ const addProductForm = (event) => {
     productSubImgs = [...subImgs].map((img) => `${Math.random()}_${img.name}`);
   }
 
+  let fondant = 'false'; 
+  if(addProduct.querySelectorAll('input[name="cake-type-fondant"]:checked')) {
+    fondant = 'true';
+  }
 
   let wholeProduct = {
     name: productName,
@@ -336,21 +339,23 @@ const addProductForm = (event) => {
     isActivated: true,
   };
 
-  if (productCategory.toUpperCase().includes("CAKES")) {
+  
+  if (productCategory.toUpperCase().includes("CAKES") || productCategory.toUpperCase().includes("COMBO")) {
     wholeProduct.weights = cakeWeights || "";
     wholeProduct.shapes = cakeShapes || "";
     wholeProduct.type = cakeType || "";
     wholeProduct.flavours = cakeFlavours || "";
+    wholeProduct.fondant = fondant;
   }
 
-  console.log(wholeProduct);
+  // console.log(wholeProduct);
   // let c = wholeProduct.wholeSubCategory.substring(43);
   // console.log(c);
   // let cc = wholeProduct.wholeChildCategory.substring(63);
   // console.log(cc);
 
   async function addProductFun(data) {
-    console.log(data);
+    // console.log(data);
     // console.log(data.category, typeof data.category);
     let dataId, prodData;
     await db
@@ -412,7 +417,7 @@ const addProductForm = (event) => {
           `${response.prodData.wholeCategory.split('__')[0]}/${response.dataId}/${response.prodData.mainImg}`
         );
       }
-      console.log(mainUrl);
+      // console.log(mainUrl);
       let subUrls = [];
       if (subImgs) {
         counter = -1;
@@ -427,7 +432,7 @@ const addProductForm = (event) => {
           subUrls.push(url);
         }
       }
-      console.log(subUrls);
+      // console.log(subUrls);
 
       let docRef = await db
         .collection(`${response.prodData.wholeCategory.split('__')[0]}`)
@@ -459,7 +464,7 @@ const addProductForm = (event) => {
       const searchRef = db.collection("miscellaneous").doc("searchProds");
       searchRef.get().then(async (seachDoc) => {
         let searchData = seachDoc.data();
-        console.log(searchData);
+        // console.log(searchData);
         let searchName = {
           name: response.prodData.name,
           cat: response.prodData.wholeCategory.split('__')[0],
@@ -474,7 +479,7 @@ const addProductForm = (event) => {
         //   type: "prodId",
         //   prodId: response.dataId,
         // };
-        console.log(response.prodData);
+        // console.log(response.prodData);
         // if(response.prodData.tags) {
         //   response.prodData.tags.split(",").map((tt) => {
         //     let tagFlag = 0;
@@ -518,7 +523,7 @@ const addProductForm = (event) => {
           // }
         }
 
-        console.log(searchData);
+        // console.log(searchData);
         searchRef.update(searchData);
         // location.reload();
       });
@@ -550,13 +555,13 @@ addProduct.addEventListener("keypress", addProductFormNotSubmit);
 
 const uploadMainImg = (e) => {
   mainImg = e.target.files[0];
-  console.log(mainImg);
+  // console.log(mainImg);
 };
 productMainImgHandler.addEventListener("change", uploadMainImg);
 
 const uploadSubImgs = (e) => {
   subImgs = e.target.files;
-  console.log(subImgs);
+  // console.log(subImgs);
 };
 productSubImgsHandler.addEventListener("change", uploadSubImgs);
 
@@ -572,7 +577,7 @@ const calculate = (e) => {
     // console.log(typeof(+sp.value), typeof(+gst.value));
     total.value = Math.round(+sp.value + (+sp.value * +(gst.value/100)));
     // total.innerHTML = +sp * (+sp + +gst*100);
-    console.log(+sp * (+sp + +gst*100));
+    // console.log(+sp * (+sp + +gst*100));
   }
 
 };

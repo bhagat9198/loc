@@ -1,4 +1,4 @@
-console.log("viewproduct1.js");
+// console.log("viewproduct1.js");
 
 const storageService = firebase.storage();
 const db = firebase.firestore();
@@ -150,7 +150,7 @@ const changeStatus = (e, current) => {
     .doc(docId)
     .update("isActivated", current.value)
     .then(() => {
-      console.log("state updated");
+      // console.log("state updated");
     })
     .catch((error) => {
       alert("Error : ", error);
@@ -158,7 +158,7 @@ const changeStatus = (e, current) => {
 };
 
 const deleteProduct = (e) => {
-  console.log(e);
+  // console.log(e);
   let answer = confirm("Are you sure you want to delete the product?");
   if (answer) {
     let docId = e.target.dataset.id;
@@ -171,16 +171,16 @@ const deleteProduct = (e) => {
       .then((doc) => {
         let docData = doc.data();
         prodData = docData;
-        console.log(docData.mainImg);
+        // console.log(docData.mainImg);
         return storageService
           .ref(`${catId}/${docId}/${docData.mainImg}`)
           .delete();
       })
       .then(async (mainImgDelete) => {
-        console.log(mainImgDelete);
-        console.log(prodData);
+        // console.log(mainImgDelete);
+        // console.log(prodData);
         for (let subImg of prodData.subImgs) {
-          console.log(subImg);
+          // console.log(subImg);
           await storageService.ref(`${catId}/${docId}/${subImg}`).delete();
         }
         return docRef.delete();
@@ -318,7 +318,7 @@ const extractDetails = async (e, current) => {
       // console.log(snapshot);
       // console.log(snapshot.data());
       let doc = snapshot.data();
-      console.log(doc);
+      // console.log(doc);
       let catId = doc.wholeCategory.split("__")[0];
       let scatId = doc.wholeSubCategory.split("__")[1];
       let ccatId = doc.wholeChildCategory.split("__")[2];
@@ -339,15 +339,15 @@ const extractDetails = async (e, current) => {
       let imgsPath = [];
       let url = await extractImgUrl(`${catId}/${snapshot.id}/${doc.mainImg}`);
       imgsPath.push(url);
-      console.log(imgsPath);
+      // console.log(imgsPath);
 
       for (let i of doc.subImgs) {
-        console.log(i);
+        // console.log(i);
         url = await extractImgUrl(`${catId}/${snapshot.id}/${i}`);
         imgsPath.push(url);
       }
 
-      console.log(imgsPath);
+      // console.log(imgsPath);
       pImgsHTML.innerHTML = "";
       imgsPath.map((i) => {
         pImgsHTML.innerHTML += `
@@ -379,7 +379,7 @@ const productChildCategoryHTML = editProduct.querySelector(
 // const allAddonsHTML = editProduct.querySelector("#all-addons");
 
 const catSelect = async (data) => {
-  console.log(data);
+  // console.log(data);
 
   await db
     .collection("categories")
@@ -497,7 +497,7 @@ const editDetails = async (e) => {
     .get()
     .then(async (snapshot) => {
       
-      console.log(snapshot);
+      // console.log(snapshot);
       let doc = snapshot.data();
       editProductDetails = doc;
       editProductId = snapshot.id;
@@ -521,17 +521,17 @@ const editDetails = async (e) => {
       await catSelect(wcat);
       await subCatSelect(wscat);
       await childCatSelect(ccat);
-      if (doc.wholeCategory.toUpperCase().includes("CAKE")) {
+      if (doc.wholeCategory.toUpperCase().includes("CAKE") || doc.wholeCategory.toUpperCase().includes("COMBO")) {
         document.getElementById("cake-attributes").style.display = "block";
         if (doc.weights) {
           doc.weights.map((weight) => {
-            console.log(weight);
+            // console.log(weight);
             if (weight.cakeWeight === "half") {
               editProduct["cake-weight-half"].checked = true;
               editProduct["cake-price-half"].value = weight.weightPrice;
               editProduct["cake-prevPrice-half"].value = weight.weightPrevPrice;
-              console.log(editProduct);
-              console.log(editProduct["cake-prevPrice-half"].value);
+              // console.log(editProduct);
+              // console.log(editProduct["cake-prevPrice-half"].value);
             } else if (weight.cakeWeight === "one") {
               editProduct["cake-weight-one"].checked = true;
               editProduct["cake-price-one"].value = weight.weightPrice;
@@ -563,7 +563,7 @@ const editDetails = async (e) => {
               editProduct["cake-price-six"].value = weight.weightPrice;
               editProduct["cake-prevPrice-six"].value = weight.weightPrevPrice;
             } else {
-              console.log("unknown");
+              // console.log("unknown");
             }
           });
         }
@@ -591,10 +591,13 @@ const editDetails = async (e) => {
               } else if (flav == "Pineapple") {
                 editProduct["cake-flavour-pineapple"].checked = true;
               } else {
-                console.log("invalid");
+                // console.log("invalid");
               }
             });
           }
+        }
+        if(doc.fondant === 'true') {
+          editProduct["cake-type-fondant"].checked = true;
         }
       } else {
         document.getElementById("cake-attributes").style.display = "none";
@@ -672,14 +675,20 @@ const editDetails = async (e) => {
       ) {
         doc.policy = doc.policy.replace(new RegExp("<p><br></p>$"), "");
       }
-      $("#productDesc").summernote("editor.pasteHTML", doc.descriptions);
+      if(!doc.descriptions === '<p><br></p>') {
+        $("#productDesc").summernote("editor.pasteHTML", doc.descriptions);
+      }
+
+      if(!doc.policy === '<p><br></p>') {
+        $("#productPolicy").summernote("editor.pasteHTML", doc.policy);
+      }
 
       // $('#productPolicy').reset();
-      $("#productPolicy").summernote("editor.pasteHTML", doc.policy);
+      // $("#productPolicy").summernote("editor.pasteHTML", doc.policy);
       // document.getElementById("setCat").value = "HELOO";
       // $('#setCat').tagsinput('removeAll');
       document.getElementById("setCat").value = doc.tags;
-      alert(doc.tags)
+      // alert(doc.tags)
       //# sourceMappingURL=bootstrap-tagsinput.min.js.
       // editProduct["product-tag"].value = doc.tags;
 
@@ -766,12 +775,12 @@ const submitEditForm = (event) => {
   // });
 
   productTags = editProduct.querySelector('input[name="product-tag"]').value;
-  console.log(productTags);
+  // console.log(productTags);
 
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
 
-  if (productCategory.toUpperCase().includes("CAKE")) {
+  if (productCategory.toUpperCase().includes("CAKE") || productCategory.toUpperCase().includes("COMBO")) {
     editProduct
       .querySelectorAll('input[name="cake-weight"]')
       .forEach((weight) => {
@@ -780,8 +789,8 @@ const submitEditForm = (event) => {
           if (weight.value == "half") {
             weightPrice = editProduct["cake-price-half"].value;
             wPrevPrice = editProduct["cake-prevPrice-half"].value;
-            console.log(editProduct);
-              console.log(editProduct["cake-prevPrice-half"].value);
+            // console.log(editProduct);
+              // console.log(editProduct["cake-prevPrice-half"].value);
           } else if (weight.value === "one") {
             weightPrice = editProduct["cake-price-one"].value;
             wPrevPrice = editProduct["cake-prevPrice-one"].value;
@@ -901,24 +910,24 @@ const submitEditForm = (event) => {
     isActivated: true,
     subImgsUrl: suburlss,
   };
-  console.log(editProduct.querySelector('input[name=cake-prevPrice-half]').value);
-  console.log(wholeProduct);
+  // console.log(editProduct.querySelector('input[name=cake-prevPrice-half]').value);
+  // console.log(wholeProduct);
 
-  if (productCategory.toUpperCase().includes("CAKES")) {
+  if (productCategory.toUpperCase().includes("CAKES") || productCategory.toUpperCase().includes("COMBO")) {
     wholeProduct.weights = cakeWeights || "";
     wholeProduct.shapes = cakeShapes || "";
     wholeProduct.type = cakeType || "";
     wholeProduct.flavours = cakeFlavours || "";
   }
 
-  console.log(wholeProduct);
+  // console.log(wholeProduct);
   // let c = wholeProduct.wholeSubCategory.split("__")[2];
   // console.log(c);
   // let cc = wholeProduct.wholeChildCategory.split("__")[3];
   // console.log(cc);
 
   async function editProductFun(data) {
-    console.log(data);
+    // console.log(data);
     // console.log(data.category, typeof data.category);
     let dataId, prodData;
     // await db
@@ -932,7 +941,7 @@ const submitEditForm = (event) => {
     //     console.log(error);
     //   });
     dataId = editProductId;
-    console.log(data.wholeCategory.split("__")[0], editProductId);
+    // console.log(data.wholeCategory.split("__")[0], editProductId);
 
     let docRef = await db
       .collection(data.wholeCategory.split("__")[0].toString())
@@ -950,10 +959,10 @@ const submitEditForm = (event) => {
     .then(async (response) => {
       let mainImgUrl;
       let subImgsUrl = [];
-      console.log(response);
+      // console.log(response);
 
       if (mainImg) {
-        console.log(mainImg);
+        // console.log(mainImg);
         await storageService
           .ref(
             `${response.prodData.wholeCategory.split("__")[0]}/${
@@ -961,13 +970,13 @@ const submitEditForm = (event) => {
             }/${response.prodData.mainImg}`
           )
           .put(mainImg);
-        console.log("uploading done");
+        // console.log("uploading done");
         mainImgUrl = await extractImgUrl(
           `${response.prodData.wholeCategory.split("__")[0]}/${
             response.dataId
           }/${response.prodData.mainImg}`
         );
-        console.log(mainImgUrl);
+        // console.log(mainImgUrl);
       }
       // console.log(mainImgUrl);
 
@@ -975,7 +984,7 @@ const submitEditForm = (event) => {
       if (subImgs) {
         for (let img of subImgs) {
           counter++;
-          console.log(img);
+          // console.log(img);
           let name = [...response.prodData.subImgs][counter];
           let id = response.dataId;
           // await uploadImg(id, name, img);
@@ -984,11 +993,11 @@ const submitEditForm = (event) => {
               `${response.prodData.wholeCategory.split("__")[0]}/${id}/${name}`
             )
             .put(img);
-          console.log("stored");
+          // console.log("stored");
           let subUrl = await extractImgUrl(
             `${response.prodData.wholeCategory.split("__")[0]}/${id}/${name}`
           );
-          console.log(subUrl);
+          // console.log(subUrl);
           subImgsUrl.push(subUrl);
         }
       }
@@ -1015,15 +1024,15 @@ const submitEditForm = (event) => {
           if (subImgs) {
             docData.subImgsUrl.push(...subImgsUrl);
           }
-          console.log(deleteSubImgs);
+          // console.log(deleteSubImgs);
           if (deleteSubImgs) {
             if (deleteSubImgs.length > 0) {
               for (let el of deleteSubImgs) {
-                console.log(
-                  `${docData.wholeCategory.split("__")[0]}/${doc.id}/${
-                    docData.subImgs[el]
-                  }`
-                );
+                // console.log(
+                //   `${docData.wholeCategory.split("__")[0]}/${doc.id}/${
+                //     docData.subImgs[el]
+                //   }`
+                // );
                 await storageService
                 .ref(
                   `${docData.wholeCategory.split("__")[0]}/${doc.id}/${
@@ -1032,8 +1041,8 @@ const submitEditForm = (event) => {
                 )
                 .delete()
                 .then((d) => {
-                  console.log(d);
-                  console.log("deleted");
+                  // console.log(d);
+                  // console.log("deleted");
                   docData.subImgs.splice(el, 1);
                   docData.subImgsUrl.splice(el, 1);
                 })
@@ -1044,7 +1053,7 @@ const submitEditForm = (event) => {
               }
             }
           }
-          console.log(docData);
+          // console.log(docData);
           await docRef.update(docData);
         });
       }
@@ -1052,7 +1061,7 @@ const submitEditForm = (event) => {
       const searchRef = db.collection("miscellaneous").doc("searchProds");
       searchRef.get().then(async (seachDoc) => {
         let searchData = seachDoc.data();
-        console.log(searchData);
+        // console.log(searchData);
         let searchName = {
           name: response.prodData.name,
           cat: response.prodData.wholeCategory.split('__')[0],
@@ -1067,7 +1076,7 @@ const submitEditForm = (event) => {
         //   type: "prodId",
         //   prodId: response.dataId,
         // };
-        console.log(response.prodData);
+        // console.log(response.prodData);
         // if(response.prodData.tags) {
         //   response.prodData.tags.split(",").map((tt) => {
         //     let tagFlag = 0;
@@ -1111,7 +1120,7 @@ const submitEditForm = (event) => {
           // }
         }
 
-        console.log(searchData);
+        // console.log(searchData);
         searchRef.update(searchData);
         // location.reload();
       });
@@ -1126,12 +1135,12 @@ const submitEditForm = (event) => {
       // document.querySelector('#product-sub-imgs').value = "";
       editProduct.reset();
       // extractData();
-      console.log("edit done");
+      // console.log("edit done");
       // $('#editProductModal').modal('hide');
       // $('#editProductModal').close();
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
       editProduct.querySelector(".alert-danger").innerHTML = error.message;
       editProduct.querySelector(".alert-danger").style.display = "block";
       setTimeout(() => {
@@ -1143,7 +1152,7 @@ const submitEditForm = (event) => {
 const uploadMainImg = async (e) => {
   mainImg = e.target.files[0];
   // mainImagesUrl= await extractImgUrl(mainImg)
-  console.log(mainImg);
+  // console.log(mainImg);
   var reader = new FileReader();
   reader.onload = function (e) {
     $("#putImage").attr("src", e.target.result);
@@ -1154,7 +1163,7 @@ const uploadMainImg = async (e) => {
 
 const uploadSubImgs = (e) => {
   subImgs = e.target.files;
-  console.log(subImgs);
+  // console.log(subImgs);
 };
 
 // global
