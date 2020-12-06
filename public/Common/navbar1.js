@@ -19,10 +19,11 @@
     data.subCategory.map((doc) => {
       // let docData = doc.data();
       let childCat = extractChildCat(doc, doc.id, docId);
+   
       subLi += `
-    <li>
-      <a href="/Products/products.html?cat=${docId}&&sub=${doc.id}">${doc.name}</a>
-      <ul> ${childCat}</ul>
+    <li >
+      <a style="top:0;padding:5px !important;position:sticky;z-index:999 !important;background:white !important" href="/Products/products.html?cat=${docId}&&sub=${doc.id}">${doc.name}</a>
+      <ul style="z-index:0 !important" > ${childCat}</ul>
     </li>
     `;
     })
@@ -62,7 +63,7 @@
       `;
         liMob += `
       <li >
-        <a href="/Products/products.html?cat=${data.dId}">${data.d.name}">${data.d.name}<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
+        <a href="#!" ><span onclick="navigateTo('/Products/products.html?cat=${data.dId}')">${data.d.name}</span><i class="fa fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
         <ul>
           ${subCat}
           <li>
@@ -99,7 +100,9 @@
       $(".menu > ul").removeClass('show-on-mobile');
     });
   });
-
+  function navigateTo(location){
+    window.location=location
+  }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // WITH DROP DOWN
@@ -283,68 +286,6 @@
 const easyAddToCart = () => {
   // console.log('addToCart');
 }
-
-
-const starRating = (startArr) => {
-  let starsSum = 0;
-  startArr.map(starNum => {
-    starsSum += +starNum;
-  })
-  let startsDiv = '';
-  starsAvg = Math.round(starsSum/startArr.length);
-  if(starsAvg = 0) {
-    startsDiv = `
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    `;
-  } else if(starsAvg = 1) {
-    startsDiv = `
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    `;
-  } else if(starsAvg = 2) {
-    startsDiv = `
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    `;
-  } else if(starsAvg = 3) {
-    startsDiv = `
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    `;
-  } else if(starsAvg = 4) {
-    startsDiv = `
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    `;
-  } else if(starsAvg = 5) {
-    startsDiv = `
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    `;
-  } else {
-    startsDiv = '';
-  }
-  return startsDiv;
-} 
 
 
 let cartModalHTML = document.querySelector('#cart-modal')

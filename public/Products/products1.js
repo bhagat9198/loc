@@ -157,29 +157,31 @@ const extractAllCat = async () => {
 };
 
 const allCatProds = async () => {
-  await db
-    .collection("categories")
-    .get()
-    .then(async (snapshots) => {
-      let snapshotsDocs = snapshots.docs;
-      for (let doc of snapshotsDocs) {
-        let docId = doc.id;
-        // console.log(docId);
-        await db
-          .collection(docId)
-          .get()
-          .then(async (prods) => {
-            let pdocs = prods.docs;
-            for (let pdoc of pdocs) {
-              allProductsArr.push({
-                prodId: pdoc.id,
-                prodData: pdoc.data(),
-                catId: docId,
-              });
-            }
-          });
-      }
-    });
+  // await db
+  //   .collection("categories")
+  //   .get()
+  //   .then(async (snapshots) => {
+  //     let snapshotsDocs = snapshots.docs;
+  //     for (let doc of snapshotsDocs) {
+  //       let docId = doc.id;
+  //       // console.log(docId);
+  //       await db
+  //         .collection(docId)
+  //         .get()
+  //         .then(async (prods) => {
+  //           let pdocs = prods.docs;
+  //           for (let pdoc of pdocs) {
+  //             allProductsArr.push({
+  //               prodId: pdoc.id,
+  //               prodData: pdoc.data(),
+  //               catId: docId,
+  //             });
+  //           }
+  //         });
+  //     }
+  //   });
+  let locProds = JSON.parse(sessionStorage.getItem("locProds"));
+  allProductsArr = locProds;
 };
 
 const arrayRandom = (arr) => {
@@ -198,11 +200,70 @@ const arrayRandom = (arr) => {
   return arr;
 };
 
+const starRating = (starsNum) => {
+  // console.log(starsNum);
+  let startsDiv = "";
+  starsAvg = starsNum;
+  if (starsAvg == 0) {
+    startsDiv = `
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `;
+  } else if (starsAvg == 1) {
+    startsDiv = `
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `;
+  } else if (starsAvg == 2) {
+    startsDiv = `
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `;
+  } else if (starsAvg == 3) {
+    startsDiv = `
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    `;
+  } else if (starsAvg == 4) {
+    startsDiv = `
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    `;
+  } else if (starsAvg == 5) {
+    startsDiv = `
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    `;
+  } else {
+    startsDiv = "";
+  }
+  return startsDiv;
+};
+
 const displayProds = async (arrProds) => {
   // console.log(arrProds);
   let card = "";
   let banner, bcolor;
   for (let p of arrProds) {
+    // console.log(p);
     if (p.prodData.bannerType != undefined) {
       banner = p.prodData.bannerType;
       bcolor = p.prodData.bannerTypeColor;
@@ -220,20 +281,15 @@ const displayProds = async (arrProds) => {
     <span class="fa fa-star"></span>
     <span class="fa fa-star"></span>
     `;
-    if (p.prodData.reviews) {
-      let stars = [];
-      p.prodData.reviews.map((star) => {
-        stars.push(star.rating.split("__")[0]);
-      });
-      starsDiv = starRating(stars);
-    }
-
+    // if (p.prodData.stars) {
+    //   console.log(p.prodData.stars);
+    starsDiv = starRating(p.prodData.stars);
+    // } else {
+    // }
     card +=
       `
 			<div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
-				<a href="../Product/product.html?prod=${p.prodId}&&cat=${
-        p.prodData.wholeCategory.split("__")[0]
-      }" class="item">
+				<a href="../Product/product.html?prod=${p.prodId}&&cat=${p.catId}" class="item">
 					<div class="item-img">
             <span class="w3-tag w3-display-topleft" style="border-radius:10px;
             background: linear-gradient(90deg, ${
@@ -280,7 +336,6 @@ const displayProds = async (arrProds) => {
 };
 
 const displayTopSuggest = async () => {
-  console.log("hello");
   let dbCatImgRef = db
     .collection("miscellaneous")
     .doc("catImgs")
@@ -288,21 +343,27 @@ const displayTopSuggest = async () => {
   let card = "";
   dbCatImgRef.get().then(async (catImgSnaps) => {
     let catImgSnapsDocs = catImgSnaps.docs;
+    let red = Math.round(Math.random() * (244));
+    let yellow = Math.round(Math.random() * (244));
+    let blue = Math.round(Math.random() * (244));
+    document.querySelector('#outer-top-suggestDiv').style.background = `rgb(${red}, ${yellow}, ${blue})`;
+    document.querySelector('#inner-top-suggestDiv').style.background = `rgba(${red-50}, ${yellow-50}, ${blue-50}, 0.4)`;
     for (let cimg of catImgSnapsDocs) {
-      let cimgData = cimg.data();
-      // console.log(cimgData);
-      let rand =
-        Math.floor(Math.random() * (cimgData.imgs.length - 1 - 0 + 1)) - 0;
-      // console.log(rand);
-      // console.log(cimgData.imgs);
-      await db
-        .collection("categories")
-        .doc(cimg.id)
-        .get()
-        .then((catDetail) => {
-          let catDetailData = catDetail.data();
-          // console.log(catDetailData);
-          card += `
+      if (cimg.id !== CAT) {
+        let cimgData = cimg.data();
+        // console.log(cimgData);
+        let rand =
+          Math.floor(Math.random() * (cimgData.imgs.length - 1 - 0 + 1)) - 0;
+        // console.log(rand);
+        // console.log(cimgData.imgs);
+        await db
+          .collection("categories")
+          .doc(cimg.id)
+          .get()
+          .then((catDetail) => {
+            let catDetailData = catDetail.data();
+            // console.log(catDetailData);
+            card += `
         <div class="col-lg-2 ">
         <a href="./products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important ">
           <div class="" >
@@ -315,11 +376,12 @@ const displayTopSuggest = async () => {
         </div>
         </a>
       </div>`;
-        });
-      topSuggestionHTML.innerHTML = card;
+          });
+        topSuggestionHTML.innerHTML = card;
+      }
+      // console.log(card);
+      // topSuggestionHTML.innerHTML = card;
     }
-    // console.log(card);
-    // topSuggestionHTML.innerHTML = card;
   });
 };
 
@@ -332,21 +394,20 @@ const userSearchProds = async () => {
   locProds = arrayRandom(locProds);
   for (let p of locProds) {
     if (
-      p.pname.toUpperCase().includes(searchVal) ||
-      p.cat.toUpperCase().includes(searchVal)
+      p.prodData.name.toUpperCase().includes(searchVal) ||
+      p.prodData.cat.toUpperCase().includes(searchVal)
     ) {
-      let prod = {
-        prodId: p.pid,
-        prodData: {
-          mainImgUrl: p.mainImgUrl,
-          stars: p.stars,
-          wholeCategory: `${p.catId}__${p.cat}`,
-          totalPrice: p.totalPrice,
-        },
-        catId: p.catId,
-      };
-      allProductsArr.push(prod);
-
+      // let prod = {
+      //   prodId: p.pid,
+      //   prodData: {
+      //     mainImgUrl: p.mainImgUrl,
+      //     stars: p.stars,
+      //     wholeCategory: `${p.catId}__${p.cat}`,
+      //     totalPrice: p.totalPrice,
+      //   },
+      //   catId: p.catId,
+      // };
+      allProductsArr.push(p);
     }
   }
 
@@ -363,12 +424,19 @@ const sortProducts = (e, current) => {
   // console.log(e, current.value);
   if (current.value === "popular") {
     let temp = TEMP_ARR.slice();
+    function compare(a, b) {
+      a = +a.prodData.stars;
+      b = +b.prodData.stars;
+      return b - a;
+    }
+
+    temp.sort(compare);
     displayProds(temp);
   } else if (current.value === "low") {
     let temp = TEMP_ARR.slice();
     function compare(a, b) {
-      a = a.prodData.mrp;
-      b = b.prodData.mrp;
+      a = a.prodData.totalPrice;
+      b = b.prodData.totalPrice;
       return a - b;
     }
 
@@ -377,8 +445,8 @@ const sortProducts = (e, current) => {
   } else if (current.value === "high") {
     let temp = TEMP_ARR.slice();
     function compare(a, b) {
-      a = a.prodData.mrp;
-      b = b.prodData.mrp;
+      a = a.prodData.totalPrice;
+      b = b.prodData.totalPrice;
       return b - a;
     }
     temp.sort(compare);
@@ -389,33 +457,3 @@ const sortProducts = (e, current) => {
 };
 
 // ///////////////////////////////////////
-// const searchRef = db
-//   .collection("miscellaneous")
-//   .doc("searchProds");
-// await searchRef.get().then(async (seachDoc) => {
-//   let searchData = seachDoc.data();
-//   console.log(searchData);
-//   let searchName = {
-//     name: pdoc.data().name,
-//     cat: pdoc.data().wholeCategory.split("__")[0],
-//     pId:  pdoc.id,
-//     id: Math.random(),
-//     type: "prodName",
-//   };
-//   let flag = 0;
-//   if (searchData.searches) {
-//     for (let s of searchData.searches) {
-//       if (s.name == searchName.name) {
-//         flag = 1;
-//         break;
-//       }
-//     }
-//     if (flag === 0) {
-//       searchData.searches.push(searchName);
-//     }
-//   }
-
-//   console.log(searchData);
-//   await searchRef.update(searchData);
-//   // location.reload();
-// });

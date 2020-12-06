@@ -930,8 +930,8 @@
 
 
 
-	<section class="sub-categori responsive-sec" style="padding:25px 20px 30px; background:rgba(145, 70, 107, 0.7);">
-		<div class="col-lg-12 order-first order-lg-last ajax-loader-parent"
+	<section class="sub-categori responsive-sec" id="outer-top-suggestDiv" style="padding:25px 20px 30px; background:rgba(145, 70, 107, 0.7);">
+		<div class="col-lg-12 order-first order-lg-last ajax-loader-parent" id="inner-top-suggestDiv"
 			style="background:rgba(189, 39, 121, 0.7); border-radius: 5px;border-bottom-left-radius: 50px;border-bottom-right-radius: 50px; padding: 25px;">
 			<div class="right-area" id="topDisp">
 				<div class="categori-item-area">
@@ -1027,10 +1027,8 @@
 							<li class="item-short-area">
 								<p>Sort By :</p>
 								<select id="sortby" name="sort" onchange="sortProducts(event, this)" class="short-item">
-									<!--<option value="date_desc">Latest Product</option>-->
+									<option value="" disabled selected>Select Your Filter</option>
 									<option value="popular">Popularity</option>
-									<!--<option value="date_asc">Oldest Product</option>-->
-									<!--<option value="price_asc">Lowest Price</option>-->
 									<option value="low">Price - Low To High</option>
 									<option value="high">Price - High To Low</option>
 								</select>
@@ -1045,7 +1043,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1054,7 +1052,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1069,7 +1067,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1078,7 +1076,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1093,7 +1091,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1102,7 +1100,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1117,7 +1115,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1126,7 +1124,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1141,7 +1139,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1150,7 +1148,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1165,7 +1163,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1174,7 +1172,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1189,7 +1187,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1198,7 +1196,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1213,7 +1211,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1222,7 +1220,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1237,7 +1235,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1246,7 +1244,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1261,7 +1259,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1270,7 +1268,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1285,7 +1283,7 @@
 						<div class="col-lg-2 col-md-3 col-6 pb-3 pt-2">
 							<a href="../Product/product.html" class="item">
 								<div class="item-img">
-									<div class="extra-list">
+									<!-- <div class="extra-list">
 										<ul>
 											<li>
 												<span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal"
@@ -1294,7 +1292,7 @@
 												</span>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<img class="img-fluid" src="../assets/images/skeleton.gif" alt="">
 								</div>
 								<div class="info" style="height: 100px !important;">
@@ -1442,12 +1440,6 @@
 	function shownavigation() {
 		$('.drobt0').removeClass('colapse');
 	}
-
-
-
-
-
-
 
 </script>
 <script src="/Auth/app.js"></script>

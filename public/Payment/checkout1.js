@@ -59,6 +59,8 @@ const checkOrderId = async () => {
   }
 };
 
+let FOUDANT = false;
+
 const allProductsDetails = async () => {
   for (let p of USER_DETAILS.orders[INDEX].products) {
     prodRef = await db.collection(p.cat).doc(p.prodId);
@@ -66,6 +68,11 @@ const allProductsDetails = async () => {
     await prodRef.get().then((doc) => {
       let docData = doc.data();
       p.pdata = docData;
+      if(docData.fondant) {
+        if(docData.fondant === 'true') {
+          FOUDANT = true;
+        }
+      }
     });
   }
   calculateBill();
@@ -423,6 +430,11 @@ const setDateAndTime = () => {
     .value;
   shippingType = shipVal;
   console.log(shipVal);
+
+  let foudantHours = 0;
+  if(FOUDANT) {
+    foudantHours = 6;
+  }
   if (shipVal === "free") {
     shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
     // console.log(hours);
@@ -431,7 +443,7 @@ const setDateAndTime = () => {
     freeHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
 
-    if (hours < 17) {
+    if ((hours + foudantHours) < 17) {
       // shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
       shippingDateHTML.value = `${year}-${month}-${day}`;
       freeHoursHTML.style.display = "block";
@@ -450,35 +462,35 @@ const setDateAndTime = () => {
     if (hours < 20) {
       perfectHoursHTML.style.display = "block";
       shippingDateHTML.value = `${year}-${month}-${day}`;
-      if (hours < 8) {
-      } else if (hours < 9) {
+      if ((hours + foudantHours) < 8) {
+      } else if ((hours + foudantHours) < 9) {
         // document.querySelector("#perfect_10").disabled = true;
-      } else if (hours < 10) {
+      } else if ((hours + foudantHours) < 10) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
-      } else if (hours < 11) {
+      } else if ((hours + foudantHours) < 11) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
-      } else if (hours < 12) {
+      } else if ((hours + foudantHours) < 12) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
-      } else if (hours < 13) {
+      } else if ((hours + foudantHours) < 13) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
         document.querySelector("#perfect_2").disabled = true;
-      } else if (hours < 14) {
+      } else if ((hours + foudantHours) < 14) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
         document.querySelector("#perfect_2").disabled = true;
         document.querySelector("#perfect_3").disabled = true;
-      } else if (hours < 15) {
+      } else if ((hours + foudantHours) < 15) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
@@ -486,7 +498,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_2").disabled = true;
         document.querySelector("#perfect_3").disabled = true;
         document.querySelector("#perfect_4").disabled = true;
-      } else if (hours < 16) {
+      } else if ((hours + foudantHours) < 16) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
@@ -495,7 +507,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_3").disabled = true;
         document.querySelector("#perfect_4").disabled = true;
         document.querySelector("#perfect_5").disabled = true;
-      } else if (hours < 18) {
+      } else if ((hours + foudantHours) < 18) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
@@ -505,7 +517,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_4").disabled = true;
         document.querySelector("#perfect_5").disabled = true;
         document.querySelector("#perfect_7").disabled = true;
-      } else if (hours < 19) {
+      } else if ((hours + foudantHours) < 19) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
@@ -516,7 +528,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_5").disabled = true;
         document.querySelector("#perfect_7").disabled = true;
         document.querySelector("#perfect_8").disabled = true;
-      } else if (hours < 20) {
+      } else if ((hours + foudantHours) < 20) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
@@ -542,7 +554,7 @@ const setDateAndTime = () => {
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
 
-    if (hours < 20) {
+    if ((hours + foudantHours) < 20) {
       midnightHoursHTML.style.display = "block";
       shippingDateHTML.value = `${year}-${month}-${day}`;
     } else {
