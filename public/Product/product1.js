@@ -63,7 +63,7 @@ let TOTAL_COST = 0,
 const displayProduct = (prodData) => {
   // console.log(prodData);
 
-  document.querySelector('.idno').innerHTML = PRODUCT_ID;
+  document.querySelector('.idno').innerHTML = prodData.sno;
 
   let big = `
   <span class="zoom" id="ex1">
@@ -168,8 +168,8 @@ const displayProduct = (prodData) => {
       prodData.flavours.map(flav => {
         card += `
         <div class="custom-control custom-radio" style="margin-right: 25px;">
-          <input type="radio" checked id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
-          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;">${flav}</label>
+          <input type="radio"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
+          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px">${flav}</label>
         </div>
         `;
       })
@@ -343,7 +343,7 @@ const displayWeights = (makedWeight) => {
           <img class="productimg"
             src="${PROD_DETAILS.mainImgUrl}"
             alt="Lake of cakes"
-            style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
+            style="border-radius: 50px;border: 1px solid black ;width: 70px ;height:70px;object-fit: cover;">
           <label class="custom-control-label" for="${rand}" style="font-weight: 400;">${weightNum} kg</label>
         </div>
         `;
@@ -563,8 +563,11 @@ const decAddon = (e) => {
 const prodWithAddonsHTML = document.querySelector("#prod_with_addons");
 let userId;
 let userRef;
+user=localStorage.getItem("locLoggedInUser");
 const checkAuth = async () => {
-  if (!localStorage.getItem("locLoggedInUser")) {
+ 
+  if (!user || user==null || user=="null") {
+    
     window.location.href = "/Auth/login.html";
   } else {
     userId = localStorage.getItem("locLoggedInUser");

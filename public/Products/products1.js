@@ -403,8 +403,8 @@ const sortProducts = (e, current) => {
   } else if (current.value === "low") {
     let temp = TEMP_ARR.slice();
     function compare(a, b) {
-      a = a.prodData.mrp;
-      b = b.prodData.mrp;
+      a = a.prodData.totalPrice;
+      b = b.prodData.totalPrice;
       return a - b;
     }
 
@@ -413,8 +413,8 @@ const sortProducts = (e, current) => {
   } else if (current.value === "high") {
     let temp = TEMP_ARR.slice();
     function compare(a, b) {
-      a = a.prodData.mrp;
-      b = b.prodData.mrp;
+      a = a.prodData.totalPrice;
+      b = b.prodData.totalPrice;
       return b - a;
     }
     temp.sort(compare);
@@ -422,7 +422,7 @@ const sortProducts = (e, current) => {
   } else {
     // console.log('invalid');
   }
-};
+}
 
 // ///////////////////////////////////////
 // const searchRef = db

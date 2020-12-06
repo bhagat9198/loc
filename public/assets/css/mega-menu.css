@@ -22,9 +22,9 @@
 } */
 .navimage{
 	width: 600px !important;
-	height: 250px !important;
+	/* height: 250px !important; */
 	object-fit: cover;
-
+	margin-top: 13%;
 	
 }
 
@@ -115,6 +115,7 @@
 	box-sizing: border-box;
 	box-shadow: 0 7px 7px -1px rgba(0, 0, 0, 0.3);
 
+
 }
 ::-webkit-scrollbar {
 	width: 5px;
@@ -152,6 +153,7 @@
 	overflow: auto;
 	
 	
+	
 
 }
 
@@ -162,6 +164,7 @@
 	display: block;
 	border-bottom: 1px solid #ccc;
 	padding: 0px;
+	
 
 }
 
@@ -175,7 +178,9 @@
 	margin: 10px 0 0;
 	list-style: none;
 	box-sizing: border-box;
+
 }
+
 
 .menu>ul>li>ul>li>ul:before, .menu>ul>li>ul>li>ul:after {
 	content: "";

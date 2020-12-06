@@ -19,10 +19,11 @@
     data.subCategory.map((doc) => {
       // let docData = doc.data();
       let childCat = extractChildCat(doc, doc.id, docId);
+   
       subLi += `
-    <li>
-      <a href="/Products/products.html?cat=${docId}&&sub=${doc.id}">${doc.name}</a>
-      <ul> ${childCat}</ul>
+    <li >
+      <a style="top:0;padding:5px !important;position:sticky;z-index:999 !important;background:white !important" href="/Products/products.html?cat=${docId}&&sub=${doc.id}">${doc.name}</a>
+      <ul style="z-index:0 !important" > ${childCat}</ul>
     </li>
     `;
     })
@@ -62,7 +63,7 @@
       `;
         liMob += `
       <li >
-        <a href="/Products/products.html?cat=${data.dId}">${data.d.name}">${data.d.name}<i class="fas fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
+        <a href="#!" ><span onclick="navigateTo('/Products/products.html?cat=${data.dId}')">${data.d.name}</span><i class="fa fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
         <ul>
           ${subCat}
           <li>
@@ -99,7 +100,9 @@
       $(".menu > ul").removeClass('show-on-mobile');
     });
   });
-
+  function navigateTo(location){
+    window.location=location
+  }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // WITH DROP DOWN
