@@ -1,4 +1,4 @@
-console.log("about.js");
+console.log("deliveryReturn.js");
 
 const db = firebase.firestore();
 const storageService = firebase.storage();
@@ -24,7 +24,7 @@ const aboutForm = (e) => {
   };
 
   const submitData = async (submitData) => {
-    let aboutRef = db.collection("footer").doc("dataSecurity");
+    let aboutRef = db.collection("footer").doc("deliveryReturn");
     aboutRef.get().then(async (doc) => {
       if (doc.exists) {
         await aboutRef.update(submitData);
@@ -36,24 +36,26 @@ const aboutForm = (e) => {
   };
   submitData(data).then(async () => {
     if (IMAGE) {
-      await storageService.ref(`footer/dataSecurity/${IMAGE.name}`).put(IMAGE);
+      await storageService
+        .ref(`footer/deliveryReturn/${IMAGE.name}`)
+        .put(IMAGE);
       let imgUrl;
       await storageService
-        .ref(`footer/dataSecurity/${IMAGE.name}`)
+        .ref(`footer/deliveryReturn/${IMAGE.name}`)
         .getDownloadURL()
         .then((url) => (imgUrl = url))
         .catch((error) => console.log(error));
       console.log(imgUrl);
-      let aboutRef = db.collection("footer").doc("dataSecurity");
-      aboutRef.get().then(async(doc) => {
+      let aboutRef = db.collection("footer").doc("deliveryReturn");
+      aboutRef.get().then(async (doc) => {
         let docData = doc.data();
         console.log(docData);
         if (IMAGE) {
           console.log(docData.imgUrl);
           storageService
-            .ref(`footer/dataSecurity/${docData.img}`)
+            .ref(`footer/deliveryReturn/${docData.img}`)
             .delete()
-            .then( async() => {
+            .then(async () => {
               docData.imgUrl = imgUrl;
               docData.img = IMAGE.name;
               console.log(docData);
@@ -63,8 +65,8 @@ const aboutForm = (e) => {
             .then((savedData) => {
               console.log("updated");
               $("#about-text").summernote("reset");
-    aboutFormHTML.reset();
-    extractData();
+              aboutFormHTML.reset();
+              extractData();
             })
             .catch((error) => {
               console.log(error);
@@ -92,18 +94,17 @@ const uploadFile = (e) => {
 };
 sliderFileHTML.addEventListener("change", uploadFile);
 
-
 const extractData = () => {
-  console.log('aaa');
+  console.log("aaa");
   db.collection("footer")
-    .doc("dataSecurity")
+    .doc("deliveryReturn")
     .get()
     .then((aboutSnap) => {
       let aboutSnapData = aboutSnap.data();
       setTimeout(() => {
         $("#about-text").summernote("editor.pasteHTML", aboutSnapData.note);
-      document.querySelector("#img-preview").src = aboutSnapData.imgUrl;
-      },1000)
+        document.querySelector("#img-preview").src = aboutSnapData.imgUrl;
+      }, 1000);
     });
 };
 
