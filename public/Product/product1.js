@@ -168,7 +168,7 @@ const displayProduct = (prodData) => {
       prodData.flavours.map(flav => {
         card += `
         <div class="custom-control custom-radio" style="margin-right: 25px;">
-          <input type="radio"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
+          <input type="radio" checked  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
           <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px">${flav}</label>
         </div>
         `;
@@ -480,7 +480,7 @@ const addons_details = [];
       card += `
       <div class="col-md-3 col-6 mt-3">
       <a class="item"
-        style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+        style="width: 200px; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
         <input type="checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
           style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;height:20px;width:30px;">
         <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
