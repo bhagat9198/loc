@@ -29,11 +29,13 @@
     line-height: 1.42857143;
     color: #333;
   }
-  .listDisp{
+
+  .listDisp {
     padding: 10px;
     /* color: white; */
     text-align: left;
   }
+
   .product-navbar .product-navbar-centered {
     max-width: 90vw;
     height: 20px;
@@ -403,7 +405,7 @@
           clients.
 
         </p>
-   
+
         <!-- <div class="img-container">
           <img src="https://apimatic.io/img/theme/aboutUs/dxFlow.svg" alt="apimatic developer experience process"
             class="img-responsive" />
@@ -413,109 +415,165 @@
         <div class="col-lg-6" style="background-color:rgb(207, 218, 186);">
           <!-- <h2>Column 2</h2> -->
           <p>
-           <ul style="list-style-type:circle !important;text-align: center;padding: 20px;">
-             <li class="listDisp">
+          <ul style="list-style-type:circle !important;text-align: center;padding: 20px;">
+            <li class="listDisp">
               • We delivering in whole Lucknow city.
-             </li>
-             <li class="listDisp">
+            </li>
+            <li class="listDisp">
               • Secure Ordering
-             </li>
-             <li class="listDisp">
-              • Perfect gift for every person 
-             </li>
-             <li class="listDisp">
+            </li>
+            <li class="listDisp">
+              • Perfect gift for every person
+            </li>
+            <li class="listDisp">
               • Perfect gift for every occasion
-             </li>
-             <li class="listDisp" >
+            </li>
+            <li class="listDisp">
               • Flexible delivery options : Same day ,Midnight, Fixed Time
-             </li>
-             <li class="listDisp">
+            </li>
+            <li class="listDisp">
               • Highly Trained & Supportive Staff
-             </li>
-             <li class="listDisp">
+            </li>
+            <li class="listDisp">
               • Easy Payment options
-             </li>
-             <li class="listDisp">
+            </li>
+            <li class="listDisp">
               • Corporate Tie-up Benefits
-             </li>
-             <li class="listDisp">
+            </li>
+            <li class="listDisp">
               • Employee Discounts/Bulk Order Discounts
-             </li>
-             <li class="listDisp">
+            </li>
+            <li class="listDisp">
               • Dedicated Customer Support Team
-             </li>
-             <li class="listDisp">
+            </li>
+            <li class="listDisp">
               • Seamless Billing Options
-             </li>
-             <li class="listDisp">
+            </li>
+            <li class="listDisp">
               • Lake of Cakes is one destination for all of you gifting needs.
-             </li>
-           </ul>
+            </li>
+          </ul>
           </p>
         </div>
         <div class="col-lg-6" style="background-color:rgb(235, 230, 223);">
           <h2 style="text-align: center;font-weight: 900;">Corporate Enquiry Form</h2>
           <div class="w3-container w3-padding-64" id="contact">
-  
+
             <!-- <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact us.</p>
             <p class="w3-text-blue-grey w3-large"><b>Catering Service, 42nd Living St, 43043 New York, NY</b></p>
             <p>You can also contact us by phone 00553123-2323 or email catering@catering.com, or you can send us a message here:</p> -->
-            <form action="/action_page.php" target="_blank">
-              <p><input class="w3-input w3-padding-16" type="text" placeholder="Your Name" required name="Name"></p>
-              <p><input class="w3-input w3-padding-16" type="email" placeholder="Your Email" required name="Email"></p>
-              <p><input class="w3-input w3-padding-16" type="number" placeholder="Phone No." required name="Phone"></p>
-              <p><input class="w3-input w3-padding-16" type="text" placeholder="Company Name" required name="Name"></p>
+
+              <p><input class="w3-input w3-padding-16" type="text" placeholder="Your Name" id="name" required
+                  name="Name"></p>
+              <p><input class="w3-input w3-padding-16" type="email" placeholder="Your Email" id="email" required
+                  name="Email"></p>
+              <p><input class="w3-input w3-padding-16" type="number" placeholder="Phone No." id="number" required
+                  name="Phone"></p>
+              <p><input class="w3-input w3-padding-16" type="text" placeholder="Company Name" id="company" required
+                  name="Company"></p>
               <!-- <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p> -->
-              <p><input class="w3-input w3-padding-16" type="text" placeholder="Message \ Special requirements" required name="Message"></p>
-              <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
-            </form>
+              <p><input class="w3-input w3-padding-16" type="text" id="message"
+                  placeholder="Message \ Special requirements" required name="Message"></p>
+              <p><button class="w3-button w3-light-grey w3-section" onclick="sendCoperate()" type="submit">SEND
+                  MESSAGE</button></p>
+           
           </div>
         </div>
       </div>
-    
-    
-  </div>
-  <footer class="footer" id="footer" style="background:rgba(10, 46, 100, 0.6);"></footer>
 
-  <script src="./assets/js/jquery.js"></script>
-  <script src="./assets/js/jquery-ui.min.js"></script>
 
-  <script type="text/javascript">
-    // $(document).ready(() => {
-    // $('#nav-section-loader').load('./common/navbar.html');
-    $('#footer').load('./common/footer.html');
-    $('#footer').load('./common/files.html');
+    </div>
+    <footer class="footer" id="footer" style="background:rgba(10, 46, 100, 0.6);"></footer>
+
+    <script src="./assets/js/jquery.js"></script>
+    <script src="./assets/js/jquery-ui.min.js"></script>
+
+    <script type="text/javascript">
+      // $(document).ready(() => {
+      // $('#nav-section-loader').load('./common/navbar.html');
+      $('#footer').load('./common/footer.html');
+      $('#footer').load('./common/files.html');
     // })
-  </script>
+    </script>
 
 
 
 
-  <!-- nav -->
+    <!-- nav -->
 
 
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
-      authDomain: "lake-of-cakes.firebaseapp.com",
-      databaseURL: "https://lake-of-cakes.firebaseio.com",
-      projectId: "lake-of-cakes",
-      storageBucket: "lake-of-cakes.appspot.com",
-      messagingSenderId: "779843608951",
-      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
-      measurementId: "G-5ER0QF0FDW"
-    };
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+        authDomain: "lake-of-cakes.firebaseapp.com",
+        databaseURL: "https://lake-of-cakes.firebaseio.com",
+        projectId: "lake-of-cakes",
+        storageBucket: "lake-of-cakes.appspot.com",
+        messagingSenderId: "779843608951",
+        appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+        measurementId: "G-5ER0QF0FDW"
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+     
+    </script>
 
-  <script src="./index1.js"></script>
-  <!-- <script src="./common/navbar1.js"></script> -->
+    <script>
+      function sendCoperate() {
+      
+        let name = document.querySelector('#name').value;
+        let email = document.querySelector('#email').value;
+        let number = document.querySelector('#number').value;
+        let company = document.querySelector('#company').value;
+        let message = document.querySelector('#message').value;
+
+        if (name) {
+        
+          if (email && email.includes('@')) {
+    
+            if (number && number.length == 10) {
+             
+              if (company) {
+                if (message) {
+                  db.collection("coperate").add({
+                    name: name,
+                    email: email,
+                    number: number,
+                    company :company,
+                    message :message
+                  })
+                    .then(function () {
+                      alert("Request Sent Successfully")
+                      console.log("Document successfully written!");
+                    })
+                    .catch(function (error) {
+                      alert("Server Error")
+                      console.error("Error writing document: ", error);
+                    });
+                }
+                else{
+                  alert("Message is required ")
+                }
+              }
+              else{
+                alert("Please enter your comapny name")
+              }
+            }else{
+              alert("Invalid Ponenumber")
+            }
+          }else{
+            alert("Please enter your name")
+          }
+        }
+      }
+    </script>
+    <script src="./index1.js"></script>
+    <!-- <script src="./common/navbar1.js"></script> -->
 
 </body>
 
