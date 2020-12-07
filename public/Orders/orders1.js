@@ -21,6 +21,8 @@ const ordersRowsHTML = document.querySelector("#orders-rows");
 const displayOrdersTable = () => {
   let counter = -1;
   let row = "";
+  let completedRow="";
+  let rejectedRow="";
   for (let order of ORDERS) {
     console.log(order);
     counter++;
@@ -32,8 +34,78 @@ const displayOrdersTable = () => {
     } else {
       orderStatus = ` <p style="background-color: orange;color: white;border-radius: 20px;">Pending</p>`;
     }
-
-    row += `
+    if(order.status=="completed"){
+      
+      completedRow += `
+    <tr role="row" class="odd parent">
+      <td tabindex="0">${order.orderId}</td>
+      <td>
+        ${order.orderAt.toString()}
+      </td>
+      <td>
+        ${orderStatus}
+      </td>
+      <td>₹ ${order.total}</td>
+      <td>
+        <div class="godropdown">
+          <button data-index="${counter}" class="go-dropdown-toggle" onclick="OrderDetailsModal(event)" >
+            Order Details
+          </button>
+        </div>
+      </td>
+      <td>
+        <div class="godropdown">
+          <button class="go-dropdown-toggle">
+            Actions<i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="action-list" style="display: none;width: 100%;">
+       
+            <a href="javascript:;" data-index="${counter}" onclick="deleteOrder(event)"> <i class="fa fa-trash" data-index="${counter}"></i>
+              Delete Order
+            </a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    `;
+    }
+    else if(order.status=="rejected"){
+      rejectedRow += `
+    <tr role="row" class="odd parent">
+      <td tabindex="0">${order.orderId}</td>
+      <td>
+        ${order.orderAt.toString()}
+      </td>
+      <td>
+        ${orderStatus}
+      </td>
+      <td>₹ ${order.total}</td>
+      <td>
+        <div class="godropdown">
+          <button data-index="${counter}" class="go-dropdown-toggle" onclick="OrderDetailsModal(event)" >
+            Order Details
+          </button>
+        </div>
+      </td>
+      <td>
+        <div class="godropdown">
+          <button class="go-dropdown-toggle">
+            Actions<i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="action-list" style="display: none;width: 100%;">
+            
+          
+            <a href="javascript:;" data-index="${counter}" onclick="deleteOrder(event)"> <i class="fa fa-trash" data-index="${counter}"></i>
+              Delete Order
+            </a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    `;
+    }
+    else{
+      row += `
     <tr role="row" class="odd parent">
       <td tabindex="0">${order.orderId}</td>
       <td>
@@ -71,9 +143,20 @@ const displayOrdersTable = () => {
       </td>
     </tr>
     `;
+    }
   }
   ordersRowsHTML.innerHTML = row;
+  document.getElementById("completed-orders").innerHTML = completedRow;
+  document.getElementById("rejected-orders").innerHTML = rejectedRow;
   $("#example2").DataTable({
+    responsive: true,
+    autoWidth: false,
+  });
+  $("#example3").DataTable({
+    responsive: true,
+    autoWidth: false,
+  });
+  $("#example4").DataTable({
     responsive: true,
     autoWidth: false,
   });
