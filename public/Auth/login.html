@@ -250,62 +250,64 @@
                         <p>You can reset your password here.</p>
                         <div class="panel-body">
 
-                          <form id="register-form" role="form" autocomplete="off" class="form" method="post">
+
+                          <div class="form-group" id="sendCode">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i
+                                  class="glyphicon glyphicon-envelope color-blue"></i></span>
+                              <input id="emailF" name="email" placeholder="Enter your Email address"
+                                class="form-control" type="email">
+                            </div>
 
                             <div class="form-group">
-                              <div class="input-group">
-                                <span class="input-group-addon"><i
-                                    class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                <input id="emailF" name="email" placeholder="Enter your Email address"
-                                  class="form-control" type="email">
-                              </div>
-
-                              <div class="form-group">
-                                <button style="padding: 10px;background-color: brown;color:#ffffff;margin-bottom: 4%;" type="submit">Send
-                                  Code</button>
-                              </div>
+                              <button style="padding: 10px;background-color: brown;color:#ffffff;margin-bottom: 4%;"
+                                onclick="sendCode()" type="submit">Send
+                                Code</button>
                             </div>
+                          </div>
+                          <input type="hidden" class="hide" name="token" id="token" value="">
+
+                          <div class="form-group" id="verifyCode" style="display: none;">
+
+                            <div class="input-group">
+                              <span class="input-group-addon"><i
+                                  class="glyphicon glyphicon-envelope color-blue"></i></span>
+                              <input id="otp" name="otp" placeholder="Enter OTP sent on mail" class="form-control"
+                                type="otp">
+                            </div>
+
+                            <input type="hidden" class="hide" name="token" id="token" value="">
+                            <div class="form-group">
+                              <button style="padding: 10px;background-color: brown;color:#ffffff" type="submit"
+                                onclick="verifyOtp()"> Verify</button>
+                            </div>
+                          </div>
+                          <div class="form-group" id="resetCode" style="display: none;">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i
+                                  class="glyphicon glyphicon-envelope color-blue"></i></span>
+                              <input id="Pass" name="pass" placeholder="New Password" class="form-control"
+                                type="password">
+                            </div>
+                            <div class="input-group">
+                              <span class="input-group-addon"><i
+                                  class="glyphicon glyphicon-envelope color-blue"></i></span>
+                              <input id="cPass" name="email" placeholder="Repeat Password" class="form-control"
+                                type="password">
+                            </div>
+
+                            <div class="form-group">
+                              <button style="padding: 10px;background-color: brown;color:#ffffff" type="submit"
+                                onclick="updatePassword()">Update
+                                Password</button>
+                            </div>
+
                             <input type="hidden" class="hide" name="token" id="token" value="">
 
-                            <div class="form-group" style="display: none;">
-
-                              <div class="input-group">
-                                <span class="input-group-addon"><i
-                                    class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                <input id="email" name="email" placeholder="Enter OTP sent on mail" class="form-control"
-                                  type="email">
-                              </div>
-
-                              <input type="hidden" class="hide" name="token" id="token" value="">
-                              <div class="form-group">
-                                <button style="padding: 10px;background-color: brown;color:#ffffff"
-                                  type="submit">Verify</button>
-                              </div>
-                            </div>
-                            <div class="form-group" style="display: none;">
-                              <div class="input-group">
-                                <span class="input-group-addon"><i
-                                    class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                <input id="email" name="email" placeholder="New Password" class="form-control"
-                                  type="email">
-                              </div>
-                              <div class="input-group">
-                                <span class="input-group-addon"><i
-                                    class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                <input id="email" name="email" placeholder="Repeat Password" class="form-control"
-                                  type="email">
-                              </div>
-
-                              <div class="form-group">
-                                <button style="padding: 10px;background-color: brown;color:#ffffff" type="submit">Update
-                                  Password</button>
-                              </div>
-
-                              <input type="hidden" class="hide" name="token" id="token" value="">
-                            </div>
+                          </div>
+                          <h4 id="logs" style="padding: 20px;color:red;display: none;">Invalid Credentials</h4>
 
 
-                          </form>
 
                         </div>
                       </div>
@@ -409,6 +411,131 @@
     }
   }
 
+  function sendCode() {
+    let email = document.querySelector('#emailF').value;
+    const dbs = firebase.firestore();
+    dbs.collection("Customers").onSnapshot(async (snapshot) => {
+      let count = 0;
+      let went = 0;
+    
+      let key;
+
+      let snapshotDocs = snapshot.docs;
+      for (let i of snapshotDocs) {
+
+        var doc = i.data();
+        if (doc.Email == undefined) {
+          continue;
+        }
+        if ((doc.Email).toUpperCase() == email.toUpperCase()) {
+          count++;
+          key = i;
+          break;
+        }
+      }
+
+      if (count == 1) {
+        went++;
+        let randomcode = Math.floor(Math.random() * 90000) + 10000;
+
+        await dbs.collection("Customers").doc(key.data().userId).update("forgotCode", randomcode)
+
+        setTimeout(function () {
+          document.getElementById("sendCode").style.display = "none"
+          document.getElementById("verifyCode").style.display = "block"
+          count = 0;
+        }, 100)
+
+
+      } else {
+        if (went == 0) {
+
+          document.getElementById("logs").style.display = "block"
+          document.getElementById("logs").innerHTML = "Email Id not found"
+
+          setTimeout(function () {
+            document.getElementById("logs").style.display = "none"
+          }, 2000)
+        }
+
+      }
+    });
+
+  }
+  var global;
+  function verifyOtp() {
+    let went = 0;
+    let count = 0;
+    let wents = 0;
+    let otp = document.querySelector('#otp').value;
+    let key;
+
+    const dbs = firebase.firestore();
+    dbs.collection("Customers").onSnapshot(async (snapshot) => {
+
+      let snapshotDocs = snapshot.docs;
+      for (let i of snapshotDocs) {
+
+        var doc = i.data();
+        if (doc.forgotCode == undefined) {
+          continue;
+        }
+        if ((doc.forgotCode) == otp) {
+          count++;
+          key = i;
+          global = i;
+          break;
+        }
+      }
+
+      if (count == 1) {
+        wents++;
+        let randomcode = Math.floor(Math.random() * 90000) + 10000;
+
+        await dbs.collection("Customers").doc(key.data().userId).update("forgotCode", "verified")
+
+        setTimeout(function () {
+          document.getElementById("verifyCode").style.display = "none"
+          document.getElementById("resetCode").style.display = "block"
+          count = 0;
+        }, 100)
+
+
+      } else {
+        if (wents == 0) {
+
+          document.getElementById("logs").style.display = "block"
+          document.getElementById("logs").innerHTML = "Invalid Otp"
+
+          setTimeout(function () {
+            document.getElementById("logs").style.display = "none"
+          }, 2000)
+        }
+
+      }
+    });
+
+  }
+  function updatePassword() {
+    let went = 0;
+    let wents = 0;
+    let pass = document.querySelector('#Pass').value
+    let cpass = document.querySelector('#cPass').value
+    if (pass) {
+      if (cpass) {
+        if (pass == cpass) {
+          newpass = btoa(pass)
+          dbs.collection("Customers").doc(global.data().userId).update("Password", newpass)
+          document.getElementById("logs").style.display = "block"
+          document.getElementById("logs").innerHTML = "Password Updated Sucessfully"
+
+          setTimeout(function () {
+            window.location.reload();
+          }, 2000)
+        }
+      }
+    }
+  }
 </script>
 
 </html>

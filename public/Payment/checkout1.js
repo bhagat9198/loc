@@ -980,6 +980,7 @@ const orderComplete = (data) => {
   payemnetStatus(addtionalData).then(async(res) => {
     // console.log(res.data);
     if(res.data === 'true') {
+      $('#exampleModal').modal('show')
       let userRef =  await db.collection('Customers').doc(USER_ID);
      await userRef.get().then(async(userDoc) => {
         let userData = userDoc.data();
@@ -1003,6 +1004,7 @@ const orderComplete = (data) => {
           }
         }
       })
+      
       location.replace("../index.html");
 
     } else {
