@@ -502,6 +502,8 @@ const reviewForm = async(e) => {
     rating: expirence,
     msg: msg,
     user: user,
+    catID: CATEGORY_ID,
+    prodId: PRODUCT_ID
   };
 
   let dbRef = db.collection("reviews").doc(CATEGORY_ID).collection(PRODUCT_ID);
@@ -706,9 +708,9 @@ const buyProd = async (e) => {
       let cake = null;
       let f;
       if (WEIGHT_PRICE.weight) {
-        f = document.querySelector("input[name=cake-flavour]:checked").value;
-        if (f) {
+        if (document.querySelector("input[name=cake-flavour]:checked")) {
           // user selected the value
+          f = document.querySelector("input[name=cake-flavour]:checked").value;
         } else {
           f = "Not Selcted";
         }
@@ -725,6 +727,7 @@ const buyProd = async (e) => {
       }
       let orderData = {
         orderId: orderId,
+        totalCost: document.querySelector("#cost-with-addons").innerHTML,
         status: "cancelled",
         type: "single",
         addons: addonsSelected,
@@ -747,9 +750,9 @@ const buyProd = async (e) => {
       if (WEIGHT_PRICE.weight) {
         let f;
         if (WEIGHT_PRICE.weight) {
-          f = document.querySelector("input[name=cake-flavour]:checked").value;
-          if (f) {
+          if (document.querySelector("input[name=cake-flavour]:checked")) {
             // user selected the value
+            f = document.querySelector("input[name=cake-flavour]:checked").value;
           } else {
             f = "Not Selcted";
           }
@@ -767,6 +770,7 @@ const buyProd = async (e) => {
       let orderData = {
         orderId: orderId,
         status: "cancelled",
+        totalCost: document.querySelector("#cost-with-addons").innerHTML,
         type: "single",
         addons: addonsSelected,
         products: [
@@ -799,9 +803,9 @@ const addToCart = async (e) => {
     let docData = doc.data();
     let f;
     if (WEIGHT_PRICE.weight) {
-      f = document.querySelector("input[name=cake-flavour]:checked").value;
-      if (f) {
+      if (document.querySelector("input[name=cake-flavour]:checked")) {
         // user selected the value
+        f = document.querySelector("input[name=cake-flavour]:checked").value;
       } else {
         f = "Not Selcted";
       }
@@ -876,27 +880,13 @@ const displaySuggestions = async () => {
           allProds[counter + rand]
         }&&cat=${CATEGORY_ID}" class="item">
           <div class="item-img">
-            <div class="extra-list">
-              <ul>
-                <li>
-                  <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
-                    data-target="#comment-log-reg" data-placement="right">
-                    <i class="icofont-heart-alt"></i>
-                  </span>
-                </li>
-              </ul>
-            </div>
+
             <img class="img-fluid" style="width: 500px !important; height:200px " src="${
               pdata.mainImgUrl
             }" alt="LAKE OF CAKES">
           </div>
           <div class="info">
-            <div class="stars">
-              <div class="ratings">
-                <div class="empty-stars"></div>
-                <div class="full-stars" style="width:0%"></div>
-              </div>
-            </div>
+            <br />
             <h5 style="font-size: 1em;color: black;">${pdata.name}</h5>
             <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${
               pdata.totalPrice
