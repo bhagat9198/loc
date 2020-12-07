@@ -1,4 +1,4 @@
-console.log("viewCategory.js");
+// console.log("viewCategory.js");
 const db = firebase.firestore();
 const storageService = firebase.storage();
 
