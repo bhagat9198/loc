@@ -213,7 +213,7 @@
 
 		/*height: 41px;*/
 	}
-	
+
 	.item:hover .extra-list {
 		left: 20px;
 		opacity: 1;
@@ -1056,9 +1056,9 @@
                         </p> -->
 											</li>
 											<li>
-												<div class="ratings">
-													<div class="empty-stars"></div>
-													<div class="full-stars" style="width:0%"></div>
+												<div class="ratings" id="prod-stars">
+													<!-- <div class="empty-stars"></div>
+													<div class="full-stars" style="width:0%"></div> -->
 												</div>
 											</li>
 											<li class="review-count">
@@ -1084,13 +1084,11 @@
 												taxes)</span>
 										</p>
 										<p>
-											<span
-												style="font-size: 13px; cursor: pointer;  font-weight: 600;color: #1e4794e6;">
+											<span style="font-size: 13px; cursor: pointer;  font-weight: 600;color: #1e4794e6;">
 												<!-- Product  Description -->
 											</span></p>
 									</div>
-									<p><span
-											style="font-size: 15px; cursor: pointer;  font-weight: 700;color: #ff0b0be6;">Quantity</span>
+									<p><span style="font-size: 15px; cursor: pointer;  font-weight: 700;color: #ff0b0be6;">Quantity</span>
 									</p>
 									<div class="info-meta-3">
 										<ul class="meta-list">
@@ -1102,8 +1100,7 @@
 																<div class="qty">
 																	<ul>
 																		<li>
-																			<span class="qtminus"
-																				onclick="decQty(event)">
+																			<span class="qtminus" onclick="decQty(event)">
 																				<i class="fa fa-minus"></i>
 																			</span>
 																		</li>
@@ -1113,8 +1110,7 @@
 																			</span>
 																		</li>
 																		<li>
-																			<span class="qtplus"
-																				onclick="incQty(event)">
+																			<span class="qtplus" onclick="incQty(event)">
 																				<i class="fa fa-plus"></i>
 																			</span>
 																		</li>
@@ -1123,12 +1119,9 @@
 															</li>
 														</div>
 														<div class="cake-attribute" style="display: none;">
-															<div class="custom-control custom-radio"
-																style="margin-right: 15px;">
-																<input type="checkbox" onchange="cakeType(event, this)"
-																	id="eggless" name="eggless"
-																	class="custom-control-inputEgg product-attr"
-																	data-key="eggless" value="Eggless">
+															<div class="custom-control custom-radio" style="margin-right: 15px;">
+																<input type="checkbox" onchange="cakeType(event, this)" id="eggless" name="eggless"
+																	class="custom-control-inputEgg product-attr" data-key="eggless" value="Eggless">
 																<label class="custom-control-label" for="eggless"
 																	style="font-weight: 900;color: green;text-transform: uppercase;">Want
 																	EggLess ?
@@ -1144,19 +1137,15 @@
 													<div class="row">
 														<div class="col-lg-12">
 															<div class="form-group mb-2">
-																<h4
-																	style="font-weight: 900 !important;padding: 5px !important;font-size: 13px;">
+																<h4 style="font-weight: 900 !important;padding: 5px !important;font-size: 13px;">
 																	Upgrade
 																	your cake to</h4>
 																<div id="allCakesWeights" style="display: flex;">
-																	<div class="custom-control custom-radio"
-																		style="margin-right: 15px;">
+																	<div class="custom-control custom-radio" style="margin-right: 15px;">
 																		<input type="radio" id="shapekg0" name="kg"
-																			class="custom-control-input product-attr"
-																			data-key="kg" data-price="6589" value="1"
-																			checked>
-																		<img class="productimg"
-																			src="../assets/images/skeleton.gif"
+																			class="custom-control-input product-attr" data-key="kg" data-price="6589"
+																			value="1" checked>
+																		<img class="productimg" src="../assets/images/skeleton.gif"
 																			style="border-radius: 50px;border: 1px solid black ;box-shadow:5px 5px 5px gray;width: 60px ;object-fit: cover;">
 
 																	</div>
@@ -1169,8 +1158,7 @@
 														<div class="row">
 															<div class="col-lg-12">
 																<div class="form-group mb-2">
-																	<h4
-																		style="font-weight: 900 !important;padding: 5px !important;font-size: 13px;">
+																	<h4 style="font-weight: 900 !important;padding: 5px !important;font-size: 13px;">
 																		Convert your cake into</h4>
 																	<div class="cake-shape" style="display: flex;">
 																		<!-- <div class="custom-control custom-radio" style="margin-right: 15px;">
@@ -1189,8 +1177,7 @@
 														<div class="row">
 															<div class="col-lg-12">
 																<div class="form-group mb-2">
-																	<h4
-																		style="font-weight: 900 !important;padding: 5px !important;font-size: 13px;">
+																	<h4 style="font-weight: 900 !important;padding: 5px !important;font-size: 13px;">
 																		Choose your flavour</h4>
 																	<div id="cake-flavour"
 																		style="display: flex;margin: auto !important;flex-wrap: wrap;width: 100%;">
@@ -1211,10 +1198,9 @@
 											<div class="product-attributes my-2">
 												<div>
 													<label>Give your message too😍😇</label>
-													<input type="text" class="values form-control message_cart"
-														name="message" id="prodMsg"
-														placeholder="Enter a name/message (Max 30 Characters)"
-														maxlength="30" style="height: 3em;width: 82%;">
+													<input type="text" class="values form-control message_cart" name="message" id="prodMsg"
+														placeholder="Enter a name/message (Max 30 Characters)" maxlength="30"
+														style="height: 3em;width: 82%;">
 												</div>
 											</div>
 											<br>
@@ -1226,8 +1212,8 @@
 
 											<button type="button" id="buyNowBtn" disabled
 												style="border-radius: 5px;line-height: 35px;; width:30%;background: rgb(60,179,36); border: 1px solid rgb(60,179,36); color:#fff;"
-												class="btn btn-primary btns responsive-btn" data-toggle="modal"
-												data-target="#addonsModal">Buy Now</button>
+												class="btn btn-primary btns responsive-btn" data-toggle="modal" data-target="#addonsModal">Buy
+												Now</button>
 											<h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;"
 												id="success">Added To Cart Successfully <i class="fa fa-check"></i>
 											</h5>
@@ -1236,14 +1222,13 @@
 													<div class="modal-content">
 														<div class="modal-header"
 															style="background-color: rgb(197, 42, 42);padding: 10px !important;">
-															<h4 class="modal-title text-center tb" style="color:#fff;margin-left: auto;margin-right: auto;font-weight: 800;">
+															<h4 class="modal-title text-center tb"
+																style="color:#fff;margin-left: auto;margin-right: auto;font-weight: 800;">
 																Add Extra Love For Your Loved
 																Ones</h4>
-															<button type="button" class="close"
-																data-dismiss="modal">&times;</button>
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
 														</div>
-														<div class="modal-body"
-															style="height: 350px; overflow-y: scroll;">
+														<div class="modal-body" style="height: 350px; overflow-y: scroll;">
 															<div class="container-fluid">
 																<div class="row" id="allAddons">
 																	<!-- <div class="col-md-3 col-6 mt-3">
@@ -1295,10 +1280,9 @@
 																style="border-radius: 0px; background: #fff; border: 0px;display: flex;">
 																<h5 style="padding: 20px ;font-weight: 900;"> Total
 																	Price :₹ <span id="cost-with-addons"></span></h5>
-																<button type="button" class="btn btn-secondary"
-																	id="prod_with_addons"
-																	style="background-color: rgb(197, 42, 42)">CONTINUE WITH
-																	ADDONS</button>
+																<button type="button" class="btn btn-secondary" id="prod_with_addons"
+																	style="background-color: rgb(197, 42, 42)">Continue Without
+																	Addons</button>
 															</a>
 														</div>
 													</div>
@@ -1399,8 +1383,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
 							<br /> <br />
 						</div>
 
-						<div id="policy" class="w3-container w3-display-container city w3-animate-left"
-							style="display:none">
+						<div id="policy" class="w3-container w3-display-container city w3-animate-left" style="display:none">
 							<span onclick="this.parentElement.style.display='none'"
 								class="w3-button w3-large w3-display-topright">&times;
 							</span>
@@ -1411,8 +1394,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
 							<br /> <br />
 						</div>
 
-						<div id="reviews" class="w3-container w3-display-container city w3-animate-left"
-							style="display:none">
+						<div id="reviews" class="w3-container w3-display-container city w3-animate-left" style="display:none">
 							<span onclick="this.parentElement.style.display='none'"
 								class="w3-button w3-large w3-display-topright">&times;</span>
 							<form id="review-form">
@@ -1421,17 +1403,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
 									<div class="p-6">
 										<div class=" p-3 rounded">
 											<div class="row">
-												<div class="col-md-4"> <label class="radio"> <input type="radio"
-															name="experience" value="1__bad">
+												<div class="col-md-4"> <label class="radio"> <input type="radio" name="experience"
+															value="1__bad">
 														<span>Bad Experience</span> </label> </div>
-												<div class="col-md-4"> <label class="radio"> <input type="radio"
-															name="experience" value="2__normal"> <span>Normal
+												<div class="col-md-4"> <label class="radio"> <input type="radio" name="experience"
+															value="2__satisfactory">
+														<span>Bad Experience</span> </label> </div>
+												<div class="col-md-4"> <label class="radio"> <input type="radio" name="experience"
+															value="3__normal"> <span>Satisfactory
 															Experience</span> </label> </div>
-												<div class="col-md-4"> <label class="radio"> <input type="radio"
-															name="experience" value="3__good"> <span>Good
+												<div class="col-md-4"> <label class="radio"> <input type="radio" name="experience"
+															value="4__good"> <span>Good
 															Experience</span> </label> </div>
-												<div class="col-md-4"> <label class="radio"> <input type="radio"
-															name="experience" value="4__great" checked> <span>Great
+												<div class="col-md-4"> <label class="radio"> <input type="radio" name="experience"
+															value="5__great" checked> <span>Great
 															Experience</span> </label> </div>
 											</div>
 											<label>Write Your Review</label>
@@ -1466,7 +1451,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
 					<div class="row">
 						<div class="col-lg-12 remove-padding">
 							<div class="trending-item-slider">
-								
+
 							</div>
 						</div>
 
@@ -1493,8 +1478,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
 				<div class="modal-body mb-0 p-0">
 
 					<div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;">
-						<img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;"
-							id="showOffer" src="" allowfullscreen>
+						<img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;" id="showOffer" src=""
+							allowfullscreen>
 					</div>
 
 				</div>
@@ -1610,7 +1595,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
 <script>
-
 	window.localStorage.setItem("redirectURL", window.location.href)
 	var firebaseConfig = {
 		apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",

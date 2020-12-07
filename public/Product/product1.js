@@ -27,7 +27,7 @@ getParams(window.location.href).then(async (response) => {
   if (PRODUCT_ID && CATEGORY_ID) {
     PROD_DETAILS = await extractProdDetails();
     displayProduct(PROD_DETAILS);
-    displaySuggestions()
+    displaySuggestions();
   }
 });
 
@@ -51,7 +51,7 @@ const productIsstookHTML = document.querySelector(".product-isstook");
 const reviewCountHTML = document.querySelector(".review-count");
 const prodPriceHTML = document.querySelector("#sizeprice");
 const prodPrevPriceHTML = document.querySelector("#prod-prevPrice");
-const disPercentHTML = document.querySelector('#disPercent');
+const disPercentHTML = document.querySelector("#disPercent");
 
 let PROD_QTY = 1;
 let TOTAL_COST = 0,
@@ -60,10 +60,79 @@ let TOTAL_COST = 0,
   EGGLESS = false,
   WEIGHT_PRICE = {};
 
+
+  const starRating = (starsNum) => {
+    console.log(starsNum);
+    let startsDiv = '';
+    starsAvg = +starsNum;
+    console.log(starsAvg, typeof(starsAvg));
+    if(starsAvg == 0) {
+      console.log(starsNum);
+      startsDiv = `
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      `;
+    } else if(starsAvg == 1) {
+      startsDiv = `
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      `;
+    } else if(starsAvg == 2) {
+      console.log(starsNum);
+
+      startsDiv = `
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      `;
+    } else if(starsAvg == 3) {
+      startsDiv = `
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      `;
+    } else if(starsAvg == 4) {
+      startsDiv = `
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      `;
+    } else if(starsAvg == 5) {
+      startsDiv = `
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      `;
+    } else {
+      startsDiv = '';
+    }
+    let divClass = `<style>
+    .checked {
+      color: orange;
+    }
+    </style>`;
+    return startsDiv + divClass;
+  } 
+  
+
 const displayProduct = (prodData) => {
   // console.log(prodData);
 
-  document.querySelector('.idno').innerHTML = prodData.sno;
+  document.querySelector(".idno").innerHTML = prodData.sno;
 
   let big = `
   <span class="zoom" id="ex1">
@@ -75,8 +144,8 @@ const displayProduct = (prodData) => {
   `;
   // console.log(big);
   bigImgHolderHTML.innerHTML = big;
-		
-  $('#ex1').zoom();
+
+  $("#ex1").zoom();
 
   let imgs = `
   <a
@@ -112,7 +181,7 @@ const displayProduct = (prodData) => {
       In Stock
     </p>
     `;
-    document.querySelector('#buyNowBtn').disabled = false;
+    document.querySelector("#buyNowBtn").disabled = false;
   } else {
     productIsstookHTML.innerHTML = `
     <p>
@@ -122,9 +191,14 @@ const displayProduct = (prodData) => {
     `;
   }
 
-  if (prodData.reviews) {
+  console.log(prodData.stars);
+  let pstars = starRating(+prodData.stars);
+
+  document.querySelector('#prod-stars').innerHTML = pstars;
+
+  if (prodData.totalReviews) {
     reviewCountHTML.innerHTML = `
-    <p>${prodData.reviews.length} Review(s)</p>
+    <p>${prodData.totalReviews} Review(s)</p>
     `;
   } else {
     reviewCountHTML.innerHTML = `
@@ -133,7 +207,10 @@ const displayProduct = (prodData) => {
   }
 
   document.querySelector("#prod-qty").innerHTML = PROD_QTY;
-  if (prodData.wholeCategory.toUpperCase().includes("CAKE")) {
+  if (
+    prodData.wholeCategory.toUpperCase().includes("CAKE") ||
+    prodData.wholeCategory.toUpperCase().includes("COMBO")
+  ) {
     document.querySelectorAll(".cake-attribute").forEach((el) => {
       el.style.display = "block";
     });
@@ -161,18 +238,18 @@ const displayProduct = (prodData) => {
     `;
   }
 
-  if(prodData.flavours) {
-    if(prodData.flavours.length > 0) {
-      const cakeFlavourHTML = document.querySelector('#cake-flavour');
-      let card = '';
-      prodData.flavours.map(flav => {
+  if (prodData.flavours) {
+    if (prodData.flavours.length > 0) {
+      const cakeFlavourHTML = document.querySelector("#cake-flavour");
+      let card = "";
+      prodData.flavours.map((flav) => {
         card += `
         <div class="custom-control custom-radio" style="margin-right: 25px;">
           <input type="radio" checked  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
           <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px">${flav}</label>
         </div>
         `;
-      })
+      });
 
       cakeFlavourHTML.innerHTML = card;
     }
@@ -197,7 +274,6 @@ const displayProduct = (prodData) => {
     prodData.policy.startsWith("<p><br></p>") ||
     prodData.policy.includes("<p><br></p>")
   ) {
-  
     prodData.policy = prodData.policy.replace("<p><br></p>", "");
   }
 
@@ -333,7 +409,7 @@ const displayWeights = (makedWeight) => {
           WEIGHT_PRICE.weight = weightName;
           selected = "checked";
           // console.log(Math.round((+price/+pprice)*100));
-          let dis = 100 - (Math.round((+price/+pprice)*100));
+          let dis = 100 - Math.round((+price / +pprice) * 100);
           disPercentHTML.innerHTML = `(${dis}% OFF)`;
         }
         // console.log(WEIGHT_PRICE);
@@ -394,7 +470,6 @@ const displaySuggestion = () => {
 };
 
 const imgChange = (e, current) => {
-
   // console.log(current);
   let imgUrl = current.src;
   // console.log(imgUrl);
@@ -407,42 +482,73 @@ const imgChange = (e, current) => {
     /> 
     </span>
   `;
- 
 
   bigImgHolderHTML.innerHTML = big;
-  $('#ex11').zoom();
+  $("#ex11").zoom();
   // console.log(document.querySelector("#whole-img-block"));
 };
 
 const reviewFormHTML = document.querySelector("#review-form");
-const reviewForm = (e) => {
+const reviewForm = async(e) => {
   // console.log(e);
   e.preventDefault();
   const expirence = reviewFormHTML["experience"].value;
   const msg = reviewFormHTML["review-message"].value;
+  let user = localStorage.getItem("locLoggedInUser");
+  if (!user) {
+    user = "Anonymous";
+  }
+  let data = {
+    rating: expirence,
+    msg: msg,
+    user: user,
+    catID: CATEGORY_ID,
+    prodId: PRODUCT_ID
+  };
 
-  let dbRef = db.collection(CATEGORY_ID).doc(PRODUCT_ID);
+  let dbRef = db.collection("reviews").doc(CATEGORY_ID).collection(PRODUCT_ID);
+  await dbRef.add(data);
+  reviewFormHTML.reset();
 
-  dbRef.get().then((doc) => {
-    let docData = doc.data();
-    let data = {
-      rating: expirence,
-      msg: msg,
-    };
-    if (docData.reviews) {
-      docData.reviews.push(data);
-    } else {
-      docData.reviews = [data];
-    }
-    dbRef.update(docData);
-    reviewFormHTML.reset();
-    // console.log("updated");
-  });
-  // console.log("done");
+  dbRef.get().then(reviewSnaps => {
+    let reviewSnapsDocs = reviewSnaps.docs;
+
+    let allStars = [];
+    reviewSnapsDocs.map(reviewDoc => {
+      let reviewData = reviewDoc.data();
+      allStars.push(+reviewData.rating.split('__')[0]);
+    })
+    let total = 0;
+    allStars.map(star => {
+      total += star;
+    });
+    let avg = total/allStars.length;
+    avg = Math.round(avg);
+    // console.log(avg);
+    let pRef = db.collection(CATEGORY_ID).doc(PRODUCT_ID);
+    pRef.get().then(async(pDoc) => {
+      let pData = pDoc.data();
+      pData.stars = avg;
+      pData.totalReviews = allStars.length;
+      console.log( pData.stars, pData.totalReviews);
+
+      await pRef.update(pData);
+
+      let locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
+      // console.log(typeof(locProds));
+      let locProds = locProds1.slice();
+      for(let locp of locProds) {
+        if(locp.prodId == PRODUCT_ID) {
+          locp.prodData.stars = pData.stars;
+          break;
+        }
+      }
+      sessionStorage.setItem("locProds", JSON.stringify(locProds));
+    })
+  })
 };
 
 reviewFormHTML.addEventListener("submit", reviewForm);
-
 const enterKeyFun = (e) => {
   // console.log(e.keyCode);
   if (e.keyCode === 13) {
@@ -462,12 +568,12 @@ const allAddonsHTML = document.querySelector("#allAddons");
 const costWithAddonsHTML = document.querySelector("#cost-with-addons");
 
 const addons_details = [];
- db.collection("addons")
+db.collection("addons")
   .get()
   .then((snapshots) => {
     let snapshotDocs = snapshots.docs;
     let card = "";
-    snapshotDocs.map(async(doc, index) => {
+    snapshotDocs.map(async (doc, index) => {
       // card += displayAddon(doc);
       let docData = doc.data();
       // console.log(docData);
@@ -480,8 +586,8 @@ const addons_details = [];
       card += `
       <div class="col-md-3 col-6 mt-3">
       <a class="item"
-        style="width: 200px; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-        <input type="checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
+        style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+        <input type="checkbox" name="add_addons" class="add_addons product-addons" value="${index}" onchange="buyAddon(event, this)"
           style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;height:20px;width:30px;">
         <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
           <img class="img-fluid"
@@ -535,8 +641,21 @@ const calAddonPrice = () => {
 };
 
 const buyAddon = (e, current) => {
+  
   let index = e.target.value;
   addons_details[index].checked = current.checked;
+  let countAddons = 0;
+  document.querySelectorAll('.product-addons').forEach(el => {
+    if(el.checked) {
+      countAddons++;
+    }
+  })
+  // console.log(countAddons);
+  if(countAddons > 0) {
+    document.querySelector('#prod_with_addons').innerHTML = `Continue With ${countAddons} Addons`;
+  } else {
+    document.querySelector('#prod_with_addons').innerHTML = `Continue Without Addons`;
+  }
   calAddonPrice();
 };
 
@@ -563,11 +682,9 @@ const decAddon = (e) => {
 const prodWithAddonsHTML = document.querySelector("#prod_with_addons");
 let userId;
 let userRef;
-user=localStorage.getItem("locLoggedInUser");
+user = localStorage.getItem("locLoggedInUser");
 const checkAuth = async () => {
- 
-  if (!user || user==null || user=="null") {
-    
+  if (!user || user == null || user == "null") {
     window.location.href = "/Auth/login.html";
   } else {
     userId = localStorage.getItem("locLoggedInUser");
@@ -590,8 +707,13 @@ const buyProd = async (e) => {
     if (docData.orders) {
       let cake = null;
       let f;
-      if(WEIGHT_PRICE.weight) {
-        f = document.querySelector('input[name=cake-flavour]:checked').value;
+      if (WEIGHT_PRICE.weight) {
+        if (document.querySelector("input[name=cake-flavour]:checked")) {
+          // user selected the value
+          f = document.querySelector("input[name=cake-flavour]:checked").value;
+        } else {
+          f = "Not Selcted";
+        }
       } else {
         f = false;
       }
@@ -605,6 +727,7 @@ const buyProd = async (e) => {
       }
       let orderData = {
         orderId: orderId,
+        totalCost: document.querySelector("#cost-with-addons").innerHTML,
         status: "cancelled",
         type: "single",
         addons: addonsSelected,
@@ -615,9 +738,9 @@ const buyProd = async (e) => {
             message: document.querySelector("#prodMsg").value,
             qty: PROD_QTY,
           },
-        ]
-      }
-      if(cake) {
+        ],
+      };
+      if (cake) {
         orderData.products[0].cake = cake;
       }
       docData.orders.push(orderData);
@@ -626,8 +749,13 @@ const buyProd = async (e) => {
       let cake = null;
       if (WEIGHT_PRICE.weight) {
         let f;
-        if(WEIGHT_PRICE.weight) {
-          f = document.querySelector('input[name=cake-flavour]:checked').value;
+        if (WEIGHT_PRICE.weight) {
+          if (document.querySelector("input[name=cake-flavour]:checked")) {
+            // user selected the value
+            f = document.querySelector("input[name=cake-flavour]:checked").value;
+          } else {
+            f = "Not Selcted";
+          }
         } else {
           f = false;
         }
@@ -642,6 +770,7 @@ const buyProd = async (e) => {
       let orderData = {
         orderId: orderId,
         status: "cancelled",
+        totalCost: document.querySelector("#cost-with-addons").innerHTML,
         type: "single",
         addons: addonsSelected,
         products: [
@@ -651,9 +780,9 @@ const buyProd = async (e) => {
             message: document.querySelector("#prodMsg").value,
             qty: PROD_QTY,
           },
-        ]
-      }
-      if(cake) {
+        ],
+      };
+      if (cake) {
         orderData.products[0].cake = cake;
       }
       docData.orders.push(orderData);
@@ -673,8 +802,13 @@ const addToCart = async (e) => {
   await userRef.get().then(async (doc) => {
     let docData = doc.data();
     let f;
-    if(WEIGHT_PRICE.weight) {
-      f = document.querySelector('input[name=cake-flavour]:checked').value;
+    if (WEIGHT_PRICE.weight) {
+      if (document.querySelector("input[name=cake-flavour]:checked")) {
+        // user selected the value
+        f = document.querySelector("input[name=cake-flavour]:checked").value;
+      } else {
+        f = "Not Selcted";
+      }
     } else {
       f = false;
     }
@@ -689,7 +823,7 @@ const addToCart = async (e) => {
         pricing: WEIGHT_PRICE,
         qty: PROD_QTY,
         cartId: cartId,
-        flavour:  f,
+        flavour: f,
       });
     } else {
       docData.cart = [];
@@ -715,57 +849,55 @@ const addToCart = async (e) => {
 
 addToCartBtnHTML.addEventListener("click", addToCart);
 
-const displaySuggestions = async() => {
-  const trendingItemsHTML = document.querySelector('.trending-item-slider');
+const displaySuggestions = async () => {
+  const trendingItemsHTML = document.querySelector(".trending-item-slider");
   // console.log(CATEGORY_ID);
   let allProds = [];
-  let r =  db.collection(CATEGORY_ID);
-  r.get().then(async(prodSnaps) => {
+  let r = db.collection(CATEGORY_ID);
+  r.get().then(async (prodSnaps) => {
     let prodSnapsDocs = prodSnaps.docs;
     let snapSize = prodSnapsDocs.length;
     // console.log(prodSnapsDocs.length);
     let rand = Math.floor(Math.random() * (snapSize - 8 + 0 + 1));
     // console.log(rand);
-    prodSnapsDocs.map(p => {
+    prodSnapsDocs.map((p) => {
       allProds.push(p.id);
-    })
+    });
 
-    let card = '';
-    for(let counter = 0; counter < 8; counter++) {
-      await db.collection(CATEGORY_ID).doc(allProds[counter + rand]).get().then(pdataRaw => {
-        let pdata = pdataRaw.data();
-        // console.log(pdata.mainImgUrl);
-        card += `
-        <a href="./product.html?prod=${allProds[counter + rand]}&&cat=${CATEGORY_ID}" class="item">
+    let card = "";
+    for (let counter = 0; counter < 8; counter++) {
+      await db
+        .collection(CATEGORY_ID)
+        .doc(allProds[counter + rand])
+        .get()
+        .then((pdataRaw) => {
+          let pdata = pdataRaw.data();
+          // console.log(pdata.mainImgUrl);
+          let dis = 100 - (+pdata.totalPrice / +pdata.mrp) * 100;
+          dis = Math.round(dis);
+          card += `
+        <a href="./product.html?prod=${
+          allProds[counter + rand]
+        }&&cat=${CATEGORY_ID}" class="item">
           <div class="item-img">
-            <div class="extra-list">
-              <ul>
-                <li>
-                  <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
-                    data-target="#comment-log-reg" data-placement="right">
-                    <i class="icofont-heart-alt"></i>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <img class="img-fluid" style="width: 500px !important; height:200px " src="${pdata.mainImgUrl}" alt="LAKE OF CAKES">
+
+            <img class="img-fluid" style="width: 500px !important; height:200px " src="${
+              pdata.mainImgUrl
+            }" alt="LAKE OF CAKES">
           </div>
           <div class="info">
-            <div class="stars">
-              <div class="ratings">
-                <div class="empty-stars"></div>
-                <div class="full-stars" style="width:0%"></div>
-              </div>
-            </div>
+            <br />
             <h5 style="font-size: 1em;color: black;">${pdata.name}</h5>
-            <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${pdata.sp} <del><small>₹ ${pdata.mrp}</small></del></h4>
+            <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${
+              pdata.totalPrice
+            } <small><del>₹ ${pdata.mrp}</del>(${dis}% OFF)</small></h4>
           </div>
         </a>
-        `; 
-      })
+        `;
+        });
     }
     trendingItemsHTML.innerHTML = card;
-    var $trending_slider = $('.trending-item-slider');
+    var $trending_slider = $(".trending-item-slider");
     $trending_slider.owlCarousel({
       items: 4,
       autoplay: true,
@@ -775,7 +907,10 @@ const displaySuggestions = async() => {
       nav: true,
       center: false,
       autoplayHoverPause: true,
-      navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+      navText: [
+        "<i class='fa fa-angle-left'></i>",
+        "<i class='fa fa-angle-right'></i>",
+      ],
       smartSpeed: 600,
       responsive: {
         0: {
@@ -788,13 +923,12 @@ const displaySuggestions = async() => {
           items: 3,
         },
         992: {
-          items: 5
+          items: 5,
         },
         1200: {
-          items: 6
-        }
-      }
+          items: 6,
+        },
+      },
     });
-
-  })
-}
+  });
+};

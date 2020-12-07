@@ -343,8 +343,8 @@ const addonModal = (e) => {
       card += `
     <div class="col-md-3 col-6 mt-3">
       <a class="item"
-        style="width: 150px; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-        <input type="checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
+        style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
+        <input type="checkbox" id="addons-checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
           style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
         <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
           <img class="img-fluid"
@@ -402,6 +402,17 @@ const calAddonPrice = () => {
 const buyAddon = (e, current) => {
   let index = e.target.value;
   ADDONS_DETAILS[index].checked = current.checked;
+  let tAddons = 0;
+  document.querySelectorAll('#addons-checkbox').forEach(el => {
+    if(el.checked) {
+      tAddons++;
+    }
+  })
+  if(tAddons > 0) {
+    document.querySelector('#prod_with_addons').innerHTML = `Checkout With ${tAddons} Addons`;
+  } else {
+    document.querySelector('#prod_with_addons').innerHTML = `Checkout Without Addons`;
+  }
   calAddonPrice();
 };
 
@@ -443,6 +454,7 @@ const checkoutProds = async(e) => {
       orderId: orderId,
       status: "cancelled",
       type: "cart",
+      totalCost: costWithAddonsHTML.innerHTML,
       addons: addonsSelected,
       products: [],
     };

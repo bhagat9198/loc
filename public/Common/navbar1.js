@@ -288,68 +288,6 @@ const easyAddToCart = () => {
 }
 
 
-const starRating = (startArr) => {
-  let starsSum = 0;
-  startArr.map(starNum => {
-    starsSum += +starNum;
-  })
-  let startsDiv = '';
-  starsAvg = Math.round(starsSum/startArr.length);
-  if(starsAvg = 0) {
-    startsDiv = `
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    `;
-  } else if(starsAvg = 1) {
-    startsDiv = `
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    `;
-  } else if(starsAvg = 2) {
-    startsDiv = `
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    `;
-  } else if(starsAvg = 3) {
-    startsDiv = `
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <span class="fa fa-star"></span>
-    `;
-  } else if(starsAvg = 4) {
-    startsDiv = `
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    `;
-  } else if(starsAvg = 5) {
-    startsDiv = `
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    `;
-  } else {
-    startsDiv = '';
-  }
-  return startsDiv;
-} 
-
-
 let cartModalHTML = document.querySelector('#cart-modal')
 let flag = 0;
 let cartModalProds = '';

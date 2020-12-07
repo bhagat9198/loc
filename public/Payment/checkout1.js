@@ -59,6 +59,8 @@ const checkOrderId = async () => {
   }
 };
 
+let FOUDANT = false;
+
 const allProductsDetails = async () => {
   for (let p of USER_DETAILS.orders[INDEX].products) {
     prodRef = await db.collection(p.cat).doc(p.prodId);
@@ -66,8 +68,19 @@ const allProductsDetails = async () => {
     await prodRef.get().then((doc) => {
       let docData = doc.data();
       p.pdata = docData;
+      // console.log(docData);
+      if(docData.fondant) {
+        // console.log(docData);
+        if(docData.fondant === 'true') {
+          // console.log(docData.fondant);
+          FOUDANT = true;
+        } else {
+          // console.log(docData.fondant);
+        }
+      }
     });
   }
+
   calculateBill();
 };
 
@@ -407,6 +420,7 @@ if(month.toString().length < 2) {
 }
 if(day.toString().length < 2) {
   day = `0${day}`;
+  console.log(day);
   // day = Number(day);
   // console.log(day);
 }
@@ -423,6 +437,25 @@ const setDateAndTime = () => {
     .value;
   shippingType = shipVal;
   console.log(shipVal);
+
+  let foudantHours = 0;
+  let foudantHoursPerfect = 0;
+  if(FOUDANT) {
+    foudantHours = 6;
+    foudantHoursPerfect = 4;
+  }
+
+  function updateDay(d) {
+    d = Number(d);
+    d = d + 1;
+    if(d.toString().length < 2) {
+      d = `0${d}`;
+      // console.log(d);
+      // d = Number(d);
+      // console.log(d);
+    }
+    return d;
+  }
   if (shipVal === "free") {
     shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
     // console.log(hours);
@@ -431,13 +464,14 @@ const setDateAndTime = () => {
     freeHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
 
-    if (hours < 17) {
+    if ((hours + foudantHours) < 17) {
       // shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
       shippingDateHTML.value = `${year}-${month}-${day}`;
       freeHoursHTML.style.display = "block";
     } else {
       // console.log('book for next day');
-      shippingDateHTML.setAttribute("min", `${year}-${month}-${day + 1}`);
+      let updatedDay =  updateDay(day);
+      shippingDateHTML.setAttribute("min", `${year}-${month}-${updatedDay}`);
       timeErrorHTML.style.display = "block";
     }
   } else if (shipVal === "perfect") {
@@ -447,47 +481,47 @@ const setDateAndTime = () => {
     midnightHoursHTML.style.display = "none";
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
-    if (hours < 20) {
+    if ((hours + foudantHoursPerfect) < 20) {
       perfectHoursHTML.style.display = "block";
       shippingDateHTML.value = `${year}-${month}-${day}`;
-      if (hours < 8) {
-      } else if (hours < 9) {
-        document.querySelector("#perfect_10").disabled = true;
-      } else if (hours < 10) {
-        document.querySelector("#perfect_10").disabled = true;
+      if ((hours + foudantHoursPerfect) < 8) {
+      } else if ((hours + foudantHoursPerfect) < 9) {
+        // document.querySelector("#perfect_10").disabled = true;
+      } else if ((hours + foudantHoursPerfect) < 10) {
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
-      } else if (hours < 11) {
-        document.querySelector("#perfect_10").disabled = true;
+      } else if ((hours + foudantHoursPerfect) < 11) {
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
-      } else if (hours < 12) {
-        document.querySelector("#perfect_10").disabled = true;
+      } else if ((hours + foudantHoursPerfect) < 12) {
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
-      } else if (hours < 13) {
-        document.querySelector("#perfect_10").disabled = true;
+      } else if ((hours + foudantHoursPerfect) < 13) {
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
         document.querySelector("#perfect_2").disabled = true;
-      } else if (hours < 14) {
-        document.querySelector("#perfect_10").disabled = true;
+      } else if ((hours + foudantHoursPerfect) < 14) {
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
         document.querySelector("#perfect_2").disabled = true;
         document.querySelector("#perfect_3").disabled = true;
-      } else if (hours < 15) {
-        document.querySelector("#perfect_10").disabled = true;
+      } else if ((hours + foudantHoursPerfect) < 15) {
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
         document.querySelector("#perfect_2").disabled = true;
         document.querySelector("#perfect_3").disabled = true;
         document.querySelector("#perfect_4").disabled = true;
-      } else if (hours < 16) {
-        document.querySelector("#perfect_10").disabled = true;
+      } else if ((hours + foudantHoursPerfect) < 16) {
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
@@ -495,8 +529,8 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_3").disabled = true;
         document.querySelector("#perfect_4").disabled = true;
         document.querySelector("#perfect_5").disabled = true;
-      } else if (hours < 18) {
-        document.querySelector("#perfect_10").disabled = true;
+      } else if ((hours + foudantHoursPerfect) < 18) {
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
@@ -505,8 +539,8 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_4").disabled = true;
         document.querySelector("#perfect_5").disabled = true;
         document.querySelector("#perfect_7").disabled = true;
-      } else if (hours < 19) {
-        document.querySelector("#perfect_10").disabled = true;
+      } else if ((hours + foudantHoursPerfect) < 19) {
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
@@ -516,8 +550,8 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_5").disabled = true;
         document.querySelector("#perfect_7").disabled = true;
         document.querySelector("#perfect_8").disabled = true;
-      } else if (hours < 20) {
-        document.querySelector("#perfect_10").disabled = true;
+      } else if ((hours + foudantHoursPerfect) < 20) {
+        // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_1").disabled = true;
@@ -531,7 +565,8 @@ const setDateAndTime = () => {
         console.log("invalid");
       }
     } else {
-      shippingDateHTML.setAttribute("min", `${year}-${month}-${day + 1}`);
+      let updatedDay =  updateDay(day);
+      shippingDateHTML.setAttribute("min", `${year}-${month}-${updatedDay}`);
       timeErrorHTML.style.display = "block";
     }
   } else if (shipVal === "midnight") {
@@ -542,11 +577,12 @@ const setDateAndTime = () => {
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
 
-    if (hours < 20) {
+    if ((hours + foudantHours) < 20) {
       midnightHoursHTML.style.display = "block";
       shippingDateHTML.value = `${year}-${month}-${day}`;
     } else {
-      shippingDateHTML.setAttribute("min", `${year}-${month}-${day + 1}`);
+      let updatedDay =  updateDay(day);
+      shippingDateHTML.setAttribute("min", `${year}-${month}-${updatedDay}`);
       timeErrorHTML.style.display = "block";
     }
   } else {
@@ -572,7 +608,7 @@ const changeDate = (e) => {
       midnightHoursHTML.style.display = "none";
       perfectHoursHTML.style.display = "block";
       timeErrorHTML.style.display = "none";
-      document.querySelector("#perfect_10").disabled = false;
+      // document.querySelector("#perfect_10").disabled = false;
       document.querySelector("#perfect_11").disabled = false;
       document.querySelector("#perfect_12").disabled = false;
       document.querySelector("#perfect_1").disabled = false;
@@ -844,7 +880,6 @@ const displayShippingInfo = (e) => {
 
 let options = '';
 let rzp1;
-
 const exeRazPay = e => {
   let razName, razEmail, razAddress, razPhone;
   if(SHIPPING_DATA.shipDiffAddress) {
@@ -870,7 +905,7 @@ const exeRazPay = e => {
     order_id: RAZ_ORDER_ID, 
     handler: function (response) {
       RES = response;
-      alert('razorpay_signature', response.razorpay_signature);
+      // alert('razorpay_signature', response.razorpay_signature);
       orderComplete(response);
       // alert(response.razorpay_payment_id);
       // alert(response.razorpay_order_id);
@@ -946,7 +981,7 @@ const orderComplete = (data) => {
     // console.log(res.data);
     if(res.data === 'true') {
       let userRef =  await db.collection('Customers').doc(USER_ID);
-     await userRef.get().then(userDoc => {
+     await userRef.get().then(async(userDoc) => {
         let userData = userDoc.data();
         for(let uo of userData.orders) {
           if(+uo.orderId === +CHECKOUT_ID) {
@@ -955,6 +990,7 @@ const orderComplete = (data) => {
               date: document.querySelector('input[name=shipping_date]').value,
               time: document.querySelector('input[name=shipping_time]:checked').value
             }
+            uo.successOrderId = RAZ_ORDER_ID;
             uo.status = 'success';
             uo.success = {
               orderTime: (new Date()).toString(),
@@ -962,7 +998,7 @@ const orderComplete = (data) => {
               ...shipData,
               totalCost: TOTAL_COST
             }
-            userRef.update(userData);
+            await userRef.update(userData);
             break;
           }
         }
