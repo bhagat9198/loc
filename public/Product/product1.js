@@ -29,6 +29,7 @@ getParams(window.location.href).then(async (response) => {
     console.log(PROD_DETAILS);
     displayProduct(PROD_DETAILS);
     displaySuggestions();
+    displayReviews();
   }
 });
 
@@ -977,3 +978,29 @@ const displaySuggestions = async () => {
     });
   });
 };
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// display reviews
+
+const displayReviews = () => {
+let reviewRef = db.collection('reviews').doc(CATEGORY_ID).collection(PRODUCT_ID);
+
+reviewRef.onSnapshot(reviewsSnaps => {
+  let reviewSnapsDocs = reviewsSnaps.docs;
+  let card = '';
+  reviewSnapsDocs.map(reviewDoc => {
+    if(reviewDoc.exists) {
+      let reviewData = reviewDoc.data();
+      console.log(reviewData);
+      // display info of each card
+      card += ``;
+    } else {
+      // console.log('not exsits');
+    }
+  })
+  // attch acrds with parentHTML element
+})
+}
