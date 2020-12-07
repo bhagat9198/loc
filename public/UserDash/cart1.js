@@ -362,7 +362,7 @@ const addonModal = (e) => {
             <div class="qty">
               <ul>
                 <li>
-                  <span class="qtminus" data-id="addon__minus__${doc.id}" data-index="${index}" onclick="decAddon(event)">
+                  <span  class="qtminus" data-id="addon__minus__${doc.id}" data-index="${index}" onclick="decAddon(event)">
                     <i class="fa fa-minus" data-id="addon__minus__${doc.id}" data-index="${index}"></i>
                   </span>
                 </li>

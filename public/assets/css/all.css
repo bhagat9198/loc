@@ -6092,7 +6092,7 @@ a.close.disabled {
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     pointer-events: auto;
@@ -6206,6 +6206,9 @@ a.close.disabled {
     .modal-lg,
     .modal-xl {
         max-width: 800px
+    }
+    .modal-content{
+        width:80%;
     }
 }
 
@@ -36308,5 +36311,19 @@ section.phone-and-accessories.categori-item {
     .reminderHeader {
         margin-left: 30% !important;
         
+    }
+}
+@media only screen and (min-width:769px) {
+
+    .responsive-secCart {
+      display: none !important;
+    }
+}
+@media only screen and (max-width:767px) {
+
+    
+    .responsive-secCart {
+
+      display: block !important;
     }
 }
