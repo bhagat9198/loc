@@ -25,8 +25,6 @@ const extractCategories = async () => {
       <option value="${doc.id}" >${docData.name}</option>
       `;
       });
-      options += `
-    <option value="all">All (/Common Section)</option>`;
       catHTML.innerHTML = options;
     })
     .catch((error) => {
