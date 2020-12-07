@@ -17,7 +17,7 @@ db.collection("categories").onSnapshot((catSnaps) => {
   displayReviews();
 });
 
-const deleteReview = e => {
+const deleteReview = (e) => {
   console.log(e.target.dataset);
   let catid = e.target.dataset.catid;
   let prodid = e.target.dataset.prodid;
@@ -25,42 +25,117 @@ const deleteReview = e => {
   let counter = e.target.dataset.counter;
 
   console.log(catid, prodid, docid);
-  let delRef = db.collection('reviews').doc(catid).collection(prodid);
-  delRef.doc(docid).delete().then(async() => {
-    console.log('deleted');
-    document.querySelector(`#panel-${counter}`).remove();
-    let starsTotal = 0;
-    let numStars = 0;
-    await delRef.onSnapshot(psnaps => {
-      if(psnaps.exists) {
+  let delRef = db.collection("reviews").doc(catid).collection(prodid);
+  delRef
+    .doc(docid)
+    .delete()
+    .then(async () => {
+      console.log("deleted");
+      console.log(document.querySelector(`#panel${docid}${counter}`));
+      let elHTML = document.querySelector(`#panel${docid}${counter}`);
+      elHTML.remove();
+      let starsTotal = 0;
+      let numStars = 0;
+      await delRef.get().then((psnaps) => {
         let psnapsDocs = psnaps.docs;
-        for(let pd of psnapsDocs) {
-          numStars++;
-          starsTotal = +pd.rating.split('__')[0];
+        console.log(psnapsDocs);
+        for (let pdd of psnapsDocs) {
+          if (pdd.exists) {
+            let pd = pdd.data();
+            console.log(pd);
+            numStars++;
+            starsTotal = +pd.rating.split("__")[0];
+          }
         }
+      });
+      console.log(starsTotal, numStars);
+      let avgStar = Math.round(starsTotal / numStars);
+      if (numStars === 0) {
+        avgStar = 0;
       }
+      let pRef = await db.collection(catid).doc(prodid);
+      await pRef.get().then((psnap) => {
+        if (psnap.exists) {
+          let pd = psnap.data();
+          pd.stars = avgStar;
+          pd.totalReviews = numStars;
+          pRef.update(pd);
+        }
+      });
     })
-    console.log(starsTotal, numStars);
-    let avgStar = Math.round(starsTotal/numStars);
-    if(numStars === 0) {
-      avgStar = 0;
-    }
-    let pRef = await db.collection(catid).doc(prodid);
-    await pRef.get().then(psnap => {
-      if(psnap.exists) {
-        let pd = psnap.data();
-        pd.stars = avgStar;
-        pd.totalReviews = numStars;
-        pRef.update(pd);
-      }
-    })
-  }).catch(error => {
-    console.log(error);
-  })
-}
-
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 let accordionExampleHTML = document.querySelector("#accordionExample");
+
+const starsCal = (starsNum) => {
+  console.log(starsNum);
+  let startsDiv = "";
+  starsAvg = +starsNum;
+  console.log(starsAvg, typeof starsAvg);
+  if (starsAvg == 0) {
+    console.log(starsNum);
+    startsDiv = `
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      `;
+  } else if (starsAvg == 1) {
+    startsDiv = `
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      `;
+  } else if (starsAvg == 2) {
+    console.log(starsNum);
+
+    startsDiv = `
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      `;
+  } else if (starsAvg == 3) {
+    startsDiv = `
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      <span class="fa fa-star"></span>
+      `;
+  } else if (starsAvg == 4) {
+    startsDiv = `
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star"></span>
+      `;
+  } else if (starsAvg == 5) {
+    startsDiv = `
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      <span class="fa fa-star checked"></span>
+      `;
+  } else {
+    startsDiv = "";
+  }
+  let divClass = `<style>
+    .checked {
+      color: orange;
+    }
+    </style>`;
+  return startsDiv + divClass;
+}
 
 const displayReviews = async () => {
   let allAccordCards = "";
@@ -97,16 +172,13 @@ const displayReviews = async () => {
                   let revData = rev.data();
                   // console.log(revData);
                   prodName = revData.prodName;
+                  starsDiv = starsCal(+revData.rating.split('__')[0]);
                   card += `
-                  <div class="panel panel-info" id="panel-${counter}">
+                  <div class="panel panel-info" id="panel${rev.id}${counter}">
                     <div class="panel-heading" style="display: flex;">
                       <h5>${revData.userName}</h5>
                       <div class="userrating">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+                        ${starsDiv}
                       </div>
                     </div>
                     <div class="panel-body" style="display: flex;">
