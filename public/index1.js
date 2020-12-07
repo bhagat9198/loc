@@ -71,7 +71,7 @@ db.collection("sections")
         if (docData[card].child) {
           child = docData[card].child.split("__")[0];
         }
-
+        
         row += `
    
       <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">

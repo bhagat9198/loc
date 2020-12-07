@@ -26,8 +26,10 @@ getParams(window.location.href).then(async (response) => {
   // console.log(PRODUCT_ID, CATEGORY_ID);
   if (PRODUCT_ID && CATEGORY_ID) {
     PROD_DETAILS = await extractProdDetails();
+    console.log(PROD_DETAILS);
     displayProduct(PROD_DETAILS);
     displaySuggestions();
+    displayReviews();
   }
 });
 
@@ -60,74 +62,72 @@ let TOTAL_COST = 0,
   EGGLESS = false,
   WEIGHT_PRICE = {};
 
-
-  const starRating = (starsNum) => {
+const starRating = (starsNum) => {
+  console.log(starsNum);
+  let startsDiv = "";
+  starsAvg = +starsNum;
+  console.log(starsAvg, typeof starsAvg);
+  if (starsAvg == 0) {
     console.log(starsNum);
-    let startsDiv = '';
-    starsAvg = +starsNum;
-    console.log(starsAvg, typeof(starsAvg));
-    if(starsAvg == 0) {
-      console.log(starsNum);
-      startsDiv = `
+    startsDiv = `
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       `;
-    } else if(starsAvg == 1) {
-      startsDiv = `
+  } else if (starsAvg == 1) {
+    startsDiv = `
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       `;
-    } else if(starsAvg == 2) {
-      console.log(starsNum);
+  } else if (starsAvg == 2) {
+    console.log(starsNum);
 
-      startsDiv = `
+    startsDiv = `
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       `;
-    } else if(starsAvg == 3) {
-      startsDiv = `
+  } else if (starsAvg == 3) {
+    startsDiv = `
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
       `;
-    } else if(starsAvg == 4) {
-      startsDiv = `
+  } else if (starsAvg == 4) {
+    startsDiv = `
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star"></span>
       `;
-    } else if(starsAvg == 5) {
-      startsDiv = `
+  } else if (starsAvg == 5) {
+    startsDiv = `
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       <span class="fa fa-star checked"></span>
       `;
-    } else {
-      startsDiv = '';
-    }
-    let divClass = `<style>
+  } else {
+    startsDiv = "";
+  }
+  let divClass = `<style>
     .checked {
       color: orange;
     }
     </style>`;
-    return startsDiv + divClass;
-  } 
-  
+  return startsDiv + divClass;
+};
 
 const displayProduct = (prodData) => {
   // console.log(prodData);
@@ -194,7 +194,7 @@ const displayProduct = (prodData) => {
   console.log(prodData.stars);
   let pstars = starRating(+prodData.stars);
 
-  document.querySelector('#prod-stars').innerHTML = pstars;
+  document.querySelector("#prod-stars").innerHTML = pstars;
 
   if (prodData.totalReviews) {
     reviewCountHTML.innerHTML = `
@@ -489,63 +489,105 @@ const imgChange = (e, current) => {
 };
 
 const reviewFormHTML = document.querySelector("#review-form");
-const reviewForm = async(e) => {
+const reviewForm = async (e) => {
   // console.log(e);
   e.preventDefault();
   const expirence = reviewFormHTML["experience"].value;
   const msg = reviewFormHTML["review-message"].value;
+  let userName = "";
   let user = localStorage.getItem("locLoggedInUser");
-  if (!user) {
+  if (user) {
+    console.log(user);
+
+    await db
+      .collection("Customers")
+      .doc(user)
+      .get()
+      .then((userDoc) => {
+        let userData = userDoc.data();
+        console.log(userData);
+        userName = userData.UserName;
+      });
+  } else {
+    console.log(user);
     user = "Anonymous";
+    userName = "Anonymous";
   }
+  console.log(PROD_DETAILS);
   let data = {
     rating: expirence,
     msg: msg,
     user: user,
+    userName: userName,
     catID: CATEGORY_ID,
-    prodId: PRODUCT_ID
+    prodId: PRODUCT_ID,
+    prodName: PROD_DETAILS.name,
+    pimg: PROD_DETAILS.mainImgUrl,
+    sno: PROD_DETAILS.sno,
   };
 
-  let dbRef = db.collection("reviews").doc(CATEGORY_ID).collection(PRODUCT_ID);
-  await dbRef.add(data);
-  reviewFormHTML.reset();
-
-  dbRef.get().then(reviewSnaps => {
-    let reviewSnapsDocs = reviewSnaps.docs;
-
-    let allStars = [];
-    reviewSnapsDocs.map(reviewDoc => {
-      let reviewData = reviewDoc.data();
-      allStars.push(+reviewData.rating.split('__')[0]);
-    })
-    let total = 0;
-    allStars.map(star => {
-      total += star;
-    });
-    let avg = total/allStars.length;
-    avg = Math.round(avg);
-    // console.log(avg);
-    let pRef = db.collection(CATEGORY_ID).doc(PRODUCT_ID);
-    pRef.get().then(async(pDoc) => {
-      let pData = pDoc.data();
-      pData.stars = avg;
-      pData.totalReviews = allStars.length;
-      console.log( pData.stars, pData.totalReviews);
-
-      await pRef.update(pData);
-
-      let locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
-      // console.log(typeof(locProds));
-      let locProds = locProds1.slice();
-      for(let locp of locProds) {
-        if(locp.prodId == PRODUCT_ID) {
-          locp.prodData.stars = pData.stars;
+  // let dbRef = db.collection("reviews").doc(CATEGORY_ID).collection(PRODUCT_ID);
+  let dbRef = await db.collection("reviews").doc(CATEGORY_ID);
+  await dbRef.get().then(async (dbDoc) => {
+    if (dbDoc.exists) {
+      let dbData = dbDoc.data();
+      flag = 0;
+      for (let el of dbData.collectionIds) {
+        if (el == PRODUCT_ID) {
+          flag = 1;
           break;
         }
       }
-      sessionStorage.setItem("locProds", JSON.stringify(locProds));
-    })
-  })
+      if (flag === 0) {
+        dbData.collectionIds.push(PRODUCT_ID);
+        await dbRef.update(dbData);
+      }
+    } else {
+      await dbRef.set({ collectionIds: [PRODUCT_ID] });
+    }
+  });
+  await dbRef.collection(PRODUCT_ID).add(data);
+
+  reviewFormHTML.reset();
+
+  dbRef
+    .collection(PRODUCT_ID)
+    .get()
+    .then((reviewSnaps) => {
+      let reviewSnapsDocs = reviewSnaps.docs;
+      let allStars = [];
+      reviewSnapsDocs.map((reviewDoc) => {
+        let reviewData = reviewDoc.data();
+        allStars.push(+reviewData.rating.split("__")[0]);
+      });
+      let total = 0;
+      allStars.map((star) => {
+        total += star;
+      });
+      let avg = total / allStars.length;
+      avg = Math.round(avg);
+      // console.log(avg);
+      let pRef = db.collection(CATEGORY_ID).doc(PRODUCT_ID);
+      pRef.get().then(async (pDoc) => {
+        let pData = pDoc.data();
+        pData.stars = avg;
+        pData.totalReviews = allStars.length;
+        console.log(pData.stars, pData.totalReviews);
+
+        await pRef.update(pData);
+
+        let locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
+        // console.log(typeof(locProds));
+        let locProds = locProds1.slice();
+        for (let locp of locProds) {
+          if (locp.prodId == PRODUCT_ID) {
+            locp.prodData.stars = pData.stars;
+            break;
+          }
+        }
+        sessionStorage.setItem("locProds", JSON.stringify(locProds));
+      });
+    });
 };
 
 reviewFormHTML.addEventListener("submit", reviewForm);
@@ -641,20 +683,23 @@ const calAddonPrice = () => {
 };
 
 const buyAddon = (e, current) => {
-  
   let index = e.target.value;
   addons_details[index].checked = current.checked;
   let countAddons = 0;
-  document.querySelectorAll('.product-addons').forEach(el => {
-    if(el.checked) {
+  document.querySelectorAll(".product-addons").forEach((el) => {
+    if (el.checked) {
       countAddons++;
     }
-  })
+  });
   // console.log(countAddons);
-  if(countAddons > 0) {
-    document.querySelector('#prod_with_addons').innerHTML = `Continue With ${countAddons} Addons`;
+  if (countAddons > 0) {
+    document.querySelector(
+      "#prod_with_addons"
+    ).innerHTML = `Continue With ${countAddons} Addons`;
   } else {
-    document.querySelector('#prod_with_addons').innerHTML = `Continue Without Addons`;
+    document.querySelector(
+      "#prod_with_addons"
+    ).innerHTML = `Continue Without Addons`;
   }
   calAddonPrice();
 };
@@ -752,7 +797,8 @@ const buyProd = async (e) => {
         if (WEIGHT_PRICE.weight) {
           if (document.querySelector("input[name=cake-flavour]:checked")) {
             // user selected the value
-            f = document.querySelector("input[name=cake-flavour]:checked").value;
+            f = document.querySelector("input[name=cake-flavour]:checked")
+              .value;
           } else {
             f = "Not Selcted";
           }
@@ -932,3 +978,29 @@ const displaySuggestions = async () => {
     });
   });
 };
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// display reviews
+
+const displayReviews = () => {
+let reviewRef = db.collection('reviews').doc(CATEGORY_ID).collection(PRODUCT_ID);
+
+reviewRef.onSnapshot(reviewsSnaps => {
+  let reviewSnapsDocs = reviewsSnaps.docs;
+  let card = '';
+  reviewSnapsDocs.map(reviewDoc => {
+    if(reviewDoc.exists) {
+      let reviewData = reviewDoc.data();
+      console.log(reviewData);
+      // display info of each card
+      card += ``;
+    } else {
+      // console.log('not exsits');
+    }
+  })
+  // attch acrds with parentHTML element
+})
+}
