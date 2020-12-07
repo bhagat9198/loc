@@ -495,18 +495,22 @@ const reviewForm = async (e) => {
   const msg = reviewFormHTML["review-message"].value;
   let userName = "";
   let user = localStorage.getItem("locLoggedInUser");
-  if (!user) {
-    user = "Anonymous";
-    userName = "Anonymous";
-  } else {
+  if (user) {
+    console.log(user);
+
     await db
       .collection("Customers")
       .doc(user)
       .get()
       .then((userDoc) => {
         let userData = userDoc.data();
+        console.log(userData);
         userName = userData.UserName;
       });
+  } else {
+    console.log(user);
+    user = "Anonymous";
+    userName = "Anonymous";
   }
   console.log(PROD_DETAILS);
   let data = {
@@ -527,12 +531,12 @@ const reviewForm = async (e) => {
     if (dbDoc.exists) {
       let dbData = dbDoc.data();
       flag = 0;
-      for(let el of dbData.collectionIds) {
+      for (let el of dbData.collectionIds) {
         if (el == PRODUCT_ID) {
           flag = 1;
           break;
         }
-      };
+      }
       if (flag === 0) {
         dbData.collectionIds.push(PRODUCT_ID);
         await dbRef.update(dbData);
@@ -545,41 +549,44 @@ const reviewForm = async (e) => {
 
   reviewFormHTML.reset();
 
-  dbRef.collection(PRODUCT_ID).get().then((reviewSnaps) => {
-    let reviewSnapsDocs = reviewSnaps.docs;
-    let allStars = [];
-    reviewSnapsDocs.map((reviewDoc) => {
-      let reviewData = reviewDoc.data();
-      allStars.push(+reviewData.rating.split("__")[0]);
-    });
-    let total = 0;
-    allStars.map((star) => {
-      total += star;
-    });
-    let avg = total / allStars.length;
-    avg = Math.round(avg);
-    // console.log(avg);
-    let pRef = db.collection(CATEGORY_ID).doc(PRODUCT_ID);
-    pRef.get().then(async (pDoc) => {
-      let pData = pDoc.data();
-      pData.stars = avg;
-      pData.totalReviews = allStars.length;
-      console.log(pData.stars, pData.totalReviews);
+  dbRef
+    .collection(PRODUCT_ID)
+    .get()
+    .then((reviewSnaps) => {
+      let reviewSnapsDocs = reviewSnaps.docs;
+      let allStars = [];
+      reviewSnapsDocs.map((reviewDoc) => {
+        let reviewData = reviewDoc.data();
+        allStars.push(+reviewData.rating.split("__")[0]);
+      });
+      let total = 0;
+      allStars.map((star) => {
+        total += star;
+      });
+      let avg = total / allStars.length;
+      avg = Math.round(avg);
+      // console.log(avg);
+      let pRef = db.collection(CATEGORY_ID).doc(PRODUCT_ID);
+      pRef.get().then(async (pDoc) => {
+        let pData = pDoc.data();
+        pData.stars = avg;
+        pData.totalReviews = allStars.length;
+        console.log(pData.stars, pData.totalReviews);
 
-      await pRef.update(pData);
+        await pRef.update(pData);
 
-      let locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
-      // console.log(typeof(locProds));
-      let locProds = locProds1.slice();
-      for (let locp of locProds) {
-        if (locp.prodId == PRODUCT_ID) {
-          locp.prodData.stars = pData.stars;
-          break;
+        let locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
+        // console.log(typeof(locProds));
+        let locProds = locProds1.slice();
+        for (let locp of locProds) {
+          if (locp.prodId == PRODUCT_ID) {
+            locp.prodData.stars = pData.stars;
+            break;
+          }
         }
-      }
-      sessionStorage.setItem("locProds", JSON.stringify(locProds));
+        sessionStorage.setItem("locProds", JSON.stringify(locProds));
+      });
     });
-  });
 };
 
 reviewFormHTML.addEventListener("submit", reviewForm);
