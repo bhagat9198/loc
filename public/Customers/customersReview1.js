@@ -42,12 +42,15 @@ const deleteReview = e => {
     })
     console.log(starsTotal, numStars);
     let avgStar = Math.round(starsTotal/numStars);
-
+    if(numStars === 0) {
+      avgStar = 0;
+    }
     let pRef = await db.collection(catid).doc(prodid);
     await pRef.get().then(psnap => {
       if(psnap.exists) {
         let pd = psnap.data();
         pd.stars = avgStar;
+        pd.totalReviews = numStars;
         pRef.update(pd);
       }
     })
