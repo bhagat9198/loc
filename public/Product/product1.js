@@ -518,6 +518,7 @@ const reviewForm = async (e) => {
     prodId: PRODUCT_ID,
     prodName: PROD_DETAILS.name,
     pimg: PROD_DETAILS.mainImgUrl,
+    sno: PROD_DETAILS.sno,
   };
 
   // let dbRef = db.collection("reviews").doc(CATEGORY_ID).collection(PRODUCT_ID);
