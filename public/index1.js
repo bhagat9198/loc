@@ -378,7 +378,7 @@ db.collection("sections")
                 </div>
                 <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
           prodData.mrp
-        }</small></del>(${dis}% OFF)</h4>
+        }</small></del><small style="color:green">&nbsp;(${dis}% OFF)</small></h4>
                 <h5 class="name">${prodData.name}</h5>
               </div>
           
