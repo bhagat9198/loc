@@ -36367,4 +36367,7 @@ section.phone-and-accessories.categori-item {
     .resIcon{
         padding: 10px;
     }
+    .wrapWords{
+        flex-wrap: wrap;
+    }
 }
