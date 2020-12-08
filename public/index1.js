@@ -27,7 +27,7 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
     if (docData.daylight) {
       img += `
       <a href="./Products/products.html?cat=${docData.cat}&&sub=${docData.subCat ? docData.subCat : ''}&&child=${docData.childCat ? docData.childCat : ''}">
-        <div class="intro-content slide-one">
+        <div class="intro-content slide-one" >
           <img class=""
             src="${docData.imgUrl}">
             <div class="container">
