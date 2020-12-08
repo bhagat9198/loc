@@ -365,12 +365,12 @@ const displayTopSuggest = async () => {
             // console.log(catDetailData);
             card += `
         <div class="col-lg-2 ">
-        <a href="./products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important ">
+        <a href="./products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important;width:150px;height:200px;object-fit:cover ">
           <div class="" >
-            <img class="" style="width:220px;height:210px;object-fit:cover" src="${cimgData.imgs[rand].url}" alt="Lake of cakes ">
+            <img class="" style="width:150px;height:150px;object-fit:cover" src="${cimgData.imgs[rand].url}" alt="Lake of cakes ">
           </div>
           <div>
-            <div class="info" style="height: 20px !important;border-radius:50px;width:70%; margin-left:auto;margin-right:auto;display:block;"> 
+            <div class="info" style="height: 20px !important;border-radius:50px;width:100%; margin-left:auto;margin-right:auto;display:block;"> 
             <h5 class="name responsive-name" >${catDetailData.name}</h5>
           </div>
         </div>

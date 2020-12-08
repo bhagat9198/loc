@@ -453,7 +453,7 @@
   }
 
   input[type=radio]:checked~label {
-    color: #81247d !important;
+    color: #f50808 !important;
   }
 
   .checkoutRadio {
@@ -1238,21 +1238,21 @@
         <div class="checkout-process">
           <ul class="nav" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" id="pills-step1-tab" data-toggle="pill" href="#pills-step1" role="tab"
+              <a class="nav-link active" style="pointer-events: none !important;" id="pills-step1-tab" data-toggle="pill" href="#pills-step1" role="tab"
                 aria-controls="pills-step1" aria-selected="true">
                 <span>1</span> Shipping
                 <i class="fa fa-address-card"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" id="pills-step2-tab" data-toggle="pill" href="#pills-step2" role="tab"
+              <a class="nav-link disabled" style="pointer-events: none !important;" id="pills-step2-tab" data-toggle="pill" href="#pills-step2" role="tab"
                 aria-controls="pills-step2" aria-selected="false">
                 <span>2</span> Orders
                 <i class="fas fa-dolly"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" id="pills-step3-tab" data-toggle="pill" href="#pills-step3" role="tab"
+              <a class="nav-link disabled" style="pointer-events: none !important;" id="pills-step3-tab" data-toggle="pill" href="#pills-step3" role="tab"
                 aria-controls="pills-step3" aria-selected="false">
                 <span>3</span> Payment
                 <i class="far fa-credit-card"></i>
@@ -1551,7 +1551,7 @@
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                  <div class="container-fluid">
+                  <div class="container-fluid" >
                     <div class="">
                       <div class="row">
                         <div class="col-md-12 mt-3" style="background-color: rgba(212, 221, 202, 0.4);">
@@ -1562,11 +1562,12 @@
                           </div>
                         </div>
                         <div class="col-md-12 mt-3">
-                          <div class="form-group">
-                            <label
-                              style="font-weight: 700;padding: 10px !important;text-align:center !important;">Delivery
-                              Time</label>
-                            <div class="free-hours" id="free-hours" style="display: none;">
+                          <label
+                          style="font-weight: 700;padding: 10px !important;text-align:center !important;">Delivery
+                          Time</label>
+                          <div class="form-group" style="height: 400px ;overflow-y: scroll;">
+                          
+                            <div class="free-hours responsivehrs" id="free-hours" style="display: none;">
                               <label class="element-animation1 btn btn-lg btn-primary btn-block"><span
                                   class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
                                   type="radio" name="shipping_time" value="free"
@@ -1575,7 +1576,7 @@
                             </div>
                             <div id="time-error" style="color: #f00; display: none;">Sorry!! you cant book for today 😶
                               <br /> Select next day date or upcoming day date.</div>
-                            <div class="perfect-hours" id="perfect-hours" style="display: none;">
+                            <div class="perfect-hours responsivehrs" id="perfect-hours" style="display: none;">
 
                               <label class="element-animation2 btn btn-lg btn-primary btn-block "><span
                                   class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
@@ -1635,7 +1636,7 @@
                                 10
                                 PM</label>
                             </div>
-                            <div class="midnight-hours" id="midnight-hours" style="display: none;">
+                            <div class="midnight-hours responsivehrs" id="midnight-hours" style="display: none;">
                               <label class="element-animation1 btn btn-lg btn-primary btn-block"><span
                                   class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
                                   type="radio" name="shipping_time" value="midnight">&nbsp;&nbsp;11:30 PM to 11:59 PM
@@ -1756,8 +1757,8 @@
                   <input type="radio" class="shipping" id="free-shepping1" name="shipping" value="free" checked>
                   <span class="checkmark"></span>
                   <label for="free-shepping1">
-                    Free Shipping
-                    <small>This option is available till</small>
+                    Free Delivery
+                    <small>From 10 Am to 8 Pm</small>
                     <small id="freeTimer" class="timer"></small>
                   </label>
                 </div>
