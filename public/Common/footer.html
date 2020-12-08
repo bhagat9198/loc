@@ -69,9 +69,9 @@
                 <i class="fas fa-angle-double-right"></i> FAQ
               </a>
             </li>
-            <li>
-              <a style="color:#fff;" href="/Auth/login.html">
-                <i class="fas fa-angle-double-right"></i> Login/Register
+            <li style="display: none !important;" id="authway">
+              <a style="color:#fff;" href="/Auth/login.html" >
+                <i class="fas fa-angle-double-right" ></i> Login/Register
               </a>
             </li>
             <li>
@@ -90,7 +90,6 @@
       <div class="col-lg-2 col-md-6 col-6">
         <div class="footer-widget info-link-widget">
           <h4 class="title" style="font-size: 20px;">
-
             Store
           </h4>
           <ul class="link-list">
@@ -118,22 +117,22 @@
           </ul>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-6">
-        <h4 class="title" style="font-size: 20px; font-weight: 700; color: #000">
+      <div class=" col-lg-3 col-md-6 col-6">
+        <h4 class="title responsiveText" style="font-size: 20px; font-weight: 700; color: #000">
           CONNECT WITH US
         </h4>
-        <div class="fotter-social-links">
+        <div class="fotter-social-links resIcon" >
           <ul>
 
             <li>
-              <a href="//www.facebook.com/" class="facebook" target="_blank"
+              <a href="https://www.facebook.com/Lake-Of-Cakes-100900995221365" class="facebook" target="_blank"
                 style="background: #3b5999; color: #ffffff; border: 1px solid #3b5999;">
                 <i class="fab fa-facebook-f"></i>
               </a>
             </li>
 
             <li>
-              <a href="//plus.google.com/" class="google-plus" target="_blank"
+              <a href="https://www.instagram.com/lake_of_cakes/" class="google-plus" target="_blank"
                 style=" color: #ffffff; border: 1px solid #d62651; background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); ">
                 <i class="fab fa-instagram" aria-hidden="true"></i>
               </a>
@@ -152,7 +151,7 @@
         </div>
       </div>
       <div class="col-md-12 col-lg-12 mb-3 text-center" style="border-top: 1px solid #251d34;">
-        <img class="mt-3" src="../assets/images/footericons.png "  alt=""
+        <img class="responsiveFooter mt-3" src="../assets/images/footericons.png "  alt=""
           style="max-width: 36%;">
       </div>
     </div>
@@ -173,3 +172,9 @@
     </div>
   </div>
 </div>
+<script>
+  let user=window.localStorage.getItem("locLoggedInUser")
+  if((!user) ||user =="null" ||user==null){
+    document.getElementById("authway").style.display="block"
+  }
+</script>

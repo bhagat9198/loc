@@ -9,6 +9,7 @@ const topSuggestionHTML = document.querySelector("#top-suggestion");
 let CAT, SUB, CHILD, TAG, USER;
 let TEMP_ARR = [];
 
+
 var getParams = async (url) => {
   var params = {};
   var parser = document.createElement("a");
@@ -456,4 +457,7 @@ const sortProducts = (e, current) => {
   }
 };
 
-// ///////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////
+
+
+

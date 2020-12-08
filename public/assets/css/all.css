@@ -36321,11 +36321,17 @@ section.phone-and-accessories.categori-item {
         margin-left: 30% !important;
         
     }
-}
-@media  only screen and (min-width:1000px) and (max-width:1260px){
     .responsiveIcon1{
         width: 30px !important;
         height:30px !important;
+        object-fit: contain !important;
+        
+    }
+}
+@media  only screen and (min-width:1000px) and (max-width:1260px){
+    .responsiveIcon1{
+        width: 25px !important;
+        height:25px !important;
         
     }
 }
@@ -36346,9 +36352,19 @@ section.phone-and-accessories.categori-item {
 }
 @media only screen and (max-width:767px) {
 
-    
+    .responsiveFooter{
+        max-width: 100% !important;
+    }
     .responsive-secCart {
 
       display: block !important;
+    }
+    .responsiveText{
+        font-size: 15px !important;
+        padding-top: 10px;
+        font-weight: 800;
+    }
+    .resIcon{
+        padding: 10px;
     }
 }

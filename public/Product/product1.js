@@ -245,8 +245,8 @@ const displayProduct = (prodData) => {
       prodData.flavours.map((flav) => {
         card += `
         <div class="custom-control custom-radio" style="margin-right: 25px;">
-          <input type="radio" checked  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
-          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:11px">${flav}</label>
+          <input type="radio"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
+          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px">${flav}</label>
         </div>
         `;
       });
@@ -355,7 +355,7 @@ const displayWeights = (makedWeight) => {
         let rand = Math.random();
         let weightName, price, pprice, weightNum;
         if (weight.cakeWeight === "half") {
-          weightNum = "0.5";
+          weightNum = "1/2";
           weightName = weight.cakeWeight;
           price = weight.weightPrice;
           pprice = weight.weightPrevPrice;
@@ -488,6 +488,45 @@ const imgChange = (e, current) => {
   // console.log(document.querySelector("#whole-img-block"));
 };
 
+const updateSessionStorage = async() => {
+  console.log('updateSessionStorage');
+  let AllProds = [];
+  await db.collection("categories").get().then(async (catSnaps) => {
+    let catSnapsDocs = catSnaps.docs;
+
+    for (let catDoc of catSnapsDocs) {
+      let catData = catDoc.data();
+      await db
+        .collection(catDoc.id)
+        .get()
+        .then(async(prodSnaps) => {
+          let prodSnapsDocs = prodSnaps.docs;
+          await prodSnapsDocs.map((pDoc) => {
+            let pData = pDoc.data();
+            AllProds.push({
+              prodId: pDoc.id,
+              prodData: {
+                cat: catData.name,
+                name: pData.name,
+                totalPrice: pData.totalPrice,
+                mrp: pData.mrp,
+                mainImgUrl: pData.mainImgUrl,
+                stars: pData.stars,
+                bannerType: pData.bannerType,
+                bannerTypeColorEnd: pData.bannerTypeColorEnd,
+                bannerTypeColorStart: pData.bannerTypeColorStart,
+              },
+              catId: catDoc.id,
+            });
+          });
+          console.log(catDoc.id);
+        });
+    }
+    sessionStorage.setItem("locProds", JSON.stringify(AllProds));
+  });
+  return;
+};
+
 const reviewFormHTML = document.querySelector("#review-form");
 const reviewForm = async (e) => {
   // console.log(e);
@@ -496,9 +535,8 @@ const reviewForm = async (e) => {
   const msg = reviewFormHTML["review-message"].value;
   let userName = "";
   let user = localStorage.getItem("locLoggedInUser");
-  if (user) {
+  if (user !== "null") {
     console.log(user);
-
     await db
       .collection("Customers")
       .doc(user)
@@ -577,7 +615,14 @@ const reviewForm = async (e) => {
         await pRef.update(pData);
 
         let locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
-        // console.log(typeof(locProds));
+        // console.log(typeof(locProds1), locProds1);
+        if (!locProds1) {
+          await updateSessionStorage().then(res => {
+            locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
+          })
+        }
+        console.log(locProds1);
+        console.log(locProds1, typeof(locProds1));
         let locProds = locProds1.slice();
         for (let locp of locProds) {
           if (locp.prodId == PRODUCT_ID) {
@@ -979,28 +1024,47 @@ const displaySuggestions = async () => {
   });
 };
 
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // display reviews
 
+const allReviewsHTML = document.querySelector('#all-reviews');
 const displayReviews = () => {
-let reviewRef = db.collection('reviews').doc(CATEGORY_ID).collection(PRODUCT_ID);
+  let reviewRef = db
+    .collection("reviews")
+    .doc(CATEGORY_ID)
+    .collection(PRODUCT_ID);
 
-reviewRef.onSnapshot(reviewsSnaps => {
-  let reviewSnapsDocs = reviewsSnaps.docs;
-  let card = '';
-  reviewSnapsDocs.map(reviewDoc => {
-    if(reviewDoc.exists) {
-      let reviewData = reviewDoc.data();
-      console.log(reviewData);
-      // display info of each card
-      card += ``;
-    } else {
-      // console.log('not exsits');
-    }
-  })
-  // attch acrds with parentHTML element
-})
-}
+  reviewRef.onSnapshot((reviewsSnaps) => {
+    let reviewSnapsDocs = reviewsSnaps.docs;
+    let card = "";
+    reviewSnapsDocs.map((reviewDoc) => {
+      if (reviewDoc.exists) {
+        let reviewData = reviewDoc.data();
+        console.log(reviewData);
+        // display info of each card
+        let starsDiv = starRating(+reviewData.rating.split('__')[0]);
+        card += `
+        <div class="w3-container">
+          <div class="w3-card-4" style="width:100%;">
+            <header class="w3-container w3-red">
+              <h5>${reviewData.userName}</h5>
+            </header>
+            <div class="w3-container">
+              <p>${reviewData.msg}</p>
+            </div>
+            <footer class="w3-container w3-gray">
+              ${starsDiv}
+            </footer>
+          </div>
+        </div>
+        <br>
+        `;
+      } else {
+        // console.log('not exsits');
+      }
+    });
+    // attch cards with parentHTML element
+    allReviewsHTML.innerHTML = card;
+  });
+};
