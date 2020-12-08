@@ -490,77 +490,131 @@ const setDateAndTime = () => {
       } else if ((hours + foudantHoursPerfect) < 10) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 11) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
+        document.querySelector("#perfect_12").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 12) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
+        document.querySelector("#perfect_12").parentElement.remove();
         document.querySelector("#perfect_1").disabled = true;
+        document.querySelector("#perfect_1").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 13) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
+        document.querySelector("#perfect_12").parentElement.remove();
         document.querySelector("#perfect_1").disabled = true;
+        document.querySelector("#perfect_1").parentElement.remove();
         document.querySelector("#perfect_2").disabled = true;
+        document.querySelector("#perfect_2").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 14) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
+        document.querySelector("#perfect_12").parentElement.remove();
         document.querySelector("#perfect_1").disabled = true;
+        document.querySelector("#perfect_1").parentElement.remove();
         document.querySelector("#perfect_2").disabled = true;
+        document.querySelector("#perfect_2").parentElement.remove();
         document.querySelector("#perfect_3").disabled = true;
+        document.querySelector("#perfect_3").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 15) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
+        document.querySelector("#perfect_12").parentElement.remove();
         document.querySelector("#perfect_1").disabled = true;
+        document.querySelector("#perfect_1").parentElement.remove();
         document.querySelector("#perfect_2").disabled = true;
+        document.querySelector("#perfect_2").parentElement.remove();
         document.querySelector("#perfect_3").disabled = true;
+        document.querySelector("#perfect_3").parentElement.remove();
         document.querySelector("#perfect_4").disabled = true;
+        document.querySelector("#perfect_4").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 16) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
+        document.querySelector("#perfect_12").parentElement.remove();
         document.querySelector("#perfect_1").disabled = true;
+        document.querySelector("#perfect_1").parentElement.remove();
         document.querySelector("#perfect_2").disabled = true;
+        document.querySelector("#perfect_2").parentElement.remove();
         document.querySelector("#perfect_3").disabled = true;
+        document.querySelector("#perfect_3").parentElement.remove();
         document.querySelector("#perfect_4").disabled = true;
+        document.querySelector("#perfect_4").parentElement.remove();
         document.querySelector("#perfect_5").disabled = true;
+        document.querySelector("#perfect_5").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 18) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
+        document.querySelector("#perfect_12").parentElement.remove();
         document.querySelector("#perfect_1").disabled = true;
+        document.querySelector("#perfect_1").parentElement.remove();
         document.querySelector("#perfect_2").disabled = true;
+        document.querySelector("#perfect_2").parentElement.remove();
         document.querySelector("#perfect_3").disabled = true;
+        document.querySelector("#perfect_3").parentElement.remove();
         document.querySelector("#perfect_4").disabled = true;
+        document.querySelector("#perfect_4").parentElement.remove();
         document.querySelector("#perfect_5").disabled = true;
+        document.querySelector("#perfect_5").parentElement.remove();
         document.querySelector("#perfect_7").disabled = true;
+        document.querySelector("#perfect_7").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 19) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
+        document.querySelector("#perfect_12").parentElement.remove();
         document.querySelector("#perfect_1").disabled = true;
+        document.querySelector("#perfect_1").parentElement.remove();
         document.querySelector("#perfect_2").disabled = true;
+        document.querySelector("#perfect_2").parentElement.remove();
         document.querySelector("#perfect_3").disabled = true;
+        document.querySelector("#perfect_3").parentElement.remove();
         document.querySelector("#perfect_4").disabled = true;
+        document.querySelector("#perfect_4").parentElement.remove();
         document.querySelector("#perfect_5").disabled = true;
+        document.querySelector("#perfect_5").parentElement.remove();
         document.querySelector("#perfect_7").disabled = true;
+        document.querySelector("#perfect_7").parentElement.remove();
         document.querySelector("#perfect_8").disabled = true;
+        document.querySelector("#perfect_8").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 20) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
+        document.querySelector("#perfect_12").parentElement.remove();
         document.querySelector("#perfect_1").disabled = true;
+        document.querySelector("#perfect_1").parentElement.remove();
         document.querySelector("#perfect_2").disabled = true;
+        document.querySelector("#perfect_2").parentElement.remove();
         document.querySelector("#perfect_3").disabled = true;
+        document.querySelector("#perfect_3").parentElement.remove();
         document.querySelector("#perfect_4").disabled = true;
+        document.querySelector("#perfect_4").parentElement.remove();
         document.querySelector("#perfect_5").disabled = true;
+        document.querySelector("#perfect_5").parentElement.remove();
         document.querySelector("#perfect_7").disabled = true;
+        document.querySelector("#perfect_7").parentElement.remove();
         document.querySelector("#perfect_8").disabled = true;
+        document.querySelector("#perfect_8").parentElement.remove();
       } else {
         console.log("invalid");
       }

@@ -26,7 +26,9 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
     let docData = doc.data();
     if (docData.daylight) {
       img += `
-      <a href="./Products/products.html?cat=${docData.cat}&&sub=${docData.subCat ? docData.subCat : ''}&&child=${docData.childCat ? docData.childCat : ''}">
+      <a href="./Products/products.html?cat=${docData.cat}&&sub=${
+        docData.subCat ? docData.subCat : ""
+      }&&child=${docData.childCat ? docData.childCat : ""}">
         <div class="intro-content slide-one" >
           <img class=""
             src="${docData.imgUrl}">
@@ -64,20 +66,22 @@ db.collection("sections")
         fixedSection1HeadingHTML.innerHTML = docData[card];
       } else {
         console.log(docData[card]);
-        let sub = '', child = '';
+        let sub = "",
+          child = "";
         if (docData[card].subCat) {
           sub = docData[card].subCat.split("__")[0];
         }
         if (docData[card].child) {
           child = docData[card].child.split("__")[0];
         }
-        
+
         row += `
    
       <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
           <div class="left">
-            <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
-          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}">
+            <a class="banner-effect imgca" href="./Products/products.html?cat=${
+              docData[card].cat.split("__")[0]
+            }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}">
               <img class="imgc"
                 src="${docData[card].imgUrl}">
             </a>
@@ -143,7 +147,7 @@ userSilderRef.get().then(async (sliderSnaps) => {
                 <div class="stars">
                   <h5 class="contactless"> Contactless delivery</h5>
                 </div>
-                <h4 class="price">₹${pdata.totalPrice} <small><del>₹ ${pdata.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${pdata.totalPrice} <small><del>₹ ${pdata.mrp}</del><span style="color: green"> (${dis}%OFF)</span></small></h4>
                 <h5 class="name">${pdata.name}</h5>  
               </div>
             </a>
@@ -269,7 +273,8 @@ db.collection("sections")
       </div>
       `;
       } else {
-        let sub = '', child = '';
+        let sub = "",
+          child = "";
         if (docData[card].subCat) {
           sub = docData[card].subCat.split("__")[0];
         }
@@ -280,8 +285,11 @@ db.collection("sections")
       <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3 revealOnScroll" data-animation="fadeInUp >
       <div class="top-grid-head">
         <div class="aside">
-          <a href="./Products/products.html?cat=${docData[card].cat.split("__")[0]
-          }&&sub=${sub}&&child=${child}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb">
+          <a href="./Products/products.html?cat=${
+            docData[card].cat.split("__")[0]
+          }&&sub=${sub}&&child=${child}&&tag=${
+          docData[card].tag
+        }" class="banner-effect imgca" href="bbb">
             <img class="imgc" src="${docData[card].imgUrl}" alt="">
           </a>
         </div>
@@ -357,8 +365,9 @@ db.collection("sections")
         dis = Math.round(dis);
 
         row += `
-          <a href="./Product/product.html?prod=${prod.id}&&cat=${prodData.wholeCategory.split("__")[0]
-          }" class="item">
+          <a href="./Product/product.html?prod=${prod.id}&&cat=${
+          prodData.wholeCategory.split("__")[0]
+        }" class="item">
             <div class="item-img">
               <img class="img-fluid" src="${prodData.mainImgUrl}" >
             </div>
@@ -480,19 +489,19 @@ db.collection("sections")
           dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
+          <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
             <div class="item">
               <div class="item-img">
                 <img class="img-fluid" src="${prodData.mainImgUrl}">
               </div>
-              <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
                 <div class="info">
                   <div class="stars">
                   </div>
-                  <h4 class="price">₹${prodData.totalPrice} <small><del>₹${prodData.mrp}</del>(${dis}%OFF)</small></h4>
+                  <h4 class="price">₹${prodData.totalPrice} <small><del>₹${prodData.mrp}</del><span style="color: green"> (${dis}%OFF)</span></small></h4>
                   <h5 class="name">${prodData.name}</h5>
                 </div>
-              </a>
             </div>
+            </a>
           </div>
           
           `;
@@ -594,18 +603,18 @@ db.collection("sections")
           dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
+          <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
           <div class="item" >
             <div class="item-img">
               <img class="img-fluid" src="${prodData.mainImgUrl}">
             </div>
-            <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
               <div class="info">
                 <div class="stars"></div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹${prodData.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${prodData.totalPrice} <small><del>₹${prodData.mrp}</del><span style="color: green"> (${dis}%OFF)</span></small></h4>
                 <h5 class="name">${prodData.name}</h5>
               </div>
-            </a>
           </div>
+          </a>
         </div>
         `;
         });
@@ -627,7 +636,8 @@ db.collection("sections")
       // console.log(docData[card]);
       // console.log(docData[card]);
       if (card != "title") {
-        let sub = '', child = '';
+        let sub = "",
+          child = "";
         if (docData[card].subCat) {
           sub = docData[card].subCat.split("__")[0];
         }
@@ -734,7 +744,8 @@ db.collection("sections")
       // console.log(docData[card]);
       // console.log(docData[card]);
       if (card != "title") {
-        let sub = '', child = '';
+        let sub = "",
+          child = "";
         if (card.subCat) {
           sub = card.subCat.split("__")[0];
         }
@@ -953,20 +964,19 @@ db.collection("sections")
 
     document.getElementById("speed").innerHTML = docData.title;
     for (let i of docData.subImgs) {
-      
       document.getElementById("img31").innerHTML +=
-      `
+        `
       <div class=" col s2 "
       style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
       
       <a href="./Products/products.html?cat=` +
-    i.cat.split("__")[0] +
-    `" style="position: relative;display: block;">
+        i.cat.split("__")[0] +
+        `" style="position: relative;display: block;">
         <picture>
           <img class="responsive-imgSpeed lazyloaded" style="width:300px;  ;object-fit:cover"
             src="` +
-    i.imgUrl +
-    `"
+        i.imgUrl +
+        `"
             >
         </picture>
 
@@ -1012,19 +1022,21 @@ db.collection("sections")
           dis = Math.random(dis);
           row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
+          <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
             <div class="item">
               <div class="item-img">
                 <img class="img-fluid" src="${prodData.mainImgUrl}">
               </div>
-              <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
+              
                 <div class="info">
                   <div class="stars">
                   </div>
                   <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del>&nbsp;<small style="color:green">(30% off)</small></h4>
                   <h5 class="name">${prodData.name}</h5>
                 </div>
-              </a>
+             
             </div>
+            </a>
           </div>
           `;
         });
@@ -1053,7 +1065,7 @@ db.collection("categories").onSnapshot(async (catSnaps) => {
           let pData = pDoc.data();
           AllProds.push({
             prodId: pDoc.id,
-            prodData : {
+            prodData: {
               cat: catData.name,
               name: pData.name,
               totalPrice: pData.totalPrice,
