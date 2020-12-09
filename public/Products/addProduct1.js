@@ -337,6 +337,9 @@ const addProductForm = (event) => {
     mainImg: productMainImg,
     subImgs: productSubImgs,
     isActivated: true,
+    totalReviews: 0,
+    stars: 0,
+    createdAt: `${new Date()}`
   };
 
   

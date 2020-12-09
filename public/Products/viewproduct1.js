@@ -909,6 +909,7 @@ const submitEditForm = (event) => {
     addons: productAddons,
     isActivated: true,
     subImgsUrl: suburlss,
+    lastModified: `${new Date()}`
   };
   // console.log(editProduct.querySelector('input[name=cake-prevPrice-half]').value);
   // console.log(wholeProduct);
