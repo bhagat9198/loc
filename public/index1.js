@@ -24,8 +24,13 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   let img = "";
   for (let doc of snapshotDocs) {
     let docData = doc.data();
-    if (docData.isActivated) {
+    console.log(docData);
+    if (docData.isActivated == 'true') {
+      console.log('aaa');
+      // console.log(docData);
       if (docData.daylight) {
+        console.log('bbb');
+        // console.log(docData);
         img += `
       <a href="./Products/products.html?cat=${docData.cat}&&sub=${
           docData.subCat ? docData.subCat : ""
@@ -71,7 +76,7 @@ db.collection("sections")
       if (card === "title") {
         fixedSection1HeadingHTML.innerHTML = docData[card];
       } else {
-        console.log(docData[card]);
+        // console.log(docData[card]);
         let sub = "",
           child = "";
         if (docData[card].subCat) {
@@ -211,9 +216,9 @@ db.collection("sections")
   .onSnapshot((doc) => {
     let docData = doc.data();
     let sortArr = [];
-    console.log(docData);
+    // console.log(docData);
     for (let card in docData) {
-      console.log(card);
+      // console.log(card);
       if (card === "title") continue;
       sortArr.push(docData[card]);
     }
@@ -1085,7 +1090,7 @@ db.collection("categories").onSnapshot(async (catSnaps) => {
             catId: catDoc.id,
           });
         });
-        console.log(catDoc.id);
+        // console.log(catDoc.id);
       });
   }
   sessionStorage.setItem("locProds", JSON.stringify(AllProds));
