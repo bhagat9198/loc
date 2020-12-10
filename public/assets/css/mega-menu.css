@@ -9,7 +9,7 @@
 	
 	/* border:1px solid black; */
 	border-radius: 2px;
-	background:#ffffff;
+	background:#fffff;
 	padding: 0px;
 
 }
@@ -108,7 +108,7 @@
 	background: #ffffff;
 	padding: 10px;
 	position: absolute;
-	z-index: 99;
+	z-index: 999;
 	left: 0;
 	margin: 0;
 	list-style: none;

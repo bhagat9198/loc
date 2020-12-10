@@ -246,7 +246,7 @@ const displayProduct = (prodData) => {
         card += `
         <div class="custom-control custom-radio" style="margin-right: 25px;">
           <input type="radio"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
-          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px">${flav}</label>
+          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px;">${flav}</label>
         </div>
         `;
       });
@@ -1046,14 +1046,14 @@ const displayReviews = () => {
         let starsDiv = starRating(+reviewData.rating.split('__')[0]);
         card += `
         <div class="w3-container">
-          <div class="w3-card-4" style="width:100%;">
-            <header class="w3-container w3-red">
+          <div class="w3-card-4" style="width:100%;border-radius:10px">
+            <header class="w3-container" >
               <h5>${reviewData.userName}</h5>
             </header>
             <div class="w3-container">
               <p>${reviewData.msg}</p>
             </div>
-            <footer class="w3-container w3-gray">
+            <footer class="w3-container w3-gray" style="border-radius:10px">
               ${starsDiv}
             </footer>
           </div>

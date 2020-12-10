@@ -31,7 +31,7 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
           docData.subCat ? docData.subCat : ""
         }&&child=${docData.childCat ? docData.childCat : ""}">
         <div class="intro-content slide-one" >
-          <img class=""
+          <img  class="sliderPc"
             src="${docData.imgUrl}">
             <div class="container">
             <div class="row">
@@ -121,7 +121,7 @@ userSilderRef.get().then(async (sliderSnaps) => {
     <section class="trending"  style="background-image: linear-gradient(to right, ${tl}, ${br})!important;"> 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-12 remove-padding">
+        <div class="col-lg-12">
           <div class="text-center">
             <h3 class="section-title bannerheading" style="color: #ffffff !important;" id="fixed-section4-heading"
               style=" font-weight: 700;font-size: 30px"> ${docData.title}
@@ -275,7 +275,7 @@ db.collection("sections")
       if (card === "title") {
         title = `
       <div class="col-md-12 text-center">
-        <h3 class="mb-3 bannerheading" id="fixed-section3-heading" style="font-weight: 700;font-size: 30px">${docData[card]}</h3>
+        <h3 class="bannerheading" id="fixed-section3-heading">${docData[card]}</h3>
       </div>
       `;
       } else {
@@ -384,7 +384,7 @@ db.collection("sections")
                 </div>
                 <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
           prodData.mrp
-        }</small></del>(${dis}% OFF)</h4>
+        }</small></del><small style="color:green">&nbsp;(${dis}% OFF)</small></h4>
                 <h5 class="name">${prodData.name}</h5>
               </div>
           

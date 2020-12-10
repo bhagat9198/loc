@@ -2558,13 +2558,13 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #007bff;
+    background-color: #ee2011;
     border-color: #007bff
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #0069d9;
+    background-color: #c53737;
     border-color: #0062cc
 }
 
@@ -3841,13 +3841,13 @@ input[type=submit].btn-block {
 
 .custom-control-input:checked~.custom-control-label::before {
     color: #fff;
-    border-color: #007bff;
+    /* border-color: #007bff; */
     background-color: #ff1e00
 }
 .custom-control-inputEgg:checked~.custom-control-label::before {
     color: #fff;
     border-color: #007bff;
-    background-color: #1eff00
+    background-color: green;
 }
 .custom-control-input:focus~.custom-control-label::before {
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
@@ -26279,7 +26279,7 @@ nav button {
 ------------------------------*/
 
 .bannerheading {
-    font-weight: 900;
+    font-weight: 700;
   
     text-align: center;
     font-size: 2em;
@@ -26292,7 +26292,7 @@ nav button {
     /* background: linear-gradient(rgba(255,255,255,.1), rgba(69, 182, 163, 0.616)), url("https://i.pinimg.com/originals/34/ec/65/34ec654e0194df001227ac5d105637f6.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 50px 0px 50px;
+    padding: 30px 0px 50px;
 }
 
 .typeofcakes-section {
@@ -36321,22 +36321,53 @@ section.phone-and-accessories.categori-item {
         margin-left: 30% !important;
         
     }
+    .responsiveIcon1{
+        width: 30px !important;
+        height:30px !important;
+        object-fit: contain !important;
+        
+    }
+}
+@media  only screen and (min-width:1000px) and (max-width:1260px){
+    .responsiveIcon1{
+        width: 25px !important;
+        height:25px !important;
+        
+    }
 }
 @media only screen and (min-width:769px) {
+    .responsivehrs{
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
 
     .responsive-secCart {
       display: none !important;
     }
-    .owl-carousel .owl-item img{
+    .sliderPc{
         height: 400px;
-        object-fit:contain;
+        object-fit:cover;
     }
 }
 @media only screen and (max-width:767px) {
 
-    
+    .responsiveFooter{
+        max-width: 100% !important;
+    }
     .responsive-secCart {
 
       display: block !important;
+    }
+    .responsiveText{
+        font-size: 15px !important;
+        padding-top: 10px;
+        font-weight: 800;
+    }
+    .resIcon{
+        padding: 10px;
+    }
+    .wrapWords{
+        flex-wrap: wrap;
     }
 }
