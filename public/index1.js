@@ -24,11 +24,12 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   let img = "";
   for (let doc of snapshotDocs) {
     let docData = doc.data();
-    if (docData.daylight) {
-      img += `
+    if (docData.isActivated) {
+      if (docData.daylight) {
+        img += `
       <a href="./Products/products.html?cat=${docData.cat}&&sub=${
-        docData.subCat ? docData.subCat : ""
-      }&&child=${docData.childCat ? docData.childCat : ""}">
+          docData.subCat ? docData.subCat : ""
+        }&&child=${docData.childCat ? docData.childCat : ""}">
         <div class="intro-content slide-one" >
           <img class=""
             src="${docData.imgUrl}">
@@ -42,10 +43,15 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
         </div>
         </div>
       </a>`;
+      }
     }
   }
 
   introCarouselHTML.innerHTML = img;
+  let w = document.getElementById("img-slider").clientWidth;
+  console.log(w);
+  // let h = document.getElementById('img-slider').offsetHeight;
+  // console.log(h);
 });
 
 // fixed section 1
