@@ -193,7 +193,8 @@ const addSlider = (e) => {
     subCat: subCatId,
     childCat: childCatId,
     midnight: midnightState,
-    daylight: daylightState
+    daylight: daylightState,
+    isActivated: 'true'
   };
 
   const addSliderReq = async (data) => {
