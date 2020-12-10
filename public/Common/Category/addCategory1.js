@@ -84,13 +84,13 @@ const addCategory = (event) => {
   let lower;
   let categoryName = addCategoryForm["category-name"].value;
   // console.log(categoryName);
-  lower = categoryName.toLowerCase();
-  categoryName = categoryName.charAt(0).toUpperCase() + lower.slice(1);
+  // lower = categoryName.toLowerCase();
+  // categoryName = categoryName.charAt(0).toUpperCase() + lower.slice(1);
 
   let subCategoryName = addCategoryForm["sub-category-name"].value;
   // console.log(subCategoryName);
-  lower = subCategoryName.toLowerCase();
-  subCategoryName = subCategoryName.charAt(0).toUpperCase() + lower.slice(1);
+  // lower = subCategoryName.toLowerCase();
+  // subCategoryName = subCategoryName.charAt(0).toUpperCase() + lower.slice(1);
 
   const categoryNameOption = addCategoryForm['category-name-dropdown'].value;
   // console.log(categoryNameOption);
@@ -103,8 +103,8 @@ const addCategory = (event) => {
     .forEach((childCategory) => {
       // console.log(childCategory);
       let childName = childCategory.value;
-      lower = childName.toLowerCase();
-      childName = childName.charAt(0).toUpperCase() + lower.slice(1);
+      // lower = childName.toLowerCase();
+      // childName = childName.charAt(0).toUpperCase() + lower.slice(1);
 
       childCategories.push({
         name: childName,
