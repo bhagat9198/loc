@@ -210,7 +210,7 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
       shipeType: shipCat,
       shipDate: dateDelivery,
       shipTime: timeDelivery,
-      orderAt: (new Date()).toString(),
+      orderAt: new Date().toLocaleString("en-IN"),
       total: TOTAL_COST,
       status: "pending"
     }).then(s => {
