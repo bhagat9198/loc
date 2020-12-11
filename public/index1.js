@@ -24,12 +24,12 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   let img = "";
   for (let doc of snapshotDocs) {
     let docData = doc.data();
-    console.log(docData);
+    // console.log(docData);
     if (docData.isActivated == 'true') {
-      console.log('aaa');
+      // console.log('aaa');
       // console.log(docData);
       if (docData.daylight) {
-        console.log('bbb');
+        // console.log('bbb');
         // console.log(docData);
         img += `
       <a href="./Products/products.html?cat=${docData.cat}&&sub=${
