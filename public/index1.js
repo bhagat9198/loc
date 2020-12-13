@@ -252,7 +252,7 @@ db.collection("sections")
       </div>
       `;
     }
-    fixedSection2Row.innerHTML = row;
+    // fixedSection2Row.innerHTML = row;
     fixedSection21Row.innerHTML = row;
   });
 

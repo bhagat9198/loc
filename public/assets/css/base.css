@@ -540,6 +540,7 @@ div.ruby-menu-demo-header {
     width: 100% !important;
   }
   .logo img {
+    margin-top: 3%;
     /* max-width: 188px !important; */
   }
   .socialdiv {
