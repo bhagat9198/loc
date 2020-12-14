@@ -449,7 +449,7 @@ div.ruby-menu-demo-header {
     width: 129px !important;
   }
   .col.l4.s4 {
-    display: none;
+    /* display: none; */
   }
   .topnaves {
     display: none;
@@ -463,7 +463,7 @@ div.ruby-menu-demo-header {
   }
   .col {
     width: 40%;
-    height: 90% !important;
+    height: 100% !important;
     text-align: center;
     color: white;
     line-height: 25px;

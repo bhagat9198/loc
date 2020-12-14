@@ -796,7 +796,7 @@ db.collection("sections")
         </div>
       </div>
       <div class="col-md-5 col-5" style="background: #fff; padding-top: 13px; padding-bottom: 13px;height:200px">
-        <img src="` +
+        <img  src="` +
       docData.mainImg.imgUrl +
       `">
       </div>
@@ -807,7 +807,7 @@ db.collection("sections")
  
         <div class="bannerMainImage col-md-5 col-5"
           style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
-          <img class="mt-3 mb-2" src="` +
+          <img style="width: 100px; height:100px ; object-fit: contain;" class="mt-3 mb-2" src="` +
       docData.mainImg.imgUrl +
       `">
         </div>
@@ -900,7 +900,7 @@ db.collection("sections")
  
     <div class="bannerMainImage col-md-5 col-5"
       style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
-      <img class="mt-3 mb-2" src="` +
+      <img  class="mt-3 mb-2 resImg" src="` +
       docData.mainImg.imgUrl +
       `">
     </div>

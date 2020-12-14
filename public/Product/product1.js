@@ -245,7 +245,7 @@ const displayProduct = (prodData) => {
       prodData.flavours.map((flav) => {
         card += `
         <div class="custom-control custom-radio" style="margin-right: 25px;">
-          <input type="radio"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
+          <input type="checkbox"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
           <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px;">${flav}</label>
         </div>
         `;
@@ -419,7 +419,7 @@ const displayWeights = (makedWeight) => {
           <img class="productimg"
             src="${PROD_DETAILS.mainImgUrl}"
             alt="Lake of cakes"
-            style="border-radius: 50px;border: 1px solid black ;width: 70px ;height:70px;object-fit: cover;">
+            style="border-radius: 50px;border: 1px solid black ;width: 70px ;height:50px;object-fit: cover;">
           <label class="custom-control-label" for="${rand}" style="font-weight: 400;">${weightNum} kg</label>
         </div>
         `;

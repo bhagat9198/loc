@@ -72,8 +72,87 @@
 
 <body style="overflow-x: hidden !important; ">
   <section id="nav-section-loader">
+
+    <style>
+      .autocomplete {
+        position: relative;
+        display: inline-block !important;
+      }
+
+      input {
+        border: 1px solid transparent;
+        background-color: #f1f1f1;
+        padding: 10px;
+        font-size: 16px;
+
+      }
+
+      input[type=text] {
+        background-color: #f1f1f1;
+        width: 100%;
+
+      }
+
+      input[type=submit] {
+        background-color: DodgerBlue;
+        color: rgb(131, 56, 56);
+        cursor: pointer;
+      }
+
+      .autocomplete-items {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+        /* font-style: italic; */
+      }
+
+      .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+        /* font-style: italic; */
+      }
+
+      /*when hovering an item:*/
+      .autocomplete-items div:hover {
+        background-color: #e9e9e9;
+      }
+
+      /*when navigating through the items using the arrow keys:*/
+      .autocomplete-active {
+        background-color: DodgerBlue !important;
+        color: #ffffff;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .responsiveIcon1 {
+          /* margin: auto;
+          padding: 0px; */
+          margin-left: 32%;
+        }
+
+      }
+
+      @media only screen and (min-width:700px) {
+        .responsiveIcon2 {
+          display: block !important;
+        }
+
+      }
+    </style>
+
+
+
     <section class="top-header top-nav" style="background: #f1f1f1;">
-      <div class="container-fluid remove-padding topnaves" style="background: #f1f1f1;;
+      <div class="container-fluid remove-padding topnaves"
+        style="background: #f1f1f1;;
         background-size: 617px; background-image: url();height: 28px !important;padding: 0px !important;margin-bottom: 0.3%;">
         <div class="container topcnt">
           <div class="row" style="justify-content: flex-end;">
@@ -85,14 +164,13 @@
                   <div class="list" style="padding: 6px 10px 100px;">
                     <ul style="padding-right: 10px;">
                       <li>
-                        <a type="button" data-toggle="modal" data-target="#topoffer"
-                          style=" position: relative;">
+                        <a type="button" data-toggle="modal" data-target="#topoffer" style=" position: relative;">
                           <span class="sign-in" data-toggle="modal" data-target="#modalYT"
                             style="font-size: 14px; color: rgb(10, 10, 10);">
-                            <i style="color: red !important;" class="fa fa-gift" aria-hidden="true" ></i> OFFER</span>
+                            <i style="color: red !important;" class="fa fa-gift" aria-hidden="true"></i> OFFER</span>
                         </a>
                       </li> &nbsp; |
-  
+
                       <li><a href="#" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
                               class="fa fa-gift" aria-hidden="true" style="color: rgb(235, 48, 79);"></i>
                             COUPONS</span> </a>
@@ -106,7 +184,7 @@
                             style="font-size: 14px; color: #000;"><i class="fa fa-envelope" aria-hidden="true"
                               style="color: rgb(235, 48, 79);"></i>
                             Email</span> </a>
-                      </li> &nbsp; 
+                      </li> &nbsp;
                     </ul>
                   </div>
                 </div>
@@ -116,8 +194,8 @@
         </div>
       </div>
     </section>
-  
-  
+
+
     <section class="logo-header">
       <div class="container-fluid logoheder">
         <div class="row ">
@@ -130,7 +208,7 @@
           </div>
           <label class="drover drobt" for="responsive-nav" onclick="shownavigation()">☰</label>
           <aside class="drobt0 drobt1 colapse" id="" style="overflow-y: scroll !important;">
-  
+
             <div class="logo-area">
               <div class="logo">
                 <a href="/index.html">
@@ -147,7 +225,7 @@
               </div>
               <hr>
               <div class="nav-collapsible">
-                <a href="#">
+                <a href="midNight.html">
                   <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-2 col-sm-2 col-md-2 p-0">
@@ -294,7 +372,7 @@
                   </label>
                 </a>
               </div>
-  
+
             </div>
           </aside>
           <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
@@ -311,7 +389,7 @@
                         onkeydown="disableEnterKey(event)" onkeyup=searchByUserInput(event) name="searchBar"
                         placeholder="Search: Cakes , Flowers ,Gifts...">
                     </div>
-  
+
                     <div class="input-group-append" onclick=searchByUserInputBtn(event)>
                       <button class="btn btn-outline-secondary" onclick=searchByUserInputBtn(event)
                         style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent; border: #F00;"><i
@@ -322,13 +400,13 @@
               </div>
             </div>
           </div>
-  
-  
+
+
           <div
             class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
             <ul style="display: inline-flex;">
               <li>
-                <a href="#">
+                <a href="midNight.html">
                   <div class="text-center">
                     <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
                     <div
@@ -354,26 +432,26 @@
                 </a>
               </li>
             </ul>
-  
-  
-  
-  
+
+
+
+
           </div>
           <div class="col-lg-1 col-sm-3 col-3 remove-padding order-lg-last">
             <div class="helpful-links mt-md-3 cartres">
-  
+
               <ul class="helpful-links-inner" style="display: flex;">
-  
-  
-  
+
+
+
                 <li class="nav-item dropdown" style="margin-top: 15%;">
                   <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
                       style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
-  
+
                   </a>
-  
+
                   <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
                       inset 0 -3em 3em rgba(0,0,0,0.1), 
                             0 0  0 2px rgb(255,255,255),
@@ -388,66 +466,34 @@
                         </center>
                       </a>
                     </div>
-  
+
                     <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href=""
                       onclick="checkifUser('/UserDash/customerProfile.html')"><i class="fa fa-user"></i>
                       Profile</a>
-  
+
                     <!-- <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
                       href="#!" onclick="checkifUser('/UserDash/trackOrders.html')"><i class="fa fa-truck"></i> Track
                       Orders</a> -->
-  
+
                     <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
-                      href="#!" onclick="checkifUser('/UserDash/customerProfile.html')"><i class="fa fa-shopping-cart"></i> My
+                      href="#!" onclick="checkifUser('/UserDash/customerProfile.html')"><i
+                        class="fa fa-shopping-cart"></i> My
                       Orders</a>
-  
+
                     <a class="dropdown-item responsive-secCart"
                       style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!"
                       onclick="checkifUser('/UserDash/cart.html')"><i class="fa fa-shopping-cart"></i> My Cart</a>
-  
+
                     <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"
                       id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
                       Logout</a>
                   </div>
                 </li>
-  
-  
-                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: noe;" data-toggle="tooltip"
+
+
+                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: none;" data-toggle="tooltip"
                   data-placement="top" title="Cart">
-                  <!-- <a href="#cart" class="cart carticon">
-                    <div class="icon" onclick="redirectToCart()">
-                      <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
-                      <span onclick="redirectToCart()" class="cart-quantity" id="cart-count">0</span>
-                    </div>
-                  </a>
-                  <div class="my-dropdown-menu" id="cart-items">
-                    <div class="dropdownmenu-wrapper">
-                      <ul class="dropdown-cart-products">
-                        <li class="product cremove3461">
-                          <figure class="product-image-container">
-                            <a href="" class="product-image">
-                              <img src=""
-                                style="width: 50px; object-fit:cover;" alt="product">
-                            </a>
-                          </figure>
-                          <div class="product-details">
-                            <div class="content">
-                              <a href="">
-                                <h4 class="product-title">Black Forest</h4>
-                              </a>
-                              <span class="cart-product-info">
-                                <span class="cart-product-qty" id="cqt3461">4</span><span></span>
-                                x <span id="prct3461">₹400</span>
-                              </span>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                      <div onclick="redirectToCart()" class="dropdown-cart-action">
-                        <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: rgb(20, 113, 167);">View In Cart</a>
-                      </div>
-                    </div>
-                  </div> -->
+
                 </li>
               </ul>
             </div>
@@ -455,25 +501,25 @@
         </div>
       </div>
     </section>
-  
+
     <div class="mainmenu-area mainmenu-bb">
-  
-  
+
+
       <div class="col-lg-12 col-md-12 categorimenu-wrapper p-0" style="z-index: 5;">
         <div class="desktopmenu">
           <div class="menu-container">
             <div class="menu">
               <ul id="whole-navigation-pc">
-                
+
               </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-  
-  
-    
+
+
+
   </section>
 
   <section class="cartpage" style="border-radius: 0px;">
@@ -654,24 +700,7 @@
 
         <!--Footer-->
         <div class="modal-footer justify-content-center flex-column flex-md-row">
-          <span class="mr-4">Spread the word!</span>
-          <div>
-            <a type="button" class="btn-floating btn-sm btn-fb">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <!--Twitter-->
-            <a type="button" class="btn-floating btn-sm btn-tw">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <!--Google +-->
-            <a type="button" class="btn-floating btn-sm btn-gplus">
-              <i class="fab fa-google-plus-g"></i>
-            </a>
-            <!--Linkedin-->
-            <a type="button" class="btn-floating btn-sm btn-ins">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
+       
           <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
             data-dismiss="modal">Close</button>
         </div>
@@ -876,7 +905,7 @@
     if (checkUser == null || checkUser == "null") {
       window.location = "/Auth/login.html"
     } else {
-      
+
       window.location = location
     }
   }
@@ -960,6 +989,17 @@
     });
   }
 </script>
+
+
+<style>
+  .drobt1 {
+    transform: translateX(-101%);
+  }
+
+  .drobt2 {
+    transform: translateX(0%);
+  }
+</style>
 
 
 
