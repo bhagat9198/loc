@@ -351,7 +351,21 @@ const addProductForm = (event) => {
     wholeProduct.fondant = fondant;
   }
 
-  // console.log(wholeProduct);
+  if (productCategory.toUpperCase().includes("GIFT")) {
+    wholeProduct.personalized = false;
+    if(addProduct.querySelector('input[name="gift-type"]:checked')) {
+      wholeProduct.personalized = true;
+      wholeProduct.imgs = addProduct["img-no"].value;
+      wholeProduct.title = false;
+      if(addProduct.querySelector('input[name="gift-title"]:checked')) {
+        wholeProduct.title = true;
+      };
+    }
+  }
+
+
+
+  console.log(wholeProduct);
   // let c = wholeProduct.wholeSubCategory.substring(43);
   // console.log(c);
   // let cc = wholeProduct.wholeChildCategory.substring(63);

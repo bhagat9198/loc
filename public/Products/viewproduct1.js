@@ -196,8 +196,7 @@ const deleteProduct = (e) => {
   }
 };
 // const extractData = async () => {
-db.collection("categories")
-.onSnapshot((snapshot) => {
+db.collection("categories").onSnapshot((snapshot) => {
   let snapshotDocs = snapshot.docs;
   snapshotDocs.map((doc) => {
     let docData = doc.data();
@@ -206,7 +205,7 @@ db.collection("categories")
   displayTables();
 });
 
-const displayTables = async() => {
+const displayTables = async () => {
   var tableID;
   const displayAllCat = document.querySelector("#displayAllCat");
   let tRows = "";
@@ -219,8 +218,7 @@ const displayTables = async() => {
 
     $("#tbody" + cat.id).empty();
     tRows = "";
-    displayAllCat.innerHTML +=
-    `
+    displayAllCat.innerHTML += `
       <div class="product-area" id="${cat.id}" style="padding-top:0px;">
         <div class="row">
           <div class="col-lg-12">
@@ -281,8 +279,6 @@ const displayTables = async() => {
     }
   }
 };
-
-
 
 // extractData();
 
@@ -496,7 +492,6 @@ const editDetails = async (e) => {
     .doc(docId)
     .get()
     .then(async (snapshot) => {
-      
       // console.log(snapshot);
       let doc = snapshot.data();
       editProductDetails = doc;
@@ -509,9 +504,11 @@ const editDetails = async (e) => {
 
       // console.log(doc.bannerType, doc.bannerTypeColor);
       editProduct["product-name"].value = doc.name;
-      editProduct["product-type"].value = doc.bannerType || '';
-      editProduct["product-type-color-start"].value = doc.bannerTypeColorStart || '';
-      editProduct["product-type-color-end"].value = doc.bannerTypeColorEnd || '';
+      editProduct["product-type"].value = doc.bannerType || "";
+      editProduct["product-type-color-start"].value =
+        doc.bannerTypeColorStart || "";
+      editProduct["product-type-color-end"].value =
+        doc.bannerTypeColorEnd || "";
       editProduct["product-sno"].value = doc.sno;
 
       let wcat = `${catData.cId}__${catData.cname}`;
@@ -521,7 +518,10 @@ const editDetails = async (e) => {
       await catSelect(wcat);
       await subCatSelect(wscat);
       await childCatSelect(ccat);
-      if (doc.wholeCategory.toUpperCase().includes("CAKE") || doc.wholeCategory.toUpperCase().includes("COMBO")) {
+      if (
+        doc.wholeCategory.toUpperCase().includes("CAKE") ||
+        doc.wholeCategory.toUpperCase().includes("COMBO")
+      ) {
         document.getElementById("cake-attributes").style.display = "block";
         if (doc.weights) {
           doc.weights.map((weight) => {
@@ -539,8 +539,9 @@ const editDetails = async (e) => {
             } else if (weight.cakeWeight === "oneHalf") {
               editProduct["cake-weight-oneHalf"].checked = true;
               editProduct["cake-price-oneHalf"].value = weight.weightPrice;
-              editProduct["cake-prevPrice-oneHalf"].value = weight.weightPrevPrice
+              editProduct["cake-prevPrice-oneHalf"].value =
                 weight.weightPrevPrice;
+              weight.weightPrevPrice;
             } else if (weight.cakeWeight === "two") {
               editProduct["cake-weight-two"].checked = true;
               editProduct["cake-price-two"].value = weight.weightPrice;
@@ -548,8 +549,9 @@ const editDetails = async (e) => {
             } else if (weight.cakeWeight === "three") {
               editProduct["cake-weight-three"].checked = true;
               editProduct["cake-price-three"].value = weight.weightPrice;
-              editProduct["cake-prevPrice-three"].value = weight.weightPrevPrice;
+              editProduct["cake-prevPrice-three"].value =
                 weight.weightPrevPrice;
+              weight.weightPrevPrice;
             } else if (weight.cakeWeight === "four") {
               editProduct["cake-weight-four"].checked = true;
               editProduct["cake-price-four"].value = weight.weightPrice;
@@ -596,12 +598,29 @@ const editDetails = async (e) => {
             });
           }
         }
-        if(doc.fondant === 'true') {
+        if (doc.fondant === "true") {
           editProduct["cake-type-fondant"].checked = true;
         }
       } else {
         document.getElementById("cake-attributes").style.display = "none";
       }
+
+      if (doc.wholeCategory.toUpperCase().includes("GIFT")) {
+        document.getElementById("gift-attributes").style.display = "block";
+        if (doc.personalized === true) {
+          console.log(doc.personalized);
+          editProduct["gift-type"].checked = true;
+        }
+        if (doc.title === true) {
+          editProduct["gift-title"].checked = true;
+        }
+        if (doc.imgs) {
+          editProduct["img-no"].value = doc.imgs;
+        }
+      } else {
+        document.getElementById("gift-attributes").style.display = "none";
+      }
+
       editProduct["product-mrp"].value = doc.mrp;
       editProduct["product-sp"].value = doc.sp;
       editProduct["product-gst"].value = doc.gst;
@@ -675,11 +694,11 @@ const editDetails = async (e) => {
       ) {
         doc.policy = doc.policy.replace(new RegExp("<p><br></p>$"), "");
       }
-      if(!doc.descriptions === '<p><br></p>') {
+      if (!doc.descriptions === "<p><br></p>") {
         $("#productDesc").summernote("editor.pasteHTML", doc.descriptions);
       }
 
-      if(!doc.policy === '<p><br></p>') {
+      if (!doc.policy === "<p><br></p>") {
         $("#productPolicy").summernote("editor.pasteHTML", doc.policy);
       }
 
@@ -730,7 +749,8 @@ const submitEditForm = (event) => {
   event.preventDefault();
   let productName,
     bannerType,
-    bannerTypeColorStart, bannerTypeColorEnd,
+    bannerTypeColorStart,
+    bannerTypeColorEnd,
     productSno,
     productCategory,
     productSubCategory,
@@ -780,7 +800,10 @@ const submitEditForm = (event) => {
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
 
-  if (productCategory.toUpperCase().includes("CAKE") || productCategory.toUpperCase().includes("COMBO")) {
+  if (
+    productCategory.toUpperCase().includes("CAKE") ||
+    productCategory.toUpperCase().includes("COMBO")
+  ) {
     editProduct
       .querySelectorAll('input[name="cake-weight"]')
       .forEach((weight) => {
@@ -790,7 +813,7 @@ const submitEditForm = (event) => {
             weightPrice = editProduct["cake-price-half"].value;
             wPrevPrice = editProduct["cake-prevPrice-half"].value;
             // console.log(editProduct);
-              // console.log(editProduct["cake-prevPrice-half"].value);
+            // console.log(editProduct["cake-prevPrice-half"].value);
           } else if (weight.value === "one") {
             weightPrice = editProduct["cake-price-one"].value;
             wPrevPrice = editProduct["cake-prevPrice-one"].value;
@@ -816,7 +839,7 @@ const submitEditForm = (event) => {
           let data = {
             cakeWeight: weight.value,
             weightPrice: weightPrice,
-            weightPrevPrice: wPrevPrice
+            weightPrevPrice: wPrevPrice,
           };
 
           cakeWeights.push(data);
@@ -887,7 +910,6 @@ const submitEditForm = (event) => {
     });
   }
 
-  
   let wholeProduct = {
     name: productName,
     bannerType: bannerType,
@@ -909,16 +931,31 @@ const submitEditForm = (event) => {
     addons: productAddons,
     isActivated: true,
     subImgsUrl: suburlss,
-    lastModified: `${new Date()}`
+    lastModified: `${new Date()}`,
   };
   // console.log(editProduct.querySelector('input[name=cake-prevPrice-half]').value);
   // console.log(wholeProduct);
 
-  if (productCategory.toUpperCase().includes("CAKES") || productCategory.toUpperCase().includes("COMBO")) {
+  if (
+    productCategory.toUpperCase().includes("CAKES") ||
+    productCategory.toUpperCase().includes("COMBO")
+  ) {
     wholeProduct.weights = cakeWeights || "";
     wholeProduct.shapes = cakeShapes || "";
     wholeProduct.type = cakeType || "";
     wholeProduct.flavours = cakeFlavours || "";
+  }
+
+  if (productCategory.toUpperCase().includes("GIFT")) {
+    wholeProduct.personalized = false;
+    if (addProduct.querySelector('input[name="gift-type"]:checked')) {
+      wholeProduct.personalized = true;
+      wholeProduct.imgs = addProduct["img-no"].value;
+      wholeProduct.title = false;
+      if (addProduct.querySelector('input[name="gift-title"]:checked')) {
+        wholeProduct.title = true;
+      }
+    }
   }
 
   // console.log(wholeProduct);
@@ -1035,22 +1072,22 @@ const submitEditForm = (event) => {
                 //   }`
                 // );
                 await storageService
-                .ref(
-                  `${docData.wholeCategory.split("__")[0]}/${doc.id}/${
-                    docData.subImgs[el]
-                  }`
-                )
-                .delete()
-                .then((d) => {
-                  // console.log(d);
-                  // console.log("deleted");
-                  docData.subImgs.splice(el, 1);
-                  docData.subImgsUrl.splice(el, 1);
-                })
-                .catch((error) => {
-                  console.log(error);
-                  alert(error);
-                });
+                  .ref(
+                    `${docData.wholeCategory.split("__")[0]}/${doc.id}/${
+                      docData.subImgs[el]
+                    }`
+                  )
+                  .delete()
+                  .then((d) => {
+                    // console.log(d);
+                    // console.log("deleted");
+                    docData.subImgs.splice(el, 1);
+                    docData.subImgsUrl.splice(el, 1);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                    alert(error);
+                  });
               }
             }
           }
@@ -1065,7 +1102,7 @@ const submitEditForm = (event) => {
         // console.log(searchData);
         let searchName = {
           name: response.prodData.name,
-          cat: response.prodData.wholeCategory.split('__')[0],
+          cat: response.prodData.wholeCategory.split("__")[0],
           pId: response.dataId,
           id: Math.random(),
           type: "prodName",
@@ -1087,7 +1124,7 @@ const submitEditForm = (event) => {
         //         break;
         //       }
         //     }
-  
+
         //     if (tagFlag === 0) {
         //       searchData.searches.push({
         //         name: tt,
@@ -1099,7 +1136,7 @@ const submitEditForm = (event) => {
         // }
 
         let flag = 0;
-        if(searchData.searches) {
+        if (searchData.searches) {
           for (let s of searchData.searches) {
             if (s.name == searchName.name) {
               flag = 1;

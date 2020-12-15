@@ -151,6 +151,60 @@
                           </div>
                         </div>
 
+                        <div id="gift-attributes"
+                          style="display: none;background-color: rgb(214, 213, 157);padding: 10px;border-radius: 5px;box-shadow: 5px 5px 5px gray;">
+                          <h4 class="mainHeading" style="padding: 10px;">Gift Attributes</h4>
+                          <br>
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Type*</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="gift-type" name="gift-type" value="true"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="gift-type">Personlized</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Number of Images</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <input type="number" name="img-no">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Title Option</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="gift-title" name="gift-title" value="true"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="gift-title">Present</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
                         <div id="cake-attributes"
                           style="display: none;background-color: rgb(214, 213, 157);padding: 10px;border-radius: 5px;box-shadow: 5px 5px 5px gray;">
                           <h4 class="mainHeading" style="padding: 10px;">Cake Attributes</h4>
@@ -966,6 +1020,12 @@
         // document.querySelectorAll(".cake-attributes1").forEach(el => {
         //   el.style.display = "block";
         // })
+      }
+
+      if (val.toUpperCase().includes('GIFT')) {
+        document.getElementById("gift-attributes").style.display = "block"
+      } else {
+        document.getElementById("gift-attributes").style.display = "none"
       }
     });
 

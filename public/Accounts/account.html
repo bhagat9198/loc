@@ -22,24 +22,26 @@
     color: red;
     border-bottom: 2px solid red;
   }
+  .subTotal {
+    border-bottom: 1px solid gray;
+  }
+
 </style>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
   style="overflow: scroll">
   <div class="wrapper">
     <section id="admin-nav-load"></section>
-
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Dashboard</h1>
+              <h1 class="m-0 text-dark">Account</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v2.1</li>
+                <li class="breadcrumb-item"><a href="./download.html">Download as PDF</a></li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -66,7 +68,7 @@
             </tr>
           </thead>
           <tbody id="order-table-body">
-            <tr class="main-tr">
+            <!-- <tr class="main-tr">
               <th scope="row">1</th>
               <td>
                 <table class="table-un-striped">
@@ -233,7 +235,7 @@
                   </tbody>
                 </table>
               </td>
-            </tr>
+            </tr> -->
 
           </tbody>
         </table>
@@ -278,5 +280,10 @@
 
 
 </body>
+<style>
+  * {box-sizing:border-box;
+  /* border: 7px double; */
+  }
+</style>
 
 </html>
