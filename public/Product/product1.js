@@ -244,7 +244,7 @@ const displayProduct = (prodData) => {
       let card = "";
       prodData.flavours.map((flav) => {
         card += `
-        <div class="custom-control custom-radio" style="margin-right: 25px;">
+        <div class="custom-control custom-radio" style="margin-right:auto;text-align:justify;display:inline-block;margin-left:auto:display:block">
           <input type="checkbox"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
           <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px;">${flav}</label>
         </div>
@@ -495,12 +495,12 @@ const displayWeights = (makedWeight) => {
         }
         // console.log(WEIGHT_PRICE);
         weightCard += `
-        <div class="custom-control custom-radio" style="margin-right: 15px;">
+        <div class="custom-control custom-radio" style="mx;">
           <input type="radio"  ${selected} id="${rand}" name="cake-weight-option"  data-weight="${weightName}"   onchange="cakeWeight(event, this)" class="custom-control-input product-attr">
-          <img class="productimg"
+          <img class="productimg respCircle"
             src="${PROD_DETAILS.mainImgUrl}"
             alt="Lake of cakes"
-            style="border-radius: 50%;border: 1px solid black ;width: 70px ;height:50px;object-fit: cover;">
+            style="border-radius: 50%;border: 1px solid black ;width: 70px ;height:70px;object-fit: cover;">
           <label class="custom-control-label" for="${rand}" style="font-weight: 400;">${weightNum} kg</label>
         </div>
         `;

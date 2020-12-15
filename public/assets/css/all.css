@@ -23815,7 +23815,7 @@ nav button {
 
 .hero-area .hero-area-slider .intro-carousel .intro-content {
     background-size: contain;
-    height: 400px;
+    /* height: 400px; */
     /* display: flex; */
     align-items: center;
     background-position: center !important;
@@ -24779,7 +24779,7 @@ nav button {
     .banner-effect img {
         max-width: 100% !important;
         width: 480px !important;
-        height: 100px;
+        /* height: 100px; */
         object-fit: cover;
     }
 }
@@ -33109,7 +33109,7 @@ p.product-unit-price {
 
 @media (max-width: 1366px) {
     .hero-area .hero-area-slider .intro-carousel .intro-content {
-        height: 350px;
+        /* height: 350px; */
     }
     .logo-header .helpful-links ul li[data-toggle="tooltip"], .logo-header .helpful-links ul li[data-toggle="tooltip"] {
         margin-top: 16px;
@@ -34451,7 +34451,7 @@ section.phone-and-accessories.categori-item {
         display: none !important;
     }
     .sliderPc {
-        height: 400px;
+        /* height: 400px; */
         object-fit: cover;
     }
     .responsive-sec2 {
@@ -34499,12 +34499,15 @@ section.phone-and-accessories.categori-item {
     }
 }
 
-@media only screen and (width:1280px) {
+@media only screen and (min-width:1000px) and  (max-width:1290px) {
     .responsiveIcon1 {
         width: 20px !important;
         /* height:20px !important; */
         object-fit: contain;
     }
+    /* .scres {
+        padding: 60px 0px 0px 20px !important;
+      } */
 }
 
 @media only screen and (max-width:380px) {

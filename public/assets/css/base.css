@@ -802,3 +802,23 @@ h1 {
   z-index: 999;
   padding: 5px;
 }
+@media only screen and (max-width:768px) {
+  .dropdown{
+    display: none !important;
+  }
+  .responsiveIcon2{
+    display: block !important;
+  }
+  
+}
+@media only screen and (min-width:768px) {
+  .dropdown{
+    display: block !important;
+  }
+  .responsiveIcon2{
+    display: none !important;
+  }
+  
+}
+
+

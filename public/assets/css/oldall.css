@@ -591,6 +591,9 @@ kbd kbd {
     .container {
         max-width: 100%;
     }
+    .responsive-sec2 {
+        display: block !important;
+    }
 }
 
 @media (min-width:992px) {

@@ -313,7 +313,7 @@ const displayProds = async (arrProds) => {
       `</span>
 						<img class="responsive-image" src="${p.prodData.mainImgUrl}" alt="Lake of cakes ${p.prodData.name}">
 					</div>
-          <div class="info" style="height: 130px !important;background-color:gay">
+          <div class="info" style="height: 100px !important;background-color:gay">
             <style>
             .checked {
               color: orange;
@@ -350,7 +350,9 @@ const displayTopSuggest = async () => {
     document.querySelector('#outer-top-suggestDiv').style.background = `rgb(${red}, ${yellow}, ${blue})`;
     document.querySelector('#inner-top-suggestDiv').style.background = `rgba(${red-50}, ${yellow-50}, ${blue-50}, 0.4)`;
     for (let cimg of catImgSnapsDocs) {
+      
       if (cimg.id !== CAT) {
+        
         let cimgData = cimg.data();
         // console.log(cimgData);
         let rand =

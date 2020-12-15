@@ -475,6 +475,8 @@ db.collection("sections")
 const fixedSection6Heading = document.querySelector("#fixed-section6-heading");
 const fixedSection6Row = document.querySelector("#fixed-section6-row");
 const fixedSection6ViewAll = document.querySelector("#fixed-section6-viewAll");
+const fixedSection6ViewAllMob = document.querySelector("#fixed-section6-viewAllMob");
+
 
 db.collection("sections")
   .doc("fixed6")
@@ -519,6 +521,7 @@ db.collection("sections")
         });
     }
     fixedSection6ViewAll.href = `./Products/products.html?cat=${t}`;
+    fixedSection6ViewAllMob.href = `./Products/products.html?cat=${t}`;
     fixedSection6Row.innerHTML = row;
   });
 
@@ -590,6 +593,7 @@ userImgRef.get().then((imgSnaps) => {
 const fixedSection7Heading = document.querySelector("#fixed-section7-heading");
 const fixedSection7Row = document.querySelector("#fixed-section7-row");
 const fixedSection7ViewAll = document.querySelector("#fixed-section7-viewAll");
+const fixedSection7ViewAllMob = document.querySelector("#fixed-section7-viewAllMob");
 
 db.collection("sections")
   .doc("fixed7")
@@ -630,7 +634,9 @@ db.collection("sections")
         `;
         });
     }
-    fixedSection7ViewAll.href = `./Product/product.html?cat=${t}`;
+    fixedSection7ViewAll.href = `./Products/products.html?cat=${t}`;
+    
+    fixedSection7ViewAllMob.href = `./Products/products.html?cat=${t}`;
     fixedSection7Row.innerHTML = row;
   });
 
@@ -796,7 +802,7 @@ db.collection("sections")
       docData.title +
       `</h3>
          
-          <p style="color:#fff; font-size: 17px; margin-top: 9%;">Sterling Picks For Partner </p>
+          <p style="color:#fff; font-size: 17px; margin-top: 9%;">Magnificent Gift For Loved Ones </p>
           <a href="./Products/products.html?cat=` +
       docData.mainImg.cat.split("__")[0] +
       `">
@@ -828,7 +834,7 @@ db.collection("sections")
       docData.title +
       `</h3>
            
-            <p style="color:#fff; font-size: 17px; margin-top: 9%;">Sterling Picks For Family </p>
+            <p style="color:#fff; font-size: 17px; margin-top: 9%;">Magnificent Gift For Loved Ones </p>
             <a href="./Products/products.html?cat=` +
       docData.mainImg.cat.split("__")[0] +
       `">
@@ -921,7 +927,7 @@ db.collection("sections")
       docData.title +
       `</h3>
        
-        <p style="color:#000; font-size: 17px; margin-top: 9%;">Sterling Picks For Family </p>
+        <p style="color:#000; font-size: 17px; margin-top: 9%;">Magnificent Gift For Family </p>
         <a href="./Products/products.html?cat=` +
       docData.mainImg.cat.split("__")[0] +
       `">
@@ -1008,6 +1014,9 @@ const fixedSection10Row = document.querySelector("#fixed-section10-row");
 const fixedSection10ViewAll = document.querySelector(
   "#fixed-section10-viewAll"
 );
+const fixedSection10ViewAllMob = document.querySelector(
+  "#fixed-section10-viewAllMob"
+);
 
 db.collection("sections")
   .doc("fixed10")
@@ -1053,6 +1062,7 @@ db.collection("sections")
         });
     }
     fixedSection10ViewAll.href = `./Products/products.html?cat=${t}`;
+    fixedSection10ViewAllMob.href = `./Products/products.html?cat=${t}`;
     fixedSection10Row.innerHTML = row;
   });
 
@@ -1095,3 +1105,12 @@ db.collection("categories").onSnapshot(async (catSnaps) => {
   }
   sessionStorage.setItem("locProds", JSON.stringify(AllProds));
 });
+var checkUser2 = window.localStorage.getItem("locLoggedInUser");
+
+if(checkUser2 && checkUser2!="null"){
+  document.getElementById("logoutMobile").style.display="block"
+  document.getElementById("loginMobile").style.display="none"
+}else{
+  document.getElementById("logoutMobile").style.display="none"
+  document.getElementById("loginMobile").style.display="block"
+}
