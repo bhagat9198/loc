@@ -232,7 +232,7 @@ db.collection("sections")
     for (let card of sortArr) {
       row += `
       <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
-        <div class="card cardc align-items-center">
+        <div class="card cardc align-items-center" >
           <a href="./Products/products.html?cat=${
             card.cat.split("__")[0]
           }&&tag=${card.tag}" class="">
@@ -439,7 +439,7 @@ db.collection("sections")
         // console.log(docData[card]);
         title = `
       <div class="col-md-12 text-center">
-        <h3 class="mb-3   revealOnScroll"  style="font-weight: 700;font-size: 30px" data-animation="fadeInUp">${docData[card]}</h3>
+        <h3 class="mb-3   revealOnScroll"  style="font-weight: 700;font-size: 30px;color: #1c7780 !important;" data-animation="fadeInUp">${docData[card]}</h3>
       </div>
       `;
       } else {
@@ -807,7 +807,7 @@ db.collection("sections")
  
         <div class="bannerMainImage col-md-5 col-5"
           style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
-          <img style="width: 100px; height:100px ; object-fit: contain;" class="mt-3 mb-2" src="` +
+          <img style="width: 100px; height:100px ; object-fit: contain;margin-left:auto;margin-right:auto;display:block" class="mt-3 mb-2" src="` +
       docData.mainImg.imgUrl +
       `">
         </div>

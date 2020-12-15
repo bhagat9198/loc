@@ -344,7 +344,7 @@ if (localStorage.getItem("locLoggedInUser")) {
           }
           cartModalProds += `
       <div onclick="redirectToCart()" class="dropdown-cart-action">
-            <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: rgb(20, 113, 167);margin-left:auto;margin-right:auto">View In Cart</a>
+            <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: red;margin-left:auto;margin-right:auto;">View In Cart</a>
           </div>
         </div>
       </div>

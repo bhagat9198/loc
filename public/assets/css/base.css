@@ -509,7 +509,8 @@ div.ruby-menu-demo-header {
   }
   .cartres {
     position: relative;
-    right: -110px;
+    right: -140px;
+    top:-5px;
   }
   .logoheder {
     height: 99px;
