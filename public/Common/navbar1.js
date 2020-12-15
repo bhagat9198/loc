@@ -295,20 +295,20 @@ if (localStorage.getItem("locLoggedInUser")) {
     .onSnapshot(async (userDoc) => {
       if (userDoc.exists) {
         let userData = userDoc.data();
-        console.log(userData);
+        // console.log(userData);
         if (userData.cart) {
           flag = 1;
           let cartSize = userData.cart.length;
           // console.log(cartSize);
           cartModalProds = `
-      <a href="#cart" class="cart carticon">
-        <div class="icon" onclick="redirectToCart()">
-          <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
-          <span onclick="redirectToCart()" class="cart-quantity" id="cart-count">${cartSize}</span>
-        </div>
-      </a>
-      <div class="my-dropdown-menu" id="cart-items">
-      `;
+          <a href="#cart" class="cart carticon">
+            <div class="icon" onclick="redirectToCart()">
+              <i onclick="redirectToCart()" class="fa fa-shopping-cart"></i>
+              <span onclick="redirectToCart()" class="cart-quantity" id="cart-count">${cartSize}</span>
+            </div>
+          </a>
+          <div class="my-dropdown-menu" id="cart-items">
+          `;
           for (cartProd of userData.cart) {
             // console.log(cartProd);
             await db

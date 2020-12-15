@@ -915,7 +915,7 @@
   <!-- <section class="responsive-sec2" style="position: absolute;margin-top: -2%; ">
     <div class="contain ">
       <div class="remoding">
-        <div class="img">
+        <div class="img" id="img-slider">
           <a class="" href="#">
             <img class="img-fuid" src="" alt="" style="background-repeat: repeat;width: 1600px;height: 100px;">
           </a>
@@ -924,7 +924,12 @@
     </div>
   </section> -->
 
-
+  <script>
+    let w = document.getElementById('img-slider').clientWidth;
+    console.log(w);
+    // let h = document.getElementById('img-slider').offsetHeight;
+    // console.log(h);
+  </script>
 
   <!-- user defined sliders -->
   <section class="trending-item-slider" id="user-defined-slider">
