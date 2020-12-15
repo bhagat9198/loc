@@ -367,7 +367,6 @@ const form1 = (e) => {
   // $("#myModal1").modal("show");
   document.querySelectorAll('input[name=shipping_time]').forEach(e => e.checked = false)
 
-
   document.querySelector("#registerTime").disabled = true;
   SHIPPING_DATA.name = name;
   SHIPPING_DATA.phone = phone;
@@ -381,6 +380,9 @@ const form1 = (e) => {
 
   if (shipDiffAddress.checked) {
     SHIPPING_DATA.differtAddress = true;
+
+    form1ShippingHTML['alt_name'].required = true;
+
     SHIPPING_DATA.alt_name = shipping_name;
     SHIPPING_DATA.alt_phone = shipping_phone;
     SHIPPING_DATA.alt_address = shipping_address;

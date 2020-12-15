@@ -111,6 +111,11 @@ const displayCart = async () => {
     <b>Eggless :</b> ${prod.eggless ? "Yes" : "No"}<br>
     <b>Flavour :</b>${prod.flavour}<br>`;
 
+    const personalizedGiftDetails = `
+      <b>Personalized Gift : </b> Yes <br>
+    `;
+
+
     if (prod.heart) {
       prodPrice += +product.shapes[0].shapePrice;
     }
@@ -130,6 +135,7 @@ const displayCart = async () => {
     });
     // console.log(prod.cartId);
     let rand = new Date().valueOf();
+
     item += `
     <tr class="cremove3831" id="row__${rand}">
       <td >
@@ -142,6 +148,7 @@ const displayCart = async () => {
       </td>
       <td class="responsiveTags" style="text-align: center;">
         ${prod.pricing.weight ? cakeDetails : ""}
+        ${prod.personalizedGift ? personalizedGiftDetails : ''}
         <b>Cost :</b> <span id="eachprice__${rand}">₹${prodPrice}</span>
       </td>
       <td class="unit-price quantity names">
@@ -480,6 +487,12 @@ const checkoutProds = async(e) => {
           cake.weight = c.pricing.weight;
           cake.flavour = c.flavour;
           pdata.cake = cake;
+        }
+        if(c.personalizedGift) {
+          personalized = {};
+          personalized.personalized = true;
+          personalized.personalizedGiftImgs = c.personalizedGiftImgs;
+          pdata.personalized = personalized;
         }
         checkoutCart.products.push(pdata);
       }

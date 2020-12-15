@@ -816,23 +816,20 @@
                     </small>
                     <small style="color: green; font-size: 12px; " id="disPercent"></small>
 
-                    <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;">(Inclusive
-                        of all
-                        taxes)</span>
+                    <p><span style="font-size: 13px; font-weight: 600; color: #bbbab0e6;">(Inclusive of all taxes)</span>
                     </p>
                     <p>
                       <span style="font-size: 13px; cursor: pointer;  font-weight: 600;color: #1e4794e6;">
                         <!-- Product  Description -->
                       </span></p>
                   </div>
-                  <p><span style="font-size: 15px; cursor: pointer;  font-weight: 700;color: #ff0b0be6;">Quantity</span>
-                  </p>
+                  <p id="pqty"><span style="font-size: 15px; cursor: pointer;  font-weight: 700;color: #ff0b0be6;">Quantity</span></p>
                   <div class="info-meta-3">
                     <ul class="meta-list">
                       <div class="row">
                         <div class="col-lg-12">
                           <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-4" id="qty-btns">
                               <li class="d-block count ">
                                 <div class="qty">
                                   <ul>
@@ -1037,7 +1034,7 @@
                       </div>
 
 
-
+                      <!-- /////////////////////////////////////////////////////////////////////////////////////////////////// -->
                       <div class="modal fade" id="customModal" tabindex="-1" role="dialog">
                         <div class="modal-dialog modal-lg">
                           <div class="modal-content">
@@ -1051,8 +1048,8 @@
                             <div class="modal-body"
                               style="height: 350px; overflow-y: scroll;background-color: #f1f1f1;">
                               <div class="container-fluid">
-                                <div class="row" id="customized">
-                                  <div class="image-tile">
+                                <div class="row" id="customizedImgs">
+                                  <!-- <div class="image-tile">
                                     <div class="upload-tile file-upload file-options personalizedImage invalid"
                                       data-value="" data-props-idx="0">
                                       <label for="file-1" style="display:inline-block;"><i
@@ -1061,51 +1058,9 @@
                                       <input id="file-1" style="display: none;" class="file-preview" type="file"
                                         accept="image/jpg, image/jpeg, image/png" data-select="single-select"
                                         onchange="readURL(this,'imgBlock1');">
-
                                       <img id="imgBlock1" class="customizedImage" src="" data-tile="1">
-                                      <!-- <span class="delete-photo " del-tile="1"><i class="material-icons">close</i></span> -->
                                     </div>
-                                    <div class="upload-tile file-upload file-options personalizedImage invalid"
-                                      data-value="" data-props-idx="0">
-                                      <label for="file-2" style="display:inline-block;"><i
-                                          style="margin-left:140%;margin-right: auto;margin-top: 130%;margin-bottom: auto;"
-                                          class="fa fa-plus"></i></label>
-                                      <input id="file-2" style="display: none;" class="file-preview" type="file"
-                                        accept="image/jpg, image/jpeg, image/png" data-select="single-select"
-                                        onchange="readURL(this,'imgBlock2');">
-                                        <img id="imgBlock2" class="customizedImage" src="" data-tile="1">
-                                      <!-- <img id="upload-image-1" class="" src="" data-tile="1"> -->
-
-                                      <!-- <span class="delete-photo " del-tile="1"><i class="material-icons">close</i></span> -->
-                                    </div>
-                                    <div class="upload-tile file-upload file-options personalizedImage invalid"
-                                      data-value="" data-props-idx="0">
-                                      <label for="file-3" style="display:inline-block;"><i
-                                          style="margin-left:140%;margin-right: auto;margin-top: 130%;margin-bottom: auto;"
-                                          class="fa fa-plus"></i></label>
-                                      <input id="file-3" style="display: none;" class="file-preview" type="file"
-                                        accept="image/jpg, image/jpeg, image/png" data-select="single-select"
-                                        onchange="readURL(this,'imgBlock3');">
-                                        <img id="imgBlock3" class="customizedImage" src="" data-tile="1">
-                                      <!-- <img id="upload-image-1" class="" src="" data-tile="1"> -->
-
-                                      <!-- <span class="delete-photo " del-tile="1"><i class="material-icons">close</i></span> -->
-                                    </div>
-                                    <div class="upload-tile file-upload file-options personalizedImage invalid"
-                                      data-value="" data-props-idx="0">
-                                      <label for="file-4" style="display:inline-block;"><i
-                                          style="margin-left:130%;margin-right: auto;margin-top: 130%;margin-bottom: auto;"
-                                          class="fa fa-plus"></i></label>
-                                      <input id="file-4" style="display: none;" class="file-preview" type="file"
-                                        accept="image/*" data-select="single-select" onchange="readURL(this,'imgBlock4');">
-                                        <img id="imgBlock4" class="customizedImage" src="" data-tile="1">
-                                     
-                                      <!-- <img id="upload-image-1" class="" src="" data-tile="1"> -->
-
-                                      <!-- <span class="delete-photo " del-tile="1"><i class="material-icons">close</i></span> -->
-                                    </div>
-                                  </div>
-
+                                  </div> -->
                                 </div>
                                 <div class="divider" style="text-align: center;font-weight: 700;">
                                   OR
@@ -1114,7 +1069,7 @@
                                   <label for="file-input" class="btn btn-secondary" id="prod_with_addos"
                                     style="background-color: rgb(78, 197, 42) !important; margin-right: auto;margin-left: auto;margin-top: 2% !important;border-radius: 30px;cursor: pointer;">+
                                     UPLOAD PHOTOS</label>
-                                  <input id="file-input" style="display: none;" class="file-preview" type="file"
+                                  <input id="img-input" style="display: none;" class="file-preview" type="file"
                                     accept="image/*" multiple>
                                 </div>
                                 <div class="divider" style="text-align: center;font-weight: 500;margin-top: 2%;">
@@ -1124,11 +1079,7 @@
                               </div>
                             </div>
                             <div class="modal-footer">
-
-
-                              <button type="button" class="btn btn-secondary" id="prod_with_adds"
-                                style="background-color: rgb(197, 42, 42); margin-right: auto;margin-left: auto;">Continue</button>
-
+                              <button type="button" class="btn btn-secondary" id="personlized-imgs"  data-dismiss="modal" style="background-color: rgb(197, 42, 42); margin-right: auto;margin-left: auto;">Submit Your Images</button>
                             </div>
                           </div>
                         </div>
@@ -1449,18 +1400,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
     $('.odometer').html(price);
   }
 
-  function readURL(input,id) {
-
-    document.getElementById(id).style.display="block"
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#'+id)
-          .attr('src', e.target.result);
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
+  
 </script>
 
 
