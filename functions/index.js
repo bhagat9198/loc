@@ -100,16 +100,19 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
   // console.log('basicPrices', basicPrices);
   let bpArr = basicPrices.slice();
   let disArr = [];
+  let discountPercentArr = [];
   let totalSubTotal = 0;
   basicPrices.map(p => {
     totalSubTotal += +p;
   })
+
   if (coupan) {
     let totalDis = 0;
     await admin.firestore().collection('coupans').doc(coupan).get().then(doc => {
       let docData = doc.data();
       if (docData.minAmt <= totalSubTotal) {
         basicPrices.map((el, i) => {
+          discountPercentArr.push(+docData.amount);
           let d = el * (+docData.amount / 100);
           d = Number(d.toFixed(2));
           disArr.push(d);
@@ -127,13 +130,16 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
   // console.log('disArr', disArr);
 
   let gstArr = [];
+  let gstPercentArr = [];
   let counter = -1;
   // console.log(basicPrices);
-  for (p of userDetails.orders[index].products) {
+  for (let p of userDetails.orders[index].products) {
     counter++;
     let gstPrice = 0;
     let gstPercent = 0;
+    p.name = p.pdata.name;
     gstPercent = +p.pdata.gst;
+    gstPercentArr.push(+gstPercent);
     gstPrice = +basicPrices[counter] * (+gstPercent / 100);
     gstArr.push(gstPrice);
     gstPrice = Number(gstPrice.toFixed(2));
@@ -197,12 +203,14 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
       order: userDetails.orders[index],
       basicPrice: bpArr,
       disArr: disArr,
+      disPercentArr: discountPercentArr,
+      gstPercentArr: gstPercentArr,
       gstArr: gstArr,
       addonCost: addonCost,
       shipeType: shipCat,
       shipDate: dateDelivery,
       shipTime: timeDelivery,
-      orderAt: (new Date()).toString(),
+      orderAt: new Date().toLocaleString("en-IN"),
       total: TOTAL_COST,
       status: "pending"
     }).then(s => {

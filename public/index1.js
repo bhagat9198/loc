@@ -24,11 +24,17 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   let img = "";
   for (let doc of snapshotDocs) {
     let docData = doc.data();
-    if (docData.daylight) {
-      img += `
+    // console.log(docData);
+    if (docData.isActivated == 'true') {
+      // console.log('aaa');
+      // console.log(docData);
+      if (docData.daylight) {
+        // console.log('bbb');
+        // console.log(docData);
+        img += `
       <a href="./Products/products.html?cat=${docData.cat}&&sub=${
-        docData.subCat ? docData.subCat : ""
-      }&&child=${docData.childCat ? docData.childCat : ""}">
+          docData.subCat ? docData.subCat : ""
+        }&&child=${docData.childCat ? docData.childCat : ""}">
         <div class="intro-content slide-one" >
           <img  class="sliderPc"
             src="${docData.imgUrl}">
@@ -42,10 +48,15 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
         </div>
         </div>
       </a>`;
+      }
     }
   }
 
   introCarouselHTML.innerHTML = img;
+  let w = document.getElementById("img-slider").clientWidth;
+  console.log(w);
+  // let h = document.getElementById('img-slider').offsetHeight;
+  // console.log(h);
 });
 
 // fixed section 1
@@ -65,7 +76,7 @@ db.collection("sections")
       if (card === "title") {
         fixedSection1HeadingHTML.innerHTML = docData[card];
       } else {
-        console.log(docData[card]);
+        // console.log(docData[card]);
         let sub = "",
           child = "";
         if (docData[card].subCat) {
@@ -205,9 +216,9 @@ db.collection("sections")
   .onSnapshot((doc) => {
     let docData = doc.data();
     let sortArr = [];
-    console.log(docData);
+    // console.log(docData);
     for (let card in docData) {
-      console.log(card);
+      // console.log(card);
       if (card === "title") continue;
       sortArr.push(docData[card]);
     }
@@ -1079,7 +1090,7 @@ db.collection("categories").onSnapshot(async (catSnaps) => {
             catId: catDoc.id,
           });
         });
-        console.log(catDoc.id);
+        // console.log(catDoc.id);
       });
   }
   sessionStorage.setItem("locProds", JSON.stringify(AllProds));
