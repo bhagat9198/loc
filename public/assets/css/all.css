@@ -4821,7 +4821,7 @@ input[type=submit].btn-block {
 }
 
 .card-title {
-    margin-bottom: .75rem;
+    /* margin-bottom: .75rem; */
 
 
 }
@@ -14906,9 +14906,9 @@ ul.attributes li a:hover {
         width: 100%
     }
     .owl-carousel .owl-item img {
-        height: 170px;
+        height: 130px;
         width: 500px !important;
-        object-fit:contain;
+        object-fit:fit;
         background-color:whitesmoke;
     }
 }
@@ -24558,6 +24558,7 @@ Logo Header Area Start
 
 .logo-header {
     padding: 5px 0px 5px;
+    
 }
 
 .logo-header .search-box {
@@ -25684,7 +25685,7 @@ nav button {
 }
 
 .categori-item {
-    padding: 70px 0px 30px;
+    padding: 30px 0px 30px;
      background: linear-gradient(rgba(223, 214, 214, 0.6), rgba(245, 138, 96, 0.616)), url("../images/flowerbg.jpg");
      background-repeat: no-repeat;
      background-size: cover;
@@ -26292,7 +26293,7 @@ nav button {
     /* background: linear-gradient(rgba(255,255,255,.1), rgba(69, 182, 163, 0.616)), url("https://i.pinimg.com/originals/34/ec/65/34ec654e0194df001227ac5d105637f6.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 30px 0px 50px;
+    padding: 30px 0px 30px;
 }
 
 .typeofcakes-section {
@@ -26300,8 +26301,8 @@ nav button {
     /* background: linear-gradient(rgba(255, 255, 255, .1), rgba(69, 182, 163, 0.616)), url('../images/emboidary1.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 50px 0px 50px;
-    margin-top:-6%;
+    padding: 30px 0px 30px;
+    /* margin-top:-6%; */
 }
 
 .banner-section img {
@@ -32920,7 +32921,7 @@ input[type=checkbox]:checked:disabled+label:before {
 /*  Slider buttom Category Start */
 
 .slider-buttom-category {
-    padding-top: 30px;
+    /* padding-top: 30px; */
 }
 
 .slider-buttom-category .single-category {
@@ -33653,9 +33654,11 @@ span.discount {
         height: 0px !important;
         margin-bottom: 0px;
        
-        /*height: 41px;*/
+        /* height: 41px; */
     }
+    
     .item .info{
+        height: 100px;
         padding: 0px 5px 10px !important;
     }
     .responsive-sec{
@@ -34143,7 +34146,7 @@ a.sell-btn {
 }
 
 .trending-item-slider.owl-carousel .owl-stage {
-    margin: 10px 0px 10px!important;
+    /* margin: 10px 0px 10px!important; */
 }
 
 nav .menu li a {
@@ -34410,7 +34413,7 @@ input.form-control.card-elements {
 }
 
 .trending-item-slider .owl-stage {
-    padding: 10px 0px 10px;
+    /* padding: 10px 0px 10px; */
 }
 
 
@@ -35692,7 +35695,7 @@ p.product-unit-price {
 
 @media only screen and (max-width: 450px) {
     .trending .item .info .price {
-        font-size: 20px;
+        /* font-size: 20px; */
     }
     .trending .item .item-img .extra-list ul li a,
     .categori-item .item .item-img .extra-list ul li a,
@@ -36098,7 +36101,7 @@ p.product-unit-price {
     }
     /*  /Subscribe preloader area  */
     .item .info .name {
-        font-size: 10px!important;
+        font-size: 12px!important;
         
     }
     .product-details-page .right-area .product-info {
@@ -36349,9 +36352,23 @@ section.phone-and-accessories.categori-item {
         height: 400px;
         object-fit:cover;
     }
+    .responsive-sec2 {
+        display: block !important;
+  
+      }
+      .productimg{
+          height: 70px !important;
+      }
 }
 @media only screen and (max-width:767px) {
 
+    .item .info .price{
+        
+        margin-top: 7%;;
+    }
+    .resTxt{
+        padding: 0px !important;
+    }
     .responsiveFooter{
         max-width: 100% !important;
     }
@@ -36370,4 +36387,7 @@ section.phone-and-accessories.categori-item {
     .wrapWords{
         flex-wrap: wrap;
     }
+    .imgresponsive {
+        object-fit: contain !important;
+      }
 }
