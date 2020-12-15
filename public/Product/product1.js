@@ -6,7 +6,7 @@ const storageService = firebase.storage();
 let PRODUCT_ID;
 let CATEGORY_ID;
 let PROD_DETAILS;
-
+let personalizedGift = false;
 var getParams = async (url) => {
   var params = {};
   var parser = document.createElement("a");
@@ -63,12 +63,9 @@ let TOTAL_COST = 0,
   WEIGHT_PRICE = {};
 
 const starRating = (starsNum) => {
-  console.log(starsNum);
   let startsDiv = "";
   starsAvg = +starsNum;
-  console.log(starsAvg, typeof starsAvg);
   if (starsAvg == 0) {
-    console.log(starsNum);
     startsDiv = `
       <span class="fa fa-star"></span>
       <span class="fa fa-star"></span>
@@ -128,6 +125,8 @@ const starRating = (starsNum) => {
     </style>`;
   return startsDiv + divClass;
 };
+
+let imgNo;
 
 const displayProduct = (prodData) => {
   // console.log(prodData);
@@ -191,7 +190,6 @@ const displayProduct = (prodData) => {
     `;
   }
 
-  console.log(prodData.stars);
   let pstars = starRating(+prodData.stars);
 
   document.querySelector("#prod-stars").innerHTML = pstars;
@@ -211,14 +209,16 @@ const displayProduct = (prodData) => {
     prodData.wholeCategory.toUpperCase().includes("CAKE") ||
     prodData.wholeCategory.toUpperCase().includes("COMBO")
   ) {
-    document.querySelectorAll(".cake-attribute").forEach((el) => {
-      el.style.display = "block";
-    });
-    WEIGHT_PRICE.current = +prodData.weights[0].weightPrice;
-    WEIGHT_PRICE.previous = +prodData.weights[0].weightPrevPrice;
-    WEIGHT_PRICE.weight = +prodData.weights[0].cakeWeight;
-    calculatePrice();
-    displayWeights(prodData.weights[0].cakeWeight);
+    if (prodData.weights) {
+      document.querySelectorAll(".cake-attribute").forEach((el) => {
+        el.style.display = "block";
+      });
+      WEIGHT_PRICE.current = +prodData.weights[0].weightPrice;
+      WEIGHT_PRICE.previous = +prodData.weights[0].weightPrevPrice;
+      WEIGHT_PRICE.weight = +prodData.weights[0].cakeWeight;
+      calculatePrice();
+      displayWeights(prodData.weights[0].cakeWeight);
+    }
   } else {
     document.querySelectorAll(".cake-attribute").forEach((el) => {
       el.style.display = "none";
@@ -254,6 +254,41 @@ const displayProduct = (prodData) => {
       cakeFlavourHTML.innerHTML = card;
     }
   }
+
+  // /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  if (prodData.personalized) {
+    if (prodData.personalized === true) {
+      personalizedGift = true;
+      // document.querySelector("#pqty").style.display = "none";
+      // document.querySelector("#qty-btns").style.display = "none";
+      document.querySelector("#buyNowBtn").disabled = true;
+      let customizedImgsHTML = document.querySelector("#customizedImgs");
+
+      imgNo = +prodData.imgs;
+      let imgHolder = "";
+      for (let imgCounter = 0; imgCounter < imgNo; imgCounter++) {
+        imgHolder += `
+        <div class="image-tile">
+          <div class="upload-tile file-upload file-options personalizedImage invalid"
+            data-value="" data-props-idx="0">
+            <label for="file-${imgCounter}" style="display:inline-block;"><i
+                style="margin-left:140%;margin-right: auto;margin-top: 130%;margin-bottom: auto;z-index: 999;"
+                class="fa fa-plus"></i></label>
+            <input id="file-${imgCounter}" style="display: none;" class="file-preview" type="file"
+              accept="image/jpg, image/jpeg, image/png" data-select="single-select"
+              onchange="readURL(this,'imgBlock-file-${imgCounter}');">
+            <img id="imgBlock-file-${imgCounter}" class="customizedImage" src="" >
+          </div>
+        </div>
+        `;
+      }
+      customizedImgsHTML.innerHTML = imgHolder;
+    }
+  } else {
+    document.querySelector("#customizedBtn").style.display = "none";
+  }
+
   while (
     prodData.descriptions.includes("<p><br></p>") ||
     prodData.descriptions.startsWith("<p><br></p>")
@@ -289,6 +324,52 @@ const displayProduct = (prodData) => {
   const prodPolicyHTML = document.querySelector("#prod-policy");
   prodPolicyHTML.innerHTML = `${prodData.policy}`;
 };
+
+let imgInputHTML = document.querySelector("#img-input");
+let IMGS_ARRAY = [];
+let imgCounter = 0;
+const imgUploader = async (e) => {
+  for (let img of e.target.files) {
+    // console.log(imgCounter, imgNo);
+    IMGS_ARRAY.push(img);
+    if (imgCounter >= imgNo) {
+      imgCounter = 0;
+    }
+    // console.log(document.querySelector(`#imgBlock-file-${imgCounter}`));
+    // console.log(img);
+    document.querySelector(
+      `#imgBlock-file-${imgCounter}`
+    ).src = URL.createObjectURL(img);
+    document.querySelector(`#imgBlock-file-${imgCounter}`).style.display =
+      "block";
+    imgCounter++;
+  }
+  imgInputHTML.value = "";
+};
+
+function readURL(input, id) {
+  document.getElementById(id).style.display = "block";
+  imgCounter++;
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      // console.log(e.target.result);
+      $("#" + id).attr("src", e.target.result);
+    };
+    IMGS_ARRAY.push(input.files[0]);
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+imgInputHTML.addEventListener("change", imgUploader);
+
+const personlizedImgsHTML = document.querySelector("#personlized-imgs");
+
+personlizedImgsHTML.addEventListener("click", (e) => {
+  if (IMGS_ARRAY.length >= imgNo) {
+    document.querySelector("#buyNowBtn").disabled = false;
+  }
+});
 
 const calculatePrice = () => {
   // console.log(TOTAL_COST, TOTAL_PREV_PRICE);
@@ -488,42 +569,45 @@ const imgChange = (e, current) => {
   // console.log(document.querySelector("#whole-img-block"));
 };
 
-const updateSessionStorage = async() => {
-  console.log('updateSessionStorage');
+const updateSessionStorage = async () => {
+  console.log("updateSessionStorage");
   let AllProds = [];
-  await db.collection("categories").get().then(async (catSnaps) => {
-    let catSnapsDocs = catSnaps.docs;
+  await db
+    .collection("categories")
+    .get()
+    .then(async (catSnaps) => {
+      let catSnapsDocs = catSnaps.docs;
 
-    for (let catDoc of catSnapsDocs) {
-      let catData = catDoc.data();
-      await db
-        .collection(catDoc.id)
-        .get()
-        .then(async(prodSnaps) => {
-          let prodSnapsDocs = prodSnaps.docs;
-          await prodSnapsDocs.map((pDoc) => {
-            let pData = pDoc.data();
-            AllProds.push({
-              prodId: pDoc.id,
-              prodData: {
-                cat: catData.name,
-                name: pData.name,
-                totalPrice: pData.totalPrice,
-                mrp: pData.mrp,
-                mainImgUrl: pData.mainImgUrl,
-                stars: pData.stars,
-                bannerType: pData.bannerType,
-                bannerTypeColorEnd: pData.bannerTypeColorEnd,
-                bannerTypeColorStart: pData.bannerTypeColorStart,
-              },
-              catId: catDoc.id,
+      for (let catDoc of catSnapsDocs) {
+        let catData = catDoc.data();
+        await db
+          .collection(catDoc.id)
+          .get()
+          .then(async (prodSnaps) => {
+            let prodSnapsDocs = prodSnaps.docs;
+            await prodSnapsDocs.map((pDoc) => {
+              let pData = pDoc.data();
+              AllProds.push({
+                prodId: pDoc.id,
+                prodData: {
+                  cat: catData.name,
+                  name: pData.name,
+                  totalPrice: pData.totalPrice,
+                  mrp: pData.mrp,
+                  mainImgUrl: pData.mainImgUrl,
+                  stars: pData.stars,
+                  bannerType: pData.bannerType,
+                  bannerTypeColorEnd: pData.bannerTypeColorEnd,
+                  bannerTypeColorStart: pData.bannerTypeColorStart,
+                },
+                catId: catDoc.id,
+              });
             });
+            console.log(catDoc.id);
           });
-          console.log(catDoc.id);
-        });
-    }
-    sessionStorage.setItem("locProds", JSON.stringify(AllProds));
-  });
+      }
+      sessionStorage.setItem("locProds", JSON.stringify(AllProds));
+    });
   return;
 };
 
@@ -551,7 +635,7 @@ const reviewForm = async (e) => {
     user = "Anonymous";
     userName = "Anonymous";
   }
-  console.log(PROD_DETAILS);
+  // console.log(PROD_DETAILS);
   let data = {
     rating: expirence,
     msg: msg,
@@ -617,12 +701,12 @@ const reviewForm = async (e) => {
         let locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
         // console.log(typeof(locProds1), locProds1);
         if (!locProds1) {
-          await updateSessionStorage().then(res => {
+          await updateSessionStorage().then((res) => {
             locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
-          })
+          });
         }
         console.log(locProds1);
-        console.log(locProds1, typeof(locProds1));
+        console.log(locProds1, typeof locProds1);
         let locProds = locProds1.slice();
         for (let locp of locProds) {
           if (locp.prodId == PRODUCT_ID) {
@@ -793,6 +877,28 @@ const buyProd = async (e) => {
   await checkAuth();
   const orderId = Math.random();
   await userRef.get().then(async (doc) => {
+    if (personalizedGift) {
+      let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
+      // console.log(finalImgs);
+      for (let img of finalImgs) {
+        let imgName = `${new Date().valueOf()}__${img.name}`;
+        let imgUrl;
+        await storageService
+          .ref(`Customers/${doc.id}/orders/${orderId}/${imgName}`)
+          .put(img);
+        await storageService
+          .ref(`Customers/${doc.id}/orders/${orderId}/${imgName}`)
+          .getDownloadURL()
+          .then((url) => {
+            imgUrl = url;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        personalizedGiftImgs.push(imgUrl);
+      }
+    }
+
     let docData = doc.data();
     if (docData.orders) {
       let cake = null;
@@ -815,6 +921,7 @@ const buyProd = async (e) => {
         // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
         cake.flavour = f;
       }
+
       let orderData = {
         orderId: orderId,
         totalCost: document.querySelector("#cost-with-addons").innerHTML,
@@ -833,6 +940,11 @@ const buyProd = async (e) => {
       if (cake) {
         orderData.products[0].cake = cake;
       }
+      if (personalizedGift) {
+        orderData.personalized = true;
+        orderData.personalizedGiftImgs = personalizedGiftImgs;
+      }
+
       docData.orders.push(orderData);
     } else {
       docData.orders = [];
@@ -876,6 +988,10 @@ const buyProd = async (e) => {
       if (cake) {
         orderData.products[0].cake = cake;
       }
+      if (personalizedGift) {
+        orderData.products[0].personalized = true;
+        orderData.products[0].personalizedGiftImgs = personalizedGiftImgs;
+      }
       docData.orders.push(orderData);
     }
     await userRef.update(docData);
@@ -893,6 +1009,29 @@ const addToCart = async (e) => {
   await userRef.get().then(async (doc) => {
     let docData = doc.data();
     let f;
+    personalizedGiftImgs = [];
+    if (personalizedGift) {
+      let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
+      // console.log(finalImgs);
+      for (let img of finalImgs) {
+        let imgName = `${new Date().valueOf()}__${img.name}`;
+        let imgUrl;
+        await storageService
+          .ref(`Customers/${doc.id}/orders/${cartId}/${imgName}`)
+          .put(img);
+        await storageService
+          .ref(`Customers/${doc.id}/orders/${cartId}/${imgName}`)
+          .getDownloadURL()
+          .then((url) => {
+            imgUrl = url;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        personalizedGiftImgs.push(imgUrl);
+        // console.log(personalizedGiftImgs);
+      }
+    }
     if (WEIGHT_PRICE.weight) {
       if (document.querySelector("input[name=cake-flavour]:checked")) {
         // user selected the value
@@ -915,6 +1054,8 @@ const addToCart = async (e) => {
         qty: PROD_QTY,
         cartId: cartId,
         flavour: f,
+        personalizedGift: personalizedGift,
+        personalizedGiftImgs: personalizedGiftImgs,
       });
     } else {
       docData.cart = [];
@@ -928,6 +1069,8 @@ const addToCart = async (e) => {
         qty: PROD_QTY,
         cartId: cartId,
         flavour: f,
+        personalizedGift: personalizedGift,
+        personalizedGiftImgs: personalizedGiftImgs,
       });
     }
     await userRef.update(docData);
@@ -1028,7 +1171,7 @@ const displaySuggestions = async () => {
 
 // display reviews
 
-const allReviewsHTML = document.querySelector('#all-reviews');
+const allReviewsHTML = document.querySelector("#all-reviews");
 const displayReviews = () => {
   let reviewRef = db
     .collection("reviews")
@@ -1043,7 +1186,7 @@ const displayReviews = () => {
         let reviewData = reviewDoc.data();
         console.log(reviewData);
         // display info of each card
-        let starsDiv = starRating(+reviewData.rating.split('__')[0]);
+        let starsDiv = starRating(+reviewData.rating.split("__")[0]);
         card += `
         <div class="w3-container">
           <div class="w3-card-4" style="width:100%;border-radius:10px">
