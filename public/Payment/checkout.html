@@ -71,7 +71,8 @@
     font-weight: 600;
 
   }
-/* 
+
+  /* 
   label.btn {
     padding: 10px 60px;
     white-space: normal;
@@ -542,7 +543,7 @@
         .responsiveIcon1 {
           /* margin: auto;
 				padding: 0px; */
-          
+
         }
 
       }
@@ -935,22 +936,22 @@
         <div class="checkout-process">
           <ul class="nav" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" style="pointer-events: none !important;" id="pills-step1-tab" data-toggle="pill" href="#pills-step1" role="tab"
-                aria-controls="pills-step1" aria-selected="true">
+              <a class="nav-link active" style="pointer-events: none !important;" id="pills-step1-tab"
+                data-toggle="pill" href="#pills-step1" role="tab" aria-controls="pills-step1" aria-selected="true">
                 <span>1</span> Shipping
                 <i class="fa fa-address-card"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" style="pointer-events: none !important;" id="pills-step2-tab" data-toggle="pill" href="#pills-step2" role="tab"
-                aria-controls="pills-step2" aria-selected="false">
+              <a class="nav-link disabled" style="pointer-events: none !important;" id="pills-step2-tab"
+                data-toggle="pill" href="#pills-step2" role="tab" aria-controls="pills-step2" aria-selected="false">
                 <span>2</span> Orders
                 <i class="fas fa-dolly"></i>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" style="pointer-events: none !important;" id="pills-step3-tab" data-toggle="pill" href="#pills-step3" role="tab"
-                aria-controls="pills-step3" aria-selected="false">
+              <a class="nav-link disabled" style="pointer-events: none !important;" id="pills-step3-tab"
+                data-toggle="pill" href="#pills-step3" role="tab" aria-controls="pills-step3" aria-selected="false">
                 <span>3</span> Payment
                 <i class="far fa-credit-card"></i>
               </a>
@@ -1180,6 +1181,7 @@
 
 
                       </ul>
+                      <br>
                       <div id="alt-address" style="display: none;">
                         <h4 class="title">
                           Alternative Shipping Info
@@ -1248,7 +1250,7 @@
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                  <div class="container-fluid" >
+                  <div class="container-fluid">
                     <div class="">
                       <div class="row">
                         <div class="col-md-12 mt-3" style="background-color: rgba(212, 221, 202, 0.4);">
@@ -1260,76 +1262,87 @@
                         </div>
                         <div class="col-md-12 mt-3">
                           <label
-                          style="font-weight: 700;padding: 10px !important;text-align:center !important;">Delivery
-                          Time</label>
+                            style="font-weight: 700;padding: 10px !important;text-align:center !important;">Delivery
+                            Time</label>
                           <div class="form-group" style="height: 400px ;overflow-y: scroll;">
-                          
+
                             <div class="free-hours responsivehrs" id="free-hours" style="display: none;">
-                              <label class="element-animation1 btn btn-lg btn-primary btn-block" style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" value="free"
-                                  class="checkoutRadio">&nbsp;&nbsp;Between 10 AM
+                              <label class="element-animation1 btn btn-lg btn-primary btn-block"
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" value="free" class="checkoutRadio">&nbsp;&nbsp;Between 10 AM
                                 to 8 PM </label>
                             </div>
                             <div id="time-error" style="color: #f00; display: none;">Sorry!! you cant book for today 😶
-                              <br /> Select next day date or upcoming day date.</div>
+                              <br /> Select next day date or upcoming day date.
+                            </div>
                             <div class="perfect-hours responsivehrs" id="perfect-hours" style="display: none;">
 
-                              <label class="element-animation2 btn btn-lg btn-primary btn-block " style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" id="perfect_11" value="11">&nbsp;&nbsp;Between 11 AM
+                              <label class="element-animation2 btn btn-lg btn-primary btn-block "
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" id="perfect_11" value="11">&nbsp;&nbsp;Between 11 AM
                                 to 12
                                 Noon </label>
-                              <label class="element-animation2 btn btn-lg btn-primary btn-block " style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" id="perfect_12" value="12">&nbsp;&nbsp;Between 12
+                              <label class="element-animation2 btn btn-lg btn-primary btn-block "
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" id="perfect_12" value="12">&nbsp;&nbsp;Between 12
                                 Noon to 1
                                 PM </label>
-                              <label class="element-animation2 btn btn-lg btn-primary btn-block " style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" id="perfect_1" value="1">&nbsp;&nbsp;Between 1 PM to
+                              <label class="element-animation2 btn btn-lg btn-primary btn-block "
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" id="perfect_1" value="1">&nbsp;&nbsp;Between 1 PM to
                                 2
                                 PM</label>
 
-                              <label class="element-animation2 btn btn-lg btn-primary btn-block " style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" id="perfect_2" value="2">&nbsp;&nbsp;Between 2 PM to
+                              <label class="element-animation2 btn btn-lg btn-primary btn-block "
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" id="perfect_2" value="2">&nbsp;&nbsp;Between 2 PM to
                                 3
                                 PM</label>
 
-                              <label class="element-animation2 btn btn-lg btn-primary btn-block " style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" id="perfect_3" value="10">&nbsp;&nbsp;Between 3 PM
+                              <label class="element-animation2 btn btn-lg btn-primary btn-block "
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" id="perfect_3" value="10">&nbsp;&nbsp;Between 3 PM
                                 to 4
                                 PM</label>
 
-                              <label class="element-animation2 btn btn-lg btn-primary btn-block " style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" id="perfect_4" value="10">&nbsp;&nbsp;Between 4 PM
+                              <label class="element-animation2 btn btn-lg btn-primary btn-block "
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" id="perfect_4" value="10">&nbsp;&nbsp;Between 4 PM
                                 to 5
                                 PM</label>
 
-                              <label class="element-animation2 btn btn-lg btn-primary btn-block " style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" id="perfect_5" value="10">&nbsp;&nbsp;Between 5 PM
+                              <label class="element-animation2 btn btn-lg btn-primary btn-block "
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" id="perfect_5" value="10">&nbsp;&nbsp;Between 5 PM
                                 to 6
                                 PM</label>
 
-                              <label class="element-animation2 btn btn-lg btn-primary btn-block " style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" id="perfect_7" value="7">&nbsp;&nbsp;Between 7 PM to
+                              <label class="element-animation2 btn btn-lg btn-primary btn-block "
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" id="perfect_7" value="7">&nbsp;&nbsp;Between 7 PM to
                                 8
                                 PM</label>
 
-                              <label class="element-animation2 btn btn-lg btn-primary btn-block " style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" id="perfect_8" value="8">&nbsp;&nbsp;Between 8 PM to
+                              <label class="element-animation2 btn btn-lg btn-primary btn-block "
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" id="perfect_8" value="8">&nbsp;&nbsp;Between 8 PM to
                                 9
                                 PM</label>
 
-                              <label class="element-animation2 btn btn-lg btn-primary btn-block " style="padding-left: 30px;"><span
-                                  class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span><input
-                                  type="radio" name="shipping_time" id="perfect_9" value="9">&nbsp;&nbsp;Between 9 PM to
+                              <label class="element-animation2 btn btn-lg btn-primary btn-block "
+                                style="padding-left: 30px;"><span class="btn-label"><i
+                                    class="glyphicon glyphicon-chevron-right"></i></span><input type="radio"
+                                  name="shipping_time" id="perfect_9" value="9">&nbsp;&nbsp;Between 9 PM to
                                 10
                                 PM</label>
                             </div>
@@ -1508,7 +1521,7 @@
 
         <!--Footer-->
         <div class="modal-footer justify-content-center flex-column flex-md-row">
-       
+
           <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
             data-dismiss="modal">Close</button>
         </div>
@@ -1584,13 +1597,15 @@
   $("input[type='date']").keydown(function (event) {
     event.preventDefault();
   });
-
+  let altAddSelected = 0;
   // /////////////////////////////////////////////////////////////////////////
   $("#ship-diff-address").on("change", function () {
     if (this.checked) {
+      altAddSelected = 1;
       $('.ship-diff-addres-area').removeClass('d-none');
       $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', true);
     } else {
+      altAddSelected = 0;
       $('.ship-diff-addres-area').addClass('d-none');
       $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', false);
     }
@@ -1775,27 +1790,54 @@
       let address = document.querySelector('#uaddress').value;
       let pin = document.querySelector('#locality').value;
 
+
+      let a_name = document.querySelector('#shippingFull_name').value;
+      let a_phone = document.querySelector('#shipingPhone_number').value;
+      let a_address = document.querySelector('#shipping_address').value;
+      let a_postal = document.querySelector('#shippingPostal_code').value;
+      // let a_pin = document.querySelector('#locality').value;
+
       if (name != "" && email != "" && phone != "" && address != "" && pin != "") {
-        if (document.getElementById("free-shepping1").checked) {
-          $("#myModal1").modal('show');
-          document.getElementById("free-hours").style.display = "block"
-          modalVisited = 1;
-        }
-        else if (document.getElementById("free-shepping2").checked) {
-          $("#myModal1").modal('show');
-          document.getElementById("perfect-hours").style.display = "block"
-          modalVisited = 1
+        
+        if (altAddSelected==1) {
+          if (a_name != "" && a_phone != "" && a_address != "" && a_postal != "") {
+            
+            if (document.getElementById("free-shepping1").checked) {
+              $("#myModal1").modal('show');
+              document.getElementById("free-hours").style.display = "block"
+              modalVisited = 1;
+            }
+            else if (document.getElementById("free-shepping2").checked) {
+              $("#myModal1").modal('show');
+              document.getElementById("perfect-hours").style.display = "block"
+              modalVisited = 1
+            } else {
+              $("#myModal1").modal('show');
+              document.getElementById("midnight-hours").style.display = "block"
+              modalVisited = 1
+            }
+          }
         } else {
-          $("#myModal1").modal('show');
-          document.getElementById("midnight-hours").style.display = "block"
-          modalVisited = 1
-        }
-      } else {
-
+          if (document.getElementById("free-shepping1").checked) {
+            $("#myModal1").modal('show');
+            document.getElementById("free-hours").style.display = "block"
+            modalVisited = 1;
+          }
+          else if (document.getElementById("free-shepping2").checked) {
+            $("#myModal1").modal('show');
+            document.getElementById("perfect-hours").style.display = "block"
+            modalVisited = 1
+          } else {
+            $("#myModal1").modal('show');
+            document.getElementById("midnight-hours").style.display = "block"
+            modalVisited = 1
+          }
+        } 
       }
-
-
     }
+
+
+
 
   });
 
@@ -2167,9 +2209,9 @@
         </button>
       </div>
       <div class="modal-body">
-       ddd
+        ddd
       </div>
-     
+
     </div>
   </div>
 </div>
