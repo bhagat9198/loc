@@ -47,7 +47,10 @@
 
 
   }
-
+  .respCircle{
+    width: 50px !important;
+    height: 50px !important;
+  }
   .customizedImage {
     display: none;
     width: 75px;
@@ -371,7 +374,7 @@
         .responsiveIcon1 {
           /* margin: auto;
 				padding: 0px; */
-          margin-left: 32%;
+          /*  */
         }
 
       }
@@ -542,6 +545,22 @@
                 </label>
               </a>
             </div> -->
+            <div class="nav-collapsible">
+              <a href="UserDash/customerProfile.html">
+                <label for="nav-collapsible-1" style="width: 100%;">
+                  <div class="row pl-3">
+                    <div class="col-10 col-sm-10 col-md-10 p-0">
+                      <span style="position: relative; top: 4px;">Your Account </span>
+                    </div>
+                    <div class="col-2 col-sm-2 col-md-2 p-0">
+                      <span style="position: relative; top: 8px;">
+                        <i class="fas fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+              </a>
+            </div>
               <div class="nav-collapsible">
                 <a href="#">
                   <label for="nav-collapsible-1" style="width: 100%;">
@@ -601,6 +620,39 @@
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span style="position: relative; top: 8px;">
                           <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+
+              <div class="nav-collapsible" style="display: none;" id="logoutMobile">
+                <a href="#!" onclick="logOut()">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Log Out</span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-power-off"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible" id="loginMobile">
+                <a href="/Auth/login.html">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Log In</span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fa fa-sign-in"></i>
                         </span>
                       </div>
                     </div>
@@ -934,7 +986,7 @@
                         <div>
                           <label>Give your message too😍😇</label>
                           <input type="text" class="values form-control message_cart" name="message" id="prodMsg"
-                            placeholder="Enter a Name/Message (Max 30 Characters)" maxlength="30"
+                            placeholder="Enter Name/Message (30 Ch.)" maxlength="30"
                             style="height: 3em;width: 82%;">
                         </div>
                       </div>
@@ -962,8 +1014,8 @@
                         id="success">Added To Cart Successfully <i class="fa fa-check"></i>
                       </h5>
                       <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog">
-                        <div class="modal-dialog modal-lg">
-                          <div class="modal-content">
+                        <div class="modal-dialog modal-lg ">
+                          <div class="modalAdd modal-content " >
                             <div class="modal-header"
                               style="background-color: rgb(197, 42, 42);padding: 10px !important;">
                               <h4 class="modal-title text-center tb"
@@ -972,7 +1024,7 @@
                                 Ones</h4>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
-                            <div class="modal-body" style="height: 350px; overflow-y: scroll;">
+                            <div class="modal-body" style=" overflow-y: scroll;">
                               <div class="container-fluid">
                                 <div class="row" id="allAddons">
                                   <!-- <div class="col-md-3 col-6 mt-3">
@@ -1022,10 +1074,10 @@
                             <div class="modal-footer">
                               <a id="qaddcrt" href="javascript:;"
                                 style="border-radius: 0px; background: #fff; border: 0px;display: flex;">
-                                <h5 class="resTxt" style="padding: 20px ;font-weight: 900;"> Total
-                                  Price :₹ <span id="cost-with-addons"></span></h5>
-                                <button type="button" class="btn btn-secondary" id="prod_with_addons"
-                                  style="background-color: rgb(197, 42, 42)">Continue Without
+                                <h5 class="resTxt" style="padding: 20px ;font-weight: 800; "> Total
+                                  Price :₹ <span id="cost-with-addons" style=""></span></h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-secondary resTxt2" id="prod_with_addons"
+                                  style="background-color: rgb(197, 42, 42);">Continue Without
                                   Addons</button>
                               </a>
                             </div>
@@ -1066,7 +1118,7 @@
                                   OR
                                 </div>
                                 <div class="divider" style="text-align: center;font-weight: 700;">
-                                  <label for="img-input" class="btn btn-secondary" id="prod_with_addons"
+                                  <label for="file-input" class="btn btn-secondary" id="prod_with_addos"
                                     style="background-color: rgb(78, 197, 42) !important; margin-right: auto;margin-left: auto;margin-top: 2% !important;border-radius: 30px;cursor: pointer;">+
                                     UPLOAD PHOTOS</label>
                                   <input id="img-input" style="display: none;" class="file-preview" type="file"

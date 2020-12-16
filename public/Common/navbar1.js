@@ -345,7 +345,7 @@ if (localStorage.getItem("locLoggedInUser")) {
           }
           cartModalProds += `
       <div onclick="redirectToCart()" class="dropdown-cart-action">
-            <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: rgb(20, 113, 167);margin-left:auto;margin-right:auto">View In Cart</a>
+            <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: red;margin-left:auto;margin-right:auto;">View In Cart</a>
           </div>
         </div>
       </div>
@@ -396,3 +396,12 @@ const searchByUserInputBtn = (event) => {
   console.log(val);
   window.location.href = `/Products/products.html?user=${val}`;
 };
+var checkUser2 = window.localStorage.getItem("locLoggedInUser");
+
+if(checkUser2 && checkUser2!="null"){
+  document.getElementById("logoutMobile").style.display="block"
+  document.getElementById("loginMobile").style.display="none"
+}else{
+  document.getElementById("logoutMobile").style.display="none"
+  document.getElementById("loginMobile").style.display="block"
+}
