@@ -395,3 +395,12 @@ const searchByUserInputBtn = (event) => {
   console.log(val);
   window.location.href = `/Products/products.html?user=${val}`;
 };
+var checkUser2 = window.localStorage.getItem("locLoggedInUser");
+
+if(checkUser2 && checkUser2!="null"){
+  document.getElementById("logoutMobile").style.display="block"
+  document.getElementById("loginMobile").style.display="none"
+}else{
+  document.getElementById("logoutMobile").style.display="none"
+  document.getElementById("loginMobile").style.display="block"
+}
