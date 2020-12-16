@@ -151,28 +151,49 @@
                           </div>
                         </div>
 
-                        <div id="gift-attributes"
-                          style="display: none;background-color: rgb(214, 213, 157);padding: 10px;border-radius: 5px;box-shadow: 5px 5px 5px gray;">
-                          <h4 class="mainHeading" style="padding: 10px;">Gift Attributes</h4>
-                          <br>
-                          <div class="row">
-                            <div class="col-lg-4">
-                              <div class="left-area">
-                                <h4 class="heading">Type*</h4>
-                              </div>
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                              <h4 class="heading">Is Cake?</h4>
                             </div>
-                            <div class="col-lg-7">
-                              <div class="row mb-0 option-row">
-                                <div class="col-lg-5">
-                                  <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" id="gift-type" name="gift-type" value="true"
-                                      class="custom-control-input attr-checkbox">
-                                    <label class="custom-control-label" for="gift-type">Personlized</label>
-                                  </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <div class="row mb-0 option-row">
+                              <div class="col-lg-5">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" id="is-cake" name="is-cake" value="true"
+                                    class="custom-control-input attr-checkbox">
+                                  <label class="custom-control-label" for="is-cake">Cake</label>
                                 </div>
                               </div>
                             </div>
                           </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                              <h4 class="heading">Is Personlized Gift?</h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <div class="row mb-0 option-row">
+                              <div class="col-lg-5">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" id="gift-type" name="gift-type" value="true"
+                                    class="custom-control-input attr-checkbox">
+                                  <label class="custom-control-label" for="gift-type">Personlized</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div id="gift-attributes"
+                          style="display: none;background-color: rgb(214, 213, 157);padding: 10px;border-radius: 5px;box-shadow: 5px 5px 5px gray;">
+                          <h4 class="mainHeading" style="padding: 10px;">Gift Attributes</h4>
+                          <br>
+
                           <div class="row">
                             <div class="col-lg-4">
                               <div class="left-area">
@@ -1007,27 +1028,25 @@
   </script>
 
   <script>
-    document.getElementById("product-category").addEventListener('change', function (e) {
-      var val = document.querySelector('#product-category').value;
-      // console.log(val);
-      if (val.toUpperCase().includes('CAKE') || val.toUpperCase().includes('COMBO')) {
+    let isCake = document.querySelector('#is-cake');
+    isCake.addEventListener('change', () => {
+      if (isCake.checked) {
         document.getElementById("cake-attributes").style.display = "block"
-        // document.querySelectorAll(".cake-attributes1").forEach(el => {
-        //   el.style.display = "none";
-        // }) 
+
       } else {
         document.getElementById("cake-attributes").style.display = "none"
-        // document.querySelectorAll(".cake-attributes1").forEach(el => {
-        //   el.style.display = "block";
-        // })
       }
+    });
 
-      if (val.toUpperCase().includes('GIFT')) {
+    let isGift = document.querySelector('#gift-type');
+
+    isGift.addEventListener('change', () => {
+      if (isGift.checked) {
         document.getElementById("gift-attributes").style.display = "block"
       } else {
         document.getElementById("gift-attributes").style.display = "none"
       }
-    });
+    })
 
     function readURL(input) {
       if (input.files && input.files[0]) {

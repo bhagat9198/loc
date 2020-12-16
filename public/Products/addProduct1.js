@@ -200,6 +200,17 @@ const addProductForm = (event) => {
   let cakeFlavours = [];
   let weightPrice, cakeType, weightPrevPrice;
 
+  let isCake = false;
+  let isCakeHTML = document.querySelector('#is-cake');
+  if(isCakeHTML.checked) {
+    isCake = true;
+  }
+  let pIsGift = false;
+  let pIsGiftHTML = document.querySelector('#gift-type');
+  if(pIsGiftHTML.checked) {
+    pIsGift = true;
+  }
+
   productName = addProduct["product-name"].value;
   productType = addProduct["product-type"].value;
   productTypeColorStart = addProduct["product-type-color-start"].value;
@@ -233,7 +244,7 @@ const addProductForm = (event) => {
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
 
-  if (productCategory.toUpperCase().includes("CAKE") || productCategory.toUpperCase().includes("COMBO")) {
+  if (isCake) {
     addProduct
       .querySelectorAll('input[name="cake-weight"]')
       .forEach((weight) => {
@@ -318,6 +329,8 @@ const addProductForm = (event) => {
     fondant = 'true';
   }
 
+  
+
   let wholeProduct = {
     name: productName,
     bannerType: productType,
@@ -339,11 +352,13 @@ const addProductForm = (event) => {
     isActivated: true,
     totalReviews: 0,
     stars: 0,
-    createdAt: `${new Date()}`
+    createdAt: `${new Date()}`,
+    pIsGift: pIsGift,
+    isCake: isCake,
   };
 
   
-  if (productCategory.toUpperCase().includes("CAKES") || productCategory.toUpperCase().includes("COMBO")) {
+  if (isCake) {
     wholeProduct.weights = cakeWeights || "";
     wholeProduct.shapes = cakeShapes || "";
     wholeProduct.type = cakeType || "";
@@ -351,7 +366,7 @@ const addProductForm = (event) => {
     wholeProduct.fondant = fondant;
   }
 
-  if (productCategory.toUpperCase().includes("GIFT")) {
+  if (pIsGift) {
     wholeProduct.personalized = false;
     if(addProduct.querySelector('input[name="gift-type"]:checked')) {
       wholeProduct.personalized = true;
