@@ -73,6 +73,9 @@
       width: 100px;
       height: 100px;
       object-fit: contain;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
     }
 
     .responsive-sec {
@@ -245,26 +248,31 @@
       @media only screen and (max-width: 600px) {
         .responsiveIcon1 {
           /* margin: auto;
-          padding: 0px; */
-          margin-left: 32%;
+				padding: 0px; */
+          /*  */
         }
 
       }
 
-      @media only screen and (min-width:700px) {
-        .responsiveIcon2 {
-          display: block !important;
-        }
+      @media only screen and (min-width:701px) {
+        .responsiveIcon3 {
+					display: block !important;
+				}
+
+      }
+      @media only screen and (max-width:700px) {
+        .responsiveIcon3 {
+					display: block !important;
+				}
 
       }
     </style>
 
 
-
     <section class="top-header top-nav" style="background: #f1f1f1;">
       <div class="container-fluid remove-padding topnaves"
         style="background: #f1f1f1;;
-        background-size: 617px; background-image: url();height: 28px !important;padding: 0px !important;margin-bottom: 0.3%;">
+      background-size: 617px; background-image: url();height: 28px !important;padding: 0px !important;margin-bottom: 0.3%;">
         <div class="container topcnt">
           <div class="row" style="justify-content: flex-end;">
             <div class="">
@@ -336,7 +344,7 @@
               </div>
               <hr>
               <div class="nav-collapsible">
-                <a href="midNight.html">
+                <a href="#">
                   <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-2 col-sm-2 col-md-2 p-0">
@@ -403,21 +411,37 @@
               </div>
               <hr>
               <!-- <div class="nav-collapsible">
-                <a href="#">
-                  <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Help </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
+              <a href="#">
+                <label for="nav-collapsible-1" style="width: 100%;">
+                  <div class="row pl-3">
+                    <div class="col-10 col-sm-10 col-md-10 p-0">
+                      <span style="position: relative; top: 4px;">Help </span>
                     </div>
-                  </label>
-                </a>
-              </div> -->
+                    <div class="col-2 col-sm-2 col-md-2 p-0">
+                      <span style="position: relative; top: 8px;">
+                        <i class="fas fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+              </a>
+            </div> -->
+            <div class="nav-collapsible">
+              <a href="UserDash/customerProfile.html">
+                <label for="nav-collapsible-1" style="width: 100%;">
+                  <div class="row pl-3">
+                    <div class="col-10 col-sm-10 col-md-10 p-0">
+                      <span style="position: relative; top: 4px;">Your Account </span>
+                    </div>
+                    <div class="col-2 col-sm-2 col-md-2 p-0">
+                      <span style="position: relative; top: 8px;">
+                        <i class="fas fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+              </a>
+            </div>
               <div class="nav-collapsible">
                 <a href="#">
                   <label for="nav-collapsible-1" style="width: 100%;">
@@ -435,21 +459,21 @@
                 </a>
               </div>
               <!-- <div class="nav-collapsible">
-                <a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">
-                  <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Track Orders </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
+              <a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">
+                <label for="nav-collapsible-1" style="width: 100%;">
+                  <div class="row pl-3">
+                    <div class="col-10 col-sm-10 col-md-10 p-0">
+                      <span style="position: relative; top: 4px;">Track Orders </span>
                     </div>
-                  </label>
-                </a>
-              </div> -->
+                    <div class="col-2 col-sm-2 col-md-2 p-0">
+                      <span style="position: relative; top: 8px;">
+                        <i class="fas fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+              </a>
+            </div> -->
               <div class="nav-collapsible">
                 <a data-toggle="modal" data-target="#topoffer">
                   <label for="nav-collapsible-1" style="width: 100%;">
@@ -484,6 +508,39 @@
                 </a>
               </div>
 
+              <div class="nav-collapsible" style="display: none;" id="logoutMobile">
+                <a href="#!" onclick="logOut()">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Log Out</span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-power-off"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible" id="loginMobile">
+                <a href="/Auth/login.html">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Log In</span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fa fa-sign-in"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+
             </div>
           </aside>
           <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
@@ -494,9 +551,9 @@
                   <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
                     <div class="autocomplete" style="width: 100%;">
                       <input class="form-control" style="width: 100% !important;
-                      border: none;
-                      border-bottom: 1px solid ;
-                      border-radius: unset;background-color: transparent;" type="text" id="searchBar"
+                    border: none;
+                    border-bottom: 1px solid ;
+                    border-radius: unset;background-color: transparent;" type="text" id="searchBar"
                         onkeydown="disableEnterKey(event)" onkeyup=searchByUserInput(event) name="searchBar"
                         placeholder="Search: Cakes , Flowers ,Gifts...">
                     </div>
@@ -517,7 +574,7 @@
             class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
             <ul style="display: inline-flex;">
               <li>
-                <a href="midNight.html">
+                <a href="#">
                   <div class="text-center">
                     <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
                     <div
@@ -564,9 +621,9 @@
                   </a>
 
                   <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
-                      inset 0 -3em 3em rgba(0,0,0,0.1), 
-                            0 0  0 2px rgb(255,255,255),
-                            0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown"
+                    inset 0 -3em 3em rgba(0,0,0,0.1), 
+                          0 0  0 2px rgb(255,255,255),
+                          0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown"
                     aria-labelledby="navbarDropdownMenuLink">
                     <div
                       style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
@@ -583,8 +640,8 @@
                       Profile</a>
 
                     <!-- <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
-                      href="#!" onclick="checkifUser('/UserDash/trackOrders.html')"><i class="fa fa-truck"></i> Track
-                      Orders</a> -->
+                    href="#!" onclick="checkifUser('/UserDash/trackOrders.html')"><i class="fa fa-truck"></i> Track
+                    Orders</a> -->
 
                     <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
                       href="#!" onclick="checkifUser('/UserDash/customerProfile.html')"><i
@@ -602,7 +659,7 @@
                 </li>
 
 
-                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: none;" data-toggle="tooltip"
+                <li class="my-dropdown responsiveIcon3" id="cart-modal" style="display: none;" data-toggle="tooltip"
                   data-placement="top" title="Cart">
 
                 </li>
@@ -628,9 +685,6 @@
         </div>
       </div>
     </div>
-
-
-
   </section>
 
   <!-- SLIDER -->
@@ -1057,9 +1111,9 @@
     </section> -->
   </section>
 
-  <section class="categori-items bestseller banner-section">
+  <section class="categori-item bestseller" style="background: #f1f1f1 !important">
     <div class="container-fluid">
-      <div class="row ">
+      <div class="row">
         <div class="col-lg-12 remove-padding">
           <div class="row">
             <div class="col-md-4 text-center">
@@ -1070,7 +1124,7 @@
 
               </h3>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 dropdown">
               <a style="color:white" id="fixed-section6-viewAll" href="///category/cakes">
                 <div class="col l4 s4 "
                   style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
@@ -1081,13 +1135,15 @@
           </div>
         </div>
       </div>
+
+
       <div class="row">
         <div class="col-lg-12">
           <!-- <div class="text-right mt-3">
 						<a href="//lakeofcakes.com/category/cakes"><button type="button" class="btn btn-danger"
 								style="background:#ff0000;padding: 10px;">View More</button></a>
 					</div> -->
-          <div class="row" id="fixed-section6-row">
+          <div class="row " id="fixed-section6-row">
             <div class="col-lg-2 col-md-3 col-6 remove-padding">
               <a class="item" href="assets/images/skeleton.gif">
                 <div class="item-img">
@@ -1217,12 +1273,38 @@
                 </div>
               </a>
             </div>
+
           </div>
 
 
         </div>
 
+
       </div>
+
+      <!-- Mobile Ui View All Button -->
+
+
+      <div class="row ">
+        <div class="col-lg-12 remove-padding">
+          <div class="row">
+
+
+            <div class="col-md-4 ">
+              <a style="color:white" id="fixed-section6-viewAllMob" href="///category/cakes">
+                <div class="responsiveIcon2 col l4 s4 "
+                  style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
+                  View ALL
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Ui View All Button Ends -->
+
+
     </div>
   </section>
 
@@ -1232,7 +1314,7 @@
       <div class="row">
         <div class="col-lg-12 remove-padding">
           <div class="text-center">
-            <h3 class=" bannerheading" style="color:#1c7780; !important;" id="fixed-section4-heading">
+            <h3 class=" bannerheading" style="color:#1c7780 !important;" id="fixed-section4-heading">
             </h3>
           </div>
         </div>
@@ -1333,7 +1415,7 @@
   <!-- fixed section 7 -->
   <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row ">
         <div class="col-lg-12 remove-padding">
           <div class="row">
             <div class="col-md-4 text-center">
@@ -1345,7 +1427,7 @@
             </div>
             <div class="col-md-4 bottomDisp">
               <a style="color:white" id="fixed-section7-viewAll" href="///category/gifts2">
-                <div class="col l4 s4"
+                <div class="dropdown col l4 s4"
                   style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
                   View ALL
                 </div>
@@ -1392,6 +1474,24 @@
           </div>
         </div>
       </div>
+
+      <div class="row ">
+        <div class="col-lg-12 remove-padding">
+          <div class="row">
+
+
+            <div class="col-md-4 ">
+              <a style="color:white" id="fixed-section7-viewAllMob" href="///category/cakes">
+                <div class="responsiveIcon2 col l4 s4 "
+                  style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
+                  View ALL
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1437,11 +1537,11 @@
                 <div class="row">
                   <div class="bannerMainImage col-md-5 col-5"
                     style=" padding-top: 0px; padding-bottom: 15px; height: 170px !important;">
-                    <img class="  mb-2" src="assets/images/delivery in 3 hrs2.png">
+                    <img class="  mb-2" src="assets/images/delivery in 3 hrs.png">
                   </div>
                   <div class="col-md-7 col-7">
-                    <div class="aside " style="margin-left: 10%; margin-top: 10%;">
-                      <h3 style="color:#000; font-weight: 700; font-size: 20px; line-height: 1.5rem;" id="speed">Fast
+                    <div class="aside " style="margin-left: 10%; margin-top: 30%;">
+                      <h3 style="color:#000; font-weight: 700; font-size: 23px; line-height: 1.5rem;" id="speed">Fast
                         Delivery in 2 Hrs</h3>
 
                       <p style="color:#000; font-size: 17px; margin-top: 9%;">Express delivery </p>
@@ -1451,7 +1551,7 @@
                 </div>
               </div>
               <div class="col-lg-8 col-12 " style="width: 100% !important;">
-                <div class="row" id="img31">
+                <div class="row" id="img31" style="margin-right: auto;">
 
                 </div>
               </div>
@@ -1475,7 +1575,7 @@
     </div>
   </section>
 
-  <section class=" banner-section categori-items bestseller">
+  <section class="categori-item bestseller" style="background: #f1f1f1;">
     <div class="container-fluid">
       <div class="row  ">
         <div class="col-lg-12 remove-padding">
@@ -1488,7 +1588,7 @@
                 Seller
                 Cakes</h3>
             </div>
-            <div class="col-md-4 bottomDisp">
+            <div class="col-md-4 bottomDisp dropdown">
               <a style="color:white" id="fixed-section10-viewAll" href="///category/cakes">
                 <div class="col l4 s4 "
                   style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
@@ -1618,6 +1718,25 @@
           </div>
         </div>
       </div>
+
+      <div class="row ">
+        <div class="col-lg-12 remove-padding">
+          <div class="row">
+
+
+            <div class="col-md-4 ">
+              <a style="color:white" id="fixed-section10-viewAllMob" href="///category/cakes">
+                <div class="responsiveIcon2 col l4 s4 "
+                  style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
+                  View ALL
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
     </div>
   </section>
 
@@ -1627,7 +1746,7 @@
         <div class="col-lg-12" style="background: transparent;">
           <div class="row">
             <div class="col-lg-8 col-12">
-              <div class="row" id="img41">
+              <div class="row" id="img41" style="margin-right: auto;">
 
 
               </div>
@@ -1675,7 +1794,7 @@
                   <div class="aside " style="margin-left: 10%; margin-top: 7%;">
                     <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Gift For Your </h3>
                     <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Family</h3>
-                    <p style="color:#000; font-size: 17px; margin-top: 9%;">Sterling Picks For Family </p>
+                    <p style="color:#000; font-size: 17px; margin-top: 9%;">“Magnificent Gift For Family </p>
                     <a href="">
                       <button type="button" class="btn btn-light" style="font-size: 15px;
                             font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
@@ -1686,7 +1805,7 @@
               </div>
             </div>
             <div class="col-lg-8 col-12 " style="width: 100% !important;">
-              <div class="row" id="img42">
+              <div class="row" id="img42" style="margin-right: auto;">
 
               </div>
             </div>
@@ -1709,7 +1828,7 @@
               </div>
             </div>
             <div class="col-lg-8 col-12 " style="width: 100% !important;">
-              <div class="row" id="img42mob">
+              <div class="row" id="img42mob" style="margin-right: auto;">
 
               </div>
             </div>
@@ -1885,6 +2004,7 @@
 <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script> -->
 
 <script>
+   window.localStorage.removeItem ("redirectURL");
   window.localStorage.setItem("redirectURL", "index.html")
 
   var firebaseConfig = {
@@ -1993,13 +2113,16 @@
       }, 2000)
     }
 
-
+    
 
   }
+
 </script>
+
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
+ 
   db.collection("offers").onSnapshot(async (snapshots) => {
 
     let snapshotDocs = snapshots.docs;
@@ -2041,7 +2164,7 @@
   var docData, userDoc;
 
   db.collection("Customers").onSnapshot(async (snapshots) => {
-
+    
     checkUser = window.localStorage.getItem("locLoggedInUser");
 
     let snapshotDocs = snapshots.docs;
@@ -2163,6 +2286,32 @@
     }
     revealOnScroll();
   });
+</script>
+
+<script src="assets/js/swipe.js"></script>
+<script>
+  var mobileMenu = new MobileSwipeMenu('#menu', {
+    mode: 'right',
+    width: window.innerWidth / 1.15,
+    enableBodyHook: true,
+    events: {
+      opening: function () {
+      },
+      closing: function () {
+      },
+      drag: function (swipe) {
+      }
+    }
+  });
+    // document.getElementById('openMenu').addEventListener('click', function () {
+    //     mobileMenu.open();
+    // });
+    // document.getElementById('closeMenu').addEventListener('click', function () {
+    //     mobileMenu.close();
+    // });
+    // document.getElementById('toggleMenu').addEventListener('click', function () {
+    //     mobileMenu.toggle();
+    // });
 </script>
 
 </html>

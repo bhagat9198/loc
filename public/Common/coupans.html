@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lake of Cakes | Coupans</title>
+  <title>Lake of Cakes | Coupons</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../assets/css/all.css">
@@ -335,7 +335,7 @@
           </div>
           <label class="drover drobt" for="responsive-nav" onclick="shownavigation()">☰</label>
           <aside class="drobt0 drobt1 colapse" id="" style="overflow-y: scroll !important;">
-  
+
             <div class="logo-area">
               <div class="logo">
                 <a href="/index.html">
@@ -419,21 +419,37 @@
               </div>
               <hr>
               <!-- <div class="nav-collapsible">
-                <a href="#">
-                  <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Help </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
+              <a href="#">
+                <label for="nav-collapsible-1" style="width: 100%;">
+                  <div class="row pl-3">
+                    <div class="col-10 col-sm-10 col-md-10 p-0">
+                      <span style="position: relative; top: 4px;">Help </span>
                     </div>
-                  </label>
-                </a>
-              </div> -->
+                    <div class="col-2 col-sm-2 col-md-2 p-0">
+                      <span style="position: relative; top: 8px;">
+                        <i class="fas fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+              </a>
+            </div> -->
+            <div class="nav-collapsible">
+              <a href="UserDash/customerProfile.html">
+                <label for="nav-collapsible-1" style="width: 100%;">
+                  <div class="row pl-3">
+                    <div class="col-10 col-sm-10 col-md-10 p-0">
+                      <span style="position: relative; top: 4px;">Your Account </span>
+                    </div>
+                    <div class="col-2 col-sm-2 col-md-2 p-0">
+                      <span style="position: relative; top: 8px;">
+                        <i class="fas fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+              </a>
+            </div>
               <div class="nav-collapsible">
                 <a href="#">
                   <label for="nav-collapsible-1" style="width: 100%;">
@@ -451,21 +467,21 @@
                 </a>
               </div>
               <!-- <div class="nav-collapsible">
-                <a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">
-                  <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Track Orders </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
+              <a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">
+                <label for="nav-collapsible-1" style="width: 100%;">
+                  <div class="row pl-3">
+                    <div class="col-10 col-sm-10 col-md-10 p-0">
+                      <span style="position: relative; top: 4px;">Track Orders </span>
                     </div>
-                  </label>
-                </a>
-              </div> -->
+                    <div class="col-2 col-sm-2 col-md-2 p-0">
+                      <span style="position: relative; top: 8px;">
+                        <i class="fas fa-chevron-right"></i>
+                      </span>
+                    </div>
+                  </div>
+                </label>
+              </a>
+            </div> -->
               <div class="nav-collapsible">
                 <a data-toggle="modal" data-target="#topoffer">
                   <label for="nav-collapsible-1" style="width: 100%;">
@@ -499,7 +515,40 @@
                   </label>
                 </a>
               </div>
-  
+
+              <div class="nav-collapsible" style="display: none;" id="logoutMobile">
+                <a href="#!" onclick="logOut()">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Log Out</span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-power-off"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+              <div class="nav-collapsible" id="loginMobile">
+                <a href="/Auth/login.html">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Log In</span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fa fa-sign-in"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </label>
+                </a>
+              </div>
+
             </div>
           </aside>
           <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
@@ -510,13 +559,13 @@
                   <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
                     <div class="autocomplete" style="width: 100%;">
                       <input class="form-control" style="width: 100% !important;
-                      border: none;
-                      border-bottom: 1px solid ;
-                      border-radius: unset;background-color: transparent;" type="text" id="searchBar"
+                    border: none;
+                    border-bottom: 1px solid ;
+                    border-radius: unset;background-color: transparent;" type="text" id="searchBar"
                         onkeydown="disableEnterKey(event)" onkeyup=searchByUserInput(event) name="searchBar"
                         placeholder="Search: Cakes , Flowers ,Gifts...">
                     </div>
-  
+
                     <div class="input-group-append" onclick=searchByUserInputBtn(event)>
                       <button class="btn btn-outline-secondary" onclick=searchByUserInputBtn(event)
                         style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent; border: #F00;"><i
@@ -527,8 +576,8 @@
               </div>
             </div>
           </div>
-  
-  
+
+
           <div
             class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
             <ul style="display: inline-flex;">
@@ -559,30 +608,30 @@
                 </a>
               </li>
             </ul>
-  
-  
-  
-  
+
+
+
+
           </div>
           <div class="col-lg-1 col-sm-3 col-3 remove-padding order-lg-last">
             <div class="helpful-links mt-md-3 cartres">
-  
+
               <ul class="helpful-links-inner" style="display: flex;">
-  
-  
-  
+
+
+
                 <li class="nav-item dropdown" style="margin-top: 15%;">
                   <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
                       style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
-  
+
                   </a>
-  
+
                   <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
-                      inset 0 -3em 3em rgba(0,0,0,0.1), 
-                            0 0  0 2px rgb(255,255,255),
-                            0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown"
+                    inset 0 -3em 3em rgba(0,0,0,0.1), 
+                          0 0  0 2px rgb(255,255,255),
+                          0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown"
                     aria-labelledby="navbarDropdownMenuLink">
                     <div
                       style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
@@ -593,31 +642,32 @@
                         </center>
                       </a>
                     </div>
-  
+
                     <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href=""
                       onclick="checkifUser('/UserDash/customerProfile.html')"><i class="fa fa-user"></i>
                       Profile</a>
-  
+
                     <!-- <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
-                      href="#!" onclick="checkifUser('/UserDash/trackOrders.html')"><i class="fa fa-truck"></i> Track
-                      Orders</a> -->
-  
+                    href="#!" onclick="checkifUser('/UserDash/trackOrders.html')"><i class="fa fa-truck"></i> Track
+                    Orders</a> -->
+
                     <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
-                      href="#!" onclick="checkifUser('/UserDash/customerProfile.html')"><i class="fa fa-shopping-cart"></i> My
+                      href="#!" onclick="checkifUser('/UserDash/customerProfile.html')"><i
+                        class="fa fa-shopping-cart"></i> My
                       Orders</a>
-  
+
                     <a class="dropdown-item responsive-secCart"
                       style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!"
                       onclick="checkifUser('/UserDash/cart.html')"><i class="fa fa-shopping-cart"></i> My Cart</a>
-  
+
                     <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"
                       id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
                       Logout</a>
                   </div>
                 </li>
-  
-  
-                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: noe;" data-toggle="tooltip"
+
+
+                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: none;" data-toggle="tooltip"
                   data-placement="top" title="Cart">
 
                 </li>
@@ -627,7 +677,6 @@
         </div>
       </div>
     </section>
-  
     <div class="mainmenu-area mainmenu-bb">
   
   
@@ -654,7 +703,7 @@
     <div class="row">
       <div class="mx-auto">
         <div class="col-lg-12">
-          <h1 class="display-2 heading-big text-center ">Grab your coupans for free </h1>
+          <h1 class="display-2 heading-big text-center ">Grab your coupons for free </h1>
         </div>
       </div>
     </div>

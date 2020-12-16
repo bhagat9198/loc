@@ -591,6 +591,9 @@ kbd kbd {
     .container {
         max-width: 100%;
     }
+    .responsive-sec2 {
+        display: block !important;
+    }
 }
 
 @media (min-width:992px) {
@@ -32880,4 +32883,24 @@ section.phone-and-accessories.categori-item {
       width: 70px !important;
     }
 }
+@media only screen and (max-width:380px){
+    .responsiveIcon1{
+       margin-right: 320px;
+        
+        
+    }
+    .cartres{
+        right: -120px !important;
+        top:-5px !important;
+    }
+}
 
+@media  only screen and (width:1280px){
+    .responsiveIcon1{
+        width: 20px !important;
+        /* height:20px !important; */
+        object-fit: contain;
+        
+        
+    }
+}

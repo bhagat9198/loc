@@ -30,6 +30,7 @@
 //   measurementId: "G-5ER0QF0FDW"
 // };
 // firebase.initializeApp(firebaseConfig);
+
 function getUiConfig() {
   return {
     'callbacks': {
@@ -209,9 +210,11 @@ firebase.auth().onAuthStateChanged(function(user) {
     // alert("0000")
   
   if (user!=null && user!="null") {
+  
 
    
     db.collection("Customers").onSnapshot(async (snapshots) => {
+      
     
       let snapshotDocs = snapshots.docs;
       var dbref = db.collection('Customers');
@@ -276,24 +279,28 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
   } else {
+ 
    
     // window.localStorage.clear("locLoggedInUser")
 
     if( getUserStatus=="null" || getUserStatus==null){
+      
     
       window.localStorage.setItem("locLoggedInUser",null)
       user ? handleSignedInUser(user) : handleSignedOutUser();
     }else{
+      
       let goTo=window.localStorage.getItem("redirectURL");
     
-      if(goTo!=null &&(goTo!="null")){
-        window.location=goTo;
-      }
+      // if(goTo!=null &&(goTo!="null")){
+        
+      //   window.location=goTo;
+      // }
 
 
-      else{
-        window.location="/index.html"
-      }
+      // else{
+      //   window.location="/index.html"
+      // }
       
     }
 
