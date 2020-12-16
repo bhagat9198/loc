@@ -317,29 +317,30 @@ if (localStorage.getItem("locLoggedInUser")) {
               .get()
               .then((pDoc) => {
                 let pData = pDoc.data();
+                console.log(pData);
                 cartModalProds += `
-          <div class="dropdownmenu-wrapper">
-          <ul class="dropdown-cart-products">
-            <li class="product cremove3461">
-              <figure class="product-image-container">
-                <a href="/UserDash/cart.html" class="product-image">
-                  <img src="${pData.mainImgUrl}"
-                    style="width: 70px; object-fit:cover;margin:4%" alt="Lake of Cakes">
-                </a>
-              </figure>
-              <div class="product-details">
-                <div class="content">
-                  <a href="javascript;">
-                    <h4 class="product-title">${pData.name}</h4>
-                  </a>
-                  <span class="cart-product-info">
-                    <span class="cart-product-qty" id="cqt3461">${cartProd.qty}</span>
+                <div class="dropdownmenu-wrapper">
+                <ul class="dropdown-cart-products">
+                  <li class="product cremove3461">
+                    <figure class="product-image-container">
+                      <a href="/UserDash/cart.html" class="product-image">
+                        <img src="${pData.mainImgUrl}"
+                          style="width: 70px; object-fit:cover;margin:4%" alt="Lake of Cakes">
+                      </a>
+                    </figure>
+                    <div class="product-details">
+                      <div class="content">
+                        <a href="javascript;">
+                          <h4 class="product-title">${pData.name}</h4>
+                        </a>
+                        <span class="cart-product-info">
+                          <span class="cart-product-qty" id="cqt3461">${cartProd.qty}</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
                 </div>
-              </div>
-            </li>
-          </ul>
-          </div>
-          `;
+                `;
               });
           }
           cartModalProds += `

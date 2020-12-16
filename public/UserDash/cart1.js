@@ -34,169 +34,181 @@ const displayCart = async () => {
   // console.log(USER_DETAILS);
   let index = -1;
   for (let prod of USER_DETAILS.cart) {
-    index++;
+    // console.log(prod);
+    
     let product;
     let prodPrice = 0;
     let cakeWeight = "";
+
     await db
       .collection(prod.cat)
       .doc(prod.prodId)
       .get()
       .then((prodDoc) => {
+        // console.log(prodDoc);
         let prodData = prodDoc.data();
-        product = prodData;
-      });
-
-    if (prod.pricing.weight) {
-      for (let cw of product.weights) {
-        if (cw.cakeWeight === "half") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 0.5;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "one") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 1;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "oneHalf") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 1.5;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "two") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 2;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "three") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 3;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "four") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 4;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "five") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 5;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "six") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 6;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else {
-          // console.log("invalid");
+        // console.log(prodData);
+        if (prodData) {
+          index++;
+          // console.log(prodData);
+          product = prodData;
         }
+      });
+    if (product) {
+      console.log(product);
+      console.log(allProdPrice);
+      console.log(allProdPrice[index]);
+      if (prod.pricing.weight) {
+        for (let cw of product.weights) {
+          if (cw.cakeWeight === "half") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 0.5;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "one") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 1;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "oneHalf") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 1.5;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "two") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 2;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "three") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 3;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "four") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 4;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "five") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 5;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "six") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 6;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else {
+            // console.log("invalid");
+          }
+        }
+      } else {
+        prodPrice = prodPrice + +product.sp;
       }
-    } else {
-      prodPrice = prodPrice + +product.sp;
-    }
 
-    let cakeDetails = `
+      let cakeDetails = `
     <b>Weight : </b> ${cakeWeight} Kg<br>
     <b>Shape :</b> ${prod.heart ? "Heart" : "Round"}<br>
     <b>Eggless :</b> ${prod.eggless ? "Yes" : "No"}<br>
     <b>Flavour :</b>${prod.flavour}<br>`;
 
-    const personalizedGiftDetails = `
+      const personalizedGiftDetails = `
       <b>Personalized Gift : </b> Yes <br>
     `;
 
+      if (prod.heart) {
+        prodPrice += +product.shapes[0].shapePrice;
+      }
 
-    if (prod.heart) {
-      prodPrice += +product.shapes[0].shapePrice;
-    }
+      if (prod.eggless) {
+        prodPrice += +product.type.price;
+      }
 
-    if (prod.eggless) {
-      prodPrice += +product.type.price;
-    }
+      let gst = +prodPrice * (+product.gst / 100);
+      prodPrice = prodPrice + gst;
+      prodPrice = +Math.round(prodPrice);
+      allProdPrice.push({
+        price: prodPrice,
+        name: product.name,
+        qty: 1,
+        cartId: prod.cartId,
+      });
+      console.log(allProdPrice);
+      // console.log(prod.cartId);
+      let rand = new Date().valueOf();
 
-    let gst = +prodPrice * (+product.gst / 100);
-    prodPrice = prodPrice + gst;
-    prodPrice = +Math.round(prodPrice);
-    allProdPrice.push({
-      price: prodPrice,
-      name: product.name,
-      qty: 1,
-      cartId: prod.cartId,
-    });
-    // console.log(prod.cartId);
-    let rand = new Date().valueOf();
-
-    item += `
-    <tr class="cremove3831" id="row__${rand}">
-      <td >
-          <img
-            src="${product.mainImgUrl}"
-            alt="Lake of Lakes " class=" crtimg responsiveImage">
-          <p class="pname"><a class="pname" href="../Product/product.html?prod=${
-            prod.prodId
-          }&&cat=${prod.cat}">${product.name}</a></p>
-      </td>
-      <td class="responsiveTags" style="text-align: center;">
-        ${prod.pricing.weight ? cakeDetails : ""}
-        ${prod.personalizedGift ? personalizedGiftDetails : ''}
-        <b>Cost :</b> <span id="eachprice__${rand}">₹${prodPrice}</span>
-      </td>
-      <td class="unit-price quantity names">
-        <div class="qty">
-          <ul>
-            <li>
-              <span class="qtminus1 reducing" data-cartid="${
-                prod.cartId
-              }" data-index="${index}" data-id="minus__${rand}" onclick="decQty(event)">
-                <i class="fa fa-minus" data-cartid="${
+      item += `
+      <tr class="cremove3831" id="row__${rand}">
+        <td >
+            <img
+              src="${product.mainImgUrl}"
+              alt="Lake of Lakes " class=" crtimg responsiveImage">
+            <p class="pname"><a class="pname" href="../Product/product.html?prod=${
+              prod.prodId
+            }&&cat=${prod.cat}">${product.name}</a></p>
+        </td>
+        <td class="responsiveTags" style="text-align: center;">
+          ${prod.pricing.weight ? cakeDetails : ""}
+          ${prod.personalizedGift ? personalizedGiftDetails : ""}
+          <b>Cost :</b> <span id="eachprice__${rand}">₹${prodPrice}</span>
+        </td>
+        <td class="unit-price quantity names">
+          <div class="qty">
+            <ul>
+              <li>
+                <span class="qtminus1 reducing" data-cartid="${
                   prod.cartId
-                }" data-index="${index}" data-id="minus__${rand}"></i>
-              </span>
-            </li>
-            <li>
-              <span class="qttotal1" id="total__${rand}" >${
-      allProdPrice[index].qty
-    }</span>
-            </li>
-            <li>
-              <span class="qtplus1 adding" data-cartid="${
-                prod.cartId
-              }" data-index="${index}" data-id="plus__${rand}" onclick="incQty(event)">
-                <i class="fa fa-plus" data-cartid="${
+                }" data-index="${index}" data-id="minus__${rand}" onclick="decQty(event)">
+                  <i class="fa fa-minus" data-cartid="${
+                    prod.cartId
+                  }" data-index="${index}" data-id="minus__${rand}"></i>
+                </span>
+              </li>
+              <li>
+                <span class="qttotal1" id="total__${rand}" >${
+          allProdPrice[index].qty
+        }</span>
+              </li>
+              <li>
+                <span class="qtplus1 adding" data-cartid="${
                   prod.cartId
-                }" data-index="${index}" data-id="plus__${rand}"></i>
-              </span>
-            </li>
-          </ul>
-        </div>
-      </td>
-      <td class="total-price">
-        <p data-index="${index}" id="subprice_${rand}">${prodPrice}</p>
-      </td>
-      <td>
-        <span class="qtplus1 adding" style="cursor:pointer" data-id="${rand}" data-index="${index}" data-cartid="${
-      prod.cartId
-    }" onclick="deleteCartProd(event)">
-         <center> <i class="fa fa-trash" data-cartid="${
-           prod.cartId
-         }" data-index="${index}" data-id="${rand}"></i> </center></span>
-        </span>
-      </td>
-      <td>
-       <center> <input type="checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;"></center>
-      </td>
-    </tr>
-    `;
+                }" data-index="${index}" data-id="plus__${rand}" onclick="incQty(event)">
+                  <i class="fa fa-plus" data-cartid="${
+                    prod.cartId
+                  }" data-index="${index}" data-id="plus__${rand}"></i>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </td>
+        <td class="total-price">
+          <p data-index="${index}" id="subprice_${rand}">${prodPrice}</p>
+        </td>
+        <td>
+          <span class="qtplus1 adding" style="cursor:pointer" data-id="${rand}" data-index="${index}" data-cartid="${
+          prod.cartId
+        }" onclick="deleteCartProd(event)">
+          <center> <i class="fa fa-trash" data-cartid="${
+            prod.cartId
+          }" data-index="${index}" data-id="${rand}"></i> </center></span>
+          </span>
+        </td>
+        <td>
+        <center> <input type="checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;"></center>
+        </td>
+      </tr>
+      `;
+    }
   }
   cartBodyHTML.innerHTML = item;
 };
@@ -410,15 +422,19 @@ const buyAddon = (e, current) => {
   let index = e.target.value;
   ADDONS_DETAILS[index].checked = current.checked;
   let tAddons = 0;
-  document.querySelectorAll('#addons-checkbox').forEach(el => {
-    if(el.checked) {
+  document.querySelectorAll("#addons-checkbox").forEach((el) => {
+    if (el.checked) {
       tAddons++;
     }
-  })
-  if(tAddons > 0) {
-    document.querySelector('#prod_with_addons').innerHTML = `Checkout With ${tAddons} Addons`;
+  });
+  if (tAddons > 0) {
+    document.querySelector(
+      "#prod_with_addons"
+    ).innerHTML = `Checkout With ${tAddons} Addons`;
   } else {
-    document.querySelector('#prod_with_addons').innerHTML = `Checkout Without Addons`;
+    document.querySelector(
+      "#prod_with_addons"
+    ).innerHTML = `Checkout Without Addons`;
   }
   calAddonPrice();
 };
@@ -445,7 +461,7 @@ const decAddon = (e) => {
 
 const prodWithAddonsHTML = document.querySelector("#prod_with_addons");
 
-const checkoutProds = async(e) => {
+const checkoutProds = async (e) => {
   // console.log(SELECTED_PRODS);
   let addonsSelected = [];
   ADDONS_DETAILS.map((el) => {
@@ -488,7 +504,7 @@ const checkoutProds = async(e) => {
           cake.flavour = c.flavour;
           pdata.cake = cake;
         }
-        if(c.personalizedGift) {
+        if (c.personalizedGift) {
           personalized = {};
           personalized.personalized = true;
           personalized.personalizedGiftImgs = c.personalizedGiftImgs;
@@ -499,7 +515,7 @@ const checkoutProds = async(e) => {
     }
   });
 
-  if(USER_DETAILS.orders) {
+  if (USER_DETAILS.orders) {
     USER_DETAILS.orders.push(checkoutCart);
   } else {
     USER_DETAILS.orders = [];
@@ -508,7 +524,6 @@ const checkoutProds = async(e) => {
   await USER_REF.update(USER_DETAILS);
   // console.log(USER_DETAILS);
   window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
-  
 };
 
 prodWithAddonsHTML.addEventListener("click", checkoutProds);
