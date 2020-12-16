@@ -15,17 +15,251 @@
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
   <link rel="stylesheet" href="../assets//css/randomStyles.css">
   <link rel="stylesheet" href="../assets/css/animate.css">
-  
+
   <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <link rel="stylesheet" href="assets/css/animation.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
-	<script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script> 
+  <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+  <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
 
 </head>
 
 <style>
+  .heading {
+    padding: 1em 0;
+    border-bottom: 1px solid #D0D0D0;
+  }
+
+  .heading h1 {
+    font-family: "Droid Serif", serif;
+    font-size: 2em;
+    float: left;
+  }
+
+ 
+
+  .heading a.continue:hover,
+  .heading a.continue:focus,
+  .heading a.continue:active {
+    background: #f69679;
+  }
+
+  .heading a.continue:hover:after,
+  .heading a.continue:focus:after,
+  .heading a.continue:active:after {
+    right: -10px;
+  }
+
+  .tableHead {
+    display: table;
+    width: 100%;
+    font-family: "Montserrat", sans-serif;
+    font-size: .75em;
+  }
+
+  .tableHead li {
+    display: table-cell;
+    padding: 1em 0;
+    text-align: center;
+  }
+
+
+  .cart .items {
+    display: block;
+    width: 100%;
+    vertical-align: middle;
+    padding: 1.5em;
+    border-bottom: 1px solid #fafafa;
+  }
+
+  .cart .items.even {
+    background: #fafafa;
+  }
+
+  .cart .items .infoWrap {
+    display: table;
+    width: 100%;
+  }
+
+  .cart .items .cartSection {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .cart .items .cartSection .itemNumber {
+    font-size: .75em;
+    color: #777;
+    margin-bottom: .5em;
+  }
+
+  .cart .items .cartSection h3 {
+    font-size: 1em;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .025em;
+  }
+
+  .cart .items .cartSection p {
+    display: inline-block;
+    font-size: .85em;
+    color: #777777;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .cart .items .cartSection p .quantity {
+    font-weight: bold;
+    color: #333;
+  }
+
+  .cart .items .cartSection p.stockStatus {
+    color: #82CA9C;
+    font-weight: bold;
+    padding: .5em 0 0 1em;
+    text-transform: uppercase;
+  }
+
+  .cart .items .cartSection p.stockStatus.out {
+    color: #F69679;
+  }
+
+  .cart .items .cartSection .itemImg {
+    width: 4em;
+    float: left;
+  }
+
+  .cart .items .cartSection.qtyWrap,
+  .cart .items .cartSection.prodTotal {
+    text-align: center;
+  }
+
+  .cart .items .cartSection.qtyWrap p,
+  .cart .items .cartSection.prodTotal p {
+    font-weight: bold;
+    font-size: 1.25em;
+  }
+
+  .cart .items .cartSection input.qty {
+    width: 2em;
+    text-align: center;
+    font-size: 1em;
+    padding: .25em;
+    margin: 1em .5em 0 0;
+  }
+
+  .cart .items .cartSection .itemImg {
+    width: 8em;
+    display: inline;
+    padding-right: 1em;
+  }
+
+
+  .promoCode input {
+    width: 85%;
+    font-size: 1em;
+    padding: .5em;
+    float: left;
+    border: 1px solid #dadada;
+  }
+
+  .promoCode input:active,
+  .promoCode input:focus {
+    outline: 0;
+  }
+
+  .promoCode a.btn {
+    float: left;
+    width: 15%;
+    padding: .75em 0;
+    border-radius: 0 1em 1em 0;
+    text-align: center;
+    border: 1px solid #82ca9c;
+  }
+
+  .promoCode a.btn:hover {
+    border: 1px solid #f69679;
+    background: #f69679;
+  }
+
+  .btn:link,
+  .btn:visited {
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: -.015em;
+    font-size: 1em;
+    padding: 1em 3em;
+    color: #fff;
+    background: #82ca9c;
+    font-weight: bold;
+    border-radius: 50px;
+    float: right;
+    text-align: right;
+    -webkit-transition: all 0.25s linear;
+    -moz-transition: all 0.25s linear;
+    -ms-transition: all 0.25s linear;
+    -o-transition: all 0.25s linear;
+    transition: all 0.25s linear;
+  }
+
+
+  @media only screen and (max-width: 39.375em) {
+    .wrap {
+      width: 98%;
+      padding: 2% 0;
+    }
+
+    .projTitle {
+      font-size: 1.5em;
+      padding: 10% 5%;
+    }
+
+    .heading {
+      padding: 1em;
+      font-size: 90%;
+    }
+
+    .cart .items .cartSection {
+      width: 90%;
+      display: block;
+      float: left;
+    }
+
+    .cart .items .cartSection.qtyWrap {
+      width: 10%;
+      text-align: center;
+      padding: .5em 0;
+      float: right;
+    }
+
+    .cart .items .cartSection.qtyWrap:before {
+      content: "QTY";
+      display: block;
+      font-family: "Montserrat", sans-serif;
+      padding: .25em;
+      font-size: .75em;
+    }
+
+    .cart .items .cartSection.prodTotal,
+    .cart .items .cartSection.removeWrap {
+      display: none;
+    }
+
+    .cart .items .cartSection .itemImg {
+      width: 25%;
+    }
+
+    .promoCode,
+    .subtotal {
+      width: 100%;
+    }
+
+    a.btn.continue {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
   th {
     color: gray;
   }
@@ -135,7 +369,7 @@
         .responsiveIcon1 {
           /* margin: auto;
           padding: 0px; */
-          
+
         }
 
       }
@@ -307,22 +541,22 @@
                 </label>
               </a>
             </div> -->
-            <div class="nav-collapsible">
-              <a href="UserDash/customerProfile.html">
-                <label for="nav-collapsible-1" style="width: 100%;">
-                  <div class="row pl-3">
-                    <div class="col-10 col-sm-10 col-md-10 p-0">
-                      <span style="position: relative; top: 4px;">Your Account </span>
+              <div class="nav-collapsible">
+                <a href="UserDash/customerProfile.html">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Your Account </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
                     </div>
-                    <div class="col-2 col-sm-2 col-md-2 p-0">
-                      <span style="position: relative; top: 8px;">
-                        <i class="fas fa-chevron-right"></i>
-                      </span>
-                    </div>
-                  </div>
-                </label>
-              </a>
-            </div>
+                  </label>
+                </a>
+              </div>
               <div class="nav-collapsible">
                 <a href="#">
                   <label for="nav-collapsible-1" style="width: 100%;">
@@ -572,70 +806,58 @@
   </section>
 
   <section class="cartpage" style="border-radius: 0px;">
+    <h5 style="padding-left: 10px;font-weight: 600;">Your Cart</h5>
 
-    <div class="content-box">
-      <div class="content">
-        <div class="order-area">
-          <div class="order-item"> 
-            <div class="product-img">
-              <div class="d-flex">
-                <img src=" //lakeofcakes.com/assets/images/products/1598604187M48yYCke.png" height="80"
-                  width="80" class="p-1">
-              </div> 
-            </div>
-            <div class="product-content">
-              <p class="name"><a href="//lakeofcakes.com/item/5-star-chocolate-bouquet-loc12557"
-                  target="_blank">5 star chocolate bouquet</a></p>
-              <div class="unit-price">
-                <h5 class="label">Price : </h5>
-                <p>₹499</p>
-              </div>
-              <div class="quantity">
-                <h5 class="label">Quantity : </h5>
-                <span class="qttotal">2 </span>
-              </div>
-              <div class="total-price">
-                <h5 class="label">Total Price : </h5>
-                <p>₹998
-                </p>
-              </div>
-            </div>
+    <div class="row" style="padding: 10px !important; !important;">
+      <div class="col-lg-8">
+        <div class="left-area">
+
+
+
+          <div class="cart">
+     
+            <ul class="cartWrap" id="cartBody">
+            
+         
+
+
+       
+
+            </ul>
           </div>
-        </div>
 
-      
+
+
+
+
+<!-- 
+          <div class="cart-table">
+            <table class="table" style="background-color:transparent;">
+              <thead>
+                <tr style="text-align: center;">
+                  <th class="d-sm-nones">Product </th>
+                  <th class="d-sm-nones" width="30%">Details</th>
+                  <th class="d-sm-nones" style="text-align: left;">Unit Price</th>
+                  <th class="d-sm-nones">Sub Total</th>
+                  <th class="d-sm-nones">Delete</th>
+                  <th class="d-sm-nones">Select</th>
+                </tr>
+              </thead>
+              <tbody id="cardy">
+
+              </tbody>
+            </table>
+          </div> -->
+        </div>
       </div>
-    </div>
-   <h5 style="padding-left: 10px;font-weight: 600;">Your Cart</h5>
-      <div class="row" style="padding: 10px !important; background-color:rgb(197, 143, 42,0.1) !important;" >
-        <div class="col-lg-8">
-          <div class="left-area">
-            <div class="cart-table">
-              <table class="table" style="background-color:transparent;">
-                <thead>
-                  <tr style="text-align: center;">
-                    <th class="d-sm-nones">Product </th>
-                    <th class="d-sm-nones" width="30%">Details</th>
-                    <th class="d-sm-nones" style="text-align: left;">Unit Price</th>
-                    <th class="d-sm-nones">Sub Total</th>
-                    <th class="d-sm-nones">Delete</th>
-                    <th class="d-sm-nones">Select</th>
-                  </tr>
-                </thead>
-                <tbody id="cartBody">
-                  
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="right-area">
-            <div class="order-box" >
-              <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
-              <ul class="order-list">
-                <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to checkout</div>
-                <!-- <li>
+      <div class="col-lg-4">
+        <div class="right-area">
+          <div class="order-box">
+            <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
+            <ul class="order-list">
+              <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to
+                checkout</div>
+              <!-- <li>
                   <p>
                     Total MRP
                   </p>
@@ -643,22 +865,23 @@
                     <b class="cart-total ctt">₹1720</b>
                   </P>
                 </li> -->
-              </ul>
-              <div class="total-price">
-                <p>
-                  Total
-                </p>
-                <P>
-                  <span class="cart-total">₹ 0</span>
-                </P>
-              </li> 
+            </ul>
+            <div class="total-price">
+              <p>
+                Total
+              </p>
+              <P>
+                <span class="cart-total">₹ 0</span>
+              </P>
+              </li>
               <li style="display:none">
                 <p>
-                  
+
                 </p>
-              </div>
-              <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all taxes)</span></p><br>
-              <!-- <div class="cupon-box">
+            </div>
+            <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all
+                taxes)</span></p><br>
+            <!-- <div class="cupon-box">
                 <div id="coupon-link">
                   Have a promotion code?
                 </div>
@@ -669,7 +892,7 @@
                 </form>
               </div> -->
             <button data-target="#addonsModal" data-toggle="modal" class="order-btn" id="checkoutBtn" disabled
-              style="background-color: transparent;color: red;outline: none; border: 1px solid red; border-radius: 5px; text-align: center; vertical-align: middle !important;"> 
+              style="background-color: transparent;color: red;outline: none; border: 1px solid red; border-radius: 5px; text-align: center; vertical-align: middle !important;">
               Checkout
               <i class="fa fa-arrow-right"></i>
             </button>
@@ -694,7 +917,9 @@
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     <div class="modal-header" style="background-color: rgb(231, 50, 18);padding: 10px !important;">
-                      <h4 class="modal-title text-center tb" style="color:#fff;font-weight: 800;margin-left: auto;margin-right: auto;">Add Extra Love For Your Loved
+                      <h4 class="modal-title text-center tb"
+                        style="color:#fff;font-weight: 800;margin-left: auto;margin-right: auto;">Add Extra Love For
+                        Your Loved
                         Ones</h4>
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
@@ -751,13 +976,13 @@
                         <button type="button" class="btn btn-secondary" id="prod_with_addons"
                           style="background-color: rgb(238, 44, 10);">Checkout Without Addons</button> -->
 
-                          <h5 class="resTxt" style="padding: 20px ;font-weight: 800; "> Total
-                            Price :₹ <span id="cost-with-addons" style=""></span></h5>&nbsp;&nbsp;&nbsp;&nbsp;
-                          <button type="button" class="btn btn-secondary resTxt2" id="prod_with_addons"
-                            style="background-color: rgb(197, 42, 42);">Continue Without
-                            Addons</button>
+                        <h5 class="resTxt" style="padding: 20px ;font-weight: 800; "> Total
+                          Price :₹ <span id="cost-with-addons" style=""></span></h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-secondary resTxt2" id="prod_with_addons"
+                          style="background-color: rgb(197, 42, 42);">Continue Without
+                          Addons</button>
 
-                         
+
                       </a>
                     </div>
                   </div>
@@ -791,7 +1016,7 @@
 
         <!--Footer-->
         <div class="modal-footer justify-content-center flex-column flex-md-row">
-       
+
           <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
             data-dismiss="modal">Close</button>
         </div>
@@ -857,7 +1082,7 @@
 
 <script type="text/javascript">
   $(document).ready(() => {
-  
+
   });
 </script>
 <script type="text/javascript">

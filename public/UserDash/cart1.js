@@ -137,66 +137,44 @@ const displayCart = async () => {
     let rand = new Date().valueOf();
 
     item += `
-    <tr class="cremove3831" id="row__${rand}">
-      <td >
-          <img
-            src="${product.mainImgUrl}"
-            alt="Lake of Lakes " class=" crtimg responsiveImage">
-          <p class="pname"><a class="pname" href="../Product/product.html?prod=${
-            prod.prodId
-          }&&cat=${prod.cat}">${product.name}</a></p>
-      </td>
-      <td class="responsiveTags" style="text-align: center;">
-        ${prod.pricing.weight ? cakeDetails : ""}
-        ${prod.personalizedGift ? personalizedGiftDetails : ''}
-        <b>Cost :</b> <span id="eachprice__${rand}">₹${prodPrice}</span>
-      </td>
-      <td class="unit-price quantity names">
-        <div class="qty">
-          <ul>
-            <li>
-              <span class="qtminus1 reducing" data-cartid="${
-                prod.cartId
-              }" data-index="${index}" data-id="minus__${rand}" onclick="decQty(event)">
-                <i class="fa fa-minus" data-cartid="${
-                  prod.cartId
-                }" data-index="${index}" data-id="minus__${rand}"></i>
-              </span>
-            </li>
-            <li>
-              <span class="qttotal1" id="total__${rand}" >${
-      allProdPrice[index].qty
-    }</span>
-            </li>
-            <li>
-              <span class="qtplus1 adding" data-cartid="${
-                prod.cartId
-              }" data-index="${index}" data-id="plus__${rand}" onclick="incQty(event)">
-                <i class="fa fa-plus" data-cartid="${
-                  prod.cartId
-                }" data-index="${index}" data-id="plus__${rand}"></i>
-              </span>
-            </li>
-          </ul>
-        </div>
-      </td>
-      <td class="total-price">
-        <p data-index="${index}" id="subprice_${rand}">${prodPrice}</p>
-      </td>
-      <td>
-        <span class="qtplus1 adding" style="cursor:pointer" data-id="${rand}" data-index="${index}" data-cartid="${
-      prod.cartId
-    }" onclick="deleteCartProd(event)">
-         <center> <i class="fa fa-trash" data-cartid="${
-           prod.cartId
-         }" data-index="${index}" data-id="${rand}"></i> </center></span>
-        </span>
-      </td>
-      <td>
-       <center> <input type="checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;"></center>
-      </td>
-    </tr>
-    `;
+   
+
+    <li class="items odd" id="row__${rand}">
+
+                <div class="infoWrap">
+                  <div class="cartSection">
+                    <img src="${product.mainImgUrl}" alt="" class="itemImg" />
+                    <p class="itemNumber">#QUE-007544-002</p>
+                    <a href="../Product/product.html?prod=${
+                      prod.prodId
+                    }&&cat=${prod.cat}"><h3>${product.name}</h3></a>
+           
+                    <span id="eachprice__${rand}">₹${prodPrice}</span>
+                    <small>
+                    ${prod.pricing.weight ? cakeDetails : ""}
+${prod.personalizedGift ? personalizedGiftDetails : ''}
+                    </small>
+                    <p class="stockStatus"> In Stock</p>
+                  </div>
+
+
+                  <div class="prodTotal cartSection">
+                  <p data-index="${index}" id="subprice_${rand}">${prodPrice}</p>
+                  </div>
+                  <div class="cartSection removeWrap">
+                  <span class="qtplus1 adding" style="cursor:pointer" data-id="${rand}" data-index="${index}" data-cartid="${
+                    prod.cartId
+                  }" onclick="deleteCartProd(event)">
+                       <center> <i class="fa fa-trash" data-cartid="${
+                         prod.cartId
+                       }" data-index="${index}" data-id="${rand}"></i> </center></span>
+                      </span>
+                  </div>
+                  <div class="cartSection removeWrap">
+                  <center> <input type="checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;"></center>
+                  </div>
+                </div>
+              </li>`
   }
   cartBodyHTML.innerHTML = item;
 };
