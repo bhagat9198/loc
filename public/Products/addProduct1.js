@@ -325,11 +325,9 @@ const addProductForm = (event) => {
   }
 
   let fondant = 'false'; 
-  if(addProduct.querySelectorAll('input[name="cake-type-fondant"]:checked')) {
+  if(addProduct.querySelector('input[name="cake-type-fondant"]:checked')) {
     fondant = 'true';
-  }
-
-  
+  }  
 
   let wholeProduct = {
     name: productName,
@@ -380,7 +378,7 @@ const addProductForm = (event) => {
 
 
 
-  console.log(wholeProduct);
+  // console.log(wholeProduct);
   // let c = wholeProduct.wholeSubCategory.substring(43);
   // console.log(c);
   // let cc = wholeProduct.wholeChildCategory.substring(63);
@@ -611,9 +609,7 @@ const calculate = (e) => {
     // total.innerHTML = +sp * (+sp + +gst*100);
     // console.log(+sp * (+sp + +gst*100));
   }
-
 };
-
 
 addProduct.querySelector("#product-sp").addEventListener("keyup", calculate);
 addProduct.querySelector("#product-gst").addEventListener("keyup", calculate);

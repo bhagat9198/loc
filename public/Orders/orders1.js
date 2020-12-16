@@ -21,21 +21,20 @@ const ordersRowsHTML = document.querySelector("#orders-rows");
 const displayOrdersTable = () => {
   let counter = -1;
   let row = "";
-  let completedRow="";
-  let rejectedRow="";
+  let completedRow = "";
+  let rejectedRow = "";
   for (let order of ORDERS) {
-    console.log(order);
+    // console.log(order);
     counter++;
     let orderStatus;
-    if('completed' === order.status) {
+    if ("completed" === order.status) {
       orderStatus = ` <p style="background-color: green;color: white;border-radius: 20px;">Completed</p>`;
-    } else if('rejected' === order.status) {
+    } else if ("rejected" === order.status) {
       orderStatus = ` <p style="background-color: red;color: white;border-radius: 20px;">Rejected</p>`;
     } else {
       orderStatus = ` <p style="background-color: orange;color: white;border-radius: 20px;">Pending</p>`;
     }
-    if(order.status=="completed"){
-      
+    if (order.status == "completed") {
       completedRow += `
     <tr role="row" class="odd parent">
       <td tabindex="0">${order.orderId}</td>
@@ -68,8 +67,7 @@ const displayOrdersTable = () => {
       </td>
     </tr>
     `;
-    }
-    else if(order.status=="rejected"){
+    } else if (order.status == "rejected") {
       rejectedRow += `
     <tr role="row" class="odd parent">
       <td tabindex="0">${order.orderId}</td>
@@ -103,8 +101,7 @@ const displayOrdersTable = () => {
       </td>
     </tr>
     `;
-    }
-    else{
+    } else {
       row += `
     <tr role="row" class="odd parent">
       <td tabindex="0">${order.orderId}</td>
@@ -162,76 +159,81 @@ const displayOrdersTable = () => {
   });
 };
 
-
-const completeOrder = e => {
+const completeOrder = (e) => {
   const index = e.target.dataset.index;
   // console.log(index);
-  let dbRef = db.collection('orders').doc(ORDERS[index].docId);
-  dbRef.get().then(orderDoc => {
+  let dbRef = db.collection("orders").doc(ORDERS[index].docId);
+  dbRef.get().then((orderDoc) => {
     let orderData = orderDoc.data();
-    orderData.status = 'completed';
+    orderData.status = "completed";
     dbRef.update(orderData);
-  })
+  });
 
-  let userRef = db.collection('Customers').doc(ORDERS[index].user);
-  userRef.get().then(userDoc => {
-    let userData = userDoc.data();
-    console.log(userData);
-    for(uorder of userData.orders) {
-      if(uorder.orderId === ORDERS[index].order.orderId) {
-        console.log(uorder);
-        uorder.status = 'completed';
-        console.log(userData);
-        userRef.update(userData);
-        console.log('done');
-        break;
+  let userRef = db.collection("Customers").doc(ORDERS[index].user);
+  userRef
+    .get()
+    .then((userDoc) => {
+      let userData = userDoc.data();
+      console.log(userData);
+      for (uorder of userData.orders) {
+        if (uorder.orderId === ORDERS[index].order.orderId) {
+          console.log(uorder);
+          uorder.status = "completed";
+          console.log(userData);
+          userRef.update(userData);
+          console.log("done");
+          break;
+        }
       }
-    }
-  }).catch(error => {
-    console.log(error);
-  })
-}
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
-const rejectOrder = e => {
+const rejectOrder = (e) => {
   const index = e.target.dataset.index;
   console.log(index);
-  let dbRef = db.collection('orders').doc(ORDERS[index].docId);
-  dbRef.get().then(orderDoc => {
+  let dbRef = db.collection("orders").doc(ORDERS[index].docId);
+  dbRef.get().then((orderDoc) => {
     let orderData = orderDoc.data();
-    orderData.status = 'rejected';
+    orderData.status = "rejected";
     dbRef.update(orderData);
-  })
+  });
 
-  let userRef = db.collection('Customers').doc(ORDERS[index].user);
-  userRef.get().then(userDoc => {
-    let userData = userDoc.data();
-    console.log(userData);
-    for(uorder of userData.orders) {
-      if(uorder.orderId === ORDERS[index].order.orderId) {
-        console.log(userData);
-        uorder.status = 'rejected';
-        userRef.update(userData);
-        break;
+  let userRef = db.collection("Customers").doc(ORDERS[index].user);
+  userRef
+    .get()
+    .then((userDoc) => {
+      let userData = userDoc.data();
+      console.log(userData);
+      for (uorder of userData.orders) {
+        if (uorder.orderId === ORDERS[index].order.orderId) {
+          console.log(userData);
+          uorder.status = "rejected";
+          userRef.update(userData);
+          break;
+        }
       }
-    }
-  }).catch(error => {
-    console.log(error);
-  })
-}
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
-const deleteOrder = e => {
+const deleteOrder = (e) => {
   const index = e.target.dataset.index;
   console.log(index);
-  let userRef = db.collection('orders').doc(ORDERS[index].docId);
+  let userRef = db.collection("orders").doc(ORDERS[index].docId);
   userRef.delete();
-}
+};
 
 const productDetailsHTML = document.querySelector("#product-details");
 const productPriceHTML = document.querySelector("#product-price");
 const prodsTotalHTML = document.querySelector("#prods-total");
 const userDetailsHTML = document.querySelector("#userDetails");
-const orderForHTML = document.querySelector('#orderFor');
-const orderTypeHTML = document.querySelector('#orderType');
+const orderForHTML = document.querySelector("#orderFor");
+const orderTypeHTML = document.querySelector("#orderType");
 
 const OrderDetailsModal = async (e) => {
   $("#OrderDetailsModal").modal();
@@ -239,7 +241,7 @@ const OrderDetailsModal = async (e) => {
   // console.log(index);
   let row = "";
   let prodSummery = [];
-
+  console.log(ORDERS[index]);
   for (let prod of ORDERS[index].order.products) {
     await db
       .collection(prod.cat)
@@ -248,29 +250,31 @@ const OrderDetailsModal = async (e) => {
       .then((prodDoc) => {
         let prodData = prodDoc.data();
         // console.log(prodData);
-        let pInfo = `
-      <td>---</td>
-      <td>---</td>
-      <td>---</td>
-      `;
-        if (prod.cake) {
-          pInfo = `
+        if (prodData) {
+          let pInfo = `
+        <td>---</td>
+        <td>---</td>
+        <td>---</td>
+        `;
+          if (prod.cake) {
+            pInfo = `
         <td>${prod.cake.heart ? "Heart" : "Round"}</td>
         <td>${prod.cake.flavour}</td>
         <td>${prod.cake.eggless ? "Opted" : "Not Opted"}</td>
         `;
+          }
+          row += `
+          <tr>
+            <td><img src="${prodData.mainImgUrl}" style="width: 50px; object-fit: cover;" alt=""></td>
+            <td>${prodData.sno}</td>
+            <td>${prodData.name}</td>
+            ${pInfo}
+            <td>${prod.qty}</td>
+            <td>'${prod.message}'</td>
+          </tr>
+          `;
+          prodSummery.push({ name: prodData.name });
         }
-        row += `
-      <tr>
-        <td><img src="${prodData.mainImgUrl}" style="width: 50px; object-fit: cover;" alt=""></td>
-        <td>${prodData.sno}</td>
-        <td>${prodData.name}</td>
-        ${pInfo}
-        <td>${prod.qty}</td>
-        <td>'sndogvuh oiw dhfoiv jois dfho oihs iodvho oiwhef0 h wefhv9onow feh0wh iwhefh ew f9ub'</td>
-      </tr>
-      `;
-        prodSummery.push({ name: prodData.name });
       });
   }
   // console.log(row);
@@ -284,7 +288,7 @@ const OrderDetailsModal = async (e) => {
         .get()
         .then((addDoc) => {
           let addData = addDoc.data();
-          console.log(addData);
+          // console.log(addData);
           row += `
         <tr>
           <td><img src="${addData.imgUrl}" style="width: 50px; object-fit: cover;" alt=""></td>
@@ -303,6 +307,7 @@ const OrderDetailsModal = async (e) => {
           let addTotal = addBasic + addGst;
           addPrice += `
         <tr>
+          <td></td>
           <td>₹ ${addData.sp * +add.qty}</td>
           <td>---</td>
           <td>---</td>
@@ -387,7 +392,7 @@ const OrderDetailsModal = async (e) => {
       </div>`;
       userDetailsHTML.innerHTML = userDetails;
     });
-  
+
   let userShipping = ORDERS[index].shipping;
   let altAddress = "";
   if (userShipping.differtAddress) {
@@ -410,17 +415,13 @@ const OrderDetailsModal = async (e) => {
       <div class="row">
         <div class="col-lg-3"><b>Address</b> </div>
         <div class="col-lg-9">${
-          userShipping.alt_address
-            ? userShipping.alt_address
-            : "Not Provided"
+          userShipping.alt_address ? userShipping.alt_address : "Not Provided"
         }</div>
       </div>
       <div class="row">
         <div class="col-lg-3"><b>Landmark</b> </div>
         <div class="col-lg-9">${
-          userShipping.alt_landmark
-            ? userShipping.alt_landmark
-            : "Not Provided"
+          userShipping.alt_landmark ? userShipping.alt_landmark : "Not Provided"
         }</div>
       </div>
       <div class="row">
@@ -473,20 +474,26 @@ const OrderDetailsModal = async (e) => {
   ${altAddress}
   `;
   orderForHTML.innerHTML = orderFor;
-  
+
   let orderType = `
   <div>
     <div class="row">
       <div class="col-lg-3"><b>Type</b></div>
-      <div class="col-lg-9">${ORDERS[index].shipeType ? ORDERS[index].shipeType : 'Not Provided'}</div>
+      <div class="col-lg-9">${
+        ORDERS[index].shipeType ? ORDERS[index].shipeType : "Not Provided"
+      }</div>
     </div>
     <div class="row">
       <div class="col-lg-3"><b>Time</b></div>
-      <div class="col-lg-9">${ORDERS[index].shipTime ? ORDERS[index].shipTime : 'Not Provided'}</div>
+      <div class="col-lg-9">${
+        ORDERS[index].shipTime ? ORDERS[index].shipTime : "Not Provided"
+      }</div>
     </div>
     <div class="row">
       <div class="col-lg-3"><b>Date</b> </div>
-      <div class="col-lg-9">${ORDERS[index].shipDate ? ORDERS[index].shipDate : 'Not Provided'}</div>
+      <div class="col-lg-9">${
+        ORDERS[index].shipDate ? ORDERS[index].shipDate : "Not Provided"
+      }</div>
     </div>
   </div>
   `;

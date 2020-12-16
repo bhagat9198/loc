@@ -77,7 +77,7 @@ async function displayRows(snapshotDocs, allCatData) {
 
     let imgUrl = docData.mainImgUrl;
     tRows += `
-    <tr role="row" class="odd parent">
+    <tr role="row" class="odd parent" id="main-row-${id}">
         <td tabindex="0" >${docData.name}<br><small>ID: ${
       docData.sno
     }</small><br /> <small><strong>CHEX:</strong> ${id}</small></td>
@@ -187,7 +187,9 @@ const deleteProduct = (e) => {
       })
       .then(() => {
         // console.log('all deleted');
-        extractData();
+        // extractData();
+        document.querySelector(`#main-row-${docId}`).remove();
+
       })
       .catch((error) => {
         alert("error", error);
@@ -227,6 +229,8 @@ const displayTables = async () => {
                 <div class="row">
                   <div class="col-sm-5"><h2> ${cat.data.name} </h2></div>
                   <div class="col-sm-7">
+                  <a href="./downloadProuct.html?cat=${cat.id}" class="btn btn-secondary"><i class="material-icons" style="color:black">&#xE24D;</i>
+                      <span style="color:black">Paid PDF</span></a>
                     <a  class="btn btn-secondary" id="myInput${cat.id}" class="searchBar" onclick=myFunction("myInput${cat.id}","myTable${cat.id}","table-responsive${cat.id}")><i class="material-icons" style="color:black">&#xE147;</i>
                       <span style="color:black">Enable Attribute</span></a>
                   <a class="btn btn-secondary" onclick=createPDF("myTable${cat.id}","${cat.data.name}")><i class="material-icons" style="color:black">&#xE24D;</i>
@@ -593,7 +597,9 @@ const editDetails = async (e) => {
                 editProduct["cake-flavour-butterScotch"].checked = true;
               } else if (flav == "Pineapple") {
                 editProduct["cake-flavour-pineapple"].checked = true;
-              } else {
+              } else if (flav == "Strawberry") {
+                editProduct["cake-flavour-strawberry"].checked = true;
+              }else {
                 // console.log("invalid");
               }
             });
@@ -1303,26 +1309,19 @@ $(document).ready(function () {
 
 
 // db.collection('categories').get().then(async(snps) => {
-//   let snapDocs = snps.docs;
-//   for(let sd of snapDocs) {
-//     let sdId = sd.id;
-//     let sdd  = sd.data();
-//     await db.collection(sdId).get().then(async(ps) => {
-//       let psd = ps.docs;
-//       for(let pd of psd) {
-//         let pdR = await db.collection(sdId).doc(pd.id);
-//         let pdd = pd.data();
-//         pdd.isCake = false;
-
-//         if(sdd.name.toUpperCase().includes('CAKE')) {
-
-//           pdd.isCake = true;
-//         }
-
-//         pdd.pIsGift = false;
-//         await pdR.update(pdd)
-//         console.log('done');
-//       }
-//     })
-//   }
+  // let snapDocs = snps.docs;
+  // for(let sd of snapDocs) {
+    // let sdId = sd.id;
+    // let sdd  = sd.data();
+    //  db.collection('C0ab0eaGzmtjCKQMnvh5').get().then(async(ps) => {
+    //   let psd = ps.docs;
+    //   for(let pd of psd) {
+    //     let pdR = await db.collection('C0ab0eaGzmtjCKQMnvh5').doc(pd.id);
+    //     let pdd = pd.data();
+    //     pdd.fondant = 'false';
+    //     await pdR.update(pdd)
+    //     console.log('done');
+    //   }
+    // })
+  // }
 // })
