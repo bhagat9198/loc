@@ -22,6 +22,86 @@
   <!-- <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css"> -->
 
 </head>
+<li class="items odd">
+
+  <div class="infoWrap">
+    <div class="cartSection">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/GermanChocolateCake.jpg" alt="" class="itemImg" />
+      <p class="itemNumber">#QUE-007544-002</p>
+      <h3>Item Name 1</h3>
+
+      <p> <input type="text" class="qty" placeholder="3" /> x $5.00</p>
+
+      <p class="stockStatus"> In Stock</p>
+    </div>
+
+
+    <div class="prodTotal cartSection">
+      <p>$15.00</p>
+    </div>
+    <div class="cartSection removeWrap">
+      <a href="#" class="remove">x</a>
+    </div>
+  </div>
+</li>
+<li class="items even">
+
+  <div class="infoWrap">
+    <div class="cartSection">
+
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/GermanChocolateCake.jpg" alt="" class="itemImg" />
+      <p class="itemNumber">#QUE-007544-002</p>
+      <h3>Item Name 1</h3>
+
+      <p> <input type="text" class="qty" placeholder="3" /> x $5.00</p>
+
+      <p class="stockStatus"> In Stock</p>
+    </div>
+
+
+    <div class="prodTotal cartSection">
+      <p>$15.00</p>
+    </div>
+    <div class="cartSection removeWrap">
+      <a href="#" class="remove">x</a>
+    </div>
+  </div>
+</li>
+
+
+
+
+<div class="qty">
+  <ul>
+    <li >
+      <span class="qtminus1 reducing" data-cartid="${
+        prod.cartId
+      }" data-index="${index}" data-id="minus__${rand}" onclick="decQty(event)">
+        <i class="fa fa-minus" data-cartid="${
+          prod.cartId
+        }" data-index="${index}" data-id="minus__${rand}"></i>
+      </span>
+    </li>
+    <li>
+      <span class="qttotal1" id="total__${rand}" >${
+allProdPrice[index].qty
+}</span>
+    </li>
+    <li>
+      <span class="qtplus1 adding" data-cartid="${
+        prod.cartId
+      }" data-index="${index}" data-id="plus__${rand}" onclick="incQty(event)">
+        <i class="fa fa-plus" data-cartid="${
+          prod.cartId
+        }" data-index="${index}" data-id="plus__${rand}"></i>
+      </span>
+    </li>
+  </ul>
+</div> x ₹${prodPrice}
+
+
+
+
 
 <body style="overflow-x: hidden !important; ">
 

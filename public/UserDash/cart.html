@@ -2,231 +2,504 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lake of Cakes | Cart</title>
-  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../assets/css/all.css">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/styles.css">
-  <link rel="stylesheet" href="../assets/css/mega-menu.css">
-  <link rel="stylesheet" href="../assets//css/randomStyles.css">
-  <link rel="stylesheet" href="../assets/css/animate.css">
-  
-  <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-  <link rel="stylesheet" href="assets/css/animation.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
-	<script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lake of Cakes | Cart</title>
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/all.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/mega-menu.css">
+    <link rel="stylesheet" href="../assets//css/randomStyles.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+
+    <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+    <link rel="stylesheet" href="assets/css/animation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+    <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
 
 </head>
 
 <style>
-  th {
-    color: gray;
-  }
+    .heading {
+        padding: 1em 0;
+        border-bottom: 1px solid #D0D0D0;
+    }
+    
+    .heading h1 {
+        font-family: "Droid Serif", serif;
+        font-size: 2em;
+        float: left;
+    }
+    
+    .heading a.continue:hover,
+    .heading a.continue:focus,
+    .heading a.continue:active {
+        background: #f69679;
+    }
+    
+    .heading a.continue:hover:after,
+    .heading a.continue:focus:after,
+    .heading a.continue:active:after {
+        right: -10px;
+    }
+    
+    .tableHead {
+        display: table;
+        width: 100%;
+        font-family: "Montserrat", sans-serif;
+        font-size: .75em;
+    }
+    
+    .tableHead li {
+        display: table-cell;
+        padding: 1em 0;
+        text-align: center;
+    }
+    .tableHead {
+  display: table;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  font-size: .75em;
+}
+.tableHead li {
+  display: table-cell;
+  padding: 1em 0;
+  text-align: center;
+}
+.tableHead li.prodHeader {
+  text-align: left;
+}
 
-  .responsiveTags {
-    font-size: 15px;
-  }
+.cart {
+  padding: 1em 0;
+}
+.cart .items {
+  display: block;
+  width: 100%;
+  vertical-align: middle;
+  padding: 1.5em;
+  border-bottom: 1px solid #fafafa;
+}
+.cart .items.even {
+  background: #fafafa;
+}
+.cart .items .infoWrap {
+  display: table;
+  width: 100%;
+}
+.cart .items .cartSection {
+    padding: 20px;
+  display: table-cell;
+  vertical-align: middle;
+}
+.cart .items .cartSection .itemNumber {
+  font-size: .75em;
+  color: #777;
+  margin-bottom: .5em;
+}
+.cart .items .cartSection h3 {
+  font-size: 1em;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .025em;
+}
+.cart .items .cartSection p {
+  display: inline-block;
+  font-size: .85em;
+  color: #777777;
+  font-family: "Montserrat", sans-serif;
+}
+.cart .items .cartSection p .quantity {
+  font-weight: bold;
+  color: #333;
+}
+.cart .items .cartSection p.stockStatus {
+  color: #82CA9C;
+  font-weight: bold;
+  padding: .5em 0 0 1em;
+  text-transform: uppercase;
+}
+.cart .items .cartSection p.stockStatus.out {
+  color: #F69679;
+}
+.cart .items .cartSection .itemImg {
+  width: 4em;
+  float: left;
+}
+.cart .items .cartSection.qtyWrap, .cart .items .cartSection.prodTotal {
+  text-align: center;
+}
+.cart .items .cartSection.qtyWrap p, .cart .items .cartSection.prodTotal p {
+  font-weight: bold;
+  font-size: 1.25em;
+}
+.cart .items .cartSection input.qty {
+  width: 2em;
+  text-align: center;
+  font-size: 1em;
+  padding: .25em;
+  margin: 1em .5em 0 0;
+}
+.cart .items .cartSection .itemImg {
+  width: 8em;
+  display: inline;
+  padding-right: 1em;
+}
 
-  @media only screen and (max-width: 600px) {
+.special {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+}
+.special .specialContent {
+  padding: 1em 1em 0;
+  display: block;
+  margin-top: .5em;
+  border-top: 1px solid #dadada;
+}
+.special .specialContent:before {
+  content: "\21b3";
+  font-size: 1.5em;
+  margin-right: 1em;
+  color: #6f6f6f;
+  font-family: helvetica, arial, sans-serif;
+}
+
+a.remove {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  font-weight: bold;
+  background: #e0e0e0;
+  padding: .5em;
+  font-size: .75em;
+  display: inline-block;
+  border-radius: 100%;
+  line-height: .85;
+  -webkit-transition: all 0.25s linear;
+  -moz-transition: all 0.25s linear;
+  -ms-transition: all 0.25s linear;
+  -o-transition: all 0.25s linear;
+  transition: all 0.25s linear;
+}
+a.remove:hover {
+  background: #f30;
+}
+@media only screen and (max-width: 380px) {
+    .cart .items .cartSection {
+            padding: 5px !important;
+            width: 90%;
+            /* display: block; */
+            /* float: left; */
+        }
+}
+    @media only screen and (max-width: 39.375em) {
+        .resTxtMob{
+            font-size: 10px;
+        }
+        .wrap {
+            width: 98%;
+            padding: 2% 0;
+        }
+        .projTitle {
+            font-size: 1.5em;
+            padding: 10% 5%;
+        }
+        .heading {
+            padding: 1em;
+            font-size: 90%;
+        }
+        .cart .items .cartSection {
+            padding: 10px;
+            width: 90%;
+            /* display: block; */
+            /* float: left; */
+        }
+        .cart .items .cartSection.qtyWrap {
+            width: 10%;
+            text-align: center;
+            padding: .5em 0;
+            float: right;
+        }
+        .cart .items .cartSection.qtyWrap:before {
+            content: "QTY";
+            display: block;
+            font-family: "Montserrat", sans-serif;
+            padding: .25em;
+            font-size: .75em;
+        }
+        .cart .items .cartSection.prodTotal,
+        .cart .items .cartSection.removeWrap {
+            display: none;
+        }
+        .cart .items .cartSection .itemImg {}
+        .promoCode,
+        .subtotal {
+            width: 100%;
+        }
+        a.btn.continue {
+            width: 100%;
+            text-align: center;
+        }
+    }
+    
+    th {
+        color: gray;
+    }
+    
     .responsiveTags {
-      font-size: 10px;
-
+        font-size: 15px;
     }
-
-    .responsiveDiv {
-      padding: 4px;
-
+    
+    @media only screen and (max-width: 600px) {
+        .responsiveTags {
+            font-size: 10px;
+        }
+        .responsiveDiv {
+            padding: 4px;
+        }
+        .responsiveImage {
+            width: 40px !important;
+        }
+        .pname {
+            font-size: 9px !important;
+        }
     }
-
-    .responsiveImage {
-      width: 40px !important;
+    
+    .crtimg {
+        width: 80px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
     }
-
+    
     .pname {
-      font-size: 9px !important;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
     }
-  }
-
-  .crtimg {
-    width: 80px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-
-  .pname {
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-  }
+    
+    .col-qty>* {
+        vertical-align: middle;
+    }
+    
+    .col-qty>input {
+        max-width: 2.6em;
+    }
+    
+    a.qty {
+        width: 1em;
+        line-height: 1em;
+        border-radius: 2em;
+        font-size: 2.5em;
+        font-weight: bold;
+        text-align: center;
+        background: #43ace3;
+        color: #fff;
+    }
+    
+    a.qty:hover {
+        background: #3b9ac6;
+    }
+    
+    .btn {
+        padding: 10px 30px;
+        border-radius: 0.3em;
+        font-size: 1.4em;
+        font-weight: bold;
+        background: #43ace3;
+        color: #fff;
+        box-shadow: 0 3px 0 rgba(59, 154, 198, 1)
+    }
+    
+    .btn:hover {
+        box-shadow: 0 3px 0 rgba(59, 154, 198, 0)
+    }
+    
+    .btn-update {
+        float: right;
+        margin: 0 0 1.5em 0;
+    }
+    
+    .transition {
+        transition: all 0.3s ease-in-out;
+    }
+    
+    @media screen and ( max-width: 755px) {
+        .container {
+            width: 98%;
+        }
+        .col-pro {
+            width: 35%;
+        }
+        .col-qty {
+            width: 22%;
+        }
+        img {
+            max-width: 100%;
+            margin-bottom: 1em;
+        }
+    }
 </style>
 
-<body style="overflow-x: hidden !important; ">
-  <section id="nav-section-loader">
+<body style="overflow-x:  !important; ">
+    <section id="nav-section-loader">
 
-    <style>
-      .autocomplete {
-        position: relative;
-        display: inline-block !important;
-      }
-
-      input {
-        border: 1px solid transparent;
-        background-color: #f1f1f1;
-        padding: 10px;
-        font-size: 16px;
-
-      }
-
-      input[type=text] {
-        background-color: #f1f1f1;
-        width: 100%;
-
-      }
-
-      input[type=submit] {
-        background-color: DodgerBlue;
-        color: rgb(131, 56, 56);
-        cursor: pointer;
-      }
-
-      .autocomplete-items {
-        position: absolute;
-        border: 1px solid #d4d4d4;
-        border-bottom: none;
-        border-top: none;
-        z-index: 99;
-        /*position the autocomplete items to be the same width as the container:*/
-        top: 100%;
-        left: 0;
-        right: 0;
-        /* font-style: italic; */
-      }
-
-      .autocomplete-items div {
-        padding: 10px;
-        cursor: pointer;
-        background-color: #fff;
-        border-bottom: 1px solid #d4d4d4;
-        /* font-style: italic; */
-      }
-
-      /*when hovering an item:*/
-      .autocomplete-items div:hover {
-        background-color: #e9e9e9;
-      }
-
-      /*when navigating through the items using the arrow keys:*/
-      .autocomplete-active {
-        background-color: DodgerBlue !important;
-        color: #ffffff;
-      }
-
-      @media only screen and (max-width: 600px) {
-        .responsiveIcon1 {
-          /* margin: auto;
+        <style>
+            .autocomplete {
+                position: relative;
+                display: inline-block !important;
+            }
+            
+            input {
+                border: 1px solid transparent;
+                background-color: #f1f1f1;
+                padding: 10px;
+                font-size: 16px;
+            }
+            
+            input[type=text] {
+                background-color: #f1f1f1;
+                width: 100%;
+            }
+            
+            input[type=submit] {
+                background-color: DodgerBlue;
+                color: rgb(131, 56, 56);
+                cursor: pointer;
+            }
+            
+            .autocomplete-items {
+                position: absolute;
+                border: 1px solid #d4d4d4;
+                border-bottom: none;
+                border-top: none;
+                z-index: 99;
+                /*position the autocomplete items to be the same width as the container:*/
+                top: 100%;
+                left: 0;
+                right: 0;
+                /* font-style: italic; */
+            }
+            
+            .autocomplete-items div {
+                padding: 10px;
+                cursor: pointer;
+                background-color: #fff;
+                border-bottom: 1px solid #d4d4d4;
+                /* font-style: italic; */
+            }
+            /*when hovering an item:*/
+            
+            .autocomplete-items div:hover {
+                background-color: #e9e9e9;
+            }
+            /*when navigating through the items using the arrow keys:*/
+            
+            .autocomplete-active {
+                background-color: DodgerBlue !important;
+                color: #ffffff;
+            }
+            
+            @media only screen and (max-width: 600px) {
+                .responsiveIcon1 {
+                    /* margin: auto;
           padding: 0px; */
-          
-        }
-
-      }
-
-      @media only screen and (min-width:700px) {
-        .responsiveIcon2 {
-          display: block !important;
-        }
-
-      }
-    </style>
+                }
+                .mobileRes {}
+            }
+            
+            @media only screen and (min-width:700px) {
+                .responsiveIcon2 {
+                    display: block !important;
+                }
+            }
+        </style>
 
 
 
-    <section class="top-header top-nav" style="background: #f1f1f1;">
-      <div class="container-fluid remove-padding topnaves"
-        style="background: #f1f1f1;;
+        <section class="top-header top-nav" style="background: #f1f1f1;">
+            <div class="container-fluid remove-padding topnaves" style="background: #f1f1f1;;
         background-size: 617px; background-image: url();height: 28px !important;padding: 0px !important;margin-bottom: 0.3%;">
-        <div class="container topcnt">
-          <div class="row" style="justify-content: flex-end;">
-            <div class="">
-              <div class="content">
-                <div class="left-content">
-                </div>
-                <div class="right-content">
-                  <div class="list" style="padding: 6px 10px 100px;">
-                    <ul style="padding-right: 10px;">
-                      <li>
-                        <a type="button" data-toggle="modal" data-target="#topoffer" style=" position: relative;">
-                          <span class="sign-in" data-toggle="modal" data-target="#modalYT"
-                            style="font-size: 14px; color: rgb(10, 10, 10);">
+                <div class="container topcnt">
+                    <div class="row" style="justify-content: flex-end;">
+                        <div class="">
+                            <div class="content">
+                                <div class="left-content">
+                                </div>
+                                <div class="right-content">
+                                    <div class="list" style="padding: 6px 10px 100px;">
+                                        <ul style="padding-right: 10px;">
+                                            <li>
+                                                <a type="button" data-toggle="modal" data-target="#topoffer" style=" position: relative;">
+                                                    <span class="sign-in" data-toggle="modal" data-target="#modalYT" style="font-size: 14px; color: rgb(10, 10, 10);">
                             <i style="color: red !important;" class="fa fa-gift" aria-hidden="true"></i> OFFER</span>
-                        </a>
-                      </li> &nbsp; |
+                                                </a>
+                                            </li> &nbsp; |
 
-                      <li><a href="#" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
+                                            <li><a href="#" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
                               class="fa fa-gift" aria-hidden="true" style="color: rgb(235, 48, 79);"></i>
                             COUPONS</span> </a>
-                      </li> &nbsp; |
-                      <li><a href="tel:9598891097" class="track-btn"><span class="sign-in"
+                                            </li> &nbsp; |
+                                            <li><a href="tel:9598891097" class="track-btn"><span class="sign-in"
                             style="font-size: 14px; color: #000;"><i class="fa fa-phone" aria-hidden="true"
                               style="color: rgb(235, 48, 79);"></i>
                             9598891097</span> </a>
-                      </li> &nbsp; |
-                      <li><a href="mailto:lakeofcakess@gmail.com" class="track-btn"><span class="sign-in"
+                                            </li> &nbsp; |
+                                            <li><a href="mailto:lakeofcakess@gmail.com" class="track-btn"><span class="sign-in"
                             style="font-size: 14px; color: #000;"><i class="fa fa-envelope" aria-hidden="true"
                               style="color: rgb(235, 48, 79);"></i>
                             Email</span> </a>
-                      </li> &nbsp;
-                    </ul>
-                  </div>
+                                            </li> &nbsp;
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
 
-    <section class="logo-header">
-      <div class="container-fluid logoheder">
-        <div class="row ">
-          <div class="col-lg-3 col-sm-6 col-6 log remove-padding">
-            <div class="logo">
-              <a href="/index.html">
-                <img src="/assets/images/logo.png" alt="Logo Lake of cakes" style="width: 350px;">
-              </a>
-            </div>
-          </div>
-          <label class="drover drobt" for="responsive-nav" onclick="shownavigation()">☰</label>
-          <aside class="drobt0 drobt1 colapse" id="" style="overflow-y: scroll !important;">
+        <section class="logo-header">
+            <div class="container-fluid logoheder">
+                <div class="row ">
+                    <div class="col-lg-3 col-sm-6 col-6 log remove-padding">
+                        <div class="logo">
+                            <a href="/index.html">
+                                <img src="/assets/images/logo.png" alt="Logo Lake of cakes" style="width: 350px;">
+                            </a>
+                        </div>
+                    </div>
+                    <label class="drover drobt" for="responsive-nav" onclick="shownavigation()">☰</label>
+                    <aside class="drobt0 drobt1 colapse" id="" style="overflow-y: scroll !important;">
 
-            <div class="logo-area">
-              <div class="logo">
-                <a href="/index.html">
-                  <img src="/assets/images/logo-min.png" alt="Logo Lake of cakes" style="width: 350px;">
-                </a>
-              </div>
-              <i class="fa fa-times" style="float: right; position: relative;padding: 10px;margin-left: 20%;"
-                onclick="hidenavigation()"></i>
-            </div>
-            <div class="menu-container">
-              <div class="menu">
-                <ul id="whole-navigation-mobile">
-                </ul>
-              </div>
-              <hr>
-              <div class="nav-collapsible">
-                <a href="#">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                        <div class="logo-area">
+                            <div class="logo">
+                                <a href="/index.html">
+                                    <img src="/assets/images/logo-min.png" alt="Logo Lake of cakes" style="width: 350px;">
+                                </a>
+                            </div>
+                            <i class="fa fa-times" style="float: right; position: relative;padding: 10px;margin-left: 20%;" onclick="hidenavigation()"></i>
+                        </div>
+                        <div class="menu-container">
+                            <div class="menu">
+                                <ul id="whole-navigation-mobile">
+                                </ul>
+                            </div>
+                            <hr>
+                            <div class="nav-collapsible">
+                                <a href="#">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span>
@@ -244,11 +517,11 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <div class="nav-collapsible">
-                <a href="#">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                                </a>
+                            </div>
+                            <div class="nav-collapsible">
+                                <a href="#">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span>
@@ -265,11 +538,11 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <div class="nav-collapsible">
-                <a href="#">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                                </a>
+                            </div>
+                            <div class="nav-collapsible">
+                                <a href="#">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span>
@@ -288,10 +561,10 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <hr>
-              <!-- <div class="nav-collapsible">
+                                </a>
+                            </div>
+                            <hr>
+                            <!-- <div class="nav-collapsible">
               <a href="#">
                 <label for="nav-collapsible-1" style="width: 100%;">
                   <div class="row pl-3">
@@ -307,25 +580,25 @@
                 </label>
               </a>
             </div> -->
-            <div class="nav-collapsible">
-              <a href="UserDash/customerProfile.html">
-                <label for="nav-collapsible-1" style="width: 100%;">
-                  <div class="row pl-3">
-                    <div class="col-10 col-sm-10 col-md-10 p-0">
-                      <span style="position: relative; top: 4px;">Your Account </span>
+                            <div class="nav-collapsible">
+                                <a href="UserDash/customerProfile.html">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Your Account </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
                     </div>
-                    <div class="col-2 col-sm-2 col-md-2 p-0">
-                      <span style="position: relative; top: 8px;">
-                        <i class="fas fa-chevron-right"></i>
-                      </span>
-                    </div>
-                  </div>
-                </label>
-              </a>
-            </div>
-              <div class="nav-collapsible">
-                <a href="#">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                  </label>
+                                </a>
+                            </div>
+                            <div class="nav-collapsible">
+                                <a href="#">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
                         <span style="position: relative; top: 4px;">Contact us </span>
@@ -337,9 +610,9 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <!-- <div class="nav-collapsible">
+                                </a>
+                            </div>
+                            <!-- <div class="nav-collapsible">
               <a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">
                 <label for="nav-collapsible-1" style="width: 100%;">
                   <div class="row pl-3">
@@ -355,9 +628,9 @@
                 </label>
               </a>
             </div> -->
-              <div class="nav-collapsible">
-                <a data-toggle="modal" data-target="#topoffer">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                            <div class="nav-collapsible">
+                                <a data-toggle="modal" data-target="#topoffer">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
                         <span style="position: relative; top: 4px;" data-toggle="modal" data-target="#modalYT">Offers
@@ -370,11 +643,11 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <div class="nav-collapsible">
-                <a href="/Common/coupans.html">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                                </a>
+                            </div>
+                            <div class="nav-collapsible">
+                                <a href="/Common/coupans.html">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
                         <span style="position: relative; top: 4px;">Coupons </span>
@@ -386,12 +659,12 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
+                                </a>
+                            </div>
 
-              <div class="nav-collapsible" style="display: none;" id="logoutMobile">
-                <a href="#!" onclick="logOut()">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                            <div class="nav-collapsible" style="display: none;" id="logoutMobile">
+                                <a href="#!" onclick="logOut()">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
                         <span style="position: relative; top: 4px;">Log Out</span>
@@ -403,11 +676,11 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <div class="nav-collapsible" id="loginMobile">
-                <a href="/Auth/login.html">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                                </a>
+                            </div>
+                            <div class="nav-collapsible" id="loginMobile">
+                                <a href="/Auth/login.html">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
                         <span style="position: relative; top: 4px;">Log In</span>
@@ -419,223 +692,193 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
+                                </a>
+                            </div>
 
-            </div>
-          </aside>
-          <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
-            <div class="row">
-              <div class="col-md-1"></div>
-              <div class="col-md-10 col-12 p-0 mt-3 ml-4">
-                <div class="input-group mb-2 mt-2">
-                  <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
-                    <div class="autocomplete" style="width: 100%;">
-                      <input class="form-control" style="width: 100% !important;
+                        </div>
+                    </aside>
+                    <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10 col-12 p-0 mt-3 ml-4">
+                                <div class="input-group mb-2 mt-2">
+                                    <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
+                                        <div class="autocomplete" style="width: 100%;">
+                                            <input class="form-control" style="width: 100% !important;
                     border: none;
                     border-bottom: 1px solid ;
-                    border-radius: unset;background-color: transparent;" type="text" id="searchBar"
-                        onkeydown="disableEnterKey(event)" onkeyup=searchByUserInput(event) name="searchBar"
-                        placeholder="Search: Cakes , Flowers ,Gifts...">
-                    </div>
+                    border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeydown="disableEnterKey(event)" onkeyup=searchByUserInput(event) name="searchBar" placeholder="Search: Cakes , Flowers ,Gifts...">
+                                        </div>
 
-                    <div class="input-group-append" onclick=searchByUserInputBtn(event)>
-                      <button class="btn btn-outline-secondary" onclick=searchByUserInputBtn(event)
-                        style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent; border: #F00;"><i
+                                        <div class="input-group-append" onclick=searchByUserInputBtn(event)>
+                                            <button class="btn btn-outline-secondary" onclick=searchByUserInputBtn(event) style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent; border: #F00;"><i
                           class="fa fa-search" style="color:red" onclick=searchByUserInputBtn(event)></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
-          <div
-            class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
-            <ul style="display: inline-flex;">
-              <li>
-                <a href="#">
-                  <div class="text-center">
-                    <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
-                    <div
-                      style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
-                      MIDNIGHT</div>
-                  </div>
-                </a>
-              </li>
-              <li style="padding: 0px 28px;">
-                <a href="#">
-                  <img src="/assets/images/chef.png" style="width:50px;object-fit: cover;">
-                  <div
-                    style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
-                    BE A CHEF</div>
-                </a>
-              </li>
-              <li>
-                <a href="#" type="button" data-toggle="modal" data-target="#reminderModal">
-                  <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
-                  <div data-toggle="modal" data-target="#reminderModal"
-                    style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
-                    REMINDER</div>
-                </a>
-              </li>
-            </ul>
+                    <div class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
+                        <ul style="display: inline-flex;">
+                            <li>
+                                <a href="#">
+                                    <div class="text-center">
+                                        <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
+                                        <div style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                                            MIDNIGHT</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="padding: 0px 28px;">
+                                <a href="#">
+                                    <img src="/assets/images/chef.png" style="width:50px;object-fit: cover;">
+                                    <div style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                                        BE A CHEF</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" type="button" data-toggle="modal" data-target="#reminderModal">
+                                    <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
+                                    <div data-toggle="modal" data-target="#reminderModal" style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                                        REMINDER</div>
+                                </a>
+                            </li>
+                        </ul>
 
 
 
 
-          </div>
-          <div class="col-lg-1 col-sm-3 col-3 remove-padding order-lg-last">
-            <div class="helpful-links mt-md-3 cartres">
+                    </div>
+                    <div class="col-lg-1 col-sm-3 col-3 remove-padding order-lg-last">
+                        <div class="helpful-links mt-md-3 cartres">
 
-              <ul class="helpful-links-inner" style="display: flex;">
+                            <ul class="helpful-links-inner" style="display: flex;">
 
 
 
-                <li class="nav-item dropdown" style="margin-top: 15%;">
-                  <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
-                      style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
+                                <li class="nav-item dropdown" style="margin-top: 15%;">
+                                    <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos" style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
 
-                  </a>
+                                    </a>
 
-                  <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
+                                    <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
                     inset 0 -3em 3em rgba(0,0,0,0.1), 
                           0 0  0 2px rgb(255,255,255),
-                          0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown"
-                    aria-labelledby="navbarDropdownMenuLink">
-                    <div
-                      style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
-                      <a class="dropdown-item" href="#">
-                        <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest!
-                          Login to continue</h4>
-                        <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
-                        </center>
-                      </a>
-                    </div>
+                          0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown" aria-labelledby="navbarDropdownMenuLink">
+                                        <div style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
+                                            <a class="dropdown-item" href="#">
+                                                <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest! Login to continue</h4>
+                                                <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
+                                                </center>
+                                            </a>
+                                        </div>
 
-                    <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href=""
-                      onclick="checkifUser('/UserDash/customerProfile.html')"><i class="fa fa-user"></i>
+                                        <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="" onclick="checkifUser('/UserDash/customerProfile.html')"><i class="fa fa-user"></i>
                       Profile</a>
 
-                    <!-- <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
+                                        <!-- <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
                     href="#!" onclick="checkifUser('/UserDash/trackOrders.html')"><i class="fa fa-truck"></i> Track
                     Orders</a> -->
 
-                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
-                      href="#!" onclick="checkifUser('/UserDash/customerProfile.html')"><i
+                                        <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!" onclick="checkifUser('/UserDash/customerProfile.html')"><i
                         class="fa fa-shopping-cart"></i> My
                       Orders</a>
 
-                    <a class="dropdown-item responsive-secCart"
-                      style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!"
-                      onclick="checkifUser('/UserDash/cart.html')"><i class="fa fa-shopping-cart"></i> My Cart</a>
+                                        <a class="dropdown-item responsive-secCart" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!" onclick="checkifUser('/UserDash/cart.html')"><i class="fa fa-shopping-cart"></i> My Cart</a>
 
-                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"
-                      id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
+                                        <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#" id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
                       Logout</a>
-                  </div>
-                </li>
+                                    </div>
+                                </li>
 
 
-                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: none;" data-toggle="tooltip"
-                  data-placement="top" title="Cart">
+                                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: none;" data-toggle="tooltip" data-placement="top" title="Cart">
 
-                </li>
-              </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
+
+        <div class="mainmenu-area mainmenu-bb">
+
+
+            <div class="col-lg-12 col-md-12 categorimenu-wrapper p-0" style="z-index: 5;">
+                <div class="desktopmenu">
+                    <div class="menu-container">
+                        <div class="menu">
+                            <ul id="whole-navigation-pc">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+
+
+
     </section>
 
-    <div class="mainmenu-area mainmenu-bb">
+    <section class="cartpage" style="border-radius: 0px;">
+        <h5 style="padding-left: 10px;font-weight: 600;">Your Cart</h5>
+
+        <div class="row" style="padding: 10px !important; !important;">
+            <div class="col-lg-8">
+                <div class="left-area">
 
 
-      <div class="col-lg-12 col-md-12 categorimenu-wrapper p-0" style="z-index: 5;">
-        <div class="desktopmenu">
-          <div class="menu-container">
-            <div class="menu">
-              <ul id="whole-navigation-pc">
 
-              </ul>
+                    <div class="cart">
+
+                        <ul class="cartWrap" id="cartBody">
+
+
+
+
+
+
+                        </ul>
+                    </div>
+
+
+
+
+
+                    <!-- 
+          <div class="cart-table">
+            <table class="table" style="background-color:transparent;">
+              <thead>
+                <tr style="text-align: center;">
+                  <th class="d-sm-nones">Product </th>
+                  <th class="d-sm-nones" width="30%">Details</th>
+                  <th class="d-sm-nones" style="text-align: left;">Unit Price</th>
+                  <th class="d-sm-nones">Sub Total</th>
+                  <th class="d-sm-nones">Delete</th>
+                  <th class="d-sm-nones">Select</th>
+                </tr>
+              </thead>
+              <tbody id="cardy">
+
+              </tbody>
+            </table>
+          </div> -->
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-  </section>
-
-  <section class="cartpage" style="border-radius: 0px;">
-
-    <div class="content-box">
-      <div class="content">
-        <div class="order-area">
-          <div class="order-item"> 
-            <div class="product-img">
-              <div class="d-flex">
-                <img src=" //lakeofcakes.com/assets/images/products/1598604187M48yYCke.png" height="80"
-                  width="80" class="p-1">
-              </div> 
-            </div>
-            <div class="product-content">
-              <p class="name"><a href="//lakeofcakes.com/item/5-star-chocolate-bouquet-loc12557"
-                  target="_blank">5 star chocolate bouquet</a></p>
-              <div class="unit-price">
-                <h5 class="label">Price : </h5>
-                <p>₹499</p>
-              </div>
-              <div class="quantity">
-                <h5 class="label">Quantity : </h5>
-                <span class="qttotal">2 </span>
-              </div>
-              <div class="total-price">
-                <h5 class="label">Total Price : </h5>
-                <p>₹998
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      
-      </div>
-    </div>
-   <h5 style="padding-left: 10px;font-weight: 600;">Your Cart</h5>
-      <div class="row" style="padding: 10px !important; background-color:rgb(197, 143, 42,0.1) !important;" >
-        <div class="col-lg-8">
-          <div class="left-area">
-            <div class="cart-table">
-              <table class="table" style="background-color:transparent;">
-                <thead>
-                  <tr style="text-align: center;">
-                    <th class="d-sm-nones">Product </th>
-                    <th class="d-sm-nones" width="30%">Details</th>
-                    <th class="d-sm-nones" style="text-align: left;">Unit Price</th>
-                    <th class="d-sm-nones">Sub Total</th>
-                    <th class="d-sm-nones">Delete</th>
-                    <th class="d-sm-nones">Select</th>
-                  </tr>
-                </thead>
-                <tbody id="cartBody">
-                  
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="right-area">
-            <div class="order-box" >
-              <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
-              <ul class="order-list">
-                <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to checkout</div>
-                <!-- <li>
+            <div class="col-lg-4">
+                <div class="right-area">
+                    <div class="order-box">
+                        <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
+                        <ul class="order-list">
+                            <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to checkout
+                            </div>
+                            <!-- <li>
                   <p>
                     Total MRP
                   </p>
@@ -643,22 +886,23 @@
                     <b class="cart-total ctt">₹1720</b>
                   </P>
                 </li> -->
-              </ul>
-              <div class="total-price">
-                <p>
-                  Total
-                </p>
-                <P>
-                  <span class="cart-total">₹ 0</span>
-                </P>
-              </li> 
-              <li style="display:none">
-                <p>
-                  
-                </p>
-              </div>
-              <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all taxes)</span></p><br>
-              <!-- <div class="cupon-box">
+                        </ul>
+                        <div class="total-price">
+                            <p>
+                                Total
+                            </p>
+                            <P>
+                                <span class="cart-total">₹ 0</span>
+                            </P>
+                            </li>
+                            <li style="display:none">
+                                <p>
+
+                                </p>
+                        </div>
+                        <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all
+                taxes)</span></p><br>
+                        <!-- <div class="cupon-box">
                 <div id="coupon-link">
                   Have a promotion code?
                 </div>
@@ -668,40 +912,39 @@
                   <button type="submit">Apply</button>
                 </form>
               </div> -->
-            <button data-target="#addonsModal" data-toggle="modal" class="order-btn" id="checkoutBtn" disabled
-              style="background-color: transparent;color: red;outline: none; border: 1px solid red; border-radius: 5px; text-align: center; vertical-align: middle !important;"> 
+                        <button data-target="#addonsModal" data-toggle="modal" class="order-btn" id="checkoutBtn" disabled style="background-color: transparent;color: red;outline: none; border: 1px solid red; border-radius: 5px; text-align: center; vertical-align: middle !important;">
               Checkout
               <i class="fa fa-arrow-right"></i>
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-  <section class="product-details-page" style="background: whitesmoke;">
-
-
-
-    <div class="col-lg-7">
-      <div class="right-area">
-        <div class="product-info">
-          <h4 class="product-name"></h4>
-          <div class="info-meta-3">
-            <ul class="meta-list">
-              <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-header" style="background-color: rgb(231, 50, 18);padding: 10px !important;">
-                      <h4 class="modal-title text-center tb" style="color:#fff;font-weight: 800;margin-left: auto;margin-right: auto;">Add Extra Love For Your Loved
-                        Ones</h4>
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <div class="modal-body" style="overflow-y: scroll;">
-                      <div class="container-fluid">
-                        <div class="row" id="allAddons">
-                          <!-- <div class="col-md-3 col-6 mt-3">
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="product-details-page" style="background: whitesmoke;">
+
+
+
+        <div class="col-lg-7">
+            <div class="right-area">
+                <div class="product-info">
+                    <h4 class="product-name"></h4>
+                    <div class="info-meta-3">
+                        <ul class="meta-list">
+                            <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color: rgb(231, 50, 18);padding: 10px !important;">
+                                            <h4 class="modal-title text-center tb" style="color:#fff;font-weight: 800;margin-left: auto;margin-right: auto;">Add Extra Love For Your Loved Ones
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div class="modal-body" style="overflow-y: scroll;">
+                                            <div class="container-fluid">
+                                                <div class="row" id="allAddons">
+                                                    <!-- <div class="col-md-3 col-6 mt-3">
                             <a class="item" for="add_addons[]"
                               style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
                               <input type="checkbox" name="add_addons[]" class="add_addons " data-id="28" value="28"
@@ -740,113 +983,106 @@
                               </div>
                             </a>
                           </div> -->
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <a id="qaddcrt" href="javascript:;"
-                        style="border-radius: 0px; background: #fff; border: 0px;display: flex;">
-                        <!-- <h5 style="padding: 20px ;font-weight: 900;"> Total Prize :₹ <span id="cost-with-addons"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a id="qaddcrt" href="javascript:;" style="border-radius: 0px; background: #fff; border: 0px;display: flex;">
+                                                <!-- <h5 style="padding: 20px ;font-weight: 900;"> Total Prize :₹ <span id="cost-with-addons"></span>
                         </h5>
                         <button type="button" class="btn btn-secondary" id="prod_with_addons"
                           style="background-color: rgb(238, 44, 10);">Checkout Without Addons</button> -->
 
-                          <h5 class="resTxt" style="padding: 20px ;font-weight: 800; "> Total
-                            Price :₹ <span id="cost-with-addons" style=""></span></h5>&nbsp;&nbsp;&nbsp;&nbsp;
-                          <button type="button" class="btn btn-secondary resTxt2" id="prod_with_addons"
-                            style="background-color: rgb(197, 42, 42);">Continue Without
-                            Addons</button>
+                                                <h5 class="resTxt" style="padding: 20px ;font-weight: 800; "> Total Price :₹ <span id="cost-with-addons" style=""></span></h5>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <button type="button" class="btn btn-secondary resTxt2" id="prod_with_addons" style="background-color: rgb(197, 42, 42);">Continue Without
+                          Addons</button>
 
-                         
-                      </a>
+
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-          </div>
+            </div>
         </div>
-      </div>
+
+
+
+
+
+
+    </section>
+
+
+    <footer class="footer" id="footer-section-loader" style="background:rgba(0);"></footer>
+    <div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Body-->
+                <div class="modal-body mb-0 p-0">
+                    <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;">
+                        <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;" id="showOffer" src="" allowfullscreen>
+                    </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center flex-column flex-md-row">
+
+                    <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+            <!--/.Content-->
+
+        </div>
     </div>
 
-
-
-
-
-
-  </section>
-
-
-  <footer class="footer" id="footer-section-loader" style="background:rgba(0);"></footer>
-  <div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <!--Content-->
-      <div class="modal-content">
-        <!--Body-->
-        <div class="modal-body mb-0 p-0">
-          <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;">
-            <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;" id="showOffer" src=""
-              allowfullscreen>
-          </div>
-        </div>
-
-        <!--Footer-->
-        <div class="modal-footer justify-content-center flex-column flex-md-row">
-       
-          <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
-            data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-      <!--/.Content-->
-
-    </div>
-  </div>
-
-  <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="reminderModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content container">
-        <div class="modal-header reminderHeader" style="width: 100%;">
-          <h5 class="modal-title" id="reminderModalLabel"
-            style="padding: 10px;text-align: center !important;font-weight: 800;">We will notify you on the selected day
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="reminderModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content container">
+                <div class="modal-header reminderHeader" style="width: 100%;">
+                    <h5 class="modal-title" id="reminderModalLabel" style="padding: 10px;text-align: center !important;font-weight: 800;">We will notify you on the selected day
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Select a Date</label>
-              <input type="date" required class="form-control" id="reminder-date">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Type of Occasion</label>
-              <input type="text" required placeholder="Birthday , Aniversary, etc...." class="form-control"
-                id="reminder-type">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Enter a Email id</label>
-              <input type="email" required placeholder="must include @" class="form-control" id="reminder-email">
-            </div>
-          </form>
-        </div>
-        <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="reminderMessage">
-          Notification Enabled Successfully<i class="fa fa-check"></i>
-        </h5>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="sendReminder()">Notify Me</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Select a Date</label>
+                            <input type="date" required class="form-control" id="reminder-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Type of Occasion</label>
+                            <input type="text" required placeholder="Birthday , Aniversary, etc...." class="form-control" id="reminder-type">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Enter a Email id</label>
+                            <input type="email" required placeholder="must include @" class="form-control" id="reminder-email">
+                        </div>
+                    </form>
+                </div>
+                <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="reminderMessage">
+                    Notification Enabled Successfully<i class="fa fa-check"></i>
+                </h5>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="sendReminder()">Notify Me</button>
 
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </body>
 
 <script src="../assets/js/jquery.js"></script>
 <script src="/assets/js/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js">
+</script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/plugin.js"></script>
 <script src="/assets/js/xzoom.min.js"></script>
@@ -856,15 +1092,15 @@
 <script src="/assets/js/custom.js"></script>
 
 <script type="text/javascript">
-  $(document).ready(() => {
-  
-  });
+    $(document).ready(() => {
+
+    });
 </script>
 <script type="text/javascript">
-  setTimeout(() => {
-    // $('#footer-section-loader').load('../Common/files.html');
-    $('#footer-section-loader').load('../Common/footer.html');
-  }, 1000);
+    setTimeout(() => {
+        // $('#footer-section-loader').load('../Common/files.html');
+        $('#footer-section-loader').load('../Common/footer.html');
+    }, 1000);
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
@@ -873,226 +1109,354 @@
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
 <script>
-  var firebaseConfig = {
-    apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
-    authDomain: "lake-of-cakes.firebaseapp.com",
-    databaseURL: "https://lake-of-cakes.firebaseio.com",
-    projectId: "lake-of-cakes",
-    storageBucket: "lake-of-cakes.appspot.com",
-    messagingSenderId: "779843608951",
-    appId: "1:779843608951:web:48c6afe1773e2b395e8172",
-    measurementId: "G-5ER0QF0FDW"
-  };
-  firebase.initializeApp(firebaseConfig);
-  // firebase.analytics();
+    var firebaseConfig = {
+        apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+        authDomain: "lake-of-cakes.firebaseapp.com",
+        databaseURL: "https://lake-of-cakes.firebaseio.com",
+        projectId: "lake-of-cakes",
+        storageBucket: "lake-of-cakes.appspot.com",
+        messagingSenderId: "779843608951",
+        appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+        measurementId: "G-5ER0QF0FDW"
+    };
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
 </script>
 
 <script src="./cart1.js"></script>
 <script src="../Common/navbar1.js"></script>
 
 <script>
-  $(".drobt").click(function () {
-    if ($('.drobt0').hasClass('drobt1')) {
-      $('.drobt0').removeClass('drobt1');
-      $('.drobt0').addClass('drobt2');
-    } else {
-      $('.drobt0').removeClass('drobt2');
-      $('.drobt0').addClass('drobt1');
-    }
-  });
+    $(".drobt").click(function() {
+        if ($('.drobt0').hasClass('drobt1')) {
+            $('.drobt0').removeClass('drobt1');
+            $('.drobt0').addClass('drobt2');
+        } else {
+            $('.drobt0').removeClass('drobt2');
+            $('.drobt0').addClass('drobt1');
+        }
+    });
 </script>
 <script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
 <script>
-  function hidenavigation() {
-    $('.drobt0').addClass('colapse');
-  }
-
-  function shownavigation() {
-    $('.drobt0').removeClass('colapse');
-  }
-
-  function sendReminder() {
-    let date = document.querySelector("#reminder-date").value;
-    let type = document.querySelector("#reminder-type").value;
-    let emailId = document.querySelector("#reminder-email").value;
-    if (date) {
-      if (type) {
-
-        if (emailId.includes("@") && emailId) {
-          if (type != "") {
-            db.collection("reminder").add({
-              date: date,
-              type: type,
-              emailId: emailId
-            }).then(function (docRef) {
-              document.getElementById("reminderMessage").innerHTML = "Notifications enabled successfully"
-              document.getElementById("reminderMessage").style.display = "block"
-              document.getElementById("reminderMessage").style.color = "green"
-              setTimeout(function () {
-                document.getElementById("reminderMessage").style.display = "none"
-                $("#reminderModal").modal('hide');
-              }, 2000)
-            })
-          } else {
-            document.getElementById("reminderMessage").innerHTML = "Server error !! Please try again"
-            document.getElementById("reminderMessage").style.display = "block"
-            document.getElementById("reminderMessage").style.color = "red"
-            setTimeout(function () {
-              document.getElementById("reminderMessage").style.display = "none"
-            }, 2000)
-          }
-        } else {
-          document.getElementById("reminderMessage").innerHTML = "Please enter a valid email id"
-          document.getElementById("reminderMessage").style.display = "block"
-          document.getElementById("reminderMessage").style.color = "red"
-          setTimeout(function () {
-            document.getElementById("reminderMessage").style.display = "none"
-          }, 2000)
-        }
-      } else {
-        document.getElementById("reminderMessage").innerHTML = "Please input an occasion type"
-        document.getElementById("reminderMessage").style.display = "block"
-        document.getElementById("reminderMessage").style.color = "red"
-        setTimeout(function () {
-          document.getElementById("reminderMessage").style.display = "none"
-        }, 2000)
-      }
-
-    } else {
-      document.getElementById("reminderMessage").innerHTML = "Please select a date"
-      document.getElementById("reminderMessage").style.display = "block"
-      document.getElementById("reminderMessage").style.color = "red"
-      setTimeout(function () {
-        document.getElementById("reminderMessage").style.display = "none"
-      }, 2000)
+    function hidenavigation() {
+        $('.drobt0').addClass('colapse');
     }
 
+    function shownavigation() {
+        $('.drobt0').removeClass('colapse');
+    }
+
+    function sendReminder() {
+        let date = document.querySelector("#reminder-date").value;
+        let type = document.querySelector("#reminder-type").value;
+        let emailId = document.querySelector("#reminder-email").value;
+        if (date) {
+            if (type) {
+
+                if (emailId.includes("@") && emailId) {
+                    if (type != "") {
+                        db.collection("reminder").add({
+                            date: date,
+                            type: type,
+                            emailId: emailId
+                        }).then(function(docRef) {
+                            document.getElementById("reminderMessage").innerHTML = "Notifications enabled successfully"
+                            document.getElementById("reminderMessage").style.display = "block"
+                            document.getElementById("reminderMessage").style.color = "green"
+                            setTimeout(function() {
+                                document.getElementById("reminderMessage").style.display = "none"
+                                $("#reminderModal").modal('hide');
+                            }, 2000)
+                        })
+                    } else {
+                        document.getElementById("reminderMessage").innerHTML = "Server error !! Please try again"
+                        document.getElementById("reminderMessage").style.display = "block"
+                        document.getElementById("reminderMessage").style.color = "red"
+                        setTimeout(function() {
+                            document.getElementById("reminderMessage").style.display = "none"
+                        }, 2000)
+                    }
+                } else {
+                    document.getElementById("reminderMessage").innerHTML = "Please enter a valid email id"
+                    document.getElementById("reminderMessage").style.display = "block"
+                    document.getElementById("reminderMessage").style.color = "red"
+                    setTimeout(function() {
+                        document.getElementById("reminderMessage").style.display = "none"
+                    }, 2000)
+                }
+            } else {
+                document.getElementById("reminderMessage").innerHTML = "Please input an occasion type"
+                document.getElementById("reminderMessage").style.display = "block"
+                document.getElementById("reminderMessage").style.color = "red"
+                setTimeout(function() {
+                    document.getElementById("reminderMessage").style.display = "none"
+                }, 2000)
+            }
+
+        } else {
+            document.getElementById("reminderMessage").innerHTML = "Please select a date"
+            document.getElementById("reminderMessage").style.display = "block"
+            document.getElementById("reminderMessage").style.color = "red"
+            setTimeout(function() {
+                document.getElementById("reminderMessage").style.display = "none"
+            }, 2000)
+        }
 
 
-  }
+
+    }
 </script>
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
-  db.collection("offers").onSnapshot(async (snapshots) => {
+    db.collection("offers").onSnapshot(async(snapshots) => {
 
-    let snapshotDocs = snapshots.docs;
+        let snapshotDocs = snapshots.docs;
 
-    // var dbref = db.collection('Customers');
-    for (let doc of snapshotDocs) {
-      userDoc = doc.data();
-      if (userDoc.isActivated) {
-        document.getElementById("showOffer").src = userDoc.imgUrl;
-      }
-    }
+        // var dbref = db.collection('Customers');
+        for (let doc of snapshotDocs) {
+            userDoc = doc.data();
+            if (userDoc.isActivated) {
+                document.getElementById("showOffer").src = userDoc.imgUrl;
+            }
+        }
 
-  });
+    });
 
-  var checkUser;
-  checkUser = window.localStorage.getItem("locLoggedInUser");
-
-  var timecount = 0;
-  function checkifUser(location) {
-    if (checkUser == null || checkUser == "null") {
-      window.location = "/Auth/login.html"
-    } else {
-
-      window.location = location
-    }
-  }
-
-  function redirectToCart() {
-    if (checkUser == null || checkUser == "null") {
-      window.location = "/Auth/login.html"
-    } else {
-      window.location = "/UserDash/cart.html"
-    }
-  }
-
-  var counter = 0;
-  document.getElementById("hideLogOut").style.display = "none";
-  // const db = firebase.firestore();
-  var docData, userDoc;
-
-  db.collection("Customers").onSnapshot(async (snapshots) => {
-
+    var checkUser;
     checkUser = window.localStorage.getItem("locLoggedInUser");
 
-    let snapshotDocs = snapshots.docs;
+    var timecount = 0;
 
-    // var dbref = db.collection('Customers');
-    for (let doc of snapshotDocs) {
-
-      if (checkUser == doc.data().userId) {
-
-        counter++;
-
-        userDoc = doc.data();
-        if (userDoc.cart != undefined && userDoc.cart != "undefined") {
-          document.getElementById("cart-count").innerHTML = userDoc.cart.length;
+    function checkifUser(location) {
+        if (checkUser == null || checkUser == "null") {
+            window.location = "/Auth/login.html"
         } else {
-          document.getElementById("cart-count").innerHTML = 0;
-        }
 
-        if (userDoc.UserName == null) {
-          userDoc.UserName = "User@LOC";
+            window.location = location
         }
-
-        if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
-          userDoc.Image = "../assets/images/userIcon.png"
-        }
-
-        document.getElementById("logInBtn").style.display = "none";
-        document.getElementById("hideLogOut").style.display = "block";
-        document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
-        document.getElementById("userImg").src = userDoc.Image;
-        break;
-      }
     }
 
-    if (counter == 0) {
-
-      document.getElementById("hideLogOut").style.display = "none";
-      document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
-      document.getElementById("logInBtn").style.display = "block";
+    function redirectToCart() {
+        if (checkUser == null || checkUser == "null") {
+            window.location = "/Auth/login.html"
+        } else {
+            window.location = "/UserDash/cart.html"
+        }
     }
 
-  });
+    var counter = 0;
+    document.getElementById("hideLogOut").style.display = "none";
+    // const db = firebase.firestore();
+    var docData, userDoc;
 
+    db.collection("Customers").onSnapshot(async(snapshots) => {
 
+        checkUser = window.localStorage.getItem("locLoggedInUser");
 
+        let snapshotDocs = snapshots.docs;
 
+        // var dbref = db.collection('Customers');
+        for (let doc of snapshotDocs) {
 
-  function redirectLogin() {
-    window.location = "/Auth/login.html"
-  }
+            if (checkUser == doc.data().userId) {
 
-  function logOut() {
-    let dbref = db.collection('Customers');
-    // firebase.auth().signOut();
-    dbref.doc(checkUser).update({
-      token: "null"
+                counter++;
 
-    }).then(function () {
-      window.localStorage.removeItem("locLoggedInUser")
-      firebase.auth().signOut();
-      location.reload();
+                userDoc = doc.data();
+                if (userDoc.cart != undefined && userDoc.cart != "undefined") {
+                    document.getElementById("cart-count").innerHTML = userDoc.cart.length;
+                } else {
+                    document.getElementById("cart-count").innerHTML = 0;
+                }
+
+                if (userDoc.UserName == null) {
+                    userDoc.UserName = "User@LOC";
+                }
+
+                if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
+                    userDoc.Image = "../assets/images/userIcon.png"
+                }
+
+                document.getElementById("logInBtn").style.display = "none";
+                document.getElementById("hideLogOut").style.display = "block";
+                document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
+                document.getElementById("userImg").src = userDoc.Image;
+                break;
+            }
+        }
+
+        if (counter == 0) {
+
+            document.getElementById("hideLogOut").style.display = "none";
+            document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
+            document.getElementById("logInBtn").style.display = "block";
+        }
+
     });
-  }
+
+
+
+
+
+    function redirectLogin() {
+        window.location = "/Auth/login.html"
+    }
+
+    function logOut() {
+        let dbref = db.collection('Customers');
+        // firebase.auth().signOut();
+        dbref.doc(checkUser).update({
+            token: "null"
+
+        }).then(function() {
+            window.localStorage.removeItem("locLoggedInUser")
+            firebase.auth().signOut();
+            location.reload();
+        });
+    }
 </script>
 
 
 <style>
-  .drobt1 {
-    transform: translateX(-101%);
-  }
-
-  .drobt2 {
-    transform: translateX(0%);
-  }
+    .drobt1 {
+        transform: translateX(-101%);
+    }
+    
+    .drobt2 {
+        transform: translateX(0%);
+    }
 </style>
 
 
 
 
-</html>
+</html>{ document.getElementById("reminderMessage").style.color = "red" setTimeout(function() { document.getElementById("reminderMessage").style.display = "none" }, 2000) } }
+</script>
+<script src="/Auth/app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+<script>
+    db.collection("offers").onSnapshot(async(snapshots) => {
+
+        let snapshotDocs = snapshots.docs;
+
+        // var dbref = db.collection('Customers');
+        for (let doc of snapshotDocs) {
+            userDoc = doc.data();
+            if (userDoc.isActivated) {
+                document.getElementById("showOffer").src = userDoc.imgUrl;
+            }
+        }
+
+    });
+
+    var checkUser;
+    checkUser = window.localStorage.getItem("locLoggedInUser");
+
+    var timecount = 0;
+
+    function checkifUser(location) {
+        if (checkUser == null || checkUser == "null") {
+            window.location = "/Auth/login.html"
+        } else {
+
+            window.location = location
+        }
+    }
+
+    function redirectToCart() {
+        if (checkUser == null || checkUser == "null") {
+            window.location = "/Auth/login.html"
+        } else {
+            window.location = "/UserDash/cart.html"
+        }
+    }
+
+    var counter = 0;
+    document.getElementById("hideLogOut").style.display = "none";
+    // const db = firebase.firestore();
+    var docData, userDoc;
+
+    db.collection("Customers").onSnapshot(async(snapshots) => {
+
+        checkUser = window.localStorage.getItem("locLoggedInUser");
+
+        let snapshotDocs = snapshots.docs;
+
+        // var dbref = db.collection('Customers');
+        for (let doc of snapshotDocs) {
+
+            if (checkUser == doc.data().userId) {
+
+                counter++;
+
+                userDoc = doc.data();
+                if (userDoc.cart != undefined && userDoc.cart != "undefined") {
+                    document.getElementById("cart-count").innerHTML = userDoc.cart.length;
+                } else {
+                    document.getElementById("cart-count").innerHTML = 0;
+                }
+
+                if (userDoc.UserName == null) {
+                    userDoc.UserName = "User@LOC";
+                }
+
+                if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
+                    userDoc.Image = "../assets/images/userIcon.png"
+                }
+
+                document.getElementById("logInBtn").style.display = "none";
+                document.getElementById("hideLogOut").style.display = "block";
+                document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
+                document.getElementById("userImg").src = userDoc.Image;
+                break;
+            }
+        }
+
+        if (counter == 0) {
+
+            document.getElementById("hideLogOut").style.display = "none";
+            document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
+            document.getElementById("logInBtn").style.display = "block";
+        }
+
+    });
+
+
+
+
+
+    function redirectLogin() {
+        window.location = "/Auth/login.html"
+    }
+
+    function logOut() {
+        let dbref = db.collection('Customers');
+        // firebase.auth().signOut();
+        dbref.doc(checkUser).update({
+            token: "null"
+
+        }).then(function() {
+            window.localStorage.removeItem("locLoggedInUser")
+            firebase.auth().signOut();
+            location.reload();
+        });
+    }
+</script>
+
+
+<style>
+    .drobt1 {
+        transform: translateX(-101%);
+    }
+    
+    .drobt2 {
+        transform: translateX(0%);
+    }
+</style>
+
+
+
+
+</html>{
