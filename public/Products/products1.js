@@ -158,29 +158,6 @@ const extractAllCat = async () => {
 };
 
 const allCatProds = async () => {
-  // await db
-  //   .collection("categories")
-  //   .get()
-  //   .then(async (snapshots) => {
-  //     let snapshotsDocs = snapshots.docs;
-  //     for (let doc of snapshotsDocs) {
-  //       let docId = doc.id;
-  //       // console.log(docId);
-  //       await db
-  //         .collection(docId)
-  //         .get()
-  //         .then(async (prods) => {
-  //           let pdocs = prods.docs;
-  //           for (let pdoc of pdocs) {
-  //             allProductsArr.push({
-  //               prodId: pdoc.id,
-  //               prodData: pdoc.data(),
-  //               catId: docId,
-  //             });
-  //           }
-  //         });
-  //     }
-  //   });
   let locProds = JSON.parse(sessionStorage.getItem("locProds"));
   allProductsArr = locProds;
 };
@@ -271,9 +248,7 @@ const displayProds = async (arrProds) => {
     } else {
       banner = "";
     }
-    let dis = Math.round(
-      100 - (+p.prodData.totalPrice / +p.prodData.mrp) * 100
-    );
+    
 
     let starsDiv = `
     <span class="fa fa-star"></span>
@@ -287,6 +262,12 @@ const displayProds = async (arrProds) => {
     starsDiv = starRating(p.prodData.stars);
     // } else {
     // }
+
+    let previousPriceWithGst = (+p.prodData.mrp * (+p.prodData.gst/100))+ +p.prodData.mrp;
+    previousPriceWithGst = Math.round(previousPriceWithGst);
+    let dis = Math.round(
+      100 - (+p.prodData.totalPrice / previousPriceWithGst) * 100
+    );
     card +=
       `
 			<div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
@@ -324,7 +305,7 @@ const displayProds = async (arrProds) => {
                 ${starsDiv}
               </div>
             </div>       
-            <h4 class="price responsive-price ">₹ ${p.prodData.totalPrice} <del><small>₹ ${p.prodData.mrp}</small></del><small style="color:green;font-weight:700;padding:2px">(${dis} % OFF)</small></h4>
+            <h4 class="price responsive-price ">₹ ${p.prodData.totalPrice} <del><small>₹ ${previousPriceWithGst}</small></del><small style="color:green;font-weight:700;padding:2px">(${dis} % OFF)</small></h4>
             <h5 class="name responsive-name">${p.prodData.name}</h5>
           </div>
         </a>
@@ -343,16 +324,20 @@ const displayTopSuggest = async () => {
     .collection("catImgs");
   let card = "";
   dbCatImgRef.get().then(async (catImgSnaps) => {
-    let catImgSnapsDocs = catImgSnaps.docs;
+    let catImgSnapsDocs = await catImgSnaps.docs;
+    let randTopSuggest = await arrayRandom(catImgSnapsDocs);
     let red = Math.round(Math.random() * (244));
     let yellow = Math.round(Math.random() * (244));
     let blue = Math.round(Math.random() * (244));
     document.querySelector('#outer-top-suggestDiv').style.background = `rgb(${red}, ${yellow}, ${blue})`;
     document.querySelector('#inner-top-suggestDiv').style.background = `rgba(${red-50}, ${yellow-50}, ${blue-50}, 0.4)`;
-    for (let cimg of catImgSnapsDocs) {
-      
+    let c = 0;
+    for (let cimg of randTopSuggest) {
       if (cimg.id !== CAT) {
-        
+        c++;
+        if(c > 6) {
+          break;
+        }
         let cimgData = cimg.data();
         // console.log(cimgData);
         let rand =
