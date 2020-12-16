@@ -35,3 +35,16 @@ Please upgrade using npm install --save firebase-functions@latest in your functi
 [debug] [2020-12-16T08:41:30.984Z] > refreshing access token with scopes: []
 [debug] [2020-12-16T08:41:30.984Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
  <request body omitted>
+[debug] [2020-12-16T10:52:45.049Z] ----------------------------------------------------------------------
+[debug] [2020-12-16T10:52:45.056Z] Command:       E:\Program Files\nodejs\node.exe C:\Users\Bhagat Singh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2020-12-16T10:52:45.056Z] CLI Version:   8.18.1
+[debug] [2020-12-16T10:52:45.057Z] Platform:      win32
+[debug] [2020-12-16T10:52:45.057Z] Node Version:  v12.16.2
+[debug] [2020-12-16T10:52:45.059Z] Time:          Wed Dec 16 2020 16:22:45 GMT+0530 (India Standard Time)
+[debug] [2020-12-16T10:52:45.060Z] ----------------------------------------------------------------------
+[debug] [2020-12-16T10:52:45.060Z] 
+[debug] [2020-12-16T10:52:45.084Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-16T10:52:45.086Z] > authorizing via signed-in user
+[debug] [2020-12-16T10:52:45.086Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-12-16T10:52:45.095Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lake-of-cakes:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
