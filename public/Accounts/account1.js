@@ -1,4 +1,4 @@
-console.log("account1.js");
+// console.log("account1.js");
 const db = firebase.firestore();
 
 let ALL_ORDERS = [];

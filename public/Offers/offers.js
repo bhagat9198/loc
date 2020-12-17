@@ -25,7 +25,7 @@ const displayRows = async (docs) => {
   let tRows = "";
   for (let doc of docs) {
     let docData = doc.data();
-    console.log(docData);
+    // console.log(docData);
     let docId = doc.id;
     let status=docData.isActivated;
     var dispVal1,dispVal2,dataval1,dataval2;
@@ -67,7 +67,7 @@ const displayRows = async (docs) => {
       </td>
     </tr>`;
   }
-  console.log(tRows);
+  // console.log(tRows);
   sliderTbodyHTML.innerHTML = tRows;
 };
 function deleteSlider(id){

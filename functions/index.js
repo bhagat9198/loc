@@ -55,7 +55,6 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
     prodRef = admin.firestore().collection(p.cat).doc(p.prodId);
     await prodRef.get().then((doc) => {
       let docData = doc.data();
-      docData.sno = docData.sno;
       p.pdata = docData;
     }).catch((error) => {
       console.log(error);
@@ -139,6 +138,8 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
     let gstPrice = 0;
     let gstPercent = 0;
     p.name = p.pdata.name;
+    p.sno = p.pdata.sno;
+    p.img = p.pdata.mainImgUrl;
     gstPercent = +p.pdata.gst;
     gstPercentArr.push(+gstPercent);
     gstPrice = +basicPrices[counter] * (+gstPercent / 100);
@@ -160,6 +161,8 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
           .then((addonDoc) => {
             let addonData = addonDoc.data();
             addon.name = addonData.name;
+            addon.sno = addonData.sno;
+            addon.img = addonData.imgUrl;
             addon.gst = addonData.gst;
             addon.basicPrice = addonData.sp;
             addonCost += Number(addonData.price) * Number(addon.qty);
@@ -230,6 +233,19 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
 }
 
 exports.checkoutReq = functions.https.onCall(async (data, context) => {
+  let staus = false;
+  await admin.firestore().collection("miscellaneous").doc(siteStatus).get().then(doc => {
+    let docData = doc.data();
+    staus = docData.status;
+  })
+
+  if (!staus) {
+    throw new functions.https.HttpsError(
+      "unauthenticated",
+      "only authenticated users can add requests"
+    );
+  }
+
   if (!context.auth) {
     throw new functions.https.HttpsError(
       "unauthenticated",
@@ -280,6 +296,19 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
 });
 
 exports.payemnetStatus = functions.https.onCall(async (data, context) => {
+  let staus = false;
+  await admin.firestore().collection("miscellaneous").doc(siteStatus).get().then(doc => {
+    let docData = doc.data();
+    staus = docData.status;
+  })
+
+  if (!staus) {
+    throw new functions.https.HttpsError(
+      "unauthenticated",
+      "only authenticated users can add requests"
+    );
+  }
+  
   if (!context.auth) {
     throw new functions.https.HttpsError(
       'unauthenticated',

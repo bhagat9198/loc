@@ -14,12 +14,14 @@ const addAddon = (event) => {
   event.preventDefault();
 
   const addonName = addonForm["addon-name"].value;
+  const addonSno = addonForm["addon-sno"].value;
   const addonSP = addonForm["addon-sp"].value;
   const addonGST = addonForm["addon-gst"].value;
   const addonTotalPrice = addonForm["addon-total-price"].value;
   const addonImgName = addonImg.name;
   const wholeAddonData = {
     name: addonName,
+    sno: addonSno,
     sp: addonSP,
     gst: addonGST,
     price: addonTotalPrice,

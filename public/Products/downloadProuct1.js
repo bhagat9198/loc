@@ -75,7 +75,8 @@ getParams(window.location.href).then(async (response) => {
         img: docData.mainImgUrl,
         cat: cat,
         subCat: subCat,
-        childCat: childCat
+        childCat: childCat,
+        gst: +docData.gst
       };
       if (docData.isCake) {
         CAKE = true;
@@ -99,7 +100,7 @@ const displayTableHeader = () => {
     <th class="pname" scope="col">Name</th>
     <th scope="col">Category</th>
     <th scope="col">Image</th>
-    <th scope="col">Weight-Price</th>
+    <th scope="col" class="prod-price">Weight-Price</th>
   </tr>
   `;
   } else {
@@ -109,7 +110,7 @@ const displayTableHeader = () => {
     <th scope="col">Name</th>
     <th scope="col">Category</th>
     <th scope="col">Image</th>
-    <th scope="col">Price</th>
+    <th scope="col" class="prod-price">Price</th>
   </tr>
   `;
   }
@@ -127,32 +128,33 @@ const displayTableBody = () => {
         let weightNum;
         let weightPrice;
         if (w.cakeWeight === "half") {
-          weightNum = `1/2 KG`;
-          weightPrice = w.weightPrice;
+          weightNum = `<b>1/2</b> KG`;
+          weightPrice = (+w.weightPrice) + (+w.weightPrice * (p.gst/100));
         } else if (w.cakeWeight === "one") {
-          weightNum = `1 KG`;
-          weightPrice = w.weightPrice;
+          weightNum = `<b>1</b> KG`;
+          weightPrice = (+w.weightPrice) + (+w.weightPrice * (p.gst/100));
         } else if (w.cakeWeight === "oneHalf") {
-          weightNum = `1.5 KG`;
-          weightPrice = w.weightPrice;
+          weightNum = `<b>1.5</b> KG`;
+          weightPrice = (+w.weightPrice) + (+w.weightPrice * (p.gst/100));
         } else if (w.cakeWeight === "two") {
-          weightNum = `2 KG`;
-          weightPrice = w.weightPrice;
+          weightNum = `<b>2</b> KG`;
+          weightPrice = (+w.weightPrice) + (+w.weightPrice * (p.gst/100));
         } else if (w.cakeWeight === "three") {
-          weightNum = `3 KG`;
-          weightPrice = w.weightPrice;
+          weightNum = `<b>3</b> KG`;
+          weightPrice = (+w.weightPrice) + (+w.weightPrice * (p.gst/100));
         } else if (w.cakeWeight === "four") {
-          weightNum = `4 KG`;
-          weightPrice = w.weightPrice;
+          weightNum = `<b>4</b> KG`;
+          weightPrice = (+w.weightPrice) + (+w.weightPrice * (p.gst/100));
         } else if (w.cakeWeight === "five") {
-          weightNum = `5 KG`;
-          weightPrice = w.weightPrice;
+          weightNum = `<b>5</b> KG`;
+          weightPrice = (+w.weightPrice) + (+w.weightPrice * (p.gst/100));
         } else if (w.cakeWeight === "six") {
-          weightNum = `6 KG`;
-          weightPrice = w.weightPrice;
+          weightNum = `<b>6</b> KG`;
+          weightPrice = (+w.weightPrice) + (+w.weightPrice * (p.gst/100));
         } else {
           weightNum = 0;
         }
+        weightPrice = Math.round(weightPrice);
         weightsPrices += `
         <div style="display: flex">
           <span class="label">${weightNum}</span> <span class="divider">:</span> <span class="info"> ₹ ${weightPrice}</span>
