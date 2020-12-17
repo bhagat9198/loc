@@ -984,6 +984,17 @@ const form4 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = `${doc.id}`;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType;
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd;
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart;
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
+
             break;
           } else {
             ui.id = "na";
@@ -1370,6 +1381,16 @@ const form6 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType;
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd;
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart;
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -1460,6 +1481,16 @@ const form7 = async (e) => {
           let docData = doc.data();
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType;
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd;
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart;
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -1724,8 +1755,6 @@ const form10 = async (e) => {
   const f4Id4 = fForm10HTML["f10-id4"].value;
   const f4Id5 = fForm10HTML["f10-id5"].value;
   const f4Id6 = fForm10HTML["f10-id6"].value;
-  const f4Id7 = fForm10HTML["f10-id7"].value;
-  const f4Id8 = fForm10HTML["f10-id8"].value;
 
   const f4Cat1 = fForm10HTML["f10-cat1"].value;
   const f4Cat2 = fForm10HTML["f10-cat2"].value;
@@ -1733,8 +1762,7 @@ const form10 = async (e) => {
   const f4Cat4 = fForm10HTML["f10-cat4"].value;
   const f4Cat5 = fForm10HTML["f10-cat5"].value;
   const f4Cat6 = fForm10HTML["f10-cat6"].value;
-  const f4Cat7 = fForm10HTML["f10-cat7"].value;
-  const f4Cat8 = fForm10HTML["f10-cat8"].value;
+
 
   let userInputs = [
     { sno: f4Id1, cat: f4Cat1 },
@@ -1743,8 +1771,7 @@ const form10 = async (e) => {
     { sno: f4Id4, cat: f4Cat4 },
     { sno: f4Id5, cat: f4Cat5 },
     { sno: f4Id6, cat: f4Cat6 },
-    { sno: f4Id7, cat: f4Cat7 },
-    { sno: f4Id8, cat: f4Cat8 },
+
   ];
 
   // console.log(userInputs);
@@ -1762,6 +1789,16 @@ const form10 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = `${doc.id}`;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType;
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd;
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart;
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -1802,16 +1839,16 @@ db.collection("sections")
     fForm10HTML["f10-cat4"].value = docData.prodIds[3].cat;
     fForm10HTML["f10-cat5"].value = docData.prodIds[4].cat;
     fForm10HTML["f10-cat6"].value = docData.prodIds[5].cat;
-    fForm10HTML["f10-cat7"].value = docData.prodIds[6].cat;
-    fForm10HTML["f10-cat8"].value = docData.prodIds[7].cat;
+    // fForm10HTML["f10-cat7"].value = docData.prodIds[6].cat;
+    // fForm10HTML["f10-cat8"].value = docData.prodIds[7].cat;
     fForm10HTML["f10-id1"].value = docData.prodIds[0].sno;
     fForm10HTML["f10-id2"].value = docData.prodIds[1].sno;
     fForm10HTML["f10-id3"].value = docData.prodIds[2].sno;
     fForm10HTML["f10-id4"].value = docData.prodIds[3].sno;
     fForm10HTML["f10-id5"].value = docData.prodIds[4].sno;
     fForm10HTML["f10-id6"].value = docData.prodIds[5].sno;
-    fForm10HTML["f10-id7"].value = docData.prodIds[6].sno;
-    fForm10HTML["f10-id8"].value = docData.prodIds[7].sno;
+    // fForm10HTML["f10-id7"].value = docData.prodIds[6].sno;
+    // fForm10HTML["f10-id8"].value = docData.prodIds[7].sno;
   });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
