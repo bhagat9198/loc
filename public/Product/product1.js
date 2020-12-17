@@ -26,7 +26,7 @@ getParams(window.location.href).then(async (response) => {
   // console.log(PRODUCT_ID, CATEGORY_ID);
   if (PRODUCT_ID && CATEGORY_ID) {
     PROD_DETAILS = await extractProdDetails();
-    console.log(PROD_DETAILS);
+    // console.log(PROD_DETAILS);
     displayProduct(PROD_DETAILS);
     displaySuggestions();
     displayReviews();
@@ -856,14 +856,19 @@ const prodWithAddonsHTML = document.querySelector("#prod_with_addons");
 let userId;
 let userRef;
 user = localStorage.getItem("locLoggedInUser");
+console.log(user);
+// return;
 const checkAuth = async () => {
+  console.log('checkAuth');
   let userStatus = false;
   if (!user || user == null || user == "null") {
     // window.location.href = "/Auth/login.html";
   } else {
     userStatus = true;
+    let uid = user;
+    console.log(uid);
     // userId = localStorage.getItem("locLoggedInUser");
-    userRef = await db.collection("Customers").doc(userId);
+    userRef = await db.collection("Customers").doc(uid);
   }
   console.log(userStatus);
   return userStatus;
@@ -878,9 +883,13 @@ const buyProd = async (e) => {
   });
 
   let uStatus = await checkAuth();
+  console.log(uStatus);
   const orderId = Math.random();
+  console.log(uStatus, 'sdg');
   if (uStatus) {
+    console.log('aaa', userRef);
     await userRef.get().then(async (doc) => {
+      console.log(doc.id);
       let personalizedGiftImgs = [];
       if (personalizedGift) {
         let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
@@ -1002,6 +1011,7 @@ const buyProd = async (e) => {
       }
       await userRef.update(docData);
     });
+    window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
   } else {
     let personalizedGiftImgs = [];
     if (personalizedGift) {
@@ -1074,7 +1084,7 @@ const buyProd = async (e) => {
     await sessionStorage.setItem('buyNowProd', JSON.stringify(buyNowData));
     window.location.href = "../Auth/login.html";
   }
-  window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
+  
 };
 
 prodWithAddonsHTML.addEventListener("click", buyProd);

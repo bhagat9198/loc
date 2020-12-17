@@ -317,8 +317,8 @@ if (localStorage.getItem("locLoggedInUser")) {
               .get()
               .then((pDoc) => {
                 let pData = pDoc.data();
-                console.log(pData);
-                cartModalProds += `
+                if (pData) {
+                  cartModalProds += `
                 <div class="dropdownmenu-wrapper">
                 <ul class="dropdown-cart-products">
                   <li class="product cremove3461">
@@ -341,6 +341,7 @@ if (localStorage.getItem("locLoggedInUser")) {
                 </ul>
                 </div>
                 `;
+                }
               });
           }
           cartModalProds += `
@@ -398,10 +399,10 @@ const searchByUserInputBtn = (event) => {
 };
 var checkUser2 = window.localStorage.getItem("locLoggedInUser");
 
-if(checkUser2 && checkUser2!="null"){
-  document.getElementById("logoutMobile").style.display="block"
-  document.getElementById("loginMobile").style.display="none"
-}else{
-  document.getElementById("logoutMobile").style.display="none"
-  document.getElementById("loginMobile").style.display="block"
+if (checkUser2 && checkUser2 != "null") {
+  document.getElementById("logoutMobile").style.display = "block";
+  document.getElementById("loginMobile").style.display = "none";
+} else {
+  document.getElementById("logoutMobile").style.display = "none";
+  document.getElementById("loginMobile").style.display = "block";
 }

@@ -218,9 +218,10 @@ firebase.auth().onAuthStateChanged(function(user) {
     
       let snapshotDocs = snapshots.docs;
       var dbref = db.collection('Customers');
+      let USER_DATA;
       for (let doc of snapshotDocs) {
-       
         let docData = doc.data();
+        USER_DATA = docData;
         if (docData.Email == user.email) {
           await dbref.doc(doc.id).update({
             UserName: user.displayName,
@@ -229,8 +230,6 @@ firebase.auth().onAuthStateChanged(function(user) {
             UserAuthID: user.uid,
             userId:doc.id,
             token:btoa(user.email)
-            
-            
           });
           window.localStorage.setItem("locLoggedInUser",doc.id)
           counter++;
@@ -241,7 +240,34 @@ firebase.auth().onAuthStateChanged(function(user) {
             if(goTo=="index.html"){
               window.location="/index.html"
             }else{
-              window.location=goTo;
+              alert('sdfgh')
+              let buyNowProd = window.sessionStorage.getItem('buyNowProd');
+              if(buyNowProd) {
+                alert(doc.id)
+                buyNowProd = JSON.parse(buyNowProd);
+                if(USER_DATA.orders) {
+                  USER_DATA.orders.push(buyNowProd);
+                  console.log(USER_DATA.orders);
+                } else {
+                  let orders = [];
+                  orders.push(buyNowProd);
+                  console.log(orders);
+                  USER_DATA.orders = orders;
+                }
+                console.log(USER_DATA);
+                await dbref.doc(doc.id).update(USER_DATA);
+                let orderId = buyNowProd.orderId;
+                alert('uopdated', orderId);
+                await sessionStorage.removeItem("buyNowProd");
+                console.log(orderId);
+                console.log(`/Payment/checkout.html?checkout=${orderId}`);
+                alert('uopdated11', orderId);
+                window.location = `/Payment/checkout.html?checkout=${orderId}`;
+                // console.log(doc.data());
+                // let userRef = await db.collection("Customers").doc(userId);
+
+              }
+              // window.location=goTo;
             }
         
           }
