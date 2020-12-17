@@ -32,6 +32,11 @@ getParams(window.location.href).then(async (response) => {
   TAG = response.tag;
   USER = response.user;
 
+  let locProds = JSON.parse(localStorage.getItem("locProds"));
+  if (!locProds) {
+    await settingLocalStorage();
+  }
+
   if (!USER) {
     await extractRelvantProds();
   } else {
@@ -52,85 +57,121 @@ getParams(window.location.href).then(async (response) => {
 });
 
 const extractRelvantProds = async () => {
-  let dbRef;
+  // let dbRef;
   if (CAT) {
     // console.log(CAT);
-    dbRef = db.collection(CAT);
+    // dbRef = db.collection(CAT);
     if (SUB) {
       // console.log(SUB);
       if (CHILD) {
         // console.log(CHILD);
-        await dbRef.get().then((docs) => {
-          let docDocs = docs.docs;
-          docDocs.map((el) => {
-            let elData = el.data();
-            if (elData.wholeSubCategory.split("__")[1] === SUB) {
-              if (elData.wholeChildCategory.split("__")[2] === CHILD) {
-                allProductsArr.push({
-                  prodId: el.id,
-                  prodData: elData,
-                  catId: CAT,
-                });
-              }
+        // await dbRef.get().then((docs) => {
+        //   let docDocs = docs.docs;
+        //   docDocs.map((el) => {
+        //     let elData = el.data();
+        //     if (elData.wholeSubCategory.split("__")[1] === SUB) {
+        //       if (elData.wholeChildCategory.split("__")[2] === CHILD) {
+        //         allProductsArr.push({
+        //           prodId: el.id,
+        //           prodData: elData,
+        //           catId: CAT,
+        //         });
+        //       }
+        //     }
+        //   });
+        // });
+
+        let locProds = JSON.parse(localStorage.getItem("locProds"));
+        if (!locProds) {
+          await settingLocalStorage();
+        }
+        locProds.map((p) => {
+          if (CAT == p.catId) {
+            if (CHILD == p.prodData.childcatId) {
+              allProductsArr.push(p);
             }
-          });
+          }
         });
+
         // console.log(allProductsArr);
         return;
       } else {
         allProductsArr = [];
-        await dbRef.get().then((docs) => {
-          let docDocs = docs.docs;
-          docDocs.map((el) => {
-            let elData = el.data();
-            if (elData.wholeSubCategory.split("__")[1] === SUB) {
-              allProductsArr.push({
-                prodId: el.id,
-                prodData: elData,
-                catId: CAT,
-              });
+        // await dbRef.get().then((docs) => {
+        //   let docDocs = docs.docs;
+        //   docDocs.map((el) => {
+        //     let elData = el.data();
+        //     if (elData.wholeSubCategory.split("__")[1] === SUB) {
+        //       allProductsArr.push({
+        //         prodId: el.id,
+        //         prodData: elData,
+        //         catId: CAT,
+        //       });
+        //     }
+        //   });
+        // });
+
+        let locProds = JSON.parse(localStorage.getItem("locProds"));
+        if (!locProds) {
+          await settingLocalStorage();
+        }
+        locProds.map((p) => {
+          if (CAT == p.catId) {
+            if (SUB == p.prodData.subcatId) {
+              allProductsArr.push(p);
             }
-          });
+          }
         });
         // console.log(allProductsArr);
         return;
       }
     } else {
       allProductsArr = [];
-      await dbRef.get().then((cateogiers) => {
-        let cateogiersDocs = cateogiers.docs;
-        cateogiersDocs.map((el) => {
-          let elDoc = el.data();
-          if (TAG) {
-            // console.log(elDoc);
-            if (elDoc.tags.includes(TAG)) {
-              // console.log(elDoc.tags);
-              allProductsArr.push({
-                prodId: elDoc.id,
-                prodData: elDoc,
-                catId: CAT,
-              });
-            }
-          } else {
-            allProductsArr.push({
-              prodId: el.id,
-              prodData: el.data(),
-              catId: CAT,
-            });
-          }
-        });
+      // await dbRef.get().then((cateogiers) => {
+      //   let cateogiersDocs = cateogiers.docs;
+      //   cateogiersDocs.map((el) => {
+      //     let elDoc = el.data();
+      //     if (TAG) {
+      //       // console.log(elDoc);
+      //       if (elDoc.tags.includes(TAG)) {
+      //         // console.log(elDoc.tags);
+      //         allProductsArr.push({
+      //           prodId: elDoc.id,
+      //           prodData: elDoc,
+      //           catId: CAT,
+      //         });
+      //       }
+      //     } else {
+      //       allProductsArr.push({
+      //         prodId: el.id,
+      //         prodData: el.data(),
+      //         catId: CAT,
+      //       });
+      //     }
+      //   });
+      // });
+      let locProds = JSON.parse(localStorage.getItem("locProds"));
+      if (!locProds) {
+        await settingLocalStorage();
+      }
+      locProds.map((p) => {
+        if (CAT == p.catId) {
+          allProductsArr.push(p);
+          // console.log(p);
+          prodHeading = p.prodData.cat;
+        }
       });
       // console.log(CAT);
-      await db
-        .collection("categories")
-        .doc(CAT)
-        .get()
-        .then((d) => {
-          dd = d.data();
-          // console.log(dd);
-          // console.log(dd.name);
-          prodHeading = dd.name;
-        });
+      // await db
+      //   .collection("categories")
+      //   .doc(CAT)
+      //   .get()
+      //   .then((d) => {
+      //     dd = d.data();
+      //     // console.log(dd);
+      //     // console.log(dd.name);
+      //     prodHeading = dd.name;
+      //   });
       productHeadingHTML.innerHTML = prodHeading;
     }
     return;
@@ -145,20 +186,28 @@ const extractRelvantProds = async () => {
 let allCategories = [];
 
 const extractAllCat = async () => {
-  await db
-    .collection("categories")
-    .get()
-    .then((snapshots) => {
-      let snapDocs = snapshots.docs;
-      snapDocs.map((snap) => {
-        allCategories.push(snap.id);
-      });
-    });
+  // await db
+  //   .collection("categories")
+  //   .get()
+  //   .then((snapshots) => {
+  //     let snapDocs = snapshots.docs;
+  //     snapDocs.map((snap) => {
+  //       allCategories.push(snap.id);
+  //     });
+  //   });
+
+  let locProds = JSON.parse(localStorage.getItem("locProds"));
+  if (!locProds) {
+    await settingLocalStorage();
+  }
+  locProds.map((p) => {
+    allProductsArr.push(p);
+  });
 };
 
 const allCatProds = async () => {
   let locProds = JSON.parse(localStorage.getItem("locProds"));
-  if(!locProds) {
+  if (!locProds) {
     await settingLocalStorage();
   }
   allProductsArr = locProds;
@@ -346,18 +395,29 @@ const displayTopSuggest = async () => {
         }
         let cimgData = cimg.data();
         // console.log(cimgData);
-        let rand =
-          Math.floor(Math.random() * (cimgData.imgs.length - 1 - 0 + 1)) - 0;
+        let rand = Math.floor(Math.random() * cimgData.imgs.length);
         // console.log(rand);
         // console.log(cimgData.imgs);
-        await db
-          .collection("categories")
-          .doc(cimg.id)
-          .get()
-          .then((catDetail) => {
-            let catDetailData = catDetail.data();
-            // console.log(catDetailData);
-            card += `
+        // await db
+        //   .collection("categories")
+        //   .doc(cimg.id)
+        //   .get()
+        //   .then((catDetail) => {
+        //     let catDetailData = catDetail.data();
+        let locCats = JSON.parse(localStorage.getItem("locCats"));
+        // if (!locCats) {
+        //   await settingLocalStorage();
+        // }
+        let cname;
+        for (let c of locCats) {
+          if (c.id == cimg.id) {
+            cname = c.data.name;
+            break;
+          }
+        }
+
+        // console.log(catDetailData);
+        card += `
         <div class="col-lg-2 ">
         <a href="./products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important;width:150px;height:200px;object-fit:cover ">
           <div class="" >
@@ -365,12 +425,12 @@ const displayTopSuggest = async () => {
           </div>
           <div>
             <div class="info" style="height: 20px !important;border-radius:50px;width:100%; margin-left:auto;margin-right:auto;display:block;"> 
-            <h5 class="name responsive-name" >${catDetailData.name}</h5>
+            <h5 class="name responsive-name" >${cname}</h5>
           </div>
         </div>
         </a>
       </div>`;
-          });
+        // });
         topSuggestionHTML.innerHTML = card;
       }
       // console.log(card);
@@ -381,10 +441,12 @@ const displayTopSuggest = async () => {
 
 const settingLocalStorage = () => {
   let AllProds = [];
+  let AllLocCats = [];
   db.collection("categories").onSnapshot(async (catSnaps) => {
     let catSnapsDocs = catSnaps.docs;
     for (let catDoc of catSnapsDocs) {
       let catData = catDoc.data();
+      AllLocCats.push({id: catDoc.id, data: catData});
       await db
         .collection(catDoc.id)
         .get()
@@ -405,6 +467,9 @@ const settingLocalStorage = () => {
                 bannerType: pData.bannerType,
                 bannerTypeColorEnd: pData.bannerTypeColorEnd,
                 bannerTypeColorStart: pData.bannerTypeColorStart,
+                catId: pData.wholeCategory.split("__")[0],
+                subcatId: pData.wholeSubCategory.split("__")[1],
+                childcatId: pData.wholeChildCategory.split("__")[2],
               },
               catId: catDoc.id,
             });
@@ -413,6 +478,7 @@ const settingLocalStorage = () => {
         });
     }
     localStorage.setItem("locProds", JSON.stringify(AllProds));
+    localStorage.setItem("locCats", JSON.stringify(AllLocCats));
   });
 };
 

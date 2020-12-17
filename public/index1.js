@@ -880,8 +880,6 @@ db.collection("sections")
         `"
                 >
             </picture>
-  
-            
           </a>
         </div>
           `;
@@ -1070,10 +1068,12 @@ db.collection("sections")
 
 let LOC = {};
 let AllProds = [];
+let AllLocCats = [];
 db.collection("categories").onSnapshot(async (catSnaps) => {
   let catSnapsDocs = catSnaps.docs;
   for (let catDoc of catSnapsDocs) {
     let catData = catDoc.data();
+    AllLocCats.push({id: catDoc.id, data: catData});
     await db
       .collection(catDoc.id)
       .get()
@@ -1094,6 +1094,9 @@ db.collection("categories").onSnapshot(async (catSnaps) => {
               bannerType: pData.bannerType,
               bannerTypeColorEnd: pData.bannerTypeColorEnd,
               bannerTypeColorStart: pData.bannerTypeColorStart,
+              catId: pData.wholeCategory.split('__')[0],
+              subcatId: pData.wholeSubCategory.split('__')[1],
+              childcatId: pData.wholeChildCategory.split('__')[2],
             },
             catId: catDoc.id,
           });
@@ -1102,4 +1105,5 @@ db.collection("categories").onSnapshot(async (catSnaps) => {
       });
   }
   localStorage.setItem("locProds", JSON.stringify(AllProds));
+  localStorage.setItem("locCats", JSON.stringify(AllLocCats));
 });
