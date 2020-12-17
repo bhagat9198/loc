@@ -66,7 +66,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input type="text" class="input-field" placeholder="Enter Product Name" name="product-name">
+                            <input type="text" class="input-field" placeholder="Enter Product Name" required name="product-name">
                           </div>
                         </div>
 
@@ -100,7 +100,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <input type="text" class="input-field" placeholder="Enter Product Sku" name="product-sno"
+                            <input type="text" class="input-field" placeholder="Enter Product Sku" required name="product-sno"
                               value="LOC">
                           </div>
                         </div>
@@ -112,7 +112,7 @@
                             </div>
                           </div>
                           <div class="col-lg-12">
-                            <select id="product-category" name="product-category">
+                            <select id="product-category" required name="product-category">
                               <!-- <option selected disabled value="">Select Category*</option>
                               <option value="Cake">Cake</option>
                               <option value="Flower">Flower</option> -->
@@ -755,7 +755,7 @@
                               <div class="panel panel-body">
                                 <div class="span4  text-center" id="landscape"
                                   style="width: 100%; height: 285px; border: 1px dashed #ddd; background: #f1f1f1;border-radius: 5px;">
-                                  <input type='file' accept="image/*" name="product-main-image" id="product-main-image"
+                                  <input type='file' required accept="image/*" name="product-main-image" id="product-main-image"
                                     onchange="readURL(this);" />
                                   <img id="putImage" src="../assets/images/logo.png" alt="your image" />
                                 </div>

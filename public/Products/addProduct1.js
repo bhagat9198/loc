@@ -477,7 +477,6 @@ const addProductForm = (event) => {
         await docRef.update(docData);
       });
 
-      // addProduct.reset();
       addProduct.querySelector(".alert-success").textContent = "Product Saved";
       addProduct.querySelector(".alert-success").style.display = "block";
    
@@ -485,7 +484,8 @@ const addProductForm = (event) => {
       document.getElementById("successProduct").style.backgroundColor ="rgb(89, 151, 89)";
       document.getElementById("successProduct").style.display = "block";
       
-
+      addProduct.reset();
+      document.querySelector('#putImage').src = '../assets/images/logo.png';
       setTimeout(() => {
         addProduct.querySelector(".alert-success").style.display = "none";
         document.getElementById("successProduct").style.display = "none";
