@@ -3,14 +3,16 @@
 const db = firebase.firestore();
 const storageService = firebase.storage();
 
-db.collection('miscellaneous').doc('siteStatus').onSnapshot(siteDoc => {
-  let siteData = siteDoc.data();
-  // console.log(siteData);
-  if(!siteData.status) {
-    document.querySelector('#error-text').innerHTML = siteData.note;
-    $('.bd-example-modal-lg').modal('show');
-  }
-})
+db.collection("miscellaneous")
+  .doc("siteStatus")
+  .onSnapshot((siteDoc) => {
+    let siteData = siteDoc.data();
+    // console.log(siteData);
+    if (!siteData.status) {
+      document.querySelector("#error-text").innerHTML = siteData.note;
+      $(".bd-example-modal-lg").modal("show");
+    }
+  });
 
 const introCarouselHTML = document.querySelector(".intro-carousel");
 
@@ -34,7 +36,7 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   for (let doc of snapshotDocs) {
     let docData = doc.data();
     // console.log(docData);
-    if (docData.isActivated == 'true') {
+    if (docData.isActivated == "true") {
       // console.log('aaa');
       // console.log(docData);
       if (docData.daylight) {
@@ -369,42 +371,44 @@ db.collection("sections")
     let row = "";
     fixedSection4Heading.innerHTML = docData["title"];
     for (let card of docData.prodIds) {
-      let docRef = db
-        .collection(card.cat.toString().split("__")[0])
-        .doc(card.id.toString());
-      await docRef.get().then((prod) => {
-        let prodData = prod.data();
-        if (!prodData) {
-          return;
-        }
-        let dis = 100 - (+prodData.totalPrice / +prodData.mrp) * 100;
+      // let docRef = db
+      //   .collection(card.cat.toString().split("__")[0])
+      //   .doc(card.id.toString());
+      // await docRef.get().then((prod) => {
+      //   let prodData = prod.data();
+      if (card.id === "na") {
+        continue;
+      } else {
+        let mrp = Math.round(+card.mrp + +card.mrp * (+card.gst / 100));
+        let dis = 100 - (+card.totalPrice / mrp) * 100;
         dis = Math.round(dis);
 
         row += `
-          <a href="./Product/product.html?prod=${prod.id}&&cat=${
-          prodData.wholeCategory.split("__")[0]
+          <a href="./Product/product.html?prod=${card.id}&&cat=${
+          card.cat.split("__")[0]
         }" class="item">
             <div class="item-img">
-              <img class="img-fluid" src="${prodData.mainImgUrl}" >
+              <img class="img-fluid" src="${card.mainImgUrl}" >
             </div>
             
               <div class="info">
                 <div class="stars">
                   <h5 class="contactless"> </h5>
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <del><small>₹${
-          prodData.mrp
-        }</small></del><small style="color:green">&nbsp;(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${
+                  card.totalPrice
+                } <del><small>₹${mrp}</small></del><small style="color:green">&nbsp;(${dis}% OFF)</small></h4>
+                <h5 class="name">${card.name}</h5>
               </div>
           
           </div>
           </a>
       
           `;
-      });
-      // }
+      }
+      // });
     }
+    // }
     fixedSection4Row.innerHTML = row;
     var $trending_slider = $(".trending-item-slider");
     $trending_slider.owlCarousel({
@@ -480,8 +484,9 @@ db.collection("sections")
 const fixedSection6Heading = document.querySelector("#fixed-section6-heading");
 const fixedSection6Row = document.querySelector("#fixed-section6-row");
 const fixedSection6ViewAll = document.querySelector("#fixed-section6-viewAll");
-const fixedSection6ViewAllMob = document.querySelector("#fixed-section6-viewAllMob");
-
+const fixedSection6ViewAllMob = document.querySelector(
+  "#fixed-section6-viewAllMob"
+);
 
 db.collection("sections")
   .doc("fixed6")
@@ -491,39 +496,42 @@ db.collection("sections")
     fixedSection6Heading.innerHTML = docData.title;
     let t;
     for (let card of docData.prodIds) {
-      await db
-        .collection(card.cat.split("__")[0])
-        .doc(card.id)
-        .get()
-        .then((prod) => {
-          let prodData = prod.data();
-          if (!prodData) {
-            return;
-          }
-          // console.log(prodData);
-          // console.log(prodData.wholeCategory.split("__")[0]);
-          t = prodData.wholeCategory.split("__")[0];
-          let dis = 100 - (+prodData.totalPrice / +prodData.mrp) * 100;
-          dis = Math.round(dis);
-          row += `
+      // console.log(card);
+      // await db
+      //   .collection(card.cat.split("__")[0])
+      //   .doc(card.id)
+      //   .get()
+      //   .then((prod) => {
+      // let prodData = prod.data();
+      if (card.id === "na") {
+        continue;
+      } else {
+        // console.log(prodData);
+        // console.log(prodData.wholeCategory.split("__")[0]);
+        t = card.cat.split("__")[0];
+        let mrp = Math.round(+card.mrp + +card.mrp * (+card.gst / 100));
+        let dis = 100 - (+card.totalPrice / mrp) * 100;
+        dis = Math.round(dis);
+        row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
-          <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
+          <a href="./Product/product.html?prod=${card.id}&&cat=${t}">
             <div class="item">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}">
+                <img class="img-fluid" src="${card.mainImgUrl}">
               </div>
                 <div class="info">
                   <div class="stars">
                   </div>
-                  <h4 class="price">₹${prodData.totalPrice} <small><del>₹${prodData.mrp}</del><span style="color: green"> (${dis}%OFF)</span></small></h4>
-                  <h5 class="name">${prodData.name}</h5>
+                  <h4 class="price">₹${card.totalPrice} <small><del>₹${mrp}</del><span style="color: green"> (${dis}%OFF)</span></small></h4>
+                  <h5 class="name">${card.name}</h5>
                 </div>
             </div>
             </a>
           </div>
           
           `;
-        });
+      }
+      // });
     }
     fixedSection6ViewAll.href = `./Products/products.html?cat=${t}`;
     fixedSection6ViewAllMob.href = `./Products/products.html?cat=${t}`;
@@ -598,7 +606,9 @@ userImgRef.get().then((imgSnaps) => {
 const fixedSection7Heading = document.querySelector("#fixed-section7-heading");
 const fixedSection7Row = document.querySelector("#fixed-section7-row");
 const fixedSection7ViewAll = document.querySelector("#fixed-section7-viewAll");
-const fixedSection7ViewAllMob = document.querySelector("#fixed-section7-viewAllMob");
+const fixedSection7ViewAllMob = document.querySelector(
+  "#fixed-section7-viewAllMob"
+);
 
 db.collection("sections")
   .doc("fixed7")
@@ -609,38 +619,40 @@ db.collection("sections")
     let t;
     for (let card of docData.prodIds) {
       // console.log(card.cat.split('__')[1], card.id);
-      await db
-        .collection(card.cat.split("__")[0])
-        .doc(card.id)
-        .get()
-        .then((prod) => {
-          let prodData = prod.data();
-          if (!prodData) {
-            return;
-          }
-          t = prodData.wholeCategory.split("__")[0];
-          let dis = 100 - (+prodData.totalPrice / +prodData.mrp) * 100;
-          dis = Math.round(dis);
-          row += `
+      // await db
+      //   .collection(card.cat.split("__")[0])
+      //   .doc(card.id)
+      //   .get()
+      //   .then((prod) => {
+      //     let prodData = prod.data();
+      if (card.id === "na") {
+        continue;
+      } else {
+        t = card.cat.split("__")[0];
+        let mrp = Math.round(+card.mrp + +card.mrp * (+card.gst / 100));
+        let dis = 100 - (+card.totalPrice / mrp) * 100;
+        dis = Math.round(dis);
+        row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
-          <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
+          <a href="./Product/product.html?prod=${card.id}&&cat=${t}">
           <div class="item" >
             <div class="item-img">
-              <img class="img-fluid" src="${prodData.mainImgUrl}">
+              <img class="img-fluid" src="${card.mainImgUrl}">
             </div>
               <div class="info">
                 <div class="stars"></div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹${prodData.mrp}</del><span style="color: green"> (${dis}%OFF)</span></small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${card.totalPrice} <small><del>₹${mrp}</del><span style="color: green"> (${dis}%OFF)</span></small></h4>
+                <h5 class="name">${card.name}</h5>
               </div>
           </div>
           </a>
         </div>
         `;
-        });
+      }
+      // });
     }
     fixedSection7ViewAll.href = `./Products/products.html?cat=${t}`;
-    
+
     fixedSection7ViewAllMob.href = `./Products/products.html?cat=${t}`;
     fixedSection7Row.innerHTML = row;
   });
@@ -869,14 +881,7 @@ db.collection("sections")
                 >
             </picture>
   
-            <div class="grow" style="position: absolute;bottom:2%;left: 0; right:0; text-align: center;">
-              <div class="bannerTxt"
-                style="background-color: white;color: #003961;padding: 5px 40px;font-size: 17px; display: inline-block;">
-                ` +
-        i.tag +
-        `
-              </div> 
-            </div>
+            
           </a>
         </div>
           `;
@@ -896,14 +901,7 @@ db.collection("sections")
                 >
             </picture>
   
-            <div class="grow" style="position: absolute;bottom:2%;left: 0; right:0; text-align: center;">
-              <div class="bannerTxt"
-                style="background-color: white;color: #003961;padding: 5px 40px;font-size: 17px; display: inline-block;">
-                ` +
-        i.tag +
-        `
-              </div>
-            </div>
+            
           </a>
         </div>
           `;
@@ -964,14 +962,7 @@ db.collection("sections")
                 >
             </picture>
   
-            <div class="grow" style="position: absolute;bottom:2%;left: 0; right:0; text-align: center;">
-              <div class="bannerTxt"
-                style="background-color: white;color: #003961;padding: 5px 40px;font-size: 17px; display: inline-block;">
-                ` +
-        i.tag +
-        `
-              </div>
-            </div>
+
           </a>
         </div>
           `;
@@ -1031,40 +1022,42 @@ db.collection("sections")
     fixedSection10Heading.innerHTML = docData.title;
     let t;
     for (let card of docData.prodIds) {
-      await db
-        .collection(card.cat.split("__")[0])
-        .doc(card.id)
-        .get()
-        .then((prod) => {
-          let prodData = prod.data();
-          if (!prodData) {
-            return;
-          }
-          // console.log(prodData);
-          // console.log(prodData.wholeCategory.split("__")[0]);
-          t = prodData.wholeCategory.split("__")[0];
-          let dis = 100 - (+prodData.totalPrice / +prodData.mrp) * 100;
-          dis = Math.random(dis);
-          row += `
+      console.log(card);
+      // await db
+      //   .collection(card.cat.split("__")[0])
+      //   .doc(card.id)
+      //   .get()
+      //   .then((prod) => {
+      //     let prodData = prod.data();
+      if (card.id === "na") {
+        continue;
+      } else {
+        // console.log(prodData);
+        // console.log(prodData.wholeCategory.split("__")[0]);
+        t = card.cat.split("__")[0];
+        let mrp = Math.round(+card.mrp + +card.mrp * (+card.gst / 100));
+        console.log(card.totalPrice);
+        let dis = 100 - (+card.totalPrice / mrp) * 100;
+        dis = Math.round(dis);
+        row += `
           <div class="col-lg-2 col-md-3 col-6 remove-padding">
-          <a href="./Product/product.html?prod=${prod.id}&&cat=${t}">
+          <a href="./Product/product.html?prod=${card.id}&&cat=${t}">
             <div class="item">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}">
+                <img class="img-fluid" src="${card.mainImgUrl}">
               </div>
-              
                 <div class="info">
                   <div class="stars">
                   </div>
-                  <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del>&nbsp;<small style="color:green">(30% off)</small></h4>
-                  <h5 class="name">${prodData.name}</h5>
+                  <h4 class="price">₹${card.totalPrice} <del><small>₹${mrp}</small></del>&nbsp;<small style="color:green">(${dis}% off)</small></h4>
+                  <h5 class="name">${card.name}</h5>
                 </div>
-             
             </div>
             </a>
           </div>
           `;
-        });
+      }
+      // });
     }
     fixedSection10ViewAll.href = `./Products/products.html?cat=${t}`;
     fixedSection10ViewAllMob.href = `./Products/products.html?cat=${t}`;
@@ -1110,4 +1103,3 @@ db.collection("categories").onSnapshot(async (catSnaps) => {
   }
   localStorage.setItem("locProds", JSON.stringify(AllProds));
 });
-
