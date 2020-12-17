@@ -380,9 +380,7 @@ const form1 = (e) => {
 
   if (shipDiffAddress.checked) {
     SHIPPING_DATA.differtAddress = true;
-
-    form1ShippingHTML['alt_name'].required = true;
-
+    // form1ShippingHTML['alt_name'].required = true;
     SHIPPING_DATA.alt_name = shipping_name;
     SHIPPING_DATA.alt_phone = shipping_phone;
     SHIPPING_DATA.alt_address = shipping_address;
@@ -833,15 +831,11 @@ const shipping_emailHTML = document.querySelector("#shipping_email");
 const shipping_msgHTML = document.querySelector("#shipping_msg");
 
 const alt_shipping_userHTML = document.querySelector("#alt_shipping_user");
-const alt_shipping_locationHTML = document.querySelector(
-  "#alt_shipping_location"
-);
-const alt_shipping_landmarkHTML = document.querySelector(
-  "#alt_shipping_landmark"
-);
-let alt_shipping_phoneHTML = document.querySelector("#alt_shipping_phone");
-let alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
-let altAddressHTML = document.querySelector("#alt-address");
+const alt_shipping_locationHTML = document.querySelector("#alt_shipping_location");
+const alt_shipping_landmarkHTML = document.querySelector("#alt_shipping_landmark");
+const alt_shipping_phoneHTML = document.querySelector("#alt_shipping_phone");
+const alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
+const altAddressHTML = document.querySelector("#alt-address");
 
 let RAZ_ORDER_ID;
 const displayShippingInfo = (e) => {
@@ -854,6 +848,7 @@ const displayShippingInfo = (e) => {
 
   if (SHIPPING_DATA.differtAddress) {
     altAddressHTML.style.display = "block";
+    console.log(SHIPPING_DATA);
     alt_shipping_userHTML.innerHTML = SHIPPING_DATA.alt_name;
     alt_shipping_locationHTML.innerHTML = SHIPPING_DATA.alt_address;
     alt_shipping_landmarkHTML.innerHTML = SHIPPING_DATA.alt_landmark;
@@ -867,15 +862,15 @@ const displayShippingInfo = (e) => {
 
   let razName, razEmail, razAddress, razPhone;
   if(SHIPPING_DATA.shipDiffAddress) {
-    razName = SHIPPING_DATA.alt_name,
-    razEmail = SHIPPING_DATA.email,
-    razPhone = SHIPPING_DATA.alt_phone,
-    razAddress = SHIPPING_DATA.alt_address
+    razName = SHIPPING_DATA.alt_name;
+    razEmail = SHIPPING_DATA.email;
+    razPhone = SHIPPING_DATA.alt_phone;
+    razAddress = SHIPPING_DATA.alt_address;
   } else {
-    razName = SHIPPING_DATA.name,
-    razEmail = SHIPPING_DATA.email,
-    razPhone = SHIPPING_DATA.phone,
-    razAddress = SHIPPING_DATA.address
+    razName = SHIPPING_DATA.name;
+    razEmail = SHIPPING_DATA.email;
+    razPhone = SHIPPING_DATA.phone;
+    razAddress = SHIPPING_DATA.address;
   }
 
   // console.log(shippingType)

@@ -205,10 +205,7 @@ const displayProduct = (prodData) => {
   }
 
   document.querySelector("#prod-qty").innerHTML = PROD_QTY;
-  if (
-    prodData.wholeCategory.toUpperCase().includes("CAKE") ||
-    prodData.wholeCategory.toUpperCase().includes("COMBO")
-  ) {
+  if (prodData.isCake) {
     if (prodData.weights) {
       document.querySelectorAll(".cake-attribute").forEach((el) => {
         el.style.display = "block";
@@ -229,13 +226,15 @@ const displayProduct = (prodData) => {
   }
 
   if (prodData.shapes) {
-    const cakeShapeHTML = document.querySelector(".cake-shape");
-    cakeShapeHTML.innerHTML = `
+    if (prodData.shapes.length > 0) {
+      const cakeShapeHTML = document.querySelector(".cake-shape");
+      cakeShapeHTML.innerHTML = `
     <div class="custom-control custom-radio" style="margin-right: 15px;">
       <input type="checkbox" id="shape-heart" name="shape-heart" onchange="cakeShape(event, this)" class="custom-control-input product-attr">
       <label class="custom-control-label" for="shape-heart" style="font-weight: 700;">Heart Shape </label>
     </div>
     `;
+    }
   }
 
   if (prodData.flavours) {
@@ -257,7 +256,7 @@ const displayProduct = (prodData) => {
 
   // /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  if (prodData.personalized) {
+  if (prodData.pIsGift) {
     if (prodData.personalized === true) {
       personalizedGift = true;
       // document.querySelector("#pqty").style.display = "none";
@@ -858,12 +857,16 @@ let userId;
 let userRef;
 user = localStorage.getItem("locLoggedInUser");
 const checkAuth = async () => {
+  let userStatus = false;
   if (!user || user == null || user == "null") {
-    window.location.href = "/Auth/login.html";
+    // window.location.href = "/Auth/login.html";
   } else {
-    userId = localStorage.getItem("locLoggedInUser");
+    userStatus = true;
+    // userId = localStorage.getItem("locLoggedInUser");
     userRef = await db.collection("Customers").doc(userId);
   }
+  console.log(userStatus);
+  return userStatus;
 };
 
 const buyProd = async (e) => {
@@ -874,82 +877,36 @@ const buyProd = async (e) => {
     }
   });
 
-  await checkAuth();
+  let uStatus = await checkAuth();
   const orderId = Math.random();
-  await userRef.get().then(async (doc) => {
-    if (personalizedGift) {
-      let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
-      // console.log(finalImgs);
-      for (let img of finalImgs) {
-        let imgName = `${new Date().valueOf()}__${img.name}`;
-        let imgUrl;
-        await storageService
-          .ref(`Customers/${doc.id}/orders/${orderId}/${imgName}`)
-          .put(img);
-        await storageService
-          .ref(`Customers/${doc.id}/orders/${orderId}/${imgName}`)
-          .getDownloadURL()
-          .then((url) => {
-            imgUrl = url;
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        personalizedGiftImgs.push(imgUrl);
-      }
-    }
-
-    let docData = doc.data();
-    if (docData.orders) {
-      let cake = null;
-      let f;
-      if (WEIGHT_PRICE.weight) {
-        if (document.querySelector("input[name=cake-flavour]:checked")) {
-          // user selected the value
-          f = document.querySelector("input[name=cake-flavour]:checked").value;
-        } else {
-          f = "Not Selcted";
-        }
-      } else {
-        f = false;
-      }
-      if (WEIGHT_PRICE.weight) {
-        cake = {};
-        cake.heart = HEART;
-        cake.eggless = EGGLESS;
-        cake.weight = WEIGHT_PRICE.weight;
-        // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
-        cake.flavour = f;
-      }
-
-      let orderData = {
-        orderId: orderId,
-        totalCost: document.querySelector("#cost-with-addons").innerHTML,
-        status: "cancelled",
-        type: "single",
-        addons: addonsSelected,
-        products: [
-          {
-            prodId: PRODUCT_ID,
-            cat: CATEGORY_ID,
-            message: document.querySelector("#prodMsg").value,
-            qty: PROD_QTY,
-          },
-        ],
-      };
-      if (cake) {
-        orderData.products[0].cake = cake;
-      }
+  if (uStatus) {
+    await userRef.get().then(async (doc) => {
+      let personalizedGiftImgs = [];
       if (personalizedGift) {
-        orderData.personalized = true;
-        orderData.personalizedGiftImgs = personalizedGiftImgs;
+        let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
+        // console.log(finalImgs);
+        for (let img of finalImgs) {
+          let imgName = `${new Date().valueOf()}__${img.name}`;
+          let imgUrl;
+          await storageService
+            .ref(`Customers/${doc.id}/orders/${orderId}/${imgName}`)
+            .put(img);
+          await storageService
+            .ref(`Customers/${doc.id}/orders/${orderId}/${imgName}`)
+            .getDownloadURL()
+            .then((url) => {
+              imgUrl = url;
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          personalizedGiftImgs.push(imgUrl);
+        }
       }
 
-      docData.orders.push(orderData);
-    } else {
-      docData.orders = [];
-      let cake = null;
-      if (WEIGHT_PRICE.weight) {
+      let docData = doc.data();
+      if (docData.orders) {
+        let cake = null;
         let f;
         if (WEIGHT_PRICE.weight) {
           if (document.querySelector("input[name=cake-flavour]:checked")) {
@@ -962,40 +919,161 @@ const buyProd = async (e) => {
         } else {
           f = false;
         }
-        cake = {};
-        cake.heart = HEART;
-        cake.eggless = EGGLESS;
-        cake.weight = WEIGHT_PRICE.weight;
-        // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
-        cake.flavour = f;
-      }
+        if (WEIGHT_PRICE.weight) {
+          cake = {};
+          cake.heart = HEART;
+          cake.eggless = EGGLESS;
+          cake.weight = WEIGHT_PRICE.weight;
+          // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
+          cake.flavour = f;
+        }
 
-      let orderData = {
-        orderId: orderId,
-        status: "cancelled",
-        totalCost: document.querySelector("#cost-with-addons").innerHTML,
-        type: "single",
-        addons: addonsSelected,
-        products: [
-          {
-            prodId: PRODUCT_ID,
-            cat: CATEGORY_ID,
-            message: document.querySelector("#prodMsg").value,
-            qty: PROD_QTY,
-          },
-        ],
-      };
-      if (cake) {
-        orderData.products[0].cake = cake;
+        let orderData = {
+          orderId: orderId,
+          totalCost: document.querySelector("#cost-with-addons").innerHTML,
+          status: "cancelled",
+          type: "single",
+          addons: addonsSelected,
+          products: [
+            {
+              prodId: PRODUCT_ID,
+              cat: CATEGORY_ID,
+              message: document.querySelector("#prodMsg").value,
+              qty: PROD_QTY,
+            },
+          ],
+        };
+        if (cake) {
+          orderData.products[0].cake = cake;
+        }
+        if (personalizedGift) {
+          orderData.personalized = true;
+          orderData.personalizedGiftImgs = personalizedGiftImgs;
+        }
+
+        docData.orders.push(orderData);
+      } else {
+        docData.orders = [];
+        let cake = null;
+        if (WEIGHT_PRICE.weight) {
+          let f;
+          if (WEIGHT_PRICE.weight) {
+            if (document.querySelector("input[name=cake-flavour]:checked")) {
+              // user selected the value
+              f = document.querySelector("input[name=cake-flavour]:checked")
+                .value;
+            } else {
+              f = "Not Selcted";
+            }
+          } else {
+            f = false;
+          }
+          cake = {};
+          cake.heart = HEART;
+          cake.eggless = EGGLESS;
+          cake.weight = WEIGHT_PRICE.weight;
+          // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
+          cake.flavour = f;
+        }
+
+        let orderData = {
+          orderId: orderId,
+          status: "cancelled",
+          totalCost: document.querySelector("#cost-with-addons").innerHTML,
+          type: "single",
+          addons: addonsSelected,
+          products: [
+            {
+              prodId: PRODUCT_ID,
+              cat: CATEGORY_ID,
+              message: document.querySelector("#prodMsg").value,
+              qty: PROD_QTY,
+            },
+          ],
+        };
+        if (cake) {
+          orderData.products[0].cake = cake;
+        }
+        if (personalizedGift) {
+          orderData.products[0].personalized = true;
+          orderData.products[0].personalizedGiftImgs = personalizedGiftImgs;
+        }
+        docData.orders.push(orderData);
       }
-      if (personalizedGift) {
-        orderData.products[0].personalized = true;
-        orderData.products[0].personalizedGiftImgs = personalizedGiftImgs;
+      await userRef.update(docData);
+    });
+  } else {
+    let personalizedGiftImgs = [];
+    if (personalizedGift) {
+      let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
+      // console.log(finalImgs);
+      for (let img of finalImgs) {
+        let imgName = `${new Date().valueOf()}__${img.name}`;
+        let imgUrl;
+        await storageService
+          .ref(`Customers/unknown/orders/${orderId}/${imgName}`)
+          .put(img);
+        await storageService
+          .ref(`Customers/unknown/orders/${orderId}/${imgName}`)
+          .getDownloadURL()
+          .then((url) => {
+            imgUrl = url;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        personalizedGiftImgs.push(imgUrl);
       }
-      docData.orders.push(orderData);
     }
-    await userRef.update(docData);
-  });
+
+    let cake = null;
+    let f;
+    if (WEIGHT_PRICE.weight) {
+      if (document.querySelector("input[name=cake-flavour]:checked")) {
+        // user selected the value
+        f = document.querySelector("input[name=cake-flavour]:checked").value;
+      } else {
+        f = "Not Selcted";
+      }
+    } else {
+      f = false;
+    }
+    if (WEIGHT_PRICE.weight) {
+      cake = {};
+      cake.heart = HEART;
+      cake.eggless = EGGLESS;
+      cake.weight = WEIGHT_PRICE.weight;
+      // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
+      cake.flavour = f;
+    }
+
+    let buyNowData = {
+      orderId: orderId,
+      status: "cancelled",
+      totalCost: document.querySelector("#cost-with-addons").innerHTML,
+      type: "single",
+      addons: addonsSelected,
+      products: [
+        {
+          prodId: PRODUCT_ID,
+          cat: CATEGORY_ID,
+          message: document.querySelector("#prodMsg").value,
+          qty: PROD_QTY,
+        },
+      ],
+    };
+
+    if (cake) {
+      buyNowData.products[0].cake = cake;
+    }
+    if (personalizedGift) {
+      buyNowData.personalized = true;
+      buyNowData.personalizedGiftImgs = personalizedGiftImgs;
+    }
+    console.log('uuuu');
+    await sessionStorage.setItem('buyNowProd', JSON.stringify(buyNowData));
+    window.location.href = "../Auth/login.html";
+  }
   window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
 };
 

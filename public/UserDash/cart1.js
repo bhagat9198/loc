@@ -29,92 +29,106 @@ const cartBodyHTML = document.querySelector("#cartBody");
 let allProdPrice = [];
 const PROD_DATA = [];
 
-const displayCart = async() => {
-    let item = "";
-    // console.log(USER_DETAILS);
-    let index = -1;
-    for (let prod of USER_DETAILS.cart) {
-        index++;
-        let product;
-        let prodPrice = 0;
-        let cakeWeight = "";
-        await db
-            .collection(prod.cat)
-            .doc(prod.prodId)
-            .get()
-            .then((prodDoc) => {
-                let prodData = prodDoc.data();
-                product = prodData;
-            });
+const displayCart = async () => {
+  let item = "";
+  // console.log(USER_DETAILS);
+  let index = -1;
+  for (let prod of USER_DETAILS.cart) {
+    // console.log(prod);
+    
+    let product;
+    let prodPrice = 0;
+    let cakeWeight = "";
 
-        if (prod.pricing.weight) {
-            for (let cw of product.weights) {
-                if (cw.cakeWeight === "half") {
-                    if (cw.cakeWeight === prod.pricing.weight) {
-                        cakeWeight = 0.5;
-                        prodPrice = +cw.weightPrice;
-                        break;
-                    }
-                } else if (cw.cakeWeight === "one") {
-                    if (cw.cakeWeight === prod.pricing.weight) {
-                        cakeWeight = 1;
-                        prodPrice = +cw.weightPrice;
-                        break;
-                    }
-                } else if (cw.cakeWeight === "oneHalf") {
-                    if (cw.cakeWeight === prod.pricing.weight) {
-                        cakeWeight = 1.5;
-                        prodPrice = +cw.weightPrice;
-                        break;
-                    }
-                } else if (cw.cakeWeight === "two") {
-                    if (cw.cakeWeight === prod.pricing.weight) {
-                        cakeWeight = 2;
-                        prodPrice = +cw.weightPrice;
-                        break;
-                    }
-                } else if (cw.cakeWeight === "three") {
-                    if (cw.cakeWeight === prod.pricing.weight) {
-                        cakeWeight = 3;
-                        prodPrice = +cw.weightPrice;
-                        break;
-                    }
-                } else if (cw.cakeWeight === "four") {
-                    if (cw.cakeWeight === prod.pricing.weight) {
-                        cakeWeight = 4;
-                        prodPrice = +cw.weightPrice;
-                        break;
-                    }
-                } else if (cw.cakeWeight === "five") {
-                    if (cw.cakeWeight === prod.pricing.weight) {
-                        cakeWeight = 5;
-                        prodPrice = +cw.weightPrice;
-                        break;
-                    }
-                } else if (cw.cakeWeight === "six") {
-                    if (cw.cakeWeight === prod.pricing.weight) {
-                        cakeWeight = 6;
-                        prodPrice = +cw.weightPrice;
-                        break;
-                    }
-                } else {
-                    // console.log("invalid");
-                }
-            }
-        } else {
-            prodPrice = prodPrice + +product.sp;
+    await db
+      .collection(prod.cat)
+      .doc(prod.prodId)
+      .get()
+      .then((prodDoc) => {
+        // console.log(prodDoc);
+        let prodData = prodDoc.data();
+        // console.log(prodData);
+        if (prodData) {
+          index++;
+          // console.log(prodData);
+          product = prodData;
         }
+      });
+    if (product) {
+      console.log(product);
+      console.log(allProdPrice);
+      console.log(allProdPrice[index]);
+      if (prod.pricing.weight) {
+        for (let cw of product.weights) {
+          if (cw.cakeWeight === "half") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 0.5;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "one") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 1;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "oneHalf") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 1.5;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "two") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 2;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "three") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 3;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "four") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 4;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "five") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 5;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "six") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 6;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else {
+            // console.log("invalid");
+          }
+        }
+      } else {
+        prodPrice = prodPrice + +product.sp;
+      }
 
-        let cakeDetails = `
+      let cakeDetails = `
     <b>Weight : </b> ${cakeWeight} Kg<br>
     <b>Shape :</b> ${prod.heart ? "Heart" : "Round"}<br>
     <b>Eggless :</b> ${prod.eggless ? "Yes" : "No"}<br>
     <b>Flavour :</b>${prod.flavour}<br>`;
 
-        const personalizedGiftDetails = `
+      const personalizedGiftDetails = `
       <b>Personalized Gift : </b> Yes <br>
     `;
 
+      if (prod.heart) {
+        prodPrice += +product.shapes[0].shapePrice;
+      }
 
         if (prod.heart) {
             prodPrice += +product.shapes[0].shapePrice;
@@ -420,20 +434,24 @@ const calAddonPrice = () => {
 };
 
 const buyAddon = (e, current) => {
-    let index = e.target.value;
-    ADDONS_DETAILS[index].checked = current.checked;
-    let tAddons = 0;
-    document.querySelectorAll('#addons-checkbox').forEach(el => {
-        if (el.checked) {
-            tAddons++;
-        }
-    })
-    if (tAddons > 0) {
-        document.querySelector('#prod_with_addons').innerHTML = `Checkout With ${tAddons} Addons`;
-    } else {
-        document.querySelector('#prod_with_addons').innerHTML = `Checkout Without Addons`;
+  let index = e.target.value;
+  ADDONS_DETAILS[index].checked = current.checked;
+  let tAddons = 0;
+  document.querySelectorAll("#addons-checkbox").forEach((el) => {
+    if (el.checked) {
+      tAddons++;
     }
-    calAddonPrice();
+  });
+  if (tAddons > 0) {
+    document.querySelector(
+      "#prod_with_addons"
+    ).innerHTML = `Checkout With ${tAddons} Addons`;
+  } else {
+    document.querySelector(
+      "#prod_with_addons"
+    ).innerHTML = `Checkout Without Addons`;
+  }
+  calAddonPrice();
 };
 
 const addAddon = (e) => {
@@ -458,59 +476,58 @@ const decAddon = (e) => {
 
 const prodWithAddonsHTML = document.querySelector("#prod_with_addons");
 
-const checkoutProds = async(e) => {
-    // console.log(SELECTED_PRODS);
-    let addonsSelected = [];
-    ADDONS_DETAILS.map((el) => {
-        if (el.checked) {
-            addonsSelected.push(el);
-        }
-    });
+const checkoutProds = async (e) => {
+  // console.log(SELECTED_PRODS);
+  let addonsSelected = [];
+  ADDONS_DETAILS.map((el) => {
+    if (el.checked) {
+      addonsSelected.push(el);
+    }
+  });
 
-    let checkoutCart;
-    let orderId = `${Math.random()}`;
-    if (SELECTED_PRODS.length > 0) {
-        checkoutCart = {
-            orderId: orderId,
-            status: "cancelled",
-            type: "cart",
-            totalCost: costWithAddonsHTML.innerHTML,
-            addons: addonsSelected,
-            products: [],
-        };
+  let checkoutCart;
+  let orderId = `${Math.random()}`;
+  if (SELECTED_PRODS.length > 0) {
+    checkoutCart = {
+      orderId: orderId,
+      status: "cancelled",
+      type: "cart",
+      totalCost: costWithAddonsHTML.innerHTML,
+      addons: addonsSelected,
+      products: [],
+    };
+  }
+
+  SELECTED_PRODS.map((sp) => {
+    let counter = -1;
+
+    for (let c of USER_DETAILS.cart) {
+      counter++;
+      if (c.cartId === sp.cartId) {
+        let cake;
+        let pdata = {
+          prodId: c.prodId,
+          cat: c.cat,
+          message: c.message,
+          qty: sp.qty,
+        }
+      }
+        if (c.pricing.weight) {
+          cake = {};
+          cake.heart = c.heart;
+          cake.eggless = c.eggless;
+          cake.weight = c.pricing.weight;
+          cake.flavour = c.flavour;
+          pdata.cake = cake;
+        }
+        if (c.personalizedGift) {
+          personalized = {};
+          personalized.personalized = true;
+          personalized.personalizedGiftImgs = c.personalizedGiftImgs;
+          pdata.personalized = personalized;
+        }
     }
 
-    SELECTED_PRODS.map((sp) => {
-        let counter = -1;
-
-        for (let c of USER_DETAILS.cart) {
-            counter++;
-            if (c.cartId === sp.cartId) {
-                let cake;
-                let pdata = {
-                    prodId: c.prodId,
-                    cat: c.cat,
-                    message: c.message,
-                    qty: sp.qty,
-                };
-                if (c.pricing.weight) {
-                    cake = {};
-                    cake.heart = c.heart;
-                    cake.eggless = c.eggless;
-                    cake.weight = c.pricing.weight;
-                    cake.flavour = c.flavour;
-                    pdata.cake = cake;
-                }
-                if (c.personalizedGift) {
-                    personalized = {};
-                    personalized.personalized = true;
-                    personalized.personalizedGiftImgs = c.personalizedGiftImgs;
-                    pdata.personalized = personalized;
-                }
-                checkoutCart.products.push(pdata);
-            }
-        }
-    });
 
     if (USER_DETAILS.orders) {
         USER_DETAILS.orders.push(checkoutCart);
@@ -518,10 +535,17 @@ const checkoutProds = async(e) => {
         USER_DETAILS.orders = [];
         USER_DETAILS.orders.push(checkoutCart);
     }
-    await USER_REF.update(USER_DETAILS);
-    // console.log(USER_DETAILS);
-    window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
+  });
 
+  if (USER_DETAILS.orders) {
+    USER_DETAILS.orders.push(checkoutCart);
+  } else {
+    USER_DETAILS.orders = [];
+    USER_DETAILS.orders.push(checkoutCart);
+  }
+  await USER_REF.update(USER_DETAILS);
+  // console.log(USER_DETAILS);
+  window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
 };
 
 prodWithAddonsHTML.addEventListener("click", checkoutProds);

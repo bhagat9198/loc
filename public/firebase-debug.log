@@ -1,0 +1,50 @@
+[debug] [2020-12-16T08:41:01.965Z] ----------------------------------------------------------------------
+[debug] [2020-12-16T08:41:01.967Z] Command:       E:\Program Files\nodejs\node.exe C:\Users\Bhagat Singh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2020-12-16T08:41:01.967Z] CLI Version:   8.18.1
+[debug] [2020-12-16T08:41:01.967Z] Platform:      win32
+[debug] [2020-12-16T08:41:01.967Z] Node Version:  v12.16.2
+[debug] [2020-12-16T08:41:01.968Z] Time:          Wed Dec 16 2020 14:11:01 GMT+0530 (India Standard Time)
+[debug] [2020-12-16T08:41:01.968Z] ----------------------------------------------------------------------
+[debug] [2020-12-16T08:41:01.968Z] 
+[debug] [2020-12-16T08:41:01.975Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-16T08:41:01.976Z] > authorizing via signed-in user
+[debug] [2020-12-16T08:41:01.976Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-12-16T08:41:01.978Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lake-of-cakes:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-12-16T08:41:03.674Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 08:41:02 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1246","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-16T08:41:03.676Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lake-of-cakes  
+ 
+[debug] [2020-12-16T08:41:04.457Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 08:41:03 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[warn] !  functions: package.json indicates an outdated version of firebase-functions.
+Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[info] 
+[info] === Deploying to 'lake-of-cakes'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-12-16T08:41:07.488Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/lake-of-cakes/versions  
+ {"config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-12-16T08:41:09.465Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 16 Dec 2020 08:41:08 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[lake-of-cakes]: beginning deploy... 
+[info] i  hosting[lake-of-cakes]: found 111 files in public 
+[debug] [2020-12-16T08:41:09.515Z] > refreshing access token with scopes: []
+[debug] [2020-12-16T08:41:09.515Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-12-16T08:41:09.517Z] [hosting] hash cache [cHVibGlj] stored for 111 files
+[debug] [2020-12-16T08:41:09.517Z] [hosting][hash queue][FINAL] {"max":4,"min":0,"avg":0.8032921175125295,"active":0,"complete":111,"success":111,"errored":0,"retried":0,"total":111,"elapsed":15}
+[debug] [2020-12-16T08:41:30.984Z] [populateQueue] Retrying task index 0
+[debug] [2020-12-16T08:41:30.984Z] > refreshing access token with scopes: []
+[debug] [2020-12-16T08:41:30.984Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-12-16T10:52:45.049Z] ----------------------------------------------------------------------
+[debug] [2020-12-16T10:52:45.056Z] Command:       E:\Program Files\nodejs\node.exe C:\Users\Bhagat Singh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2020-12-16T10:52:45.056Z] CLI Version:   8.18.1
+[debug] [2020-12-16T10:52:45.057Z] Platform:      win32
+[debug] [2020-12-16T10:52:45.057Z] Node Version:  v12.16.2
+[debug] [2020-12-16T10:52:45.059Z] Time:          Wed Dec 16 2020 16:22:45 GMT+0530 (India Standard Time)
+[debug] [2020-12-16T10:52:45.060Z] ----------------------------------------------------------------------
+[debug] [2020-12-16T10:52:45.060Z] 
+[debug] [2020-12-16T10:52:45.084Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-16T10:52:45.086Z] > authorizing via signed-in user
+[debug] [2020-12-16T10:52:45.086Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-12-16T10:52:45.095Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lake-of-cakes:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
