@@ -409,6 +409,7 @@ let year = date.getFullYear();
 let month = date.getMonth() + 1;
 let day = date.getDate();
 let hours = date.getHours();
+// let hours = 19;
 
 // console.log(typeof(year), year.toString().length);
 if(year.toString().length !== 4) {
@@ -481,7 +482,7 @@ const setDateAndTime = () => {
     midnightHoursHTML.style.display = "none";
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
-    if ((hours + foudantHoursPerfect) < 20) {
+    if ((hours + foudantHoursPerfect) < 19) {
       perfectHoursHTML.style.display = "block";
       shippingDateHTML.value = `${year}-${month}-${day}`;
       if ((hours + foudantHoursPerfect) < 8) {
@@ -557,6 +558,24 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_4").parentElement.remove();
         document.querySelector("#perfect_5").disabled = true;
         document.querySelector("#perfect_5").parentElement.remove();
+      } else if ((hours + foudantHoursPerfect) < 17) {
+        // document.querySelector("#perfect_10").disabled = true;
+        document.querySelector("#perfect_11").disabled = true;
+        document.querySelector("#perfect_11").parentElement.remove();
+        document.querySelector("#perfect_12").disabled = true;
+        document.querySelector("#perfect_12").parentElement.remove();
+        document.querySelector("#perfect_1").disabled = true;
+        document.querySelector("#perfect_1").parentElement.remove();
+        document.querySelector("#perfect_2").disabled = true;
+        document.querySelector("#perfect_2").parentElement.remove();
+        document.querySelector("#perfect_3").disabled = true;
+        document.querySelector("#perfect_3").parentElement.remove();
+        document.querySelector("#perfect_4").disabled = true;
+        document.querySelector("#perfect_4").parentElement.remove();
+        document.querySelector("#perfect_5").disabled = true;
+        document.querySelector("#perfect_5").parentElement.remove();
+        document.querySelector("#perfect_6").disabled = true;
+        document.querySelector("#perfect_6").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 18) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
@@ -573,6 +592,8 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_4").parentElement.remove();
         document.querySelector("#perfect_5").disabled = true;
         document.querySelector("#perfect_5").parentElement.remove();
+        document.querySelector("#perfect_6").disabled = true;
+        document.querySelector("#perfect_6").parentElement.remove();
         document.querySelector("#perfect_7").disabled = true;
         document.querySelector("#perfect_7").parentElement.remove();
       } else if ((hours + foudantHoursPerfect) < 19) {
@@ -591,6 +612,8 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_4").parentElement.remove();
         document.querySelector("#perfect_5").disabled = true;
         document.querySelector("#perfect_5").parentElement.remove();
+        document.querySelector("#perfect_6").disabled = true;
+        document.querySelector("#perfect_6").parentElement.remove();
         document.querySelector("#perfect_7").disabled = true;
         document.querySelector("#perfect_7").parentElement.remove();
         document.querySelector("#perfect_8").disabled = true;
@@ -611,10 +634,14 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_4").parentElement.remove();
         document.querySelector("#perfect_5").disabled = true;
         document.querySelector("#perfect_5").parentElement.remove();
+        document.querySelector("#perfect_6").disabled = true;
+        document.querySelector("#perfect_6").parentElement.remove();
         document.querySelector("#perfect_7").disabled = true;
         document.querySelector("#perfect_7").parentElement.remove();
         document.querySelector("#perfect_8").disabled = true;
         document.querySelector("#perfect_8").parentElement.remove();
+        document.querySelector("#perfect_9").disabled = true;
+        document.querySelector("#perfect_9").parentElement.remove();
       } else {
         console.log("invalid");
       }

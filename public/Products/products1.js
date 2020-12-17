@@ -9,7 +9,6 @@ const topSuggestionHTML = document.querySelector("#top-suggestion");
 let CAT, SUB, CHILD, TAG, USER;
 let TEMP_ARR = [];
 
-
 var getParams = async (url) => {
   var params = {};
   var parser = document.createElement("a");
@@ -158,7 +157,10 @@ const extractAllCat = async () => {
 };
 
 const allCatProds = async () => {
-  let locProds = JSON.parse(sessionStorage.getItem("locProds"));
+  let locProds = JSON.parse(localStorage.getItem("locProds"));
+  if(!locProds) {
+    await settingLocalStorage();
+  }
   allProductsArr = locProds;
 };
 
@@ -248,7 +250,6 @@ const displayProds = async (arrProds) => {
     } else {
       banner = "";
     }
-    
 
     let starsDiv = `
     <span class="fa fa-star"></span>
@@ -263,7 +264,8 @@ const displayProds = async (arrProds) => {
     // } else {
     // }
 
-    let previousPriceWithGst = (+p.prodData.mrp * (+p.prodData.gst/100))+ +p.prodData.mrp;
+    let previousPriceWithGst =
+      +p.prodData.mrp * (+p.prodData.gst / 100) + +p.prodData.mrp;
     previousPriceWithGst = Math.round(previousPriceWithGst);
     let dis = Math.round(
       100 - (+p.prodData.totalPrice / previousPriceWithGst) * 100
@@ -326,16 +328,20 @@ const displayTopSuggest = async () => {
   dbCatImgRef.get().then(async (catImgSnaps) => {
     let catImgSnapsDocs = await catImgSnaps.docs;
     let randTopSuggest = await arrayRandom(catImgSnapsDocs);
-    let red = Math.round(Math.random() * (244));
-    let yellow = Math.round(Math.random() * (244));
-    let blue = Math.round(Math.random() * (244));
-    document.querySelector('#outer-top-suggestDiv').style.background = `rgb(${red}, ${yellow}, ${blue})`;
-    document.querySelector('#inner-top-suggestDiv').style.background = `rgba(${red-50}, ${yellow-50}, ${blue-50}, 0.4)`;
+    let red = Math.round(Math.random() * 244);
+    let yellow = Math.round(Math.random() * 244);
+    let blue = Math.round(Math.random() * 244);
+    document.querySelector(
+      "#outer-top-suggestDiv"
+    ).style.background = `rgb(${red}, ${yellow}, ${blue})`;
+    document.querySelector("#inner-top-suggestDiv").style.background = `rgba(${
+      red - 50
+    }, ${yellow - 50}, ${blue - 50}, 0.4)`;
     let c = 0;
     for (let cimg of randTopSuggest) {
       if (cimg.id !== CAT) {
         c++;
-        if(c > 6) {
+        if (c > 6) {
           break;
         }
         let cimgData = cimg.data();
@@ -373,11 +379,51 @@ const displayTopSuggest = async () => {
   });
 };
 
+const settingLocalStorage = () => {
+  let AllProds = [];
+  db.collection("categories").onSnapshot(async (catSnaps) => {
+    let catSnapsDocs = catSnaps.docs;
+    for (let catDoc of catSnapsDocs) {
+      let catData = catDoc.data();
+      await db
+        .collection(catDoc.id)
+        .get()
+        .then((prodSnaps) => {
+          let prodSnapsDocs = prodSnaps.docs;
+          prodSnapsDocs.map((pDoc) => {
+            let pData = pDoc.data();
+            AllProds.push({
+              prodId: pDoc.id,
+              prodData: {
+                cat: catData.name,
+                name: pData.name,
+                totalPrice: pData.totalPrice,
+                mrp: pData.mrp,
+                gst: pData.gst,
+                mainImgUrl: pData.mainImgUrl,
+                stars: pData.stars,
+                bannerType: pData.bannerType,
+                bannerTypeColorEnd: pData.bannerTypeColorEnd,
+                bannerTypeColorStart: pData.bannerTypeColorStart,
+              },
+              catId: catDoc.id,
+            });
+          });
+          // console.log(catDoc.id);
+        });
+    }
+    localStorage.setItem("locProds", JSON.stringify(AllProds));
+  });
+};
+
 const userSearchProds = async () => {
   let searchVal = USER.toUpperCase();
   allProductsArr = [];
-  let locProds = JSON.parse(sessionStorage.getItem("locProds"));
+  let locProds = JSON.parse(localStorage.getItem("locProds"));
   // console.log(locProds);
+  if (!locProds) {
+    await settingLocalStorage();
+  }
   // console.log(typeof locProds);
   locProds = arrayRandom(locProds);
   for (let p of locProds) {
@@ -445,6 +491,3 @@ const sortProducts = (e, current) => {
 };
 
 // ////////////////////////////////////////////////////////////////////////////////////
-
-
-
