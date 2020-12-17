@@ -47,6 +47,23 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
       "only authenticated users can add requests"
     );
   }
+
+  let zipFlag = false;
+  if(!optional.formData.zip.startsWith('226')) {
+    zipFlag = true;
+  }
+  if(optional.formData.differtAddress) {
+    if(!optional.formData.alt_zip.startsWith('226')) {
+      zipFlag = true;
+    }
+  }
+  if(zipFlag) {
+    throw new functions.https.HttpsError(
+      "unauthenticated",
+      "only authenticated users can add requests"
+    );
+  }
+
   let index = -1;
   for (let o of userDetails.orders) {
     index++;
@@ -271,9 +288,11 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
   const shipeType = data.type;
   const shipDate = data.date;
   const shipTime = data.time;
+  const shippingData = data.shippingData;
 
   let optional = {
-    shipping: false
+    shipping: false,
+    formData: shippingData,
   }
   let TOTAL_COST = await calBill(USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTime, optional)
 

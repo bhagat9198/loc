@@ -1076,8 +1076,8 @@
                               readonly="readonly">
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control" type="text" name="zip" id="locality" placeholder="Pin Code"
-                              value="" required>
+                            <input class="form-control pin-lucknow"  onkeyup="checkPin(event, this)" type="text" name="zip" id="locality" placeholder="Pin Code"
+                              value="226" required>
                             <div id="postal_code"></div>
                           </div>
                         </div>
@@ -1122,7 +1122,7 @@
                               value="Lucknow" readonly="readonly">
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control ship_input" type="text" name="shipping_zip"
+                            <input class="form-control ship_input"  onkeyup="checkPin(event, this)" type="text" name="shipping_zip" value="226"
                               id="shippingPostal_code" placeholder="Pin Code">
                             <div id="postal_code"></div>
                           </div>

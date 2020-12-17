@@ -915,7 +915,8 @@ const displayShippingInfo = (e) => {
     userId: USER_ID,
     order: CHECKOUT_ID,
     coupan: COUPAN_ID,
-    name: razName
+    name: razName,
+    shippingData: SHIPPING_DATA
   }
   // let options = { 
   //   method: 'POST', 
@@ -1102,4 +1103,38 @@ const orderComplete = (data) => {
   }).catch(error => {
     console.log(error);
   })
+}
+
+// //////////////////////////////////////////////////////////////////////////////
+
+// document.querySelectorAll('.pin-lucknow').forEach(el => {
+//   el.addEventListener('input', (e) => {
+//     // console.log(e.target.value);
+//     let val = e.target.value;
+//     valArr = val.split('');
+//     // console.log(valArr);
+
+//   })
+// })
+
+const checkPin = (e, current) => {
+  // console.log(current.value);
+  // let val = current.value;
+  // valArr = val.split('');
+  // if(valArr[0] == 2 || valArr[0] == '' || valArr[0] == undefined) {
+
+  // } else {
+  //   current.value = '';
+  // }
+  // if(valArr[1] == 2 || valArr[1] == '' || valArr[1] == undefined) {
+
+  // } else {
+  //   current.value = '2';
+  // }
+  // if(valArr[2] == 6 || valArr[2] == '' || valArr[2] == undefined) {
+
+  // } else {
+  //   current.value = '22';
+  // }
+  // console.log(e.key);
 }
