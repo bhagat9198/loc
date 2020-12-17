@@ -1,28 +1,26 @@
-// console.log("cart1.js");
-
 const db = firebase.firestore();
 const storageService = firebase.storage;
 
 let USER_ID, USER_DETAILS, USER_REF;
 
-const checkAuth = async() => {
-    if (localStorage.getItem("locLoggedInUser") == "null") {
-        window.location.href = "./../Auth/login.html";
-    }
-    // console.log('aaaa');
-    USER_ID = localStorage.getItem("locLoggedInUser");
-    // console.log(USER_ID);
-    USER_REF = await db.collection("Customers").doc(USER_ID);
-    // console.log(USER_REF);
-    await USER_REF.get().then((doc) => {
-        let docData = doc.data();
-        USER_DETAILS = docData;
-    });
-    return;
+const checkAuth = async () => {
+  if (localStorage.getItem("locLoggedInUser") == "null") {
+    window.location.href = "./../Auth/login.html";
+  }
+  // console.log('aaaa');
+  USER_ID = localStorage.getItem("locLoggedInUser");
+  // console.log(USER_ID);
+  USER_REF = await db.collection("Customers").doc(USER_ID);
+  // console.log(USER_REF);
+  await USER_REF.get().then((doc) => {
+    let docData = doc.data();
+    USER_DETAILS = docData;
+  });
+  return;
 };
 
 checkAuth().then(() => {
-    displayCart();
+  displayCart();
 });
 
 const cartBodyHTML = document.querySelector("#cartBody");
@@ -130,189 +128,187 @@ const displayCart = async () => {
         prodPrice += +product.shapes[0].shapePrice;
       }
 
-        if (prod.heart) {
-            prodPrice += +product.shapes[0].shapePrice;
-        }
+      if (prod.eggless) {
+        prodPrice += +product.type.price;
+      }
 
-        if (prod.eggless) {
-            prodPrice += +product.type.price;
-        }
+      let gst = +prodPrice * (+product.gst / 100);
+      prodPrice = prodPrice + gst;
+      prodPrice = +Math.round(prodPrice);
+      allProdPrice.push({
+        price: prodPrice,
+        name: product.name,
+        qty: 1,
+        cartId: prod.cartId,
+      });
+      console.log(allProdPrice);
+      // console.log(prod.cartId);
+      let rand = new Date().valueOf();
 
-        let gst = +prodPrice * (+product.gst / 100);
-        prodPrice = prodPrice + gst;
-        prodPrice = +Math.round(prodPrice);
-        allProdPrice.push({
-            price: prodPrice,
-            name: product.name,
-            qty: 1,
-            cartId: prod.cartId,
-        });
-        // console.log(prod.cartId);
-        let rand = new Date().valueOf();
+      item += `
+    
+      <li class="items odd" id="row__${rand}">
 
-        item += `
-   
-
-    <li class="items odd" id="row__${rand}">
-
-                <div class="infoWrap">
-                  <div class="cartSection">
-                    <img src="${product.mainImgUrl}" alt="" class="itemImg" />
-                    <p class="itemNumber">#QUE-007544-002</p>
-                    <a href="../Product/product.html?prod=${
-                      prod.prodId
-                    }&&cat=${prod.cat}"><h5 class="resTxtMob" style="font-size:14px">${product.name}</h5></a>
-           
-                    <span id="eachprice__${rand}">₹${prodPrice}</span>
-                    <small>
-                    ${prod.pricing.weight ? cakeDetails : ""}
+      <div class="infoWrap">
+        <div class="cartSection">
+          <img src="${product.mainImgUrl}" alt="" class="itemImg" />
+          <p class="itemNumber">#QUE-007544-002</p>
+          <a href="../Product/product.html?prod=${
+            prod.prodId
+          }&&cat=${prod.cat}"><h5 class="resTxtMob" style="font-size:14px">${product.name}</h5></a>
+ 
+          <span id="eachprice__${rand}">₹${prodPrice}</span>
+          <small>
+          ${prod.pricing.weight ? cakeDetails : ""}
 ${prod.personalizedGift ? personalizedGiftDetails : ''}
-                    </small>
-             
-                  </div>
-                  <div style="width:100%;paadding:20px">
-                  <div class=" cartSection">
-                
-                    <div class="qty">
-                      <ul>
-                        <li>
-                        <span class="qtminus1 reducing" data-cartid="${
-                          prod.cartId
-                        }" data-index="${index}" data-id="minus__${rand}" onclick="decQty(event)">
-                          <i class="fa fa-minus" data-cartid="${
-                            prod.cartId
-                          }" data-index="${index}" data-id="minus__${rand}"></i>
-                        </span>
-                        </li>
-                        <li>
-                        <span class="qttotal1" id="total__${rand}" >${
-                          allProdPrice[index].qty
-                          }</span>
-                        </li>
-                        <li>
-                        <span class="qtplus1 adding" data-cartid="${
-                          prod.cartId
-                        }" data-index="${index}" data-id="plus__${rand}" onclick="incQty(event)">
-                          <i class="fa fa-plus" data-cartid="${
-                            prod.cartId
-                          }" data-index="${index}" data-id="plus__${rand}"></i>
-                        </span>
-                        </li>
-                      </ul>
-                    </div>
-         
-                  </div>
-                  
-                      
-                  <div class="cartSection">
-                  <h5 style="font-size:13px" class="cartSection " data-index="${index}" id="subprice_${rand}">${prodPrice}</h5>
-                  </div>
-                
-                  <div class="cartSection " >
-                  <span class="qtplus1 adding" style="cursor:pointer" style="padding:10px" data-id="${rand}" data-index="${index}" data-cartid="${
-                    prod.cartId
-                  }" onclick="deleteCartProd(event)">
-                        <i class="fa fa-trash" data-cartid="${
-                         prod.cartId
-                       }" data-index="${index}" data-id="${rand}"></i></span>
-                      </span>
-                 </div>
-                 <div class="cartSection " ">
-                  <input type="checkbox" class="styled-checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;width:20px;height:20px">
-                  </div>
-                  </div>
-                </div>
-                </div>
-              </li>`
+          </small>
+   
+        </div>
+        <div style="width:100%;paadding:20px">
+        <div class=" cartSection">
+      
+          <div class="qty">
+            <ul>
+              <li>
+              <span class="qtminus1 reducing" data-cartid="${
+                prod.cartId
+              }" data-index="${index}" data-id="minus__${rand}" onclick="decQty(event)">
+                <i class="fa fa-minus" data-cartid="${
+                  prod.cartId
+                }" data-index="${index}" data-id="minus__${rand}"></i>
+              </span>
+              </li>
+              <li>
+              <span class="qttotal1" id="total__${rand}" >${
+                allProdPrice[index].qty
+                }</span>
+              </li>
+              <li>
+              <span class="qtplus1 adding" data-cartid="${
+                prod.cartId
+              }" data-index="${index}" data-id="plus__${rand}" onclick="incQty(event)">
+                <i class="fa fa-plus" data-cartid="${
+                  prod.cartId
+                }" data-index="${index}" data-id="plus__${rand}"></i>
+              </span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        
+            
+        <div class="cartSection">
+        <h5 style="font-size:13px" class="cartSection " data-index="${index}" id="subprice_${rand}">${prodPrice}</h5>
+        </div>
+      
+        <div class="cartSection " >
+        <span class="qtplus1 adding" style="cursor:pointer" style="padding:10px" data-id="${rand}" data-index="${index}" data-cartid="${
+          prod.cartId
+        }" onclick="deleteCartProd(event)">
+              <i class="fa fa-trash" data-cartid="${
+               prod.cartId
+             }" data-index="${index}" data-id="${rand}"></i></span>
+            </span>
+       </div>
+       <div class="cartSection " ">
+        <input type="checkbox" class="styled-checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;width:20px;height:20px">
+        </div>
+        </div>
+      </div>
+      </div>
+    </li>
+      `;
     }
-    cartBodyHTML.innerHTML = item;
+  }
+  cartBodyHTML.innerHTML = item;
 };
 
 const deleteCartProd = (e) => {
-    const cartId = e.target.dataset.cartid;
-    let counter = e.target.dataset.index;
-    let id = e.target.dataset.id;
-    if (+counter === 0 || +counter < USER_DETAILS.cart.length) {
-        let tempCart = USER_DETAILS.cart;
-        tempCart.splice(counter, 1);
-        USER_REF.update("cart", tempCart);
-    }
-    document.querySelector(`#row__${id}`).remove();
-    updateSelectedProds(cartId, 0, "del");
+  const cartId = e.target.dataset.cartid;
+  let counter = e.target.dataset.index;
+  let id = e.target.dataset.id;
+  if (+counter === 0 || +counter < USER_DETAILS.cart.length) {
+    let tempCart = USER_DETAILS.cart;
+    tempCart.splice(counter, 1);
+    USER_REF.update("cart", tempCart);
+  }
+  document.querySelector(`#row__${id}`).remove();
+  updateSelectedProds(cartId, 0, "del");
 };
 
 const SELECTED_PRODS = [];
 
 const selectProds = (e, current) => {
-    let counter = e.target.dataset.index;
-    if (e.target.checked) {
-        SELECTED_PRODS.push({...allProdPrice[counter] });
-    } else {
-        SELECTED_PRODS.splice(counter, 1);
-    }
-    // console.log(SELECTED_PRODS.length);
-    // console.log(SELECTED_PRODS);
-    displayCheckout();
+  let counter = e.target.dataset.index;
+  if (e.target.checked) {
+    SELECTED_PRODS.push({ ...allProdPrice[counter] });
+  } else {
+    SELECTED_PRODS.splice(counter, 1);
+  }
+  // console.log(SELECTED_PRODS.length);
+  // console.log(SELECTED_PRODS);
+  displayCheckout();
 };
 
 const updateSelectedProds = (id, qty, del = "data") => {
-    let c = -1;
-    for (let sp of SELECTED_PRODS) {
-        // console.log(sp.cartId, id)
-        c++;
-        if (+sp.cartId === +id) {
-            if (del == "del") {
-                // console.log(sp.cartId, id);
-                SELECTED_PRODS.splice(c, 1);
-                // console.log(SELECTED_PRODS);
-            } else {
-                SELECTED_PRODS[c].qty = qty;
-            }
-            // console.log(sp.cartId, id);
-        }
+  let c = -1;
+  for (let sp of SELECTED_PRODS) {
+    // console.log(sp.cartId, id)
+    c++;
+    if (+sp.cartId === +id) {
+      if (del == "del") {
+        // console.log(sp.cartId, id);
+        SELECTED_PRODS.splice(c, 1);
+        // console.log(SELECTED_PRODS);
+      } else {
+        SELECTED_PRODS[c].qty = qty;
+      }
+      // console.log(sp.cartId, id);
     }
-    // console.log(SELECTED_PRODS);
-    displayCheckout();
+  }
+  // console.log(SELECTED_PRODS);
+  displayCheckout();
 };
 
 const calculateSubPrice = (id) => {
-    const subPriceHTML = document.querySelector(`#subprice_${id}`);
-    let counter = subPriceHTML.dataset.index;
-    // console.log(counter);
-    let cost = allProdPrice[counter].price;
-    let qty = document.querySelector(`#total__${id}`).innerHTML;
-    let totalCost = +cost * +qty;
-    subPriceHTML.innerHTML = totalCost;
+  const subPriceHTML = document.querySelector(`#subprice_${id}`);
+  let counter = subPriceHTML.dataset.index;
+  // console.log(counter);
+  let cost = allProdPrice[counter].price;
+  let qty = document.querySelector(`#total__${id}`).innerHTML;
+  let totalCost = +cost * +qty;
+  subPriceHTML.innerHTML = totalCost;
 };
 
 const decQty = (e) => {
-    // console.log(e.target.dataset.id);
-    let id = e.target.dataset.id.split("__")[1];
-    let qty = document.querySelector(`#total__${id}`).innerHTML;
-    const cartId = e.target.dataset.cartid;
-    let counter = e.target.dataset.index;
-    qty = +qty;
-    if (qty > 1) {
-        qty--;
-        allProdPrice[counter].qty = qty;
-        document.querySelector(`#total__${id}`).innerHTML = qty;
-        calculateSubPrice(id);
-        updateSelectedProds(cartId, qty);
-    }
-};
-
-const incQty = (e) => {
-    // console.log(e.target.dataset.id);
-    const cartId = e.target.dataset.cartid;
-    let id = e.target.dataset.id.split("__")[1];
-    let qty = document.querySelector(`#total__${id}`).innerHTML;
-    let counter = e.target.dataset.index;
-    qty = +qty;
-    qty++;
+  // console.log(e.target.dataset.id);
+  let id = e.target.dataset.id.split("__")[1];
+  let qty = document.querySelector(`#total__${id}`).innerHTML;
+  const cartId = e.target.dataset.cartid;
+  let counter = e.target.dataset.index;
+  qty = +qty;
+  if (qty > 1) {
+    qty--;
     allProdPrice[counter].qty = qty;
     document.querySelector(`#total__${id}`).innerHTML = qty;
     calculateSubPrice(id);
     updateSelectedProds(cartId, qty);
+  }
+};
+
+const incQty = (e) => {
+  // console.log(e.target.dataset.id);
+  const cartId = e.target.dataset.cartid;
+  let id = e.target.dataset.id.split("__")[1];
+  let qty = document.querySelector(`#total__${id}`).innerHTML;
+  let counter = e.target.dataset.index;
+  qty = +qty;
+  qty++;
+  allProdPrice[counter].qty = qty;
+  document.querySelector(`#total__${id}`).innerHTML = qty;
+  calculateSubPrice(id);
+  updateSelectedProds(cartId, qty);
 };
 
 const orderListHTML = document.querySelector(".order-list");
@@ -322,16 +318,16 @@ const orderBoxHTML = document.querySelector(".order-box");
 let TOTAL = 0;
 
 const displayCheckout = () => {
-    if (SELECTED_PRODS.length > 0) {
-        emptyCheckoutHTML.style.display = "none";
-        checkoutBtnHTML.disabled = false;
-        // orderBoxHTML.style.display = 'block';
-        let li = "";
-        TOTAL = 0;
-        SELECTED_PRODS.map((p) => {
-            let pPrice = +p.qty * +p.price;
-            TOTAL = TOTAL + pPrice;
-            li += `
+  if (SELECTED_PRODS.length > 0) {
+    emptyCheckoutHTML.style.display = "none";
+    checkoutBtnHTML.disabled = false;
+    // orderBoxHTML.style.display = 'block';
+    let li = "";
+    TOTAL = 0;
+    SELECTED_PRODS.map((p) => {
+      let pPrice = +p.qty * +p.price;
+      TOTAL = TOTAL + pPrice;
+      li += `
       <li>
         <p>
           ${p.name}
@@ -341,16 +337,16 @@ const displayCheckout = () => {
         </P>
       </li>
       `;
-        });
-        orderListHTML.innerHTML = `${li}`;
-        cartTotalHTML.innerHTML = `₹ ${TOTAL}`;
-    } else {
-        orderListHTML.innerHTML = ``;
-        cartTotalHTML.innerHTML = `₹ 0`;
-        emptyCheckoutHTML.style.display = "block";
-        // orderBoxHTML.style.display = 'none';
-        checkoutBtnHTML.disabled = true;
-    }
+    });
+    orderListHTML.innerHTML = `${li}`;
+    cartTotalHTML.innerHTML = `₹ ${TOTAL}`;
+  } else {
+    orderListHTML.innerHTML = ``;
+    cartTotalHTML.innerHTML = `₹ 0`;
+    emptyCheckoutHTML.style.display = "block";
+    // orderBoxHTML.style.display = 'none';
+    checkoutBtnHTML.disabled = true;
+  }
 };
 
 const checkoutBtnHTML = document.querySelector("#checkoutBtn");
@@ -361,20 +357,20 @@ let ADDONS_REF;
 let ADDONS_DETAILS = [];
 
 const addonModal = (e) => {
-    ADDONS_REF = db.collection("addons");
-    ADDONS_REF.get().then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        let card = "";
-        snapshotDocs.map((doc, index) => {
-            // card += displayAddon(doc);
-            let docData = doc.data();
-            ADDONS_DETAILS.push({
-                qty: 1,
-                price: +docData.price,
-                checked: false,
-                id: doc.id,
-            });
-            card += `
+  ADDONS_REF = db.collection("addons");
+  ADDONS_REF.get().then((snapshots) => {
+    let snapshotDocs = snapshots.docs;
+    let card = "";
+    snapshotDocs.map((doc, index) => {
+      // card += displayAddon(doc);
+      let docData = doc.data();
+      ADDONS_DETAILS.push({
+        qty: 1,
+        price: +docData.price,
+        checked: false,
+        id: doc.id,
+      });
+      card += `
     <div class="col-md-3 col-6 mt-3">
       <a class="item"
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
@@ -415,22 +411,22 @@ const addonModal = (e) => {
       </a>
     </div>
     `;
-        });
-        allAddonsHTML.innerHTML = card;
     });
-    costWithAddonsHTML.innerHTML = TOTAL;
+    allAddonsHTML.innerHTML = card;
+  });
+  costWithAddonsHTML.innerHTML = TOTAL;
 };
 
 checkoutBtnHTML.addEventListener("click", addonModal);
 
 const calAddonPrice = () => {
-    let totalAddonPrice = 0;
-    ADDONS_DETAILS.map((el) => {
-        if (el.checked) {
-            totalAddonPrice += el.price * el.qty;
-        }
-    });
-    costWithAddonsHTML.innerHTML = +totalAddonPrice + +TOTAL;
+  let totalAddonPrice = 0;
+  ADDONS_DETAILS.map((el) => {
+    if (el.checked) {
+      totalAddonPrice += el.price * el.qty;
+    }
+  });
+  costWithAddonsHTML.innerHTML = +totalAddonPrice + +TOTAL;
 };
 
 const buyAddon = (e, current) => {
@@ -455,23 +451,23 @@ const buyAddon = (e, current) => {
 };
 
 const addAddon = (e) => {
-    let id = e.target.dataset.id.split("__")[2];
-    let index = e.target.dataset.index;
-    ADDONS_DETAILS[index].qty++;
-    document.querySelector(`#addon__qty__${id}`).innerHTML =
-        ADDONS_DETAILS[index].qty;
-    calAddonPrice();
+  let id = e.target.dataset.id.split("__")[2];
+  let index = e.target.dataset.index;
+  ADDONS_DETAILS[index].qty++;
+  document.querySelector(`#addon__qty__${id}`).innerHTML =
+    ADDONS_DETAILS[index].qty;
+  calAddonPrice();
 };
 
 const decAddon = (e) => {
-    let id = e.target.dataset.id.split("__")[2];
-    let index = e.target.dataset.index;
-    if (ADDONS_DETAILS[index].qty > 1) {
-        ADDONS_DETAILS[index].qty--;
-    }
-    document.querySelector(`#addon__qty__${id}`).innerHTML =
-        ADDONS_DETAILS[index].qty;
-    calAddonPrice();
+  let id = e.target.dataset.id.split("__")[2];
+  let index = e.target.dataset.index;
+  if (ADDONS_DETAILS[index].qty > 1) {
+    ADDONS_DETAILS[index].qty--;
+  }
+  document.querySelector(`#addon__qty__${id}`).innerHTML =
+    ADDONS_DETAILS[index].qty;
+  calAddonPrice();
 };
 
 const prodWithAddonsHTML = document.querySelector("#prod_with_addons");
@@ -510,8 +506,7 @@ const checkoutProds = async (e) => {
           cat: c.cat,
           message: c.message,
           qty: sp.qty,
-        }
-      }
+        };
         if (c.pricing.weight) {
           cake = {};
           cake.heart = c.heart;
@@ -526,14 +521,8 @@ const checkoutProds = async (e) => {
           personalized.personalizedGiftImgs = c.personalizedGiftImgs;
           pdata.personalized = personalized;
         }
-    }
-
-
-    if (USER_DETAILS.orders) {
-        USER_DETAILS.orders.push(checkoutCart);
-    } else {
-        USER_DETAILS.orders = [];
-        USER_DETAILS.orders.push(checkoutCart);
+        checkoutCart.products.push(pdata);
+      }
     }
   });
 
