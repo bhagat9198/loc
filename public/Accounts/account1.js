@@ -14,7 +14,7 @@ const displayOrder = (data, counter) => {
     prodsNameArr.push(p.name);
     prodsName += `
     <tr>
-      <td>${p.name}</td>
+      <td>${p.sno}</td>
     </tr>
     `;
     prodQtysArr.push(+p.qty);
@@ -159,7 +159,7 @@ const displayOrder = (data, counter) => {
     // console.log(add);
     addonsNames += `
     <tr>
-      <td>${add.name}</td>
+      <td>${add.sno}</td>
     </tr>
     `;
     adddonsQty += `

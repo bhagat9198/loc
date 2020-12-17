@@ -241,58 +241,62 @@ const OrderDetailsModal = async (e) => {
   // console.log(index);
   let row = "";
   let prodSummery = [];
-  console.log(ORDERS[index]);
+  // console.log(ORDERS[index]);
   for (let prod of ORDERS[index].order.products) {
-    await db
-      .collection(prod.cat)
-      .doc(prod.prodId)
-      .get()
-      .then((prodDoc) => {
-        let prodData = prodDoc.data();
-        // console.log(prodData);
-        if (prodData) {
-          let pInfo = `
+    // await db
+    // .collection(prod.cat)
+    // .doc(prod.prodId)
+    // .get()
+    // .then((prodDoc) => {
+    //   let prodData = prodDoc.data();
+    //   console.log(prodData);
+    let prodData = prod;
+    let msg;
+    // console.log(prod.message);
+    if (!prod.message) {
+      msg = "No message";
+    } else {
+      msg = prod.message;
+    }
+
+    if (prodData) {
+      let pInfo = `
         <td>---</td>
         <td>---</td>
         <td>---</td>
         `;
-          if (prod.cake) {
-            pInfo = `
-        <td>${prod.cake.heart ? "Heart" : "Round"}</td>
-        <td>${prod.cake.flavour}</td>
-        <td>${prod.cake.eggless ? "Opted" : "Not Opted"}</td>
-        `;
-          }
-          row += `
+      if (prod.cake) {
+        pInfo = `
+            <td>${prod.cake.heart ? "Heart" : "Round"}</td>
+            <td>${prod.cake.flavour}</td>
+            <td>${prod.cake.eggless ? "Opted" : "Not Opted"}</td>
+            `;
+      }
+      row += `
           <tr>
-            <td><img src="${prodData.mainImgUrl}" style="width: 50px; object-fit: cover;" alt=""></td>
+            <td><img src="${prodData.img}" style="width: 50px; object-fit: cover;" alt=""></td>
             <td>${prodData.sno}</td>
             <td>${prodData.name}</td>
             ${pInfo}
             <td>${prod.qty}</td>
-            <td>'${prod.message}'</td>
+            <td>${msg}</td>
           </tr>
           `;
-          prodSummery.push({ name: prodData.name });
-        }
-      });
+      prodSummery.push({ name: prodData.name });
+    }
+    // });
   }
   // console.log(row);
 
   let addPrice = "";
   if (ORDERS[index].order.addons.length > 0) {
     for (let add of ORDERS[index].order.addons) {
-      await db
-        .collection("addons")
-        .doc(add.id)
-        .get()
-        .then((addDoc) => {
-          let addData = addDoc.data();
-          // console.log(addData);
-          row += `
+      let addData = add;
+
+      row += `
         <tr>
-          <td><img src="${addData.imgUrl}" style="width: 50px; object-fit: cover;" alt=""></td>
-          <td>---</td>
+          <td><img src="${addData.img}" style="width: 50px; object-fit: cover;" alt=""></td>
+          <td>${addData.sno}</td>
           <td>${addData.name}</td>
           <td>---</td>
           <td>---</td>
@@ -302,21 +306,19 @@ const OrderDetailsModal = async (e) => {
         </tr>
         `;
 
-          let addBasic = +addData.sp * +add.qty;
-          let addGst = addBasic * (+addData.gst / 100);
-          let addTotal = addBasic + addGst;
-          addPrice += `
-        <tr>
-          <td></td>
-          <td>₹ ${addData.sp * +add.qty}</td>
-          <td>---</td>
-          <td>---</td>
-          <td>₹ ${addGst}</td>
-          <td>₹ ${addTotal}</td>
-        </tr>
-        `;
-          prodSummery.push({ name: addData.name, total: addTotal });
-        });
+      let addBasic = +addData.basicPrice * +add.qty;
+      let addGst = addBasic * (+addData.gst / 100);
+      let addTotal = addBasic + addGst;
+      addPrice += `
+          <tr>
+            <td>₹ ${addBasic}</td>
+            <td>₹ 0</td>
+            <td>₹ ${addBasic}</td>
+            <td>₹ ${addGst}</td>
+            <td>₹ ${addTotal}</td>
+          </tr>
+          `;
+      prodSummery.push({ name: addData.name, total: addTotal });
     }
   }
 
@@ -325,8 +327,12 @@ const OrderDetailsModal = async (e) => {
   let priceRow = "";
   for (let i = 0; i < ORDERS[index].basicPrice.length; i++) {
     let prodBasic = +ORDERS[index].basicPrice[i];
-    let prodDiscount = +ORDERS[index].disArr[i];
-    let discountedPrice = prodBasic - prodDiscount;
+    let prodDiscount = 0,
+      discountedPrice = 0;
+    if (ORDERS[index].disArr.length > 0) {
+      prodDiscount = +ORDERS[index].disArr[i];
+    }
+    discountedPrice = prodBasic - prodDiscount;
     let prodGst = +ORDERS[index].gstArr[i];
     let prodTotal = Math.round(discountedPrice + prodGst);
     priceRow = `
@@ -342,9 +348,14 @@ const OrderDetailsModal = async (e) => {
     prodSummery[i].total = prodTotal;
   }
   productPriceHTML.innerHTML = priceRow + addPrice;
+  prodSummery.push({
+    name: `Delivery(${ORDERS[index].shipeType})`,
+    total: ORDERS[index].shipeTypePrice,
+  });
 
   let prodsTotal = "";
   let totalCost = 0;
+  // console.log(prodSummery);
   prodSummery.map((ps) => {
     totalCost += +ps.total;
     prodsTotal += `
