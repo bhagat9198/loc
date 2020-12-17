@@ -856,21 +856,19 @@ const prodWithAddonsHTML = document.querySelector("#prod_with_addons");
 let userId;
 let userRef;
 user = localStorage.getItem("locLoggedInUser");
-console.log(user);
+// console.log(user);
 // return;
 const checkAuth = async () => {
-  console.log('checkAuth');
   let userStatus = false;
   if (!user || user == null || user == "null") {
     // window.location.href = "/Auth/login.html";
   } else {
     userStatus = true;
     let uid = user;
-    console.log(uid);
+    // console.log(uid);
     // userId = localStorage.getItem("locLoggedInUser");
     userRef = await db.collection("Customers").doc(uid);
   }
-  console.log(userStatus);
   return userStatus;
 };
 
@@ -883,13 +881,9 @@ const buyProd = async (e) => {
   });
 
   let uStatus = await checkAuth();
-  console.log(uStatus);
   const orderId = Math.random();
-  console.log(uStatus, 'sdg');
   if (uStatus) {
-    console.log('aaa', userRef);
     await userRef.get().then(async (doc) => {
-      console.log(doc.id);
       let personalizedGiftImgs = [];
       if (personalizedGift) {
         let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
