@@ -2,6 +2,7 @@ console.log('siteStaus.js');
 
 const db = firebase.firestore();
 const siteStatusSwitcherHTML = document.querySelector('#siteStatusSwitcher');
+const errorNoteFormHTML = document.querySelector('#error-note-form');
 
 let dbRef = db.collection('miscellaneous').doc('siteStatus');
 
@@ -23,6 +24,7 @@ dbRef.get().then(doc => {
     </span>
     `; 
   }
+  errorNoteFormHTML['note'].value = docData.note;
 })
 
 const changeSiteStaus = async(e, current) => {
@@ -33,3 +35,15 @@ const changeSiteStaus = async(e, current) => {
   })
 }
 
+
+
+const submitNote = e => {
+  e.preventDefault();
+
+  const note = errorNoteFormHTML['note'].value;
+  console.log('note', note);
+
+  dbRef.update('note', note);
+}
+
+errorNoteFormHTML.addEventListener('submit', submitNote);

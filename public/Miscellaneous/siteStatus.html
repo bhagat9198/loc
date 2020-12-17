@@ -23,7 +23,7 @@
       background-color: #ccc;
     } */
 
-    body span.switcher {
+    #siteStatusSwitcher span.switcher {
       position: relative;
       width: 200px;
       height: 50px;
@@ -31,7 +31,7 @@
       margin: 20px 0;
     }
 
-    body span.switcher input {
+    #siteStatusSwitcher span.switcher input {
       appearance: none;
       position: relative;
       width: 200px;
@@ -42,8 +42,8 @@
       font-family: 'Oswald', sans-serif;
     }
 
-    body span.switcher input:before,
-    body span.switcher input:after {
+    #siteStatusSwitcher span.switcher input:before,
+    #siteStatusSwitcher span.switcher input:after {
       z-index: 2;
       position: absolute;
       top: 50%;
@@ -51,17 +51,17 @@
       color: #fff;
     }
 
-    body span.switcher input:before {
+    #siteStatusSwitcher span.switcher input:before {
       content: 'Paused';
       left: 20px;
     }
 
-    body span.switcher input:after {
+    #siteStatusSwitcher span.switcher input:after {
       content: 'Running';
       right: 20px;
     }
 
-    body span.switcher label {
+    #siteStatusSwitcher span.switcher label {
       z-index: 1;
       position: absolute;
       top: 10px;
@@ -69,47 +69,47 @@
       border-radius: 20px;
     }
 
-    body span.switcher.switcher-1 input {
+    #siteStatusSwitcher span.switcher.switcher-1 input {
       transition: 0.25s -0.1s;
     }
 
-    body span.switcher.switcher-1 input:checked {
+    #siteStatusSwitcher span.switcher.switcher-1 input:checked {
       background-color: #fff;
     }
 
-    body span.switcher.switcher-1 input:checked:before {
+    #siteStatusSwitcher span.switcher.switcher-1 input:checked:before {
       color: #fff;
       transition: color 0.5s 0.2s;
     }
 
-    body span.switcher.switcher-1 input:checked:after {
+    #siteStatusSwitcher span.switcher.switcher-1 input:checked:after {
       color: black;
       transition: color 0.5s;
     }
 
-    body span.switcher.switcher-1 input:checked+label {
+    #siteStatusSwitcher span.switcher.switcher-1 input:checked+label {
       left: 10px;
       right: 100px;
       background: #1e1e1e;
       transition: left 0.5s, right 0.4s 0.2s;
     }
 
-    body span.switcher.switcher-1 input:not(:checked) {
+    #siteStatusSwitcher span.switcher.switcher-1 input:not(:checked) {
       background: #1e1e1e;
       transition: background 0.5s -0.1s;
     }
 
-    body span.switcher.switcher-1 input:not(:checked):before {
+    #siteStatusSwitcher span.switcher.switcher-1 input:not(:checked):before {
       color: white;
       transition: color 0.5s;
     }
 
-    body span.switcher.switcher-1 input:not(:checked):after {
+    #siteStatusSwitcher span.switcher.switcher-1 input:not(:checked):after {
       color: #1e1e1e;
       transition: color 0.5s 0.2s;
     }
 
-    body span.switcher.switcher-1 input:not(:checked)+label {
+    #siteStatusSwitcher span.switcher.switcher-1 input:not(:checked)+label {
       left: 100px;
       right: 10px;
       background: #fff;
@@ -136,7 +136,6 @@
         right: 0%;
       }
     }
-
   </style>
 </head>
 
@@ -162,8 +161,7 @@
       <!-- /.content-header -->
 
       <!-- Main content -->
-      <section class="content" style="display: flex; justify-content: center; align-items: center;">
-
+      <section style="display: flex; justify-content: center; align-items: center;">
         <div class="row">
           <div class="col-lg-12" id="siteStatusSwitcher">
             <!-- <span class="switcher switcher-1">
@@ -172,12 +170,61 @@
             </span> -->
           </div>
         </div>
-
+        <br>
       </section>
-      <!-- /.content -->
-    </div>
 
-    <section id="admin-footer-load"></section>
+      <style>
+        #error-note-form {
+          width: 90%;
+          margin: auto;
+        }
+
+        #error-note-form input {
+          border-radius: 50px;
+          padding: 10px;
+          outline: none;
+        }
+
+        #error-note-form button {
+          border-radius: 50px;
+          padding: 5px 10px;
+          outline: none;
+          background-color: red;
+          color: white;
+          border: none;
+        }
+      </style>
+      <br><br>
+      <section class="wrapper">
+        <form id="error-note-form">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="product-description">
+                <div class="body-area">
+                  <div class="featured-keyword-area">
+                    <div class="feature-tag-top-filds" id="feature-section">
+                      <div class="feature-area">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <input type="text" style="width: 100%;" name="note" class="input-field"
+                              placeholder="Error Note">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <button type="submit"><b>Update Error Note</b>  </button>
+        </form>
+    </section>
+    <!-- /.content -->
+  </div>
+
+  <section id="admin-footer-load"></section>
   </div>
 
   <script src="../assets/js/jquery-1.12.4.min.js"></script>
