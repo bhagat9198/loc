@@ -594,6 +594,10 @@ kbd kbd {
     .responsive-sec2 {
         display: block !important;
     }
+    .onlyInPc{
+        padding: 30px !important;
+        
+    }
 }
 
 @media (min-width:992px) {

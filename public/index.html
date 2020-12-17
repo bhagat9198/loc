@@ -2,252 +2,232 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lake of Cakes | Home</title>
-  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lake of Cakes | Home</title>
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="./assets/css/all.css">
-  <link rel="stylesheet" href="./assets/css/base.css">
-  <link rel="stylesheet" href="./assets/css/styles.css">
-  <link rel="stylesheet" href="./assets/css/mega-menu.css">
-  <!-- <link rel="stylesheet" href="./assets//css/randomStyles.css"> -->
+    <link rel="stylesheet" href="./assets/css/all.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/mega-menu.css">
+    <!-- <link rel="stylesheet" href="./assets//css/randomStyles.css"> -->
 
-  <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
 
 
-  <link rel="stylesheet" href="assets/css/animation.css">
-  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
-  <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/animation.css">
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+    <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
 </head>
 <style>
-  .top-grid-head {
-    background: url(./assets/images/header-bg1.png);
-    min-height: 101px;
-    text-align: center;
-    width: 100%;
-    background-size: contain;
-    z-index: 999;
-  }
-
-  .darkmode-toggle {
-    z-index: 999 !important;
-  }
-
-  @media only screen and (max-width: 370px) {
-    .scres {
-      padding: 15px 0px 0px 20px !important;
+    .top-grid-head {
+        background: url(./assets/images/header-bg1.png);
+        min-height: 101px;
+        text-align: center;
+        width: 100%;
+        background-size: contain;
+        z-index: 999;
     }
-  }
-
-  @media only screen and (min-width:769px) {
-
-    .responsive-sec {
-      display: none !important;
+    
+    .darkmode-toggle {
+        z-index: 999 !important;
     }
-
-    .responsive-secCart {
-      display: none !important;
+    
+    @media only screen and (max-width: 370px) {
+        .scres {
+            padding: 15px 0px 0px 20px !important;
+        }
     }
-
-    .responsive-sec2 {
-      display: block !important;
-
+    
+    @media only screen and (min-width:769px) {
+        .responsive-sec {
+            display: none !important;
+        }
+        .responsive-secCart {
+            display: none !important;
+        }
+        .responsive-sec2 {
+            display: block !important;
+        }
+        .responsive-imgSpeed {
+            height: 200px;
+        }
     }
-
-    .responsive-imgSpeed {
-      height: 200px;
+    
+    @media only screen and (width:768px) {}
+    
+    @media only screen and (max-width:767px) {
+        .resImg {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        .responsive-sec {
+            padding: 5px 0px 0px 5px !important;
+            display: block !important;
+        }
+        .responsive-secCart {
+            display: block !important;
+        }
+        .bannerTxt {
+            font-size: 8px !important;
+            padding: 3px !important;
+        }
+        .bannerMainImage {
+            height: 120px !important;
+        }
+        .skeleton.block {
+            width: auto;
+            height: 100px !important;
+        }
+        .responsive-sec2 {
+            display: none !important;
+        }
+        .imgresponsive {
+            object-fit: contain !important;
+        }
     }
-
-  }
-
-  @media only screen and (width:768px) {}
-
-  @media only screen and (max-width:767px) {
-
-    .resImg {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      margin-left: auto;
-      margin-right: auto;
-      display: block;
+    
+    .skeleton {
+        background: linear-gradient(90deg, #ededed, #ffffff, #ededed);
+        animation-name: load;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-direction: forwards;
+        animation-timing-function: linear;
+        background-size: 200% 100%;
     }
-
-    .responsive-sec {
-      padding: 5px 0px 0px 5px !important;
-      display: block !important;
-    }
-
-    .responsive-secCart {
-
-      display: block !important;
-    }
-
-    .bannerTxt {
-      font-size: 8px !important;
-      padding: 3px !important;
-    }
-
-    .bannerMainImage {
-      height: 120px !important;
-    }
-
+    
     .skeleton.block {
-      width: auto;
-      height: 100px !important;
+        width: auto;
     }
-
-    .responsive-sec2 {
-      display: none !important;
+    
+    .skeleton.block.small {
+        width: 150px;
     }
-
-    .imgresponsive {
-      object-fit: contain !important;
+    
+    .skeleton.circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
     }
-
-  }
-
-  .skeleton {
-    background: linear-gradient(90deg, #ededed, #ffffff, #ededed);
-    animation-name: load;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
-    animation-direction: forwards;
-    animation-timing-function: linear;
-    background-size: 200% 100%;
-  }
-
-  .skeleton.block {
-    width: auto;
-
-  }
-
-  .skeleton.block.small {
-    width: 150px;
-  }
-
-  .skeleton.circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-
-  .loaders {
-    padding: 1rem 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .loaders>*+* {
-    margin-top: 1rem;
-  }
-
-  .loader {
-    display: flex;
-    flex-direction: row;
-    background-color: #ffffff;
-    padding: 1rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  }
-
-  .loader>*+* {
-    margin-left: 1rem;
-  }
-
-  .skeleton-group {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .skeleton-group>*+* {
-    margin-top: 1rem;
-  }
-
-  @keyframes load {
-    from {
-      background-position: 100% 0%;
+    
+    .loaders {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
     }
-
-    to {
-      background-position: -100% 0%;
+    
+    .loaders>*+* {
+        margin-top: 1rem;
     }
-  }
+    
+    .loader {
+        display: flex;
+        flex-direction: row;
+        background-color: #ffffff;
+        padding: 1rem;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+    
+    .loader>*+* {
+        margin-left: 1rem;
+    }
+    
+    .skeleton-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .skeleton-group>*+* {
+        margin-top: 1rem;
+    }
+    
+    @keyframes load {
+        from {
+            background-position: 100% 0%;
+        }
+        to {
+            background-position: -100% 0%;
+        }
+    }
 </style>
 
 <body style="overflow-x: hidden !important; ">
 
-  <!-- <div id="loading">
+    <!-- <div id="loading">
     <img id="loading-image" src="./assets/images/Spinner-1s-200px.gif" alt="Loading..." />
   </div> -->
 
-  <section id="nav-section-loader">
+    <section id="nav-section-loader">
 
-    <style>
-      .autocomplete {
-        position: relative;
-        display: inline-block !important;
-      }
-
-      input {
-        border: 1px solid transparent;
-        background-color: #f1f1f1;
-        padding: 10px;
-        font-size: 16px;
-
-      }
-
-      input[type=text] {
-        background-color: #f1f1f1;
-        width: 100%;
-
-      }
-
-      input[type=submit] {
-        background-color: DodgerBlue;
-        color: rgb(131, 56, 56);
-        cursor: pointer;
-      }
-
-      .autocomplete-items {
-        position: absolute;
-        border: 1px solid #d4d4d4;
-        border-bottom: none;
-        border-top: none;
-        z-index: 99;
-        /*position the autocomplete items to be the same width as the container:*/
-        top: 100%;
-        left: 0;
-        right: 0;
-        /* font-style: italic; */
-      }
-
-      .autocomplete-items div {
-        padding: 10px;
-        cursor: pointer;
-        background-color: #fff;
-        border-bottom: 1px solid #d4d4d4;
-        /* font-style: italic; */
-      }
-
-      /*when hovering an item:*/
-      .autocomplete-items div:hover {
-        background-color: #e9e9e9;
-      }
-
-      /*when navigating through the items using the arrow keys:*/
-      .autocomplete-active {
-        background-color: DodgerBlue !important;
-        color: #ffffff;
-      }
-
-      @media only screen and (max-width: 600px) {
-        .responsiveIcon1 {
-          /* margin: auto;
+        <style>
+            .autocomplete {
+                position: relative;
+                display: inline-block !important;
+            }
+            
+            input {
+                border: 1px solid transparent;
+                background-color: #f1f1f1;
+                padding: 10px;
+                font-size: 16px;
+            }
+            
+            input[type=text] {
+                background-color: #f1f1f1;
+                width: 100%;
+            }
+            
+            input[type=submit] {
+                background-color: DodgerBlue;
+                color: rgb(131, 56, 56);
+                cursor: pointer;
+            }
+            
+            .autocomplete-items {
+                position: absolute;
+                border: 1px solid #d4d4d4;
+                border-bottom: none;
+                border-top: none;
+                z-index: 99;
+                /*position the autocomplete items to be the same width as the container:*/
+                top: 100%;
+                left: 0;
+                right: 0;
+                /* font-style: italic; */
+            }
+            
+            .autocomplete-items div {
+                padding: 10px;
+                cursor: pointer;
+                background-color: #fff;
+                border-bottom: 1px solid #d4d4d4;
+                /* font-style: italic; */
+            }
+            /*when hovering an item:*/
+            
+            .autocomplete-items div:hover {
+                background-color: #e9e9e9;
+            }
+            /*when navigating through the items using the arrow keys:*/
+            
+            .autocomplete-active {
+                background-color: DodgerBlue !important;
+                color: #ffffff;
+            }
+            
+            @media only screen and (max-width: 600px) {
+                .responsiveIcon1 {
+                    /* margin: auto;
 				padding: 0px; */
           /*  */
         }
@@ -309,7 +289,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
@@ -365,11 +344,11 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <div class="nav-collapsible">
-                <a href="#">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                                </a>
+                            </div>
+                            <div class="nav-collapsible">
+                                <a href="#">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span>
@@ -386,11 +365,11 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <div class="nav-collapsible">
-                <a href="#">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                                </a>
+                            </div>
+                            <div class="nav-collapsible">
+                                <a href="#">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span>
@@ -409,10 +388,10 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <hr>
-              <!-- <div class="nav-collapsible">
+                                </a>
+                            </div>
+                            <hr>
+                            <!-- <div class="nav-collapsible">
               <a href="#">
                 <label for="nav-collapsible-1" style="width: 100%;">
                   <div class="row pl-3">
@@ -458,9 +437,9 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <!-- <div class="nav-collapsible">
+                                </a>
+                            </div>
+                            <!-- <div class="nav-collapsible">
               <a href="javascript:;" data-toggle="modal" data-target="#track-order-modal" class="track-btn">
                 <label for="nav-collapsible-1" style="width: 100%;">
                   <div class="row pl-3">
@@ -476,9 +455,9 @@
                 </label>
               </a>
             </div> -->
-              <div class="nav-collapsible">
-                <a data-toggle="modal" data-target="#topoffer">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                            <div class="nav-collapsible">
+                                <a data-toggle="modal" data-target="#topoffer">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
                         <span style="position: relative; top: 4px;" data-toggle="modal" data-target="#modalYT">Offers
@@ -491,11 +470,11 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <div class="nav-collapsible">
-                <a href="/Common/coupans.html">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                                </a>
+                            </div>
+                            <div class="nav-collapsible">
+                                <a href="/Common/coupans.html">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
                         <span style="position: relative; top: 4px;">Coupons </span>
@@ -507,12 +486,12 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
+                                </a>
+                            </div>
 
-              <div class="nav-collapsible" style="display: none;" id="logoutMobile">
-                <a href="#!" onclick="logOut()">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                            <div class="nav-collapsible" style="display: none;" id="logoutMobile">
+                                <a href="#!" onclick="logOut()">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
                         <span style="position: relative; top: 4px;">Log Out</span>
@@ -524,11 +503,11 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
-              <div class="nav-collapsible" id="loginMobile">
-                <a href="/Auth/login.html">
-                  <label for="nav-collapsible-1" style="width: 100%;">
+                                </a>
+                            </div>
+                            <div class="nav-collapsible" id="loginMobile">
+                                <a href="/Auth/login.html">
+                                    <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
                         <span style="position: relative; top: 4px;">Log In</span>
@@ -540,137 +519,119 @@
                       </div>
                     </div>
                   </label>
-                </a>
-              </div>
+                                </a>
+                            </div>
 
-            </div>
-          </aside>
-          <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
-            <div class="row">
-              <div class="col-md-1"></div>
-              <div class="col-md-10 col-12 p-0 mt-3 ml-4">
-                <div class="input-group mb-2 mt-2">
-                  <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
-                    <div class="autocomplete" style="width: 100%;">
-                      <input class="form-control" style="width: 100% !important;
+                        </div>
+                    </aside>
+                    <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10 col-12 p-0 mt-3 ml-4">
+                                <div class="input-group mb-2 mt-2">
+                                    <form id="searchForm" class="search-form" style="display: inline-flex;width: 100%;">
+                                        <div class="autocomplete" style="width: 100%;">
+                                            <input class="form-control" style="width: 100% !important;
                     border: none;
                     border-bottom: 1px solid ;
-                    border-radius: unset;background-color: transparent;" type="text" id="searchBar"
-                        onkeydown="disableEnterKey(event)" onkeyup=searchByUserInput(event) name="searchBar"
-                        placeholder="Search: Cakes , Flowers ,Gifts...">
-                    </div>
+                    border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeydown="disableEnterKey(event)" onkeyup=searchByUserInput(event) name="searchBar" placeholder="Search: Cakes , Flowers ,Gifts...">
+                                        </div>
 
-                    <div class="input-group-append" onclick=searchByUserInputBtn(event)>
-                      <button class="btn btn-outline-secondary" onclick=searchByUserInputBtn(event)
-                        style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent; border: #F00;"><i
+                                        <div class="input-group-append" onclick=searchByUserInputBtn(event)>
+                                            <button class="btn btn-outline-secondary" onclick=searchByUserInputBtn(event) style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent; border: #F00;"><i
                           class="fa fa-search" style="color:red" onclick=searchByUserInputBtn(event)></i></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
-          <div
-            class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
-            <ul style="display: inline-flex;">
-              <li>
-                <a href="#">
-                  <div class="text-center">
-                    <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
-                    <div
-                      style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
-                      MIDNIGHT</div>
-                  </div>
-                </a>
-              </li>
-              <li style="padding: 0px 28px;">
-                <a href="#">
-                  <img src="/assets/images/chef.png" style="width:50px;object-fit: cover;">
-                  <div
-                    style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
-                    BE A CHEF</div>
-                </a>
-              </li>
-              <li>
-                <a href="#" type="button" data-toggle="modal" data-target="#reminderModal">
-                  <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
-                  <div data-toggle="modal" data-target="#reminderModal"
-                    style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
-                    REMINDER</div>
-                </a>
-              </li>
-            </ul>
+                    <div class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
+                        <ul style="display: inline-flex;">
+                            <li>
+                                <a href="#">
+                                    <div class="text-center">
+                                        <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
+                                        <div style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                                            MIDNIGHT</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="padding: 0px 28px;">
+                                <a href="#">
+                                    <img src="/assets/images/chef.png" style="width:50px;object-fit: cover;">
+                                    <div style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                                        BE A CHEF</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" type="button" data-toggle="modal" data-target="#reminderModal">
+                                    <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
+                                    <div data-toggle="modal" data-target="#reminderModal" style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                                        REMINDER</div>
+                                </a>
+                            </li>
+                        </ul>
 
 
 
 
-          </div>
-          <div class="col-lg-1 col-sm-3 col-3 remove-padding order-lg-last">
-            <div class="helpful-links mt-md-3 cartres">
+                    </div>
+                    <div class="col-lg-1 col-sm-3 col-3 remove-padding order-lg-last">
+                        <div class="helpful-links mt-md-3 cartres">
 
-              <ul class="helpful-links-inner" style="display: flex;">
+                            <ul class="helpful-links-inner" style="display: flex;">
 
 
 
-                <li class="nav-item dropdown" style="margin-top: 15%;">
-                  <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos"
-                      style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
+                                <li class="nav-item dropdown" style="margin-top: 15%;">
+                                    <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos" style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
 
-                  </a>
+                                    </a>
 
-                  <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
+                                    <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
                     inset 0 -3em 3em rgba(0,0,0,0.1), 
                           0 0  0 2px rgb(255,255,255),
-                          0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown"
-                    aria-labelledby="navbarDropdownMenuLink">
-                    <div
-                      style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
-                      <a class="dropdown-item" href="#">
-                        <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest!
-                          Login to continue</h4>
-                        <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
-                        </center>
-                      </a>
-                    </div>
+                          0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown" aria-labelledby="navbarDropdownMenuLink">
+                                        <div style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
+                                            <a class="dropdown-item" href="#">
+                                                <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest! Login to continue</h4>
+                                                <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
+                                                </center>
+                                            </a>
+                                        </div>
 
-                    <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href=""
-                      onclick="checkifUser('/UserDash/customerProfile.html')"><i class="fa fa-user"></i>
+                                        <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="" onclick="checkifUser('/UserDash/customerProfile.html')"><i class="fa fa-user"></i>
                       Profile</a>
 
-                    <!-- <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
+                                        <!-- <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
                     href="#!" onclick="checkifUser('/UserDash/trackOrders.html')"><i class="fa fa-truck"></i> Track
                     Orders</a> -->
 
-                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
-                      href="#!" onclick="checkifUser('/UserDash/customerProfile.html')"><i
+                                        <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!" onclick="checkifUser('/UserDash/customerProfile.html')"><i
                         class="fa fa-shopping-cart"></i> My
                       Orders</a>
 
-                    <a class="dropdown-item responsive-secCart"
-                      style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!"
-                      onclick="checkifUser('/UserDash/cart.html')"><i class="fa fa-shopping-cart"></i> My Cart</a>
+                                        <a class="dropdown-item responsive-secCart" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!" onclick="checkifUser('/UserDash/cart.html')"><i class="fa fa-shopping-cart"></i> My Cart</a>
 
-                    <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"
-                      id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
+                                        <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#" id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
                       Logout</a>
-                  </div>
-                </li>
+                                    </div>
+                                </li>
 
 
-                <li class="my-dropdown responsiveIcon3" id="cart-modal" style="display: none;" data-toggle="tooltip"
-                  data-placement="top" title="Cart">
+                                <li class="my-dropdown responsiveIcon3" id="cart-modal" style="display: none;" data-toggle="tooltip" data-placement="top" title="Cart">
 
-                </li>
-              </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
 
     <!-- ///////////////////////////////////////////////////// -->
@@ -796,22 +757,22 @@
     <div class="mainmenu-area mainmenu-bb">
 
 
-      <div class="col-lg-12 col-md-12 categorimenu-wrapper p-0" style="z-index: 5;">
-        <div class="desktopmenu">
-          <div class="menu-container">
-            <div class="menu">
-              <ul id="whole-navigation-pc">
+            <div class="col-lg-12 col-md-12 categorimenu-wrapper p-0" style="z-index: 5;">
+                <div class="desktopmenu">
+                    <div class="menu-container">
+                        <div class="menu">
+                            <ul id="whole-navigation-pc">
 
-              </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SLIDER -->
-  <!-- <section class=" slider-buttom-category d-md-block responsive-sec" style="background: rgba(219, 216, 166, 0.3);">
+    <!-- SLIDER -->
+    <!-- <section class=" slider-buttom-category d-md-block responsive-sec" style="background: rgba(219, 216, 166, 0.3);">
     <div class="container scres" style="overflow-x: overlay; padding: 5px 0px 0px 70px;">
 
       <div class="row rows " id="fixed-section2-row" style="justify-content:space-evenly; flex-wrap: nowrap;">
@@ -924,174 +885,174 @@
     </div>
   </section> -->
 
-  <section class="hero-area">
+    <section class="hero-area">
 
-    <div class="hero-area-slider">
-      <div class="intro-carousel post">
-        <a href="#">
-          <div class="intro-content slide-one avatar">
-            <img class="line" src="">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="slider-content skeleton block">
-                  </div>
-                </div>
-              </div>
+        <div class="hero-area-slider">
+            <div class="intro-carousel post">
+                <a href="#">
+                    <div class="intro-content slide-one avatar">
+                        <img class="line" src="">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="slider-content skeleton block">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>`
             </div>
-          </div>
-        </a>`
-      </div>
-      <div class="base">
+            <div class="base">
 
-      </div>
+            </div>
+        </div>
+
+    </section>
     </div>
 
-  </section>
-  </div>
+
+    <!-- SECTION1 -->
+
+    <section class=" slider-buttom-category d-md-block " style="background: rgba(219, 216, 166, 0.3);">
+        <div class=" container scres" style="overflow-x: overlay; padding: 15px 0px 0px 90px;">
+
+            <div class=" row rows " id="fixed-section21-row" style="justify-content:space-evenly; flex-wrap: nowrap;">
+
+                <div class=" sc-common-padding colxl2 ">
+                    <div class=" card cardc align-items-center ">
+                        <a href="" class="">
+                            <div class=" iconimg ">
+                                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+                            </div>
+                            <div class="card-body cbc text-center">
+                                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class=" sc-common-padding colxl2 ">
+                    <div class=" card cardc align-items-center ">
+                        <a href="" class="">
+                            <div class=" iconimg ">
+                                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+                            </div>
+                            <div class="card-body cbc text-center">
+                                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class=" sc-common-padding colxl2 ">
+                    <div class=" card cardc align-items-center ">
+                        <a href="" class="">
+                            <div class=" iconimg ">
+                                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+                            </div>
+                            <div class="card-body cbc text-center">
+                                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class=" sc-common-padding colxl2 ">
+                    <div class=" card cardc align-items-center ">
+                        <a href="" class="">
+                            <div class=" iconimg ">
+                                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+                            </div>
+                            <div class="card-body cbc text-center">
+                                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class=" sc-common-padding colxl2 ">
+                    <div class=" card cardc align-items-center ">
+                        <a href="" class="">
+                            <div class=" iconimg ">
+                                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+                            </div>
+                            <div class="card-body cbc text-center">
+                                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class=" sc-common-padding colxl2 ">
+                    <div class=" card cardc align-items-center ">
+                        <a href="" class="">
+                            <div class=" iconimg ">
+                                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+                            </div>
+                            <div class="card-body cbc text-center">
+                                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class=" sc-common-padding colxl2 ">
+                    <div class=" card cardc align-items-center ">
+                        <a href="" class="">
+                            <div class=" iconimg ">
+                                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
+                            </div>
+                            <div class="card-body cbc text-center">
+                                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
+                                </h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);">
+        <h3 class="bannerheading fadeIn" id="fixed-section1-heading">Choose the Best Joy</h3>
+        <div class="container-fluid">
+            <div class="row" id="fixed-section1-row">
+                <div class="col-lg-3 col-md-3 col-6 remove-padding">
+                    <div class="left">
+                        <a class="banner-effect imgca" href="product.html" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6 remove-padding">
+                    <div class="left">
+                        <a class="banner-effect imgca" href="product.html" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6 remove-padding">
+                    <div class="left">
+                        <a class="banner-effect imgca" href="product.html" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6 remove-padding">
+                    <div class="left">
+                        <a class="banner-effect imgca" href="product.html" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
-  <!-- SECTION1 -->
-
-  <section class=" slider-buttom-category d-md-block " style="background: rgba(219, 216, 166, 0.3);">
-    <div class=" container scres" style="overflow-x: overlay; padding: 15px 0px 0px 90px;">
-
-      <div class=" row rows " id="fixed-section21-row" style="justify-content:space-evenly; flex-wrap: nowrap;">
-
-        <div class=" sc-common-padding colxl2 ">
-          <div class=" card cardc align-items-center ">
-            <a href="" class="">
-              <div class=" iconimg ">
-                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
-              </div>
-              <div class="card-body cbc text-center">
-                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
-                </h5>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class=" sc-common-padding colxl2 ">
-          <div class=" card cardc align-items-center ">
-            <a href="" class="">
-              <div class=" iconimg ">
-                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
-              </div>
-              <div class="card-body cbc text-center">
-                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
-                </h5>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class=" sc-common-padding colxl2 ">
-          <div class=" card cardc align-items-center ">
-            <a href="" class="">
-              <div class=" iconimg ">
-                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
-              </div>
-              <div class="card-body cbc text-center">
-                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
-                </h5>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class=" sc-common-padding colxl2 ">
-          <div class=" card cardc align-items-center ">
-            <a href="" class="">
-              <div class=" iconimg ">
-                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
-              </div>
-              <div class="card-body cbc text-center">
-                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
-                </h5>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class=" sc-common-padding colxl2 ">
-          <div class=" card cardc align-items-center ">
-            <a href="" class="">
-              <div class=" iconimg ">
-                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
-              </div>
-              <div class="card-body cbc text-center">
-                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
-                </h5>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class=" sc-common-padding colxl2 ">
-          <div class=" card cardc align-items-center ">
-            <a href="" class="">
-              <div class=" iconimg ">
-                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
-              </div>
-              <div class="card-body cbc text-center">
-                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
-                </h5>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class=" sc-common-padding colxl2 ">
-          <div class=" card cardc align-items-center ">
-            <a href="" class="">
-              <div class=" iconimg ">
-                <img class="comimg skeleton circle" style="width:300px !important;height:100px;object-fit:cover">
-              </div>
-              <div class="card-body cbc text-center">
-                <h5 class="card-title" style="font-family: cursive; font-size: 15px;">
-                </h5>
-              </div>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);">
-    <h3 class="bannerheading fadeIn" id="fixed-section1-heading">Choose the Best Joy</h3>
-    <div class="container-fluid">
-      <div class="row" id="fixed-section1-row">
-        <div class="col-lg-3 col-md-3 col-6 remove-padding">
-          <div class="left">
-            <a class="banner-effect imgca" href="product.html" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif">
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-6 remove-padding">
-          <div class="left">
-            <a class="banner-effect imgca" href="product.html" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif">
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-6 remove-padding">
-          <div class="left">
-            <a class="banner-effect imgca" href="product.html" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif">
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-6 remove-padding">
-          <div class="left">
-            <a class="banner-effect imgca" href="product.html" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- <section class="responsive-sec2" style="position: absolute;margin-top: -2%; ">
+    <!-- <section class="responsive-sec2" style="position: absolute;margin-top: -2%; ">
     <div class="contain ">
       <div class="remoding">
         <div class="img" id="img-slider">
@@ -1103,10 +1064,10 @@
     </div>
   </section> -->
 
-  <!-- user defined sliders -->
-  <section class="trending-item-slider" id="user-defined-slider">
+    <!-- user defined sliders -->
+    <section class="trending-item-slider" id="user-defined-slider">
 
-    <!-- 
+        <!-- 
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12 remove-padding">
@@ -1152,56 +1113,56 @@
         </div>
       </div> -->
 
-  </section>
+    </section>
 
 
-  <!-- SECTION 2-->
+    <!-- SECTION 2-->
 
-  <!-- SECTION 3 -->
+    <!-- SECTION 3 -->
 
 
-  <section class=" typeofcakes-section">
+    <section class=" typeofcakes-section">
 
-    <div class="container-fluid">
-      <div class="row" id="fixed-section3-row">
-        <!-- <div class="col-md-12 text-center">
+        <div class="container-fluid">
+            <div class="row" id="fixed-section3-row">
+                <!-- <div class="col-md-12 text-center">
       
           </div> -->
-        <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
-          <div class="aside">
-            <a class="banner-effect imgca" href="bbb" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif">
-            </a>
-          </div>
+                <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
+                    <div class="aside">
+                        <a class="banner-effect imgca" href="bbb" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
+                    <div class="aside">
+                        <a class="banner-effect imgca" href="bbb" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
+                    <div class="aside">
+                        <a class="banner-effect imgca" href="bbb" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
+                    <div class="aside">
+                        <a class="banner-effect imgca" href="bbb" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
-          <div class="aside">
-            <a class="banner-effect imgca" href="bbb" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif">
-            </a>
-          </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
-          <div class="aside">
-            <a class="banner-effect imgca" href="bbb" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif">
-            </a>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3">
-          <div class="aside">
-            <a class="banner-effect imgca" href="bbb" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- hard coded -->
-  <!-- <section class=" responsive-sec2">
+    <!-- hard coded -->
+    <!-- <section class=" responsive-sec2">
     <div class="container-fluid p-0 ">
       <div class="remove-padding">
         <div class="img">
@@ -1212,12 +1173,12 @@
       </div>
     </div>
   </section> -->
-  <!-- <div class="top-grid-head"></div> -->
+    <!-- <div class="top-grid-head"></div> -->
 
 
-  <!-- user defined section 4 cards -->
-  <section id="user-defined-4cards">
-    <!-- <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);;;">
+    <!-- user defined section 4 cards -->
+    <section id="user-defined-4cards">
+        <!-- <section class="banner-section" style="background:rgba(173, 173, 159, 0.3);;;">
       <h3 class="bannerheading fadeIn" id="fixed-section1-heading">Choose the Best Joy</h3>
       <div class="container-fluid">
         <div class="row" id="fixed-section1-row">
@@ -1232,219 +1193,213 @@
         </div>
       </div>
     </section> -->
-  </section>
+    </section>
 
-  <section class="categori-item bestseller" style="background: #f1f1f1 !important">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12 remove-padding">
-          <div class="row">
-            <div class="col-md-4 text-center">
-            </div>
-            <div class="col-md-4 text-center">
-              <h3 class="section-title" id="fixed-section6-heading"
-                style="font-weight: 700;font-size: 30px;color:#1c7780 !important;">
+    <section class="categori-item bestseller" style="background: #f1f1f1 !important">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 remove-padding">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h3 class="section-title" id="fixed-section6-heading" style="font-weight: 700;font-size: 30px;color:#1c7780 !important;">
 
-              </h3>
-            </div>
-            <div class="col-md-4 dropdown">
-              <a style="color:white" id="fixed-section6-viewAll" href="///category/cakes">
-                <div class="col l4 s4 "
-                  style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
-                  View ALL
+                            </h3>
+                        </div>
+                        <div class="col-md-4 dropdown">
+                            <a style="color:white" id="fixed-section6-viewAll" href="///category/cakes">
+                                <div class="col l4 s4 " style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
+                                    View ALL
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </a>
             </div>
-          </div>
-        </div>
-      </div>
 
 
-      <div class="row">
-        <div class="col-lg-12">
-          <!-- <div class="text-right mt-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- <div class="text-right mt-3">
 						<a href="//lakeofcakes.com/category/cakes"><button type="button" class="btn btn-danger"
 								style="background:#ff0000;padding: 10px;">View More</button></a>
 					</div> -->
-          <div class="row " id="fixed-section6-row">
-            <div class="col-lg-2 col-md-3 col-6 remove-padding">
-              <a class="item" href="assets/images/skeleton.gif">
-                <div class="item-img">
-                  <div class="extra-list">
+                    <div class="row " id="fixed-section6-row">
+                        <div class="col-lg-2 col-md-3 col-6 remove-padding">
+                            <a class="item" href="assets/images/skeleton.gif">
+                                <div class="item-img">
+                                    <div class="extra-list">
 
-                    </ul>
-                  </div>
-                  <img class="img-fluid" src="" alt="">
-                </div>
-                <div class="info">
-                  <div class="stars">
-                  </div>
-                  <h4 class="price"><del><small></small></del></h4>
-                  <h5 class="name"></h5>
+                                        </ul>
+                                    </div>
+                                    <img class="img-fluid" src="" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="stars">
+                                    </div>
+                                    <h4 class="price"><del><small></small></del></h4>
+                                    <h5 class="name"></h5>
 
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-2 col-md-3 col-6 remove-padding">
-              <a class="item" href="assets/images/skeleton.gif">
-                <div class="item-img">
-                  <div class="extra-list">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 remove-padding">
+                            <a class="item" href="assets/images/skeleton.gif">
+                                <div class="item-img">
+                                    <div class="extra-list">
 
-                    </ul>
-                  </div>
-                  <img class="img-fluid" src="" alt="">
-                </div>
-                <div class="info">
-                  <div class="stars">
-                  </div>
-                  <h4 class="price"><del><small></small></del></h4>
-                  <h5 class="name"></h5>
+                                        </ul>
+                                    </div>
+                                    <img class="img-fluid" src="" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="stars">
+                                    </div>
+                                    <h4 class="price"><del><small></small></del></h4>
+                                    <h5 class="name"></h5>
 
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-2 col-md-3 col-6 remove-padding">
-              <a class="item" href="assets/images/skeleton.gif">
-                <div class="item-img">
-                  <div class="extra-list">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 remove-padding">
+                            <a class="item" href="assets/images/skeleton.gif">
+                                <div class="item-img">
+                                    <div class="extra-list">
 
-                    </ul>
-                  </div>
-                  <img class="img-fluid" src="" alt="">
-                </div>
-                <div class="info">
-                  <div class="stars">
-                  </div>
-                  <h4 class="price"><del><small></small></del></h4>
-                  <h5 class="name"></h5>
+                                        </ul>
+                                    </div>
+                                    <img class="img-fluid" src="" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="stars">
+                                    </div>
+                                    <h4 class="price"><del><small></small></del></h4>
+                                    <h5 class="name"></h5>
 
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-2 col-md-3 col-6 remove-padding">
-              <a class="item" href="assets/images/skeleton.gif">
-                <div class="item-img">
-                  <div class="extra-list">
-                    <ul>
-                      <li>
-                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 remove-padding">
+                            <a class="item" href="assets/images/skeleton.gif">
+                                <div class="item-img">
+                                    <div class="extra-list">
+                                        <ul>
+                                            <li>
+                                                <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn" data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
                           <i class="icofont-heart-alt"></i>
                         </span>
 
-                      </li>
-                    </ul>
-                  </div>
-                  <img class="img-fluid" src="" alt="">
-                </div>
-                <div class="info">
-                  <div class="stars">
-                  </div>
-                  <h4 class="price"><del><small></small></del></h4>
-                  <h5 class="name"></h5>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <img class="img-fluid" src="" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="stars">
+                                    </div>
+                                    <h4 class="price"><del><small></small></del></h4>
+                                    <h5 class="name"></h5>
 
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-2 col-md-3 col-6 remove-padding">
-              <a class="item" href="assets/images/skeleton.gif">
-                <div class="item-img">
-                  <div class="extra-list">
-                    <ul>
-                      <li>
-                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 remove-padding">
+                            <a class="item" href="assets/images/skeleton.gif">
+                                <div class="item-img">
+                                    <div class="extra-list">
+                                        <ul>
+                                            <li>
+                                                <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn" data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
                           <i class="icofont-heart-alt"></i>
                         </span>
 
-                      </li>
-                    </ul>
-                  </div>
-                  <img class="img-fluid" src="" alt="">
-                </div>
-                <div class="info">
-                  <div class="stars">
-                  </div>
-                  <h4 class="price"><del><small></small></del></h4>
-                  <h5 class="name"></h5>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <img class="img-fluid" src="" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="stars">
+                                    </div>
+                                    <h4 class="price"><del><small></small></del></h4>
+                                    <h5 class="name"></h5>
 
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-2 col-md-3 col-6 remove-padding">
-              <a class="item" href="assets/images/skeleton.gif">
-                <div class="item-img">
-                  <div class="extra-list">
-                    <ul>
-                      <li>
-                        <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                          data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 remove-padding">
+                            <a class="item" href="assets/images/skeleton.gif">
+                                <div class="item-img">
+                                    <div class="extra-list">
+                                        <ul>
+                                            <li>
+                                                <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn" data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
                           <i class="icofont-heart-alt"></i>
                         </span>
 
-                      </li>
-                    </ul>
-                  </div>
-                  <img class="img-fluid" src="" alt="">
-                </div>
-                <div class="info">
-                  <div class="stars">
-                  </div>
-                  <h4 class="price"><del><small></small></del></h4>
-                  <h5 class="name"></h5>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <img class="img-fluid" src="" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="stars">
+                                    </div>
+                                    <h4 class="price"><del><small></small></del></h4>
+                                    <h5 class="name"></h5>
+
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
 
                 </div>
-              </a>
+
+
             </div>
 
-          </div>
+            <!-- Mobile Ui View All Button -->
 
 
-        </div>
+            <div class="row ">
+                <div class="col-lg-12 remove-padding">
+                    <div class="row">
 
 
-      </div>
-
-      <!-- Mobile Ui View All Button -->
-
-
-      <div class="row ">
-        <div class="col-lg-12 remove-padding">
-          <div class="row">
-
-
-            <div class="col-md-4 ">
-              <a style="color:white" id="fixed-section6-viewAllMob" href="///category/cakes">
-                <div class="responsiveIcon2 col l4 s4 "
-                  style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
-                  View ALL
+                        <div class="col-md-4 ">
+                            <a style="color:white" id="fixed-section6-viewAllMob" href="///category/cakes">
+                                <div class="responsiveIcon2 col l4 s4 " style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
+                                    View ALL
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </a>
             </div>
-          </div>
+
+            <!-- Mobile Ui View All Button Ends -->
+
+
         </div>
-      </div>
+    </section>
 
-      <!-- Mobile Ui View All Button Ends -->
-
-
-    </div>
-  </section>
-
-  <!-- fixed section 4 -->
-  <section class=" trending">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12 remove-padding">
-          <div class="text-center">
-            <h3 class=" bannerheading" style="color:#1c7780 !important;" id="fixed-section4-heading">
-            </h3>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="trending-item-slider" id="fixed-section4-row">
-              <!-- <a href="///item/5-star-chocolate-bouquet-loc12557" class="item">
+    <!-- fixed section 4 -->
+    <section class=" trending">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 remove-padding">
+                    <div class="text-center">
+                        <h3 class=" bannerheading" style="color:#1c7780 !important;" id="fixed-section4-heading">
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="trending-item-slider" id="fixed-section4-row">
+                            <!-- <a href="///item/5-star-chocolate-bouquet-loc12557" class="item">
                 <div class="item-img">
                   <div class="extra-list">
                     <ul>
@@ -1472,54 +1427,54 @@
                 </div>
               </a> -->
 
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+    </section>
+
+    <section id="user-defined-animation"></section>
+
+    <!-- fixed section  5 -->
+    <section class="categori-item gardenofflower">
+        <div class="container-fluid">
+            <div class="row" id="fixed-section5-row">
+                <div class="col-md-12 text-center">
+                    <h3 class="mb-3" style="font-weight: 700;font-size: 30px;color: #1c7780 !important;">Garden of Flowers</h3>
+                </div>
+                <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3">
+                    <div class="aside">
+                        <a class="banner-effect imgca" href="abcd" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="aside">
+                        <a class="banner-effect imgca" href="abcd" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="aside">
+                        <a class="banner-effect imgca" href="abcd" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif" alt="">
+                        </a>
+                    </div>
+                    <div class="aside">
+                        <a class="banner-effect imgca" href="abcd" target="_blank">
+                            <img class="imgc" src="assets/images/skeleton.gif" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-  </section>
-
-  <section id="user-defined-animation"></section>
-
-  <!-- fixed section  5 -->
-  <section class="categori-item gardenofflower">
-    <div class="container-fluid">
-      <div class="row" id="fixed-section5-row">
-        <div class="col-md-12 text-center">
-          <h3 class="mb-3" style="font-weight: 700;font-size: 30px;color: #1c7780 !important;">Garden of Flowers</h3>
         </div>
-        <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3">
-          <div class="aside">
-            <a class="banner-effect imgca" href="abcd" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif" alt="">
-            </a>
-          </div>
-          <div class="aside">
-            <a class="banner-effect imgca" href="abcd" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif" alt="">
-            </a>
-          </div>
-          <div class="aside">
-            <a class="banner-effect imgca" href="abcd" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif" alt="">
-            </a>
-          </div>
-          <div class="aside">
-            <a class="banner-effect imgca" href="abcd" target="_blank">
-              <img class="imgc" src="assets/images/skeleton.gif" alt="">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- fixed section 6 -->
+    <!-- fixed section 6 -->
 
 
 
-  <!-- Hard Coded -->
-  <!-- <section class="">
+    <!-- Hard Coded -->
+    <!-- <section class="">
     <div class="container-fluid p-0  ">
       <div class="remove-padding">
         <div class="img">
@@ -1532,41 +1487,39 @@
   </section> -->
 
 
-  <!-- user defined img -->
-  <section id="user-defined-img"></section>
+    <!-- user defined img -->
+    <section id="user-defined-img"></section>
 
-  <!-- fixed section 7 -->
-  <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
-    <div class="container-fluid">
-      <div class="row ">
-        <div class="col-lg-12 remove-padding">
-          <div class="row">
-            <div class="col-md-4 text-center">
-            </div>
-            <div class="col-md-4 text-center">
-              <h3 class="section-title" id="fixed-section7-heading"
-                style="font-weight: 700;font-size: 30px;color: #1c7780 !important;">
-              </h3>
-            </div>
-            <div class="col-md-4 bottomDisp">
-              <a style="color:white" id="fixed-section7-viewAll" href="///category/gifts2">
-                <div class="dropdown col l4 s4"
-                  style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
-                  View ALL
+    <!-- fixed section 7 -->
+    <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class="col-lg-12 remove-padding">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h3 class="section-title" id="fixed-section7-heading" style="font-weight: 700;font-size: 30px;color: #1c7780 !important;">
+                            </h3>
+                        </div>
+                        <div class="col-md-4 bottomDisp">
+                            <a style="color:white" id="fixed-section7-viewAll" href="///category/gifts2">
+                                <div class="dropdown col l4 s4" style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
+                                    View ALL
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-              </a>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <!-- <div class="text-right mt-3">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- <div class="text-right mt-3">
 						<a href="//lakeofcakes.com/category/cakes"><button type="button" class="btn btn-danger"
 								style="background:#ff0000;padding: 10px;">View More</button></a>
 					</div> -->
-          <div class="row" id="fixed-section7-row">
-            <!-- <div class="col-lg-2 col-md-3 col-6 remove-padding">
+                    <div class="row" id="fixed-section7-row">
+                        <!-- <div class="col-lg-2 col-md-3 col-6 remove-padding">
               <a href="///item/5-star-chocolate-bouquet-loc12557" class="item">
                 <div class="item-img">
                   <div class="extra-list">
@@ -1594,32 +1547,31 @@
                 </div>
               </a>
             </div> -->
-          </div>
-        </div>
-      </div>
-
-      <div class="row ">
-        <div class="col-lg-12 remove-padding">
-          <div class="row">
-
-
-            <div class="col-md-4 ">
-              <a style="color:white" id="fixed-section7-viewAllMob" href="///category/cakes">
-                <div class="responsiveIcon2 col l4 s4 "
-                  style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
-                  View ALL
+                    </div>
                 </div>
-              </a>
             </div>
-          </div>
+
+            <div class="row ">
+                <div class="col-lg-12 remove-padding">
+                    <div class="row">
+
+
+                        <div class="col-md-4 ">
+                            <a style="color:white" id="fixed-section7-viewAllMob" href="///category/cakes">
+                                <div class="responsiveIcon2 col l4 s4 " style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
+                                    View ALL
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
+    </section>
 
-    </div>
-  </section>
-
-  <section class=" clothing-and-Apparel-Area">
-    <!-- <div class="container-fluid p-0">
+    <section class=" clothing-and-Apparel-Area">
+        <!-- <div class="container-fluid p-0">
       <div class="p-3 pr-sm-01" style="background: #ffbabd;">
 
         <div class="col-lg-12" style="background: #fff;">
@@ -1651,86 +1603,80 @@
       </div>
     </div> -->
 
-    <section class=" clothing-and-Apparel-Area">
-      <div class="container-fluid p-0">
-        <div class="p-3" style="background: #f4b2b6;">
-          <div class="col-lg-12" style="background:transparent;">
-            <div class="row">
-              <div class="col-lg-4 d-lg-block" style="background: #f4b2b6;">
-                <div class="row">
-                  <div class="bannerMainImage col-md-5 col-5"
-                    style=" padding-top: 0px; padding-bottom: 15px; height: 170px !important;">
-                    <img class="  mb-2" src="assets/images/delivery in 3 hrs.png">
-                  </div>
-                  <div class="col-md-7 col-7">
-                    <div class="aside " style="margin-left: 10%; margin-top: 30%;">
-                      <h3 style="color:#000; font-weight: 700; font-size: 23px; line-height: 1.5rem;" id="speed">Fast
-                        Delivery in 2 Hrs</h3>
+        <section class=" clothing-and-Apparel-Area">
+            <div class="container-fluid p-0">
+                <div class="p-3" style="background: #f4b2b6;">
+                    <div class="col-lg-12" style="background:transparent;">
+                        <div class="row">
+                            <div class="col-lg-4 d-lg-block" style="background: #f4b2b6;">
+                                <div class="row">
+                                    <div class="bannerMainImage col-md-5 col-5" style=" padding-top: 0px; padding-bottom: 15px; height: 170px !important;">
+                                        <img class="  mb-2" src="assets/images/delivery in 3 hrs.png">
+                                    </div>
+                                    <div class="col-md-7 col-7">
+                                        <div class="aside " style="margin-left: 10%; margin-top: 30%;">
+                                            <h3 style="color:#000; font-weight: 700; font-size: 23px; line-height: 1.5rem;" id="speed">Fast Delivery in 2 Hrs</h3>
 
-                      <p style="color:#000; font-size: 17px; margin-top: 9%;">Express delivery </p>
+                                            <p style="color:#000; font-size: 17px; margin-top: 9%;">Express delivery </p>
 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-12 " style="width: 100% !important;">
+                                <div class="row" id="img31" style="margin-right: auto;">
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div class="col-lg-8 col-12 " style="width: 100% !important;">
-                <div class="row" id="img31" style="margin-right: auto;">
-
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
 
+        </section>
     </section>
-  </section>
 
-  <!-- fixed section 8 -->
-  <section class="banner-section"
-    style="background:linear-gradient(rgba(187, 188, 230, 0.5), rgba(117, 195, 214, 0.616));">
-    <h3 class="bannerheading" id="fixed-section8-heading"></h3>
-    <div class="container-fluid">
-      <div class="row" id="fixed-section8-row">
+    <!-- fixed section 8 -->
+    <section class="banner-section" style="background:linear-gradient(rgba(187, 188, 230, 0.5), rgba(117, 195, 214, 0.616));">
+        <h3 class="bannerheading" id="fixed-section8-heading"></h3>
+        <div class="container-fluid">
+            <div class="row" id="fixed-section8-row">
 
 
-      </div>
-    </div>
-  </section>
-
-  <section class="categori-item bestseller" style="background: #f1f1f1;">
-    <div class="container-fluid">
-      <div class="row  ">
-        <div class="col-lg-12 remove-padding">
-          <div class="row">
-            <div class="col-md-4 text-center">
             </div>
-            <div class="col-md-4 text-center">
-              <h3 class="section-title" id="fixed-section10-heading"
-                style="font-weight: 700;font-size: 30px;color: #1c7780 !important;">Best
-                Seller
-                Cakes</h3>
-            </div>
-            <div class="col-md-4 bottomDisp dropdown">
-              <a style="color:white" id="fixed-section10-viewAll" href="///category/cakes">
-                <div class="col l4 s4 "
-                  style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
-                  View ALL
-                </div>
-              </a>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <!-- <div class="text-right mt-3">
+    </section>
+
+    <section class="categori-item bestseller" style="background: #f1f1f1;">
+        <div class="container-fluid">
+            <div class="row  ">
+                <div class="col-lg-12 remove-padding">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h3 class="section-title" id="fixed-section10-heading" style="font-weight: 700;font-size: 30px;color: #1c7780 !important;">Best Seller Cakes
+                            </h3>
+                        </div>
+                        <div class="col-md-4 bottomDisp dropdown">
+                            <a style="color:white" id="fixed-section10-viewAll" href="///category/cakes">
+                                <div class="col l4 s4 " style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
+                                    View ALL
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- <div class="text-right mt-3">
 						<a href="//lakeofcakes.com/category/cakes"><button type="button" class="btn btn-danger"
 								style="background:#ff0000;padding: 10px;">View More</button></a>
           </div> -->
 
-          <div class="row" id="fixed-section10-row">
-            <!-- <div class="col-lg-2 col-md-3 col-6 remove-padding">
+                    <div class="row" id="fixed-section10-row">
+                        <!-- <div class="col-lg-2 col-md-3 col-6 remove-padding">
               <a class="item" href="assets/images/skeleton.gif">
                 <div class="item-img">
                   <div class="extra-list">
@@ -1838,46 +1784,48 @@
                 </div>
               </a>
             </div> -->
-          </div>
-        </div>
-      </div>
-
-      <div class="row ">
-        <div class="col-lg-12 remove-padding">
-          <div class="row">
-
-
-            <div class="col-md-4 ">
-              <a style="color:white" id="fixed-section10-viewAllMob" href="///category/cakes">
-                <div class="responsiveIcon2 col l4 s4 "
-                  style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
-                  View ALL
+                    </div>
                 </div>
-              </a>
             </div>
-          </div>
-        </div>
-      </div>
+
+            <div class="row ">
+                <div class="col-lg-12 remove-padding">
+                    <div class="row">
+
+
+                        <div class="col-md-4 ">
+                            <a style="color:white" id="fixed-section10-viewAllMob" href="///category/cakes">
+                                <div class="responsiveIcon2 col l4 s4 " style="width: 30%; height: 77%; text-align: center; color: white; line-height: 25px; float: right; padding: 0.5% 2% 0.5% 2%; background-color: #e62e27;">
+                                    View ALL
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
     </div>
   </section>
 
-  <section class="clothing-and-Apparel-Area responsive-sec2">
-    <div class="container-fluid p-0">
-      <div class="p-3" style="background: #274674;">
-        <div class="col-lg-12" style="background: transparent;">
-          <div class="row">
-            <div class="col-lg-8 col-12">
-              <div class="row" id="img41" style="margin-right: auto;">
+        </div>
+    </section>
+
+    <section class="clothing-and-Apparel-Area responsive-sec2">
+        <div class="container-fluid p-0">
+            <div class="p-3" style="background: #274674;">
+                <div class="col-lg-12" style="background: transparent;">
+                    <div class="row">
+                        <div class="col-lg-8 col-12">
+                            <div class="row" id="img41" style="margin-right: auto;">
 
 
-              </div>
+                            </div>
 
-            </div>
-            <div class="col-lg-4 col-6 d-none d-lg-block" style="background: #274674;">
-              <div class="row" id="img4Main">
-                <!-- <div class="col-md-7 col-7">
+                        </div>
+                        <div class="col-lg-4 col-6 d-none d-lg-block" style="background: #274674;">
+                            <div class="row" id="img4Main">
+                                <!-- <div class="col-md-7 col-7">
                   <div class="aside" style="margin-left: 13%; margin-top: 7%;">
                     <h3 style="color:#fff; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Gift For Your</h3>
                     <h3 style="color:#fff; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Loved Ones</h3>
@@ -1893,77 +1841,76 @@
                 <div class="col-md-5 col-5" style="background: #fff; padding-top: 13px; padding-bottom: 13px;">
                   <img src="/assets/images/loved.png">
                 </div> -->
-              </div>
+                            </div>
 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class=" clothing-and-Apparel-Area">
-    <div class="container-fluid p-0">
-      <div class="p-3" style="background: #f4b2b6;">
-        <div class="col-lg-12" style="background:transparent;">
-          <div class="row">
-            <div class="col-lg-4 d-lg-block" style="background: #f4b2b6;">
-              <div class="row" id="img42Main">
-                <div class="bannerMainImage col-md-5 col-5"
-                  style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
-                  <img class="mt-3 mb-2" src="/assets/images/heartpng.png">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-7 col-7">
-                  <div class="aside " style="margin-left: 10%; margin-top: 7%;">
-                    <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Gift For Your </h3>
-                    <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Family</h3>
-                    <p style="color:#000; font-size: 17px; margin-top: 9%;">“Magnificent Gift For Family </p>
-                    <a href="">
-                      <button type="button" class="btn btn-light" style="font-size: 15px;
+            </div>
+        </div>
+    </section>
+
+    <section class=" clothing-and-Apparel-Area">
+        <div class="container-fluid p-0">
+            <div class="p-3" style="background: #f4b2b6;">
+                <div class="col-lg-12" style="background:transparent;">
+                    <div class="row">
+                        <div class="col-lg-4 d-lg-block" style="background: #f4b2b6;">
+                            <div class="row" id="img42Main">
+                                <div class="bannerMainImage col-md-5 col-5" style="background: #fff; padding-top: 2px; padding-bottom: 15px; height: 215px;">
+                                    <img class="mt-3 mb-2" src="/assets/images/heartpng.png">
+                                </div>
+                                <div class="col-md-7 col-7">
+                                    <div class="aside " style="margin-left: 10%; margin-top: 7%;">
+                                        <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Gift For Your </h3>
+                                        <h3 style="color:#000; font-weight: 700; font-size: 28px; line-height: 1.5rem;">Family</h3>
+                                        <p style="color:#000; font-size: 17px; margin-top: 9%;">“Magnificent Gift For Family </p>
+                                        <a href="">
+                                            <button type="button" class="btn btn-light" style="font-size: 15px;
                             font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                           aria-hidden="true"></i></button>
-                    </a>
-                  </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-12 " style="width: 100% !important;">
+                            <div class="row" id="img42" style="margin-right: auto;">
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-            <div class="col-lg-8 col-12 " style="width: 100% !important;">
-              <div class="row" id="img42" style="margin-right: auto;">
-
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
 
-  </section>
+    </section>
 
 
-  <section class=" clothing-and-Apparel-Area responsive-sec">
-    <div class="container-fluid p-0">
-      <div class="p-3" style="background:#274674;">
-        <div class="col-lg-12" style="background:transparent;">
-          <div class="row">
-            <div class="col-lg-4 d-lg-block" style="background: #274674;;">
-              <div class="row" id="img42Mainmob">
+    <section class=" clothing-and-Apparel-Area responsive-sec">
+        <div class="container-fluid p-0">
+            <div class="p-3" style="background:#274674;">
+                <div class="col-lg-12" style="background:transparent;">
+                    <div class="row">
+                        <div class="col-lg-4 d-lg-block" style="background: #274674;;">
+                            <div class="row" id="img42Mainmob">
 
-              </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-12 " style="width: 100% !important;">
+                            <div class="row" id="img42mob" style="margin-right: auto;">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-8 col-12 " style="width: 100% !important;">
-              <div class="row" id="img42mob" style="margin-right: auto;">
-
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- user defined section card 6 -->
-  <section id="user-defined-6cards">
-    <!-- <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
+    <!-- user defined section card 6 -->
+    <section id="user-defined-6cards">
+        <!-- <section class="categori-item clothing-and-Apparel-Area" style="background: #FFF3E9;">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12 remove-padding">
@@ -2021,15 +1968,14 @@
         </div>
       </div>
     </section> -->
-  </section>
+    </section>
 
-  <!-- fixed section 9 -->
-  <section class="banner-section"
-    style="background:linear-gradient(rgba(16, 115, 133, 0.1), rgba(141, 106, 8, 0.616));">
-    <h3 class="bannerheading" id="fixed-section9-heading"></h3>
-    <div class="container-fluid">
-      <div class="row" id="fixed-section9-row">
-        <!-- <div class="col-lg-3 col-md-3 col-6 remove-padding">
+    <!-- fixed section 9 -->
+    <section class="banner-section" style="background:linear-gradient(rgba(16, 115, 133, 0.1), rgba(141, 106, 8, 0.616));">
+        <h3 class="bannerheading" id="fixed-section9-heading"></h3>
+        <div class="container-fluid">
+            <div class="row" id="fixed-section9-row">
+                <!-- <div class="col-lg-3 col-md-3 col-6 remove-padding">
           <div class="left">
             <a class="banner-effect imgca" href="product.html" target="_blank">
               <img class="imgc" src="https://i.insider.com/5e3b2de1d9db1d53404d1872?width=1100&format=jpeg&auto=webp"
@@ -2037,80 +1983,75 @@
             </a>
           </div>
         </div> -->
-      </div>
-    </div>
-  </section>
-
-  <!--Modal: modalYT-->
-  <div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <!--Content-->
-      <div class="modal-content">
-        <!--Body-->
-        <div class="modal-body mb-0 p-0">
-          <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;">
-            <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;" id="showOffer" src=""
-              allowfullscreen>
-          </div>
+            </div>
         </div>
+    </section>
 
-        <!--Footer-->
-        <div class="modal-footer justify-content-center flex-column flex-md-row">
+    <!--Modal: modalYT-->
+    <div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Body-->
+                <div class="modal-body mb-0 p-0">
+                    <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;">
+                        <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;" id="showOffer" src="" allowfullscreen>
+                    </div>
+                </div>
 
-          <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
-            data-dismiss="modal">Close</button>
+                <!--Footer-->
+                <div class="modal-footer justify-content-center flex-column flex-md-row">
+
+                    <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+            <!--/.Content-->
+
         </div>
-
-      </div>
-      <!--/.Content-->
-
     </div>
-  </div>
 
-  <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="reminderModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content container">
-        <div class="modal-header reminderHeader" style="width: 100%;">
-          <h5 class="modal-title" id="reminderModalLabel"
-            style="padding: 10px;text-align: center !important;font-weight: 800;">We will notify you on the selected day
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="reminderModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content container">
+                <div class="modal-header reminderHeader" style="width: 100%;">
+                    <h5 class="modal-title" id="reminderModalLabel" style="padding: 10px;text-align: center !important;font-weight: 800;">We will notify you on the selected day
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="recipient-name" class="col-form-label">Select a Date</label>
-              <input type="date" required class="form-control" id="reminder-date">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Type of Occasion</label>
-              <input type="text" required placeholder="Birthday , Aniversary, etc...." class="form-control"
-                id="reminder-type">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="col-form-label">Enter a Email id</label>
-              <input type="email" required placeholder="must include @" class="form-control" id="reminder-email">
-            </div>
-          </form>
-        </div>
-        <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="reminderMessage">
-          Notification Enabled Successfully<i class="fa fa-check"></i>
-        </h5>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="sendReminder()">Notify Me</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Select a Date</label>
+                            <input type="date" required class="form-control" id="reminder-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Type of Occasion</label>
+                            <input type="text" required placeholder="Birthday , Aniversary, etc...." class="form-control" id="reminder-type">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Enter a Email id</label>
+                            <input type="email" required placeholder="must include @" class="form-control" id="reminder-email">
+                        </div>
+                    </form>
+                </div>
+                <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="reminderMessage">
+                    Notification Enabled Successfully<i class="fa fa-check"></i>
+                </h5>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="sendReminder()">Notify Me</button>
 
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
 
 
-  <footer class="footer" id="footer-section-loader" style="background:rgba(0);"></footer>
+    <footer class="footer" id="footer-section-loader" style="background:rgba(0);"></footer>
 
 </body>
 
@@ -2146,7 +2087,8 @@
 
 <script src="./assets/js/jquery.js"></script>
 <script src="/assets/js/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js">
+</script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/plugin.js"></script>
 <script src="/assets/js/xzoom.min.js"></script>
@@ -2160,81 +2102,81 @@
 <script src="./Common/navbar1.js"></script>
 
 <script>
-  $(".drobt").click(function () {
-    if ($('.drobt0').hasClass('drobt1')) {
-      $('.drobt0').removeClass('drobt1');
-      $('.drobt0').addClass('drobt2');
-    } else {
-      $('.drobt0').removeClass('drobt2');
-      $('.drobt0').addClass('drobt1');
-    }
-  });
+    $(".drobt").click(function() {
+        if ($('.drobt0').hasClass('drobt1')) {
+            $('.drobt0').removeClass('drobt1');
+            $('.drobt0').addClass('drobt2');
+        } else {
+            $('.drobt0').removeClass('drobt2');
+            $('.drobt0').addClass('drobt1');
+        }
+    });
 </script>
 <script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
 <script>
-  function hidenavigation() {
-    $('.drobt0').addClass('colapse');
-  }
+    function hidenavigation() {
+        $('.drobt0').addClass('colapse');
+    }
 
-  function shownavigation() {
-    $('.drobt0').removeClass('colapse');
-  }
+    function shownavigation() {
+        $('.drobt0').removeClass('colapse');
+    }
 
-  function sendReminder() {
-    let date = document.querySelector("#reminder-date").value;
-    let type = document.querySelector("#reminder-type").value;
-    let emailId = document.querySelector("#reminder-email").value;
-    if (date) {
-      if (type) {
+    function sendReminder() {
+        let date = document.querySelector("#reminder-date").value;
+        let type = document.querySelector("#reminder-type").value;
+        let emailId = document.querySelector("#reminder-email").value;
+        if (date) {
+            if (type) {
 
-        if (emailId.includes("@") && emailId) {
-          if (type != "") {
-            db.collection("reminder").add({
-              date: date,
-              type: type,
-              emailId: emailId
-            }).then(function (docRef) {
-              document.getElementById("reminderMessage").innerHTML = "Notifications enabled successfully"
-              document.getElementById("reminderMessage").style.display = "block"
-              document.getElementById("reminderMessage").style.color = "green"
-              setTimeout(function () {
-                document.getElementById("reminderMessage").style.display = "none"
-                $("#reminderModal").modal('hide');
-              }, 2000)
-            })
-          } else {
-            document.getElementById("reminderMessage").innerHTML = "Server error !! Please try again"
+                if (emailId.includes("@") && emailId) {
+                    if (type != "") {
+                        db.collection("reminder").add({
+                            date: date,
+                            type: type,
+                            emailId: emailId
+                        }).then(function(docRef) {
+                            document.getElementById("reminderMessage").innerHTML = "Notifications enabled successfully"
+                            document.getElementById("reminderMessage").style.display = "block"
+                            document.getElementById("reminderMessage").style.color = "green"
+                            setTimeout(function() {
+                                document.getElementById("reminderMessage").style.display = "none"
+                                $("#reminderModal").modal('hide');
+                            }, 2000)
+                        })
+                    } else {
+                        document.getElementById("reminderMessage").innerHTML = "Server error !! Please try again"
+                        document.getElementById("reminderMessage").style.display = "block"
+                        document.getElementById("reminderMessage").style.color = "red"
+                        setTimeout(function() {
+                            document.getElementById("reminderMessage").style.display = "none"
+                        }, 2000)
+                    }
+                } else {
+                    document.getElementById("reminderMessage").innerHTML = "Please enter a valid email id"
+                    document.getElementById("reminderMessage").style.display = "block"
+                    document.getElementById("reminderMessage").style.color = "red"
+                    setTimeout(function() {
+                        document.getElementById("reminderMessage").style.display = "none"
+                    }, 2000)
+                }
+            } else {
+                document.getElementById("reminderMessage").innerHTML = "Please input an occasion type"
+                document.getElementById("reminderMessage").style.display = "block"
+                document.getElementById("reminderMessage").style.color = "red"
+                setTimeout(function() {
+                    document.getElementById("reminderMessage").style.display = "none"
+                }, 2000)
+            }
+
+        } else {
+            document.getElementById("reminderMessage").innerHTML = "Please select a date"
             document.getElementById("reminderMessage").style.display = "block"
             document.getElementById("reminderMessage").style.color = "red"
-            setTimeout(function () {
-              document.getElementById("reminderMessage").style.display = "none"
+            setTimeout(function() {
+                document.getElementById("reminderMessage").style.display = "none"
             }, 2000)
-          }
-        } else {
-          document.getElementById("reminderMessage").innerHTML = "Please enter a valid email id"
-          document.getElementById("reminderMessage").style.display = "block"
-          document.getElementById("reminderMessage").style.color = "red"
-          setTimeout(function () {
-            document.getElementById("reminderMessage").style.display = "none"
-          }, 2000)
         }
-      } else {
-        document.getElementById("reminderMessage").innerHTML = "Please input an occasion type"
-        document.getElementById("reminderMessage").style.display = "block"
-        document.getElementById("reminderMessage").style.color = "red"
-        setTimeout(function () {
-          document.getElementById("reminderMessage").style.display = "none"
-        }, 2000)
-      }
-
-    } else {
-      document.getElementById("reminderMessage").innerHTML = "Please select a date"
-      document.getElementById("reminderMessage").style.display = "block"
-      document.getElementById("reminderMessage").style.color = "red"
-      setTimeout(function () {
-        document.getElementById("reminderMessage").style.display = "none"
-      }, 2000)
-    }
 
 
 
@@ -2246,20 +2188,22 @@
 <script>
   db.collection("offers").onSnapshot(async (snapshots) => {
 
-    let snapshotDocs = snapshots.docs;
+        let snapshotDocs = snapshots.docs;
 
-    // var dbref = db.collection('Customers');
-    for (let doc of snapshotDocs) {
-      userDoc = doc.data();
-      if (userDoc.isActivated) {
-        document.getElementById("showOffer").src = userDoc.imgUrl;
-      }
-    }
+        // var dbref = db.collection('Customers');
+        for (let doc of snapshotDocs) {
+            userDoc = doc.data();
+            if (userDoc.isActivated) {
+                document.getElementById("showOffer").src = userDoc.imgUrl;
+            }
+        }
 
-  });
+    });
 
-  var checkUser;
-  checkUser = window.localStorage.getItem("locLoggedInUser");
+    var checkUser;
+    checkUser = window.localStorage.getItem("locLoggedInUser");
+
+    var timecount = 0;
 
   var timecount = 0;
 
@@ -2268,146 +2212,143 @@
       window.location = "/Auth/login.html"
     } else {
 
-      window.location = location
+            window.location = location
+        }
     }
-  }
 
-  function redirectToCart() {
-    if (checkUser == null || checkUser == "null") {
-      window.location = "/Auth/login.html"
-    } else {
-      window.location = "/UserDash/cart.html"
+    function redirectToCart() {
+        if (checkUser == null || checkUser == "null") {
+            window.location = "/Auth/login.html"
+        } else {
+            window.location = "/UserDash/cart.html"
+        }
     }
-  }
 
-  var counter = 0;
-  document.getElementById("hideLogOut").style.display = "none";
-  // const db = firebase.firestore();
-  var docData, userDoc;
+    var counter = 0;
+    document.getElementById("hideLogOut").style.display = "none";
+    // const db = firebase.firestore();
+    var docData, userDoc;
 
   db.collection("Customers").onSnapshot(async (snapshots) => {
 
     checkUser = window.localStorage.getItem("locLoggedInUser");
 
-    let snapshotDocs = snapshots.docs;
+        checkUser = window.localStorage.getItem("locLoggedInUser");
 
-    // var dbref = db.collection('Customers');
-    for (let doc of snapshotDocs) {
+        let snapshotDocs = snapshots.docs;
 
-      if (checkUser == doc.data().userId) {
+        // var dbref = db.collection('Customers');
+        for (let doc of snapshotDocs) {
 
-        counter++;
+            if (checkUser == doc.data().userId) {
 
-        userDoc = doc.data();
-        if (userDoc.cart != undefined && userDoc.cart != "undefined") {
-          document.getElementById("cart-count").innerHTML = userDoc.cart.length;
-        } else {
-          document.getElementById("cart-count").innerHTML = 0;
+                counter++;
+
+                userDoc = doc.data();
+                if (userDoc.cart != undefined && userDoc.cart != "undefined") {
+                    document.getElementById("cart-count").innerHTML = userDoc.cart.length;
+                } else {
+                    document.getElementById("cart-count").innerHTML = 0;
+                }
+
+                if (userDoc.UserName == null) {
+                    userDoc.UserName = "User@LOC";
+                }
+
+                if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
+                    userDoc.Image = "../assets/images/userIcon.png"
+                }
+
+                document.getElementById("logInBtn").style.display = "none";
+                document.getElementById("hideLogOut").style.display = "block";
+                document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
+                document.getElementById("userImg").src = userDoc.Image;
+                break;
+            }
         }
 
-        if (userDoc.UserName == null) {
-          userDoc.UserName = "User@LOC";
+        if (counter == 0) {
+
+            document.getElementById("hideLogOut").style.display = "none";
+            document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
+            document.getElementById("logInBtn").style.display = "block";
         }
 
-        if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
-          userDoc.Image = "../assets/images/userIcon.png"
-        }
-
-        document.getElementById("logInBtn").style.display = "none";
-        document.getElementById("hideLogOut").style.display = "block";
-        document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
-        document.getElementById("userImg").src = userDoc.Image;
-        break;
-      }
-    }
-
-    if (counter == 0) {
-
-      document.getElementById("hideLogOut").style.display = "none";
-      document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
-      document.getElementById("logInBtn").style.display = "block";
-    }
-
-  });
-
-
-
-
-
-  function redirectLogin() {
-    window.location = "/Auth/login.html"
-  }
-
-  function logOut() {
-    let dbref = db.collection('Customers');
-    // firebase.auth().signOut();
-    dbref.doc(checkUser).update({
-      token: "null"
-
-    }).then(function () {
-      window.localStorage.removeItem("locLoggedInUser")
-      firebase.auth().signOut();
-      location.reload();
     });
-  }
+    function redirectLogin() {
+        window.location = "/Auth/login.html"
+    }
+
+    function logOut() {
+        let dbref = db.collection('Customers');
+        // firebase.auth().signOut();
+        dbref.doc(checkUser).update({
+            token: "null"
+
+        }).then(function() {
+            window.localStorage.removeItem("locLoggedInUser")
+            firebase.auth().signOut();
+            location.reload();
+        });
+    }
 </script>
 
 
 <style>
-  .drobt1 {
-    transform: translateX(-101%);
-  }
-
-  .drobt2 {
-    transform: translateX(0%);
-  }
+    .drobt1 {
+        transform: translateX(-101%);
+    }
+    
+    .drobt2 {
+        transform: translateX(0%);
+    }
 </style>
 
 
 <script>
-  $('#footer-section-loader').load('./Common/footer.html');
-  // Icons rotate
-  $(function () {
-    var $window = $(window),
-      win_height_padded = $window.height() * 1.1,
-      isTouch = Modernizr.touch;
+    $('#footer-section-loader').load('./Common/footer.html');
+    // Icons rotate
+    $(function() {
+        var $window = $(window),
+            win_height_padded = $window.height() * 1.1,
+            isTouch = Modernizr.touch;
 
-    if (isTouch) {
-      $('.revealOnScroll').addClass('animated');
-    }
-
-    $window.on('scroll', revealOnScroll);
-
-    function revealOnScroll() {
-      var scrolled = $window.scrollTop(),
-        win_height_padded = $window.height() * 1.1;
-
-      // Showed...
-      $(".revealOnScroll:not(.animated)").each(function () {
-        var $this = $(this),
-          offsetTop = $this.offset().top;
-
-        if (scrolled + win_height_padded > offsetTop) {
-          if ($this.data('timeout')) {
-            window.setTimeout(function () {
-              $this.addClass('animated ' + $this.data('animation'));
-            }, parseInt($this.data('timeout'), 10));
-          } else {
-            $this.addClass('animated ' + $this.data('animation'));
-          }
+        if (isTouch) {
+            $('.revealOnScroll').addClass('animated');
         }
-      });
-      // Hidden...
-      $(".revealOnScroll.animated").each(function (index) {
-        var $this = $(this),
-          offsetTop = $this.offset().top;
-        if (scrolled + win_height_padded < offsetTop) {
-          $(this).removeClass('animated fadeInUp flipInX lightSpeedIn')
+
+        $window.on('scroll', revealOnScroll);
+
+        function revealOnScroll() {
+            var scrolled = $window.scrollTop(),
+                win_height_padded = $window.height() * 1.1;
+
+            // Showed...
+            $(".revealOnScroll:not(.animated)").each(function() {
+                var $this = $(this),
+                    offsetTop = $this.offset().top;
+
+                if (scrolled + win_height_padded > offsetTop) {
+                    if ($this.data('timeout')) {
+                        window.setTimeout(function() {
+                            $this.addClass('animated ' + $this.data('animation'));
+                        }, parseInt($this.data('timeout'), 10));
+                    } else {
+                        $this.addClass('animated ' + $this.data('animation'));
+                    }
+                }
+            });
+            // Hidden...
+            $(".revealOnScroll.animated").each(function(index) {
+                var $this = $(this),
+                    offsetTop = $this.offset().top;
+                if (scrolled + win_height_padded < offsetTop) {
+                    $(this).removeClass('animated fadeInUp flipInX lightSpeedIn')
+                }
+            });
         }
-      });
-    }
-    revealOnScroll();
-  });
+        revealOnScroll();
+    });
 </script>
 
 <script src="assets/js/swipe.js"></script>

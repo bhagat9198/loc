@@ -289,6 +289,11 @@ legend {
     white-space: normal
 }
 
+
+
+
+
+
 progress {
     vertical-align: baseline
 }
@@ -23079,7 +23084,7 @@ Logo Header Area Start
 .logo-header .helpful-links ul li {
     display: inline-block;
     text-align: center;
-    margin-right: 20px;
+    margin-right: 14px;
 }
 
 .logo-header .helpful-links ul li a {
@@ -23087,7 +23092,7 @@ Logo Header Area Start
 }
 
 .logo-header .helpful-links ul li[data-toggle="tooltip"], .logo-header .helpful-links ul li[data-toggle="tooltip"] {
-    margin-top: 20px;
+    margin-top: 17px;
 }
 
 .logo-header .helpful-links ul li:nth-child(4) {
@@ -23237,14 +23242,16 @@ Logo Header Area Start
 .logo-header .helpful-links ul li.my-dropdown .my-dropdown-menu .dropdownmenu-wrapper .dropdown-cart-products .product {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+    /* display: flex; */
+    /* -webkit-box-pack: justify;
+    -ms-flex-pack: justify; */
+    /* justify-content: space-between; */
     list-style: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    padding: 15px 0px 15px;
-    margin-right: 0px;
+    padding: 5px 0px 5px;
+    /* margin-left: 10%; */
+    text-align: center !important;
+    
 }
 
 .logo-header .helpful-links ul li.my-dropdown .my-dropdown-menu .dropdownmenu-wrapper .dropdown-cart-products .product .product-details {
@@ -24251,7 +24258,7 @@ nav button {
     line-height: 38px;
     font-weight: 600;
     margin-bottom: 0px;
-    float: left;
+    /* float: left; */
 }
 
 .productHeading {
@@ -24264,7 +24271,7 @@ nav button {
     font-weight: 700;
     line-height: 20px;
     color: #555;
-    float: left;
+    /* float: left; */
     margin-bottom: 0px;
     /*height: 41px;*/
 }
@@ -27212,6 +27219,11 @@ nav button {
     justify-content: space-between;
     /* margin-bottom: -4px;
     padding-top: 15px; */
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    margin-bottom: -4px;
+    padding-top: 15px;
 }
 
 .sub-categori .right-area .item-filter .filter-list {
@@ -32772,7 +32784,7 @@ input.form-control.card-elements {
 }
 
 .logo-header .helpful-links ul li .wish i, .logo-header .helpful-links ul li.my-dropdown .cart .icon i {
-    font-size: 20px;
+    font-size: 25px;
     color: #5d5d5d;
     background: none;
     height: auto;
@@ -33103,6 +33115,11 @@ p.product-unit-price {
     font-size: 14px;
 }
 
+#userImg{
+    
+    height: 36px !important;
+    
+}
 .docname a .search-content span {
     color: #000!important;
 }
@@ -33112,7 +33129,7 @@ p.product-unit-price {
         /* height: 350px; */
     }
     .logo-header .helpful-links ul li[data-toggle="tooltip"], .logo-header .helpful-links ul li[data-toggle="tooltip"] {
-        margin-top: 16px;
+        margin-top: 17px;
     }
 }
 
@@ -34145,6 +34162,10 @@ p.product-unit-price {
         border-radius: 100px;
         /* background: linear-gradient(rgba(255,255,255,.1), rgba(69, 182, 163, 0.616)), url("https://i.pinimg.com/originals/34/ec/65/34ec654e0194df001227ac5d105637f6.jpg"); */
     }
+    .onlyInPc{
+        padding: 30px !important;
+        
+    }
     .banner-effect2 {
         border-radius: 20px;
     }
@@ -34460,11 +34481,12 @@ section.phone-and-accessories.categori-item {
     .productimg {
         height: 70px !important;
     }
+   
 }
 
 @media only screen and (max-width:767px) {
     .item .info .price {
-        margin-top: 7%;
+        /* margin-top: 7%; */
         ;
     }
     .modalAdd{
@@ -34523,6 +34545,7 @@ section.phone-and-accessories.categori-item {
     }
 }
 
-@media only screen and (max-width:375px) {
+@media only screen and (max-width:780px) {
+  
    
 }

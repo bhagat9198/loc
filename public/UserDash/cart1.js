@@ -1,5 +1,3 @@
-// console.log("cart1.js");
-
 const db = firebase.firestore();
 const storageService = firebase.storage;
 
@@ -33,9 +31,16 @@ const displayCart = async () => {
   let item = "";
   // console.log(USER_DETAILS);
   let index = -1;
+  var count=0;
+  var type="odd"
   for (let prod of USER_DETAILS.cart) {
+    count++;
     // console.log(prod);
-    
+    if(count%2!=0){
+      type="odd"
+    }else{
+      type="even"
+    }
     let product;
     let prodPrice = 0;
     let cakeWeight = "";
@@ -60,6 +65,7 @@ const displayCart = async () => {
       console.log(allProdPrice[index]);
       if (prod.pricing.weight) {
         for (let cw of product.weights) {
+
           if (cw.cakeWeight === "half") {
             if (cw.cakeWeight === prod.pricing.weight) {
               cakeWeight = 0.5;
@@ -148,65 +154,78 @@ const displayCart = async () => {
       let rand = new Date().valueOf();
 
       item += `
-      <tr class="cremove3831" id="row__${rand}">
-        <td >
-            <img
-              src="${product.mainImgUrl}"
-              alt="Lake of Lakes " class=" crtimg responsiveImage">
-            <p class="pname"><a class="pname" href="../Product/product.html?prod=${
-              prod.prodId
-            }&&cat=${prod.cat}">${product.name}</a></p>
-        </td>
-        <td class="responsiveTags" style="text-align: center;">
+    
+      <li class="items `+type+`" id="row__${rand}">
+
+      <div class="infoWrap">
+        <div class="cartSection">
+          <img src="${product.mainImgUrl}" alt="" class="itemImg" />
+          <p class="itemNumber">${product.sno}</p>
+          <a href="../Product/product.html?prod=${
+            prod.prodId
+          }&&cat=${prod.cat}"><h5 class="resTxtMob" style="font-size:14px">${product.name}</h5></a>
+ 
+          <span id="eachprice__${rand}">₹${prodPrice}</span>
+          <small>
           ${prod.pricing.weight ? cakeDetails : ""}
-          ${prod.personalizedGift ? personalizedGiftDetails : ""}
-          <b>Cost :</b> <span id="eachprice__${rand}">₹${prodPrice}</span>
-        </td>
-        <td class="unit-price quantity names">
+${prod.personalizedGift ? personalizedGiftDetails : ''}
+          </small>
+   
+        </div>
+        <div style="width:100%;paadding:20px">
+        <div class=" cartSection">
+      
           <div class="qty">
             <ul>
               <li>
-                <span class="qtminus1 reducing" data-cartid="${
+              <span class="qtminus1 reducing" data-cartid="${
+                prod.cartId
+              }" data-index="${index}" data-id="minus__${rand}" onclick="decQty(event)">
+                <i class="fa fa-minus" data-cartid="${
                   prod.cartId
-                }" data-index="${index}" data-id="minus__${rand}" onclick="decQty(event)">
-                  <i class="fa fa-minus" data-cartid="${
-                    prod.cartId
-                  }" data-index="${index}" data-id="minus__${rand}"></i>
-                </span>
+                }" data-index="${index}" data-id="minus__${rand}"></i>
+              </span>
               </li>
               <li>
-                <span class="qttotal1" id="total__${rand}" >${
-          allProdPrice[index].qty
-        }</span>
+              <span class="qttotal1" id="total__${rand}" >${
+                allProdPrice[index].qty
+                }</span>
               </li>
               <li>
-                <span class="qtplus1 adding" data-cartid="${
+              <span class="qtplus1 adding" data-cartid="${
+                prod.cartId
+              }" data-index="${index}" data-id="plus__${rand}" onclick="incQty(event)">
+                <i class="fa fa-plus" data-cartid="${
                   prod.cartId
-                }" data-index="${index}" data-id="plus__${rand}" onclick="incQty(event)">
-                  <i class="fa fa-plus" data-cartid="${
-                    prod.cartId
-                  }" data-index="${index}" data-id="plus__${rand}"></i>
-                </span>
+                }" data-index="${index}" data-id="plus__${rand}"></i>
+              </span>
               </li>
             </ul>
           </div>
-        </td>
-        <td class="total-price">
-          <p data-index="${index}" id="subprice_${rand}">${prodPrice}</p>
-        </td>
-        <td>
-          <span class="qtplus1 adding" style="cursor:pointer" data-id="${rand}" data-index="${index}" data-cartid="${
+
+        </div>
+        
+            
+        <div class="cartSection">
+        <h5 style="font-size:13px" class="cartSection " data-index="${index}" id="subprice_${rand}">${prodPrice}</h5>
+        </div>
+      
+        <div class="cartSection " >
+        <span class="qtplus1 adding" style="cursor:pointer" style="padding:10px" data-id="${rand}" data-index="${index}" data-cartid="${
           prod.cartId
         }" onclick="deleteCartProd(event)">
-          <center> <i class="fa fa-trash" data-cartid="${
-            prod.cartId
-          }" data-index="${index}" data-id="${rand}"></i> </center></span>
-          </span>
-        </td>
-        <td>
-        <center> <input type="checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;"></center>
-        </td>
-      </tr>
+              <i class="fa fa-trash" data-cartid="${
+               prod.cartId
+             }" data-index="${index}" data-id="${rand}"></i></span>
+            </span>
+       </div>
+       <div class="cartSection " ">
+        <input type="checkbox" class="styled-checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;width:20px;height:20px">
+        </div>
+        </div>
+      </div>
+      </div>
+    </li>
       `;
     }
   }

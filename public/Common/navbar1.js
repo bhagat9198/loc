@@ -298,7 +298,7 @@ if (localStorage.getItem("locLoggedInUser")) {
         // console.log(userData);
         if (userData.cart) {
           flag = 1;
-          let cartSize = userData.cart.length;
+          var cartSize = userData.cart.length;
           // console.log(cartSize);
           cartModalProds = `
           <a href="#cart" class="cart carticon">
@@ -307,7 +307,8 @@ if (localStorage.getItem("locLoggedInUser")) {
               <span onclick="redirectToCart()" class="cart-quantity" id="cart-count">${cartSize}</span>
             </div>
           </a>
-          <div class="my-dropdown-menu" id="cart-items">
+          <div class="my-dropdown-menu" id="cart-items" style="height:500px;overflow-y:scroll;width:350px">
+          <h5 style="padding:10px;font-weight:700;font-size:13px;">${cartSize} Items In Your Bag</h5>
           `;
           for (cartProd of userData.cart) {
             // console.log(cartProd);
@@ -325,22 +326,29 @@ if (localStorage.getItem("locLoggedInUser")) {
                     <figure class="product-image-container">
                       <a href="/UserDash/cart.html" class="product-image">
                         <img src="${pData.mainImgUrl}"
-                          style="width: 70px; object-fit:cover;margin:4%" alt="Lake of Cakes">
+                          style="width: 70px; object-fit:cover;" alt="Lake of Cakes">
                       </a>
                     </figure>
                     <div class="product-details">
-                      <div class="content">
-                        <a href="javascript;">
-                          <h4 class="product-title">${pData.name}</h4>
+                      <div class="co">
+                        <a href="#!">
+                          <h4 class="product-title" style="text-align:left;padding:5px;font-size:14px !important;margin-left:10% !important">${pData.name}</h4>
                         </a>
                         <span class="cart-product-info">
-                          <span class="cart-product-qty" id="cqt3461">${cartProd.qty}</span>
+                          <span class="cart-product-qty" id="cqt3461"><span style="margin-left:11%;font-size:12px">Qty - </span>${cartProd.qty}</span>
                       </div>
                     </div>
                   </li>
                 </ul>
                 </div>
-                `;
+
+
+              
+               
+              
+                `
+                
+                ;
                 }
               });
           }

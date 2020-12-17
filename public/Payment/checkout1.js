@@ -1012,6 +1012,14 @@ const exeRazPay = e => {
 
 
 const orderComplete = (data) => {
+  $('#exampleModal').modal('show')
+//   let userValid=localStorage.getItem("locLoggedInUser")
+//   var dbupdate = db.collection("Customers").doc(userValid);
+
+
+// return dbupdate.update({
+//       : true
+// })
   // console.log(shippingType)
   // console.log(document.querySelector('input[name=shipping_date]').value)
   // console.log(document.querySelector('input[name=shipping_time]:checked').value)
@@ -1058,7 +1066,7 @@ const orderComplete = (data) => {
   payemnetStatus(addtionalData).then(async(res) => {
     // console.log(res.data);
     if(res.data === 'true') {
-      $('#exampleModal').modal('show')
+ 
       let userRef =  await db.collection('Customers').doc(USER_ID);
      await userRef.get().then(async(userDoc) => {
         let userData = userDoc.data();
@@ -1082,8 +1090,10 @@ const orderComplete = (data) => {
           }
         }
       })
+      setTimeout(function(){
+        location.replace("../index.html");
+      },3000)
       
-      location.replace("../index.html");
 
     } else {
       // console.log('same page reload');
