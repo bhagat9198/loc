@@ -34486,7 +34486,7 @@ section.phone-and-accessories.categori-item {
 
 @media only screen and (max-width:767px) {
     .item .info .price {
-        margin-top: 7%;
+        /* margin-top: 7%; */
         ;
     }
     .modalAdd{
