@@ -414,7 +414,7 @@ if (checkUser2 && checkUser2 != "null") {
 
 db.collection('miscellaneous').doc('siteStatus').onSnapshot(siteDoc => {
   let siteData = siteDoc.data();
-  console.log(siteData);
+  // console.log(siteData);
   if(!siteData.status) {
     document.querySelector('#top-alert').innerHTML = `
     <section class="top-header top-nav" style="background: red; display: flex; justify-content: center; text-align: center;">

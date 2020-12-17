@@ -5,7 +5,7 @@ const storageService = firebase.storage();
 
 db.collection('miscellaneous').doc('siteStatus').onSnapshot(siteDoc => {
   let siteData = siteDoc.data();
-  console.log(siteData);
+  // console.log(siteData);
   if(!siteData.status) {
     document.querySelector('#error-text').innerHTML = siteData.note;
     $('.bd-example-modal-lg').modal('show');
@@ -1079,7 +1079,6 @@ let LOC = {};
 let AllProds = [];
 db.collection("categories").onSnapshot(async (catSnaps) => {
   let catSnapsDocs = catSnaps.docs;
-
   for (let catDoc of catSnapsDocs) {
     let catData = catDoc.data();
     await db
@@ -1096,6 +1095,7 @@ db.collection("categories").onSnapshot(async (catSnaps) => {
               name: pData.name,
               totalPrice: pData.totalPrice,
               mrp: pData.mrp,
+              gst: pData.gst,
               mainImgUrl: pData.mainImgUrl,
               stars: pData.stars,
               bannerType: pData.bannerType,
@@ -1108,6 +1108,6 @@ db.collection("categories").onSnapshot(async (catSnaps) => {
         // console.log(catDoc.id);
       });
   }
-  sessionStorage.setItem("locProds", JSON.stringify(AllProds));
+  localStorage.setItem("locProds", JSON.stringify(AllProds));
 });
 
