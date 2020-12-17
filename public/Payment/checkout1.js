@@ -1119,22 +1119,22 @@ const orderComplete = (data) => {
 
 const checkPin = (e, current) => {
   // console.log(current.value);
-  // let val = current.value;
-  // valArr = val.split('');
-  // if(valArr[0] == 2 || valArr[0] == '' || valArr[0] == undefined) {
+  let val = current.value;
+  valArr = val.split('');
+  if(valArr[0] == 2 || valArr[0] == '' || valArr[0] == undefined) {
 
-  // } else {
-  //   current.value = '';
-  // }
-  // if(valArr[1] == 2 || valArr[1] == '' || valArr[1] == undefined) {
+  } else {
+    current.value = '';
+  }
+  if(valArr[1] == 2 || valArr[1] == '' || valArr[1] == undefined) {
 
-  // } else {
-  //   current.value = '2';
-  // }
-  // if(valArr[2] == 6 || valArr[2] == '' || valArr[2] == undefined) {
+  } else {
+    current.value = '2';
+  }
+  if(valArr[2] == 6 || valArr[2] == '' || valArr[2] == undefined) {
 
-  // } else {
-  //   current.value = '22';
-  // }
+  } else {
+    current.value = '22';
+  }
   // console.log(e.key);
 }
