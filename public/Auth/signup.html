@@ -148,8 +148,8 @@
   var auth = window.localStorage.getItem('locLoggedInUser');
 
   setInterval(function () {
-    
-    if (auth !="null") {
+
+    if (auth != "null") {
 
       window.location = "/index.html"
     }
@@ -190,40 +190,55 @@
               document.getElementById("AddCustomer").style.backgroundColor = "green"
 
               db.collection("Customers").add({
-                UserName: name,
-                Email: email,
-                Password: btoa(pass),
-                createdDtm: timestamp,
-                Phone :phone,
-                token: "null",
-                Image: "null"
-              })
+                  UserName: name,
+                  Email: email,
+                  Password: btoa(pass),
+                  createdDtm: timestamp,
+                  Phone: phone,
+                  token: "null",
+                  Image: "null"
+                })
                 .then(async function (docRef) {
-
                   document.getElementById("AddCustomer").innerHTML = "Account Created Successfully"
                   db.collection("Customers").onSnapshot(async (snapshots) => {
                     var dbref = db.collection('Customers');
                     let snapshotDocs = snapshots.docs;
-
                     for (let doc of snapshotDocs) {
-
                       let docData = doc.data();
                       if (docData.Email == email) {
                         await dbref.doc(doc.id).update({
-
                           userId: doc.id,
-
-
                         });
-                        window.localStorage.setItem("locLoggedInUser", doc.id)
-                        window.location = "../UserDash/customerProfile.html"
+                        window.localStorage.setItem("locLoggedInUser", doc.id);
+                        // /////////////////////////////////////////////////////////////////////////////////
+                        let uId = window.localStorage.getItem('locLoggedInUser');
+                        let buyNowProd = window.sessionStorage.getItem('buyNowProd');
+                        if (buyNowProd) {
+                          let uRef = db.collection('Customers').doc(uId);
+                          uRef.get().then(async (udoc) => {
+                            let udata = udoc.data();
+                            buyNowProd = JSON.parse(buyNowProd);
+                            if (udata.orders) {
+                              udata.orders.push(buyNowProd);
+                            } else {
+                              let orders = [];
+                              orders.push(buyNowProd);
+                              udata.orders = orders;
+                            }
+                            await dbref.doc(doc.id).update(udata);
+                            let orderId = buyNowProd.orderId;
+                            await sessionStorage.removeItem("buyNowProd");
+                            window.location = `/Payment/checkout.html?checkout=${orderId}`;
+                          })
+
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                        } else {
+                          window.location = "../UserDash/customerProfile.html";
+                        }
                         break;
-
                       }
-
                     }
                   });
-
                 })
                 .catch(function (error) {
                   console.error("Error adding document: ", error);
@@ -267,7 +282,6 @@
       }, 1000)
     }
   });
-
 </script>
 
 </html>

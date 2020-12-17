@@ -1,5 +1,4 @@
 // console.log("checkout1.js");
-
 const db = firebase.firestore();
 const storageService = firebase.storage();
 const APPLY_STATUS = true;
@@ -376,7 +375,7 @@ const form1 = (e) => {
   SHIPPING_DATA.country = customer_country;
   SHIPPING_DATA.city = city;
   SHIPPING_DATA.zip = zip;
-  SHIPPING_DATA.message = order_notes || "No Message Added";
+  // SHIPPING_DATA.message = order_notes || "No Message Added";
 
   if (shipDiffAddress.checked) {
     SHIPPING_DATA.differtAddress = true;
@@ -828,13 +827,13 @@ const shipping_locationHTML = document.querySelector("#shipping_location");
 const shipping_landmarkHTML = document.querySelector("#shipping_landmark");
 const shipping_phoneHTML = document.querySelector("#shipping_phone");
 const shipping_emailHTML = document.querySelector("#shipping_email");
-const shipping_msgHTML = document.querySelector("#shipping_msg");
+// const shipping_msgHTML = document.querySelector("#shipping_msg");
 
 const alt_shipping_userHTML = document.querySelector("#alt_shipping_user");
 const alt_shipping_locationHTML = document.querySelector("#alt_shipping_location");
 const alt_shipping_landmarkHTML = document.querySelector("#alt_shipping_landmark");
 const alt_shipping_phoneHTML = document.querySelector("#alt_shipping_phone");
-const alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
+let alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
 const altAddressHTML = document.querySelector("#alt-address");
 
 let RAZ_ORDER_ID;
@@ -844,7 +843,7 @@ const displayShippingInfo = (e) => {
   shipping_landmarkHTML.innerHTML = SHIPPING_DATA.landmark;
   shipping_phoneHTML.innerHTML = SHIPPING_DATA.phone;
   shipping_emailHTML.innerHTML = SHIPPING_DATA.email;
-  shipping_msgHTML.innerHTML = SHIPPING_DATA.message;
+  // shipping_msgHTML.innerHTML = SHIPPING_DATA.message;
 
   if (SHIPPING_DATA.differtAddress) {
     altAddressHTML.style.display = "block";
@@ -985,6 +984,14 @@ const exeRazPay = e => {
 
 
 const orderComplete = (data) => {
+  $('#exampleModal').modal('show')
+//   let userValid=localStorage.getItem("locLoggedInUser")
+//   var dbupdate = db.collection("Customers").doc(userValid);
+
+
+// return dbupdate.update({
+//       : true
+// })
   // console.log(shippingType)
   // console.log(document.querySelector('input[name=shipping_date]').value)
   // console.log(document.querySelector('input[name=shipping_time]:checked').value)
@@ -1031,7 +1038,7 @@ const orderComplete = (data) => {
   payemnetStatus(addtionalData).then(async(res) => {
     // console.log(res.data);
     if(res.data === 'true') {
-      $('#exampleModal').modal('show')
+ 
       let userRef =  await db.collection('Customers').doc(USER_ID);
      await userRef.get().then(async(userDoc) => {
         let userData = userDoc.data();
@@ -1055,8 +1062,10 @@ const orderComplete = (data) => {
           }
         }
       })
+      setTimeout(function(){
+        location.replace("../index.html");
+      },3000)
       
-      location.replace("../index.html");
 
     } else {
       // console.log('same page reload');

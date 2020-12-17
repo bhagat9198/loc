@@ -7,6 +7,7 @@ var firebase = require("firebase");
 
 const nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
+const { log } = require("firebase-functions/lib/logger");
 
 require('firebase/auth');
 require('firebase/database');
@@ -40,6 +41,12 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
     .catch((error) => {
       console.log(error);
     });
+  if(!userDetails) {
+    throw new functions.https.HttpsError(
+      "unauthenticated",
+      "only authenticated users can add requests"
+    );
+  }
   let index = -1;
   for (let o of userDetails.orders) {
     index++;
@@ -138,6 +145,8 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
     let gstPrice = 0;
     let gstPercent = 0;
     p.name = p.pdata.name;
+    p.sno = p.pdata.sno;
+    p.img = p.pdata.mainImgUrl;
     gstPercent = +p.pdata.gst;
     gstPercentArr.push(+gstPercent);
     gstPrice = +basicPrices[counter] * (+gstPercent / 100);
@@ -151,13 +160,18 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
   let addonCost = 0;
   if (userDetails.orders[index].addons) {
     if (userDetails.orders[index].addons.length > 0) {
-      for (addon of userDetails.orders[index].addons) {
+      for (let addon of userDetails.orders[index].addons) {
         await admin.firestore()
           .collection("addons")
           .doc(addon.id)
           .get()
           .then((addonDoc) => {
             let addonData = addonDoc.data();
+            addon.name = addonData.name;
+            addon.sno = addonData.sno;
+            addon.img = addonData.imgUrl;
+            addon.gst = addonData.gst;
+            addon.basicPrice = addonData.sp;
             addonCost += Number(addonData.price) * Number(addon.qty);
           })
           .catch((error) => {
@@ -208,11 +222,13 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
       gstArr: gstArr,
       addonCost: addonCost,
       shipeType: shipCat,
+      shipeTypePrice: shipTimeCost,
       shipDate: dateDelivery,
       shipTime: timeDelivery,
-      orderAt: new Date().toLocaleString("en-IN"),
+      orderAt: new Date().toLocaleString("en-IN", {timeZone: 'Asia/Kolkata'}),
       total: TOTAL_COST,
-      status: "pending"
+      status: "pending",
+      timeStamp: new Date()
     }).then(s => {
       // console.log('saved', s);
     }).catch(error => {
@@ -224,12 +240,29 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
 }
 
 exports.checkoutReq = functions.https.onCall(async (data, context) => {
-  if (!context.auth) {
+  let siteStaus = false;
+  await admin.firestore().collection("miscellaneous").doc('siteStatus').get().then(doc => {
+    let docData = doc.data();
+    console.log(docData);
+    siteStaus = docData.status;
+    console.log('docData.status', docData.status, 'siteStaus', siteStaus);
+  })
+
+  if (!siteStaus) {
+    console.log(staus);
     throw new functions.https.HttpsError(
       "unauthenticated",
       "only authenticated users can add requests"
     );
   }
+
+  // if (!context.auth) {
+  //   console.log(context.auth);
+  //   throw new functions.https.HttpsError(
+  //     "unauthenticated",
+  //     "only authenticated users can add requests"
+  //   );
+  // }
   // console.log(data);
 
   const USER_ID = data.userId;
@@ -274,12 +307,25 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
 });
 
 exports.payemnetStatus = functions.https.onCall(async (data, context) => {
-  if (!context.auth) {
+  let siteStaus = false;
+  await admin.firestore().collection("miscellaneous").doc('siteStatus').get().then(doc => {
+    let docData = doc.data();
+    siteStaus = docData.status;
+  })
+
+  if (!siteStaus) {
     throw new functions.https.HttpsError(
-      'unauthenticated',
-      'only authenticated users can add requests'
+      "unauthenticated",
+      "only authenticated users can add requests"
     );
   }
+  
+  // if (!context.auth) {
+  //   throw new functions.https.HttpsError(
+  //     'unauthenticated',
+  //     'only authenticated users can add requests'
+  //   );
+  // }
   // console.log(data);
   const razorpay_payment_id = data.razorpay_payment_id;
   const razorpay_order_id = data.razorpay_order_id;
@@ -373,13 +419,11 @@ exports.sendEmailAfterReject = functions.firestore.document('Customers/{userId}'
                   above)</span></b></h4>
      
   </div>
-
   <center>
       <table style="border: 2px solid red;padding: 30px;">
           <tr style="padding: 20px;margin: 15%;">
             <th>Product Image</th>
             <th>Name</th>
-
       
             
           </tr>
@@ -444,67 +488,56 @@ exports.createUser = functions.firestore
 </span></li><li><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"> – Change your password 
 </span></li></ul><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b>Further Help : 
 </b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">email us – info@lakeofcakes.com or call at +91 9598891097</span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><br></span></div><div style="text-align: center; "><span style="font-family: TimesNewRoman, Bold; font-size: 12pt; font-weight: bold;">Explore Our Categories&nbsp;</span></div><div style="text-align: center;"><br></div>
-
 <div class="alignRow" style="width:35%;margin-right: auto;margin-left: auto;display: block;border:1px solid red">
 <div style="border:1px solid red"><div style="float: left;
-
    padding: 10px;"><div style="text-align: center;">&nbsp; &nbsp;<img src="https://www.tastytweets.in/BackEndImage/ProductImages/regular-cakes-black-forest-tasty-tweets.jpg" alt="Snow" width="70" height="70">&nbsp;</div>
 <p style="text-align: center;border:1px solid red">
 	Cakes
 </p>	
 </div>
 <div style="float: left;
-
    padding: 10px;"><div style="text-align: center;"><img src="https://5.imimg.com/data5/JU/RF/MY-8545911/wedding-bouquet-500x500.jpg" alt="Forest" width="70" height="70">&nbsp;</div>
 <p style="text-align: center;border:1px solid red">
 	Flowers
 </p>
 </div>
 <div style="float: left;
-
    padding: 10px;"><div style="text-align: center;"><img src="https://res.cloudinary.com/groceryncart/image/upload/v1563106438/Stores/Store50/Product/Premium-Cake-combo-red-carnation-flowers6231758431555.png" alt="Mountains" width="70" height="70">&nbsp;</div>
 <p style="text-align: center;border:1px solid red">
 	Combos
 </p>
 </div>
 <div style="float: left;
-
    padding: 10px;"><div style="text-align: center;"><img src="https://img.icons8.com/plasticine/2x/chocolate-bar.png" alt="Snow" width="70" height="70">&nbsp;</div>
 <p style="text-align: center;border:1px solid red">
 	Chocolate
 </p>
 </div>
 <div style="float: left;
-
    padding: 10px;"><div style="text-align: center;">&nbsp; &nbsp;<img src="https://img.icons8.com/cotton/2x/birthday.png" alt="Snow" width="70" height="70">&nbsp;</div>
 <p style="text-align: center;border:1px solid red">
 	Birthday
 </p>
 </div>
 <div style="float: left;
-
    padding: 10px;"><div style="text-align: center;"><img src="https://cdn0.iconfinder.com/data/icons/party-human-1/66/50-512.png" alt="Snow" width="70" height="70">&nbsp;</div>
 <p style="text-align: center;border:1px solid red">
 	Aniversary
 </p>
 </div>
 <div style="float: left;
-
    padding: 10px;"><div style="text-align: center;"><img src="https://cdn3.iconfinder.com/data/icons/baby-essentials-black-white/512/Baby_Shower_BW-512.png" alt="Snow" width="70" height="70">&nbsp;</div>
 <p style="text-align: center;border:1px solid red">
 Occassions
 </p>
 </div>
 <div style="float: left;
-
    padding: 10px;"><div style="text-align: center;"><img src="https://cdn2.iconfinder.com/data/icons/christmas-filled-outline-1/512/christmas_holiday_merry_xmas_tree_5-512.png" alt="Snow" width="70" height="70">&nbsp;</div>
 <p style="text-align: center;border:1px solid red">
 	Gifts
 </p>
 </div>
-
 </div></div>
-
   `
 
     try {
@@ -603,45 +636,34 @@ exports.sendEmailAfterConfirmation = functions.firestore.document('Customers/{us
 
 
   mailOptions.html = `<div style="width: 100%;display:flex;border: 2px solid red; ">
-
   <div style="width: 80%"><img
           src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6"
           style="width: 263.921px; height: 65.1px;"></div>
   <div style="margin: 1%;right:0;"><span style="font-size: 20px;">Order</span> <b
           style="font-size: 20px;">Placed</b></div>
 </div>
-
 <div style="width: 100%;display:flex;">
-
   <div style="width: 80%;margin: 1%;"> Hi ${newValue.UserName},<br>Your order has been successfully placed.</div>
   <div style="margin: 1%;right:0;"><span style="font-size: 20px;"></span> <b style="font-size: 15px;">Order placed
           on ${timeStamp}</b></div>
 </div>
-
 <div style="text-align: center; "><br></div>
 <div style="text-align: center; "><br></div>
 <div style="text-align: left;">
-
   <div style="text-align: center;"><b><br></b></div>
   <div style="text-align: left;">
       <h5 style="text-align: center; ">
           <font face="Times New Roman"><b>We are committed to serving you with utmost regard for your and your
                   product's safety. Hence, please&nbsp;</b></font>
-
           <font face="Times New Roman"><b>note, the delivery time of your order may change due to traffic &amp;
                   natural calamities (like rain, storm, fog&nbsp;</b></font>
-
           <h5 style="text-align: center; ">
               <font face="Times New Roman"><b>etc.) AND based on the government's zonal advisory in your area
                       regarding COVID-19.</b></font>
           </h5>
-
   </div>
-
 </div>
-
 <center>
-
   <div style="width: 80%;display:flex;border: 4px solid red;">
       <div style="width: 80%;margin: 1%;"><img
               src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/Capture.PNG?alt=media&token=4140cc7f-c7cb-47be-846c-d0e9fadc46a9"
@@ -684,7 +706,6 @@ Amount Paid :Rs ${totalCost}
           <td style="font-weight: 800;">${totalCost}</td>
       </tr>
   </table>
-
   
 </center>
 <br>
@@ -696,9 +717,7 @@ Amount Paid :Rs ${totalCost}
       Thank you for shopping with <b>Lake of Cakes!</b>
   </h4>
 </div>
-
 <div style="width: 100%;display:flex; ">
-
   <div style="width: 80%"><img
           src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6"
           style="width: 263.921px; height: 65.1px;"></div>

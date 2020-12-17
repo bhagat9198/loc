@@ -31,9 +31,16 @@ const displayCart = async () => {
   let item = "";
   // console.log(USER_DETAILS);
   let index = -1;
+  var count=0;
+  var type="odd"
   for (let prod of USER_DETAILS.cart) {
+    count++;
     // console.log(prod);
-    
+    if(count%2!=0){
+      type="odd"
+    }else{
+      type="even"
+    }
     let product;
     let prodPrice = 0;
     let cakeWeight = "";
@@ -58,6 +65,7 @@ const displayCart = async () => {
       console.log(allProdPrice[index]);
       if (prod.pricing.weight) {
         for (let cw of product.weights) {
+
           if (cw.cakeWeight === "half") {
             if (cw.cakeWeight === prod.pricing.weight) {
               cakeWeight = 0.5;
@@ -147,12 +155,12 @@ const displayCart = async () => {
 
       item += `
     
-      <li class="items odd" id="row__${rand}">
+      <li class="items `+type+`" id="row__${rand}">
 
       <div class="infoWrap">
         <div class="cartSection">
           <img src="${product.mainImgUrl}" alt="" class="itemImg" />
-          <p class="itemNumber">#QUE-007544-002</p>
+          <p class="itemNumber">${product.sno}</p>
           <a href="../Product/product.html?prod=${
             prod.prodId
           }&&cat=${prod.cat}"><h5 class="resTxtMob" style="font-size:14px">${product.name}</h5></a>

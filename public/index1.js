@@ -3,6 +3,15 @@
 const db = firebase.firestore();
 const storageService = firebase.storage();
 
+db.collection('miscellaneous').doc('siteStatus').onSnapshot(siteDoc => {
+  let siteData = siteDoc.data();
+  console.log(siteData);
+  if(!siteData.status) {
+    document.querySelector('#error-text').innerHTML = siteData.note;
+    $('.bd-example-modal-lg').modal('show');
+  }
+})
+
 const introCarouselHTML = document.querySelector(".intro-carousel");
 
 // const extractImgUrl = async (imgPath) => {
@@ -53,10 +62,6 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
   }
 
   introCarouselHTML.innerHTML = img;
-  let w = document.getElementById("img-slider").clientWidth;
-  console.log(w);
-  // let h = document.getElementById('img-slider').offsetHeight;
-  // console.log(h);
 });
 
 // fixed section 1
