@@ -360,9 +360,31 @@
         document.getElementById("log").innerHTML = "Welcome Back" + " " + key.data().UserName;
         document.getElementById("log").style.backgroundColor = "green"
         let token = btoa(key.data().id + "Online" + doc.Email)
-        await dbs.collection("Customers").doc(key.data().userId).update("token", token)
+        let userRef = await dbs.collection("Customers").doc(key.data().userId);
+        await userRef.update("token", token)
         window.localStorage.setItem("locLoggedInUser", key.data().userId)
-        setTimeout(function () {
+        ////////////////////////////////////////////////////////////////////
+        let uId = window.localStorage.getItem('locLoggedInUser');
+        let buyNowProd = window.sessionStorage.getItem('buyNowProd');
+        if (buyNowProd) {
+          // let uRef = db.collection('Customers').doc(uId);
+          userRef.get().then(async (udoc) => {
+            let udata = udoc.data();
+            buyNowProd = JSON.parse(buyNowProd);
+            if (udata.orders) {
+              udata.orders.push(buyNowProd);
+            } else {
+              let orders = [];
+              orders.push(buyNowProd);
+              udata.orders = orders;
+            }
+            await userRef.update(udata);
+            let orderId = buyNowProd.orderId;
+            await sessionStorage.removeItem("buyNowProd");
+            window.location = `/Payment/checkout.html?checkout=${orderId}`;
+          })
+        } else {
+          setTimeout(function () {
           let goTo = window.localStorage.getItem("redirectURL");
           if (goTo != null && (goTo != "null"))
             if (goTo == "index.html") {
@@ -373,8 +395,7 @@
           else
             window.location = "/index.html"
         }, 100)
-
-
+        }
       } else {
         document.getElementById("log").innerHTML = "Invalid Credentials"
         document.getElementById("log").style.backgroundColor = 'red'

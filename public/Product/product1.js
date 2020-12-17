@@ -206,6 +206,14 @@ const displayProduct = (prodData) => {
 
   document.querySelector("#prod-qty").innerHTML = PROD_QTY;
   if (prodData.isCake) {
+    document.querySelector('#cake-message').innerHTML = `
+    <div>
+      <label>Give your message too😍😇</label>
+      <input type="text" class="values form-control message_cart" name="message" id="prodMsg"
+        placeholder="Enter Name/Message (30 Ch.)" maxlength="30"
+        style="height: 3em;width: 82%;">
+    </div>
+    `;
     if (prodData.weights) {
       document.querySelectorAll(".cake-attribute").forEach((el) => {
         el.style.display = "block";
@@ -234,6 +242,8 @@ const displayProduct = (prodData) => {
       <label class="custom-control-label" for="shape-heart" style="font-weight: 700;">Heart Shape </label>
     </div>
     `;
+    } else {
+      document.querySelector('#cake-shape-div').remove();
     }
   }
 
@@ -922,6 +932,10 @@ const buyProd = async (e) => {
         } else {
           f = false;
         }
+        let message = '';
+        if(document.querySelector("#prodMsg")) {
+          message = document.querySelector("#prodMsg").value;
+        }
         if (WEIGHT_PRICE.weight) {
           cake = {};
           cake.heart = HEART;
@@ -941,7 +955,7 @@ const buyProd = async (e) => {
             {
               prodId: PRODUCT_ID,
               cat: CATEGORY_ID,
-              message: document.querySelector("#prodMsg").value,
+              message: message,
               qty: PROD_QTY,
             },
           ],
@@ -971,6 +985,10 @@ const buyProd = async (e) => {
           } else {
             f = false;
           }
+          let message = '';
+        if(document.querySelector("#prodMsg")) {
+          message = document.querySelector("#prodMsg").value;
+        }
           cake = {};
           cake.heart = HEART;
           cake.eggless = EGGLESS;
@@ -989,7 +1007,7 @@ const buyProd = async (e) => {
             {
               prodId: PRODUCT_ID,
               cat: CATEGORY_ID,
-              message: document.querySelector("#prodMsg").value,
+              message: message,
               qty: PROD_QTY,
             },
           ],
@@ -1042,6 +1060,10 @@ const buyProd = async (e) => {
     } else {
       f = false;
     }
+    let message = '';
+        if(document.querySelector("#prodMsg")) {
+          message = document.querySelector("#prodMsg").value;
+        }
     if (WEIGHT_PRICE.weight) {
       cake = {};
       cake.heart = HEART;
@@ -1061,7 +1083,7 @@ const buyProd = async (e) => {
         {
           prodId: PRODUCT_ID,
           cat: CATEGORY_ID,
-          message: document.querySelector("#prodMsg").value,
+          message: message,
           qty: PROD_QTY,
         },
       ],
@@ -1124,12 +1146,15 @@ const addToCart = async (e) => {
     } else {
       f = false;
     }
-
+    let message = '';
+        if(document.querySelector("#prodMsg")) {
+          message = document.querySelector("#prodMsg").value;
+        }
     if (docData.cart) {
       docData.cart.push({
         prodId: PRODUCT_ID,
         cat: CATEGORY_ID,
-        message: document.querySelector("#prodMsg").value,
+        message: message,
         heart: HEART,
         eggless: EGGLESS,
         pricing: WEIGHT_PRICE,
@@ -1144,7 +1169,7 @@ const addToCart = async (e) => {
       docData.cart.push({
         prodId: PRODUCT_ID,
         cat: CATEGORY_ID,
-        message: document.querySelector("#prodMsg").value,
+        message: message,
         heart: HEART,
         eggless: EGGLESS,
         pricing: WEIGHT_PRICE,

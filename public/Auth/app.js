@@ -199,19 +199,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   var counter = 0;
   let getUserStatus=window.localStorage.getItem("locLoggedInUser")
   
-  // console.log(user)
-    // $('#hideLogOut').addEventListener("click",function(){
-    //   alert(8)
-    // })
-    // alert(getUserStatus)
-    // await signOut()
-   
-   
-    // alert("0000")
-  
   if (user!=null && user!="null") {
-  
-
    
     db.collection("Customers").onSnapshot(async (snapshots) => {
       

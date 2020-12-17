@@ -376,7 +376,7 @@ const form1 = (e) => {
   SHIPPING_DATA.country = customer_country;
   SHIPPING_DATA.city = city;
   SHIPPING_DATA.zip = zip;
-  SHIPPING_DATA.message = order_notes || "No Message Added";
+  // SHIPPING_DATA.message = order_notes || "No Message Added";
 
   if (shipDiffAddress.checked) {
     SHIPPING_DATA.differtAddress = true;
@@ -828,13 +828,13 @@ const shipping_locationHTML = document.querySelector("#shipping_location");
 const shipping_landmarkHTML = document.querySelector("#shipping_landmark");
 const shipping_phoneHTML = document.querySelector("#shipping_phone");
 const shipping_emailHTML = document.querySelector("#shipping_email");
-const shipping_msgHTML = document.querySelector("#shipping_msg");
+// const shipping_msgHTML = document.querySelector("#shipping_msg");
 
 const alt_shipping_userHTML = document.querySelector("#alt_shipping_user");
 const alt_shipping_locationHTML = document.querySelector("#alt_shipping_location");
 const alt_shipping_landmarkHTML = document.querySelector("#alt_shipping_landmark");
 const alt_shipping_phoneHTML = document.querySelector("#alt_shipping_phone");
-const alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
+let alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
 const altAddressHTML = document.querySelector("#alt-address");
 
 let RAZ_ORDER_ID;
@@ -844,7 +844,7 @@ const displayShippingInfo = (e) => {
   shipping_landmarkHTML.innerHTML = SHIPPING_DATA.landmark;
   shipping_phoneHTML.innerHTML = SHIPPING_DATA.phone;
   shipping_emailHTML.innerHTML = SHIPPING_DATA.email;
-  shipping_msgHTML.innerHTML = SHIPPING_DATA.message;
+  // shipping_msgHTML.innerHTML = SHIPPING_DATA.message;
 
   if (SHIPPING_DATA.differtAddress) {
     altAddressHTML.style.display = "block";
