@@ -1,4 +1,5 @@
 // console.log("checkout1.js");
+
 const db = firebase.firestore();
 const storageService = firebase.storage();
 const APPLY_STATUS = true;
