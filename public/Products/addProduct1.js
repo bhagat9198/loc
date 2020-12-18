@@ -200,6 +200,17 @@ const addProductForm = (event) => {
   let cakeFlavours = [];
   let weightPrice, cakeType, weightPrevPrice;
 
+  let isCake = false;
+  let isCakeHTML = document.querySelector('#is-cake');
+  if(isCakeHTML.checked) {
+    isCake = true;
+  }
+  let pIsGift = false;
+  let pIsGiftHTML = document.querySelector('#gift-type');
+  if(pIsGiftHTML.checked) {
+    pIsGift = true;
+  }
+
   productName = addProduct["product-name"].value;
   productType = addProduct["product-type"].value;
   productTypeColorStart = addProduct["product-type-color-start"].value;
@@ -233,7 +244,7 @@ const addProductForm = (event) => {
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
 
-  if (productCategory.toUpperCase().includes("CAKE") || productCategory.toUpperCase().includes("COMBO")) {
+  if (isCake) {
     addProduct
       .querySelectorAll('input[name="cake-weight"]')
       .forEach((weight) => {
@@ -314,9 +325,9 @@ const addProductForm = (event) => {
   }
 
   let fondant = 'false'; 
-  if(addProduct.querySelectorAll('input[name="cake-type-fondant"]:checked')) {
+  if(addProduct.querySelector('input[name="cake-type-fondant"]:checked')) {
     fondant = 'true';
-  }
+  }  
 
   let wholeProduct = {
     name: productName,
@@ -339,11 +350,13 @@ const addProductForm = (event) => {
     isActivated: true,
     totalReviews: 0,
     stars: 0,
-    createdAt: `${new Date()}`
+    createdAt: `${new Date()}`,
+    pIsGift: pIsGift,
+    isCake: isCake,
   };
 
   
-  if (productCategory.toUpperCase().includes("CAKES") || productCategory.toUpperCase().includes("COMBO")) {
+  if (isCake) {
     wholeProduct.weights = cakeWeights || "";
     wholeProduct.shapes = cakeShapes || "";
     wholeProduct.type = cakeType || "";
@@ -351,7 +364,7 @@ const addProductForm = (event) => {
     wholeProduct.fondant = fondant;
   }
 
-  if (productCategory.toUpperCase().includes("GIFT")) {
+  if (pIsGift) {
     wholeProduct.personalized = false;
     if(addProduct.querySelector('input[name="gift-type"]:checked')) {
       wholeProduct.personalized = true;
@@ -365,7 +378,7 @@ const addProductForm = (event) => {
 
 
 
-  console.log(wholeProduct);
+  // console.log(wholeProduct);
   // let c = wholeProduct.wholeSubCategory.substring(43);
   // console.log(c);
   // let cc = wholeProduct.wholeChildCategory.substring(63);
@@ -464,7 +477,6 @@ const addProductForm = (event) => {
         await docRef.update(docData);
       });
 
-      // addProduct.reset();
       addProduct.querySelector(".alert-success").textContent = "Product Saved";
       addProduct.querySelector(".alert-success").style.display = "block";
    
@@ -472,7 +484,8 @@ const addProductForm = (event) => {
       document.getElementById("successProduct").style.backgroundColor ="rgb(89, 151, 89)";
       document.getElementById("successProduct").style.display = "block";
       
-
+      addProduct.reset();
+      document.querySelector('#putImage').src = '../assets/images/logo.png';
       setTimeout(() => {
         addProduct.querySelector(".alert-success").style.display = "none";
         document.getElementById("successProduct").style.display = "none";
@@ -596,9 +609,7 @@ const calculate = (e) => {
     // total.innerHTML = +sp * (+sp + +gst*100);
     // console.log(+sp * (+sp + +gst*100));
   }
-
 };
-
 
 addProduct.querySelector("#product-sp").addEventListener("keyup", calculate);
 addProduct.querySelector("#product-gst").addEventListener("keyup", calculate);

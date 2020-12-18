@@ -445,14 +445,29 @@
                             </div>
                           </div>
 
-                          <div id="gift-attributes"
-                          style="display: none;background-color: rgb(214, 213, 157);padding: 10px;border-radius: 5px;box-shadow: 5px 5px 5px gray;">
-                          <h4 class="mainHeading" style="padding: 10px;">Gift Attributes</h4>
-                          <br>
                           <div class="row">
                             <div class="col-lg-4">
                               <div class="left-area">
-                                <h4 class="heading">Type*</h4>
+                                <h4 class="heading">Is Cake?</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="is-cake" name="is-cake" value="true"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="is-cake">Cake</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+  
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Is Personlized Gift?</h4>
                               </div>
                             </div>
                             <div class="col-lg-7">
@@ -467,6 +482,11 @@
                               </div>
                             </div>
                           </div>
+
+                          <div id="gift-attributes"
+                          style="display: none;background-color: rgb(214, 213, 157);padding: 10px;border-radius: 5px;box-shadow: 5px 5px 5px gray;">
+                          <h4 class="mainHeading" style="padding: 10px;">Gift Attributes</h4>
+                          <br>
                           <div class="row">
                             <div class="col-lg-4">
                               <div class="left-area">
@@ -1212,7 +1232,7 @@
   <script src="../assets/js/adminlte.js"></script>
   <!-- <script src="../assets/js/bootstrap.min.js"></script> -->
 
-
+  
   <script type="text/javascript">
     $('#admin-nav-load').load('/Common/navbar.html');
     $('#admin-footer-load').load('/Common/footer.html');
@@ -1346,14 +1366,25 @@
   </script>
 
   <script>
-    document.getElementById("product-category").addEventListener('change', function (e) {
-      var val = document.querySelector('#product-category').value;
-      if (val.toUpperCase().substring('CAKE')) {
+    let isCake = document.querySelector('#is-cake');
+    isCake.addEventListener('change', () => {
+      if (isCake.checked) {
         document.getElementById("cake-attributes").style.display = "block"
+
       } else {
         document.getElementById("cake-attributes").style.display = "none"
       }
     });
+
+    let isGift = document.querySelector('#gift-type');
+
+    isGift.addEventListener('change', () => {
+      if (isGift.checked) {
+        document.getElementById("gift-attributes").style.display = "block"
+      } else {
+        document.getElementById("gift-attributes").style.display = "none"
+      }
+    })
 
     function readURL(input) {
 

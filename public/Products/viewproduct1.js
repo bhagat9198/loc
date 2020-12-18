@@ -77,7 +77,7 @@ async function displayRows(snapshotDocs, allCatData) {
 
     let imgUrl = docData.mainImgUrl;
     tRows += `
-    <tr role="row" class="odd parent">
+    <tr role="row" class="odd parent" id="main-row-${id}">
         <td tabindex="0" >${docData.name}<br><small>ID: ${
       docData.sno
     }</small><br /> <small><strong>CHEX:</strong> ${id}</small></td>
@@ -187,7 +187,9 @@ const deleteProduct = (e) => {
       })
       .then(() => {
         // console.log('all deleted');
-        extractData();
+        // extractData();
+        document.querySelector(`#main-row-${docId}`).remove();
+
       })
       .catch((error) => {
         alert("error", error);
@@ -227,6 +229,8 @@ const displayTables = async () => {
                 <div class="row">
                   <div class="col-sm-5"><h2> ${cat.data.name} </h2></div>
                   <div class="col-sm-7">
+                  <a href="./downloadProuct.html?cat=${cat.id}" class="btn btn-secondary"><i class="material-icons" style="color:black">&#xE24D;</i>
+                      <span style="color:black">Paid PDF</span></a>
                     <a  class="btn btn-secondary" id="myInput${cat.id}" class="searchBar" onclick=myFunction("myInput${cat.id}","myTable${cat.id}","table-responsive${cat.id}")><i class="material-icons" style="color:black">&#xE147;</i>
                       <span style="color:black">Enable Attribute</span></a>
                   <a class="btn btn-secondary" onclick=createPDF("myTable${cat.id}","${cat.data.name}")><i class="material-icons" style="color:black">&#xE24D;</i>
@@ -511,6 +515,9 @@ const editDetails = async (e) => {
         doc.bannerTypeColorEnd || "";
       editProduct["product-sno"].value = doc.sno;
 
+      let isCake = doc.isCake;
+      let pIsGift = doc.pIsGift;
+
       let wcat = `${catData.cId}__${catData.cname}`;
       let wscat = `${catData.cId}__${catData.scId}__${catData.scname}`;
       let ccat = `${catData.cId}__${catData.scId}__${catData.ccId}__${catData.ccname}`;
@@ -518,10 +525,8 @@ const editDetails = async (e) => {
       await catSelect(wcat);
       await subCatSelect(wscat);
       await childCatSelect(ccat);
-      if (
-        doc.wholeCategory.toUpperCase().includes("CAKE") ||
-        doc.wholeCategory.toUpperCase().includes("COMBO")
-      ) {
+      if (isCake) {
+        document.querySelector('#is-cake').checked = true;
         document.getElementById("cake-attributes").style.display = "block";
         if (doc.weights) {
           doc.weights.map((weight) => {
@@ -592,7 +597,9 @@ const editDetails = async (e) => {
                 editProduct["cake-flavour-butterScotch"].checked = true;
               } else if (flav == "Pineapple") {
                 editProduct["cake-flavour-pineapple"].checked = true;
-              } else {
+              } else if (flav == "Strawberry") {
+                editProduct["cake-flavour-strawberry"].checked = true;
+              }else {
                 // console.log("invalid");
               }
             });
@@ -605,7 +612,8 @@ const editDetails = async (e) => {
         document.getElementById("cake-attributes").style.display = "none";
       }
 
-      if (doc.wholeCategory.toUpperCase().includes("GIFT")) {
+      if (pIsGift) {
+        document.querySelector('#gift-type').checked = true;
         document.getElementById("gift-attributes").style.display = "block";
         if (doc.personalized === true) {
           console.log(doc.personalized);
@@ -625,18 +633,6 @@ const editDetails = async (e) => {
       editProduct["product-sp"].value = doc.sp;
       editProduct["product-gst"].value = doc.gst;
       editProduct["product-total-price"].value = doc.totalPrice;
-      // await addons(doc.addons);
-      // editProduct["product-main-image"].value = doc.mainImg;
-
-      // console.log(putImg);
-
-      // const deleteImage = e => {
-      //   console.log(e);
-      //   const imgId = e.target.dataset.imgid;
-      //   console.log(imgId);
-      //   $('#' + imgId).remove();
-
-      // }
 
       $("#galleryImagesDisp").empty();
       if (doc.subImgs) {
@@ -652,7 +648,6 @@ const editDetails = async (e) => {
               <img src="${sImgUrl}" class="subImgTag" width="130"  style="object-ft:cover" alt="${doc.subImgs[i]}">;
               </a>
           </div>
-
           `;
         }
       }
@@ -672,15 +667,13 @@ const editDetails = async (e) => {
         doc.descriptions = doc.descriptions.replace("<p><br></p>", "");
       }
 
-      while (
-        doc.descriptions.includes("<p><br></p>") ||
-        doc.descriptions.endsWith("<p><br></p>")
-      ) {
-        doc.descriptions = doc.descriptions.replace(
-          new RegExp("<p><br></p>$"),
-          ""
-        );
+      while (doc.descriptions.includes("<o:p></o:p>")) {
+        doc.descriptions = doc.descriptions.replace("<o:p></o:p>", "");
       }
+      while (doc.descriptions.includes("<p></p>")) {
+        doc.descriptions = doc.descriptions.replace("<p></p>", "");
+      }
+
       while (
         doc.policy.startsWith("<p><br></p>") ||
         doc.policy.includes("<p><br></p>")
@@ -688,36 +681,22 @@ const editDetails = async (e) => {
         doc.policy = doc.policy.replace("<p><br></p>", "");
       }
 
-      while (
-        doc.policy.endsWith("<p><br></p>") ||
-        doc.policy.includes("<p><br></p>")
-      ) {
-        doc.policy = doc.policy.replace(new RegExp("<p><br></p>$"), "");
+      while (doc.policy.includes("<o:p></o:p>")) {
+        doc.policy = doc.policy.replace("<o:p></o:p>", "");
       }
-      if (!doc.descriptions === "<p><br></p>") {
+
+      while (doc.policy.includes("<p></p>")) {
+        doc.policy = doc.policy.replace("<p></p>", "");
+      }
+
+      if (doc.descriptions !== "<p><br></p>" && doc.descriptions !== '') {
         $("#productDesc").summernote("editor.pasteHTML", doc.descriptions);
       }
 
-      if (!doc.policy === "<p><br></p>") {
+      if (doc.policy !== "<p><br></p>" && doc.policy !== "") {
         $("#productPolicy").summernote("editor.pasteHTML", doc.policy);
       }
-
-      // $('#productPolicy').reset();
-      // $("#productPolicy").summernote("editor.pasteHTML", doc.policy);
-      // document.getElementById("setCat").value = "HELOO";
-      // $('#setCat').tagsinput('removeAll');
       document.getElementById("setCat").value = doc.tags;
-      // alert(doc.tags)
-      //# sourceMappingURL=bootstrap-tagsinput.min.js.
-      // editProduct["product-tag"].value = doc.tags;
-
-      // tagger(document.querySelector("#setCat"), {
-      //   allow_spaces: true,
-      //   allow_duplicates: false,
-      //   link: function () {
-      //     return false;
-      //   },
-      // });
     })
     .catch((error) => {
       console.log(error);
@@ -771,6 +750,17 @@ const submitEditForm = (event) => {
   let cakeFlavours = [];
   let weightPrice, cakeType;
 
+  let isCake = false;
+  let isCakeHTML = document.querySelector("#is-cake");
+  if (isCakeHTML.checked) {
+    isCake = true;
+  }
+  let pIsGift = false;
+  let pIsGiftHTML = document.querySelector("#gift-type");
+  if (pIsGiftHTML.checked) {
+    pIsGift = true;
+  }
+
   productName = editProduct["product-name"].value;
   bannerType = editProduct["product-type"].value;
   bannerTypeColorStart = editProduct["product-type-color-start"].value;
@@ -799,11 +789,39 @@ const submitEditForm = (event) => {
 
   productDescription = $(".textarea1").summernote("code");
   productPolicy = $(".textarea2").summernote("code");
+  console.log(productDescription);
 
-  if (
-    productCategory.toUpperCase().includes("CAKE") ||
-    productCategory.toUpperCase().includes("COMBO")
+  while (
+    productDescription.includes("<p><br></p>") ||
+    productDescription.startsWith("<p><br></p>")
   ) {
+    productDescription = productDescription.replace("<p><br></p>", "");
+  }
+
+  while (
+    productDescription.includes("<p><br></p>") ||
+    productDescription.endsWith("<p><br></p>")
+  ) {
+    productDescription = productDescription.replace(
+      new RegExp("<p><br></p>$"),
+      ""
+    );
+  }
+  while (
+    productPolicy.startsWith("<p><br></p>") ||
+    productPolicy.includes("<p><br></p>")
+  ) {
+    productPolicy = productPolicy.replace("<p><br></p>", "");
+  }
+
+  while (
+    productPolicy.endsWith("<p><br></p>") ||
+    productPolicy.includes("<p><br></p>")
+  ) {
+    productPolicy = productPolicy.replace(new RegExp("<p><br></p>$"), "");
+  }
+
+  if (isCake) {
     editProduct
       .querySelectorAll('input[name="cake-weight"]')
       .forEach((weight) => {
@@ -910,6 +928,13 @@ const submitEditForm = (event) => {
     });
   }
 
+  let fondant = 'false'; 
+  if(editProduct.querySelector('input[name="cake-type-fondant"]:checked')) {
+    console.log(editProduct.querySelector('input[name="cake-type-fondant"]:checked'));
+    fondant = 'true';
+  }
+
+
   let wholeProduct = {
     name: productName,
     bannerType: bannerType,
@@ -932,27 +957,27 @@ const submitEditForm = (event) => {
     isActivated: true,
     subImgsUrl: suburlss,
     lastModified: `${new Date()}`,
+    pIsGift: pIsGift,
+    isCake: isCake,
   };
   // console.log(editProduct.querySelector('input[name=cake-prevPrice-half]').value);
   // console.log(wholeProduct);
 
-  if (
-    productCategory.toUpperCase().includes("CAKES") ||
-    productCategory.toUpperCase().includes("COMBO")
-  ) {
+  if (isCake) {
     wholeProduct.weights = cakeWeights || "";
     wholeProduct.shapes = cakeShapes || "";
     wholeProduct.type = cakeType || "";
     wholeProduct.flavours = cakeFlavours || "";
+    wholeProduct.fondant = fondant;
   }
 
-  if (productCategory.toUpperCase().includes("GIFT")) {
+  if (pIsGift) {
     wholeProduct.personalized = false;
-    if (addProduct.querySelector('input[name="gift-type"]:checked')) {
+    if (pIsGift) {
       wholeProduct.personalized = true;
-      wholeProduct.imgs = addProduct["img-no"].value;
+      wholeProduct.imgs = editProduct["img-no"].value;
       wholeProduct.title = false;
-      if (addProduct.querySelector('input[name="gift-title"]:checked')) {
+      if (editProduct.querySelector('input[name="gift-title"]:checked')) {
         wholeProduct.title = true;
       }
     }
@@ -965,7 +990,7 @@ const submitEditForm = (event) => {
   // console.log(cc);
 
   async function editProductFun(data) {
-    // console.log(data);
+    console.log(data);
     // console.log(data.category, typeof data.category);
     let dataId, prodData;
     // await db
@@ -1280,3 +1305,23 @@ $(document).ready(function () {
 //       console.log(error);
 //     });
 // };
+
+
+
+// db.collection('categories').get().then(async(snps) => {
+  // let snapDocs = snps.docs;
+  // for(let sd of snapDocs) {
+    // let sdId = sd.id;
+    // let sdd  = sd.data();
+    //  db.collection('C0ab0eaGzmtjCKQMnvh5').get().then(async(ps) => {
+    //   let psd = ps.docs;
+    //   for(let pd of psd) {
+    //     let pdR = await db.collection('C0ab0eaGzmtjCKQMnvh5').doc(pd.id);
+    //     let pdd = pd.data();
+    //     pdd.fondant = 'false';
+    //     await pdR.update(pdd)
+    //     console.log('done');
+    //   }
+    // })
+  // }
+// })
