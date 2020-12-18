@@ -39,6 +39,7 @@ getParams(window.location.href).then(async (response) => {
 
   if (!USER) {
     await extractRelvantProds();
+    displayToHeading();
   } else {
     userSearchProds();
   }
@@ -55,6 +56,40 @@ getParams(window.location.href).then(async (response) => {
   }
   displayTopSuggest();
 });
+
+const displayToHeading = () => {
+  let prodHeading;
+  let locCats = JSON.parse(localStorage.getItem("locCats"));
+  if (CAT) {
+    for (let c of locCats) {
+      if (c.id == CAT) {
+        if (SUB) {
+          for (let sc of c.data.subCategory) {
+            if (sc.id == SUB) {
+              if (CHILD) {
+                for (let cc of sc.childCategories) {
+                  if (cc.id == CHILD) {
+                    prodHeading = cc.name;
+                    productHeadingHTML.innerHTML = prodHeading;
+                    return;
+                  }
+                }
+              }
+              prodHeading = sc.name;
+              productHeadingHTML.innerHTML = prodHeading;
+              return;
+            }
+          }
+        }
+        prodHeading = c.data.name;
+        productHeadingHTML.innerHTML = prodHeading;
+        return;
+      }
+    }
+  }
+
+  // productHeadingHTML.innerHTML = prodHeading;
+};
 
 const extractRelvantProds = async () => {
   // let dbRef;
@@ -92,9 +127,8 @@ const extractRelvantProds = async () => {
             }
           }
         });
-
         // console.log(allProductsArr);
-        return;
+        // return;
       } else {
         allProductsArr = [];
         // await dbRef.get().then((docs) => {
@@ -158,7 +192,7 @@ const extractRelvantProds = async () => {
         if (CAT == p.catId) {
           allProductsArr.push(p);
           // console.log(p);
-          prodHeading = p.prodData.cat;
+          // prodHeading = p.prodData.cat;
         }
       });
       // console.log(CAT);
@@ -172,7 +206,6 @@ const extractRelvantProds = async () => {
       //     // console.log(dd.name);
       //     prodHeading = dd.name;
       //   });
-      productHeadingHTML.innerHTML = prodHeading;
     }
     return;
   } else {
@@ -446,7 +479,7 @@ const settingLocalStorage = () => {
     let catSnapsDocs = catSnaps.docs;
     for (let catDoc of catSnapsDocs) {
       let catData = catDoc.data();
-      AllLocCats.push({id: catDoc.id, data: catData});
+      AllLocCats.push({ id: catDoc.id, data: catData });
       await db
         .collection(catDoc.id)
         .get()

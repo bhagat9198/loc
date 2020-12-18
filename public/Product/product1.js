@@ -1270,7 +1270,7 @@ const displaySuggestions = async () => {
 
     let card = "";
     // for (let counter = 0; counter < 8; counter++) {
-    for(let i = rand; i < (rand + 8); i++) {
+    for(let i = rand; i < (rand + 7); i++) {
 
       // await db
       //   .collection(CATEGORY_ID)
@@ -1279,6 +1279,7 @@ const displaySuggestions = async () => {
       //   .then((pdataRaw) => {
       //     let pdata = pdataRaw.data();
           // console.log(pdata.mainImgUrl);
+          // console.log(locProds[i]);
           let mrp =  Math.round(+locProds[i].prodData.mrp + (+locProds[i].prodData.mrp * ( +locProds[i].prodData.gst/100)));
           let dis = 100 - ((+locProds[i].prodData.totalPrice / mrp) * 100);
           dis = Math.round(dis);

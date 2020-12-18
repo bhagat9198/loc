@@ -1181,10 +1181,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
               <button class="w3-bar-item w3-button " style="color: white;font-weight: 800;"
                 onclick="openTab('reviews')">Reviews</button>
             </div>
-            <div id="Description" class="w3-container w3-display-container city w3-animate-left">
+            <div id="Description" class="w3-container w3-display-container city w3-animate-left"  >
               <span onclick="this.parentElement.style.display='none'"
                 class="w3-button w3-large w3-display-topright">&times;</span>
               <br /> <br />
+              <style>
+                #prod-desc ul  {
+                  padding-left: 20px;
+                }
+                #prod-desc ul li {
+                  list-style: disc;
+                }
+
+              </style>
               <div id="prod-desc">
 
               </div>
@@ -1665,7 +1674,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
     for (i = 0; i < x.length; i++) {
       x[i].style.display = "none";
     }
+    // document.getElementById(data).innerHTML = ``;
     document.getElementById(data).style.display = "block";
+    // document.getElementById(data).style.listStyle = "inside";
   }
 </script>
 
