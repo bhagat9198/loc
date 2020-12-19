@@ -6,6 +6,8 @@ const storageService = firebase.storage();
 let ORDERS = [];
 
 db.collection("orders").onSnapshot((snapshots) => {
+  const audio = new Audio('../assets/audio/ntf.mp3');
+    audio.play();
   let snapshotsDocs = snapshots.docs;
   ORDERS = [];
   snapshotsDocs.map((doc) => {
@@ -36,7 +38,7 @@ const displayOrdersTable = () => {
     }
     if (order.status == "completed") {
       completedRow += `
-    <tr role="row" class="odd parent" id="row_${order.orderId}">
+    <tr role="row" class="odd parent">
       <td tabindex="0">${order.orderId}</td>
       <td>
         ${order.orderAt.toString()}
@@ -226,6 +228,9 @@ const deleteOrder = (e) => {
   console.log(index);
   let userRef = db.collection("orders").doc(ORDERS[index].docId);
   userRef.delete();
+ 
+    
+  
 };
 
 const productDetailsHTML = document.querySelector("#product-details");
