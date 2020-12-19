@@ -451,7 +451,7 @@ const addProductForm = (event) => {
               // console.log(snapshot);
               let docData = snapshot.data();
               // console.log(docData);
-              alert(mainUrl)
+           
               docData.mainImgUrl = mainUrl;
               // docData.subImgsUrl = subUrls;
               await docRef.update(docData);
