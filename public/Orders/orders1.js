@@ -4,11 +4,16 @@ const db = firebase.firestore();
 const storageService = firebase.storage();
 
 let ORDERS = [];
-
+let prvious = 0;
 db.collection("orders").onSnapshot((snapshots) => {
   const audio = new Audio('../assets/audio/ntf.mp3');
-    audio.play();
   let snapshotsDocs = snapshots.docs;
+  prvious = snapshotsDocs.length;
+
+  if(snapshotsDocs.length > prvious-1) {
+    audio.play();
+
+  }
   ORDERS = [];
   snapshotsDocs.map((doc) => {
     let docData = doc.data();
