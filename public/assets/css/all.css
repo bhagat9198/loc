@@ -24111,6 +24111,7 @@ nav button {
     -ms-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    
 }
 
 .item .item-img {
@@ -24217,6 +24218,7 @@ nav button {
     background: #ff5500;
     border-color: #ff5500;
     color: #fff;
+    
 }
 
 .item .info {
@@ -33250,7 +33252,7 @@ p.product-unit-price {
         margin-top: 50px;
     }
     .cartpage .right-area .order-box {
-        margin-top: 20px;
+        /* margin-top: 20px; */
     }
     .checkout .right-area {
         margin-top: 50px;
@@ -33610,6 +33612,7 @@ p.product-unit-price {
     .sub-categori .right-area .categori-item-area .item .item-img img {
         width: 208px;
         height: auto;
+   
     }
     .mainmenu-area .categories_menu {
         z-index: 999;

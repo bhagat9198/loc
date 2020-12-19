@@ -132,7 +132,9 @@ const displayProduct = (prodData) => {
   // console.log(prodData);
 
   document.querySelector(".idno").innerHTML = prodData.sno;
-
+  if(!prodData.mainImgUrl){
+    prodData.mainImgUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+  }
   let big = `
   <span class="zoom" id="ex1">
     <img   
@@ -145,6 +147,9 @@ const displayProduct = (prodData) => {
   bigImgHolderHTML.innerHTML = big;
 
   $("#ex1").zoom();
+  if(!prodData.mainImgUrl){
+    prodData.mainImgUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+  }
 
   let imgs = `
   <a
@@ -155,6 +160,9 @@ const displayProduct = (prodData) => {
     >
   </a>`;
 
+  if(!prodData.subImgsUrl){
+    prodData.subImgsUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+  }
   if (prodData.subImgsUrl) {
     if (prodData.subImgsUrl.length > 0) {
       prodData.subImgsUrl.map((subUrl) => {
@@ -255,7 +263,7 @@ const displayProduct = (prodData) => {
         card += `
         <div class="custom-control custom-radio" style="margin-right:auto;text-align:justify;display:inline-block;margin-left:auto:display:block">
           <input type="checkbox"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
-          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px;">${flav}</label>
+          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px ;padding:10px !important">${flav}</label>
         </div>
         `;
       });
@@ -502,6 +510,10 @@ const displayWeights = (makedWeight) => {
           let dis = 100 - Math.round((+price / +pprice) * 100);
           disPercentHTML.innerHTML = `(${dis}% OFF)`;
         }
+        if(!PROD_DETAILS.mainImgUrl){
+          PROD_DETAILS.mainImgUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+        }
+         
         // console.log(WEIGHT_PRICE);
         weightCard += `
         <div class="custom-control custom-radio" style="mx;">
@@ -564,6 +576,9 @@ const imgChange = (e, current) => {
   let imgUrl = current.src;
   // console.log(imgUrl);
   // bigImgHolderHTML.innerHTML = '';
+  if(!imgUrl){
+    imgUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+  }
   let big = `
   <span class="zoom" id="ex11">
   <img   
@@ -1294,6 +1309,7 @@ const displayReviews = () => {
         console.log(reviewData);
         // display info of each card
         let starsDiv = starRating(+reviewData.rating.split("__")[0]);
+     
         card += `
         <div class="w3-container">
           <div class="w3-card-4" style="width:100%;border-radius:10px">
@@ -1314,7 +1330,10 @@ const displayReviews = () => {
         // console.log('not exsits');
       }
     });
+    if(!reviewSnapsDocs.length==0){
+      allReviewsHTML.innerHTML = card;
+    }
     // attch cards with parentHTML element
-    allReviewsHTML.innerHTML = card;
+  
   });
 };
