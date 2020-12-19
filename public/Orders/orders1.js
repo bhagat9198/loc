@@ -36,7 +36,7 @@ const displayOrdersTable = () => {
     }
     if (order.status == "completed") {
       completedRow += `
-    <tr role="row" class="odd parent">
+    <tr role="row" class="odd parent" id="row_${order.orderId}">
       <td tabindex="0">${order.orderId}</td>
       <td>
         ${order.orderAt.toString()}

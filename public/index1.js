@@ -1,414 +1,190 @@
-
 console.log("index1.js");
 
 const db = firebase.firestore();
 const storageService = firebase.storage();
 
-const introCarouselHTML = document.querySelector(".intro-carousel");
+let ORDERS = [];
+let CUSTOMERS = [];
+let PRODUCTS = [];
+let CAT = [];
 
-// const extractImgUrl = async (imgPath) => {
-//   let imgUrl;
-//   await storageService
-//     .ref(imgPath)
-//     .getDownloadURL()
-//     .then((url) => {
-//       imgUrl = url;
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-//   return imgUrl;
-// };
+const allOrdersHTML = document.querySelector('#all-orders');
+const allIncomeHTML = document.querySelector('#all-income');
+const ordersDetailsHTML = document.querySelector('#orders-details');
 
-db.collection("sliders").onSnapshot(async(snapshots) => {
-  let snapshotDocs = snapshots.docs;
-  let img = '';
-  for(let doc of snapshotDocs) {
-    let docData = doc.data();
-    img += `
-    <a href="#">
-      <div class="intro-content slide-one">
-        <img class=""
-          src="${docData.imgUrl}">
-          <div class="container">
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="slider-content">
-                  </div>
-              </div>
-          </div>
-      </div>
-      </div>
-    </a>`;
-  };
-  // console.log(img);
-  introCarouselHTML.innerHTML = img;
-});
-
-
-// fixed section 1
-const fixedSection1RowHTML = document.querySelector('#fixed-section1-row');
-const fixedSection1HeadingHTML = document.querySelector('#fixed-section1-heading');
-
-db.collection('sections').doc('fixed1').onSnapshot(doc => { 
-  let docData = doc.data();
-  // console.log(typeof(docData));
-  let row = '';
-  for(let card in docData) {
-    // console.log(docData[card]);
-    if(card === 'title') {
-      fixedSection1HeadingHTML.innerHTML = docData[card];
-    } else {
-      row += `
-      <div class="col-lg-3 col-md-3 col-6 remove-padding revealOnScroll"  data-animation="slideInRight">
-          <div class="left">
-            <a class="banner-effect imgca" href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" target="_blank">
-              <img class="imgc"
-                src="${docData[card].imgUrl}">
-            </a>
-          </div>
-        </div>
-      `;
-    } 
-  }
-  fixedSection1RowHTML.innerHTML = row;
-})
-
-
-// fixed section 2
-const fixedSection2Row = document.querySelector('#fixed-section2-row');
-db.collection('sections').doc('fixed2').onSnapshot(doc => {
-  let docData = doc.data();
-  let sortArr = [];
-  // console.log(docData);
-  for(let card in docData) {
-    // console.log(card);
-    if(card === 'title') continue;
-    sortArr.push(card);
-  }   
-  sortArr.map((el, index) => {
-    for(let i = 0; i < (sortArr.length - index -1); i++ ) {
-      if(sortArr[i] === 'title') {
-        continue;
+const displayOrdersInfo = () => {
+  let locAdminOrders = window.localStorage.getItem("locAdminOrders");
+  if (locAdminOrders) {
+    locAdminOrders = JSON.parse(locAdminOrders);
+    // console.log(locAdminOrders);
+    allOrdersHTML.innerHTML = locAdminOrders.totalOrders;
+    allIncomeHTML.innerHTML = `₹ ${locAdminOrders.totalIncome}`;
+    let row = '';
+    for(let o of locAdminOrders.details) {
+      // console.log(o);
+      let orderStatus = '';
+      if ("completed" === o.status) {
+        orderStatus = `<span class="badge badge-success">Completed</span>`;
+      } else if ("rejected" === o.status) {
+        orderStatus = ` <span class="badge badge-danger">Rejected</span>`;
+      } else {
+        orderStatus = ` <span class="badge badge-warning">Pending</span>`;
       }
-      if(docData[sortArr[i]].priority > docData[sortArr[i+1]].priority) {
-        let temp = sortArr[i];
-        sortArr[i] = sortArr[i+1];
-        sortArr[i+1] = temp;
+      row += `
+      <tr>
+        <td>${o.orderId}</td>
+        <td>${o.orderAt}</td>
+        <td>${orderStatus}</td>
+        <td>
+          <div class="sparkbar" data-color="#00a65a" data-height="20" style="text-align: left;">₹ ${o.total}</div>
+        </td>
+      </tr>
+      `;
+    }
+    ordersDetailsHTML.innerHTML = row;
+  }
+};
+displayOrdersInfo();
+
+const allCutomersHTML = document.querySelector('#all-cutomers');
+const cutomerDetailsHTML = document.querySelector('#cutomer-details');
+
+const displayCustomerssInfo = () => {
+  let locAdminCustomers = window.localStorage.getItem("locAdminCustomers");
+  if (locAdminCustomers) {
+    locAdminCustomers = JSON.parse(locAdminCustomers);
+    // console.log(locAdminCustomers);
+    allCutomersHTML.innerHTML = locAdminCustomers.totalCustomers;
+    let row = '';
+    for(let c of locAdminCustomers.details) {
+      // console.log(c);
+      let img;
+      if(c.Image === 'null') {
+        img = `<img src="./assets/images/logo.png" style="width: 150px;" alt="User Image">`;
+      } else {
+        img = `<img src="${c.Image}" style="width: 150px;" alt="User Image">`;
       }
-    }
-  })
-
-  let row = '';
-  for(let card of sortArr) {
-    row += `
-    <div class="sc-common-padding colxl2 revealOnScroll"  data-animation="rollIn">
-      <div class="card cardc align-items-center">
-        <a href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${card.tag}" class="">
-          <div class="iconimg">
-            <img class="comimg" src="${docData[card].imgUrl}"
-              class="card-img-top img-fluid" alt="...">
-          </div>
-          <div class="card-body cbc text-center">
-            <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${docData[card].cat.split('__')[1]}</h5>
-          </div>
-        </a>
-      </div>
-    </div>
-    `;
-  }
-  fixedSection2Row.innerHTML = row;
-});
-
-
-// fixed section 3
-const fixedSection3Row = document.querySelector('#fixed-section3-row');
-
-db.collection('sections').doc('fixed3').onSnapshot(doc => {
-  let docData = doc.data();
-  let row = '';
-  let title;
-  for(let card in docData) {
-    if(card === 'title') {
-      title = `
-      <div class="col-md-12 text-center">
-        <h3 class="mb-3 bannerheading" id="fixed-section3-heading" style="font-weight: 700;font-size: 30px">${docData[card]}</h3>
-      </div>
-      `;
-    } else {
       row += `
-      <div class="col-lg-3 col-md-3 col-6 remove-padding mt-3 revealOnScroll" data-animation="fadeInUp >
-        <div class="aside">
-          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" class="banner-effect imgca" href="bbb" target="_blank">
-            <img class="imgc" src="${docData[card].imgUrl}" alt="">
-          </a>
-        </div>
-      </div>
+      <li>
+        ${img}
+        <p class="users-list-name" href="#">${c.UserName}</p>
+        <p class="users-list-name" href="#">${c.Email}</p>
+        <span class="users-list-date">${c.Phone}</span>
+      </li>
+      `; 
+    }
+    cutomerDetailsHTML.innerHTML = row;
+  }
+};
+displayCustomerssInfo();
+
+let productsDetailsHTML = document.querySelector('#products-details');
+const displayProductssInfo = () => {
+  let locAdminProducts = window.localStorage.getItem("locAdminProducts");
+  if (locAdminProducts) {
+    locAdminProducts = JSON.parse(locAdminProducts);
+    // console.log(locAdminProducts);
+    let row = '';
+    for(let p of locAdminProducts) {
+      // console.log(p);
+      row += `
+      <tr>
+        <td>${p.catName}</td>
+        <td>${p.totalProds}</td>
+      </tr>
       `;
     }
+    productsDetailsHTML.innerHTML = row;
   }
-  fixedSection3Row.innerHTML = title + row;
+};
+displayProductssInfo();
 
+const allVisitorsHTML = document.querySelector('#all-visitors');
+db.collection('miscellaneous').doc('visitors').onSnapshot(visitorDoc => {
+  let visitorData = visitorDoc.data();
+  allVisitorsHTML.innerHTML = visitorData.count;
 })
 
-
-// fixed section 4
-
-const fixedSection4Row = document.querySelector('#fixed-section4-row');
-const fixedSection4Heading = document.querySelector('#fixed-section4-heading');
-
-db.collection('sections').doc('fixed4').get().then(async(doc) => {
-  let docData = doc.data();
-  let row = '';
-  fixedSection4Heading.innerHTML = docData['title'];
-  for(let card of docData.prodIds) {
-    // console.log(card);
-    // if(card == 'title') {
-      // console.log(docData[card]);
-      // fixedSection4Heading.innerHTML = docData[card];
-    // } else {
-      // console.log(card);
-      // console.log(card.cat.toString().split('__')[1]);
-      let docRef = db.collection(card.cat.split('__')[1]).doc(card.id);
-      // console.log(docRef)
-      await docRef.get().then(prod => {
-        // console.log(prod);
-        let prodData = prod.data();
-        // console.log(prodData);
-        if(prodData.isActivated) {
-          row +=  `
-          <a href="./Product/product/${prod.id}" class="item">
-            <div class="item-img">
-              <div class="extra-list">
-                <ul>
-                  <li>  
-                    <span rel-toggle="tooltip" title="Add To Wishlist" data-toggle="modal" id="wish-btn"
-                      data-target="#comment-log-reg" data-placement="right">
-                      <i class="icofont-heart-alt"></i>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <img class="img-fluid" src="${prodData.mainImgUrl}" >
-            </div>
-            <div class="info">
-              <div class="stars">
-                <h5 class="contactless"> Contactless delivery</h5>
-              </div>
-              <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
-              <h5 class="name">${prodData.name}</h5>
-              <div class="item-cart-area">
-                <span class="add-to-cart-quick add-to-cart-btn" onclick="addToCart(event)">
-                  <i class="icofont-cart"></i> Order Now
-                </span>
-              </div>
-            </div>
-          </a>
-          `;
-        } else {
-          row += '';
-        }
-      })
-    // }
-  }
-  fixedSection4Row.innerHTML = row;
-})
-
-
-// fixed section 5
-
-const fixedSection5Row = document.querySelector('#fixed-section5-row');
-
-db.collection('sections').doc('fixed5').onSnapshot(doc => {
-  let docData = doc.data();
-  let row = '';
-  let title = '';
-  for(let card in docData) {
-    // console.log(card);
-    if(card === 'title') {
-      title = `
-      <div class="col-md-12 text-center">
-        <h3 class="mb-3   revealOnScroll"  style="font-weight: 700;font-size: 30px" data-animation="fadeInUp>${docData[card]}</h3>
-      </div>
-      `;
-    } else {
-      row += `
-      <div class="col-lg-4 col-md-4 col-6 remove-padding mt-3  revealOnScroll" data-animation="fadeInUp>
-        <div class="aside">
-          <a href="./Products/products?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" class="banner-effect imgca" href="abcd" target="_blank">
-            <img class="imgc" src="${docData[card].imgUrl}" alt="">
-          </a>
-        </div>
-      </div>
-      `;
+db.collection("orders")
+  .onSnapshot((orderSnaps) => {
+    let orderSnapsDocs = orderSnaps.docs;
+    let totalIncome = 0;
+    let totalOrders = 0;
+    for (let o of orderSnapsDocs) {
+      let oData = o.data();
+      totalIncome += oData.total;
+      ORDERS.push(oData);
+      totalOrders++;
     }
-  }
-  fixedSection5Row.innerHTML = title + row;
-})
+    function compare(a, b) {
+      let o1 = a.timeStamp;
+      let o2 = b.timeStamp;
 
-
-// fixed section 6
-
-const fixedSection6Heading = document.querySelector('#fixed-section6-heading');
-const fixedSection6Row = document.querySelector('#fixed-section6-row');
-
-db.collection('sections').doc('fixed6').onSnapshot(async(doc) => {
-  let docData = doc.data();
-  let row = '';
-  fixedSection6Heading.innerHTML = docData.title;
-  for(let card of docData.prodIds) {
-    // console.log(card);
-    // console.log(card.cat.split('__')[1], card.id);
-    await db.collection(card.cat.split('__')[1]).doc(card.id).get().then(prod => {
-      // console.log(prod);
-      let prodData = prod.data();
-      // console.log(prodData);
-      row += `
-      <div class="col-lg-2 col-md-3 col-6 remove-padding">
-        <a class="item" href="./Product/product.html/${prod.id}">
-          <div class="item-img">
-            <div class="extra-list">
-              <ul>
-                <li>
-                  <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                    data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
-                    <i class="icofont-heart-alt"></i>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <img class="img-fluid" src="${prodData.mainImgUrl}">
-          </div>
-          <div class="info">
-            <div class="stars">
-            </div>
-            <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
-            <h5 class="name">${prodData.name}</h5>
-            <div class="item-cart-area">
-              <span class="add-to-cart-quick add-to-cart-btn" onclick="addToCart(event)">
-                <i class="icofont-cart"></i> Order Now
-              </span>
-            </div>
-          </div>
-        </a>
-      </div>
-      `;
-    })
-
-  }
-  fixedSection6Row.innerHTML = row;
-})
-
-
-// fixed section 7
-
-const fixedSection7Heading = document.querySelector('#fixed-section7-heading');
-const fixedSection7Row = document.querySelector('#fixed-section7-row');
-
-db.collection('sections').doc('fixed7').onSnapshot(async(doc) => {
-  let docData = doc.data();
-  let row = '';
-  fixedSection7Heading.innerHTML = docData.title;
-  for(let card of docData.prodIds) {
-    // console.log(card);
-    // console.log(card.cat.split('__')[1], card.id);
-    await db.collection(card.cat.split('__')[1]).doc(card.id).get().then(prod => {
-      // console.log(prod);
-      let prodData = prod.data();
-      // console.log(prodData);
-      row += `
-      <div class="col-lg-2 col-md-3 col-6 remove-padding">
-        <a class="item" href="./Product/product.html/${prod.id}">
-          <div class="item-img">
-            <div class="extra-list">
-              <ul>
-                <li>
-                  <span href="javascript:;" rel-toggle="tooltip" title="" data-toggle="modal" id="wish-btn"
-                    data-target="#comment-log-reg" data-placement="right" data-original-title="Add To Wishlist">
-                    <i class="icofont-heart-alt"></i>
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <img class="img-fluid" src="${prodData.mainImgUrl}">
-          </div>
-          <div class="info">
-            <div class="stars">
-            </div>
-            <h4 class="price">₹${prodData.totalPrice} <del><small>₹${prodData.mrp}</small></del></h4>
-            <h5 class="name">${prodData.name}</h5>
-            <div class="item-cart-area">
-              <span class="add-to-cart-quick add-to-cart-btn" onclick="addToCart(event)">
-                <i class="icofont-cart"></i> Order Now
-              </span>
-            </div>
-          </div>
-        </a>
-      </div>
-      `;
-    })
-
-  }
-  fixedSection7Row.innerHTML = row;
-})
-
-
-// fixed section 8
-
-const fixedSection8Heading = document.querySelector('#fixed-section8-heading');
-const fixedSection8Row = document.querySelector('#fixed-section8-row');
-
-db.collection('sections').doc('fixed8').onSnapshot(doc => {
-  let docData = doc.data();
-  let row = '';
-  fixedSection8Heading.innerHTML = docData['title'];
-  for(let card in docData) {
-    console.log(docData[card]);
-    // console.log(docData[card]);
-    if(card != 'title') {
-      row += `
-      <div class="col-lg-3 col-md-3 col-6 remove-padding">
-        <div class="left">
-          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" class="banner-effect imgca" target="_blank">
-            <img class="imgc" src="${docData[card].imgUrl}" alt="">
-          </a>
-        </div>
-      </div>
-      `;
+      return o2 - o1;
     }
-  }
-  fixedSection8Row.innerHTML = row;
-})
+    ORDERS.sort(compare);
+    ORDERS.length = 8;
+    // console.log(ORDERS);
+    let ordersData = {
+      details: ORDERS,
+      totalOrders: totalOrders,
+      totalIncome: totalIncome,
+    };
+    window.localStorage.setItem("locAdminOrders", JSON.stringify(ordersData));
+    displayOrdersInfo();
+  });
 
-
-// fixed section 9
-
-const fixedSection9Heading = document.querySelector('#fixed-section9-heading');
-const fixedSection9Row = document.querySelector('#fixed-section9-row');
-
-db.collection('sections').doc('fixed9').onSnapshot(doc => {
-  let docData = doc.data();
-  let row = '';
-  fixedSection9Heading.innerHTML = docData['title'];
-  for(let card in docData) {
-    console.log(docData[card]);
-    // console.log(docData[card]);
-    if(card != 'title') {
-      row += `
-      <div class="col-lg-3 col-md-3 col-6 remove-padding">
-        <div class="left">
-          <a href="./Products/products.html?cat=${docData[card].cat.split('__')[1]}&&tag=${docData[card].tag}" class="banner-effect imgca" target="_blank">
-            <img class="imgc" src="${docData[card].imgUrl}" alt="">
-          </a>
-        </div>
-      </div>
-      `;
+db.collection("Customers")
+  .onSnapshot((customerSnaps) => {
+    let customerSnapsDocs = customerSnaps.docs;
+    let totalCustomers = 0;
+    for (let c of customerSnapsDocs) {
+      let cData = c.data();
+      totalCustomers++;
+      CUSTOMERS.push(cData);
     }
+
+    function compare(a, b) {
+      let c1 = a.createdDtm;
+      let c2 = b.createdDtm;
+
+      return c2 - c1;
+    }
+    CUSTOMERS.sort(compare);
+    CUSTOMERS.length = 8;
+    let customersData = {
+      details: CUSTOMERS,
+      totalCustomers: totalCustomers
+    }
+    window.localStorage.setItem("locAdminCustomers", JSON.stringify(customersData));
+
+    displayCustomerssInfo();
+  });
+
+db.collection("categories")
+  .onSnapshot((catSnaps) => {
+    let catSnapsDocs = catSnaps.docs;
+
+    for (let cat of catSnapsDocs) {
+      CAT.push({ id: cat.id, data: cat.data() });
+    }
+    extractProducts();
+  });
+
+const extractProducts = async () => {
+  for (let cat of CAT) {
+    await db
+      .collection(cat.id)
+      .get()
+      .then((prodSnaps) => {
+        let prodSnapsDocs = prodSnaps.docs;
+        PRODUCTS.push({
+          catName: cat.data.name,
+          totalProds: prodSnapsDocs.length,
+        });
+      });
   }
-  fixedSection9Row.innerHTML = row;
-})
+  window.localStorage.setItem("locAdminProducts", JSON.stringify(PRODUCTS));
+  displayProductssInfo();
+};
 
-
-const addToCart = e => {
-  console.log('Added To Cart');
-}
