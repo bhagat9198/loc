@@ -400,19 +400,72 @@ const addProductForm = (event) => {
       });
     return { dataId: dataId, prodData: data };
   }
-
+  var uploader = document.getElementById('uploader2');
+  var uploader2 = document.getElementById('uploader3');
+  var main_IMG;
+  
+  var mainUrl;
   addProductFun(wholeProduct)
     .then(async (response) => {
       const storageService = firebase.storage();
       if (mainImg) {
-        await storageService
+
+        let uploadTask=storageService
           .ref(
             `${response.prodData.wholeCategory.split('__')[0]}/${response.dataId}/${response.prodData.mainImg}`
           )
           .put(mainImg);
+
+          await uploadTask.on('state_changed', function (snapshot) {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            uploader.value = percentage;
+            progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  
+            document.getElementById("demo").innerHTML = progress;
+            switch (snapshot.state) {
+              case firebase.storage.TaskState.PAUSED: // or 'paused'
+                document.getElementById("demo").innerHTML = "Upload Paused";
+                // console.log('Upload is paused');
+                break;
+              case firebase.storage.TaskState.RUNNING: // or 'running'
+                document.getElementById("demo").innerHTML = "File is uploading" + " " + progress + "%";
+  
+                break;
+            }
+          }, function (error) {
+            console.log(error);
+            // Handle unsuccessful uploads
+          }, function  ()  {
+            document.getElementById("demo").innerHTML = "Uploaded" + " " + progress + "%";
+            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+  
+              main_IMG = downloadURL;
+              mainUrl = main_IMG
+
+              
+              let docRef = db
+              .collection(`${response.prodData.wholeCategory.split('__')[0]}`)
+              .doc(response.dataId);
+            // console.log(docRef);
+            docRef.get().then(async (snapshot) => {
+              // console.log(snapshot);
+              let docData = snapshot.data();
+              // console.log(docData);
+              alert(mainUrl)
+              docData.mainImgUrl = mainUrl;
+              // docData.subImgsUrl = subUrls;
+              await docRef.update(docData);
+          
+            });
+            
+              // window.location="CrewDetails.html"
+            });
+          });
+      
       }
 
       let counter;
+      var subUrls = [];
       if(subImgs) {
         counter = -1;
         for (let img of subImgs) {
@@ -420,17 +473,63 @@ const addProductForm = (event) => {
           // console.log(img);
           let name = [...response.prodData.subImgs][counter];
           let id = response.dataId;
-          await storageService
+          let uploadTask2=storageService
             .ref(`${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`)
             .put(img);
+
+            await uploadTask2.on('state_changed', function (snapshot) {
+              var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              uploader2.value = percentage;
+              progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    
+              document.getElementById("demo2").innerHTML = progress;
+              switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                  document.getElementById("demo2").innerHTML = "Upload Paused";
+                  // console.log('Upload is paused');
+                  break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                  document.getElementById("demo2").innerHTML = "File is uploading" + " " + progress + "%";
+    
+                  break;
+              }
+            }, function (error) {
+              console.log(error);
+              // Handle unsuccessful uploads
+            }, function () {
+              document.getElementById("demo2").innerHTML = "Uploaded" + " " + progress + "%";
+              uploadTask2.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+    
+                // sub_IMG = downloadURL;
+                subUrls.push(downloadURL);
+               
+                if(subUrls.length-1==counter){
+                
+                  let docRef = db
+                  .collection(`${response.prodData.wholeCategory.split('__')[0]}`)
+                  .doc(response.dataId);
+                // console.log(docRef);
+                docRef.get().then(async (snapshot) => {
+                  // console.log(snapshot);
+                  let docData = snapshot.data();
+                  // console.log(docData);
+               
+                  docData.subImgsUrl = subUrls;
+                  await docRef.update(docData);
+              
+                });
+                }
+                // window.location="CrewDetails.html"
+              });
+            });
+        
           // console.log(counter);
         }
       };
 
       async function extractImgUrl(imgPath) {
         let imgUrl;
-        await storageService
-          .ref(imgPath)
+        await storageService.ref(imgPath)
           .getDownloadURL()
           .then((url) => {
             imgUrl = url;
@@ -438,44 +537,49 @@ const addProductForm = (event) => {
           .catch((err) => {
             imgUrl = err;
           });
+
+          
         return imgUrl;
       }
 
-      let mainUrl;
       if (mainImg) {
-        mainUrl = await extractImgUrl(
-          `${response.prodData.wholeCategory.split('__')[0]}/${response.dataId}/${response.prodData.mainImg}`
-        );
+
+      
+        // await extractImgUrl(
+        //   `${response.prodData.wholeCategory.split('__')[0]}/${response.dataId}/${response.prodData.mainImg}`
+        //);
       }
       // console.log(mainUrl);
-      let subUrls = [];
-      if (subImgs) {
-        counter = -1;
-        for (let img of subImgs) {
-          counter++;
-          // console.log(img);
-          let name = [...response.prodData.subImgs][counter];
-          let id = response.dataId;
-          let url = await extractImgUrl(
-            `${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`
-          );
-          subUrls.push(url);
-        }
-      }
+    
+      // if (subImgs) {
+      //   counter = -1;
+      //   for (let img of subImgs) {
+      //     counter++;
+      //     // console.log(img);
+      //     let name = [...response.prodData.subImgs][counter];
+      //     let id = response.dataId;
+      //     let url = await extractImgUrl(
+      //       `${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`
+      //     );
+      //     subUrls.push(url);
+      //   }
+      // }
       // console.log(subUrls);
 
-      let docRef = await db
-        .collection(`${response.prodData.wholeCategory.split('__')[0]}`)
-        .doc(response.dataId);
-      // console.log(docRef);
-      docRef.get().then(async (snapshot) => {
-        // console.log(snapshot);
-        let docData = snapshot.data();
-        // console.log(docData);
-        docData.mainImgUrl = mainUrl;
-        docData.subImgsUrl = subUrls;
-        await docRef.update(docData);
-      });
+      // let docRef = await db
+      //   .collection(`${response.prodData.wholeCategory.split('__')[0]}`)
+      //   .doc(response.dataId);
+      // // console.log(docRef);
+      // docRef.get().then(async (snapshot) => {
+      //   // console.log(snapshot);
+      //   let docData = snapshot.data();
+      //   // console.log(docData);
+      //   alert(mainUrl)
+      //   docData.mainImgUrl = mainUrl;
+      //   docData.subImgsUrl = subUrls;
+      //   await docRef.update(docData);
+     
+      // });
 
       addProduct.querySelector(".alert-success").textContent = "Product Saved";
       addProduct.querySelector(".alert-success").style.display = "block";
