@@ -1020,7 +1020,7 @@ db.collection("sections")
     fixedSection10Heading.innerHTML = docData.title;
     let t;
     for (let card of docData.prodIds) {
-      console.log(card);
+      // console.log(card);
       // await db
       //   .collection(card.cat.split("__")[0])
       //   .doc(card.id)
@@ -1034,7 +1034,7 @@ db.collection("sections")
         // console.log(prodData.wholeCategory.split("__")[0]);
         t = card.cat.split("__")[0];
         let mrp = Math.round(+card.mrp + +card.mrp * (+card.gst / 100));
-        console.log(card.totalPrice);
+        // console.log(card.totalPrice);
         let dis = 100 - (+card.totalPrice / mrp) * 100;
         dis = Math.round(dis);
         row += `
@@ -1107,3 +1107,39 @@ db.collection("categories").onSnapshot(async (catSnaps) => {
   localStorage.setItem("locProds", JSON.stringify(AllProds));
   localStorage.setItem("locCats", JSON.stringify(AllLocCats));
 });
+
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////
+
+let visiteRef = db.collection('miscellaneous').doc('visitors');
+visiteRef.get().then(visitorsDoc => {
+  let visitorsDocData = visitorsDoc.data();
+  // console.log(visitorsDocData);
+  let locVisit = JSON.parse(window.localStorage.getItem('locVisit'));
+  // console.log(locVisit);
+  if(locVisit) {
+    let initialDate = new Date(locVisit.time);
+    // console.log(initialDate);
+    let currectDate = new Date();
+    // console.log(currectDate);
+    // let diffTime = (currectDate - new Date(initialDate))
+    // console.log(diffTime);
+    let expectTime = (initialDate.getTime() + (60*60*1000))
+    // console.log(expectTime);
+    if(currectDate >= expectTime) {
+      visitorsDocData.count++;
+      let data = {
+        time: new Date()
+      }
+      window.localStorage.setItem('locVisit', JSON.stringify(data));
+      visiteRef.update('count', visitorsDocData.count);
+    }
+  } else {
+    let data = {
+      time: new Date()
+    }
+    visitorsDocData.count++;
+    window.localStorage.setItem('locVisit', JSON.stringify(data));
+    visiteRef.update('count', visitorsDocData.count);
+  }
+})
