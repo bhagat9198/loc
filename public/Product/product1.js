@@ -192,6 +192,7 @@ const displayProduct = (prodData) => {
     </p>
     `;
     document.querySelector("#buyNowBtn").disabled = false;
+    document.querySelector("#addToCartBtn").disabled = false;
   } else {
     productIsstookHTML.innerHTML = `
     <p>
@@ -324,6 +325,7 @@ const displayProduct = (prodData) => {
       // document.querySelector("#pqty").style.display = "none";
       // document.querySelector("#qty-btns").style.display = "none";
       document.querySelector("#buyNowBtn").disabled = true;
+      document.querySelector("#addToCartBtn").disabled = true;
       let customizedImgsHTML = document.querySelector("#customizedImgs");
 
       imgNo = +prodData.imgs;
@@ -439,6 +441,7 @@ personlizedImgsHTML.addEventListener("click", (e) => {
     }
     if (TITLE_ARRAY.length >= titleNo) {
       document.querySelector("#buyNowBtn").disabled = false;
+      document.querySelector("#addToCartBtn").disabled = false;
     }
   }
 });
@@ -1038,14 +1041,18 @@ const buyProd = async (e) => {
           orderData.products[0].cake = cake;
         }
         if (personalizedGift) {
-          orderData.personalized = true;
-          orderData.personalizedGiftDetails = personalizedGiftDetails;
+          orderData.products[0].personalized = true;
+          orderData.products[0].personalizedGiftDetails = personalizedGiftDetails;
         }
 
         docData.orders.push(orderData);
       } else {
         docData.orders = [];
         let cake = null;
+        let message = "";
+          if (document.querySelector("#prodMsg")) {
+            message = document.querySelector("#prodMsg").value;
+          }
         if (WEIGHT_PRICE.weight) {
           let f;
           if (WEIGHT_PRICE.weight) {
@@ -1059,10 +1066,7 @@ const buyProd = async (e) => {
           } else {
             f = false;
           }
-          let message = "";
-          if (document.querySelector("#prodMsg")) {
-            message = document.querySelector("#prodMsg").value;
-          }
+          
           cake = {};
           cake.heart = HEART;
           cake.eggless = EGGLESS;
@@ -1081,7 +1085,7 @@ const buyProd = async (e) => {
             {
               prodId: PRODUCT_ID,
               cat: CATEGORY_ID,
-              message: message,
+              message: message ? message : '',
               qty: PROD_QTY,
             },
           ],
@@ -1170,8 +1174,8 @@ const buyProd = async (e) => {
       buyNowData.products[0].cake = cake;
     }
     if (personalizedGift) {
-      buyNowData.personalized = true;
-      buyNowData.personalizedGiftDetails = personalizedGiftDetails;
+      buyNowData.products[0].personalized = true;
+      buyNowData.products[0].personalizedGiftDetails = personalizedGiftDetails;
     }
     console.log("uuuu");
     await sessionStorage.setItem("buyNowProd", JSON.stringify(buyNowData));
