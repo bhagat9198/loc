@@ -6,13 +6,12 @@ const storageService = firebase.storage();
 let ORDERS = [];
 let prvious = 0;
 db.collection("orders").onSnapshot((snapshots) => {
-  const audio = new Audio('../assets/audio/ntf.mp3');
+  const audio = new Audio("../assets/audio/ntf.mp3");
   let snapshotsDocs = snapshots.docs;
   prvious = snapshotsDocs.length;
 
-  if(snapshotsDocs.length > prvious-1) {
+  if (snapshotsDocs.length > prvious - 1) {
     audio.play();
-
   }
   ORDERS = [];
   snapshotsDocs.map((doc) => {
@@ -233,9 +232,6 @@ const deleteOrder = (e) => {
   console.log(index);
   let userRef = db.collection("orders").doc(ORDERS[index].docId);
   userRef.delete();
- 
-    
-  
 };
 
 const productDetailsHTML = document.querySelector("#product-details");
@@ -244,8 +240,7 @@ const prodsTotalHTML = document.querySelector("#prods-total");
 const userDetailsHTML = document.querySelector("#userDetails");
 const orderForHTML = document.querySelector("#orderFor");
 const orderTypeHTML = document.querySelector("#orderType");
-let personalisedHTML = document.querySelector('#personalised');
-
+let personalisedHTML = document.querySelector("#personalised");
 
 const OrderDetailsModal = async (e) => {
   $("#OrderDetailsModal").modal();
@@ -254,6 +249,8 @@ const OrderDetailsModal = async (e) => {
   // console.log(index);
   let row = "";
   let prodSummery = [];
+  let personliseStatus = false;
+  let allPersonalise = "";
   // console.log(ORDERS[index]);
   for (let prod of ORDERS[index].order.products) {
     // await db
@@ -298,6 +295,51 @@ const OrderDetailsModal = async (e) => {
       prodSummery.push({ name: prodData.name });
     }
     // });
+    
+    if (prod.personalizedGiftDetails) {
+      personliseStatus = true;
+      let eachPersonlise = `
+      <div>
+        <b>Product Sno: ${prod.sno}</b> 
+          <div>
+            <p><b> Images </b></p> 
+              <div>`;
+      let eachImgs = "";
+      for (let i of prod.personalizedGiftDetails.imgs) {
+        eachImgs += `<img class="pImgs"  src="${i}" alt="">`;
+      }
+      eachPersonlise += eachImgs + `</div>`;
+
+      if (prod.personalizedGiftDetails.titles) {
+        if (prod.personalizedGiftDetails.titles.length > 0) {
+          eachPersonlise += `<br>
+          <p><b>Title</b></p>
+             <ul>
+          `;
+          let li = "";
+          for (let t of prod.personalizedGiftDetails.titles) {
+            li += `<li>${t}</li>`;
+          }
+          eachPersonlise += li +`</ul>`;
+        }
+      }
+      eachPersonlise += `</div><hr><hr>`;
+      allPersonalise += eachPersonlise;
+    }
+  }
+  if(personliseStatus) {
+    personalisedHTML.innerHTML = `
+      <div class="card-header" id="headingOne" style="background-color: rgb(190, 252, 22);">
+        <h5 class="mb-0">
+          <button class="btn btn-link" style="color: tomato; font-weight: 900; ">
+            Personalised
+          </button>
+        </h5>
+      </div>
+      <div>
+        ${allPersonalise}
+      </div>
+      `;
   }
   // console.log(row);
 
@@ -333,7 +375,6 @@ const OrderDetailsModal = async (e) => {
           `;
       prodSummery.push({ name: addData.name, total: addTotal });
     }
-
   }
 
   productDetailsHTML.innerHTML = row;
@@ -387,18 +428,6 @@ const OrderDetailsModal = async (e) => {
   `;
 
   prodsTotalHTML.innerHTML = prodsTotal;
-
-  personalisedHTML.innerHTML = `
-  <div class="card-header" id="headingOne" style="background-color: rgb(247, 12, 157);">
-    <h5 class="mb-0">
-      <button class="btn btn-link" style="color: tomato; font-weight: 900; ">
-        Personalised
-      </button>
-    </h5>
-  </div>
-  `;
-
-
 
   let userDetails = "";
   db.collection("Customers")
