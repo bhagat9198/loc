@@ -340,6 +340,8 @@ const OrderDetailsModal = async (e) => {
         ${allPersonalise}
       </div>
       `;
+  } else {
+    personalisedHTML.innerHTML = '';
   }
   // console.log(row);
 
