@@ -160,10 +160,12 @@ const displayProduct = (prodData) => {
     >
   </a>`;
 
-  if(!prodData.subImgsUrl){
-    prodData.subImgsUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
-  }
+  // if(!prodData.subImgsUrl){
+  //   prodData.subImgsUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+  // }
+  
   if (prodData.subImgsUrl) {
+    alert(prodData.subImgsUrl)
     if (prodData.subImgsUrl.length > 0) {
       prodData.subImgsUrl.map((subUrl) => {
         imgs += `
@@ -276,6 +278,7 @@ const displayProduct = (prodData) => {
 
   if (prodData.pIsGift) {
     if (prodData.personalized === true) {
+      document.querySelector("#customizedBtn").style.display = "block";
       personalizedGift = true;
       // document.querySelector("#pqty").style.display = "none";
       // document.querySelector("#qty-btns").style.display = "none";
@@ -302,8 +305,6 @@ const displayProduct = (prodData) => {
       }
       customizedImgsHTML.innerHTML = imgHolder;
     }
-  } else {
-    document.querySelector("#customizedBtn").style.display = "none";
   }
 
   while (
@@ -1205,52 +1206,120 @@ const addToCart = async (e) => {
 
 addToCartBtnHTML.addEventListener("click", addToCart);
 
+const settingLocalStorage = () => {
+  let AllProds = [];
+  let AllLocCats = [];
+  db.collection("categories").onSnapshot(async (catSnaps) => {
+    let catSnapsDocs = catSnaps.docs;
+    for (let catDoc of catSnapsDocs) {
+      let catData = catDoc.data();
+      AllLocCats.push({id: catDoc.id, data: catData});
+      await db
+        .collection(catDoc.id)
+        .get()
+        .then((prodSnaps) => {
+          let prodSnapsDocs = prodSnaps.docs;
+          prodSnapsDocs.map((pDoc) => {
+            let pData = pDoc.data();
+            AllProds.push({
+              prodId: pDoc.id,
+              prodData: {
+                cat: catData.name,
+                name: pData.name,
+                totalPrice: pData.totalPrice,
+                mrp: pData.mrp,
+                gst: pData.gst,
+                mainImgUrl: pData.mainImgUrl,
+                stars: pData.stars,
+                bannerType: pData.bannerType,
+                bannerTypeColorEnd: pData.bannerTypeColorEnd,
+                bannerTypeColorStart: pData.bannerTypeColorStart,
+                catId: pData.wholeCategory.split("__")[0],
+                subcatId: pData.wholeSubCategory.split("__")[1],
+                childcatId: pData.wholeChildCategory.split("__")[2],
+              },
+              catId: catDoc.id,
+            });
+          });
+          // console.log(catDoc.id);
+        });
+    }
+    localStorage.setItem("locProds", JSON.stringify(AllProds));
+    localStorage.setItem("locCats", JSON.stringify(AllLocCats));
+  });
+};
+
+
 const displaySuggestions = async () => {
   const trendingItemsHTML = document.querySelector(".trending-item-slider");
   // console.log(CATEGORY_ID);
   let allProds = [];
-  let r = db.collection(CATEGORY_ID);
-  r.get().then(async (prodSnaps) => {
-    let prodSnapsDocs = prodSnaps.docs;
-    let snapSize = prodSnapsDocs.length;
-    // console.log(prodSnapsDocs.length);
-    let rand = Math.floor(Math.random() * (snapSize - 8 + 0 + 1));
-    // console.log(rand);
-    prodSnapsDocs.map((p) => {
-      allProds.push(p.id);
-    });
+  // let r = db.collection(CATEGORY_ID);
+  // r.get().then(async (prodSnaps) => {
+  //   let prodSnapsDocs = prodSnaps.docs;
+  //   let snapSize = prodSnapsDocs.length;
+  //   // console.log(prodSnapsDocs.length);
+  //   let rand = Math.floor(Math.random() * (snapSize - 8 + 0 + 1));
+  //   // console.log(rand);
+  //   prodSnapsDocs.map((p) => {
+  //     allProds.push(p.id);
+  //   });
+
+  let locProds = JSON.parse(localStorage.getItem("locProds"));
+  if (!locProds) {
+    await settingLocalStorage();
+  }
+
+  let max = 0;
+  let min = 0;
+  let couter = -1;
+  for(let i = 0; i < locProds.length; i++) {
+    if(locProds[i].catId == CATEGORY_ID) {
+      couter++;
+      if(couter === 0) {
+        min = i;
+      }
+      max = i;
+    }
+  }
+
+  let rand = Math.floor((Math.random() * (max - (min - 8))) + (min - 8));
 
     let card = "";
-    for (let counter = 0; counter < 8; counter++) {
-      await db
-        .collection(CATEGORY_ID)
-        .doc(allProds[counter + rand])
-        .get()
-        .then((pdataRaw) => {
-          let pdata = pdataRaw.data();
+    // for (let counter = 0; counter < 8; counter++) {
+    for(let i = rand; i < (rand + 7); i++) {
+
+      // await db
+      //   .collection(CATEGORY_ID)
+      //   .doc(allProds[counter + rand])
+      //   .get()
+      //   .then((pdataRaw) => {
+      //     let pdata = pdataRaw.data();
           // console.log(pdata.mainImgUrl);
-          let dis = 100 - (+pdata.totalPrice / +pdata.mrp) * 100;
+          // console.log(locProds[i]);
+          let mrp =  Math.round(+locProds[i].prodData.mrp + (+locProds[i].prodData.mrp * ( +locProds[i].prodData.gst/100)));
+          let dis = 100 - ((+locProds[i].prodData.totalPrice / mrp) * 100);
           dis = Math.round(dis);
           card += `
         <a href="./product.html?prod=${
-          allProds[counter + rand]
-        }&&cat=${CATEGORY_ID}" class="item">
+          locProds[i].prodId
+        }&&cat=${locProds[i].catId}" class="item">
           <div class="item-img">
 
             <img class="img-fluid" style="width: 500px !important; height:200px " src="${
-              pdata.mainImgUrl
+              locProds[i].prodData.mainImgUrl
             }" alt="LAKE OF CAKES">
           </div>
           <div class="info">
             <br />
-            <h5 style="font-size: 1em;color: black;">${pdata.name}</h5>
+            <h5 style="font-size: 1em;color: black;">${locProds[i].prodData.name}</h5>
             <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${
-              pdata.totalPrice
-            } <small><del>₹ ${pdata.mrp}</del>(${dis}% OFF)</small></h4>
+              locProds[i].prodData.totalPrice
+            } <small><del>₹ ${mrp}</del>(${dis}% OFF)</small></h4>
           </div>
         </a>
         `;
-        });
+        // });
     }
     trendingItemsHTML.innerHTML = card;
     var $trending_slider = $(".trending-item-slider");
@@ -1286,7 +1355,7 @@ const displaySuggestions = async () => {
         },
       },
     });
-  });
+  // });
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////

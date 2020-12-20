@@ -865,6 +865,7 @@ let alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
 const altAddressHTML = document.querySelector("#alt-address");
 
 let RAZ_ORDER_ID;
+let PUB_KEY;
 const displayShippingInfo = (e) => {
   shipping_userHTML.innerHTML = SHIPPING_DATA.name;
   shipping_locationHTML.innerHTML = SHIPPING_DATA.address;
@@ -915,7 +916,8 @@ const displayShippingInfo = (e) => {
     userId: USER_ID,
     order: CHECKOUT_ID,
     coupan: COUPAN_ID,
-    name: razName
+    name: razName,
+    shippingData: SHIPPING_DATA
   }
   // let options = { 
   //   method: 'POST', 
@@ -944,6 +946,7 @@ const displayShippingInfo = (e) => {
   checkoutReq(checkoutReqData).then((res) => {
     document.querySelector('#rzp-button1').disabled = false;
     RAZ_ORDER_ID = res.data.orderId;
+    PUB_KEY = res.data.publicKey;
   }).catch(error => {
     console.log(error);
   })
@@ -973,8 +976,9 @@ const exeRazPay = e => {
   }
 
   e.preventDefault();
+  alert(PUB_KEY, RAZ_ORDER_ID);
   options = {
-    key: "rzp_test_VkBZNRiEBUKNu5", // Enter the Key ID generated from the Dashboard
+    key: PUB_KEY, 
     amount: "1000", 
     currency: "INR",
     name: "LAKE OF CAKES",
@@ -1102,4 +1106,38 @@ const orderComplete = (data) => {
   }).catch(error => {
     console.log(error);
   })
+}
+
+// //////////////////////////////////////////////////////////////////////////////
+
+// document.querySelectorAll('.pin-lucknow').forEach(el => {
+//   el.addEventListener('input', (e) => {
+//     // console.log(e.target.value);
+//     let val = e.target.value;
+//     valArr = val.split('');
+//     // console.log(valArr);
+
+//   })
+// })
+
+const checkPin = (e, current) => {
+  // console.log(current.value);
+  let val = current.value;
+  valArr = val.split('');
+  if(valArr[0] == 2 || valArr[0] == '' || valArr[0] == undefined) {
+
+  } else {
+    current.value = '';
+  }
+  if(valArr[1] == 2 || valArr[1] == '' || valArr[1] == undefined) {
+
+  } else {
+    current.value = '2';
+  }
+  if(valArr[2] == 6 || valArr[2] == '' || valArr[2] == undefined) {
+
+  } else {
+    current.value = '22';
+  }
+  // console.log(e.key);
 }

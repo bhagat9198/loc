@@ -959,7 +959,7 @@
         
                       <br>
                       <button type="button" id="customizedBtn"
-                      style="border-radius: 5px;line-height: 33px;font-size: 12px; font-weight: 600; width:32%;background: rgb(160, 159, 159,0.4); border: 1px solid rgb(238, 9, 9); color:black;"
+                      style="border-radius: 5px;line-height: 33px;font-size: 12px; font-weight: 600; width:32%;background: rgb(160, 159, 159,0.4); border: 1px solid rgb(238, 9, 9); color:black; display: none;"
                       class="btn btn-primary btns responsive-btn" data-toggle="modal"
                       data-target="#customModal">Customize
                       Now</button>
@@ -1188,7 +1188,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
               <button class="w3-bar-item w3-button " style="color: white;font-weight: 800;"
                 onclick="openTab('reviews')">Reviews</button>
             </div>
-            <div id="Description" class="w3-container w3-display-container city w3-animate-left">
+            <div id="Description" class="w3-container w3-display-container city w3-animate-left"  >
               <span onclick="this.parentElement.style.display='none'"
                 class="w3-button w3-large w3-display-topright">&times;</span>
               <br /> <br />
@@ -1673,7 +1673,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
     for (i = 0; i < x.length; i++) {
       x[i].style.display = "none";
     }
+    // document.getElementById(data).innerHTML = ``;
     document.getElementById(data).style.display = "block";
+    // document.getElementById(data).style.listStyle = "inside";
   }
 </script>
 
