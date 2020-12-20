@@ -165,7 +165,7 @@ const displayProduct = (prodData) => {
   // }
   
   if (prodData.subImgsUrl) {
-    alert(prodData.subImgsUrl)
+    
     if (prodData.subImgsUrl.length > 0) {
       prodData.subImgsUrl.map((subUrl) => {
         imgs += `
