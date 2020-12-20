@@ -26,7 +26,7 @@ const displayCategories = (data) => {
     <option value="${doc.id}__${docData.name}">${docData.name}</option>
     `;
   });
-  
+
   productCategoryHTML.innerHTML = options;
 };
 
@@ -96,7 +96,7 @@ const displayChildCategory = async (data, elHTML) => {
   docId = data.substring(0, 20);
   // console.log(docId);
   // scId = data.substring(22, 38);
-  scId = data.split('__')[1];
+  scId = data.split("__")[1];
   // console.log(scId);
 
   let dbRef = await db.collection("categories").doc(docId);
@@ -173,13 +173,15 @@ productSubCategoryHTML.addEventListener("change", (e) => {
 //   });
 
 const addProductForm = (event) => {
-
   document.getElementById("successProduct").style.display = "block";
-  document.getElementById("successProduct").innerHTML = "Please wait ...Adding the product  &#128513;";
- 
+  document.getElementById("successProduct").innerHTML =
+    "Please wait ...Adding the product  &#128513;";
+
   event.preventDefault();
   let productName,
-    productType, productTypeColorStart, productTypeColorEnd,
+    productType,
+    productTypeColorStart,
+    productTypeColorEnd,
     productSno,
     productCategory,
     productSubCategory,
@@ -201,13 +203,13 @@ const addProductForm = (event) => {
   let weightPrice, cakeType, weightPrevPrice;
 
   let isCake = false;
-  let isCakeHTML = document.querySelector('#is-cake');
-  if(isCakeHTML.checked) {
+  let isCakeHTML = document.querySelector("#is-cake");
+  if (isCakeHTML.checked) {
     isCake = true;
   }
   let pIsGift = false;
-  let pIsGiftHTML = document.querySelector('#gift-type');
-  if(pIsGiftHTML.checked) {
+  let pIsGiftHTML = document.querySelector("#gift-type");
+  if (pIsGiftHTML.checked) {
     pIsGift = true;
   }
 
@@ -324,10 +326,10 @@ const addProductForm = (event) => {
     productSubImgs = [...subImgs].map((img) => `${Math.random()}_${img.name}`);
   }
 
-  let fondant = 'false'; 
-  if(addProduct.querySelector('input[name="cake-type-fondant"]:checked')) {
-    fondant = 'true';
-  }  
+  let fondant = "false";
+  if (addProduct.querySelector('input[name="cake-type-fondant"]:checked')) {
+    fondant = "true";
+  }
 
   let wholeProduct = {
     name: productName,
@@ -355,7 +357,6 @@ const addProductForm = (event) => {
     isCake: isCake,
   };
 
-  
   if (isCake) {
     wholeProduct.weights = cakeWeights || "";
     wholeProduct.shapes = cakeShapes || "";
@@ -366,17 +367,14 @@ const addProductForm = (event) => {
 
   if (pIsGift) {
     wholeProduct.personalized = false;
-    if(addProduct.querySelector('input[name="gift-type"]:checked')) {
+    if (addProduct.querySelector('input[name="gift-type"]:checked')) {
       wholeProduct.personalized = true;
       wholeProduct.imgs = addProduct["img-no"].value;
-      wholeProduct.title = false;
-      if(addProduct.querySelector('input[name="gift-title"]:checked')) {
-        wholeProduct.title = true;
-      };
+      wholeProduct.title = addProduct.querySelector(
+        'input[name="gift-title"]'
+      ).value;
     }
   }
-
-
 
   // console.log(wholeProduct);
   // let c = wholeProduct.wholeSubCategory.substring(43);
@@ -389,7 +387,7 @@ const addProductForm = (event) => {
     // console.log(data.category, typeof data.category);
     let dataId, prodData;
     await db
-      .collection(data.wholeCategory.split('__')[0])
+      .collection(data.wholeCategory.split("__")[0])
       .add(data)
       .then((dataSaved) => {
         // console.log(dataSaved.id);
@@ -400,27 +398,31 @@ const addProductForm = (event) => {
       });
     return { dataId: dataId, prodData: data };
   }
-  var uploader = document.getElementById('uploader2');
-  var uploader2 = document.getElementById('uploader3');
+  var uploader = document.getElementById("uploader2");
+  var uploader2 = document.getElementById("uploader3");
   var main_IMG;
-  
+
   var mainUrl;
   addProductFun(wholeProduct)
     .then(async (response) => {
       const storageService = firebase.storage();
       if (mainImg) {
-
-        let uploadTask=storageService
+        let uploadTask = storageService
           .ref(
-            `${response.prodData.wholeCategory.split('__')[0]}/${response.dataId}/${response.prodData.mainImg}`
+            `${response.prodData.wholeCategory.split("__")[0]}/${
+              response.dataId
+            }/${response.prodData.mainImg}`
           )
           .put(mainImg);
 
-          await uploadTask.on('state_changed', function (snapshot) {
-            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        await uploadTask.on(
+          "state_changed",
+          function (snapshot) {
+            var percentage =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             uploader.value = percentage;
             progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-  
+
             document.getElementById("demo").innerHTML = progress;
             switch (snapshot.state) {
               case firebase.storage.TaskState.PAUSED: // or 'paused'
@@ -428,60 +430,71 @@ const addProductForm = (event) => {
                 // console.log('Upload is paused');
                 break;
               case firebase.storage.TaskState.RUNNING: // or 'running'
-                document.getElementById("demo").innerHTML = "File is uploading" + " " + progress + "%";
-  
+                document.getElementById("demo").innerHTML =
+                  "File is uploading" + " " + progress + "%";
+
                 break;
             }
-          }, function (error) {
+          },
+          function (error) {
             console.log(error);
             // Handle unsuccessful uploads
-          }, function  ()  {
-            document.getElementById("demo").innerHTML = "Uploaded" + " " + progress + "%";
-            uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-  
-              main_IMG = downloadURL;
-              mainUrl = main_IMG
+          },
+          function () {
+            document.getElementById("demo").innerHTML =
+              "Uploaded" + " " + progress + "%";
+            uploadTask.snapshot.ref
+              .getDownloadURL()
+              .then(function (downloadURL) {
+                main_IMG = downloadURL;
+                mainUrl = main_IMG;
 
-              
-              let docRef = db
-              .collection(`${response.prodData.wholeCategory.split('__')[0]}`)
-              .doc(response.dataId);
-            // console.log(docRef);
-            docRef.get().then(async (snapshot) => {
-              // console.log(snapshot);
-              let docData = snapshot.data();
-              // console.log(docData);
-           
-              docData.mainImgUrl = mainUrl;
-              // docData.subImgsUrl = subUrls;
-              await docRef.update(docData);
-          
-            });
-            
-              // window.location="CrewDetails.html"
-            });
-          });
-      
+                let docRef = db
+                  .collection(
+                    `${response.prodData.wholeCategory.split("__")[0]}`
+                  )
+                  .doc(response.dataId);
+                // console.log(docRef);
+                docRef.get().then(async (snapshot) => {
+                  // console.log(snapshot);
+                  let docData = snapshot.data();
+                  // console.log(docData);
+
+                  docData.mainImgUrl = mainUrl;
+                  // docData.subImgsUrl = subUrls;
+                  await docRef.update(docData);
+                });
+
+                // window.location="CrewDetails.html"
+              });
+          }
+        );
       }
 
       let counter;
       var subUrls = [];
-      if(subImgs) {
+      if (subImgs) {
         counter = -1;
         for (let img of subImgs) {
           counter++;
           // console.log(img);
           let name = [...response.prodData.subImgs][counter];
           let id = response.dataId;
-          let uploadTask2=storageService
-            .ref(`${response.prodData.wholeCategory.split('__')[0]}/${id}/${name}`)
+          let uploadTask2 = storageService
+            .ref(
+              `${response.prodData.wholeCategory.split("__")[0]}/${id}/${name}`
+            )
             .put(img);
 
-            await uploadTask2.on('state_changed', function (snapshot) {
-              var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          await uploadTask2.on(
+            "state_changed",
+            function (snapshot) {
+              var percentage =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
               uploader2.value = percentage;
-              progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    
+              progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
               document.getElementById("demo2").innerHTML = progress;
               switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED: // or 'paused'
@@ -489,47 +502,54 @@ const addProductForm = (event) => {
                   // console.log('Upload is paused');
                   break;
                 case firebase.storage.TaskState.RUNNING: // or 'running'
-                  document.getElementById("demo2").innerHTML = "File is uploading" + " " + progress + "%";
-    
+                  document.getElementById("demo2").innerHTML =
+                    "File is uploading" + " " + progress + "%";
+
                   break;
               }
-            }, function (error) {
+            },
+            function (error) {
               console.log(error);
               // Handle unsuccessful uploads
-            }, function () {
-              document.getElementById("demo2").innerHTML = "Uploaded" + " " + progress + "%";
-              uploadTask2.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-    
-                // sub_IMG = downloadURL;
-                subUrls.push(downloadURL);
-               
-                if(subUrls.length-1==counter){
-                
-                  let docRef = db
-                  .collection(`${response.prodData.wholeCategory.split('__')[0]}`)
-                  .doc(response.dataId);
-                // console.log(docRef);
-                docRef.get().then(async (snapshot) => {
-                  // console.log(snapshot);
-                  let docData = snapshot.data();
-                  // console.log(docData);
-               
-                  docData.subImgsUrl = subUrls;
-                  await docRef.update(docData);
-              
+            },
+            function () {
+              document.getElementById("demo2").innerHTML =
+                "Uploaded" + " " + progress + "%";
+              uploadTask2.snapshot.ref
+                .getDownloadURL()
+                .then(function (downloadURL) {
+                  // sub_IMG = downloadURL;
+                  subUrls.push(downloadURL);
+
+                  if (subUrls.length - 1 == counter) {
+                    let docRef = db
+                      .collection(
+                        `${response.prodData.wholeCategory.split("__")[0]}`
+                      )
+                      .doc(response.dataId);
+                    // console.log(docRef);
+                    docRef.get().then(async (snapshot) => {
+                      // console.log(snapshot);
+                      let docData = snapshot.data();
+                      // console.log(docData);
+
+                      docData.subImgsUrl = subUrls;
+                      await docRef.update(docData);
+                    });
+                  }
+                  // window.location="CrewDetails.html"
                 });
-                }
-                // window.location="CrewDetails.html"
-              });
-            });
-        
+            }
+          );
+
           // console.log(counter);
         }
-      };
+      }
 
       async function extractImgUrl(imgPath) {
         let imgUrl;
-        await storageService.ref(imgPath)
+        await storageService
+          .ref(imgPath)
           .getDownloadURL()
           .then((url) => {
             imgUrl = url;
@@ -538,19 +558,16 @@ const addProductForm = (event) => {
             imgUrl = err;
           });
 
-          
         return imgUrl;
       }
 
       if (mainImg) {
-
-      
         // await extractImgUrl(
         //   `${response.prodData.wholeCategory.split('__')[0]}/${response.dataId}/${response.prodData.mainImg}`
         //);
       }
       // console.log(mainUrl);
-    
+
       // if (subImgs) {
       //   counter = -1;
       //   for (let img of subImgs) {
@@ -578,18 +595,20 @@ const addProductForm = (event) => {
       //   docData.mainImgUrl = mainUrl;
       //   docData.subImgsUrl = subUrls;
       //   await docRef.update(docData);
-     
+
       // });
 
       addProduct.querySelector(".alert-success").textContent = "Product Saved";
       addProduct.querySelector(".alert-success").style.display = "block";
-   
-      document.getElementById("successProduct").innerHTML = "Product Added Sucessfully  &#128512;";
-      document.getElementById("successProduct").style.backgroundColor ="rgb(89, 151, 89)";
+
+      document.getElementById("successProduct").innerHTML =
+        "Product Added Sucessfully  &#128512;";
+      document.getElementById("successProduct").style.backgroundColor =
+        "rgb(89, 151, 89)";
       document.getElementById("successProduct").style.display = "block";
-      
+
       addProduct.reset();
-      document.querySelector('#putImage').src = '../assets/images/logo.png';
+      document.querySelector("#putImage").src = "../assets/images/logo.png";
       setTimeout(() => {
         addProduct.querySelector(".alert-success").style.display = "none";
         document.getElementById("successProduct").style.display = "none";
@@ -601,7 +620,7 @@ const addProductForm = (event) => {
         // console.log(searchData);
         let searchName = {
           name: response.prodData.name,
-          cat: response.prodData.wholeCategory.split('__')[0],
+          cat: response.prodData.wholeCategory.split("__")[0],
           pId: response.dataId,
           id: Math.random(),
           type: "prodName",
@@ -623,7 +642,7 @@ const addProductForm = (event) => {
         //         break;
         //       }
         //     }
-  
+
         //     if (tagFlag === 0) {
         //       searchData.searches.push({
         //         name: tt,
@@ -635,7 +654,7 @@ const addProductForm = (event) => {
         // }
 
         let flag = 0;
-        if(searchData.searches) {
+        if (searchData.searches) {
           for (let s of searchData.searches) {
             if (s.name == searchName.name) {
               flag = 1;
@@ -665,8 +684,9 @@ const addProductForm = (event) => {
     .catch((error) => {
       console.log(error);
       addProduct.querySelector(".alert-danger").innerHTML = error.message;
-      document.getElementById("successProduct").innerHTML = error.message +" &#x1F610;";
-      document.getElementById("successProduct").style.backgroundColor ="red";
+      document.getElementById("successProduct").innerHTML =
+        error.message + " &#x1F610;";
+      document.getElementById("successProduct").style.backgroundColor = "red";
       addProduct.querySelector(".alert-danger").style.display = "block";
       document.getElementById("successProduct").style.display = "block";
       setTimeout(() => {
@@ -678,14 +698,13 @@ const addProductForm = (event) => {
 
 addProduct.addEventListener("submit", addProductForm);
 
-const addProductFormNotSubmit = e => {
+const addProductFormNotSubmit = (e) => {
   if (e.keyCode == 13) {
     e.preventDefault();
     return false;
   }
-}
+};
 addProduct.addEventListener("keypress", addProductFormNotSubmit);
-
 
 const uploadMainImg = (e) => {
   mainImg = e.target.files[0];
@@ -706,10 +725,10 @@ const calculate = (e) => {
   let total = addProduct.querySelector("#product-total-price");
   // console.log(sp.value);
   // console.log(gst.value);
-  if(sp.value && gst.value) {
+  if (sp.value && gst.value) {
     // console.log(sp.value, gst.value);
     // console.log(typeof(+sp.value), typeof(+gst.value));
-    total.value = Math.round(+sp.value + (+sp.value * +(gst.value/100)));
+    total.value = Math.round(+sp.value + +sp.value * +(gst.value / 100));
     // total.innerHTML = +sp * (+sp + +gst*100);
     // console.log(+sp * (+sp + +gst*100));
   }
@@ -717,5 +736,3 @@ const calculate = (e) => {
 
 addProduct.querySelector("#product-sp").addEventListener("keyup", calculate);
 addProduct.querySelector("#product-gst").addEventListener("keyup", calculate);
-
-
