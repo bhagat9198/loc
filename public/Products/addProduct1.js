@@ -370,9 +370,7 @@ const addProductForm = (event) => {
     if (addProduct.querySelector('input[name="gift-type"]:checked')) {
       wholeProduct.personalized = true;
       wholeProduct.imgs = addProduct["img-no"].value;
-      wholeProduct.title = addProduct.querySelector(
-        'input[name="gift-title"]'
-      ).value;
+      wholeProduct.title = addProduct.querySelector('input[name="gift-title"]').value;
     }
   }
 
