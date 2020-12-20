@@ -1,0 +1,1100 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Lake of Cakes | Add Product</title>
+
+
+  <link href="../assets/css/plugin.css" rel="stylesheet" />
+  <link href="../assets/css/jquery.tagit.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/bootstrap-coloroicker.css">
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <link href="../assets/css/custom.css" rel="stylesheet" />
+  <link href="../assets/css/responsive.css" rel="stylesheet" />
+  <link href="../assets/css/common.css" rel="stylesheet" />
+  <!-- <link href="../assets/css/product.css" rel="stylesheet" /> -->
+  <!-- <link href="../assets/css/jquery.Jcrop.css" rel="stylesheet" />
+  <link href="../assets/css/Jcrop-style.css" rel="stylesheet" /> -->
+  <link rel="stylesheet" href="../assets/plugins/summernote/summernote-bs4.css">
+  <link href="../assets/css/tagger.css" rel="stylesheet">
+</head>
+<style>
+  .dropdown-item {
+    color: black !important;
+  }
+
+  .dropdown-item a {
+    color: red !important;
+    background-color: red !important;
+  }
+</style>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <section id="admin-nav-load"></section>
+  <div class="wrapper">
+    <section class="wrapper" style="width: 99% !important;">
+      <div class="content-wrapper" style="height: 2000px !important;">
+        <form id="add-product">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="add-product-content">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="product-description">
+                      <h4 class="MainHeading">Add A New Product.</h4>
+                      <div class="body-area">
+                        <div class="alert alert-success validation" style="display: none;">
+                          <button type="button" class="close alert-close"><span>×</span></button>
+                          <p class="text-left"></p>
+                        </div>
+                        <div class="alert alert-danger validation" style="display: none;">
+                          <button type="button" class="close alert-close"><span>×</span></button>
+                          <ul class="text-left">
+                          </ul>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading">Product Name</h4>
+                              <p class="sub-heading"></p>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <input type="text" class="input-field" placeholder="Enter Product Name" required
+                              name="product-name">
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading">Product Type</h4>
+                              <p class="sub-heading"></p>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <div class="row">
+                              <div class="col-lg-10">
+                                <input type="text" class="input-field"
+                                  placeholder="Enter Product Type (Bestseller, Hot)" name="product-type">
+                              </div>
+                              <div class="col-lg-1">
+                                <input name="product-type-color-start" type="color">
+                              </div>
+                              <div class="col-lg-1">
+                                <input name="product-type-color-end" type="color">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading">Product Serial Number </h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <input type="text" class="input-field" placeholder="Enter Product Sku" required
+                              name="product-sno" value="LOC">
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading">Category*</h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <select id="product-category" required name="product-category">
+                              <!-- <option selected disabled value="">Select Category*</option>
+                              <option value="Cake">Cake</option>
+                              <option value="Flower">Flower</option> -->
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading">Sub Category*</h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <select id="product-sub-category" disabled name="product-sub-category">
+                              <!-- <option selected disabled value="">Select Sub Category*</option>
+                              <option value="Sub Cakes">Sub Cakes</option>
+                              <option value="Sub flowers">Sub flowers </option> -->
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading">Child Category*</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12">
+                            <select id="product-child-category" disabled name="product-child-category">
+                              <!-- <option selected disabled value="">Select Sub Category</option>
+                              <option value="Child Cakes">Child Cakes</option>
+                              <option value="Child Flowers">Child Flowers </option> -->
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                              <h4 class="heading">Is Cake?</h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <div class="row mb-0 option-row">
+                              <div class="col-lg-5">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" id="is-cake" name="is-cake" value="true"
+                                    class="custom-control-input attr-checkbox">
+                                  <label class="custom-control-label" for="is-cake">Cake</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-4">
+                            <div class="left-area">
+                              <h4 class="heading">Is Personlized Gift?</h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-7">
+                            <div class="row mb-0 option-row">
+                              <div class="col-lg-5">
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" id="gift-type" name="gift-type" value="true"
+                                    class="custom-control-input attr-checkbox">
+                                  <label class="custom-control-label" for="gift-type">Personlized</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div id="gift-attributes"
+                          style="display: none;background-color: rgb(214, 213, 157);padding: 10px;border-radius: 5px;box-shadow: 5px 5px 5px gray;">
+                          <h4 class="mainHeading" style="padding: 10px;">Gift Attributes</h4>
+                          <br>
+
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Number of Images</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <input type="number" name="img-no">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Title Option</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="gift-title" name="gift-title" value="true"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="gift-title">Present</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div id="cake-attributes"
+                          style="display: none;background-color: rgb(214, 213, 157);padding: 10px;border-radius: 5px;box-shadow: 5px 5px 5px gray;">
+                          <h4 class="mainHeading" style="padding: 10px;">Cake Attributes</h4>
+                          <br>
+                          <div class="row">
+
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Choose Cake weight's</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-weight-half" name="cake-weight" value="half"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-weight-half">1/2</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7 ">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-half"
+                                          name="cake-price-half" placeholder="Basic Price">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-half"
+                                          name="cake-prevPrice-half" placeholder="Previous Price">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-weight-one" name="cake-weight" value="one"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-weight-one">1</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7 ">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-one"
+                                          name="cake-price-one" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-one"
+                                          name="cake-prevPrice-one" placeholder="Previous Price" value="">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-weight-oneHalf" name="cake-weight" value="oneHalf"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-weight-oneHalf">1.5</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7 ">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-oneHalf"
+                                          name="cake-price-oneHalf" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-oneHalf"
+                                          name="cake-prevPrice-oneHalf" placeholder="Previous Price" value="">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-weight-two" name="cake-weight" value="two"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-weight-two">2</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7 ">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-two"
+                                          name="cake-price-two" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-two"
+                                          name="cake-prevPrice-two" placeholder="Previous Price" value="">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-weight-three" name="cake-weight" value="three"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-weight-three">3</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7 ">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-three"
+                                          name="cake-price-three" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-three"
+                                          name="cake-prevPrice-three" placeholder="Previous Price" value="">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-weight-four" name="cake-weight" value="four"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-weight-four">4</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7 ">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-four"
+                                          name="cake-price-four" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-four"
+                                          name="cake-prevPrice-four" placeholder="Previous Price" value="">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-weight-five" name="cake-weight" value="five"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-weight-five">5</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7 ">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-five"
+                                          name="cake-price-five" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-five"
+                                          name="cake-prevPrice-five" placeholder="Previous Price" value="">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-weight-six" name="cake-weight" value="six"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-weight-six">6</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7 ">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-six"
+                                          name="cake-price-six" placeholder="Basic Price" value="">
+                                      </div>
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-prevPrice-six"
+                                          name="cake-prevPrice-six" placeholder="Previous Price" value="">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Shape *</h4>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-shape" name="cake-shape" value="Heart"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-shape">Heart</label>
+                                  </div>
+
+                                </div>
+                                <div class="col-lg-7 ">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-heart"
+                                          name="cake-price-heart" placeholder="0.00 (Additional Price)" value="">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Type*</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-type" name="cake-type" value="Eggless"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-type">Eggless</label>
+                                  </div>
+
+                                </div>
+                                <div class="col-lg-7 ">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="cake-price-eggless"
+                                          name="cake-price-eggless" placeholder="0.00 (Additional Price)" value="">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Flavour*</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-7">
+
+                              <!-- <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-flavour-blackForest" name="cake-flavour"
+                                      value="Black forest" class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-flavour">Black forest</label>
+                                  </div>
+                                </div>
+                                <div class="col-lg-7 d-none">
+                                  <div class="row">
+                                    <div class="col-2">
+                                      +
+                                    </div>
+                                    <div class="col-10">
+                                      <div class="price-container">
+                                        <span class="price-curr">₹</span>
+                                        <input type="text" class="input-field price-input" id="flavour83_price"
+                                          data-name="flavour_price[]" placeholder="0.00 (Additional Price)" value="">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div> -->
+
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-flavour-blackForest" name="cake-flavour"
+                                      value="Black forest" class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-flavour-blackForest">Black
+                                      Forest</label>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-flavour-vanila" name="cake-flavour" value="Vanila"
+                                      class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-flavour-vanila">Vanila</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-flavour-chocolate" name="cake-flavour"
+                                      value="Chocolate" class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-flavour-chocolate">Chocolate</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-flavour-butterScotch" name="cake-flavour"
+                                      value="Butter scotch" class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-flavour-butterScotch">Butter
+                                      scotch</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-flavour-pineapple" name="cake-flavour"
+                                      value="Pineapple" class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-flavour-pineapple">Pineapple</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-flavour-strawberry" name="cake-flavour"
+                                      value="Strawberry" class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-flavour-strawberry">Strawberry</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-lg-4">
+                              <div class="left-area">
+                                <h4 class="heading">Is It Fondant Cake?*</h4>
+                              </div>
+                            </div>
+                            <div id="col-lg-7">
+                              <div class="row mb-0 option-row">
+                                <div class="col-lg-5">
+                                  <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="cake-type-fondant" name="cake-type-fondant"
+                                      value="fondant" class="custom-control-input attr-checkbox">
+                                    <label class="custom-control-label" for="cake-type-fondant">Yes</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading">Product MRP</h4>
+                              <p class="sub-heading">
+                                (Should be more than your SP)
+                              </p>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <input name="product-mrp" id="product-mrp" type="number" class="input-field"
+                              placeholder="INR" min="0">
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading">
+                                Your Basic Price
+                              </h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <input name="product-sp" id="product-sp" type="number" class="input-field amount"
+                              placeholder="INR" min="0">
+                          </div>
+                        </div>
+                        <div class="row" id="fff">
+                          <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading">Add GST %</h4>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <input name="product-gst" type="text" id="product-gst" class="input-field gstt"
+                              placeholder="Range (1-20)">
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading">
+                                Final Price
+                              </h4>
+                              <p class="sub-heading">
+                                (LOC Price)
+                              </p>
+                            </div>
+                          </div>
+                          <div class="col-lg-12">
+                            <input name="product-total-price" readonly id="product-total-price" type="text"
+                              class="input-field" placeholder="INR" min="0">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="add-product-content" style="background-color:rgba(213, 214, 169, 0.3);">
+
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="product-description">
+                      <div class="body-area">
+                        <div class="row">
+                          <!-- <div class="col-lg-12">
+                            <div class="left-area">
+                              <h4 class="heading" style="font-size: 2em;margin-bottom: 3%;">Add-ons</h4>
+                            </div>
+                          </div> -->
+
+                          <!-- <div class="col-lg-12" id="all-addons"> -->
+                          <!-- <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 1"
+                                class="addon">&nbsp;ADDON1</h5><br>
+                            <h5 class="addon"><input type="checkbox" name="product-addon" value="addon 2"
+                                class="addon">&nbsp;ADDON1</h5><br>
+                          </div> -->
+
+                          <!-- </div> -->
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Main Display Image*</h4>
+                              </div>
+                            
+                            </div>
+                            <div class="col-lg-12">
+                              <div class="panel panel-body">
+                                <div class="span4  text-center" id="landscape"
+                                  style="width: 100%; height: 285px; border: 1px dashed #ddd; background: #f1f1f1;border-radius: 5px;">
+                                  <input type='file' required accept="image/*" name="product-main-image"
+                                    id="product-main-image" onchange="readURL(this);" />
+                                  <img id="putImage" src="../assets/images/logo.png" alt="your image" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <br>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <input type="file" name="product-sub-imgs" class="hidden" id="product-sub-imgs" accept="image/*"
+                  multiple>
+                <br>
+                <div class="row mb-4">
+                  <div class="col-lg-12 mb-4">
+                    <div class="left-area">
+                      <h4 class="mainHeading">
+                        Product Gallery Images
+                      </h4>
+                    </div>
+                  </div>
+                  <div class="col-lg-12" style="padding: 20px;">
+                    <div class="modal-body" style="border: 1px solid black;padding: 10px;">
+                      <div class="top-area">
+                        <div class="row">
+                          <div class="col-sm-6 text-right">
+                            <div class="upload-img-btn" style="cursor: pointer;">
+                              <label for="image-upload" id="prod_gallery" style="cursor: pointer;"><i
+                                  class="fas fa-upload"></i>Upload
+                                File</label>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <a href="javascript:;" class="upload-done" data-dismiss="modal"> <i
+                                class="fas fa-check"></i>
+                              Done</a>
+                          </div>
+                          <div class="col-sm-12 text-center">( <small>You can upload multiple images at once.</small>
+                            )</div>
+                        </div>
+                      </div>
+                      <div class="gallery-images">
+                        <div class="selected-image">
+                          <div class="row">
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <br>
+          <div class="col-lg-12">
+            <div class="add-product-content">
+              <h4 class="MainHeading">Additional Data</h4>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="product-description">
+                    <div class="body-area">
+                      <!-- <div class="row">
+                        <div class="col-lg-12">
+                          <div class="left-area">
+                            <h4 class="heading">Youtube Video URL</h4>
+                            <p class="sub-heading">(Optional)</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <input name="youtube" type="text" class="input-field" placeholder="Enter Youtube Video URL">
+                        </div>
+                      </div> -->
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="featured-keyword-area">
+                            <div class="left-area">
+                              <h4 class="heading">Add Tags For Search List</h4>
+                            </div>
+                            <div class="feature-tag-top-filds" id="feature-section">
+                              <div class="feature-area">
+                                <div class="row">
+                                  <div class="col-lg-12">
+                                    <input type="text" name="product-tag" class="input-field"
+                                      placeholder="Enter Your Keyword">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- <a href="javascript:;" id="product-tag-btn" class="add-fild-btn"><i
+                                  class="icofont-plus"></i>
+                                Add Another Tag</a> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="left-area">
+                            <h4 class="heading">
+                              Add A Product Description
+                            </h4>
+                          </div>
+                        </div>
+                        <div class="card-body pad">
+                          <div class="mb-3">
+                            <textarea class="textarea1" placeholder="Place some text here"
+                              style="width: 100%; height: 400px; font-size: 34px; line-height: 28px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="left-area">
+                            <h4 class="heading">
+                              Product Buy/Return Policy*
+                            </h4>
+                          </div>
+                        </div>
+                        <div class="card-body pad">
+                          <div class="mb-3">
+                            <textarea class="textarea2" placeholder="Place some text here"
+                              style="width: 100%; height: 400px; font-size: 34px; line-height: 28px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <h3 id="successProduct"
+                            style="text-align: center;background-color: rgb(89, 151, 89);padding: 5px;border-radius: 20px;display:none ;">
+                            Product Added Sucessfully</h3>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-12 text-center">
+                          <input class="addProductSubmit-btn" value="Add Product" type="submit">
+                          
+                        </div>
+                        <br>
+                        <div class="col-lg-12 text-center" style="margin-top: 2%;">
+                          <progress value="0" max="100" id="uploader2"> 0%</progress>
+                          <p id="demo"></p>
+                          
+                        </div>
+                        <div class="col-lg-12 text-center" style="margin-top: 2%;">
+                          <progress value="0" max="100" id="uploader3"> 0%</progress>
+                          <p id="demo2"></p>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <!-- 
+        <div class="modal fade" id="setgallery" tabindex="-1" role="dialog" aria-labelledby="setgallery"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Image Gallery</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="top-area">
+                  <div class="row">
+                    <div class="col-sm-6 text-right">
+                      <div class="upload-img-btn">
+                        <label for="image-upload" id="prod_gallery"><i class="icofont-upload-alt"></i>Upload
+                          File</label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <a href="javascript:;" class="upload-done" data-dismiss="modal"> <i class="fas fa-check"></i>
+                        Done</a>
+                    </div>
+                    <div class="col-sm-12 text-center">( <small>You can upload multiple images at once.</small>
+                      )</div>
+                  </div>
+                </div>
+                <div class="gallery-images">
+                  <div class="selected-image">
+                    <div class="row">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+  </div>
+  <section id="admin-footer-load"></section>
+  <!-- <script src="../assets/plugins/jquery/jquery.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../assets/js/jqueryui.min.js"></script>
+  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/adminlte.min.js"></script>
+  <script type="text/javascript">
+    $('#admin-nav-load').load('/Common/navbar.html');
+    $('#admin-footer-load').load('/Common/footer.html');
+  </script>
+  <script src="../assets/plugins/summernote/summernote-bs4.min.js"></script>
+  <!-- 
+  <script src="../assets/js/demo.js"></script> -->
+  <script src="../assets/js/tagger.js"></script>
+  <!-- <script src="../assets/js/bootstrap.min.js"></script> -->
+
+
+
+  <!-- <script src="../assets/js/popper.js"></script>
+   -->
+
+
+  <script type="text/javascript">
+    $(function () {
+      $('.textarea1').summernote();
+      $('.textarea2').summernote();
+    })
+
+    $(document).on('click', '.remove-img', function () {
+      var id = $(this).find('input[type=hidden]').val();
+      $('#galval' + id).remove();
+      $(this).parent().parent().remove();
+    });
+
+    $(document).on('click', '#prod_gallery', function () {
+      $('#product-sub-imgs').click();
+      $('.selected-image .row').html('');
+      $('#add-product').find('.removegal').val(0);
+    });
+
+    $("#product-sub-imgs").change(function () {
+      var total_file = document.getElementById("product-sub-imgs").files.length;
+      for (var i = 0; i < total_file; i++) {
+        $('.selected-image .row').append('<div class="col-sm-6">' +
+          '<div class="img gallery-img" style="width:100px;object-fit:cover">' +
+          '<span class="remove-img"><i class="fas fa-times"></i>' +
+          '<input type="hidden" value="' + i + '">' +
+          '</span>' +
+          '<a href="' + URL.createObjectURL(event.target.files[i]) + '" target="_blank">' +
+          '<img src="' + URL.createObjectURL(event.target.files[i]) +
+          '" alt="gallery image" style="width:300px;object-fit:cover">' +
+          '</a>' +
+          '</div>' +
+          '</div> '
+        );
+
+        $('#add-product').append('<input type="hidden" name="galval[]" id="galval' + i +
+          '" class="removegal" value="' + i + '">')
+      }
+    });
+  </script>
+
+  <script>
+    // Tags
+    tagger(document.querySelector('[name="product-tag"]'), {
+      allow_spaces: true,
+      allow_duplicates: false,
+      link: function () {
+        return false;
+      }
+    });
+  </script>
+
+  <script>
+    let isCake = document.querySelector('#is-cake');
+    isCake.addEventListener('change', () => {
+      if (isCake.checked) {
+        document.getElementById("cake-attributes").style.display = "block"
+
+      } else {
+        document.getElementById("cake-attributes").style.display = "none"
+      }
+    });
+
+    let isGift = document.querySelector('#gift-type');
+
+    isGift.addEventListener('change', () => {
+      if (isGift.checked) {
+        document.getElementById("gift-attributes").style.display = "block"
+      } else {
+        document.getElementById("gift-attributes").style.display = "none"
+      }
+    })
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#putImage')
+            .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+      authDomain: "lake-of-cakes.firebaseapp.com",
+      databaseURL: "https://lake-of-cakes.firebaseio.com",
+      projectId: "lake-of-cakes",
+      storageBucket: "lake-of-cakes.appspot.com",
+      messagingSenderId: "779843608951",
+      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+      measurementId: "G-5ER0QF0FDW"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+  <script src="./addProduct1.js"></script>
+</body>
+
+</html>
