@@ -811,6 +811,12 @@ const prodSummary = async(e) => {
           <span class="qttotal">${p.qty} </span>
         </div>
         ${cakeLabels}
+        ${p.message ? 
+          `<div class="quantity">
+            <h5 class="label">Message : </h5>
+            <span class="qttotal">${p.message} </span>
+          </div> `
+          : ''}
       </div>
     </div>
     `;
