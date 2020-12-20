@@ -307,7 +307,7 @@ if (localStorage.getItem("locLoggedInUser")) {
               <span onclick="redirectToCart()" class="cart-quantity" id="cart-count">${cartSize}</span>
             </div>
           </a>
-          <div class="my-dropdown-menu" id="cart-items" style="height:500px;overflow-y:scroll;width:350px">
+          <div class="my-dropdown-menu" id="cart-items" style="max-height:500px;overflow-y:scroll;width:350px">
           <h5 style="padding:10px;font-weight:700;font-size:13px;">${cartSize} Items In Your Bag</h5>
           `;
           for (cartProd of userData.cart) {
