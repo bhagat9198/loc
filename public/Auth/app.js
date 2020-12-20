@@ -227,7 +227,7 @@ firebase.auth().onAuthStateChanged(function(user) {
           if(goTo!=null &&(goTo!="null")){
             if(goTo=="index.html"){
               window.location="/index.html"
-            }else{
+            }else if(goTo.includes("product.html")){
               let buyNowProd = window.sessionStorage.getItem('buyNowProd');
               if(buyNowProd) {
                 buyNowProd = JSON.parse(buyNowProd);
@@ -245,7 +245,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                 // console.log(doc.data());
                 // let userRef = await db.collection("Customers").doc(userId);
               }
-              // window.location=goTo;
+             
+            }else{
+               window.location=goTo;
             }
         
           }

@@ -352,6 +352,9 @@ const displayProds = async (arrProds) => {
     let dis = Math.round(
       100 - (+p.prodData.totalPrice / previousPriceWithGst) * 100
     );
+    if(!p.prodData.mainImgUrl){
+      p.prodData.mainImgUrl="https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+    }
     card +=
       `
 			<div class="col-lg-3 col-md-3 col-6 pb-3 pt-2">
@@ -452,12 +455,12 @@ const displayTopSuggest = async () => {
         // console.log(catDetailData);
         card += `
         <div class="col-lg-2 ">
-        <a href="./products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important;width:150px;height:200px;object-fit:cover ">
+        <a href="./products.html?cat=${cimg.id}" class="item" style="border:none !important;box-shadow:none !important;width:150px;height:200px;object-fit:cover;background:transparent !important;text-decoration:none  ">
           <div class="" >
             <img class="" style="width:150px;height:150px;object-fit:cover" src="${cimgData.imgs[rand].url}" alt="Lake of cakes ">
           </div>
           <div>
-            <div class="info" style="height: 20px !important;border-radius:50px;width:100%; margin-left:auto;margin-right:auto;display:block;"> 
+            <div class="info" style="height: 20px !important;border-radius:50px;width:100%; margin-left:auto;margin-right:auto;display:block;margin-top:5%"> 
             <h5 class="name responsive-name" >${cname}</h5>
           </div>
         </div>

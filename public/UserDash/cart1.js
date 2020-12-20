@@ -176,8 +176,8 @@ ${prod.personalizedGift ? personalizedGiftDetails : ''}
         <div class=" cartSection">
       
           <div class="qty">
-            <ul>
-              <li>
+            <ul style="display:flex">
+              <li style="padding:10px">
               <span class="qtminus1 reducing" data-cartid="${
                 prod.cartId
               }" data-index="${index}" data-id="minus__${rand}" onclick="decQty(event)">
@@ -186,12 +186,12 @@ ${prod.personalizedGift ? personalizedGiftDetails : ''}
                 }" data-index="${index}" data-id="minus__${rand}"></i>
               </span>
               </li>
-              <li>
+              <li style="padding:10px">
               <span class="qttotal1" id="total__${rand}" >${
                 allProdPrice[index].qty
                 }</span>
               </li>
-              <li>
+              <li style="padding:10px">
               <span class="qtplus1 adding" data-cartid="${
                 prod.cartId
               }" data-index="${index}" data-id="plus__${rand}" onclick="incQty(event)">

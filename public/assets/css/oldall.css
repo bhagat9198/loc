@@ -22397,6 +22397,7 @@ nav button {
     overflow: hidden;
     display: block;
     position: relative;
+    
     z-index: 9;
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -22480,6 +22481,7 @@ nav button {
     background: #ff5500;
     border-color: #ff5500;
     color: #fff;
+    
 }
 
 .item .info {
