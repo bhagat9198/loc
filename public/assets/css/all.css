@@ -34467,9 +34467,10 @@ section.phone-and-accessories.categori-item {
 
 @media only screen and (min-width:769px) {
     .responsivehrs {
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
+        margin-left: 20px;
+        margin-right: 20px;
+  
+        /* width: 50%; */ 
     }
     .responsive-secCart {
         display: none !important;

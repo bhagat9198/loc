@@ -249,7 +249,7 @@ const displayProduct = (prodData) => {
       cakeShapeHTML.innerHTML = `
     <div class="custom-control custom-radio" style="margin-right: 15px;">
       <input type="checkbox" id="shape-heart" name="shape-heart" onchange="cakeShape(event, this)" class="custom-control-input product-attr">
-      <label class="custom-control-label" for="shape-heart" style="font-weight: 700;">Heart Shape </label>
+      <label class="custom-control-label" for="shape-heart" style="font-weight: 700;padding-top:4px">Heart Shape </label>
     </div>
     `;
     } else {
@@ -265,7 +265,7 @@ const displayProduct = (prodData) => {
         card += `
         <div class="custom-control custom-radio" style="margin-right:auto;text-align:justify;display:inline-block;margin-left:auto:display:block">
           <input type="checkbox"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
-          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px ;padding:10px !important">${flav}</label>
+          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px ;padding:5px !important">${flav}</label>
         </div>
         `;
       });
