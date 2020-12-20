@@ -321,6 +321,10 @@ const starRating = (starsNum) => {
 };
 
 const displayProds = async (arrProds) => {
+  let totalp = arrProds.length;
+  console.log(totalp);
+  productHeadingHTML.innerHTML += `  [${totalp}]`;
+
   // console.log(arrProds);
   let card = "";
   let banner, bcolor;
