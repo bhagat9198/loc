@@ -865,6 +865,7 @@ let alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
 const altAddressHTML = document.querySelector("#alt-address");
 
 let RAZ_ORDER_ID;
+let PUB_KEY;
 const displayShippingInfo = (e) => {
   shipping_userHTML.innerHTML = SHIPPING_DATA.name;
   shipping_locationHTML.innerHTML = SHIPPING_DATA.address;
@@ -945,6 +946,7 @@ const displayShippingInfo = (e) => {
   checkoutReq(checkoutReqData).then((res) => {
     document.querySelector('#rzp-button1').disabled = false;
     RAZ_ORDER_ID = res.data.orderId;
+    PUB_KEY = res.data.publicKey;
   }).catch(error => {
     console.log(error);
   })
@@ -974,8 +976,9 @@ const exeRazPay = e => {
   }
 
   e.preventDefault();
+  alert(PUB_KEY, RAZ_ORDER_ID);
   options = {
-    key: "rzp_test_VkBZNRiEBUKNu5", // Enter the Key ID generated from the Dashboard
+    key: PUB_KEY, 
     amount: "1000", 
     currency: "INR",
     name: "LAKE OF CAKES",

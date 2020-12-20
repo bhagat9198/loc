@@ -302,8 +302,8 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
   // });
 
   const instance = new Razorpay({
-    key_id: 'rzp_test_VkBZNRiEBUKNu5',
-    key_secret: 'T4Lx7KUbbfPaIHvRWQsxx4WL'
+    key_id: 'rzp_test_nGNzxazP9gvHAE',
+    key_secret: 'YWfbldEONyvUQcRZUSvGxGp6'
   });
 
   // console.log(data);
@@ -320,6 +320,7 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
     }
     // console.log(options);
     options.orderId = order.id;
+    options.publicKey = instance.key_id;
     // console.log(options);
   });
   return options;
@@ -358,7 +359,7 @@ exports.payemnetStatus = functions.https.onCall(async (data, context) => {
   const shipTime = data.time;
 
   const dataKey = razorpay_order_id + '|' + razorpay_payment_id;
-  const expectSig = cryptoHmac('sha256', 'T4Lx7KUbbfPaIHvRWQsxx4WL').update(dataKey.toString()).digest('hex');
+  const expectSig = cryptoHmac('sha256', 'YWfbldEONyvUQcRZUSvGxGp6').update(dataKey.toString()).digest('hex');
   let status = false;
   if (expectSig === razorpay_signature) {
     // console.log('razorpay_signature', razorpay_signature);
