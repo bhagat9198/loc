@@ -132,8 +132,9 @@ const displayProduct = (prodData) => {
   // console.log(prodData);
 
   document.querySelector(".idno").innerHTML = prodData.sno;
-  if(!prodData.mainImgUrl){
-    prodData.mainImgUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+  if (!prodData.mainImgUrl) {
+    prodData.mainImgUrl =
+      " https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png";
   }
   let big = `
   <span class="zoom" id="ex1">
@@ -147,8 +148,9 @@ const displayProduct = (prodData) => {
   bigImgHolderHTML.innerHTML = big;
 
   $("#ex1").zoom();
-  if(!prodData.mainImgUrl){
-    prodData.mainImgUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+  if (!prodData.mainImgUrl) {
+    prodData.mainImgUrl =
+      " https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png";
   }
 
   let imgs = `
@@ -163,9 +165,8 @@ const displayProduct = (prodData) => {
   // if(!prodData.subImgsUrl){
   //   prodData.subImgsUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
   // }
-  
+
   if (prodData.subImgsUrl) {
-    
     if (prodData.subImgsUrl.length > 0) {
       prodData.subImgsUrl.map((subUrl) => {
         imgs += `
@@ -216,7 +217,7 @@ const displayProduct = (prodData) => {
 
   document.querySelector("#prod-qty").innerHTML = PROD_QTY;
   if (prodData.isCake) {
-    document.querySelector('#cake-message').innerHTML = `
+    document.querySelector("#cake-message").innerHTML = `
     <div>
       <label>Give your message too😍😇</label>
       <input type="text" class="values form-control message_cart" name="message" id="prodMsg"
@@ -253,7 +254,7 @@ const displayProduct = (prodData) => {
     </div>
     `;
     } else {
-      document.querySelector('#cake-shape-div').remove();
+      document.querySelector("#cake-shape-div").remove();
     }
   }
 
@@ -276,12 +277,12 @@ const displayProduct = (prodData) => {
 
   // /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  let personlizeHeadHTML = document.querySelector('#personlize-head');
-
+  let personlizeHeadHTML = document.querySelector("#personlize-head");
+  let allTitlesHTML = document.querySelector("#all-titles");
   if (prodData.pIsGift) {
     if (prodData.personalized === true) {
       let pTitle = +prodData.title;
-      if(pTitle > 0) {
+      if (pTitle > 0) {
         personlizeHeadHTML.innerHTML = `
         <div class="w3-row w3-center w3-card w3-padding">
           <a href="javascript:void(0)" onclick="openMenu(event, 'img');" id="myLink">
@@ -292,6 +293,19 @@ const displayProduct = (prodData) => {
           </a>
         </div>
         `;
+
+        let input = "";
+        for (let c = 0; c < pTitle; c++) {
+          input += `
+          <div class="col-lg-6" >
+            <input class="w3-input w3-padding-16" type="text" placeholder="Title ${
+              c + 1
+            }"
+              id="title-img-${c}" required name="title-img-${c}" style="border: 2px solid black;">
+          </div>
+          `;
+        }
+        allTitlesHTML.innerHTML = input;
       } else {
         personlizeHeadHTML.innerHTML = `
         <div class="w3-row w3-center w3-card w3-padding" >
@@ -313,6 +327,7 @@ const displayProduct = (prodData) => {
       let customizedImgsHTML = document.querySelector("#customizedImgs");
 
       imgNo = +prodData.imgs;
+      titleNo = +prodData.title;
       let imgHolder = "";
       for (let imgCounter = 0; imgCounter < imgNo; imgCounter++) {
         imgHolder += `
@@ -372,6 +387,7 @@ const displayProduct = (prodData) => {
 
 let imgInputHTML = document.querySelector("#img-input");
 let IMGS_ARRAY = [];
+let TITLE_ARRAY = [];
 let imgCounter = 0;
 const imgUploader = async (e) => {
   console.log(e);
@@ -396,6 +412,7 @@ const imgUploader = async (e) => {
 function readURL(input, id) {
   document.getElementById(id).style.display = "block";
   imgCounter++;
+
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     reader.onload = function (e) {
@@ -413,7 +430,16 @@ const personlizedImgsHTML = document.querySelector("#personlized-imgs");
 
 personlizedImgsHTML.addEventListener("click", (e) => {
   if (IMGS_ARRAY.length >= imgNo) {
-    document.querySelector("#buyNowBtn").disabled = false;
+    for(let t = 0; t < titleNo; t++) {
+      console.log(document.querySelector(`#title-img-${t}`));
+      let val = document.querySelector(`#title-img-${t}`).value;
+      if(val) {
+        TITLE_ARRAY.push(val);
+      }
+    }
+    if (TITLE_ARRAY.length >= titleNo) {
+      document.querySelector("#buyNowBtn").disabled = false;
+    }
   }
 });
 
@@ -539,10 +565,11 @@ const displayWeights = (makedWeight) => {
           let dis = 100 - Math.round((+price / +pprice) * 100);
           disPercentHTML.innerHTML = `(${dis}% OFF)`;
         }
-        if(!PROD_DETAILS.mainImgUrl){
-          PROD_DETAILS.mainImgUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+        if (!PROD_DETAILS.mainImgUrl) {
+          PROD_DETAILS.mainImgUrl =
+            " https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png";
         }
-         
+
         // console.log(WEIGHT_PRICE);
         weightCard += `
         <div class="custom-control custom-radio" style="mx;">
@@ -605,8 +632,9 @@ const imgChange = (e, current) => {
   let imgUrl = current.src;
   // console.log(imgUrl);
   // bigImgHolderHTML.innerHTML = '';
-  if(!imgUrl){
-    imgUrl=" https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+  if (!imgUrl) {
+    imgUrl =
+      " https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png";
   }
   let big = `
   <span class="zoom" id="ex11">
@@ -938,7 +966,8 @@ const buyProd = async (e) => {
   const orderId = Math.random();
   if (uStatus) {
     await userRef.get().then(async (doc) => {
-      let personalizedGiftImgs = [];
+      let personalizedGiftDetails = {};
+      personalizedGiftDetails.imgs = [];
       if (personalizedGift) {
         let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
         // console.log(finalImgs);
@@ -957,7 +986,8 @@ const buyProd = async (e) => {
             .catch((error) => {
               console.log(error);
             });
-          personalizedGiftImgs.push(imgUrl);
+          personalizedGiftDetails.imgs.push(imgUrl);
+          personalizedGiftDetails.titles = TITLE_ARRAY;
         }
       }
 
@@ -976,8 +1006,8 @@ const buyProd = async (e) => {
         } else {
           f = false;
         }
-        let message = '';
-        if(document.querySelector("#prodMsg")) {
+        let message = "";
+        if (document.querySelector("#prodMsg")) {
           message = document.querySelector("#prodMsg").value;
         }
         if (WEIGHT_PRICE.weight) {
@@ -1009,7 +1039,7 @@ const buyProd = async (e) => {
         }
         if (personalizedGift) {
           orderData.personalized = true;
-          orderData.personalizedGiftImgs = personalizedGiftImgs;
+          orderData.personalizedGiftDetails = personalizedGiftDetails;
         }
 
         docData.orders.push(orderData);
@@ -1029,10 +1059,10 @@ const buyProd = async (e) => {
           } else {
             f = false;
           }
-          let message = '';
-        if(document.querySelector("#prodMsg")) {
-          message = document.querySelector("#prodMsg").value;
-        }
+          let message = "";
+          if (document.querySelector("#prodMsg")) {
+            message = document.querySelector("#prodMsg").value;
+          }
           cake = {};
           cake.heart = HEART;
           cake.eggless = EGGLESS;
@@ -1061,7 +1091,7 @@ const buyProd = async (e) => {
         }
         if (personalizedGift) {
           orderData.products[0].personalized = true;
-          orderData.products[0].personalizedGiftImgs = personalizedGiftImgs;
+          orderData.products[0].personalizedGiftDetails = personalizedGiftDetails;
         }
         docData.orders.push(orderData);
       }
@@ -1069,7 +1099,8 @@ const buyProd = async (e) => {
     });
     window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
   } else {
-    let personalizedGiftImgs = [];
+    let personalizedGiftDetails = {};
+    personalizedGiftDetails.imgs = [];
     if (personalizedGift) {
       let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
       // console.log(finalImgs);
@@ -1088,7 +1119,9 @@ const buyProd = async (e) => {
           .catch((error) => {
             console.log(error);
           });
-        personalizedGiftImgs.push(imgUrl);
+        personalizedGiftDetails.imgs.push(imgUrl);
+        personalizedGiftDetails.titles = TITLE_ARRAY;
+
       }
     }
 
@@ -1104,10 +1137,10 @@ const buyProd = async (e) => {
     } else {
       f = false;
     }
-    let message = '';
-        if(document.querySelector("#prodMsg")) {
-          message = document.querySelector("#prodMsg").value;
-        }
+    let message = "";
+    if (document.querySelector("#prodMsg")) {
+      message = document.querySelector("#prodMsg").value;
+    }
     if (WEIGHT_PRICE.weight) {
       cake = {};
       cake.heart = HEART;
@@ -1138,13 +1171,12 @@ const buyProd = async (e) => {
     }
     if (personalizedGift) {
       buyNowData.personalized = true;
-      buyNowData.personalizedGiftImgs = personalizedGiftImgs;
+      buyNowData.personalizedGiftDetails = personalizedGiftDetails;
     }
-    console.log('uuuu');
-    await sessionStorage.setItem('buyNowProd', JSON.stringify(buyNowData));
+    console.log("uuuu");
+    await sessionStorage.setItem("buyNowProd", JSON.stringify(buyNowData));
     window.location.href = "../Auth/login.html";
   }
-  
 };
 
 prodWithAddonsHTML.addEventListener("click", buyProd);
@@ -1157,7 +1189,8 @@ const addToCart = async (e) => {
   await userRef.get().then(async (doc) => {
     let docData = doc.data();
     let f;
-    personalizedGiftImgs = [];
+    personalizedGiftDetails = {};
+    personalizedGiftDetails.imgs = [];
     if (personalizedGift) {
       let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
       // console.log(finalImgs);
@@ -1176,8 +1209,9 @@ const addToCart = async (e) => {
           .catch((error) => {
             console.log(error);
           });
-        personalizedGiftImgs.push(imgUrl);
-        // console.log(personalizedGiftImgs);
+        personalizedGiftDetails.imgs.push(imgUrl);
+        personalizedGiftDetails.titles = TITLE_ARRAY;
+        // console.log(personalizedGiftDetails);
       }
     }
     if (WEIGHT_PRICE.weight) {
@@ -1190,10 +1224,10 @@ const addToCart = async (e) => {
     } else {
       f = false;
     }
-    let message = '';
-        if(document.querySelector("#prodMsg")) {
-          message = document.querySelector("#prodMsg").value;
-        }
+    let message = "";
+    if (document.querySelector("#prodMsg")) {
+      message = document.querySelector("#prodMsg").value;
+    }
     if (docData.cart) {
       docData.cart.push({
         prodId: PRODUCT_ID,
@@ -1206,7 +1240,7 @@ const addToCart = async (e) => {
         cartId: cartId,
         flavour: f,
         personalizedGift: personalizedGift,
-        personalizedGiftImgs: personalizedGiftImgs,
+        personalizedGiftDetails: personalizedGiftDetails,
       });
     } else {
       docData.cart = [];
@@ -1221,7 +1255,7 @@ const addToCart = async (e) => {
         cartId: cartId,
         flavour: f,
         personalizedGift: personalizedGift,
-        personalizedGiftImgs: personalizedGiftImgs,
+        personalizedGiftDetails: personalizedGiftDetails,
       });
     }
     await userRef.update(docData);
@@ -1241,7 +1275,7 @@ const settingLocalStorage = () => {
     let catSnapsDocs = catSnaps.docs;
     for (let catDoc of catSnapsDocs) {
       let catData = catDoc.data();
-      AllLocCats.push({id: catDoc.id, data: catData});
+      AllLocCats.push({ id: catDoc.id, data: catData });
       await db
         .collection(catDoc.id)
         .get()
@@ -1277,7 +1311,6 @@ const settingLocalStorage = () => {
   });
 };
 
-
 const displaySuggestions = async () => {
   const trendingItemsHTML = document.querySelector(".trending-item-slider");
   // console.log(CATEGORY_ID);
@@ -1301,88 +1334,84 @@ const displaySuggestions = async () => {
   let max = 0;
   let min = 0;
   let couter = -1;
-  for(let i = 0; i < locProds.length; i++) {
-    if(locProds[i].catId == CATEGORY_ID) {
+  for (let i = 0; i < locProds.length; i++) {
+    if (locProds[i].catId == CATEGORY_ID) {
       couter++;
-      if(couter === 0) {
+      if (couter === 0) {
         min = i;
       }
       max = i;
     }
   }
 
-  let rand = Math.floor((Math.random() * (max - (min - 8))) + (min - 8));
+  let rand = Math.floor(Math.random() * (max - (min - 8)) + (min - 8));
 
-    let card = "";
-    // for (let counter = 0; counter < 8; counter++) {
-    for(let i = rand; i < (rand + 7); i++) {
-
-      // await db
-      //   .collection(CATEGORY_ID)
-      //   .doc(allProds[counter + rand])
-      //   .get()
-      //   .then((pdataRaw) => {
-      //     let pdata = pdataRaw.data();
-          // console.log(pdata.mainImgUrl);
-          // console.log(locProds[i]);
-          let mrp =  Math.round(+locProds[i].prodData.mrp + (+locProds[i].prodData.mrp * ( +locProds[i].prodData.gst/100)));
-          let dis = 100 - ((+locProds[i].prodData.totalPrice / mrp) * 100);
-          dis = Math.round(dis);
-          card += `
-        <a href="./product.html?prod=${
-          locProds[i].prodId
-        }&&cat=${locProds[i].catId}" class="item">
+  let card = "";
+  // for (let counter = 0; counter < 8; counter++) {
+  for (let i = rand; i < rand + 7; i++) {
+    // await db
+    //   .collection(CATEGORY_ID)
+    //   .doc(allProds[counter + rand])
+    //   .get()
+    //   .then((pdataRaw) => {
+    //     let pdata = pdataRaw.data();
+    // console.log(pdata.mainImgUrl);
+    // console.log(locProds[i]);
+    let mrp = Math.round(
+      +locProds[i].prodData.mrp +
+        +locProds[i].prodData.mrp * (+locProds[i].prodData.gst / 100)
+    );
+    let dis = 100 - (+locProds[i].prodData.totalPrice / mrp) * 100;
+    dis = Math.round(dis);
+    card += `
+        <a href="./product.html?prod=${locProds[i].prodId}&&cat=${locProds[i].catId}" class="item">
           <div class="item-img">
 
-            <img class="img-fluid" style="width: 500px !important; height:200px " src="${
-              locProds[i].prodData.mainImgUrl
-            }" alt="LAKE OF CAKES">
+            <img class="img-fluid" style="width: 500px !important; height:200px " src="${locProds[i].prodData.mainImgUrl}" alt="LAKE OF CAKES">
           </div>
           <div class="info">
             <br />
             <h5 style="font-size: 1em;color: black;">${locProds[i].prodData.name}</h5>
-            <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${
-              locProds[i].prodData.totalPrice
-            } <small><del>₹ ${mrp}</del>(${dis}% OFF)</small></h4>
+            <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${locProds[i].prodData.totalPrice} <small><del>₹ ${mrp}</del>(${dis}% OFF)</small></h4>
           </div>
         </a>
         `;
-        // });
-    }
-    trendingItemsHTML.innerHTML = card;
-    var $trending_slider = $(".trending-item-slider");
-    $trending_slider.owlCarousel({
-      items: 4,
-      autoplay: true,
-      margin: 10,
-      loop: true,
-      dots: true,
-      nav: true,
-      center: false,
-      autoplayHoverPause: true,
-      navText: [
-        "<i class='fa fa-angle-left'></i>",
-        "<i class='fa fa-angle-right'></i>",
-      ],
-      smartSpeed: 600,
-      responsive: {
-        0: {
-          items: 2,
-        },
-        414: {
-          items: 2,
-        },
-        768: {
-          items: 3,
-        },
-        992: {
-          items: 5,
-        },
-        1200: {
-          items: 6,
-        },
+    // });
+  }
+  trendingItemsHTML.innerHTML = card;
+  var $trending_slider = $(".trending-item-slider");
+  $trending_slider.owlCarousel({
+    items: 4,
+    autoplay: true,
+    margin: 10,
+    loop: true,
+    dots: true,
+    nav: true,
+    center: false,
+    autoplayHoverPause: true,
+    navText: [
+      "<i class='fa fa-angle-left'></i>",
+      "<i class='fa fa-angle-right'></i>",
+    ],
+    smartSpeed: 600,
+    responsive: {
+      0: {
+        items: 2,
       },
-    });
+      414: {
+        items: 2,
+      },
+      768: {
+        items: 3,
+      },
+      992: {
+        items: 5,
+      },
+      1200: {
+        items: 6,
+      },
+    },
+  });
   // });
 };
 
@@ -1406,7 +1435,7 @@ const displayReviews = () => {
         console.log(reviewData);
         // display info of each card
         let starsDiv = starRating(+reviewData.rating.split("__")[0]);
-     
+
         card += `
         <div class="w3-container">
           <div class="w3-card-4" style="width:100%;border-radius:10px">
@@ -1427,10 +1456,9 @@ const displayReviews = () => {
         // console.log('not exsits');
       }
     });
-    if(!reviewSnapsDocs.length==0){
+    if (!reviewSnapsDocs.length == 0) {
       allReviewsHTML.innerHTML = card;
     }
     // attch cards with parentHTML element
-  
   });
 };
