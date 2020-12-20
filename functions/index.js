@@ -49,6 +49,7 @@ const calBill = async (USER_ID, CHECKOUT_ID, coupan, shipeType, shipDate, shipTi
   }
 
   let zipFlag = false;
+  console.log(optional.formData);
   if(!optional.formData.zip.startsWith('226')) {
     zipFlag = true;
   }
