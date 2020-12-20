@@ -93,6 +93,7 @@ const changeSubCat = (e, current) => {
   let catValue = e.target.dataset.cat;
   let childCatTarget = e.target.dataset.childcat;
   let options;
+  // console.log(val, catValue, childCatTarget);
   for (let c of allCategories) {
     // console.log(document.querySelector(`#${catValue}`).value);
     let cval = document.querySelector(`#${catValue}`).value;
@@ -891,45 +892,45 @@ f3File3HTML.addEventListener("change", f3FileChange3);
 f3File4HTML.addEventListener("change", f3FileChange4);
 
 const displayForm3 = () => {
-db.collection("sections")
-  .doc("fixed3")
-  .onSnapshot((doc) => {
-    let docData = doc.data();
-    // console.log(docData);
-    fForm3HTML["f3-title"].value = docData.title;
-    if (docData.card1) {
-      fForm3HTML.querySelector("#f3-img1").src = docData.card1.imgUrl;
-      fForm3HTML["f3-cat1"].value = docData.card1.cat;
-      fForm3HTML["f3-subcat1"].value = docData.card1.subCat;
-      fForm3HTML["f3-childcat1"].value = docData.card1.childCat;
-      fForm3HTML["f3-t1"].value = docData.card1.tag;
-    }
+  db.collection("sections")
+    .doc("fixed3")
+    .onSnapshot((doc) => {
+      let docData = doc.data();
+      // console.log(docData);
+      fForm3HTML["f3-title"].value = docData.title;
+      if (docData.card1) {
+        fForm3HTML.querySelector("#f3-img1").src = docData.card1.imgUrl;
+        fForm3HTML["f3-cat1"].value = docData.card1.cat;
+        fForm3HTML["f3-subcat1"].value = docData.card1.subCat;
+        fForm3HTML["f3-childcat1"].value = docData.card1.childCat;
+        fForm3HTML["f3-t1"].value = docData.card1.tag;
+      }
 
-    if (docData.card2) {
-      fForm3HTML.querySelector("#f3-img2").src = docData.card2.imgUrl;
-      fForm3HTML["f3-cat2"].value = docData.card2.cat;
-      fForm3HTML["f3-subcat2"].value = docData.card2.subCat;
-      fForm3HTML["f3-childcat2"].value = docData.card2.childCat;
-      fForm3HTML["f3-t2"].value = docData.card2.tag;
-    }
+      if (docData.card2) {
+        fForm3HTML.querySelector("#f3-img2").src = docData.card2.imgUrl;
+        fForm3HTML["f3-cat2"].value = docData.card2.cat;
+        fForm3HTML["f3-subcat2"].value = docData.card2.subCat;
+        fForm3HTML["f3-childcat2"].value = docData.card2.childCat;
+        fForm3HTML["f3-t2"].value = docData.card2.tag;
+      }
 
-    if (docData.card3) {
-      fForm3HTML.querySelector("#f3-img3").src = docData.card3.imgUrl;
-      fForm3HTML["f3-cat3"].value = docData.card3.cat;
-      fForm3HTML["f3-subcat3"].value = docData.card3.subCat;
-      fForm3HTML["f3-childcat3"].value = docData.card3.childCat;
-      fForm3HTML["f3-t3"].value = docData.card3.tag;
-    }
+      if (docData.card3) {
+        fForm3HTML.querySelector("#f3-img3").src = docData.card3.imgUrl;
+        fForm3HTML["f3-cat3"].value = docData.card3.cat;
+        fForm3HTML["f3-subcat3"].value = docData.card3.subCat;
+        fForm3HTML["f3-childcat3"].value = docData.card3.childCat;
+        fForm3HTML["f3-t3"].value = docData.card3.tag;
+      }
 
-    if (docData.card4) {
-      fForm3HTML.querySelector("#f3-img4").src = docData.card4.imgUrl;
-      fForm3HTML["f3-cat4"].value = docData.card4.cat;
-      fForm3HTML["f3-subcat4"].value = docData.card4.subCat;
-      fForm3HTML["f3-childcat4"].value = docData.card4.childCat;
-      fForm3HTML["f3-t4"].value = docData.card4.tag;
-    }
-  });
-}
+      if (docData.card4) {
+        fForm3HTML.querySelector("#f3-img4").src = docData.card4.imgUrl;
+        fForm3HTML["f3-cat4"].value = docData.card4.cat;
+        fForm3HTML["f3-subcat4"].value = docData.card4.subCat;
+        fForm3HTML["f3-childcat4"].value = docData.card4.childCat;
+        fForm3HTML["f3-t4"].value = docData.card4.tag;
+      }
+    });
+};
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const fForm4HTML = document.querySelector("#fForm4");
@@ -1277,61 +1278,61 @@ f5File5HTML.addEventListener("change", f5FileChange5);
 f5File6HTML.addEventListener("change", f5FileChange6);
 
 const displayForm5 = () => {
-db.collection("sections")
-  .doc("fixed5")
-  .onSnapshot((doc) => {
-    let docData = doc.data();
-    // console.log(docData);
-    fForm5HTML["f5-title"].value = docData.title;
-    if (docData.card1) {
-      fForm5HTML.querySelector("#f5-img1").src = docData.card1.imgUrl;
-      fForm5HTML["f5-cat1"].value = docData.card1.cat;
-      fForm5HTML["f5-subcat1"].value = docData.card1.subCat;
-      fForm5HTML["f5-childcat1"].value = docData.card1.childCat;
-      fForm5HTML["f5-t1"].value = docData.card1.tag;
-    }
+  db.collection("sections")
+    .doc("fixed5")
+    .onSnapshot((doc) => {
+      let docData = doc.data();
+      // console.log(docData);
+      fForm5HTML["f5-title"].value = docData.title;
+      if (docData.card1) {
+        fForm5HTML.querySelector("#f5-img1").src = docData.card1.imgUrl;
+        fForm5HTML["f5-cat1"].value = docData.card1.cat;
+        fForm5HTML["f5-subcat1"].value = docData.card1.subCat;
+        fForm5HTML["f5-childcat1"].value = docData.card1.childCat;
+        fForm5HTML["f5-t1"].value = docData.card1.tag;
+      }
 
-    if (docData.card2) {
-      fForm5HTML.querySelector("#f5-img2").src = docData.card2.imgUrl;
-      fForm5HTML["f5-cat2"].value = docData.card2.cat;
-      fForm5HTML["f5-subcat2"].value = docData.card2.subCat;
-      fForm5HTML["f5-childcat2"].value = docData.card2.childCat;
-      fForm5HTML["f5-t2"].value = docData.card2.tag;
-    }
+      if (docData.card2) {
+        fForm5HTML.querySelector("#f5-img2").src = docData.card2.imgUrl;
+        fForm5HTML["f5-cat2"].value = docData.card2.cat;
+        fForm5HTML["f5-subcat2"].value = docData.card2.subCat;
+        fForm5HTML["f5-childcat2"].value = docData.card2.childCat;
+        fForm5HTML["f5-t2"].value = docData.card2.tag;
+      }
 
-    if (docData.card3) {
-      fForm5HTML.querySelector("#f5-img3").src = docData.card3.imgUrl;
-      fForm5HTML["f5-cat3"].value = docData.card3.cat;
-      fForm5HTML["f5-subcat3"].value = docData.card3.subCat;
-      fForm5HTML["f5-childcat3"].value = docData.card3.childCat;
-      fForm5HTML["f5-t3"].value = docData.card3.tag;
-    }
+      if (docData.card3) {
+        fForm5HTML.querySelector("#f5-img3").src = docData.card3.imgUrl;
+        fForm5HTML["f5-cat3"].value = docData.card3.cat;
+        fForm5HTML["f5-subcat3"].value = docData.card3.subCat;
+        fForm5HTML["f5-childcat3"].value = docData.card3.childCat;
+        fForm5HTML["f5-t3"].value = docData.card3.tag;
+      }
 
-    if (docData.card4) {
-      fForm5HTML.querySelector("#f5-img4").src = docData.card4.imgUrl;
-      fForm5HTML["f5-cat4"].value = docData.card4.cat;
-      fForm5HTML["f5-subcat4"].value = docData.card4.subCat;
-      fForm5HTML["f5-childcat4"].value = docData.card4.childCat;
-      fForm5HTML["f5-t4"].value = docData.card4.tag;
-    }
+      if (docData.card4) {
+        fForm5HTML.querySelector("#f5-img4").src = docData.card4.imgUrl;
+        fForm5HTML["f5-cat4"].value = docData.card4.cat;
+        fForm5HTML["f5-subcat4"].value = docData.card4.subCat;
+        fForm5HTML["f5-childcat4"].value = docData.card4.childCat;
+        fForm5HTML["f5-t4"].value = docData.card4.tag;
+      }
 
-    if (docData.card5) {
-      fForm5HTML.querySelector("#f5-img5").src = docData.card4.imgUrl;
-      fForm5HTML["f5-cat5"].value = docData.card5.cat;
-      fForm5HTML["f5-subcat5"].value = docData.card5.subCat;
-      fForm5HTML["f5-childcat5"].value = docData.card5.childCat;
-      fForm5HTML["f5-t5"].value = docData.card5.tag;
-    }
+      if (docData.card5) {
+        fForm5HTML.querySelector("#f5-img5").src = docData.card4.imgUrl;
+        fForm5HTML["f5-cat5"].value = docData.card5.cat;
+        fForm5HTML["f5-subcat5"].value = docData.card5.subCat;
+        fForm5HTML["f5-childcat5"].value = docData.card5.childCat;
+        fForm5HTML["f5-t5"].value = docData.card5.tag;
+      }
 
-    if (docData.card6) {
-      fForm5HTML.querySelector("#f5-img6").src = docData.card4.imgUrl;
-      fForm5HTML["f5-cat6"].value = docData.card6.cat;
-      fForm5HTML["f5-subcat6"].value = docData.card6.subCat;
-      fForm5HTML["f5-childcat6"].value = docData.card6.childCat;
-      fForm5HTML["f5-t6"].value = docData.card6.tag;
-    }
-  });
-}
+      if (docData.card6) {
+        fForm5HTML.querySelector("#f5-img6").src = docData.card4.imgUrl;
+        fForm5HTML["f5-cat6"].value = docData.card6.cat;
+        fForm5HTML["f5-subcat6"].value = docData.card6.subCat;
+        fForm5HTML["f5-childcat6"].value = docData.card6.childCat;
+        fForm5HTML["f5-t6"].value = docData.card6.tag;
+      }
+    });
+};
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1699,45 +1700,45 @@ f8File3HTML.addEventListener("change", f8FileChange3);
 f8File4HTML.addEventListener("change", f8FileChange4);
 
 const displayForm8 = () => {
-db.collection("sections")
-  .doc("fixed8")
-  .onSnapshot((doc) => {
-    let docData = doc.data();
-    // console.log(docData);
-    fForm8HTML["f8-title"].value = docData.title;
-    if (docData.card1) {
-      fForm8HTML.querySelector("#f8-img1").src = docData.card1.imgUrl;
-      fForm8HTML["f8-cat1"].value = docData.card1.cat;
-      fForm8HTML["f8-subcat1"].value = docData.card1.subCat;
-      fForm8HTML["f8-childcat1"].value = docData.card1.childCat;
-      fForm8HTML["f8-t1"].value = docData.card1.tag;
-    }
+  db.collection("sections")
+    .doc("fixed8")
+    .onSnapshot((doc) => {
+      let docData = doc.data();
+      // console.log(docData);
+      fForm8HTML["f8-title"].value = docData.title;
+      if (docData.card1) {
+        fForm8HTML.querySelector("#f8-img1").src = docData.card1.imgUrl;
+        fForm8HTML["f8-cat1"].value = docData.card1.cat;
+        fForm8HTML["f8-subcat1"].value = docData.card1.subCat;
+        fForm8HTML["f8-childcat1"].value = docData.card1.childCat;
+        fForm8HTML["f8-t1"].value = docData.card1.tag;
+      }
 
-    if (docData.card2) {
-      fForm8HTML.querySelector("#f8-img2").src = docData.card2.imgUrl;
-      fForm8HTML["f8-cat2"].value = docData.card2.cat;
-      fForm8HTML["f8-subcat2"].value = docData.card2.subCat;
-      fForm8HTML["f8-childcat2"].value = docData.card2.childCat;
-      fForm8HTML["f8-t2"].value = docData.card2.tag;
-    }
+      if (docData.card2) {
+        fForm8HTML.querySelector("#f8-img2").src = docData.card2.imgUrl;
+        fForm8HTML["f8-cat2"].value = docData.card2.cat;
+        fForm8HTML["f8-subcat2"].value = docData.card2.subCat;
+        fForm8HTML["f8-childcat2"].value = docData.card2.childCat;
+        fForm8HTML["f8-t2"].value = docData.card2.tag;
+      }
 
-    if (docData.card3) {
-      fForm8HTML.querySelector("#f8-img3").src = docData.card3.imgUrl;
-      fForm8HTML["f8-cat3"].value = docData.card3.cat;
-      fForm8HTML["f8-subcat3"].value = docData.card3.subCat;
-      fForm8HTML["f8-childcat3"].value = docData.card3.childCat;
-      fForm8HTML["f8-t3"].value = docData.card3.tag;
-    }
+      if (docData.card3) {
+        fForm8HTML.querySelector("#f8-img3").src = docData.card3.imgUrl;
+        fForm8HTML["f8-cat3"].value = docData.card3.cat;
+        fForm8HTML["f8-subcat3"].value = docData.card3.subCat;
+        fForm8HTML["f8-childcat3"].value = docData.card3.childCat;
+        fForm8HTML["f8-t3"].value = docData.card3.tag;
+      }
 
-    if (docData.card4) {
-      fForm8HTML.querySelector("#f8-img4").src = docData.card4.imgUrl;
-      fForm8HTML["f8-cat4"].value = docData.card4.cat;
-      fForm8HTML["f8-subcat4"].value = docData.card4.subCat;
-      fForm8HTML["f8-childcat4"].value = docData.card4.childCat;
-      fForm8HTML["f8-t4"].value = docData.card4.tag;
-    }
-  });
-}
+      if (docData.card4) {
+        fForm8HTML.querySelector("#f8-img4").src = docData.card4.imgUrl;
+        fForm8HTML["f8-cat4"].value = docData.card4.cat;
+        fForm8HTML["f8-subcat4"].value = docData.card4.subCat;
+        fForm8HTML["f8-childcat4"].value = docData.card4.childCat;
+        fForm8HTML["f8-t4"].value = docData.card4.tag;
+      }
+    });
+};
 // ///////////////////////////////////////////////////////////////////////////////////////////////////
 // best seller
 
@@ -1763,7 +1764,6 @@ const form10 = async (e) => {
   const f4Cat5 = fForm10HTML["f10-cat5"].value;
   const f4Cat6 = fForm10HTML["f10-cat6"].value;
 
-
   let userInputs = [
     { sno: f4Id1, cat: f4Cat1 },
     { sno: f4Id2, cat: f4Cat2 },
@@ -1771,7 +1771,6 @@ const form10 = async (e) => {
     { sno: f4Id4, cat: f4Cat4 },
     { sno: f4Id5, cat: f4Cat5 },
     { sno: f4Id6, cat: f4Cat6 },
-
   ];
 
   // console.log(userInputs);
@@ -2015,45 +2014,45 @@ f9File3HTML.addEventListener("change", f9FileChange3);
 f9File4HTML.addEventListener("change", f9FileChange4);
 
 const displayForm9 = () => {
-db.collection("sections")
-  .doc("fixed9")
-  .onSnapshot((doc) => {
-    let docData = doc.data();
-    // console.log(docData);
-    fForm9HTML["f9-title"].value = docData.title;
-    if (docData.card1) {
-      fForm9HTML.querySelector("#f9-img1").src = docData.card1.imgUrl;
-      fForm9HTML["f9-cat1"].value = docData.card1.cat;
-      fForm9HTML["f9-subcat1"].value = docData.card1.subCat;
-      fForm9HTML["f9-childcat1"].value = docData.card1.childCat;
-      fForm9HTML["f9-t1"].value = docData.card1.tag;
-    }
+  db.collection("sections")
+    .doc("fixed9")
+    .onSnapshot((doc) => {
+      let docData = doc.data();
+      // console.log(docData);
+      fForm9HTML["f9-title"].value = docData.title;
+      if (docData.card1) {
+        fForm9HTML.querySelector("#f9-img1").src = docData.card1.imgUrl;
+        fForm9HTML["f9-cat1"].value = docData.card1.cat;
+        fForm9HTML["f9-subcat1"].value = docData.card1.subCat;
+        fForm9HTML["f9-childcat1"].value = docData.card1.childCat;
+        fForm9HTML["f9-t1"].value = docData.card1.tag;
+      }
 
-    if (docData.card2) {
-      fForm9HTML.querySelector("#f9-img2").src = docData.card2.imgUrl;
-      fForm9HTML["f9-cat2"].value = docData.card2.cat;
-      fForm9HTML["f9-subcat2"].value = docData.card2.subCat;
-      fForm9HTML["f9-childcat2"].value = docData.card2.childCat;
-      fForm9HTML["f9-t2"].value = docData.card2.tag;
-    }
+      if (docData.card2) {
+        fForm9HTML.querySelector("#f9-img2").src = docData.card2.imgUrl;
+        fForm9HTML["f9-cat2"].value = docData.card2.cat;
+        fForm9HTML["f9-subcat2"].value = docData.card2.subCat;
+        fForm9HTML["f9-childcat2"].value = docData.card2.childCat;
+        fForm9HTML["f9-t2"].value = docData.card2.tag;
+      }
 
-    if (docData.card3) {
-      fForm9HTML.querySelector("#f9-img3").src = docData.card3.imgUrl;
-      fForm9HTML["f9-cat3"].value = docData.card3.cat;
-      fForm9HTML["f9-subcat3"].value = docData.card3.subCat;
-      fForm9HTML["f9-childcat3"].value = docData.card3.childCat;
-      fForm9HTML["f9-t3"].value = docData.card3.tag;
-    }
+      if (docData.card3) {
+        fForm9HTML.querySelector("#f9-img3").src = docData.card3.imgUrl;
+        fForm9HTML["f9-cat3"].value = docData.card3.cat;
+        fForm9HTML["f9-subcat3"].value = docData.card3.subCat;
+        fForm9HTML["f9-childcat3"].value = docData.card3.childCat;
+        fForm9HTML["f9-t3"].value = docData.card3.tag;
+      }
 
-    if (docData.card4) {
-      fForm9HTML.querySelector("#f9-img4").src = docData.card4.imgUrl;
-      fForm9HTML["f9-cat4"].value = docData.card4.cat;
-      fForm9HTML["f9-subcat4"].value = docData.card4.subCat;
-      fForm9HTML["f9-childcat4"].value = docData.card4.childCat;
-      fForm9HTML["f9-t4"].value = docData.card4.tag;
-    }
-  });
-}
+      if (docData.card4) {
+        fForm9HTML.querySelector("#f9-img4").src = docData.card4.imgUrl;
+        fForm9HTML["f9-cat4"].value = docData.card4.cat;
+        fForm9HTML["f9-subcat4"].value = docData.card4.subCat;
+        fForm9HTML["f9-childcat4"].value = docData.card4.childCat;
+        fForm9HTML["f9-t4"].value = docData.card4.tag;
+      }
+    });
+};
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const fForm4Imgs1HTML = document.querySelector("#fForm4Imgs1");
@@ -2076,6 +2075,16 @@ const fForm4Img1 = async (e) => {
   const img4cat2 = fForm4Imgs1HTML["f4img1-cat2"].value;
   const img4cat3 = fForm4Imgs1HTML["f4img1-cat3"].value;
   const img4cat4 = fForm4Imgs1HTML["f4img1-cat4"].value;
+  const img4SubCat0 = fForm4Imgs1HTML["f4img1-subcat0"].value;
+  const img4SubCat1 = fForm4Imgs1HTML["f4img1-subcat1"].value;
+  const img4SubCat2 = fForm4Imgs1HTML["f4img1-subcat2"].value;
+  const img4SubCat3 = fForm4Imgs1HTML["f4img1-subcat3"].value;
+  const img4SubCat4 = fForm4Imgs1HTML["f4img1-subcat4"].value;
+  const img4ChildCat0 = fForm4Imgs1HTML["f4img1-childcat0"].value;
+  const img4ChildCat1 = fForm4Imgs1HTML["f4img1-childcat1"].value;
+  const img4ChildCat2 = fForm4Imgs1HTML["f4img1-childcat2"].value;
+  const img4ChildCat3 = fForm4Imgs1HTML["f4img1-childcat3"].value;
+  const img4ChildCat4 = fForm4Imgs1HTML["f4img1-childcat4"].value;
   const img4tag0 = fForm4Imgs1HTML["f4img1-t0"].value;
   const img4tag1 = fForm4Imgs1HTML["f4img1-t1"].value;
   const img4tag2 = fForm4Imgs1HTML["f4img1-t2"].value;
@@ -2155,50 +2164,60 @@ const fForm4Img1 = async (e) => {
 
     img4Data.title = title;
     if (img0) {
-      img4Data.mainImg = {
-        img: img0,
-        imgUrl: imgUrl0,
-        cat: img4cat0,
-        tag: img4tag0,
-        active: true,
-      };
+      img4Data.mainImg.img = img0;
+      img4Data.mainImg.imgUrl = imgUrl0;
     }
+
+    img4Data.mainImg.cat = img4cat0;
+    img4Data.mainImg.subCat = img4SubCat0;
+    img4Data.mainImg.childCat = img4ChildCat0;
+    img4Data.mainImg.tag = img4tag0;
+    img4Data.mainImg.active = true;
+
     if (img1) {
-      img4Data.subImgs[0] = {
-        img: img1,
-        imgUrl: imgUrl1,
-        cat: img4cat1,
-        tag: img4tag1,
-        active: true,
-      };
+      img4Data.subImgs[0].img = img1;
+      img4Data.subImgs[0].imgUrl = imgUrl1;
     }
+
+    img4Data.subImgs[0].cat = img4cat1;
+    img4Data.subImgs[0].subCat = img4SubCat1;
+    img4Data.subImgs[0].childCat = img4ChildCat1;
+    img4Data.subImgs[0].tag = img4tag1;
+    img4Data.subImgs[0].active = true;
+
     if (img2) {
-      img4Data.subImgs[1] = {
-        img: img2,
-        imgUrl: imgUrl2,
-        cat: img4cat2,
-        tag: img4tag2,
-        active: true,
-      };
+      img4Data.subImgs[1].img = img2;
+      img4Data.subImgs[1].imgUrl = imgUrl2;
     }
+
+    img4Data.subImgs[1].cat = img4cat2;
+    img4Data.subImgs[1].subCat = img4SubCat2;
+    img4Data.subImgs[1].childCat = img4ChildCat2;
+    img4Data.subImgs[1].tag = img4tag2;
+    img4Data.subImgs[1].active = true;
+
     if (img3) {
-      img4Data.subImgs[2] = {
-        img: img3,
-        imgUrl: imgUrl3,
-        cat: img4cat3,
-        tag: img4tag3,
-        active: true,
-      };
+      img4Data.subImgs[2].img = img3;
+      img4Data.subImgs[2].imgUrl = imgUrl3;
     }
+
+    img4Data.subImgs[2].cat = img4cat3;
+    img4Data.subImgs[2].subCat = img4SubCat3;
+    img4Data.subImgs[2].childCat = img4ChildCat3;
+    img4Data.subImgs[2].tag = img4tag3;
+    img4Data.subImgs[2].active = true;
+
     if (img4) {
-      img4Data.subImgs[3] = {
-        img: img4,
-        imgUrl: imgUrl4,
-        cat: img4cat4,
-        tag: img4tag4,
-        active: true,
-      };
+      img4Data.subImgs[3].img = img4;
+      img4Data.subImgs[3].imgUrl = imgUrl4;
     }
+
+    img4Data.subImgs[3].cat = img4cat4;
+    img4Data.subImgs[3].subCat = img4SubCat4;
+    img4Data.subImgs[3].childCat = img4ChildCat4;
+    img4Data.subImgs[3].tag = img4tag4;
+    img4Data.subImgs[3].active = true;
+
     // console.log(img4Data);
     dbImg4Ref.update(img4Data);
     fForm4Imgs1HTML.reset();
@@ -2243,6 +2262,8 @@ db.collection("sections")
       fForm4Imgs1HTML.querySelector("#f4img1-img0").src =
         img41Data.mainImg.imgUrl;
       fForm4Imgs1HTML["f4img1-cat0"].value = img41Data.mainImg.cat;
+      fForm4Imgs1HTML["f4img1-subcat0"].value = img41Data.mainImg.subCat;
+      fForm4Imgs1HTML["f4img1-childcat0"].value = img41Data.mainImg.childCat;
       fForm4Imgs1HTML["f4img1-t0"].value = img41Data.mainImg.tag;
     }
     if (img41Data.subImgs.length > 0) {
@@ -2250,24 +2271,36 @@ db.collection("sections")
         fForm4Imgs1HTML.querySelector(`#f4img1-img1`).src =
           img41Data.subImgs[0].imgUrl;
         fForm4Imgs1HTML[`f4img1-cat1`].value = img41Data.subImgs[0].cat;
+        fForm4Imgs1HTML["f4img1-subcat1"].value = img41Data.subImgs[0].subCat;
+        fForm4Imgs1HTML["f4img1-childcat1"].value =
+          img41Data.subImgs[0].childCat;
         fForm4Imgs1HTML[`f4img1-t1`].value = img41Data.subImgs[0].tag;
       }
       if (img41Data.subImgs[1]) {
         fForm4Imgs1HTML.querySelector(`#f4img1-img2`).src =
           img41Data.subImgs[1].imgUrl;
         fForm4Imgs1HTML[`f4img1-cat2`].value = img41Data.subImgs[1].cat;
+        fForm4Imgs1HTML["f4img1-subcat2"].value = img41Data.subImgs[1].subCat;
+        fForm4Imgs1HTML["f4img1-childcat2"].value =
+          img41Data.subImgs[1].childCat;
         fForm4Imgs1HTML[`f4img1-t2`].value = img41Data.subImgs[1].tag;
       }
       if (img41Data.subImgs[2]) {
         fForm4Imgs1HTML.querySelector(`#f4img1-img3`).src =
           img41Data.subImgs[2].imgUrl;
         fForm4Imgs1HTML[`f4img1-cat3`].value = img41Data.subImgs[2].cat;
+        fForm4Imgs1HTML["f4img1-subcat3"].value = img41Data.subImgs[2].subCat;
+        fForm4Imgs1HTML["f4img1-childcat3"].value =
+          img41Data.subImgs[2].childCat;
         fForm4Imgs1HTML[`f4img1-t3`].value = img41Data.subImgs[2].tag;
       }
       if (img41Data.subImgs[3]) {
         fForm4Imgs1HTML.querySelector(`#f4img1-img4`).src =
           img41Data.subImgs[3].imgUrl;
         fForm4Imgs1HTML[`f4img1-cat4`].value = img41Data.subImgs[3].cat;
+        fForm4Imgs1HTML["f4img1-subcat4"].value = img41Data.subImgs[3].subCat;
+        fForm4Imgs1HTML["f4img1-childcat4"].value =
+          img41Data.subImgs[3].childCat;
         fForm4Imgs1HTML[`f4img1-t4`].value = img41Data.subImgs[3].tag;
       }
     }
@@ -2295,6 +2328,16 @@ const fForm4Img2 = async (e) => {
   const img4cat2 = fForm4Imgs2HTML["f4img2-cat2"].value;
   const img4cat3 = fForm4Imgs2HTML["f4img2-cat3"].value;
   const img4cat4 = fForm4Imgs2HTML["f4img2-cat4"].value;
+  const img4SubCat0 = fForm4Imgs2HTML["f4img2-subcat0"].value;
+  const img4SubCat1 = fForm4Imgs2HTML["f4img2-subcat1"].value;
+  const img4SubCat2 = fForm4Imgs2HTML["f4img2-subcat2"].value;
+  const img4SubCat3 = fForm4Imgs2HTML["f4img2-subcat3"].value;
+  const img4SubCat4 = fForm4Imgs2HTML["f4img2-subcat4"].value;
+  const img4ChildCat0 = fForm4Imgs2HTML["f4img2-childcat0"].value;
+  const img4ChildCat1 = fForm4Imgs2HTML["f4img2-childcat1"].value;
+  const img4ChildCat2 = fForm4Imgs2HTML["f4img2-childcat2"].value;
+  const img4ChildCat3 = fForm4Imgs2HTML["f4img2-childcat3"].value;
+  const img4ChildCat4 = fForm4Imgs2HTML["f4img2-childcat4"].value;
   const img4tag0 = fForm4Imgs2HTML["f4img2-t0"].value;
   const img4tag1 = fForm4Imgs2HTML["f4img2-t1"].value;
   const img4tag2 = fForm4Imgs2HTML["f4img2-t2"].value;
@@ -2374,50 +2417,58 @@ const fForm4Img2 = async (e) => {
 
     img4Data.title = title;
     if (img0) {
-      img4Data.mainImg = {
-        img: img0,
-        imgUrl: imgUrl0,
-        cat: img4cat0,
-        tag: img4tag0,
-        active: true,
-      };
+      img4Data.mainImg.img = img0;
+      img4Data.mainImg.imgUrl = imgUrl0;
     }
+    img4Data.mainImg.cat = img4cat0;
+    img4Data.mainImg.subCat = img4SubCat0;
+    img4Data.mainImg.childCat = img4ChildCat0;
+    img4Data.mainImg.tag = img4tag0;
+    img4Data.mainImg.active = true;
+
     if (img1) {
-      img4Data.subImgs[0] = {
-        img: img1,
-        imgUrl: imgUrl1,
-        cat: img4cat1,
-        tag: img4tag1,
-        active: true,
-      };
+      img4Data.subImgs[0].img = img1;
+      img4Data.subImgs[0].imgUrl = imgUrl1;
     }
+
+    img4Data.subImgs[0].cat = img4cat1;
+    img4Data.subImgs[0].subCat = img4SubCat1;
+    img4Data.subImgs[0].childCat = img4ChildCat1;
+    img4Data.subImgs[0].tag = img4tag1;
+    img4Data.subImgs[0].active = true;
+
     if (img2) {
-      img4Data.subImgs[1] = {
-        img: img2,
-        imgUrl: imgUrl2,
-        cat: img4cat2,
-        tag: img4tag2,
-        active: true,
-      };
+      img4Data.subImgs[1].img = img2;
+      img4Data.subImgs[1].imgUrl = imgUrl2;
     }
+
+    img4Data.subImgs[1].cat = img4cat2;
+    img4Data.subImgs[1].subCat = img4SubCat2;
+    img4Data.subImgs[1].childCat = img4ChildCat2;
+    img4Data.subImgs[1].tag = img4tag2;
+    img4Data.subImgs[1].active = true;
+
     if (img3) {
-      img4Data.subImgs[2] = {
-        img: img3,
-        imgUrl: imgUrl3,
-        cat: img4cat3,
-        tag: img4tag3,
-        active: true,
-      };
+      img4Data.subImgs[2].img = img3;
+      img4Data.subImgs[2].imgUrl = imgUrl3;
     }
+
+    img4Data.subImgs[2].cat = img4cat3;
+    img4Data.subImgs[2].subCat = img4SubCat3;
+    img4Data.subImgs[2].childCat = img4ChildCat3;
+    img4Data.subImgs[2].tag = img4tag3;
+    img4Data.subImgs[2].active = true;
+
     if (img4) {
-      img4Data.subImgs[3] = {
-        img: img4,
-        imgUrl: imgUrl4,
-        cat: img4cat4,
-        tag: img4tag4,
-        active: true,
-      };
+      img4Data.subImgs[3].img = img4;
+      img4Data.subImgs[3].imgUrl = imgUrl4;
     }
+    img4Data.subImgs[3].cat = img4cat4;
+    img4Data.subImgs[3].subCat = img4SubCat4;
+    img4Data.subImgs[3].childCat = img4ChildCat4;
+    img4Data.subImgs[3].tag = img4tag4;
+    img4Data.subImgs[3].active = true;
+
     // console.log(img4Data);
     dbImg4Ref.update(img4Data);
     fForm4Imgs2HTML.reset();
@@ -2462,6 +2513,8 @@ db.collection("sections")
       fForm4Imgs2HTML.querySelector("#f4img2-img0").src =
         img42Data.mainImg.imgUrl;
       fForm4Imgs2HTML["f4img2-cat0"].value = img42Data.mainImg.cat;
+      fForm4Imgs2HTML["f4img2-subcat0"].value = img42Data.mainImg.subCat;
+      fForm4Imgs2HTML["f4img2-childcat0"].value = img42Data.mainImg.childCat;
       fForm4Imgs2HTML["f4img2-t0"].value = img42Data.mainImg.tag;
     }
     if (img42Data.subImgs.length > 0) {
@@ -2469,24 +2522,36 @@ db.collection("sections")
         fForm4Imgs2HTML.querySelector(`#f4img2-img1`).src =
           img42Data.subImgs[0].imgUrl;
         fForm4Imgs2HTML[`f4img2-cat1`].value = img42Data.subImgs[0].cat;
+        fForm4Imgs2HTML[`f4img2-subcat1`].value = img42Data.subImgs[0].subCat;
+        fForm4Imgs2HTML[`f4img2-childcat1`].value =
+          img42Data.subImgs[0].childCat;
         fForm4Imgs2HTML[`f4img2-t1`].value = img42Data.subImgs[0].tag;
       }
       if (img42Data.subImgs[1]) {
         fForm4Imgs2HTML.querySelector(`#f4img2-img2`).src =
           img42Data.subImgs[1].imgUrl;
         fForm4Imgs2HTML[`f4img2-cat2`].value = img42Data.subImgs[1].cat;
+        fForm4Imgs2HTML[`f4img2-subcat2`].value = img42Data.subImgs[1].subCat;
+        fForm4Imgs2HTML[`f4img2-childcat2`].value =
+          img42Data.subImgs[1].childCat;
         fForm4Imgs2HTML[`f4img2-t2`].value = img42Data.subImgs[1].tag;
       }
       if (img42Data.subImgs[2]) {
         fForm4Imgs2HTML.querySelector(`#f4img2-img3`).src =
           img42Data.subImgs[2].imgUrl;
         fForm4Imgs2HTML[`f4img2-cat3`].value = img42Data.subImgs[2].cat;
+        fForm4Imgs2HTML[`f4img2-subcat3`].value = img42Data.subImgs[2].subCat;
+        fForm4Imgs2HTML[`f4img2-childcat3`].value =
+          img42Data.subImgs[2].childCat;
         fForm4Imgs2HTML[`f4img2-t3`].value = img42Data.subImgs[2].tag;
       }
       if (img42Data.subImgs[3]) {
         fForm4Imgs2HTML.querySelector(`#f4img2-img4`).src =
           img42Data.subImgs[3].imgUrl;
         fForm4Imgs2HTML[`f4img2-cat4`].value = img42Data.subImgs[3].cat;
+        fForm4Imgs2HTML[`f4img2-subcat4`].value = img42Data.subImgs[3].subCat;
+        fForm4Imgs2HTML[`f4img2-childcat4`].value =
+          img42Data.subImgs[3].childCat;
         fForm4Imgs2HTML[`f4img2-t4`].value = img42Data.subImgs[3].tag;
       }
     }
@@ -2511,6 +2576,12 @@ const fForm3Img1 = async (e) => {
   const img4cat1 = fForm3Imgs1HTML["f3img1-cat1"].value;
   const img4cat2 = fForm3Imgs1HTML["f3img1-cat2"].value;
   const img4cat3 = fForm3Imgs1HTML["f3img1-cat3"].value;
+  const img4SubCat1 = fForm3Imgs1HTML["f3img1-subcat1"].value;
+  const img4SubCat2 = fForm3Imgs1HTML["f3img1-subcat2"].value;
+  const img4SubCat3 = fForm3Imgs1HTML["f3img1-subcat3"].value;
+  const img4ChildCat1 = fForm3Imgs1HTML["f3img1-childcat1"].value;
+  const img4ChildCat2 = fForm3Imgs1HTML["f3img1-childcat2"].value;
+  const img4ChildCat3 = fForm3Imgs1HTML["f3img1-childcat3"].value;
   const img4tag1 = fForm3Imgs1HTML["f3img1-t1"].value;
   const img4tag2 = fForm3Imgs1HTML["f3img1-t2"].value;
   const img4tag3 = fForm3Imgs1HTML["f3img1-t3"].value;
@@ -2561,32 +2632,35 @@ const fForm3Img1 = async (e) => {
     let img3Data = img3Doc.data();
     img3Data.title = title;
     if (img1) {
-      img3Data.subImgs[0] = {
-        img: img1,
-        imgUrl: imgUrl1,
-        cat: img4cat1,
-        tag: img4tag1,
-        active: true,
-      };
+      img3Data.subImgs[0].img = img1;
+      img3Data.subImgs[0].imgUrl = imgUrl1;
     }
+    img3Data.subImgs[0].cat = img4cat1;
+    img3Data.subImgs[0].subCat = img4SubCat1;
+    img3Data.subImgs[0].childCat = img4ChildCat1;
+    img3Data.subImgs[0].tag = img4tag1;
+    img3Data.subImgs[0].active = true;
+
     if (img2) {
-      img3Data.subImgs[1] = {
-        img: img2,
-        imgUrl: imgUrl2,
-        cat: img4cat2,
-        tag: img4tag2,
-        active: true,
-      };
+      img3Data.subImgs[1].img = img2;
+      img3Data.subImgs[1].imgUrl = imgUrl2;
     }
+    img3Data.subImgs[1].cat = img4cat2;
+    img3Data.subImgs[1].subCat = img4SubCat2;
+    img3Data.subImgs[1].childCat = img4ChildCat2;
+    img3Data.subImgs[1].tag = img4tag2;
+    img3Data.subImgs[1].active = true;
+
     if (img3) {
-      img3Data.subImgs[2] = {
-        img: img3,
-        imgUrl: imgUrl3,
-        cat: img4cat3,
-        tag: img4tag3,
-        active: true,
-      };
+      img3Data.subImgs[2].img = img3;
+      img3Data.subImgs[2].imgUrl = imgUrl3;
     }
+    img3Data.subImgs[2].cat = img4cat3;
+    img3Data.subImgs[2].subCat = img4SubCat3;
+    img3Data.subImgs[2].childCat = img4ChildCat3;
+    img3Data.subImgs[2].tag = img4tag3;
+    img3Data.subImgs[2].active = true;
+
     // console.log(img3Data);
     dbImg4Ref.update(img3Data);
     fForm3Imgs1HTML.reset();
@@ -2622,18 +2696,27 @@ db.collection("sections")
         fForm3Imgs1HTML.querySelector(`#f3img1-img1`).src =
           img31Data.subImgs[0].imgUrl;
         fForm3Imgs1HTML[`f3img1-cat1`].value = img31Data.subImgs[0].cat;
+        fForm3Imgs1HTML[`f3img1-subcat1`].value = img31Data.subImgs[0].subCat;
+        fForm3Imgs1HTML[`f3img1-childcat1`].value =
+          img31Data.subImgs[0].childCat;
         fForm3Imgs1HTML[`f3img1-t1`].value = img31Data.subImgs[0].tag;
       }
       if (img31Data.subImgs[1]) {
         fForm3Imgs1HTML.querySelector(`#f3img1-img2`).src =
           img31Data.subImgs[1].imgUrl;
         fForm3Imgs1HTML[`f3img1-cat2`].value = img31Data.subImgs[1].cat;
+        fForm3Imgs1HTML[`f3img1-subcat2`].value = img31Data.subImgs[1].subCat;
+        fForm3Imgs1HTML[`f3img1-childcat2`].value =
+          img31Data.subImgs[1].childCat;
         fForm3Imgs1HTML[`f3img1-t2`].value = img31Data.subImgs[1].tag;
       }
       if (img31Data.subImgs[2]) {
         fForm3Imgs1HTML.querySelector(`#f3img1-img3`).src =
           img31Data.subImgs[2].imgUrl;
         fForm3Imgs1HTML[`f3img1-cat3`].value = img31Data.subImgs[2].cat;
+        fForm3Imgs1HTML[`f3img1-subcat3`].value = img31Data.subImgs[2].subCat;
+        fForm3Imgs1HTML[`f3img1-childcat3`].value =
+          img31Data.subImgs[2].childCat;
         fForm3Imgs1HTML[`f3img1-t3`].value = img31Data.subImgs[2].tag;
       }
     }

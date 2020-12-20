@@ -244,10 +244,13 @@ const prodsTotalHTML = document.querySelector("#prods-total");
 const userDetailsHTML = document.querySelector("#userDetails");
 const orderForHTML = document.querySelector("#orderFor");
 const orderTypeHTML = document.querySelector("#orderType");
+let personalisedHTML = document.querySelector('#personalised');
+
 
 const OrderDetailsModal = async (e) => {
   $("#OrderDetailsModal").modal();
   const index = e.target.dataset.index;
+  console.log(ORDERS[index]);
   // console.log(index);
   let row = "";
   let prodSummery = [];
@@ -330,6 +333,7 @@ const OrderDetailsModal = async (e) => {
           `;
       prodSummery.push({ name: addData.name, total: addTotal });
     }
+
   }
 
   productDetailsHTML.innerHTML = row;
@@ -383,6 +387,18 @@ const OrderDetailsModal = async (e) => {
   `;
 
   prodsTotalHTML.innerHTML = prodsTotal;
+
+  personalisedHTML.innerHTML = `
+  <div class="card-header" id="headingOne" style="background-color: rgb(247, 12, 157);">
+    <h5 class="mb-0">
+      <button class="btn btn-link" style="color: tomato; font-weight: 900; ">
+        Personalised
+      </button>
+    </h5>
+  </div>
+  `;
+
+
 
   let userDetails = "";
   db.collection("Customers")
