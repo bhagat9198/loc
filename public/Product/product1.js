@@ -281,12 +281,14 @@ const displayProduct = (prodData) => {
   let allTitlesHTML = document.querySelector("#all-titles");
   if (prodData.pIsGift) {
     if (prodData.personalized === true) {
+     
+      document.getElementById("customizedBtn").style.display = "inline-block";
       let pTitle = +prodData.title;
       if (pTitle > 0) {
         personlizeHeadHTML.innerHTML = `
-        <div class="w3-row w3-center w3-card w3-padding">
+        <div class="w3-row w3-center w3-card w3-padding ">
           <a href="javascript:void(0)" onclick="openMenu(event, 'img');" id="myLink">
-            <div class="w3-col s6 tablink">Upload Photos</div>
+            <div class="w3-col s6 tablink w3-dark-grey">Upload Photos</div>
           </a>
           <a href="javascript:void(0)" onclick="openMenu(event, 'title');">
             <div class="w3-col s6 tablink">Add Title Texts</div>
@@ -319,7 +321,6 @@ const displayProduct = (prodData) => {
         `;
       }
 
-      document.querySelector("#customizedBtn").style.display = "block";
       personalizedGift = true;
       // document.querySelector("#pqty").style.display = "none";
       // document.querySelector("#qty-btns").style.display = "none";
@@ -841,12 +842,12 @@ db.collection("addons")
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
         <input type="checkbox" name="add_addons" class="add_addons product-addons" value="${index}" onchange="buyAddon(event, this)"
           style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;height:20px;width:30px;">
-        <div class="item-img" style="max-height:170px ;">
+        <div class="item-img" style="max-height:220px ;">
           <img class="img-fluid" 
             src="${docData.imgUrl}"
-            alt="Lake of cakes" style="width:100%;object-fit: cover;object-position:top">
+            alt="Lake of cakes" style="width:100%;object-fit: contain;">
         </div>
-        <div class="info" style="height: 88px; ">
+        <div class="info" style="height: 93px; ">
           <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">
             ${docData.name}
           </h5>
@@ -1063,6 +1064,7 @@ const buyProd = async (e) => {
           if (document.querySelector("#prodMsg")) {
             message = document.querySelector("#prodMsg").value;
           }
+          // alert(message)
           cake = {};
           cake.heart = HEART;
           cake.eggless = EGGLESS;
@@ -1070,7 +1072,7 @@ const buyProd = async (e) => {
           // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
           cake.flavour = f;
         }
-
+     
         let orderData = {
           orderId: orderId,
           status: "cancelled",

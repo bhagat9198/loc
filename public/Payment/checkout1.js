@@ -976,7 +976,7 @@ const exeRazPay = e => {
   }
 
   e.preventDefault();
-  alert(PUB_KEY, RAZ_ORDER_ID);
+
   options = {
     key: PUB_KEY, 
     amount: "1000", 
