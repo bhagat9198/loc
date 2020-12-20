@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Lake of Cakes | Add Sections</title>
+
+  <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
+  <link href="../../asets/css/dark-side-style.css" rel="stylesheet" />
+  <link href="../../assets/css/waves.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+  <link href="../..assets/css/plugin.css" rel="stylesheet" />
+  <link href="../../assets/css/jquery.tagit.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/bootstrap-coloroicker.css">
+  <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/plugins/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="../../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
+  <link href="../../assets/css/style.css" rel="stylesheet" />
+  <link href="../../assets/css/custom.css" rel="stylesheet" />
+
+  <link href="../../css/common.css" rel="stylesheet" />
+  <link href="../../css/product.css" rel="stylesheet" />
+  <link href="../../css/jquery.Jcrop.css" rel="stylesheet" />
+  <link href="../../css/Jcrop-style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/plugins/summernote/summernote-bs4.css">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+<style>
+  .productName {
+    font-size: xx-small;
+    text-align: justify;
+    word-wrap: break-word;
+  }
+
+  label {
+    word-wrap: break-word;
+    text-overflow: clip;
+  }
+
+  input[type=checkbox] {
+    display: block;
+  }
+
+  /*pure cosmetics:*/
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+
+  label {
+    margin: 5px;
+  }
+</style>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
+  style="overflow: scroll;">
+  <div class="wrapper">
+    <section id="admin-nav-load"></section>
+
+    <section class="wrapper">
+      <div class="content-wrapper">
+        <div class="container-fluid">
+          <input type="hidden" name="_token" value="DXWvm5qE4JiU2PfjqXiBb5G9IqfhCioRs3YkjfNk">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="add-product-content" style="background-color:rgba(240, 237, 232, 0.3);">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="product-description">
+                      <form id="add-section">
+                        <div class="body-area">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <h4 class="MainHeading">Add A New Section</h4>
+                              <div class="row">
+                                <div class="col-lg-12">
+                                  <div class="left-area">
+                                    <h4 class="heading">Section Type</h4>
+                                  </div>
+                                </div>
+                                <div class="col-lg-12">
+                                  <select id="sectiontype" name="section-type">
+                                    <option value="" selected disabled>Select From the List</option>
+                                    <option value="4">4-Card Section</option>
+                                    <option value="6">6-Card Section</option>
+                                    <option value="slider">Slider Section</option>
+                                    <option value="img">Image-Banner Section</option>
+                                    <option value="animation">Animated-Banner Section</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="left-area" id="sectionName">
+                                <h4 class="heading">Section Name</h4>
+                                <p class="sub-heading"></p>
+                              </div>
+                            </div>
+                            <div class="col-lg-12" id="sectionInput">
+                              <input type="text" class="input-field" placeholder="Eg. Best Seller Gifts"
+                                name="section-name">
+                            </div>
+                          </div>
+
+                          <div class="row" id="category">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Section Category</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-12">
+                              <select id="cat" name="section-category">
+                                <!-- <option value="" selected disabled>Select Category</option>
+                                <option>Cakes</option>
+                                <option>Flowers</option>
+                                <option>Combos</option>
+                                <option>Chocalate</option>
+                                <option>All (Common Section)</option> -->
+                              </select>
+                            </div>
+                          </div>
+
+
+                          <div class="row" id="displayProduct" style="display:none">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Select Products to be added</h4>
+                              </div>
+                            </div>
+                            <br>
+                            <div class="col-lg-12">
+                              <table id="example2" class="table table-bordered table-hover">
+                                <thead>
+                                  <tr>
+                                    <th>Product Image</th>
+                                    <th>Product Name</th>
+                                    <th>Product Id</th>
+                                    <th>Select</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <!-- <tr>
+                                    <td>
+                                      <img
+                                        src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16714-birthday-cake-600x600.jpg?ext=.jpg">
+                                    </td>
+                                    <td>Prod 1
+                                    </td>
+                                    <td>Win 95+</td>
+                                    <td> <input type="checkbox" id="myCheckbox2" /></td>
+                                  </tr> -->
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+
+                          <div class="row" style="display:none ;" id="addTag1">
+                            <div class="col-lg-12">
+                              <div class="featured-keyword-area">
+                                <div class="left-area">
+                                  <h4 class="heading">Add Tags -Image1</h4>
+                                </div>
+                                <div class="feature-tag-top-filds" id="null">
+                                  <div class="feature-area">
+                                    <div class="row">
+                                      <div class="col-lg-8">
+                                        <input type="text" name="product-tag-1" class="input-field"
+                                          placeholder="Enter Your Keyword">
+                                      </div>
+                                      <div class="col-lg-4" style="display: flex;">
+                                        <input type="file" id="product-img-1" name="product-img-1">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row" style="display:none ;" id="addTag2">
+
+                            <div class="col-lg-12">
+                              <div class="featured-keyword-area">
+                                <div class="left-area">
+                                  <h4 class="heading">Add Tags -Image2</h4>
+                                </div>
+                                <div class="feature-tag-top-filds" id="null">
+                                  <div class="feature-area">
+                                    <div class="row">
+                                      <div class="col-lg-8">
+                                        <input type="text" name="product-tag-2" class="input-field"
+                                          placeholder="Enter Your Keyword">
+                                      </div>
+                                      <div class="col-lg-4" style="display: flex;">
+                                        <input type="file" name="product-img-2" id="product-img-2">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row" style="display:none ;" id="addTag3">
+                            <div class="col-lg-12">
+                              <div class="featured-keyword-area">
+                                <div class="left-area">
+                                  <h4 class="heading">Add Tags -Image3</h4>
+                                </div>
+                                <div class="feature-tag-top-filds" id="null">
+                                  <div class="feature-area">
+                                    <div class="row">
+                                      <div class="col-lg-8">
+                                        <input type="text" name="product-tag-3" class="input-field"
+                                          placeholder="Enter Your Keyword">
+                                      </div>
+                                      <div class="col-lg-4" style="display: flex;">
+                                        <input type="file" name="product-img-3" id="product-img-3">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row" style="display:none ;" id="addTag4">
+                            <div class="col-lg-12">
+                              <div class="featured-keyword-area">
+                                <div class="left-area">
+                                  <h4 class="heading">Add Tags -Image4</h4>
+                                </div>
+                                <div class="feature-tag-top-filds" id="null">
+                                  <div class="feature-area">
+                                    <div class="row">
+                                      <div class="col-lg-8">
+                                        <input type="text" name="product-tag-4" class="input-field"
+                                          placeholder="Enter Your Keyword">
+                                      </div>
+                                      <div class="col-lg-4" style="display: flex;">
+                                        <input type="file" name="product-img-4" id="product-img-4">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <div class="card card-info" id="sectionBackground">
+                            <div class="card-header">
+                              <h3 class="card-title">Select Background Gradient Color</h3>
+                            </div>
+                            <br>
+                            <div class="card-body">
+                              <div class="form-group">
+                                <h5 style="font-size: 1em;font-weight: 977;">Top-left Color
+                                </h5>
+                                <div class="input-group my-colorpicker2">
+                                  <input type="text" name="color-top-left" class="form-control">
+                                  <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <h5 style="font-size: 1em;font-weight: 977;">Bottom-Right
+                                  Color</h5 style="fon">
+                                <div class="input-group my-colorpicker3">
+                                  <input type="text" name="color-bottom-right" class="form-control">
+                                  <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                  </div>
+                                </div>
+                              </div>
+                              <br>
+                            </div>
+                          </div>
+                          <div class="row" style="display: none;" id="Banner-Image">
+
+                            <div class="col-lg-12">
+
+                              <div class="left-area">
+                                <h4 class="heading">Banner Image (SIZE -1280 * 426)</h4>
+                              </div>
+                              <center>
+                                <input type='file' id="img-banner" name="img-banner" class="mybtn1"
+                                  onchange="readURL(this);" />
+                              </center>
+                            </div>
+                            <div class="col-lg-12">
+                              <div class="panel panel-body" style="background-color:gray">
+                                <div class="span4  text-center" id=""
+                                  style="width:100%; height: 426px; border:1px dashed #ddd; background: #f1f1f1;">
+                                  <i class="icofont-upload-alt"></i>
+                                  <img id="blah" src="../../assets/images/logo.png"
+                                    style="width:1280px;height: 426px;object-fit:contain ;" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row" style="display: none;" id="Banner-video">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Animated Banner Size (<=100kb)< /h4> </div> <center>
+                                    <input type='file' class="mybtn1" id="animation-banner" name="animation-banner"
+                                      onchange="readVideoURL(this);" />
+                                    </center>
+                              </div>
+                              <div class="col-lg-12">
+                                <div class="panel panel-body" style="background-color:gray">
+                                  <div class="span4  text-center" id=""
+                                    style="width :100%; height: 426px; border:1px dashed #ddd; background: #f1f1f1;">
+                                    <i class="icofont-upload-alt"></i>
+                                    <video id="blah2" src="../../assets/images/fastdelivery.mp4"
+                                      style="width:100%;height: 426px ;;" autoplay loop muted>
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-12 text-center">
+                                <button class="addProductSubmit-btn" type="submit">Push
+                                  Section</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+      </section>
+    </section>
+    <section id="admin-footer-load"></section>
+  </div>
+
+  <script src="../../assets/js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript">
+    $('#admin-nav-load').load('/Common/navbar.html');
+    $('#admin-footer-load').load('/Common/footer.html');
+  </script>
+  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/adminlte.js"></script>
+  <script src="../assets/js/demo.js"></script>
+
+
+  <script src="../../assets/js/adminlte.js"></script>
+  <script src="../../assets/js/demo.js"></script>
+  <script src="../../assets/js/jquery-1.12.4.min.js"></script>
+  <script src="../../assets/js/bootstrap.min.js"></script>
+  <script src="../../assets/js/jqueryui.min.js"></script>
+  <script src="../../assets/plugins/jquery/jquery.min.js"></script>
+  <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+  <script src="../../assets/js/jquery.slimscroll.min.js"></script>
+  <script src="../../assets/js/waves.min.js"></script>
+  <script src="../../assets/js/plugin.js"></script>
+  <script src="../../assets/js/Chart.min.js"></script>
+  <script src="../../assets/js/nicEdit.js"></script>
+  <script src="../../assets/js/notify.js"></script>
+  <script src="../../assets/js/product.js"></script>
+  <script src="../../assets/js/jquery.canvasjs.min.js"></script>
+  <script src="../../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+  <script src="../../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../../assets/js/load.js"></script>
+  <script src="../../assets/js/custom.js"></script>
+  <!-- <script src="../../assets/js/myscript.js"></script> -->
+  <script src="../../assets/js/adminlte.min.js"></script>
+  <script src="../../assets/js/tag-it.js"></script>
+
+  <script type="text/javascript">
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#blah')
+            .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function readVideoURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#blah2')
+            .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
+
+  <script>
+    // document.getElementById("cat").addEventListener('change', function (e) {
+    //   var val = document.querySelector('#cat').value;
+    //   var sectype = document.querySelector('#sectiontype').value;
+    //   // if (sectype != "4") {
+    //   //   document.getElementById("displayProduct").style.display = "block"
+    //   // }
+    //   if (sectype == "slider") {
+    //     document.getElementById("displayProduct").style.display = "block"
+    //   }
+    // })
+
+    document.getElementById("sectiontype").addEventListener('change', function (e) {
+      var val = document.querySelector('#sectiontype').value;
+      if (val.toUpperCase() == "img".toUpperCase() || val.toUpperCase() ==
+        "animation".toUpperCase()) {
+        document.getElementById("category").style.display = "block";
+        if (val.toUpperCase() == "img".toUpperCase()) {
+          document.getElementById("Banner-Image").style.display = "block"
+          document.getElementById("Banner-video").style.display = "none"
+          document.getElementById("sectionName").style.display = "none"
+          document.getElementById("sectionInput").style.display = "none"
+          document.getElementById("sectionBackground").style.display = "none"
+          document.getElementById("displayProduct").style.display = "none"
+        } else {
+          document.getElementById("Banner-video").style.display = "block"
+          document.getElementById("Banner-Image").style.display = "none"
+          document.getElementById("sectionName").style.display = "none"
+          document.getElementById("sectionInput").style.display = "none"
+          document.getElementById("sectionBackground").style.display = "none"
+          document.getElementById("displayProduct").style.display = "none"
+        }
+      } else {
+        document.getElementById("Banner-Image").style.display = "none"
+        document.getElementById("Banner-video").style.display = "none"
+        document.getElementById("category").style.display = "block"
+        document.getElementById("sectionName").style.display = "block"
+        document.getElementById("sectionInput").style.display = "block"
+        document.getElementById("sectionBackground").style.display = "block"
+      }
+      if (val == "4") {
+        // document.getElementById("addImage").style.display = "block"
+        document.getElementById("addTag1").style.display = "block"
+        document.getElementById("addTag2").style.display = "block"
+        document.getElementById("addTag3").style.display = "block"
+        document.getElementById("addTag4").style.display = "block"
+        document.getElementById("displayProduct").style.display = "none"
+        document.getElementById("Banner-Image").style.display = "none"
+        document.getElementById("Banner-video").style.display = "none"
+        document.getElementById("category").style.display = "block"
+        document.getElementById("sectionName").style.display = "block"
+        document.getElementById("sectionInput").style.display = "block"
+        document.getElementById("sectionBackground").style.display = "block"
+      } else {
+        document.getElementById("addTag1").style.display = "none"
+        document.getElementById("addTag2").style.display = "none"
+        document.getElementById("addTag3").style.display = "none"
+        document.getElementById("addTag4").style.display = "none"
+        // document.getElementById("addImage").style.display = "none";
+      }
+
+      if (val == "slider" || val == "6") {
+        document.getElementById("addTag1").style.display = "none"
+        document.getElementById("addTag2").style.display = "none"
+        document.getElementById("addTag3").style.display = "none"
+        document.getElementById("addTag4").style.display = "none"
+        document.getElementById("displayProduct").style.display = "block"
+        document.getElementById("Banner-Image").style.display = "none"
+        document.getElementById("Banner-video").style.display = "none"
+        document.getElementById("category").style.display = "block"
+        document.getElementById("sectionName").style.display = "block"
+        document.getElementById("sectionInput").style.display = "block"
+        document.getElementById("sectionBackground").style.display = "block"
+      }
+    });
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function (event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    });
+    $('.my-colorpicker3').colorpicker()
+    $('.my-colorpicker3').on('colorpickerChange', function (event) {
+      $('.my-colorpicker3 .fa-square').css('color', event.color.toString());
+    });
+
+    $('#example2').DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+  </script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script> -->
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+      authDomain: "lake-of-cakes.firebaseapp.com",
+      databaseURL: "https://lake-of-cakes.firebaseio.com",
+      projectId: "lake-of-cakes",
+      storageBucket: "lake-of-cakes.appspot.com",
+      messagingSenderId: "779843608951",
+      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+      measurementId: "G-5ER0QF0FDW"
+    };
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+  </script>
+
+  <script src="./addSection1.js"></script>
+
+
+</body>
+
+</html>

@@ -74,8 +74,11 @@ async function displayRows(snapshotDocs, allCatData) {
     // console.log(catId, scatId, ccatId);
 
     let catData = catDetails(catId, scatId, ccatId);
-
+   
     let imgUrl = docData.mainImgUrl;
+    if(!imgUrl){
+      imgUrl="https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+    }
     tRows += `
     <tr role="row" class="odd parent" id="main-row-${id}">
         <td tabindex="0" >${docData.name}<br><small>ID: ${
@@ -121,6 +124,7 @@ async function displayRows(snapshotDocs, allCatData) {
       </tr>`;
   }
   // console.log(tRows);
+  
   return tRows;
 }
 
@@ -276,6 +280,12 @@ const displayTables = async () => {
       });
     if (tRows != "") {
       tbodys.innerHTML = tRows;
+      setTimeout(function(){
+        $('#myTable' +cat.id).DataTable({
+          "responsive": true,
+          "autoWidth": false,
+        });
+      },4000)
     } else {
       $("#tbodys").empty();
       tbodys.innerHTML =
@@ -290,6 +300,7 @@ const displayTables = async () => {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // display details
+
 const detialsModalHTML = document.querySelector("#details-modal");
 const pNameHTML = detialsModalHTML.querySelector(".prod-name-detail");
 const pPriceHTML = detialsModalHTML.querySelector(".prod-price-detail");
@@ -490,7 +501,7 @@ const editDetails = async (e) => {
   // let allCategories = [];
   const docId = e.target.dataset.id;
   const catId = e.target.dataset.catid;
-
+  // alert(71)
   await db
     .collection(catId)
     .doc(docId)
@@ -628,7 +639,7 @@ const editDetails = async (e) => {
       } else {
         document.getElementById("gift-attributes").style.display = "none";
       }
-
+      // alert(7)
       editProduct["product-mrp"].value = doc.mrp;
       editProduct["product-sp"].value = doc.sp;
       editProduct["product-gst"].value = doc.gst;
@@ -652,7 +663,9 @@ const editDetails = async (e) => {
         }
       }
       let mImgUrl = doc.mainImgUrl;
-
+      if(!mImgUrl){
+        mImgUrl="https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+      }
       let mImg = `
       <img id="putImage" src="${mImgUrl}" alt=" image" />
       `;
