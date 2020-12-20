@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Lake of Cakes | Add Coupons</title>
+  <script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>
+
+  <!-- Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso -->
+  <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+  <!--Font Awesome (added because you use icons in your prepend/append)-->
+  <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+  <!-- Font Awesome Icons -->
+  <!-- <link href="../assets/css/dark-side-style.css" rel="stylesheet" /> -->
+  <link href="../assets/css/waves.min.css" rel="stylesheet" />
+
+  <link href="../assets/css/plugin.css" rel="stylesheet" />
+
+  <link href="../assets/css/jquery.tagit.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/bootstrap-coloroicker.css">
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <link href="../assets/css/custom.css" rel="stylesheet" />
+  <link href="../assets/css/responsive.css" rel="stylesheet" />
+  <link href="../assets/css//Common.css" rel="stylesheet" />
+  <link href="../assets/css/product.css" rel="stylesheet" />
+  <link href="../assets/css/jquery.Jcrop.css" rel="stylesheet" />
+  <link href="../assets/css/Jcrop-style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/plugins/summernote/summernote-bs4.css">
+
+
+</head>
+
+</style>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <section id="admin-nav-load"></section>
+
+    <section class="wrapper">
+      <div class="content-wrapper">
+        <br>
+        <form id="add-coupan">
+          <div class="col-lg-12 ">
+            <div class="add-product-content ">
+              <h4 class="MainHeading">Add A Coupon</h4>
+              <div class="row ">
+                <div class="col-lg-12">
+                  <div class="product-description ">
+                    <div class="body-area">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Coupan Code</h4>
+                                <p class="sub-heading"></p>
+                              </div>
+                            </div>
+                            <div class="col-lg-12">
+                              <input type="text" class="input-field" name="coupan-name" placeholder="Enter coupan Code">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Coupan Description</h4>
+                                <p class="sub-heading"></p>
+                              </div>
+                            </div>
+                            <div class="col-lg-12">
+                              <input type="text" class="input-field" name="coupan-desc"
+                                placeholder="Enter coupan Description">
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Minimum Coupan Amount</h4>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-12">
+
+         
+                                </div>
+                                <div class="col-lg-12">
+                                  <input type="number" id="coupan" class="input-field" name="coupan-minAmt"
+                                    placeholder="Enter Coupan Minimum Price">
+                            </div>
+                          </div>
+                          <hr style="background-color: blue;">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Coupan Amount</h4>
+                                <p class="sub-heading"></p>
+                              </div>
+                            </div>
+                            <div class="col-lg-12">
+                              <input type="number" class="input-field" name="coupan-amt"
+                                placeholder="Enter coupan Price">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Previous Coupan Amount</h4>
+                                <p class="sub-heading"></p>
+                              </div>
+                            </div>
+                            <div class="col-lg-12">
+                              <input type="number" class="input-field" name="prev-coupan-amt"
+                                placeholder="Enter coupan Price">
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Coupan Quantity</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-12">
+                              <select id="coupanCat" name="coupan-quantity">
+                                <option selected disabled value="">Select Quantity
+                                </option>
+                                <option value="Unlimited">Unlimited</option>
+                                <option value="Limited">Limited</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="row" id="coupanLimit" style="display: none;">
+                            <div class="col-lg-12">
+                              <div class="left-area">
+                                <h4 class="heading">Enter the Limit</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-12">
+                              <input type="number" class="input-field" name="num-of-coupans"
+                                placeholder="Enter coupan Limit in numbers">
+                            </div>
+                          </div>
+                          <hr style="background-color: blue;">
+                          <div class="bootstrap-iso">
+                            <div class="row">
+                              <div class="col-lg-12">
+                                <div class="left-area">
+                                  <h4 class="heading">coupan Valid From</h4>
+                                </div>
+                              </div>
+                              <div class="col-lg-12">
+                                <div class="input-group">
+
+                                  <input class="input-field" name="date-from" id="date" name="date"
+                                    placeholder="MM/DD/YYYY" type="date" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="bootstrap-iso">
+                            <div class="row">
+                              <div class="col-lg-12">
+                                <div class="left-area">
+                                  <h4 class="heading">Coupan Valid Through</h4>
+                                </div>
+                              </div>
+                              <div class="col-lg-12">
+                                <div class="input-group">
+
+                                  <input class="input-field" name="date-till" id="date" name="date"
+                                    placeholder="MM/DD/YYYY" type="date" />
+                                </div>
+                              </div>
+
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 text-center">
+                              <input class="addProductSubmit-btn" value="Add coupan" type="submit">
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section id="admin-footer-load"></section>
+  </div>
+
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript">
+    $('#admin-nav-load').load('/Common/navbar.html');
+    $('#admin-footer-load').load('/Common/footer.html');
+  </script>
+  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/adminlte.js"></script>
+  <script src="../assets/js/demo.js"></script>
+
+  <!-- <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" /> -->
+
+  <script>
+    $(document).ready(function () {
+      var date_input = $('input[name="date"]'); //our date input has the name "date"
+      var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+      date_input.datepicker({
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      })
+    })
+    document.getElementById("coupanCat").addEventListener('change', function () {
+      var val = document.querySelector('#coupanCat').value;
+      if (val == "Limited") {
+        document.getElementById("coupanLimit").style.display = "block";
+      } else {
+        document.getElementById("coupanLimit").style.display = "none";
+      }
+    });
+  </script>
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+      authDomain: "lake-of-cakes.firebaseapp.com",
+      databaseURL: "https://lake-of-cakes.firebaseio.com",
+      projectId: "lake-of-cakes",
+      storageBucket: "lake-of-cakes.appspot.com",
+      messagingSenderId: "779843608951",
+      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+      measurementId: "G-5ER0QF0FDW"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  <script src="./addCoupans1.js"></script>
+</body>
+
+</html>
