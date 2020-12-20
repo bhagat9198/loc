@@ -41,7 +41,7 @@ const extractProdDetails = () => {
     .get()
     .then((doc) => {
       let docData = doc.data();
-      // console.log(docData);
+      console.log(docData);
       return docData;
     });
 };
@@ -276,8 +276,35 @@ const displayProduct = (prodData) => {
 
   // /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  let personlizeHeadHTML = document.querySelector('#personlize-head');
+
   if (prodData.pIsGift) {
     if (prodData.personalized === true) {
+      let pTitle = +prodData.title;
+      if(pTitle > 0) {
+        personlizeHeadHTML.innerHTML = `
+        <div class="w3-row w3-center w3-card w3-padding">
+          <a href="javascript:void(0)" onclick="openMenu(event, 'img');" id="myLink">
+            <div class="w3-col s6 tablink">Upload Photos</div>
+          </a>
+          <a href="javascript:void(0)" onclick="openMenu(event, 'title');">
+            <div class="w3-col s6 tablink">Add Title Texts</div>
+          </a>
+        </div>
+        `;
+      } else {
+        personlizeHeadHTML.innerHTML = `
+        <div class="w3-row w3-center w3-card w3-padding" >
+          <a href="javascript:void(0)" onclick="openMenu(event, 'img');" id="myLink">
+            <div class="w3-col s6 tablink">Upload Photos</div>
+          </a>
+          <a href="javascript:void(0)" onclick="openMenu(event, 'title');" style="display: none">
+            <div class="w3-col s6 tablink">Add Title Texts</div>
+          </a>
+        </div>
+        `;
+      }
+
       document.querySelector("#customizedBtn").style.display = "block";
       personalizedGift = true;
       // document.querySelector("#pqty").style.display = "none";
@@ -347,6 +374,7 @@ let imgInputHTML = document.querySelector("#img-input");
 let IMGS_ARRAY = [];
 let imgCounter = 0;
 const imgUploader = async (e) => {
+  console.log(e);
   for (let img of e.target.files) {
     // console.log(imgCounter, imgNo);
     IMGS_ARRAY.push(img);
