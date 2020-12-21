@@ -842,7 +842,7 @@ db.collection("addons")
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
         <input type="checkbox" name="add_addons" class="add_addons product-addons" value="${index}" onchange="buyAddon(event, this)"
           style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;height:20px;width:30px;">
-        <div class="item-img" style="max-height:220px ;">
+        <div class="item-imgAdd" style="max-height:220px ;">
           <img class="img-fluid" 
             src="${docData.imgUrl}"
             alt="Lake of cakes" style="width:100%;object-fit: contain;">
