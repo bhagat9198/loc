@@ -1061,9 +1061,12 @@ const buyProd = async (e) => {
           } else {
             f = false;
           }
-          let message = "";
+          var message = "null";
           if (document.querySelector("#prodMsg")) {
             message = document.querySelector("#prodMsg").value;
+            alert(message)
+          }else{
+            message="null"
           }
           // alert(message)
           cake = {};
@@ -1073,7 +1076,7 @@ const buyProd = async (e) => {
           // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
           cake.flavour = f;
         }
-     
+        
         let orderData = {
           orderId: orderId,
           status: "cancelled",
