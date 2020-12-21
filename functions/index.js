@@ -4,7 +4,7 @@ const admin = require("firebase-admin");
 const cryptoHmac = require("create-hmac");
 admin.initializeApp();
 var firebase = require("firebase");
-
+// let cron = require('node-cron');
 const nodemailer = require("nodemailer");
 var smtpTransport = require("nodemailer-smtp-transport");
 const { log } = require("firebase-functions/lib/logger");
@@ -659,9 +659,11 @@ exports.sendEmailAfterReject = functions.firestore
   `;
     try {
       // console.log("Inside try")
+      // cron.schedule('0 4 * * *', () => {
       transporter.sendMail(mailOptions);
       console.log("email sent to:", newValue.Email);
       transporter.close();
+      // });
       // console.log(newValue.Email)
     } catch (error) {
       console.error(
@@ -669,6 +671,181 @@ exports.sendEmailAfterReject = functions.firestore
         error
       );
     }
+  });
+
+exports.sendEmailForgetPass = functions.firestore
+  .document("Customers/{userId}")
+  .onUpdate(async (change) => {
+    const newValue = change.after.data();
+
+    // ...or the previous value before this update
+    const previousValue = change.before.data();
+
+    // access a particular field as you would any JS property
+    const name = newValue.UserName;
+
+    //Create an options object that contains the time to live for the notification and the priority
+    const mailOptions = {
+      from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
+      to: newValue.Email,
+    };
+    // Building Email message.
+
+    //for example
+
+    if (newValue.forgotCode && newValue.forgotCode !="verified") {
+      mailOptions.subject =
+        "Forgot Password ? Lake of cakes   ";
+      //for example
+      mailOptions.html =
+        `
+        <p><br></p> <style type="text/css">
+    /* Default CSS */
+    body,#body_style {margin: 0; padding: 0; background: #f9f9f9; font-size: 14px; color: #5b656e;}
+    a {color: #09c;}
+    a img {border: none; text-decoration: none;}
+    table, table td {border-collapse: collapse;}
+    td, h1, h2, h3 {font-family: tahoma, geneva, sans-serif; color: #313a42;}
+    h1, h2, h3, h4 {color: #313a42 !important; font-weight: normal; line-height: 1.2;}
+    h1 {font-size: 24px;}
+    h2 {font-size: 18px;}
+    h3 {font-size: 16px;}
+    p {margin: 0 0 1.6em 0;}
+    
+    /* Force Outlook to provide a "view in browser" menu link. */
+    #outlook a {padding:0;}
+    
+    /* Preheader and webversion */
+    .preheader {background-color: #5b656e;}
+    .preheaderContent,.webversion,.webversion a {color: white; font-size: 10px;}
+    .preheaderContent{width: 440px;}
+    .preheaderContent,.webversion {padding: 5px 10px;}
+    .webversion {width: 200px; text-align: right;}
+    .webversion a {text-decoration: underline;}
+    .webversion,.webversion a {color: #ffffff; font-size: 10px;}
+    
+    /* Topheader */
+    .topHeader {background: #ffffff;}
+    
+    /* Logo (branding) */
+    .logoContainer {padding: 20px 0 10px 0px; width: 320px;}
+    .logoContainer a {color: #ffffff;}
+    
+    /* Whitespace (imageless spacer) and divider */
+    .whitespace, .whitespaceDivider {font-family: 0px; line-height: 0px;}
+    .whitespaceDivider {border-bottom: 1px solid #cccccc;}
+    
+    /* Button */
+    .buttonContainer {padding: 10px 0px 10px 0px;}
+    .button {padding: 5px 5px 5px 5px; text-align: center; background-color: #51c4d4}
+    .button a {color: #ffffff; text-decoration: none; font-size: 13px;}
+    
+    /* Section */
+    .sectionMainTitle{font-family: Tahoma, sans-serif; font-size: 16px; padding: 0px 0px 5px 0;}
+    .sectionArticleTitle, .sectionMainTitle {color: #5b656e;}
+    
+    /* An article */
+    .sectionArticleTitle, .sectionArticleContent {text-align: center; padding: 0px 5px 0px 5px;}
+    .sectionArticleTitle {font-size: 12px; font-weight: bold;}
+    .sectionArticleContent {font-size: 10px; line-height: 12px;}
+    .sectionArticleImage {padding: 8px 0px 0px 0px;}
+    .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
+    
+    /* Footer and Social media */
+    .footer {background-color: #51c4d4;}
+    .footNotes {padding: 0px 20px 0px 20px;}
+    .footNotes a {color: #ffffff; font-size: 13px;}
+    .socialMedia {background: #5b656e;}
+    
+    /* Article image */
+    .sectionArticleImage {padding: 8px 0px 0px 0px;}
+    .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
+    
+    /* Product card */
+    .card {background-color: #ffffff; border-bottom: 2px solid #5b656e;}
+    
+    /* Column */
+    .column {padding-bottom: 20px;}
+    
+    
+    /* CSS for specific screen width(s) */
+    @media only screen and (max-width: 480px) {
+        body[yahoofix] table {width: 100% !important;}
+        body[yahoofix] .webversion {display: none; font-size: 0; max-height: 0; line-height: 0; mso-hide: all;}
+        body[yahoofix] .logoContainer {text-align: center;}
+        body[yahoofix] .logo {width: 80%;}
+        body[yahoofix] .buttonContainer {padding: 0px 20px 0px 20px;}
+        body[yahoofix] .column {float: left; width: 100%; margin: 0px 0px 30px 0px;}
+        body[yahoofix] .card {padding: 20px 0px;}
+      }
+  </style>
+
+  <div style="text-align: center;"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" style="width: 263.921px; height: 65.1px;"></div>
+  <div style="text-align: center; "><br></div>
+  <div style="text-align: center; "><br></div>
+  <div "="">
+  <div style="text-align: center;"><b>Hi ` +
+        newValue.UserName +
+        `</b></div>
+    <div style="text-align: center;"><b><br></b></div>
+    <div style="text-align: center;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="text-align: center; color: rgb(34, 34, 34); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; table-layout: fixed; overflow-wrap: break-word;"><tbody><tr><td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; font-weight: bold;">Your verification code for resetting LOC password is&nbsp;<span style="color: rgb(91, 101, 110); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;">` + newValue.forgotCode + `</span>.<br></td></tr><tr><td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; padding-bottom: 25px;">Please input this verification code in the input box to reset your LOC password.</td></tr></tbody></table></div>
+    <h4 style="text-align: center; "><font face="Times New Roman"><b>The Lakeofcakes Team.</b></font></h4></div><center><small>*</small><span style="color: rgb(34, 34, 34); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; text-align: start;">Please do not reply to this email. The mailbox that generated this email is not monitored for replies.</span><br>
+      <h4 style="font-weight: 800;">Call +91 - 9598891097</h4>
+  </center>
+  <table border="0" cellspacing="0" summary="" width="640" align="center" style="text-align: center; background-color: rgb(255, 255, 255);">
+      <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
+      <tr>
+        <td class="column" width="20%" align="center">
+          <img width="60px;object-fit:cover" src="https://cdn4.iconfinder.com/data/icons/time-line/512/night_time-256.png" alt="Lorem ipsum">
+        </td>
+         <td class="column" width="20%" align="center">
+          <img width="60px;object-fit:cover" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/24-hour-delivery-1563082-1323854.png">
+        </td>
+         <td class="column" width="20%" align="center">
+          <img width="60px;object-fit:cover" src="https://th.bing.com/th/id/OIP.fngT3b4XqWvCecpkH6LOJwHaHa?pid=Api&amp;rs=1">
+        </td>
+      </tr>
+    </tbody></table>
+    <div style="text-align: center;"><br></div>
+  <p style="text-align: center; "><b><font color="#000000" style="">Please contact us if you have any query or need any assistance. Keep visiting lakeofcakes.com for make
+        your day memorable. </font></b></p>
+    <!-- Social media -->
+    <table border="0" cellspacing="0" cellpadding="0" width="100%" summary="" class="socialMedia" style="text-align: center;">
+      <tbody><tr><td class="whitespace" height="20">&nbsp;</td></tr>
+      <tr>
+        <td>
+          <table border="0" cellspacing="0" cellpadding="0" width="120" align="center" summary="">
+            <tbody><tr>
+              <td align="center" width="32">
+                <a href="https://www.facebook.com/Lake-Of-Cakes-100900995221365" title="Twitter"><img src="https://www.windowscentral.com/sites/wpcentral.com/files/topic_images/2016/new-instagram-icon-topic.png" width="29" alt="Twitter"></a>
+              </td>
+              <td align="center" width="32">
+                <a href="https://www.instagram.com/lake_of_cakes/" title="Facebook"><img src="https://www.expectmorearizona.org/wp-content/uploads/2016/11/facebook-png-icon-follow-us-facebook-1.png" width="29" alt="Facebook"></a>
+              </td>
+            </tr>
+          </tbody></table>
+        </td>
+      </tr>
+      <tr><td class="whitespace" height="10">&nbsp;</td></tr>
+    </tbody></table>
+  
+   
+  
+    `;
+      try {
+        // console.log("Inside try")
+        transporter.sendMail(mailOptions);
+        console.log("email sent to:", newValue.Email);
+        transporter.close();
+        // console.log(newValue.Email)
+      } catch (error) {
+        console.error(
+          "There was an error while sending the email:" + newValue.Email,
+          error
+        );
+      }
+    }
+    // Building Email message.
   });
 
 exports.createUser = functions.firestore
@@ -785,7 +962,7 @@ exports.createUser = functions.firestore
 </span></li></ul><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b>Further Help : 
 </b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">email us – info@lakeofcakes.com or call at +91 9598891097</span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><br></span></div><div style="text-align: center; "><span style="font-family: TimesNewRoman, Bold; font-size: 12pt; font-weight: bold;">Explore Our Categories&nbsp;</span></div><div style="text-align: center;"><br></div>
 
-<table border="0" cellspacing="0" summary="" width="640" align="center" style="background-color: #ffffff;">
+<a href="https://lakeofcakes.com/Products/products.html?cat=yli4KpHGbARJakJfZdVr"></a><br><br><table border="0" cellspacing="0" summary="" width="640" align="center" style="background-color: #ffffff;">
     <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
     <tr>
       <td class="column" width="20%" align="center">
@@ -795,51 +972,53 @@ exports.createUser = functions.firestore
       </p></a>
       </td>
        <td class="column" width="20%" align="center">
-       <a href="https://lakeofcakes.com/Products/products.html?cat=H6gtdNb9j9gMDbtI2dl2"><img src="https://5.imimg.com/data5/JU/RF/MY-8545911/wedding-bouquet-500x500.jpg" alt="Forest" width="70" height="70">&nbsp;</div>
+       <a href="https://lakeofcakes.com/Products/products.html?cat=H6gtdNb9j9gMDbtI2dl2"><img src="https://5.imimg.com/data5/JU/RF/MY-8545911/wedding-bouquet-500x500.jpg" alt="Forest" width="70" height="70">&nbsp;
        <p style="text-align: center;border:1px solid red">
          Flowers
        </p></a>
       </td>
-       <a href="https://lakeofcakes.com/Products/products.html?cat=yli4KpHGbARJakJfZdVr"><td class="column" width="20%" align="center">
-       <img src="https://res.cloudinary.com/groceryncart/image/upload/v1563106438/Stores/Store50/Product/Premium-Cake-combo-red-carnation-flowers6231758431555.png" alt="Mountains" width="70" height="70">&nbsp;</div>
+       <td class="column" width="20%" align="center">
+        <a href="https://lakeofcakes.com/Products/products.html?cat=H6gtdNb9j9gMDbtI2dl2"><img src="https://res.cloudinary.com/groceryncart/image/upload/v1563106438/Stores/Store50/Product/Premium-Cake-combo-red-carnation-flowers6231758431555.png" alt="Mountains" width="70" height="70">&nbsp;
        <p style="text-align: center;border:1px solid red">
          Combos
-       </p></a>
+          </p></a>
       </td>
       <td class="column" width="20%" align="center">
-      <a href="https://lakeofcakes.com/Products/products.html?cat=X6zGkffjLRkw1lL5IzPM"><img src="https://img.icons8.com/plasticine/2x/chocolate-bar.png" alt="Snow" width="70" height="70">&nbsp;</div>
-      <p style="text-align: center;border:1px solid red">
-        Chocolate
-      </p></a>
+        <a href="https://lakeofcakes.com/Products/products.html?cat=H6gtdNb9j9gMDbtI2dl2"><img src="https://cdn.iconscout.com/icon/free/png-512/chocolate-bar-candy-dairymilk-sweet-dessert-food-emoj-symbol-30664.png" alt="Mountains" width="70" height="70">&nbsp;
+       <p style="text-align: center;border:1px solid red">
+         Chocolates
+          </p></a>
       </td>
-      <td class="column" width="20%" align="center">
-      <a href="https://lakeofcakes.com/Products/products.html?cat=kTrnO3gHeFlnt9iyj0fd"><img src="https://img.icons8.com/cotton/2x/birthday.png" alt="Snow" width="70" height="70">&nbsp;</div>
+      </tr>
+      
+      <tr><td class="column" width="20%" align="center">
+      <a href="https://lakeofcakes.com/Products/products.html?cat=kTrnO3gHeFlnt9iyj0fd"><img src="https://img.icons8.com/cotton/2x/birthday.png" alt="Snow" width="70" height="70">&nbsp;
       <p style="text-align: center;border:1px solid red">
         Birthday
       </p></a>
       </td>
-      <td class="column" width="20%" align="center">
-      <a href="https://lakeofcakes.com/Products/products.html?cat=UrAAKMYXo4I8ZwXruHUJ"><img src="https://cdn0.iconfinder.com/data/icons/party-human-1/66/50-512.png" alt="Snow" width="70" height="70">&nbsp;</div>
-        <p style="text-align: center;border:1px solid red">
-          Aniversary
-        </p></a>
+     <td class="column" width="20%" align="center">
+      <a href="https://lakeofcakes.com/Products/products.html?cat=kTrnO3gHeFlnt9iyj0fd"><img src="https://cdn0.iconfinder.com/data/icons/party-human-1/66/50-512.png" alt="Snow" width="70" height="70">&nbsp;
+      <p style="text-align: center;border:1px solid red">
+        Aniversary
+      </p></a>
       </td>
       <td class="column" width="20%" align="center">
-      <a href="https://lakeofcakes.com/Products/products.html?cat=JpQvf8VgrtJab6MwlqIZ"><img src="https://cdn3.iconfinder.com/data/icons/baby-essentials-black-white/512/Baby_Shower_BW-512.png" alt="Snow" width="70" height="70">&nbsp;</div>
+      <a href="https://lakeofcakes.com/Products/products.html?cat=JpQvf8VgrtJab6MwlqIZ"><img src="https://cdn3.iconfinder.com/data/icons/baby-essentials-black-white/512/Baby_Shower_BW-512.png" alt="Snow" width="70" height="70">&nbsp;
         <p style="text-align: center;border:1px solid red">
         Occassions
         </p></a>
       </td>
       <td class="column" width="20%" align="center">
-      <a href="https://lakeofcakes.com/Products/products.html?cat=M4HMSBiyVbvIjPR9EHNg"><img src="https://cdn2.iconfinder.com/data/icons/christmas-filled-outline-1/512/christmas_holiday_merry_xmas_tree_5-512.png" alt="Snow" width="70" height="70">&nbsp;</div>
+      <a href="https://lakeofcakes.com/Products/products.html?cat=M4HMSBiyVbvIjPR9EHNg"><img src="https://cdn2.iconfinder.com/data/icons/christmas-filled-outline-1/512/christmas_holiday_merry_xmas_tree_5-512.png" alt="Snow" width="70" height="70">&nbsp;
 <p style="text-align: center;border:1px solid red">
 	Gifts
 </p></a>
       </td>
     </tr>
-  </tbody></table>
+  </tbody></table><a href="https://lakeofcakes.com/Products/products.html?cat=yli4KpHGbARJakJfZdVr">
 
-</div></div>
+
 <table border="0" cellspacing="0" summary="" width="640" align="center" style="background-color: #ffffff;">
     <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
     <tr>
@@ -875,7 +1054,7 @@ exports.createUser = functions.firestore
       </td>
     </tr>
     <tr><td class="whitespace" height="10">&nbsp;</td></tr>
-  </tbody></table>
+  </tbody></table></a>
   `;
 
     try {
@@ -947,9 +1126,16 @@ exports.sendEmailAfterConfirmation = functions.firestore
         }
       }
       // console.log(duplicate);
-      timeStamp = o.success.orderTime;
-      totalCost = o.success.totalCost;
-      deliverType = o.success.type;
+      if(o.success.orderTime){
+        timeStamp = o.success.orderTime;
+      }
+      if(o.success.totalCost){
+        totalCost = o.success.totalCost;
+      }
+      if(o.success.type){
+        deliverType = o.success.type;
+      }
+      
       if (deliverType === "free") {
         dTime = "8:00AM to 5:00pM";
       } else if (deliverType === "perfect") {
