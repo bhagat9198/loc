@@ -389,7 +389,7 @@ const addonModal = (e) => {
             src="${docData.imgUrl}"
             alt="lake of cakes" style="width:100%;object-fit: contain;">
         </div>
-        <div class="info" style="height: 93px; ">
+        <div class="info" style="height: 120px; ">
           <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">
             ${docData.name}
           </h5>
