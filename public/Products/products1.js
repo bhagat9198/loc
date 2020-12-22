@@ -87,35 +87,12 @@ const displayToHeading = () => {
       }
     }
   }
-
-  // productHeadingHTML.innerHTML = prodHeading;
 };
 
 const extractRelvantProds = async () => {
-  // let dbRef;
   if (CAT) {
-    // console.log(CAT);
-    // dbRef = db.collection(CAT);
     if (SUB) {
-      // console.log(SUB);
       if (CHILD) {
-        // console.log(CHILD);
-        // await dbRef.get().then((docs) => {
-        //   let docDocs = docs.docs;
-        //   docDocs.map((el) => {
-        //     let elData = el.data();
-        //     if (elData.wholeSubCategory.split("__")[1] === SUB) {
-        //       if (elData.wholeChildCategory.split("__")[2] === CHILD) {
-        //         allProductsArr.push({
-        //           prodId: el.id,
-        //           prodData: elData,
-        //           catId: CAT,
-        //         });
-        //       }
-        //     }
-        //   });
-        // });
-
         let locProds = JSON.parse(localStorage.getItem("locProds"));
         if (!locProds) {
           await settingLocalStorage();
@@ -127,24 +104,8 @@ const extractRelvantProds = async () => {
             }
           }
         });
-        // console.log(allProductsArr);
-        // return;
       } else {
         allProductsArr = [];
-        // await dbRef.get().then((docs) => {
-        //   let docDocs = docs.docs;
-        //   docDocs.map((el) => {
-        //     let elData = el.data();
-        //     if (elData.wholeSubCategory.split("__")[1] === SUB) {
-        //       allProductsArr.push({
-        //         prodId: el.id,
-        //         prodData: elData,
-        //         catId: CAT,
-        //       });
-        //     }
-        //   });
-        // });
-
         let locProds = JSON.parse(localStorage.getItem("locProds"));
         if (!locProds) {
           await settingLocalStorage();
@@ -191,21 +152,8 @@ const extractRelvantProds = async () => {
       locProds.map((p) => {
         if (CAT == p.catId) {
           allProductsArr.push(p);
-          // console.log(p);
-          // prodHeading = p.prodData.cat;
         }
       });
-      // console.log(CAT);
-      // await db
-      //   .collection("categories")
-      //   .doc(CAT)
-      //   .get()
-      //   .then((d) => {
-      //     dd = d.data();
-      //     // console.log(dd);
-      //     // console.log(dd.name);
-      //     prodHeading = dd.name;
-      //   });
     }
     return;
   } else {
@@ -219,16 +167,6 @@ const extractRelvantProds = async () => {
 let allCategories = [];
 
 const extractAllCat = async () => {
-  // await db
-  //   .collection("categories")
-  //   .get()
-  //   .then((snapshots) => {
-  //     let snapDocs = snapshots.docs;
-  //     snapDocs.map((snap) => {
-  //       allCategories.push(snap.id);
-  //     });
-  //   });
-
   let locProds = JSON.parse(localStorage.getItem("locProds"));
   if (!locProds) {
     await settingLocalStorage();
@@ -323,7 +261,7 @@ const starRating = (starsNum) => {
 const displayProds = async (arrProds) => {
   let totalp = arrProds.length;
   console.log(totalp);
-  productHeadingHTML.innerHTML += `  [${totalp}]`;
+  productHeadingHTML.innerHTML += `  - ${totalp}`;
 
   // console.log(arrProds);
   let card = "";
