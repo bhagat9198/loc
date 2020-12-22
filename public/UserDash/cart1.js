@@ -481,7 +481,7 @@ const decAddon = (e) => {
 const prodWithAddonsHTML = document.querySelector("#prod_with_addons");
 
 const checkoutProds = async (e) => {
-  // console.log(SELECTED_PRODS);
+  console.log(SELECTED_PRODS);
   let addonsSelected = [];
   ADDONS_DETAILS.map((el) => {
     if (el.checked) {
@@ -508,6 +508,7 @@ const checkoutProds = async (e) => {
     for (let c of USER_DETAILS.cart) {
       counter++;
       if (c.cartId === sp.cartId) {
+        console.log(c);
         let cake;
         let pdata = {
           prodId: c.prodId,
@@ -524,10 +525,11 @@ const checkoutProds = async (e) => {
           pdata.cake = cake;
         }
         if (c.personalizedGift) {
-          personalized = {};
-          personalized.personalized = true;
-          personalized.personalizedGiftImgs = c.personalizedGiftImgs;
-          pdata.personalized = personalized;
+          // personalizedGiftDetails = c.personalizedGiftDetails;
+          pdata.personalized = true;
+          pdata.personalizedGiftDetails = c.personalizedGiftDetails;
+        } else {
+          pdata.personalized = false;
         }
         checkoutCart.products.push(pdata);
       }
