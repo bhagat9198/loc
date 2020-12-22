@@ -251,7 +251,7 @@ const displayProduct = (prodData) => {
       cakeShapeHTML.innerHTML = `
     <div class="custom-control custom-radio" style="margin-right: 15px;">
       <input type="checkbox" id="shape-heart" name="shape-heart" onchange="cakeShape(event, this)" class="custom-control-input product-attr">
-      <label class="custom-control-label" for="shape-heart" style="font-weight: 700;">Heart Shape </label>
+      <label class="custom-control-label" for="shape-heart" style="font-weight: 700;padding-top:4px">Heart Shape </label>
     </div>
     `;
     } else {
@@ -267,7 +267,7 @@ const displayProduct = (prodData) => {
         card += `
         <div class="custom-control custom-radio" style="margin-right:auto;text-align:justify;display:inline-block;margin-left:auto:display:block">
           <input type="checkbox"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
-          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px ;padding:10px !important">${flav}</label>
+          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px ;padding:5px !important">${flav}</label>
         </div>
         `;
       });
@@ -282,12 +282,14 @@ const displayProduct = (prodData) => {
   let allTitlesHTML = document.querySelector("#all-titles");
   if (prodData.pIsGift) {
     if (prodData.personalized === true) {
+     
+      document.getElementById("customizedBtn").style.display = "inline-block";
       let pTitle = +prodData.title;
       if (pTitle > 0) {
         personlizeHeadHTML.innerHTML = `
-        <div class="w3-row w3-center w3-card w3-padding">
+        <div class="w3-row w3-center w3-card w3-padding ">
           <a href="javascript:void(0)" onclick="openMenu(event, 'img');" id="myLink">
-            <div class="w3-col s6 tablink">Upload Photos</div>
+            <div class="w3-col s6 tablink w3-dark-grey">Upload Photos</div>
           </a>
           <a href="javascript:void(0)" onclick="openMenu(event, 'title');">
             <div class="w3-col s6 tablink">Add Title Texts</div>
@@ -302,7 +304,7 @@ const displayProduct = (prodData) => {
             <input class="w3-input w3-padding-16" type="text" placeholder="Title ${
               c + 1
             }"
-              id="title-img-${c}" required name="title-img-${c}" style="border: 2px solid black;">
+              id="title-img-${c}" required name="title-img-${c}" style="border: 1px solid gray;">
           </div>
           `;
         }
@@ -320,7 +322,6 @@ const displayProduct = (prodData) => {
         `;
       }
 
-      document.querySelector("#customizedBtn").style.display = "block";
       personalizedGift = true;
       // document.querySelector("#pqty").style.display = "none";
       // document.querySelector("#qty-btns").style.display = "none";
@@ -844,15 +845,16 @@ db.collection("addons")
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
         <input type="checkbox" name="add_addons" class="add_addons product-addons" value="${index}" onchange="buyAddon(event, this)"
           style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;height:20px;width:30px;">
-        <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
-          <img class="img-fluid"
+        <div class="item-imgAdd" style="max-height:220px ;">
+          <img class="img-fluid" 
             src="${docData.imgUrl}"
-            alt="Lake of cakes" style="width:100%;object-fit: cover;">
+            alt="Lake of cakes" style="width:100%;object-fit: contain;">
         </div>
-        <div class="info" style="height: 88px; ">
+        <div class="info" style="height: 120px; ">
           <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">
             ${docData.name}
           </h5>
+          
           <h4 class="price"
             style="text-align: center !important;float: inherit;font-size: 13px;">₹ ${docData.price}
           </h4>
@@ -1074,7 +1076,7 @@ const buyProd = async (e) => {
           // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
           cake.flavour = f;
         }
-
+        
         let orderData = {
           orderId: orderId,
           status: "cancelled",

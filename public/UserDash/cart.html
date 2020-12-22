@@ -78,7 +78,7 @@
     .tableHead li.prodHeader {
         text-align: left;
     } */
-    
+
     /* .cart {
         padding: 1em 0;
     }
@@ -90,28 +90,33 @@
         padding: 1.5em;
         border-bottom: 1px solid #fafafa;
     }
-    
+
     .cart .items.even {
         background: #fafafa;
     }
-    
+
     .cart .items .infoWrap {
         display: table;
         width: 100%;
     }
-    
+
     .cart .items .cartSection {
         padding: 20px;
         display: table-cell;
         vertical-align: middle;
     }
-    
+
     .cart .items .cartSection .itemNumber {
         font-size: .75em;
         color: #777;
         margin-bottom: .5em;
     }
-    
+
+
+    .item .item-img img {
+        height: 100px !important;
+    }
+
     .cart .items .cartSection h3 {
         font-size: 1em;
         font-family: "Montserrat", sans-serif;
@@ -119,48 +124,50 @@
         text-transform: uppercase;
         letter-spacing: .025em;
     }
-    
+
     .cart .items .cartSection p {
         display: inline-block;
         font-size: .85em;
         color: #777777;
         font-family: "Montserrat", sans-serif;
     }
-    
+
     .cart .items .cartSection p .quantity {
         font-weight: bold;
         color: #333;
     }
-    
+
     .cart .items .cartSection p.stockStatus {
         color: #82CA9C;
         font-weight: bold;
         padding: .5em 0 0 1em;
         text-transform: uppercase;
     }
-    
+
     .cart .items .cartSection p.stockStatus.out {
         color: #F69679;
     }
-    .odd{
+
+    .odd {
         background-color: #f1f1f1;
     }
+
     .cart .items .cartSection .itemImg {
         width: 4em;
         float: left;
     }
-    
+
     .cart .items .cartSection.qtyWrap,
     .cart .items .cartSection.prodTotal {
         text-align: center;
     }
-    
+
     .cart .items .cartSection.qtyWrap p,
     .cart .items .cartSection.prodTotal p {
         font-weight: bold;
         font-size: 1.25em;
     }
-    
+
     .cart .items .cartSection input.qty {
         width: 2em;
         text-align: center;
@@ -168,25 +175,25 @@
         padding: .25em;
         margin: 1em .5em 0 0;
     }
-    
+
     .cart .items .cartSection .itemImg {
         width: 8em;
         display: inline;
         padding-right: 1em;
     }
-    
+
     .special {
         display: block;
         font-family: "Montserrat", sans-serif;
     }
-    
+
     .special .specialContent {
         padding: 1em 1em 0;
         display: block;
         margin-top: .5em;
         border-top: 1px solid #dadada;
     }
-    
+
     .special .specialContent:before {
         content: "\21b3";
         font-size: 1.5em;
@@ -194,7 +201,7 @@
         color: #6f6f6f;
         font-family: helvetica, arial, sans-serif;
     }
-    
+
     a.remove {
         text-decoration: none;
         font-family: "Montserrat", sans-serif;
@@ -212,11 +219,11 @@
         -o-transition: all 0.25s linear;
         transition: all 0.25s linear;
     }
-    
+
     a.remove:hover {
         background: #f30;
     }
-    
+
     @media only screen and (max-width: 380px) {
         .cart .items .cartSection {
             padding: 5px !important;
@@ -225,35 +232,41 @@
             /* float: left; */
         }
     }
-    
+
     @media only screen and (max-width: 39.375em) {
         .resTxtMob {
             font-size: 10px;
         }
+
         .wrap {
             width: 98%;
             padding: 2% 0;
         }
+
         .projTitle {
             font-size: 1.5em;
             padding: 10% 5%;
         }
+
         .heading {
             padding: 1em;
             font-size: 90%;
         }
+
         .cart .items .cartSection {
             padding: 10px;
             width: 90%;
             /* display: block; */
             /* float: left; */
         }
+
         .cart .items .cartSection.qtyWrap {
             width: 10%;
             text-align: center;
             padding: .5em 0;
             float: right;
         }
+
         .cart .items .cartSection.qtyWrap:before {
             content: "QTY";
             display: block;
@@ -261,44 +274,51 @@
             padding: .25em;
             font-size: .75em;
         }
+
         .cart .items .cartSection.prodTotal,
         .cart .items .cartSection.removeWrap {
             display: none;
         }
+
         .cart .items .cartSection .itemImg {}
+
         .promoCode,
         .subtotal {
             width: 100%;
         }
+
         a.btn.continue {
             width: 100%;
             text-align: center;
         }
     }
-    
+
     th {
         color: gray;
     }
-    
+
     .responsiveTags {
         font-size: 15px;
     }
-    
+
     @media only screen and (max-width: 600px) {
         .responsiveTags {
             font-size: 10px;
         }
+
         .responsiveDiv {
             padding: 4px;
         }
+
         .responsiveImage {
             width: 40px !important;
         }
+
         .pname {
             font-size: 9px !important;
         }
     }
-    
+
     .crtimg {
         width: 80px;
         object-fit: cover;
@@ -307,21 +327,21 @@
         margin-right: auto;
         display: block;
     }
-    
+
     .pname {
         font-size: 14px;
         font-weight: 600;
         text-align: center;
     }
-    
+
     .col-qty>* {
         vertical-align: middle;
     }
-    
+
     .col-qty>input {
         max-width: 2.6em;
     }
-    
+
     a.qty {
         width: 1em;
         line-height: 1em;
@@ -332,11 +352,12 @@
         background: #43ace3;
         color: #fff;
     }
-    
+
     a.qty:hover {
         background: #3b9ac6;
     }
-/*     
+
+    /*     
     .btn {
         padding: 10px 30px;
         border-radius: 0.3em;
@@ -350,26 +371,29 @@
     .btn:hover {
         box-shadow: 0 3px 0 rgba(59, 154, 198, 0)
     }
-    
+
     .btn-update {
         float: right;
         margin: 0 0 1.5em 0;
     }
-    
+
     .transition {
         transition: all 0.3s ease-in-out;
     }
-    
-    @media screen and ( max-width: 755px) {
+
+    @media screen and (max-width: 755px) {
         .container {
             width: 98%;
         }
+
         .col-pro {
             width: 35%;
         }
+
         .col-qty {
             width: 22%;
         }
+
         img {
             max-width: 100%;
             margin-bottom: 1em;
@@ -385,25 +409,25 @@
                 position: relative;
                 display: inline-block !important;
             }
-            
+
             input {
                 border: 1px solid transparent;
                 background-color: #f1f1f1;
                 padding: 10px;
                 font-size: 16px;
             }
-            
+
             input[type=text] {
                 background-color: #f1f1f1;
                 width: 100%;
             }
-            
+
             input[type=submit] {
                 background-color: DodgerBlue;
                 color: rgb(131, 56, 56);
                 cursor: pointer;
             }
-            
+
             .autocomplete-items {
                 position: absolute;
                 border: 1px solid #d4d4d4;
@@ -416,7 +440,7 @@
                 right: 0;
                 /* font-style: italic; */
             }
-            
+
             .autocomplete-items div {
                 padding: 10px;
                 cursor: pointer;
@@ -424,26 +448,33 @@
                 border-bottom: 1px solid #d4d4d4;
                 /* font-style: italic; */
             }
+
             /*when hovering an item:*/
-            
+
             .autocomplete-items div:hover {
                 background-color: #e9e9e9;
             }
+
             /*when navigating through the items using the arrow keys:*/
-            
+
             .autocomplete-active {
                 background-color: DodgerBlue !important;
                 color: #ffffff;
             }
-            
+
             @media only screen and (max-width: 600px) {
                 .responsiveIcon1 {
                     /* margin: auto;
           padding: 0px; */
                 }
+
+                .item .info .price {
+                    padding-top: 20px;
+                }
+
                 .mobileRes {}
             }
-            
+
             @media only screen and (min-width:700px) {
                 .responsiveIcon2 {
                     display: block !important;
@@ -473,10 +504,13 @@
                         <div class="logo-area">
                             <div class="logo">
                                 <a href="/index.html">
-                                    <img src="/assets/images/logo-min.png" alt="Logo Lake of cakes" style="width: 350px;">
+                                    <img src="/assets/images/logo-min.png" alt="Logo Lake of cakes"
+                                        style="width: 350px;">
                                 </a>
                             </div>
-                            <i class="fa fa-times" style="float: right; position: relative;padding: 10px;margin-left: 20%;" onclick="hidenavigation()"></i>
+                            <i class="fa fa-times"
+                                style="float: right; position: relative;padding: 10px;margin-left: 20%;"
+                                onclick="hidenavigation()"></i>
                         </div>
                         <div class="menu-container">
                             <div class="menu">
@@ -487,67 +521,69 @@
                             <div class="nav-collapsible">
                                 <a href="#">
                                     <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span>
-                          <img src="/assets/images/MidnightDelivery.png" alt="Lake of Cakes midnight"
-                            style="width: 25px;">
-                        </span>
-                      </div>
-                      <div class="col-8 col-sm-8 col-md-8 p-0">
-                        <span style="position: relative; top: 4px;">MIDNIGHT </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
+                                        <div class="row pl-3">
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span>
+                                                    <img src="/assets/images/MidnightDelivery.png"
+                                                        alt="Lake of Cakes midnight" style="width: 25px;">
+                                                </span>
+                                            </div>
+                                            <div class="col-8 col-sm-8 col-md-8 p-0">
+                                                <span style="position: relative; top: 4px;">MIDNIGHT </span>
+                                            </div>
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span style="position: relative; top: 8px;">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </label>
                                 </a>
                             </div>
                             <div class="nav-collapsible">
                                 <a href="#">
                                     <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span>
-                          <img src="/assets/images/chef.png" alt="Lake of Cakes Chef" style="width: 25px;">
-                        </span>
-                      </div>
-                      <div class="col-8 col-sm-8 col-md-8 p-0">
-                        <span style="position: relative; top: 4px;">Be A Chef </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
+                                        <div class="row pl-3">
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span>
+                                                    <img src="/assets/images/chef.png" alt="Lake of Cakes Chef"
+                                                        style="width: 25px;">
+                                                </span>
+                                            </div>
+                                            <div class="col-8 col-sm-8 col-md-8 p-0">
+                                                <span style="position: relative; top: 4px;">Be A Chef </span>
+                                            </div>
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span style="position: relative; top: 8px;">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </label>
                                 </a>
                             </div>
                             <div class="nav-collapsible">
                                 <a href="#">
                                     <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span>
-                          <img style="width: 25px;" data-toggle="modal" data-target="#reminderModal"
-                            src="../assets/images/reminder.png" alt="">
-                        </span>
-                      </div>
-                      <div class="col-8 col-sm-8 col-md-8 p-0">
-                        <span style="position: relative; top: 4px;" data-toggle="modal"
-                          data-target="#reminderModal">Reminder </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
+                                        <div class="row pl-3">
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span>
+                                                    <img style="width: 25px;" data-toggle="modal"
+                                                        data-target="#reminderModal" src="../assets/images/reminder.png"
+                                                        alt="">
+                                                </span>
+                                            </div>
+                                            <div class="col-8 col-sm-8 col-md-8 p-0">
+                                                <span style="position: relative; top: 4px;" data-toggle="modal"
+                                                    data-target="#reminderModal">Reminder </span>
+                                            </div>
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span style="position: relative; top: 8px;">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </label>
                                 </a>
                             </div>
                             <hr>
@@ -568,35 +604,35 @@
               </a>
             </div> -->
                             <div class="nav-collapsible">
-                                <a href="UserDash/customerProfile.html">
+                                <a href="/UserDash/customerProfile.html">
                                     <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Your Account </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
+                                        <div class="row pl-3">
+                                            <div class="col-10 col-sm-10 col-md-10 p-0">
+                                                <span style="position: relative; top: 4px;">Your Account </span>
+                                            </div>
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span style="position: relative; top: 8px;">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </label>
                                 </a>
                             </div>
                             <div class="nav-collapsible">
                                 <a href="#">
                                     <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Contact us </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
+                                        <div class="row pl-3">
+                                            <div class="col-10 col-sm-10 col-md-10 p-0">
+                                                <span style="position: relative; top: 4px;">Contact us </span>
+                                            </div>
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span style="position: relative; top: 8px;">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </label>
                                 </a>
                             </div>
                             <!-- <div class="nav-collapsible">
@@ -618,73 +654,75 @@
                             <div class="nav-collapsible">
                                 <a data-toggle="modal" data-target="#topoffer">
                                     <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;" data-toggle="modal" data-target="#modalYT">Offers
-                        </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
+                                        <div class="row pl-3">
+                                            <div class="col-10 col-sm-10 col-md-10 p-0">
+                                                <span style="position: relative; top: 4px;" data-toggle="modal"
+                                                    data-target="#modalYT">Offers
+                                                </span>
+                                            </div>
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span style="position: relative; top: 8px;">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </label>
                                 </a>
                             </div>
                             <div class="nav-collapsible">
                                 <a href="/Common/coupans.html">
                                     <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Coupons </span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-chevron-right"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
+                                        <div class="row pl-3">
+                                            <div class="col-10 col-sm-10 col-md-10 p-0">
+                                                <span style="position: relative; top: 4px;">Coupons </span>
+                                            </div>
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span style="position: relative; top: 8px;">
+                                                    <i class="fas fa-chevron-right"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </label>
                                 </a>
                             </div>
 
                             <div class="nav-collapsible" style="display: none;" id="logoutMobile">
                                 <a href="#!" onclick="logOut()">
                                     <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Log Out</span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fas fa-power-off"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
+                                        <div class="row pl-3">
+                                            <div class="col-10 col-sm-10 col-md-10 p-0">
+                                                <span style="position: relative; top: 4px;">Log Out</span>
+                                            </div>
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span style="position: relative; top: 8px;">
+                                                    <i class="fas fa-power-off"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </label>
                                 </a>
                             </div>
                             <div class="nav-collapsible" id="loginMobile">
                                 <a href="/Auth/login.html">
                                     <label for="nav-collapsible-1" style="width: 100%;">
-                    <div class="row pl-3">
-                      <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;">Log In</span>
-                      </div>
-                      <div class="col-2 col-sm-2 col-md-2 p-0">
-                        <span style="position: relative; top: 8px;">
-                          <i class="fa fa-sign-in"></i>
-                        </span>
-                      </div>
-                    </div>
-                  </label>
+                                        <div class="row pl-3">
+                                            <div class="col-10 col-sm-10 col-md-10 p-0">
+                                                <span style="position: relative; top: 4px;">Log In</span>
+                                            </div>
+                                            <div class="col-2 col-sm-2 col-md-2 p-0">
+                                                <span style="position: relative; top: 8px;">
+                                                    <i class="fa fa-sign-in"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </label>
                                 </a>
                             </div>
 
                         </div>
                     </aside>
-                    <div class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
+                    <div
+                        class="search col-lg-4 col-sm-12 col-12 order-last order-sm-2 order-md-2 text-right remove-padding">
                         <div class="row">
                             <div class="col-md-1"></div>
                             <div class="col-md-10 col-12 p-0 mt-3 ml-4">
@@ -694,12 +732,17 @@
                                             <input class="form-control" style="width: 100% !important;
                     border: none;
                     border-bottom: 1px solid ;
-                    border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeydown="disableEnterKey(event)" onkeyup=searchByUserInput(event) name="searchBar" placeholder="Search: Cakes , Flowers ,Gifts...">
+                    border-radius: unset;background-color: transparent;" type="text" id="searchBar"
+                                                onkeydown="disableEnterKey(event)" onkeyup=searchByUserInput(event)
+                                                name="searchBar" placeholder="Search: Cakes , Flowers ,Gifts...">
                                         </div>
 
                                         <div class="input-group-append" onclick=searchByUserInputBtn(event)>
-                                            <button class="btn btn-outline-secondary" onclick=searchByUserInputBtn(event) style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent; border: #F00;"><i
-                          class="fa fa-search" style="color:red" onclick=searchByUserInputBtn(event)></i></button>
+                                            <button class="btn btn-outline-secondary"
+                                                onclick=searchByUserInputBtn(event)
+                                                style="padding: 0px 16px; border-radius: 0px 15px 15px 0px;  background:transparent; border: #F00;"><i
+                                                    class="fa fa-search" style="color:red"
+                                                    onclick=searchByUserInputBtn(event)></i></button>
                                         </div>
                                     </form>
                                 </div>
@@ -708,13 +751,16 @@
                     </div>
 
 
-                    <div class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
+                    <div
+                        class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
                         <ul style="display: inline-flex;">
                             <li>
                                 <a href="#">
                                     <div class="text-center">
-                                        <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
-                                        <div style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                                        <img src="/assets/images/MidnightDelivery.png"
+                                            style="width:50px;object-fit: cover;">
+                                        <div
+                                            style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
                                             MIDNIGHT</div>
                                     </div>
                                 </a>
@@ -722,14 +768,17 @@
                             <li style="padding: 0px 28px;">
                                 <a href="#">
                                     <img src="/assets/images/chef.png" style="width:50px;object-fit: cover;">
-                                    <div style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                                    <div
+                                        style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
                                         BE A CHEF</div>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" type="button" data-toggle="modal" data-target="#reminderModal">
-                                    <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png" alt="">
-                                    <div data-toggle="modal" data-target="#reminderModal" style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
+                                    <img style="width:80px;object-fit: cover;" src="../assets/images/reminder.png"
+                                        alt="">
+                                    <div data-toggle="modal" data-target="#reminderModal"
+                                        style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
                                         REMINDER</div>
                                 </a>
                             </li>
@@ -747,43 +796,62 @@
 
 
                                 <li class="nav-item dropdown" style="margin-top: 15%;">
-                                    <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg" alt="User Logos" style="width: 40px !important; object-fit: cover;border-radius: 50px;" class="rounded-circle">
+                                    <a class=" dropdown-toggle" href="#!" id="navbarDropdownMenuLink" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img class=" responsiveIcon1" src="/assets/images/userIcon.png" id="userImg"
+                                            alt="User Logos"
+                                            style="width: 40px !important; object-fit: cover;border-radius: 50px;"
+                                            class="rounded-circle">
 
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right show" style="padding: 10px; ;margin-top:0%;border-radius: 5px;background-color: #ffffff; box-shadow: 
                     inset 0 -3em 3em rgba(0,0,0,0.1), 
                           0 0  0 2px rgb(255,255,255),
-                          0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown" aria-labelledby="navbarDropdownMenuLink">
-                                        <div style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
+                          0.3em 0.3em 1em rgba(0,0,0,0.3);" data-toggle="dropdown"
+                                        aria-labelledby="navbarDropdownMenuLink">
+                                        <div
+                                            style="padding: 0px;width: 200px;background-color: rgb(248, 244, 238);padding: 5px;border-radius: 5px;">
                                             <a class="dropdown-item" href="#">
-                                                <h4 style="font-size: 12px;color:#000;text-align: center;" id="showLoggedIn">Hi Guest! Login to continue</h4>
-                                                <center><button class="dropButton" id="logInBtn" onclick="redirectLogin()">Login</button>
+                                                <h4 style="font-size: 12px;color:#000;text-align: center;"
+                                                    id="showLoggedIn">Hi Guest! Login to continue</h4>
+                                                <center><button class="dropButton" id="logInBtn"
+                                                        onclick="redirectLogin()">Login</button>
                                                 </center>
                                             </a>
                                         </div>
 
-                                        <a class="dropdown-item " style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="" onclick="checkifUser('/UserDash/customerProfile.html')"><i class="fa fa-user"></i>
-                      Profile</a>
+                                        <a class="dropdown-item "
+                                            style="padding:12px;font-weight: 400 !important; font-size: 13px;" href=""
+                                            onclick="checkifUser('/UserDash/customerProfile.html')"><i
+                                                class="fa fa-user"></i>
+                                            Profile</a>
 
                                         <!-- <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;"
                     href="#!" onclick="checkifUser('/UserDash/trackOrders.html')"><i class="fa fa-truck"></i> Track
                     Orders</a> -->
 
-                                        <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!" onclick="checkifUser('/UserDash/customerProfile.html')"><i
-                        class="fa fa-shopping-cart"></i> My
-                      Orders</a>
+                                        <a class="dropdown-item"
+                                            style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!"
+                                            onclick="checkifUser('/UserDash/customerProfile.html')"><i
+                                                class="fa fa-shopping-cart"></i> My
+                                            Orders</a>
 
-                                        <a class="dropdown-item responsive-secCart" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!" onclick="checkifUser('/UserDash/cart.html')"><i class="fa fa-shopping-cart"></i> My Cart</a>
+                                        <a class="dropdown-item responsive-secCart"
+                                            style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#!"
+                                            onclick="checkifUser('/UserDash/cart.html')"><i
+                                                class="fa fa-shopping-cart"></i> My Cart</a>
 
-                                        <a class="dropdown-item" style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#" id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
-                      Logout</a>
+                                        <a class="dropdown-item"
+                                            style="padding:12px;font-weight: 400 !important; font-size: 13px;" href="#"
+                                            id="hideLogOut" onclick="logOut()"><i class="fa fa-power-off"></i>
+                                            Logout</a>
                                     </div>
                                 </li>
 
 
-                                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: none;" data-toggle="tooltip" data-placement="top" title="Cart">
+                                <li class="my-dropdown responsiveIcon2" id="cart-modal" style="display: none;"
+                                    data-toggle="tooltip" data-placement="top" title="Cart">
 
                                 </li>
                             </ul>
@@ -828,7 +896,8 @@
 
 
 
-                            <h5 style="text-align: center;font-size: 14px ; font-weight: 700px; padding: 20px;">Please Wait ! Loading Your Bag...</h5>
+                            <h5 style="text-align: center;font-size: 14px ; font-weight: 700px; padding: 20px;">Please
+                                Wait ! Loading Your Bag...</h5>
 
 
 
@@ -864,7 +933,8 @@
                     <div class="order-box">
                         <h4 class="title" style="text-align: center;padding-bottom: 10px;">PRICE BREAKUP</h4>
                         <ul class="order-list">
-                            <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select products to checkout
+                            <div id="empty-checkout" style="text-align: center; color: red; display: block;">Select
+                                products to checkout
                             </div>
                             <!-- <li>
                   <p>
@@ -888,8 +958,9 @@
 
                                 </p>
                         </div>
-                        <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive of all
-                taxes)</span></p><br>
+                        <p><span style="font-size: 13px;    font-weight: 600;    color: #bbbab0e6;float:right;">(Inclusive
+                                of all
+                                taxes)</span></p><br>
                         <!-- <div class="cupon-box">
                 <div id="coupon-link">
                   Have a promotion code?
@@ -900,10 +971,12 @@
                   <button type="submit">Apply</button>
                 </form>
               </div> -->
-                        <button data-target="#addonsModal" data-toggle="modal" class="order-btn" id="checkoutBtn" disabled style="background-color: transparent;color: red;outline: none; border: 1px solid red; border-radius: 5px; text-align: center; vertical-align: middle !important;">
-              Checkout
-              <i class="fa fa-arrow-right"></i>
-            </button>
+                        <button data-target="#addonsModal" data-toggle="modal" class="order-btn" id="checkoutBtn"
+                            disabled
+                            style="background-color: transparent;color: red;outline: none; border: 1px solid red; border-radius: 5px; text-align: center; vertical-align: middle !important;">
+                            Checkout
+                            <i class="fa fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -924,12 +997,15 @@
                             <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
-                                        <div class="modal-header" style="background-color: rgb(231, 50, 18);padding: 10px !important;">
-                                            <h4 class="modal-title text-center tb" style="color:#fff;font-weight: 800;margin-left: auto;margin-right: auto;">Add Extra Love For Your Loved Ones
+                                        <div class="modal-header"
+                                            style="background-color: rgb(231, 50, 18);padding: 10px !important;">
+                                            <h4 class="modal-title text-center tb"
+                                                style="color:#fff;font-weight: 800;margin-left: auto;margin-right: auto;">
+                                                Add Extra Love For Your Loved Ones
                                             </h4>
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         </div>
-                                        <div class="modal-body" style="overflow-y: scroll;">
+                                        <div class="modal-body" style="overflow-y: scroll;max-height: 550px;">
                                             <div class="container-fluid">
                                                 <div class="row" id="allAddons">
                                                     <!-- <div class="col-md-3 col-6 mt-3">
@@ -975,15 +1051,20 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <a id="qaddcrt" href="javascript:;" style="border-radius: 0px; background: #fff; border: 0px;display: flex;">
+                                            <a id="qaddcrt" href="javascript:;"
+                                                style="border-radius: 0px; background: #fff; border: 0px;display: flex;">
                                                 <!-- <h5 style="padding: 20px ;font-weight: 900;"> Total Price :₹ <span id="cost-with-addons"></span>
                         </h5>
                         <button type="button" class="btn btn-secondary" id="prod_with_addons"
                           style="background-color: rgb(238, 44, 10);">Checkout Without Addons</button> -->
 
-                                                <h5 class="resTxt" style="padding: 20px ;font-weight: 800; "> Total Price :₹ <span id="cost-with-addons" style=""></span></h5>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <button type="button" class="btn btn-secondary resTxt2" id="prod_with_addons" style="background-color: rgb(197, 42, 42);">Continue Without
-                          Addons</button>
+                                                <h5 class="resTxt" style="padding: 20px ;font-weight: 800; "> Total
+                                                    Price :₹ <span id="cost-with-addons" style=""></span></h5>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                <button type="button" class="btn btn-secondary resTxt2"
+                                                    id="prod_with_addons"
+                                                    style="background-color: rgb(197, 42, 42);">Continue Without
+                                                    Addons</button>
 
 
                                             </a>
@@ -1012,14 +1093,16 @@
                 <!--Body-->
                 <div class="modal-body mb-0 p-0">
                     <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;">
-                        <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;" id="showOffer" src="" allowfullscreen>
+                        <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;"
+                            id="showOffer" src="" allowfullscreen>
                     </div>
                 </div>
 
                 <!--Footer-->
                 <div class="modal-footer justify-content-center flex-column flex-md-row">
 
-                    <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+                        data-dismiss="modal">Close</button>
                 </div>
 
             </div>
@@ -1028,15 +1111,18 @@
         </div>
     </div>
 
-    <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="reminderModalLabel" aria-hidden="true">
+    <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="reminderModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content container">
                 <div class="modal-header reminderHeader" style="width: 100%;">
-                    <h5 class="modal-title" id="reminderModalLabel" style="padding: 10px;text-align: center !important;font-weight: 800;">We will notify you on the selected day
+                    <h5 class="modal-title" id="reminderModalLabel"
+                        style="padding: 10px;text-align: center !important;font-weight: 800;">We will notify you on the
+                        selected day
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -1046,15 +1132,18 @@
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Type of Occasion</label>
-                            <input type="text" required placeholder="Birthday , Aniversary, etc...." class="form-control" id="reminder-type">
+                            <input type="text" required placeholder="Birthday , Aniversary, etc...."
+                                class="form-control" id="reminder-type">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="col-form-label">Enter a Email id</label>
-                            <input type="email" required placeholder="must include @" class="form-control" id="reminder-email">
+                            <input type="email" required placeholder="must include @" class="form-control"
+                                id="reminder-email">
                         </div>
                     </form>
                 </div>
-                <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="reminderMessage">
+                <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;"
+                    id="reminderMessage">
                     Notification Enabled Successfully<i class="fa fa-check"></i>
                 </h5>
                 <div class="modal-footer">
@@ -1115,7 +1204,7 @@
 <script src="../Common/navbar1.js"></script>
 
 <script>
-    $(".drobt").click(function() {
+    $(".drobt").click(function () {
         if ($('.drobt0').hasClass('drobt1')) {
             $('.drobt0').removeClass('drobt1');
             $('.drobt0').addClass('drobt2');
@@ -1148,11 +1237,11 @@
                             date: date,
                             type: type,
                             emailId: emailId
-                        }).then(function(docRef) {
+                        }).then(function (docRef) {
                             document.getElementById("reminderMessage").innerHTML = "Notifications enabled successfully"
                             document.getElementById("reminderMessage").style.display = "block"
                             document.getElementById("reminderMessage").style.color = "green"
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 document.getElementById("reminderMessage").style.display = "none"
                                 $("#reminderModal").modal('hide');
                             }, 2000)
@@ -1161,7 +1250,7 @@
                         document.getElementById("reminderMessage").innerHTML = "Server error !! Please try again"
                         document.getElementById("reminderMessage").style.display = "block"
                         document.getElementById("reminderMessage").style.color = "red"
-                        setTimeout(function() {
+                        setTimeout(function () {
                             document.getElementById("reminderMessage").style.display = "none"
                         }, 2000)
                     }
@@ -1169,7 +1258,7 @@
                     document.getElementById("reminderMessage").innerHTML = "Please enter a valid email id"
                     document.getElementById("reminderMessage").style.display = "block"
                     document.getElementById("reminderMessage").style.color = "red"
-                    setTimeout(function() {
+                    setTimeout(function () {
                         document.getElementById("reminderMessage").style.display = "none"
                     }, 2000)
                 }
@@ -1177,7 +1266,7 @@
                 document.getElementById("reminderMessage").innerHTML = "Please input an occasion type"
                 document.getElementById("reminderMessage").style.display = "block"
                 document.getElementById("reminderMessage").style.color = "red"
-                setTimeout(function() {
+                setTimeout(function () {
                     document.getElementById("reminderMessage").style.display = "none"
                 }, 2000)
             }
@@ -1186,7 +1275,7 @@
             document.getElementById("reminderMessage").innerHTML = "Please select a date"
             document.getElementById("reminderMessage").style.display = "block"
             document.getElementById("reminderMessage").style.color = "red"
-            setTimeout(function() {
+            setTimeout(function () {
                 document.getElementById("reminderMessage").style.display = "none"
             }, 2000)
         }
@@ -1198,7 +1287,7 @@
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
-    db.collection("offers").onSnapshot(async(snapshots) => {
+    db.collection("offers").onSnapshot(async (snapshots) => {
 
         let snapshotDocs = snapshots.docs;
 
@@ -1239,7 +1328,7 @@
     // const db = firebase.firestore();
     var docData, userDoc;
 
-    db.collection("Customers").onSnapshot(async(snapshots) => {
+    db.collection("Customers").onSnapshot(async (snapshots) => {
 
         checkUser = window.localStorage.getItem("locLoggedInUser");
 
@@ -1298,7 +1387,7 @@
         dbref.doc(checkUser).update({
             token: "null"
 
-        }).then(function() {
+        }).then(function () {
             window.localStorage.removeItem("locLoggedInUser")
             firebase.auth().signOut();
             location.reload();
@@ -1311,7 +1400,7 @@
     .drobt1 {
         transform: translateX(-101%);
     }
-    
+
     .drobt2 {
         transform: translateX(0%);
     }
@@ -1325,7 +1414,7 @@
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
 <script>
-    db.collection("offers").onSnapshot(async(snapshots) => {
+    db.collection("offers").onSnapshot(async (snapshots) => {
 
         let snapshotDocs = snapshots.docs;
 
@@ -1366,7 +1455,7 @@
     // const db = firebase.firestore();
     var docData, userDoc;
 
-    db.collection("Customers").onSnapshot(async(snapshots) => {
+    db.collection("Customers").onSnapshot(async (snapshots) => {
 
         checkUser = window.localStorage.getItem("locLoggedInUser");
 
@@ -1425,7 +1514,7 @@
         dbref.doc(checkUser).update({
             token: "null"
 
-        }).then(function() {
+        }).then(function () {
             window.localStorage.removeItem("locLoggedInUser")
             firebase.auth().signOut();
             location.reload();
@@ -1438,7 +1527,7 @@
     .drobt1 {
         transform: translateX(-101%);
     }
-    
+
     .drobt2 {
         transform: translateX(0%);
     }
