@@ -693,9 +693,8 @@ exports.sendEmailForgetPass = functions.firestore
 
     //for example
 
-    if (newValue.forgotCode && newValue.forgotCode !="verified") {
-      mailOptions.subject =
-        "Forgot Password ? Lake of cakes   ";
+    if (newValue.forgotCode && newValue.forgotCode != "verified") {
+      mailOptions.subject = "Forgot Password ? Lake of cakes   ";
       //for example
       mailOptions.html =
         `
@@ -788,7 +787,9 @@ exports.sendEmailForgetPass = functions.firestore
         newValue.UserName +
         `</b></div>
     <div style="text-align: center;"><b><br></b></div>
-    <div style="text-align: center;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="text-align: center; color: rgb(34, 34, 34); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; table-layout: fixed; overflow-wrap: break-word;"><tbody><tr><td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; font-weight: bold;">Your verification code for resetting LOC password is&nbsp;<span style="color: rgb(91, 101, 110); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;">` + newValue.forgotCode + `</span>.<br></td></tr><tr><td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; padding-bottom: 25px;">Please input this verification code in the input box to reset your LOC password.</td></tr></tbody></table></div>
+    <div style="text-align: center;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="text-align: center; color: rgb(34, 34, 34); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; table-layout: fixed; overflow-wrap: break-word;"><tbody><tr><td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; font-weight: bold;">Your verification code for resetting LOC password is&nbsp;<span style="color: rgb(91, 101, 110); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;">` +
+        newValue.forgotCode +
+        `</span>.<br></td></tr><tr><td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; padding-bottom: 25px;">Please input this verification code in the input box to reset your LOC password.</td></tr></tbody></table></div>
     <h4 style="text-align: center; "><font face="Times New Roman"><b>The Lakeofcakes Team.</b></font></h4></div><center><small>*</small><span style="color: rgb(34, 34, 34); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; text-align: start;">Please do not reply to this email. The mailbox that generated this email is not monitored for replies.</span><br>
       <h4 style="font-weight: 800;">Call +91 - 9598891097</h4>
   </center>
@@ -1091,11 +1092,16 @@ exports.sendEmailAfterConfirmation = functions.firestore
     //for example
     let duplicate = "";
     let delivertTypePrice = 0;
-    let timeStamp, timeDate, dTime, shippingData, totalCost, deliverType;
+    let timeStamp,
+      timeDate,
+      dTime,
+      shippingData,
+      totalCost,
+      deliverType = 0;
 
     for (let o of newValue.orders) {
-      if (o.status == "success") {
-        for (op of o.products) {
+      if (o.status == "success" && ) {
+        for (let op of o.products) {
           let opRef = admin.firestore().collection(op.cat).doc(op.prodId);
           await opRef.get().then((opDoc) => {
             let cake = "";
@@ -1124,46 +1130,78 @@ exports.sendEmailAfterConfirmation = functions.firestore
           `;
           });
         }
-      }
-      // console.log(duplicate);
-      if(o.success.orderTime){
-        timeStamp = o.success.orderTime;
-      }
-      if(o.success.totalCost){
-        totalCost = o.success.totalCost;
-      }
-      if(o.success.type){
-        deliverType = o.success.type;
-      }
-      
-      if (deliverType === "free") {
-        dTime = "8:00AM to 5:00pM";
-      } else if (deliverType === "perfect") {
-        dTime = timeStamp;
-      } else {
-        dTime = `11:30PM to 12:00AM`;
-      }
 
-      timeDate = o.success.date;
-      await admin
-        .firestore()
-        .collection("miscellaneous")
-        .doc("shipTimePrice")
-        .get()
-        .then((shipPriceDoc) => {
-          let shipPriceData = shipPriceDoc.data();
-          for (sp of shipPriceData.shipTypes) {
-            if (sp.type === deliverType) {
-              delivertTypePrice = +sp.charge;
-            }
+        // addons
+        let duplicatAddons = '';
+        for(let addd of o.addons) {
+          // adon detail
+
+          admin.firestore().collection('addons').doc(addd.id).get(addDoc => {
+            let adddData = addDoc.data();
+            // add name
+            // let adddName = adddData.name;
+            console.log(adddName);
+
+            // // add price
+            // let addPrice = +adddData.price;
+            console.log(addPrice);
+
+            // // add qty
+            // let addQty = addd.qty;
+            console.log(addQty);
+
+            duplicatAddons += `
+            <tr style="padding: 20px;margin: 15%;text-align: center;">
+              <td style="border: 2px solid black;"><img src="${adddData.imgUrl}" width="90" alt=""></td>
+              <td style="border: 2px solid black;">${adddData.name}
+              Qty : ${addd.qty}
+              </pre>
+              </td>
+            </tr>
+            `;
+          })
+        }
+
+        // console.log(duplicate);
+        if (o.success) {
+          if (o.success.orderTime) {
+            timeStamp = o.success.orderTime;
           }
-        });
+          if (o.success.totalCost) {
+            totalCost = o.success.totalCost;
+          }
+          if (o.success.type) {
+            deliverType = o.success.type;
+          }
+          timeDate = o.success.date;
+        }
 
-      shippingData = o.success.shippingData;
-    }
+        if (deliverType === "free") {
+          dTime = "8:00AM to 5:00pM";
+        } else if (deliverType === "perfect") {
+          dTime = timeStamp;
+        } else {
+          dTime = `11:30PM to 12:00AM`;
+        }
 
-    mailOptions.html =
-      `
+        await admin
+          .firestore()
+          .collection("miscellaneous")
+          .doc("shipTimePrice")
+          .get()
+          .then((shipPriceDoc) => {
+            let shipPriceData = shipPriceDoc.data();
+            for (sp of shipPriceData.shipTypes) {
+              if (sp.type === deliverType) {
+                delivertTypePrice = +sp.charge;
+              }
+            }
+          });
+
+        shippingData = o.success.shippingData;
+
+        mailOptions.html =
+          `
       <style type="text/css">
       /* Default CSS */
       body,#body_style {margin: 0; padding: 0; background: #f9f9f9; font-size: 14px; color: #5b656e;}
@@ -1286,17 +1324,14 @@ ${shippingData.differtAddress ? shippingData.alt_name : shippingData.name}
 ${shippingData.differtAddress ? shippingData.alt_address : shippingData.address}
 Lucknow 
 Lucknow, Uttar Pradesh, ${
-        shippingData.differtAddress ? shippingData.alt_zip : shippingData.zip
-      }
+            shippingData.differtAddress
+              ? shippingData.alt_zip
+              : shippingData.zip
+          }
        </span><br><span style="font-family: &quot;Times New Roman&quot;;">
 Amount Paid :Rs ${totalCost}</span>
           </pre>
-  </div>
-  
-      ` +
-      duplicate +
-      `
-  <table style="border: 2px solid orange;padding: 30px;width: 100%;">
+  </div>${duplicate}${duplicatAddons}<table style="border: 2px solid orange;padding: 30px;width: 100%;">
       <thead style="padding: 20px;margin: 15%;">
           <tr><th>Product Image</th>
           <th>Name</th>
@@ -1334,15 +1369,17 @@ Amount Paid :Rs ${totalCost}</span>
 </div>
     `;
 
-    try {
-      transporter.sendMail(mailOptions);
-      console.log("email sent to:", newValue.Email);
-      transporter.close();
-      // console.log(newValue.Email)
-    } catch (error) {
-      console.error(
-        "There was an error while sending the email:" + newValue.Email,
-        error
-      );
+        try {
+          transporter.sendMail(mailOptions);
+          console.log("email sent to:", newValue.Email);
+          transporter.close();
+          // console.log(newValue.Email)
+        } catch (error) {
+          console.error(
+            "There was an error while sending the email:" + newValue.Email,
+            error
+          );
+        }
+      }
     }
   });
