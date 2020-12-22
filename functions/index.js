@@ -1100,7 +1100,7 @@ exports.sendEmailAfterConfirmation = functions.firestore
       deliverType = 0;
 
     for (let o of newValue.orders) {
-      if (o.status == "success" && ) {
+      if (o.status == "success" ) {
         for (let op of o.products) {
           let opRef = admin.firestore().collection(op.cat).doc(op.prodId);
           await opRef.get().then((opDoc) => {
