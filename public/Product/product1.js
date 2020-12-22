@@ -261,6 +261,7 @@ const displayProduct = (prodData) => {
 
   if (prodData.flavours) {
     if (prodData.flavours.length > 0) {
+      document.querySelector('#all-flav').style.display = 'block';
       const cakeFlavourHTML = document.querySelector("#cake-flavour");
       let card = "";
       prodData.flavours.map((flav) => {
@@ -1028,6 +1029,7 @@ const buyProd = async (e) => {
           orderId: orderId,
           totalCost: document.querySelector("#cost-with-addons").innerHTML,
           status: "cancelled",
+          orginTimeStamp: new Date(),
           type: "single",
           addons: addonsSelected,
           products: [
@@ -1080,6 +1082,7 @@ const buyProd = async (e) => {
         let orderData = {
           orderId: orderId,
           status: "cancelled",
+          orginTimeStamp: new Date(),
           totalCost: document.querySelector("#cost-with-addons").innerHTML,
           type: "single",
           addons: addonsSelected,
@@ -1159,6 +1162,7 @@ const buyProd = async (e) => {
     let buyNowData = {
       orderId: orderId,
       status: "cancelled",
+      orginTimeStamp: new Date(),
       totalCost: document.querySelector("#cost-with-addons").innerHTML,
       type: "single",
       addons: addonsSelected,
