@@ -19,6 +19,15 @@ db.collection("orders").onSnapshot((snapshots) => {
     docData.docId = doc.id;
     ORDERS.push(docData);
   });
+  // console.log(ORDERS);
+  function compare(a, b) {
+    let o1 = a.timeStamp;
+    let o2 = b.timeStamp;
+    // console.log(o1, o2);
+    return o2 - o1;
+  }
+
+  ORDERS.sort(compare);
   displayOrdersTable();
 });
 
