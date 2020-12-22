@@ -14,7 +14,7 @@ db.collection('footer').doc('faqs').onSnapshot(doc => {
   let card = '';
   for(let faq of docData.faqs) {
     card += `
-    <div class="card">
+    <div class="">
       <div class="card-header">
         <h2 class="mb-0">
           <button class="btn" type="button" data-toggle="collapse" data-target="${faq.id}" aria-expanded="true" aria-controls="${faq.id}">
