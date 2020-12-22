@@ -1098,68 +1098,81 @@ exports.sendEmailAfterConfirmation = functions.firestore
       shippingData,
       totalCost,
       deliverType = 0;
+    var showOrders = "false";
+    let duplicatAddons = "";
+    let i = -1;
 
     for (let o of newValue.orders) {
-      if (o.status == "success" && ) {
+      i++;
+      let pv=previousValue.orders[i];
+      console.log(o.status + " ------ " + pv.status);
+      if (o.status == "success" && pv.status=="cancelled") {
+        console.log("Came into Function");
         for (let op of o.products) {
           let opRef = admin.firestore().collection(op.cat).doc(op.prodId);
           await opRef.get().then((opDoc) => {
             let cake = "";
             if (op.cake) {
               cake = `
-            <pre>
-            Weight : ${op.cake.weight} Kg 
-            Shape : ${op.cake.heart ? "Heart" : "Not Opted"}
-            Eggless : ${op.cake.eggless ? "Opted" : "Not Opted"}
-            Flavour : ${op.cake.flavour} 
-            `;
+                <pre>
+                Weight : ${op.cake.weight} Kg 
+                Shape : ${op.cake.heart ? "Heart" : "Not Opted"}
+                Eggless : ${op.cake.eggless ? "Opted" : "Not Opted"}
+                Flavour : ${op.cake.flavour} 
+                `;
             }
             let opData = opDoc.data();
             duplicate += `
-          <tr style="padding: 20px;margin: 15%;text-align: center;">
-            <td style="border: 2px solid black;"><img
-                    src="${opData.mainImgUrl}"
-                    width="90" alt=""></td>
-            <td style="border: 2px solid black;">${opData.name}
-            ${cake}
-            Message : ${op.message}
-            Qty : ${op.qty}
-            </pre>
-            </td>
-        </tr>
-          `;
+              <tr style="padding: 20px;margin: 15%;text-align: center;">
+                <td style="border: 2px solid black;"><img
+                        src="${opData.mainImgUrl}"
+                        width="90" alt=""></td>
+                <td style="border: 2px solid black;">${opData.name}
+                ${cake}
+                Message : ${op.message}
+                Qty : ${op.qty}
+                </pre>
+                </td>
+            </tr>
+              `;
           });
         }
 
         // addons
-        let duplicatAddons = '';
-        for(let addd of o.addons) {
+
+        for (let addd of o.addons) {
           // adon detail
+          console.log(addd);
+          await admin
+            .firestore()
+            .collection("addons")
+            .doc(addd.id)
+            .get()
+            .then((addDoc) => {
+              let adddData = addDoc.data();
+              // add name
+              let adddName = adddData.name;
+              console.log(adddName);
 
-          admin.firestore().collection('addons').doc(addd.id).get(addDoc => {
-            let adddData = addDoc.data();
-            // add name
-            // let adddName = adddData.name;
-            console.log(adddName);
+              // // add price
+              let addPrice = +adddData.price;
+              console.log(addPrice);
 
-            // // add price
-            // let addPrice = +adddData.price;
-            console.log(addPrice);
+              // // add qty
+              let addQty = addd.qty;
+              console.log(addQty);
 
-            // // add qty
-            // let addQty = addd.qty;
-            console.log(addQty);
-
-            duplicatAddons += `
-            <tr style="padding: 20px;margin: 15%;text-align: center;">
-              <td style="border: 2px solid black;"><img src="${adddData.imgUrl}" width="90" alt=""></td>
-              <td style="border: 2px solid black;">${adddData.name}
-              Qty : ${addd.qty}
-              </pre>
-              </td>
-            </tr>
-            `;
-          })
+              duplicatAddons += `
+                <tr style="padding: 20px;margin: 15%;text-align: center;">
+                  <td style="border: 2px solid black;"><img src="${adddData.imgUrl}" width="90" alt=""></td>
+                  <td style="border: 2px solid black;">${adddData.name}
+                  Qty : ${addd.qty}
+                  </pre>
+                  </td>
+                </tr>
+                `;
+            });
+          console.log(duplicatAddons);
         }
 
         // console.log(duplicate);
@@ -1200,174 +1213,175 @@ exports.sendEmailAfterConfirmation = functions.firestore
 
         shippingData = o.success.shippingData;
 
-        mailOptions.html =
-          `
-      <style type="text/css">
-      /* Default CSS */
-      body,#body_style {margin: 0; padding: 0; background: #f9f9f9; font-size: 14px; color: #5b656e;}
-      a {color: #09c;}
-      a img {border: none; text-decoration: none;}
-      table, table td {border-collapse: collapse;}
-      td, h1, h2, h3 {font-family: tahoma, geneva, sans-serif; color: #313a42;}
-      h1, h2, h3, h4 {color: #313a42 !important; font-weight: normal; line-height: 1.2;}
-      h1 {font-size: 24px;}
-      h2 {font-size: 18px;}
-      h3 {font-size: 16px;}
-      p {margin: 0 0 1.6em 0;}
+        mailOptions.html = `
+          <style type="text/css">
+          /* Default CSS */
+          body,#body_style {margin: 0; padding: 0; background: #f9f9f9; font-size: 14px; color: #5b656e;}
+          a {color: #09c;}
+          a img {border: none; text-decoration: none;}
+          table, table td {border-collapse: collapse;}
+          td, h1, h2, h3 {font-family: tahoma, geneva, sans-serif; color: #313a42;}
+          h1, h2, h3, h4 {color: #313a42 !important; font-weight: normal; line-height: 1.2;}
+          h1 {font-size: 24px;}
+          h2 {font-size: 18px;}
+          h3 {font-size: 16px;}
+          p {margin: 0 0 1.6em 0;}
+          
+          /* Force Outlook to provide a "view in browser" menu link. */
+          #outlook a {padding:0;}
+          
+          /* Preheader and webversion */
+          .preheader {background-color: #5b656e;}
+          .preheaderContent,.webversion,.webversion a {color: white; font-size: 10px;}
+          .preheaderContent{width: 440px;}
+          .preheaderContent,.webversion {padding: 5px 10px;}
+          .webversion {width: 200px; text-align: right;}
+          .webversion a {text-decoration: underline;}
+          .webversion,.webversion a {color: #ffffff; font-size: 10px;}
+          
+          /* Topheader */
+          .topHeader {background: #ffffff;}
+          
+          /* Logo (branding) */
+          .logoContainer {padding: 20px 0 10px 0px; width: 320px;}
+          .logoContainer a {color: #ffffff;}
+          
+          /* Whitespace (imageless spacer) and divider */
+          .whitespace, .whitespaceDivider {font-family: 0px; line-height: 0px;}
+          .whitespaceDivider {border-bottom: 1px solid #cccccc;}
+          
+          /* Button */
+          .buttonContainer {padding: 10px 0px 10px 0px;}
+          .button {padding: 5px 5px 5px 5px; text-align: center; background-color: #51c4d4}
+          .button a {color: #ffffff; text-decoration: none; font-size: 13px;}
+          
+          /* Section */
+          .sectionMainTitle{font-family: Tahoma, sans-serif; font-size: 16px; padding: 0px 0px 5px 0;}
+          .sectionArticleTitle, .sectionMainTitle {color: #5b656e;}
+          
+          /* An article */
+          .sectionArticleTitle, .sectionArticleContent {text-align: center; padding: 0px 5px 0px 5px;}
+          .sectionArticleTitle {font-size: 12px; font-weight: bold;}
+          .sectionArticleContent {font-size: 10px; line-height: 12px;}
+          .sectionArticleImage {padding: 8px 0px 0px 0px;}
+          .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
+          
+          /* Footer and Social media */
+          .footer {background-color: #51c4d4;}
+          .footNotes {padding: 0px 20px 0px 20px;}
+          .footNotes a {color: #ffffff; font-size: 13px;}
+          .socialMedia {background: #5b656e;}
+          
+          /* Article image */
+          .sectionArticleImage {padding: 8px 0px 0px 0px;}
+          .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
+          
+          /* Product card */
+          .card {background-color: #ffffff; border-bottom: 2px solid #5b656e;}
+          
+          /* Column */
+          .column {padding-bottom: 20px;}
+          
+          
+          /* CSS for specific screen width(s) */
+          @media only screen and (max-width: 480px) {
+              body[yahoofix] table {width: 100% !important;}
+              body[yahoofix] .webversion {display: none; font-size: 0; max-height: 0; line-height: 0; mso-hide: all;}
+              body[yahoofix] .logoContainer {text-align: center;}
+              body[yahoofix] .logo {width: 80%;}
+              body[yahoofix] .buttonContainer {padding: 0px 20px 0px 20px;}
+              body[yahoofix] .column {float: left; width: 100%; margin: 0px 0px 30px 0px;}
+              body[yahoofix] .card {padding: 20px 0px;}
+            }
+        </style>
+          <div style="width: 100%;display:flex;; ">
+      <div style="width: 80%"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" style="width: 263.921px; height: 65.1px;"></div>
+      <div style="margin: 1%;right:0;"><span style="font-size: 20px;">Order</span> <b style="font-size: 20px;">Placed</b></div>
+    </div>
+    <div style="width: 100%;display:flex;">
+      <div style="width: 80%;margin: 1%;"> Hi ${
+        newValue.UserName
+      },<br>Your order has been successfully placed.</div>
+      <div style="margin: 1%;right:0;"><span style="font-size: 20px;"></span> <b style="font-size: 15px;">Order placed
+              on ${timeStamp}</b></div>
+    </div>
+    <div style="text-align: center; "><br></div>
+    <div style="text-align: center; "><br></div>
+    <div style="text-align: left;">
+      <div style="text-align: center;"><b><br></b></div>
+      <div style="text-align: left;">
+          <h5 style="text-align: center; ">
+              <font face="Times New Roman"><b>We are committed to serving you with utmost regard for your and your
+                      product's safety. Hence, please&nbsp;</b></font>
+              <font face="Times New Roman"><b>note, the delivery time of your order may change due to traffic &amp;
+                      natural calamities (like rain, storm, fog&nbsp;</b></font>
+              </h5><h5 style="text-align: center; ">
+                  <font face="Times New Roman"><b>etc.) AND based on the government's zonal advisory in your area
+                          regarding COVID-19.</b></font>
+              </h5>
+      </div>
+    </div>
+    <center>
+      <div style="width: 80%;display:flex;;">
+          <div style="width: 60%;margin-left:auto;margin-right:auto;display:block"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/Capture.PNG?alt=media&amp;token=4140cc7f-c7cb-47be-846c-d0e9fadc46a9" width="330" style=" @media only screen and (min-width:900px) {
+              width:900px !important;object-fit:cover;
+          }   object-fit:cover;" alt=""></div>
+      </div>
+      <div style="margin: 1%;right:0;border: 2px solid brown;"><span style="font-size: 20px;"></span>
+          <pre>     <span style="font-family: &quot;Times New Roman&quot;;"> Delivery By :${timeDate}
+          ${dTime}
+          </span><br><b>Delivery Address</b><span style="font-family: &quot;Times New Roman&quot;;">
+          </span><br><span style="font-family: &quot;Times New Roman&quot;;">
+    ${shippingData.differtAddress ? shippingData.alt_name : shippingData.name}
+    ${
+      shippingData.differtAddress
+        ? shippingData.alt_address
+        : shippingData.address
+    }
+    Lucknow 
+    Lucknow, Uttar Pradesh, ${
+      shippingData.differtAddress ? shippingData.alt_zip : shippingData.zip
+    }
+           </span><br><span style="font-family: &quot;Times New Roman&quot;;">
+    Amount Paid :Rs ${totalCost}</span>
+              </pre>
+      </div>${duplicate}${duplicatAddons}<table style="border: 2px solid orange;padding: 30px;width: 100%;">
+          <thead style="padding: 20px;margin: 15%;">
+              <tr><th>Product Image</th>
+              <th>Name</th>
+          </tr></thead></table>
+      <b></b><table style="float: right;margin-right: 5%;font-size: 20px;">
+          <tbody><tr>
+              <td>Item(s) total (including GST)</td>
+              <td>${totalCost - delivertTypePrice}</td>
+          </tr>
+          <tr>
+              <td>Perfect Hours Charges </td>
+              <td>${delivertTypePrice}</td>
+          </tr>
+          <tr>
+              <td style="font-weight: 800;">Amount Paid</td>
+              <td style="font-weight: 800;">${totalCost}</td>
+          </tr>
+      </tbody></table>
       
-      /* Force Outlook to provide a "view in browser" menu link. */
-      #outlook a {padding:0;}
-      
-      /* Preheader and webversion */
-      .preheader {background-color: #5b656e;}
-      .preheaderContent,.webversion,.webversion a {color: white; font-size: 10px;}
-      .preheaderContent{width: 440px;}
-      .preheaderContent,.webversion {padding: 5px 10px;}
-      .webversion {width: 200px; text-align: right;}
-      .webversion a {text-decoration: underline;}
-      .webversion,.webversion a {color: #ffffff; font-size: 10px;}
-      
-      /* Topheader */
-      .topHeader {background: #ffffff;}
-      
-      /* Logo (branding) */
-      .logoContainer {padding: 20px 0 10px 0px; width: 320px;}
-      .logoContainer a {color: #ffffff;}
-      
-      /* Whitespace (imageless spacer) and divider */
-      .whitespace, .whitespaceDivider {font-family: 0px; line-height: 0px;}
-      .whitespaceDivider {border-bottom: 1px solid #cccccc;}
-      
-      /* Button */
-      .buttonContainer {padding: 10px 0px 10px 0px;}
-      .button {padding: 5px 5px 5px 5px; text-align: center; background-color: #51c4d4}
-      .button a {color: #ffffff; text-decoration: none; font-size: 13px;}
-      
-      /* Section */
-      .sectionMainTitle{font-family: Tahoma, sans-serif; font-size: 16px; padding: 0px 0px 5px 0;}
-      .sectionArticleTitle, .sectionMainTitle {color: #5b656e;}
-      
-      /* An article */
-      .sectionArticleTitle, .sectionArticleContent {text-align: center; padding: 0px 5px 0px 5px;}
-      .sectionArticleTitle {font-size: 12px; font-weight: bold;}
-      .sectionArticleContent {font-size: 10px; line-height: 12px;}
-      .sectionArticleImage {padding: 8px 0px 0px 0px;}
-      .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
-      
-      /* Footer and Social media */
-      .footer {background-color: #51c4d4;}
-      .footNotes {padding: 0px 20px 0px 20px;}
-      .footNotes a {color: #ffffff; font-size: 13px;}
-      .socialMedia {background: #5b656e;}
-      
-      /* Article image */
-      .sectionArticleImage {padding: 8px 0px 0px 0px;}
-      .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
-      
-      /* Product card */
-      .card {background-color: #ffffff; border-bottom: 2px solid #5b656e;}
-      
-      /* Column */
-      .column {padding-bottom: 20px;}
-      
-      
-      /* CSS for specific screen width(s) */
-      @media only screen and (max-width: 480px) {
-          body[yahoofix] table {width: 100% !important;}
-          body[yahoofix] .webversion {display: none; font-size: 0; max-height: 0; line-height: 0; mso-hide: all;}
-          body[yahoofix] .logoContainer {text-align: center;}
-          body[yahoofix] .logo {width: 80%;}
-          body[yahoofix] .buttonContainer {padding: 0px 20px 0px 20px;}
-          body[yahoofix] .column {float: left; width: 100%; margin: 0px 0px 30px 0px;}
-          body[yahoofix] .card {padding: 20px 0px;}
-        }
-    </style>
-      <div style="width: 100%;display:flex;; ">
-  <div style="width: 80%"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" style="width: 263.921px; height: 65.1px;"></div>
-  <div style="margin: 1%;right:0;"><span style="font-size: 20px;">Order</span> <b style="font-size: 20px;">Placed</b></div>
-</div>
-<div style="width: 100%;display:flex;">
-  <div style="width: 80%;margin: 1%;"> Hi ${
-    newValue.UserName
-  },<br>Your order has been successfully placed.</div>
-  <div style="margin: 1%;right:0;"><span style="font-size: 20px;"></span> <b style="font-size: 15px;">Order placed
-          on ${timeStamp}</b></div>
-</div>
-<div style="text-align: center; "><br></div>
-<div style="text-align: center; "><br></div>
-<div style="text-align: left;">
-  <div style="text-align: center;"><b><br></b></div>
-  <div style="text-align: left;">
-      <h5 style="text-align: center; ">
-          <font face="Times New Roman"><b>We are committed to serving you with utmost regard for your and your
-                  product's safety. Hence, please&nbsp;</b></font>
-          <font face="Times New Roman"><b>note, the delivery time of your order may change due to traffic &amp;
-                  natural calamities (like rain, storm, fog&nbsp;</b></font>
-          </h5><h5 style="text-align: center; ">
-              <font face="Times New Roman"><b>etc.) AND based on the government's zonal advisory in your area
-                      regarding COVID-19.</b></font>
-          </h5>
-  </div>
-</div>
-<center>
-  <div style="width: 80%;display:flex;;">
-      <div style="width: 60%;margin-left:auto;margin-right:auto;display:block"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/Capture.PNG?alt=media&amp;token=4140cc7f-c7cb-47be-846c-d0e9fadc46a9" width="330" style=" @media only screen and (min-width:900px) {
-          width:900px !important;object-fit:cover;
-      }   object-fit:cover;" alt=""></div>
-  </div>
-  <div style="margin: 1%;right:0;border: 2px solid brown;"><span style="font-size: 20px;"></span>
-      <pre>     <span style="font-family: &quot;Times New Roman&quot;;"> Delivery By :${timeDate}
-      ${dTime}
-      </span><br><b>Delivery Address</b><span style="font-family: &quot;Times New Roman&quot;;">
-      </span><br><span style="font-family: &quot;Times New Roman&quot;;">
-${shippingData.differtAddress ? shippingData.alt_name : shippingData.name}
-${shippingData.differtAddress ? shippingData.alt_address : shippingData.address}
-Lucknow 
-Lucknow, Uttar Pradesh, ${
-            shippingData.differtAddress
-              ? shippingData.alt_zip
-              : shippingData.zip
-          }
-       </span><br><span style="font-family: &quot;Times New Roman&quot;;">
-Amount Paid :Rs ${totalCost}</span>
-          </pre>
-  </div>${duplicate}${duplicatAddons}<table style="border: 2px solid orange;padding: 30px;width: 100%;">
-      <thead style="padding: 20px;margin: 15%;">
-          <tr><th>Product Image</th>
-          <th>Name</th>
-      </tr></thead></table>
-  <b></b><table style="float: right;margin-right: 5%;font-size: 20px;">
-      <tbody><tr>
-          <td>Item(s) total (including GST)</td>
-          <td>${totalCost - delivertTypePrice}</td>
-      </tr>
-      <tr>
-          <td>Perfect Hours Charges </td>
-          <td>${delivertTypePrice}</td>
-      </tr>
-      <tr>
-          <td style="font-weight: 800;">Amount Paid</td>
-          <td style="font-weight: 800;">${totalCost}</td>
-      </tr>
-  </tbody></table>
-  
-</center>
-<br>
-<br>
-<br>
-<br>
-<div>
-  <h4 style="margin-top: 8%;">
-      Thank you for shopping with <b>Lake of Cakes!</b>
-  </h4>
-</div>
-<div style="width: 100%;display:flex; ">
-  <div style="width: 80%"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" style="width: 263.921px; height: 65.1px;"></div>
-  <div style="margin: 1%;right:0;">
-      <img src="https://jetline.co.za/wp-content/uploads/2017/11/triangle-300x225.png" style="width: 263.921px; height: 65.1px;object-fit:contain">
-  </div>
-</div>
-    `;
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>
+      <h4 style="margin-top: 8%;">
+          Thank you for shopping with <b>Lake of Cakes!</b>
+      </h4>
+    </div>
+    <div style="width: 100%;display:flex; ">
+      <div style="width: 80%"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" style="width: 263.921px; height: 65.1px;"></div>
+      <div style="margin: 1%;right:0;">
+          <img src="https://jetline.co.za/wp-content/uploads/2017/11/triangle-300x225.png" style="width: 263.921px; height: 65.1px;object-fit:contain">
+      </div>
+    </div>
+        `;
 
         try {
           transporter.sendMail(mailOptions);
