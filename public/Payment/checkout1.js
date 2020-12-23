@@ -236,7 +236,7 @@ const calculateBill = async (discount = 0) => {
         ${pName}
       </p>
       <P>
-        <b>₹ ${gstPrice} (${gstPercent}%)</b>
+        <b>₹${Math.round(gstPrice)}(${gstPercent}%)</b>
       </P>
     </li>
     `;
@@ -968,6 +968,7 @@ const displayShippingInfo = (e) => {
 let options = '';
 let rzp1;
 const exeRazPay = e => {
+  document.getElementById("gettingReady").style.display = "none";
   let razName, razEmail, razAddress, razPhone;
   if(SHIPPING_DATA.shipDiffAddress) {
     razName = SHIPPING_DATA.alt_name,

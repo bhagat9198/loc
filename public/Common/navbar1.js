@@ -139,10 +139,10 @@ const scrollToTop = () => {
 };
 
 // When the button is clicked, run our ScrolltoTop function above!
-scrollToTopButton.onclick = function(e) {
-  e.preventDefault();
-  scrollToTop();
-}
+// scrollToTopButton.onclick = function(e) {
+//   e.preventDefault();
+//   scrollToTop();
+// }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // WITH DROP DOWN
 
