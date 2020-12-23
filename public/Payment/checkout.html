@@ -1145,7 +1145,7 @@
                       <div class="row">
                         <div class="col-lg-12  mt-3">
                           <div class="bottom-area paystack-area-btn">
-                            <button type="submit " class="mybtn1 2 responsive-sec2">Proceed </button>
+                            <button type="submit " id="proceed1Btn" class="mybtn1 2 responsive-sec2">Proceed </button>
                           </div>
                         </div>
                       </div>
@@ -1747,13 +1747,10 @@
     setTimeout(function () {
       document.getElementById("gettingReady").innerHTML = "Its all set!!Continue to payment ";
       document.getElementById("gettingReady").style.color = "green";
-      setTimeout(function () {
-        document.getElementById("gettingReady").style.display = "none"
-      }, 1000)
-      document.getElementById("rzp-button1").style.disabled = false
-
-
-
+      // setTimeout(function () {
+      //   document.getElementById("gettingReady").style.display = "none"
+      // }, 1000)
+      // document.getElementById("rzp-button1").style.disabled = false
     }, 5000)
     if ($('a.payment:first').data('val') == 'paystack') {
       $('.checkoutform').prop('id', 'step1-form');
@@ -1855,8 +1852,9 @@
   });
   var btnc = 0;
   var modalVisited = 0;
-  $(".mybtn1").click(function () {
-    if (btnc == 0) {
+  $("#proceed1Btn").click(function () {
+    console.log('proceed1Btn');
+    // if (btnc == 0) {
       let name = document.querySelector('#uname').value;
       let email = document.querySelector('#uemail').value;
       let phone = document.querySelector('#uphone').value;
@@ -1907,7 +1905,7 @@
           }
         } 
       }
-    }
+    // }
 
 
 

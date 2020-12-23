@@ -1183,7 +1183,7 @@ const buyProd = async (e) => {
       buyNowData.products[0].personalized = true;
       buyNowData.products[0].personalizedGiftDetails = personalizedGiftDetails;
     }
-    console.log("uuuu");
+    // console.log("uuuu");
     await sessionStorage.setItem("buyNowProd", JSON.stringify(buyNowData));
     window.location.href = "../Auth/login.html";
   }
