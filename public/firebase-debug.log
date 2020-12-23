@@ -1,0 +1,33 @@
+[debug] [2020-12-23T17:40:45.227Z] ----------------------------------------------------------------------
+[debug] [2020-12-23T17:40:45.229Z] Command:       E:\Program Files\nodejs\node.exe C:\Users\Bhagat Singh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2020-12-23T17:40:45.230Z] CLI Version:   9.0.1
+[debug] [2020-12-23T17:40:45.230Z] Platform:      win32
+[debug] [2020-12-23T17:40:45.230Z] Node Version:  v12.16.2
+[debug] [2020-12-23T17:40:45.231Z] Time:          Wed Dec 23 2020 23:10:45 GMT+0530 (India Standard Time)
+[debug] [2020-12-23T17:40:45.231Z] ----------------------------------------------------------------------
+[debug] [2020-12-23T17:40:45.231Z] 
+[debug] [2020-12-23T17:40:45.238Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-12-23T17:40:45.239Z] > authorizing via signed-in user
+[debug] [2020-12-23T17:40:45.239Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-12-23T17:40:45.242Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lake-of-cakes:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-12-23T17:40:46.539Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Wed, 23 Dec 2020 17:40:47 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1192","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-12-23T17:40:46.542Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lake-of-cakes  
+ 
+[debug] [2020-12-23T17:41:07.582Z] Server Error. connect ETIMEDOUT 216.58.200.138:443
+[debug] [2020-12-23T17:41:07.703Z] FirebaseError: Server Error. connect ETIMEDOUT 216.58.200.138:443
+    at Request._callback (C:\Users\Bhagat Singh\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:32:31)
+    at self.callback (C:\Users\Bhagat Singh\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (events.js:310:20)
+    at Request.EventEmitter.emit (domain.js:482:12)
+    at Request.onRequestError (C:\Users\Bhagat Singh\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:877:8)
+    at ClientRequest.emit (events.js:322:22)
+    at ClientRequest.EventEmitter.emit (domain.js:482:12)
+    at TLSSocket.socketErrorListener (_http_client.js:426:9)
+    at TLSSocket.emit (events.js:310:20)
+    at TLSSocket.EventEmitter.emit (domain.js:482:12)
+    at emitErrorNT (internal/streams/destroy.js:92:8)
+    at emitErrorAndCloseNT (internal/streams/destroy.js:60:3)
+    at processTicksAndRejections (internal/process/task_queues.js:84:21)
+[error] 
+[error] Error: Failed to get Firebase project lake-of-cakes. Please make sure the project exists and your account has permission to access it.
