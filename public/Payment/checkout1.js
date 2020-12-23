@@ -433,7 +433,7 @@ if (day.toString().length < 2) {
 // console.log(year, month, day);
 
 const setDateAndTime = () => {
-  alert(1);
+  // alert(1);
   year = date.getFullYear();
   month = date.getMonth() + 1;
   day = date.getDate();
@@ -450,19 +450,24 @@ const setDateAndTime = () => {
   }
   if (day.toString().length < 2) {
     day = `0${day}`;
-    console.log(day);
+    // console.log(day);
     // day = Number(day);
     // console.log(day);
   }
   // console.log(SHIPPING_DATA);
   // $("input[type=date]").val("");
   // hours = 19;
-  console.log(shippingDateHTML);
+  // console.log(shippingDateHTML);
+  // alert(year, month, day);
+  // console.log(year, month, day);
+
+  shippingDateHTML.value = `${year}-${month}-${day}`;
   shippingDateHTML.setAttribute("min", `${year}-${month}-${day}`);
-  console.log(shippingDateHTML);
+  shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
+  // console.log(shippingDateHTML);
   let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked').value;
   shippingType = shipVal;
-  console.log(shipVal);
+  // console.log(shipVal);
 
   let foudantHours = 0;
   let foudantHoursPerfect = 0;
@@ -779,7 +784,7 @@ const prodSummary = async (e) => {
     if (p.cake) {
       let weightNum;
       if (p.cake.weight === "half") {
-        weightNum = 0.5;
+        weightNum = `1/2`;
       } else if (p.cake.weight === "one") {
         weightNum = 1;
       } else if (p.cake.weight === "oneHalf") {
