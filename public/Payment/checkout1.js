@@ -69,9 +69,9 @@ const allProductsDetails = async () => {
       let docData = doc.data();
       p.pdata = docData;
       // console.log(docData);
-      if(docData.fondant) {
+      if (docData.fondant) {
         // console.log(docData);
-        if(docData.fondant === 'true') {
+        if (docData.fondant === "true") {
           // console.log(docData.fondant);
           FOUDANT = true;
         } else {
@@ -117,24 +117,24 @@ const calculateBill = async (discount = 0) => {
         if (w.cakeWeight === p.cake.weight) {
           basicPrice = w.weightPrice;
           break;
-        } 
+        }
         // console.log(basicPrice);
       }
 
       if (p.cake.eggless) {
-        egglessPrice = p.pdata.type.price ;
+        egglessPrice = p.pdata.type.price;
       }
 
       if (p.cake.heart) {
         heartPrice = p.pdata.shapes[0].shapePrice;
       }
       // console.log(basicPrice, egglessPrice, heartPrice);
-      totalProdPrice = (+basicPrice + +egglessPrice + +heartPrice) * (+p.qty);
+      totalProdPrice = (+basicPrice + +egglessPrice + +heartPrice) * +p.qty;
       // console.log(basicPrice, egglessPrice, heartPrice, totalProdPrice);
       totalProdPrice = Number(totalProdPrice.toFixed(2));
       basicPrices.push(totalProdPrice);
     } else {
-      totalProdPrice = (+p.pdata.sp) * (+p.qty);
+      totalProdPrice = +p.pdata.sp * +p.qty;
       totalProdPrice = Number(totalProdPrice.toFixed(2));
       basicPrices.push(totalProdPrice);
     }
@@ -183,17 +183,17 @@ const calculateBill = async (discount = 0) => {
     let subDis = 0;
     basicPrices.map((el, i) => {
       // console.log(el);
-      let d = el * (+discount/100);
+      let d = el * (+discount / 100);
       // console.log(d);
       d = Number(d.toFixed(2));
-      let eachDis =  el - (d);
+      let eachDis = el - d;
       eachDis = Number(eachDis.toFixed(2));
       subDis += d;
       // console.log(eachDis);
       basicPrices[i] = eachDis;
     });
     // console.log(subDis);
-    TOTAL_COST  = TOTAL_COST - subDis;
+    TOTAL_COST = TOTAL_COST - subDis;
     TOTAL_COST = Number(TOTAL_COST.toFixed(2));
     dis = `
     <ul class="order-list">
@@ -248,17 +248,17 @@ const calculateBill = async (discount = 0) => {
     let addonsPrice = 0;
     if (USER_DETAILS.orders[INDEX].addons.length > 0) {
       for (add of USER_DETAILS.orders[INDEX].addons) {
-      await db
-        .collection("addons")
-        .doc(add.id)
-        .get()
-        .then((addDoc) => {
-          let addData = addDoc.data();
-          addonsPrice = addonsPrice + addData.price * add.qty;
-        });
+        await db
+          .collection("addons")
+          .doc(add.id)
+          .get()
+          .then((addDoc) => {
+            let addData = addDoc.data();
+            addonsPrice = addonsPrice + addData.price * add.qty;
+          });
       }
     }
-    addonsPrice  = Number(addonsPrice.toFixed(2));
+    addonsPrice = Number(addonsPrice.toFixed(2));
     addonCostHTML.innerHTML = `₹ ${addonsPrice}`;
     TOTAL_COST = TOTAL_COST + addonsPrice;
     TOTAL_COST = Math.round(TOTAL_COST);
@@ -270,7 +270,10 @@ const calculateBill = async (discount = 0) => {
 
 const coupanApplyHTML = document.querySelector("#coupanApply");
 let appliedCoupan;
-let cType, cAmt, discount, COUPAN_ID = null;
+let cType,
+  cAmt,
+  discount,
+  COUPAN_ID = null;
 const checkCoupon = async (e) => {
   let coupanDetails;
   let flag = false;
@@ -278,7 +281,7 @@ const checkCoupon = async (e) => {
   const code = document.querySelector("#code").value;
   let totalSubTotal = document.querySelector("#sub-total-cost").innerHTML;
   totalSubTotal = Number(totalSubTotal.substring(2));
-  
+
   let coupanRef = await db.collection("coupans");
   await coupanRef.get().then((snapshots) => {
     let snapshotDocs = snapshots.docs;
@@ -286,7 +289,7 @@ const checkCoupon = async (e) => {
       let docData = doc.data();
       if (docData.name === code) {
         // console.log(docData.minAmt, totalSubTotal);
-        if(+docData.minAmt <= +totalSubTotal) {
+        if (+docData.minAmt <= +totalSubTotal) {
           // console.log(docData.minAmt, totalSubTotal);
           coupanDetails = docData;
           COUPAN_ID = doc.id;
@@ -300,18 +303,18 @@ const checkCoupon = async (e) => {
 
   if (flag) {
     // console.log("coupanDetails", coupanDetails);
-      cAmt = +coupanDetails.amount;
-      document.getElementById("success").style.display = "block";
-      setTimeout(function () {
-        document.getElementById("success").style.display = "none";
-        document.getElementById("applied").innerHTML =
-          "Applied &nbsp;" +
-          appliedCoupan +
-          ' &nbsp;<i style="color: red; cursor:pointer" onclick="removeCoupan()" class="fa fa-times"></i>';
-        document.getElementById("applied").style.display = "block";
-        $("#coupon-form,#check-coupon-form").toggle();
-        document.getElementById("coupon-link").style.display = "none";
-      }, 2000);
+    cAmt = +coupanDetails.amount;
+    document.getElementById("success").style.display = "block";
+    setTimeout(function () {
+      document.getElementById("success").style.display = "none";
+      document.getElementById("applied").innerHTML =
+        "Applied &nbsp;" +
+        appliedCoupan +
+        ' &nbsp;<i style="color: red; cursor:pointer" onclick="removeCoupan()" class="fa fa-times"></i>';
+      document.getElementById("applied").style.display = "block";
+      $("#coupon-form,#check-coupon-form").toggle();
+      document.getElementById("coupon-link").style.display = "none";
+    }, 2000);
     calculateBill(cAmt);
     coupanApplyHTML.disable = true;
     document.querySelector("#code").value = "";
@@ -325,7 +328,7 @@ const checkCoupon = async (e) => {
 };
 
 function removeCoupan() {
-  if(document.querySelector('#coupanApply').disabled) {
+  if (document.querySelector("#coupanApply").disabled) {
     // console.log(document.querySelector('#coupanApply').disabled);
     return;
   }
@@ -365,7 +368,9 @@ const form1 = (e) => {
   const order_notes = form1ShippingHTML["order_notes"].value;
   setDateAndTime();
   // $("#myModal1").modal("show");
-  document.querySelectorAll('input[name=shipping_time]').forEach(e => e.checked = false)
+  document
+    .querySelectorAll("input[name=shipping_time]")
+    .forEach((e) => (e.checked = false));
 
   document.querySelector("#registerTime").disabled = true;
   SHIPPING_DATA.name = name;
@@ -391,7 +396,7 @@ const form1 = (e) => {
   } else {
     SHIPPING_DATA.differtAddress = false;
   }
-  console.log('submitted');
+  console.log("submitted");
 };
 
 form1ShippingHTML.addEventListener("submit", form1);
@@ -412,14 +417,14 @@ let hours = date.getHours();
 // let hours = 19;
 
 // console.log(typeof(year), year.toString().length);
-if(year.toString().length !== 4) {
+if (year.toString().length !== 4) {
   window.location.href = `../index.html`;
 }
-if(month.toString().length < 2) {
+if (month.toString().length < 2) {
   month = `0${month}`;
   // month = Number(month);
 }
-if(day.toString().length < 2) {
+if (day.toString().length < 2) {
   day = `0${day}`;
   console.log(day);
   // day = Number(day);
@@ -428,20 +433,40 @@ if(day.toString().length < 2) {
 // console.log(year, month, day);
 
 const setDateAndTime = () => {
+  alert(1);
+  year = date.getFullYear();
+  month = date.getMonth() + 1;
+  day = date.getDate();
+  hours = date.getHours();
+  // let hours = 19;
+
+  // console.log(typeof(year), year.toString().length);
+  if (year.toString().length !== 4) {
+    window.location.href = `../index.html`;
+  }
+  if (month.toString().length < 2) {
+    month = `0${month}`;
+    // month = Number(month);
+  }
+  if (day.toString().length < 2) {
+    day = `0${day}`;
+    console.log(day);
+    // day = Number(day);
+    // console.log(day);
+  }
   // console.log(SHIPPING_DATA);
   // $("input[type=date]").val("");
   // hours = 19;
   console.log(shippingDateHTML);
   shippingDateHTML.setAttribute("min", `${year}-${month}-${day}`);
   console.log(shippingDateHTML);
-  let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked')
-    .value;
+  let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked').value;
   shippingType = shipVal;
   console.log(shipVal);
 
   let foudantHours = 0;
   let foudantHoursPerfect = 0;
-  if(FOUDANT) {
+  if (FOUDANT) {
     foudantHours = 6;
     foudantHoursPerfect = 4;
   }
@@ -449,7 +474,7 @@ const setDateAndTime = () => {
   function updateDay(d) {
     d = Number(d);
     d = d + 1;
-    if(d.toString().length < 2) {
+    if (d.toString().length < 2) {
       d = `0${d}`;
       // console.log(d);
       // d = Number(d);
@@ -465,13 +490,13 @@ const setDateAndTime = () => {
     freeHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
 
-    if ((hours + foudantHours) < 17) {
+    if (hours + foudantHours < 17) {
       // shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
       shippingDateHTML.value = `${year}-${month}-${day}`;
       freeHoursHTML.style.display = "block";
     } else {
       // console.log('book for next day');
-      let updatedDay =  updateDay(day);
+      let updatedDay = updateDay(day);
       shippingDateHTML.setAttribute("min", `${year}-${month}-${updatedDay}`);
       timeErrorHTML.style.display = "block";
     }
@@ -482,23 +507,23 @@ const setDateAndTime = () => {
     midnightHoursHTML.style.display = "none";
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
-    if ((hours + foudantHoursPerfect) < 19) {
+    if (hours + foudantHoursPerfect < 19) {
       perfectHoursHTML.style.display = "block";
       shippingDateHTML.value = `${year}-${month}-${day}`;
-      if ((hours + foudantHoursPerfect) < 8) {
-      } else if ((hours + foudantHoursPerfect) < 9) {
+      if (hours + foudantHoursPerfect < 8) {
+      } else if (hours + foudantHoursPerfect < 9) {
         // document.querySelector("#perfect_10").disabled = true;
-      } else if ((hours + foudantHoursPerfect) < 10) {
+      } else if (hours + foudantHoursPerfect < 10) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
-      } else if ((hours + foudantHoursPerfect) < 11) {
+      } else if (hours + foudantHoursPerfect < 11) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
         document.querySelector("#perfect_12").parentElement.remove();
-      } else if ((hours + foudantHoursPerfect) < 12) {
+      } else if (hours + foudantHoursPerfect < 12) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
@@ -506,7 +531,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_12").parentElement.remove();
         document.querySelector("#perfect_1").disabled = true;
         document.querySelector("#perfect_1").parentElement.remove();
-      } else if ((hours + foudantHoursPerfect) < 13) {
+      } else if (hours + foudantHoursPerfect < 13) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
@@ -516,7 +541,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_1").parentElement.remove();
         document.querySelector("#perfect_2").disabled = true;
         document.querySelector("#perfect_2").parentElement.remove();
-      } else if ((hours + foudantHoursPerfect) < 14) {
+      } else if (hours + foudantHoursPerfect < 14) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
@@ -528,7 +553,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_2").parentElement.remove();
         document.querySelector("#perfect_3").disabled = true;
         document.querySelector("#perfect_3").parentElement.remove();
-      } else if ((hours + foudantHoursPerfect) < 15) {
+      } else if (hours + foudantHoursPerfect < 15) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
@@ -542,7 +567,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_3").parentElement.remove();
         document.querySelector("#perfect_4").disabled = true;
         document.querySelector("#perfect_4").parentElement.remove();
-      } else if ((hours + foudantHoursPerfect) < 16) {
+      } else if (hours + foudantHoursPerfect < 16) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
@@ -558,7 +583,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_4").parentElement.remove();
         document.querySelector("#perfect_5").disabled = true;
         document.querySelector("#perfect_5").parentElement.remove();
-      } else if ((hours + foudantHoursPerfect) < 17) {
+      } else if (hours + foudantHoursPerfect < 17) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
@@ -576,7 +601,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_5").parentElement.remove();
         document.querySelector("#perfect_6").disabled = true;
         document.querySelector("#perfect_6").parentElement.remove();
-      } else if ((hours + foudantHoursPerfect) < 18) {
+      } else if (hours + foudantHoursPerfect < 18) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
@@ -596,7 +621,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_6").parentElement.remove();
         document.querySelector("#perfect_7").disabled = true;
         document.querySelector("#perfect_7").parentElement.remove();
-      } else if ((hours + foudantHoursPerfect) < 19) {
+      } else if (hours + foudantHoursPerfect < 19) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
@@ -618,7 +643,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_7").parentElement.remove();
         document.querySelector("#perfect_8").disabled = true;
         document.querySelector("#perfect_8").parentElement.remove();
-      } else if ((hours + foudantHoursPerfect) < 20) {
+      } else if (hours + foudantHoursPerfect < 20) {
         // document.querySelector("#perfect_10").disabled = true;
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
@@ -646,7 +671,7 @@ const setDateAndTime = () => {
         console.log("invalid");
       }
     } else {
-      let updatedDay =  updateDay(day);
+      let updatedDay = updateDay(day);
       shippingDateHTML.setAttribute("min", `${year}-${month}-${updatedDay}`);
       timeErrorHTML.style.display = "block";
     }
@@ -658,11 +683,11 @@ const setDateAndTime = () => {
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
 
-    if ((hours + foudantHours) < 20) {
+    if (hours + foudantHours < 20) {
       midnightHoursHTML.style.display = "block";
       shippingDateHTML.value = `${year}-${month}-${day}`;
     } else {
-      let updatedDay =  updateDay(day);
+      let updatedDay = updateDay(day);
       shippingDateHTML.setAttribute("min", `${year}-${month}-${updatedDay}`);
       timeErrorHTML.style.display = "block";
     }
@@ -735,17 +760,17 @@ document.querySelectorAll("input[name=shipping]").forEach((el) => {
   });
 });
 
-const undisableCoupan = e => {
-  document.querySelector('#coupanApply').disabled = false;
-}
+const undisableCoupan = (e) => {
+  document.querySelector("#coupanApply").disabled = false;
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const registerTimeHTML = document.querySelector("#registerTime");
 const orderAreaHTML = document.querySelector(".order-area");
 
-const prodSummary = async(e) => {
-  document.querySelector('#coupanApply').disabled = true;
+const prodSummary = async (e) => {
+  document.querySelector("#coupanApply").disabled = true;
   let card = "";
   let counter = -1;
   USER_DETAILS.orders[INDEX].products.map((p) => {
@@ -801,7 +826,9 @@ const prodSummary = async(e) => {
         </div> 
       </div>
       <div class="product-content">
-        <p class="name"><a href="../Product/product.html?cat=${p.cat}&&prod=${p.prodId}"
+        <p class="name"><a href="../Product/product.html?cat=${p.cat}&&prod=${
+      p.prodId
+    }"
             target="_blank">${p.pdata.name}</a></p>
         <div class="unit-price">
           <h5 class="label">Price : </h5><p>₹${basicPrices[counter]}</p>
@@ -811,21 +838,27 @@ const prodSummary = async(e) => {
           <span class="qttotal">${p.qty} </span>
         </div>
         ${cakeLabels}
-        ${p.message ? 
-          `<div class="quantity">
+        ${
+          p.message
+            ? `<div class="quantity">
             <h5 class="label">Message : </h5>
             <span class="qttotal">${p.message} </span>
           </div> `
-          : ''}
+            : ""
+        }
       </div>
     </div>
     `;
   });
 
-  for(let addonProd of USER_DETAILS.orders[INDEX].addons) {
-    await db.collection('addons').doc(addonProd.id).get().then(addonDoc => {
-      let addonData = addonDoc.data();
-      card += `
+  for (let addonProd of USER_DETAILS.orders[INDEX].addons) {
+    await db
+      .collection("addons")
+      .doc(addonProd.id)
+      .get()
+      .then((addonDoc) => {
+        let addonData = addonDoc.data();
+        card += `
       <div class="order-item">
         <div class="product-img">
           <div class="d-flex">
@@ -845,7 +878,7 @@ const prodSummary = async(e) => {
         </div>
       </div>
       `;
-    })
+      });
   }
 
   orderAreaHTML.innerHTML = card;
@@ -864,8 +897,12 @@ const shipping_emailHTML = document.querySelector("#shipping_email");
 // const shipping_msgHTML = document.querySelector("#shipping_msg");
 
 const alt_shipping_userHTML = document.querySelector("#alt_shipping_user");
-const alt_shipping_locationHTML = document.querySelector("#alt_shipping_location");
-const alt_shipping_landmarkHTML = document.querySelector("#alt_shipping_landmark");
+const alt_shipping_locationHTML = document.querySelector(
+  "#alt_shipping_location"
+);
+const alt_shipping_landmarkHTML = document.querySelector(
+  "#alt_shipping_landmark"
+);
 const alt_shipping_phoneHTML = document.querySelector("#alt_shipping_phone");
 let alt_shipping_emailHTML = document.querySelector("#alt_shipping_email");
 const altAddressHTML = document.querySelector("#alt-address");
@@ -890,12 +927,12 @@ const displayShippingInfo = (e) => {
     alt_shipping_emailHTML = SHIPPING_DATA.alt_email;
   }
 
-  if(!COUPAN_ID) {
+  if (!COUPAN_ID) {
     COUPAN_ID = false;
   }
 
   let razName, razEmail, razAddress, razPhone;
-  if(SHIPPING_DATA.shipDiffAddress) {
+  if (SHIPPING_DATA.shipDiffAddress) {
     razName = SHIPPING_DATA.alt_name;
     razEmail = SHIPPING_DATA.email;
     razPhone = SHIPPING_DATA.alt_phone;
@@ -913,9 +950,9 @@ const displayShippingInfo = (e) => {
 
   let shipData = {
     type: shippingType,
-    date: document.querySelector('input[name=shipping_date]').value,
-    time: document.querySelector('input[name=shipping_time]:checked').value
-  }
+    date: document.querySelector("input[name=shipping_date]").value,
+    time: document.querySelector("input[name=shipping_time]:checked").value,
+  };
 
   const checkoutReqData = {
     ...shipData,
@@ -923,15 +960,15 @@ const displayShippingInfo = (e) => {
     order: CHECKOUT_ID,
     coupan: COUPAN_ID,
     name: razName,
-    shippingData: SHIPPING_DATA
-  }
-  // let options = { 
-  //   method: 'POST', 
-  //   headers: { 
-  //     'Content-Type': 'application/json;charset=utf-8' 
-  //   }, 
-  //   body: JSON.stringify(checkoutReqData) 
-  // } 
+    shippingData: SHIPPING_DATA,
+  };
+  // let options = {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json;charset=utf-8'
+  //   },
+  //   body: JSON.stringify(checkoutReqData)
+  // }
 
   // fetch('https://raz-pay.herokuapp.com/checkout', options).then(r => {
   // fetch('http://localhost:3500/checkout', options).then(r => {
@@ -946,52 +983,51 @@ const displayShippingInfo = (e) => {
   // }).catch(error => {
   //   console.log(error);
   // })
-  
 
-  const checkoutReq = firebase.functions().httpsCallable('checkoutReq');
-  checkoutReq(checkoutReqData).then((res) => {
-    document.querySelector('#rzp-button1').disabled = false;
-    RAZ_ORDER_ID = res.data.orderId;
-    PUB_KEY = res.data.publicKey;
-  }).catch(error => {
-    console.log(error);
-  })
+  const checkoutReq = firebase.functions().httpsCallable("checkoutReq");
+  checkoutReq(checkoutReqData)
+    .then((res) => {
+      document.querySelector("#rzp-button1").disabled = false;
+      RAZ_ORDER_ID = res.data.orderId;
+      PUB_KEY = res.data.publicKey;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   // console.log(RAZ_ORDER_ID);
 };
 
 // prodFinalHTML.addEventListener('click', displayShippingInfo);
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-let options = '';
+let options = "";
 let rzp1;
-const exeRazPay = e => {
+const exeRazPay = (e) => {
   document.getElementById("gettingReady").style.display = "none";
   let razName, razEmail, razAddress, razPhone;
-  if(SHIPPING_DATA.shipDiffAddress) {
-    razName = SHIPPING_DATA.alt_name,
-    razEmail = SHIPPING_DATA.email,
-    razPhone = SHIPPING_DATA.alt_phone,
-    razAddress = SHIPPING_DATA.alt_address
+  if (SHIPPING_DATA.shipDiffAddress) {
+    (razName = SHIPPING_DATA.alt_name),
+      (razEmail = SHIPPING_DATA.email),
+      (razPhone = SHIPPING_DATA.alt_phone),
+      (razAddress = SHIPPING_DATA.alt_address);
   } else {
-    razName = SHIPPING_DATA.name,
-    razEmail = SHIPPING_DATA.email,
-    razPhone = SHIPPING_DATA.phone,
-    razAddress = SHIPPING_DATA.address
+    (razName = SHIPPING_DATA.name),
+      (razEmail = SHIPPING_DATA.email),
+      (razPhone = SHIPPING_DATA.phone),
+      (razAddress = SHIPPING_DATA.address);
   }
 
   e.preventDefault();
 
   options = {
-    key: PUB_KEY, 
-    amount: "1000", 
+    key: PUB_KEY,
+    amount: "1000",
     currency: "INR",
     name: "LAKE OF CAKES",
     description: "HAPPY SHOPPING",
     image: "./../assets/images/logo.png",
-    order_id: RAZ_ORDER_ID, 
+    order_id: RAZ_ORDER_ID,
     handler: function (response) {
       RES = response;
       // alert('razorpay_signature', response.razorpay_signature);
@@ -1019,27 +1055,25 @@ const exeRazPay = e => {
     // console.log(response);
     // console.log(response.error);
   });
-}
-
+};
 
 const orderComplete = (data) => {
-  $('#exampleModal').modal('show')
-//   let userValid=localStorage.getItem("locLoggedInUser")
-//   var dbupdate = db.collection("Customers").doc(userValid);
+  $("#exampleModal").modal("show");
+  //   let userValid=localStorage.getItem("locLoggedInUser")
+  //   var dbupdate = db.collection("Customers").doc(userValid);
 
-
-// return dbupdate.update({
-//       : true
-// })
+  // return dbupdate.update({
+  //       : true
+  // })
   // console.log(shippingType)
   // console.log(document.querySelector('input[name=shipping_date]').value)
   // console.log(document.querySelector('input[name=shipping_time]:checked').value)
 
   let shipData = {
     type: shippingType,
-    date: document.querySelector('input[name=shipping_date]').value,
-    time: document.querySelector('input[name=shipping_time]:checked').value
-  }
+    date: document.querySelector("input[name=shipping_date]").value,
+    time: document.querySelector("input[name=shipping_time]:checked").value,
+  };
 
   // console.log(data);
   let addtionalData = {
@@ -1048,15 +1082,15 @@ const orderComplete = (data) => {
     userId: USER_ID,
     order: CHECKOUT_ID,
     coupan: COUPAN_ID,
-    formData: SHIPPING_DATA
-  }
-  // let options = { 
-  //   method: 'POST', 
-  //   headers: { 
-  //     'Content-Type': 'application/json;charset=utf-8' 
-  //   }, 
-  //   body: JSON.stringify(addtionalData) 
-  // } 
+    formData: SHIPPING_DATA,
+  };
+  // let options = {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json;charset=utf-8'
+  //   },
+  //   body: JSON.stringify(addtionalData)
+  // }
 
   // fetch('http://localhost:3500/payment', options).then(r => {
   // // fetch('https://raz-pay.herokuapp.com/payment', options).then(r => {
@@ -1073,47 +1107,48 @@ const orderComplete = (data) => {
   //   console.log(error);
   // })
 
-  const payemnetStatus = firebase.functions().httpsCallable('payemnetStatus');
-  payemnetStatus(addtionalData).then(async(res) => {
-    // console.log(res.data);
-    if(res.data === 'true') {
- 
-      let userRef =  await db.collection('Customers').doc(USER_ID);
-     await userRef.get().then(async(userDoc) => {
-        let userData = userDoc.data();
-        for(let uo of userData.orders) {
-          if(+uo.orderId === +CHECKOUT_ID) {
-            let shipData = {
-              type: shippingType,
-              date: document.querySelector('input[name=shipping_date]').value,
-              time: document.querySelector('input[name=shipping_time]:checked').value
+  const payemnetStatus = firebase.functions().httpsCallable("payemnetStatus");
+  payemnetStatus(addtionalData)
+    .then(async (res) => {
+      // console.log(res.data);
+      if (res.data === "true") {
+        let userRef = await db.collection("Customers").doc(USER_ID);
+        await userRef.get().then(async (userDoc) => {
+          let userData = userDoc.data();
+          for (let uo of userData.orders) {
+            if (+uo.orderId === +CHECKOUT_ID) {
+              let shipData = {
+                type: shippingType,
+                date: document.querySelector("input[name=shipping_date]").value,
+                time: document.querySelector(
+                  "input[name=shipping_time]:checked"
+                ).value,
+              };
+              uo.successOrderId = RAZ_ORDER_ID;
+              uo.status = "success";
+              uo.success = {
+                orderTime: new Date().toString(),
+                shippingData: SHIPPING_DATA,
+                ...shipData,
+                totalCost: TOTAL_COST,
+              };
+              await userRef.update(userData);
+              break;
             }
-            uo.successOrderId = RAZ_ORDER_ID;
-            uo.status = 'success';
-            uo.success = {
-              orderTime: (new Date()).toString(),
-              shippingData: SHIPPING_DATA,
-              ...shipData,
-              totalCost: TOTAL_COST
-            }
-            await userRef.update(userData);
-            break;
           }
-        }
-      })
-      setTimeout(function(){
-        location.replace("../index.html");
-      },3000)
-      
-
-    } else {
-      // console.log('same page reload');
-      window.reload();
-    }
-  }).catch(error => {
-    console.log(error);
-  })
-}
+        });
+        setTimeout(function () {
+          location.replace("../index.html");
+        }, 3000);
+      } else {
+        // console.log('same page reload');
+        window.reload();
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 // //////////////////////////////////////////////////////////////////////////////
 
@@ -1130,21 +1165,18 @@ const orderComplete = (data) => {
 const checkPin = (e, current) => {
   // console.log(current.value);
   let val = current.value;
-  valArr = val.split('');
-  if(valArr[0] == 2 || valArr[0] == '' || valArr[0] == undefined) {
-
+  valArr = val.split("");
+  if (valArr[0] == 2 || valArr[0] == "" || valArr[0] == undefined) {
   } else {
-    current.value = '';
+    current.value = "";
   }
-  if(valArr[1] == 2 || valArr[1] == '' || valArr[1] == undefined) {
-
+  if (valArr[1] == 2 || valArr[1] == "" || valArr[1] == undefined) {
   } else {
-    current.value = '2';
+    current.value = "2";
   }
-  if(valArr[2] == 6 || valArr[2] == '' || valArr[2] == undefined) {
-
+  if (valArr[2] == 6 || valArr[2] == "" || valArr[2] == undefined) {
   } else {
-    current.value = '22';
+    current.value = "22";
   }
   // console.log(e.key);
-}
+};
