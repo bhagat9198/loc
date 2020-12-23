@@ -489,6 +489,10 @@ exports.sendEmailAfterReject = functions.firestore
           <td style="padding: 20px;margin: 15%;border:1px solid black">${opData.name} ${cake}</td>
       
           </tr>
+
+
+
+
           `;
           });
         }
@@ -1090,7 +1094,7 @@ exports.sendEmailAfterConfirmation = functions.firestore
     // Building Email message.
     mailOptions.subject = "Order Confirmation ";
     //for example
-    let duplicate = "";
+    let duplicate = ``;
     let delivertTypePrice = 0;
     let timeStamp,
       timeDate,
@@ -1101,39 +1105,96 @@ exports.sendEmailAfterConfirmation = functions.firestore
     var showOrders = "false";
     let duplicatAddons = "";
     let i = -1;
+    let successOrderId = "";
 
     for (let o of newValue.orders) {
       i++;
-      let pv=previousValue.orders[i];
+      let pv = previousValue.orders[i];
       console.log(o.status + " ------ " + pv.status);
-      if (o.status == "success" && pv.status=="cancelled") {
+      if (o.status == "success" && pv.status == "cancelled") {
         console.log("Came into Function");
+        successOrderId = o.successOrderId;
         for (let op of o.products) {
           let opRef = admin.firestore().collection(op.cat).doc(op.prodId);
           await opRef.get().then((opDoc) => {
             let cake = "";
             if (op.cake) {
               cake = `
-                <pre>
-                Weight : ${op.cake.weight} Kg 
-                Shape : ${op.cake.heart ? "Heart" : "Not Opted"}
-                Eggless : ${op.cake.eggless ? "Opted" : "Not Opted"}
-                Flavour : ${op.cake.flavour} 
+                <p>
+                  <ul>
+                    <li>
+                    Weight : ${op.cake.weight} Kg 
+                    </li>
+                    <li>
+                    Shape : ${op.cake.heart ? "Heart" : "Not Opted"}
+                    </li>
+                    <li>
+                    Eggless : ${op.cake.eggless ? "Opted" : "Not Opted"}
+                    </li>
+                    <li>
+                    Flavour : ${op.cake.flavour} 
+                    </li>
+                  </ul>
+                </p>
                 `;
             }
             let opData = opDoc.data();
             duplicate += `
-              <tr style="padding: 20px;margin: 15%;text-align: center;">
-                <td style="border: 2px solid black;"><img
-                        src="${opData.mainImgUrl}"
-                        width="90" alt=""></td>
-                <td style="border: 2px solid black;">${opData.name}
-                ${cake}
-                Message : ${op.message}
-                Qty : ${op.qty}
-                </pre>
-                </td>
-            </tr>
+
+            <tr style="border-collapse:collapse"> 
+            <td align="left" style="padding:0;Margin:0;padding-left:20px;padding-right:20px"> 
+             <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+               <tr style="border-collapse:collapse"> 
+                <td valign="top" align="center" style="padding:0;Margin:0;width:640px"> 
+                 <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                   <tr style="border-collapse:collapse"> 
+                    <td align="center" style="padding:0;Margin:0;padding-bottom:10px;font-size:0"> 
+                     <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                       <tr style="border-collapse:collapse"> 
+                        <td style="padding:0;Margin:0;border-bottom:1px solid #EFEFEF;background:#FFFFFF none repeat scroll 0% 0%;height:1px;width:100%;margin:0px"></td> 
+                       </tr> 
+                     </table></td> 
+                   </tr> 
+                 </table></td> 
+               </tr> 
+             </table></td> 
+           </tr> 
+           <tr style="border-collapse:collapse"> 
+            <td align="left" style="Margin:0;padding-top:5px;padding-bottom:10px;padding-left:20px;padding-right:20px"> 
+             <!--[if mso]><table style="width:640px" cellpadding="0" cellspacing="0"><tr><td style="width:218px" valign="top"><![endif]--> 
+             <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left"> 
+               <tr style="border-collapse:collapse"> 
+                <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:218px"> 
+                 <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                   <tr style="border-collapse:collapse"> 
+                    <td align="center" style="padding:0;Margin:0;font-size:0"><a href="https://viewstripo.email" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;text-decoration:underline;color:#D48344">
+                      <img src="${opData.mainImgUrl}" alt="Natural Balance L.I.D., sale 30%" class="adapt-img" title="Natural Balance L.I.D., sale 30%" width="125" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
+                   </tr> 
+                 </table></td> 
+               </tr> 
+             </table> 
+             <!--[if mso]></td><td style="width:20px"></td><td style="width:402px" valign="top"><![endif]--> 
+             <table cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+               <tr style="border-collapse:collapse"> 
+                <td align="left" style="padding:0;Margin:0;width:402px"> 
+                 <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                   <tr style="border-collapse:collapse"> 
+                    <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333"><br></p> 
+                     <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" role="presentation"> 
+                       <tr style="border-collapse:collapse"> 
+                        <td style="padding:0;Margin:0">${opData.name}<br><br></td> 
+                        <td style="padding:0;Margin:0;width:60px;text-align:center">${op.qty}</td> 
+                        <td style="padding:0;Margin:0;width:100px;text-align:center"><strong><span>${cake} Message : ${op.message}</span></strong><br></td> 
+                       </tr> 
+                     </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333"><br></p></td> 
+                   </tr> 
+                 </table></td> 
+               </tr> 
+             </table> 
+             <!--[if mso]></td></tr></table><![endif]--></td> 
+           </tr>
+
+ 
               `;
           });
         }
@@ -1151,28 +1212,63 @@ exports.sendEmailAfterConfirmation = functions.firestore
             .then((addDoc) => {
               let adddData = addDoc.data();
               // add name
-              let adddName = adddData.name;
-              console.log(adddName);
-
-              // // add price
-              let addPrice = +adddData.price;
-              console.log(addPrice);
-
-              // // add qty
-              let addQty = addd.qty;
-              console.log(addQty);
 
               duplicatAddons += `
-                <tr style="padding: 20px;margin: 15%;text-align: center;">
-                  <td style="border: 2px solid black;"><img src="${adddData.imgUrl}" width="90" alt=""></td>
-                  <td style="border: 2px solid black;">${adddData.name}
-                  Qty : ${addd.qty}
-                  </pre>
-                  </td>
-                </tr>
+        
+              <tr style="border-collapse:collapse"> 
+              <td align="left" style="padding:0;Margin:0;padding-left:20px;padding-right:20px"> 
+               <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td valign="top" align="center" style="padding:0;Margin:0;width:640px"> 
+                   <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="center" style="padding:0;Margin:0;padding-bottom:10px;font-size:0"> 
+                       <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td style="padding:0;Margin:0;border-bottom:1px solid #EFEFEF;background:#FFFFFF none repeat scroll 0% 0%;height:1px;width:100%;margin:0px"></td> 
+                         </tr> 
+                       </table></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table></td> 
+             </tr> 
+             <tr style="border-collapse:collapse"> 
+              <td align="left" style="Margin:0;padding-top:5px;padding-bottom:10px;padding-left:20px;padding-right:20px"> 
+               <!--[if mso]><table style="width:640px" cellpadding="0" cellspacing="0"><tr><td style="width:218px" valign="top"><![endif]--> 
+               <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:218px"> 
+                   <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="center" style="padding:0;Margin:0;font-size:0"><a href="https://viewstripo.email" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;text-decoration:underline;color:#D48344">
+                        <img src="${adddData.imgUrl}" alt="Natural Balance L.I.D., sale 30%" class="adapt-img" title="Natural Balance L.I.D., sale 30%" width="125" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table> 
+               <!--[if mso]></td><td style="width:20px"></td><td style="width:402px" valign="top"><![endif]--> 
+               <table cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td align="left" style="padding:0;Margin:0;width:402px"> 
+                   <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333"><br></p> 
+                       <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" role="presentation"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td style="padding:0;Margin:0">${adddData.name}<br><br></td> 
+                          <td style="padding:0;Margin:0;width:60px;text-align:center">${addd.qty}</td> 
+                          <td style="padding:0;Margin:0;width:100px;text-align:center"><strong><span></span></strong><br></td> 
+                         </tr> 
+                       </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333"><br></p></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table> 
+               <!--[if mso]></td></tr></table><![endif]--></td> 
+             </tr>
                 `;
             });
-          console.log(duplicatAddons);
         }
 
         // console.log(duplicate);
@@ -1214,173 +1310,411 @@ exports.sendEmailAfterConfirmation = functions.firestore
         shippingData = o.success.shippingData;
 
         mailOptions.html = `
+         
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
+         <head> 
+          <meta charset="UTF-8"> 
+          <meta content="width=device-width, initial-scale=1" name="viewport"> 
+          <meta name="x-apple-disable-message-reformatting"> 
+          <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+          <meta content="telephone=no" name="format-detection"> 
+          <title>New email template 2020-12-23</title> 
+          <!--[if (mso 16)]>
+            <style type="text/css">
+            a {text-decoration: none;}
+            </style>
+            <![endif]--> 
+          <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--> 
+          <!--[if gte mso 9]>
+        <xml>
+            <o:OfficeDocumentSettings>
+            <o:AllowPNG></o:AllowPNG>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]--> 
           <style type="text/css">
-          /* Default CSS */
-          body,#body_style {margin: 0; padding: 0; background: #f9f9f9; font-size: 14px; color: #5b656e;}
-          a {color: #09c;}
-          a img {border: none; text-decoration: none;}
-          table, table td {border-collapse: collapse;}
-          td, h1, h2, h3 {font-family: tahoma, geneva, sans-serif; color: #313a42;}
-          h1, h2, h3, h4 {color: #313a42 !important; font-weight: normal; line-height: 1.2;}
-          h1 {font-size: 24px;}
-          h2 {font-size: 18px;}
-          h3 {font-size: 16px;}
-          p {margin: 0 0 1.6em 0;}
-          
-          /* Force Outlook to provide a "view in browser" menu link. */
-          #outlook a {padding:0;}
-          
-          /* Preheader and webversion */
-          .preheader {background-color: #5b656e;}
-          .preheaderContent,.webversion,.webversion a {color: white; font-size: 10px;}
-          .preheaderContent{width: 440px;}
-          .preheaderContent,.webversion {padding: 5px 10px;}
-          .webversion {width: 200px; text-align: right;}
-          .webversion a {text-decoration: underline;}
-          .webversion,.webversion a {color: #ffffff; font-size: 10px;}
-          
-          /* Topheader */
-          .topHeader {background: #ffffff;}
-          
-          /* Logo (branding) */
-          .logoContainer {padding: 20px 0 10px 0px; width: 320px;}
-          .logoContainer a {color: #ffffff;}
-          
-          /* Whitespace (imageless spacer) and divider */
-          .whitespace, .whitespaceDivider {font-family: 0px; line-height: 0px;}
-          .whitespaceDivider {border-bottom: 1px solid #cccccc;}
-          
-          /* Button */
-          .buttonContainer {padding: 10px 0px 10px 0px;}
-          .button {padding: 5px 5px 5px 5px; text-align: center; background-color: #51c4d4}
-          .button a {color: #ffffff; text-decoration: none; font-size: 13px;}
-          
-          /* Section */
-          .sectionMainTitle{font-family: Tahoma, sans-serif; font-size: 16px; padding: 0px 0px 5px 0;}
-          .sectionArticleTitle, .sectionMainTitle {color: #5b656e;}
-          
-          /* An article */
-          .sectionArticleTitle, .sectionArticleContent {text-align: center; padding: 0px 5px 0px 5px;}
-          .sectionArticleTitle {font-size: 12px; font-weight: bold;}
-          .sectionArticleContent {font-size: 10px; line-height: 12px;}
-          .sectionArticleImage {padding: 8px 0px 0px 0px;}
-          .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
-          
-          /* Footer and Social media */
-          .footer {background-color: #51c4d4;}
-          .footNotes {padding: 0px 20px 0px 20px;}
-          .footNotes a {color: #ffffff; font-size: 13px;}
-          .socialMedia {background: #5b656e;}
-          
-          /* Article image */
-          .sectionArticleImage {padding: 8px 0px 0px 0px;}
-          .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
-          
-          /* Product card */
-          .card {background-color: #ffffff; border-bottom: 2px solid #5b656e;}
-          
-          /* Column */
-          .column {padding-bottom: 20px;}
-          
-          
-          /* CSS for specific screen width(s) */
-          @media only screen and (max-width: 480px) {
-              body[yahoofix] table {width: 100% !important;}
-              body[yahoofix] .webversion {display: none; font-size: 0; max-height: 0; line-height: 0; mso-hide: all;}
-              body[yahoofix] .logoContainer {text-align: center;}
-              body[yahoofix] .logo {width: 80%;}
-              body[yahoofix] .buttonContainer {padding: 0px 20px 0px 20px;}
-              body[yahoofix] .column {float: left; width: 100%; margin: 0px 0px 30px 0px;}
-              body[yahoofix] .card {padding: 20px 0px;}
-            }
-        </style>
-          <div style="width: 100%;display:flex;; ">
-      <div style="width: 80%"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" style="width: 263.921px; height: 65.1px;"></div>
-      <div style="margin: 1%;right:0;"><span style="font-size: 20px;">Order</span> <b style="font-size: 20px;">Placed</b></div>
-    </div>
-    <div style="width: 100%;display:flex;">
-      <div style="width: 80%;margin: 1%;"> Hi ${
-        newValue.UserName
-      },<br>Your order has been successfully placed.</div>
-      <div style="margin: 1%;right:0;"><span style="font-size: 20px;"></span> <b style="font-size: 15px;">Order placed
-              on ${timeStamp}</b></div>
-    </div>
-    <div style="text-align: center; "><br></div>
-    <div style="text-align: center; "><br></div>
-    <div style="text-align: left;">
-      <div style="text-align: center;"><b><br></b></div>
-      <div style="text-align: left;">
-          <h5 style="text-align: center; ">
-              <font face="Times New Roman"><b>We are committed to serving you with utmost regard for your and your
-                      product's safety. Hence, please&nbsp;</b></font>
-              <font face="Times New Roman"><b>note, the delivery time of your order may change due to traffic &amp;
-                      natural calamities (like rain, storm, fog&nbsp;</b></font>
-              </h5><h5 style="text-align: center; ">
-                  <font face="Times New Roman"><b>etc.) AND based on the government's zonal advisory in your area
-                          regarding COVID-19.</b></font>
-              </h5>
-      </div>
-    </div>
-    <center>
-      <div style="width: 80%;display:flex;;">
-          <div style="width: 60%;margin-left:auto;margin-right:auto;display:block"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/Capture.PNG?alt=media&amp;token=4140cc7f-c7cb-47be-846c-d0e9fadc46a9" width="330" style=" @media only screen and (min-width:900px) {
-              width:900px !important;object-fit:cover;
-          }   object-fit:cover;" alt=""></div>
-      </div>
-      <div style="margin: 1%;right:0;border: 2px solid brown;"><span style="font-size: 20px;"></span>
-          <pre>     <span style="font-family: &quot;Times New Roman&quot;;"> Delivery By :${timeDate}
-          ${dTime}
-          </span><br><b>Delivery Address</b><span style="font-family: &quot;Times New Roman&quot;;">
-          </span><br><span style="font-family: &quot;Times New Roman&quot;;">
-    ${shippingData.differtAddress ? shippingData.alt_name : shippingData.name}
-    ${
-      shippingData.differtAddress
-        ? shippingData.alt_address
-        : shippingData.address
-    }
-    Lucknow 
-    Lucknow, Uttar Pradesh, ${
-      shippingData.differtAddress ? shippingData.alt_zip : shippingData.zip
-    }
-           </span><br><span style="font-family: &quot;Times New Roman&quot;;">
-    Amount Paid :Rs ${totalCost}</span>
-              </pre>
-      </div>${duplicate}${duplicatAddons}<table style="border: 2px solid orange;padding: 30px;width: 100%;">
-          <thead style="padding: 20px;margin: 15%;">
-              <tr><th>Product Image</th>
-              <th>Name</th>
-          </tr></thead></table>
-      <b></b><table style="float: right;margin-right: 5%;font-size: 20px;">
-          <tbody><tr>
-              <td>Item(s) total (including GST)</td>
-              <td>${totalCost - delivertTypePrice}</td>
-          </tr>
-          <tr>
-              <td>Perfect Hours Charges </td>
-              <td>${delivertTypePrice}</td>
-          </tr>
-          <tr>
-              <td style="font-weight: 800;">Amount Paid</td>
-              <td style="font-weight: 800;">${totalCost}</td>
-          </tr>
-      </tbody></table>
-      
-    </center>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div>
-      <h4 style="margin-top: 8%;">
-          Thank you for shopping with <b>Lake of Cakes!</b>
-      </h4>
-    </div>
-    <div style="width: 100%;display:flex; ">
-      <div style="width: 80%"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" style="width: 263.921px; height: 65.1px;"></div>
-      <div style="margin: 1%;right:0;">
-          <img src="https://jetline.co.za/wp-content/uploads/2017/11/triangle-300x225.png" style="width: 263.921px; height: 65.1px;object-fit:contain">
-      </div>
-    </div>
+        #outlook a {
+          padding:0;
+        }
+        .ExternalClass {
+          width:100%;
+        }
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+          line-height:100%;
+        }
+        .es-button {
+          mso-style-priority:100!important;
+          text-decoration:none!important;
+        }
+        a[x-apple-data-detectors] {
+          color:inherit!important;
+          text-decoration:none!important;
+          font-size:inherit!important;
+          font-family:inherit!important;
+          font-weight:inherit!important;
+          line-height:inherit!important;
+        }
+        .es-desk-hidden {
+          display:none;
+          float:left;
+          overflow:hidden;
+          width:0;
+          max-height:0;
+          line-height:0;
+          mso-hide:all;
+        }
+        @media only screen and (max-width:600px) {p, ul li, ol li, a { font-size:16px!important; line-height:150%!important } h1 { font-size:30px!important; text-align:center; line-height:120%!important } h2 { font-size:26px!important; text-align:center; line-height:120%!important } h3 { font-size:20px!important; text-align:center; line-height:120%!important } h1 a { font-size:30px!important } h2 a { font-size:26px!important } h3 a { font-size:20px!important } .es-header-body p, .es-header-body ul li, .es-header-body ol li, .es-header-body a { font-size:16px!important } .es-footer-body p, .es-footer-body ul li, .es-footer-body ol li, .es-footer-body a { font-size:16px!important } .es-infoblock p, .es-infoblock ul li, .es-infoblock ol li, .es-infoblock a { font-size:12px!important } *[class="gmail-fix"] { display:none!important } .es-m-txt-c, .es-m-txt-c h1, .es-m-txt-c h2, .es-m-txt-c h3 { text-align:center!important } .es-m-txt-r, .es-m-txt-r h1, .es-m-txt-r h2, .es-m-txt-r h3 { text-align:right!important } .es-m-txt-l, .es-m-txt-l h1, .es-m-txt-l h2, .es-m-txt-l h3 { text-align:left!important } .es-m-txt-r img, .es-m-txt-c img, .es-m-txt-l img { display:inline!important } .es-button-border { display:block!important } .es-btn-fw { border-width:10px 0px!important; text-align:center!important } .es-adaptive table, .es-btn-fw, .es-btn-fw-brdr, .es-left, .es-right { width:100%!important } .es-content table, .es-header table, .es-footer table, .es-content, .es-footer, .es-header { width:100%!important; max-width:600px!important } .es-adapt-td { display:block!important; width:100%!important } .adapt-img { width:100%!important; height:auto!important } .es-m-p0 { padding:0!important } .es-m-p0r { padding-right:0!important } .es-m-p0l { padding-left:0!important } .es-m-p0t { padding-top:0!important } .es-m-p0b { padding-bottom:0!important } .es-m-p20b { padding-bottom:20px!important } .es-mobile-hidden, .es-hidden { display:none!important } tr.es-desk-hidden, td.es-desk-hidden, table.es-desk-hidden { width:auto!important; overflow:visible!important; float:none!important; max-height:inherit!important; line-height:inherit!important } tr.es-desk-hidden { display:table-row!important } table.es-desk-hidden { display:table!important } td.es-desk-menu-hidden { display:table-cell!important } .es-menu td { width:1%!important } table.es-table-not-adapt, .esd-block-html table { width:auto!important } table.es-social { display:inline-block!important } table.es-social td { display:inline-block!important } .es-menu td a { font-size:16px!important } a.es-button, button.es-button { font-size:20px!important; display:block!important; border-left-width:0px!important; border-right-width:0px!important } .es-m-p5 { padding:5px!important } .es-m-p5t { padding-top:5px!important } .es-m-p5b { padding-bottom:5px!important } .es-m-p5r { padding-right:5px!important } .es-m-p5l { padding-left:5px!important } .es-m-p10 { padding:10px!important } .es-m-p10t { padding-top:10px!important } .es-m-p10b { padding-bottom:10px!important } .es-m-p10r { padding-right:10px!important } .es-m-p10l { padding-left:10px!important } .es-m-p15 { padding:15px!important } .es-m-p15t { padding-top:15px!important } .es-m-p15b { padding-bottom:15px!important } .es-m-p15r { padding-right:15px!important } .es-m-p15l { padding-left:15px!important } .es-m-p20 { padding:20px!important } .es-m-p20t { padding-top:20px!important } .es-m-p20r { padding-right:20px!important } .es-m-p20l { padding-left:20px!important } .es-m-p25 { padding:25px!important } .es-m-p25t { padding-top:25px!important } .es-m-p25b { padding-bottom:25px!important } .es-m-p25r { padding-right:25px!important } .es-m-p25l { padding-left:25px!important } .es-m-p30 { padding:30px!important } .es-m-p30t { padding-top:30px!important } .es-m-p30b { padding-bottom:30px!important } .es-m-p30r { padding-right:30px!important } .es-m-p30l { padding-left:30px!important } .es-m-p35 { padding:35px!important } .es-m-p35t { padding-top:35px!important } .es-m-p35b { padding-bottom:35px!important } .es-m-p35r { padding-right:35px!important } .es-m-p35l { padding-left:35px!important } .es-m-p40 { padding:40px!important } .es-m-p40t { padding-top:40px!important } .es-m-p40b { padding-bottom:40px!important } .es-m-p40r { padding-right:40px!important } .es-m-p40l { padding-left:40px!important } }
+        </style> 
+         </head> 
+         <body style="width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0"> 
+          <div class="es-wrapper-color" style="background-color:#CB7270"> 
+           <!--[if gte mso 9]>
+              <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+                <v:fill type="tile" color="#cb7270" origin="0.5, 0" position="0.5,0"></v:fill>
+              </v:background>
+            <![endif]--> 
+           <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top"> 
+             <tr style="border-collapse:collapse"> 
+              <td valign="top" style="padding:0;Margin:0"> 
+               <table cellpadding="0" cellspacing="0" class="es-content" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td class="es-adaptive" align="center" style="padding:0;Margin:0"> 
+                   <table class="es-content-body" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#EFEFEF;width:680px" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="Margin:0;padding-top:15px;padding-bottom:15px;padding-left:20px;padding-right:20px"> 
+                       <!--[if mso]><table style="width:640px" cellpadding="0" cellspacing="0"><tr><td style="width:310px" valign="top"><![endif]--> 
+                       <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td align="left" style="padding:0;Margin:0;width:310px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td class="es-infoblock es-m-txt-c" align="left" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:12px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:14px;color:#CCCCCC">Put your preheader text here</p></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table> 
+                       <!--[if mso]></td><td style="width:20px"></td><td style="width:310px" valign="top"><![endif]--> 
+                       <table class="es-right" cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td align="left" style="padding:0;Margin:0;width:310px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="right" class="es-infoblock es-m-txt-c" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:12px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:14px;color:#62CD21"><strong><a href="https://viewstripo.email" target="_blank" class="view" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:12px;text-decoration:underline;color:#62C36B">O</a>rder Placed</strong></p></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table> 
+                       <!--[if mso]></td></tr></table><![endif]--></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table> 
+               <table cellpadding="0" cellspacing="0" class="es-header" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td align="center" style="padding:0;Margin:0"> 
+                   <table class="es-header-body" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FEF5E4;width:680px" cellspacing="0" cellpadding="0" bgcolor="#fef5e4" align="center"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:15px;padding-right:15px"> 
+                       <!--[if mso]><table style="width:650px" cellpadding="0" cellspacing="0"><tr><td style="width:220px" valign="top"><![endif]--> 
+                       <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td class="es-m-p0r" valign="top" align="center" style="padding:0;Margin:0;width:220px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td class="es-m-p0l es-m-txt-c" align="left" style="padding:0;Margin:0;padding-left:15px;font-size:0px"><a href="https://viewstripo.email/" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:14px;text-decoration:underline;color:#999999">
+                              <img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" alt="Petshop logo" title="Petshop logo" width="118" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></a></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table> 
+                       <!--[if mso]></td><td style="width:20px"></td><td style="width:410px" valign="top"><![endif]--> 
+                       <table cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td align="left" style="padding:0;Margin:0;width:410px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="right" class="es-m-txt-c" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#E71F18"><strong>Order Placed On - ${timeStamp}<br>Order ID - ${successOrderId}</strong></p></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table> 
+                       <!--[if mso]></td></tr></table><![endif]--></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table> 
+               <table class="es-content" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td align="center" style="padding:0;Margin:0"> 
+                   <table class="es-content-body" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:680px"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px"> 
+                       <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td valign="top" align="center" style="padding:0;Margin:0;width:640px"> 
+                           <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:0px" width="100%" cellspacing="0" cellpadding="0" role="presentation"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:15px"><h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif;font-size:30px;font-style:normal;font-weight:normal;color:#333333">Hi ${
+                                newValue.UserName
+                              } ! Your Order has been successfully placed</h1></td> 
+                             </tr> 
+                             <tr style="border-collapse:collapse"> 
+                              <td class="es-m-p0" align="center" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:40px;padding-right:40px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">We are committed to serving you with utmost regard for your and your product's safety. Hence, please note, the delivery time of your order may change due to traffic &amp; natural calamities (like rain, storm, fog etc.) AND based on the government's zonal advisory in your area regarding COVID-19</p></td> 
+                             </tr> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="center" style="padding:0;Margin:0;padding-bottom:10px;padding-top:15px"><span class="es-button-border" style="border-style:solid;border-color:#2CB543;background:#E7481F;border-width:0px;display:inline-block;border-radius:5px;width:auto;border-top-width:0px;border-bottom-width:0px"><a href="https://lakeofcakes.com/UserDash/customerProfile.html" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:underline;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:16px;color:#FFFFFF;border-style:solid;border-color:#E7481F;border-width:10px 20px 10px 20px;display:inline-block;background:#E7481F;border-radius:5px;font-weight:normal;font-style:normal;line-height:19px;width:auto;text-align:center;border-top-width:10px;border-bottom-width:10px">View order status</a></span></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table> 
+               <table cellpadding="0" cellspacing="0" class="es-content" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td align="center" style="padding:0;Margin:0"> 
+                   <table bgcolor="#ffffff" class="es-content-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:680px"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px"> 
+                       <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td align="center" valign="top" style="padding:0;Margin:0;width:640px"> 
+                           <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/Capture.PNG?alt=media&amp;amp;token=4140cc7f-c7cb-47be-846c-d0e9fadc46a9" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table> 
+               <table class="es-content" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td align="center" style="padding:0;Margin:0"> 
+                   <table class="es-content-body" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:680px"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="Margin:0;padding-top:20px;padding-left:20px;padding-right:20px;padding-bottom:30px"> 
+                       <!--[if mso]><table style="width:640px" cellpadding="0" cellspacing="0"><tr><td style="width:320px" valign="top"><![endif]--> 
+                       <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:320px"> 
+                           <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;background-color:#FEF9EF;border-color:#EFEFEF;border-width:1px 0px 1px 1px;border-style:solid" width="100%" cellspacing="0" cellpadding="0" bgcolor="#fef9ef" role="presentation"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif">SUMMARY:</h4></td> 
+                             </tr> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="left" style="padding:0;Margin:0;padding-bottom:20px;padding-left:20px;padding-right:20px"> 
+                               <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation"> 
+                                 <tr style="border-collapse:collapse"> 
+                                  <td style="padding:0;Margin:0;font-size:12px;line-height:18px">Deliver By :</td> 
+                                  <td style="padding:0;Margin:0;font-size:13px;line-height:20px">${timeDate}
+                                  ${dTime}</td> 
+                                 </tr> 
+                                 <tr style="border-collapse:collapse"> 
+                                  <td style="padding:0;Margin:0;font-size:12px;line-height:18px">Amount Paid:</td> 
+                                  <td style="padding:0;Margin:0;font-size:14px;line-height:21px"><span style="font-size:13px">Rs</span><span style="font-size:13px">${totalCost}</span></td> 
+                                 </tr> 
+                               </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333"><br><br><br></p></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table> 
+                       <!--[if mso]></td><td style="width:0px"></td><td style="width:320px" valign="top"><![endif]--> 
+                       <table class="es-right" cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td align="left" style="padding:0;Margin:0;width:320px"> 
+                           <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;background-color:#FEF9EF;border-width:1px;border-style:solid;border-color:#EFEFEF" width="100%" cellspacing="0" cellpadding="0" bgcolor="#fef9ef" role="presentation"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="left" style="Margin:0;padding-bottom:10px;padding-top:20px;padding-left:20px;padding-right:20px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif">DELIVERY&nbsp;ADDRESS:</h4></td> 
+                             </tr> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="left" style="padding:0;Margin:0;padding-bottom:20px;padding-left:20px;padding-right:20px">
+                              <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">
+                              ${
+                                shippingData.differtAddress
+                                  ? shippingData.alt_name
+                                  : shippingData.name
+                              }
+                              ${shippingData.differtAddress ? shippingData.alt_address : shippingData.address}
+                              ${
+                                 shippingData.differtAddress ? shippingData.alt_zip : shippingData.zip
+                                }
+                              </p>
+                              <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">Lucknow - ${shippingData.zip}</p>
+                              <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">Lucknow , Uttar Pradesh <br>ass</p></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table> 
+                       <!--[if mso]></td></tr></table><![endif]--></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table> 
+               <table class="es-content" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td align="center" style="padding:0;Margin:0"> 
+                   <table class="es-content-body" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:680px"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px"> 
+                       <!--[if mso]><table style="width:640px" cellpadding="0" cellspacing="0"><tr><td style="width:310px" valign="top"><![endif]--> 
+                       <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:310px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="left" style="padding:0;Margin:0;padding-left:20px"><h4 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:'trebuchet ms', helvetica, sans-serif">ITEMS ORDERED</h4></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table> 
+                       <!--[if mso]></td><td style="width:20px"></td><td style="width:310px" valign="top"><![endif]--> 
+                       <table cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td align="left" style="padding:0;Margin:0;width:310px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="left" style="padding:0;Margin:0"> 
+                               <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" role="presentation"> 
+                                 <tr style="border-collapse:collapse"> 
+                                  <td style="padding:0;Margin:0;font-size:13px">NAME</td> 
+                                  <td style="padding:0;Margin:0;width:60px;font-size:13px;line-height:13px;text-align:center">QTY</td> 
+                                  <td style="padding:0;Margin:0;width:100px;font-size:13px;line-height:13px;text-align:center"><strong>Addition Details</strong></td> 
+                                 </tr> 
+                               </table></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table> 
+                       <!--[if mso]></td></tr></table><![endif]--></td> 
+                     </tr> 
+                    
+                     ${duplicate} ${duplicatAddons}
+        
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="padding:0;Margin:0;padding-left:20px;padding-right:20px"> 
+                       <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td valign="top" align="center" style="padding:0;Margin:0;width:640px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="center" style="padding:0;Margin:0;padding-bottom:10px;font-size:0"> 
+                               <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                                 <tr style="border-collapse:collapse"> 
+                                  <td style="padding:0;Margin:0;border-bottom:1px solid #EFEFEF;background:#FFFFFF none repeat scroll 0% 0%;height:1px;width:100%;margin:0px"></td> 
+                                 </tr> 
+                               </table></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table></td> 
+                     </tr> 
+        
+                     
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="Margin:0;padding-top:5px;padding-left:20px;padding-bottom:30px;padding-right:40px"> 
+                       <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td valign="top" align="center" style="padding:0;Margin:0;width:620px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td class="es-m-txt-r" align="right" style="padding:0;Margin:0"> 
+                               <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="right" role="presentation"> 
+                                 <tr style="border-collapse:collapse"> 
+                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px">Item(s) total (Including GST):</td> 
+                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px">${totalCost - delivertTypePrice}</td> 
+                                 </tr> 
+                                 <tr style="border-collapse:collapse"> 
+                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px">Perfect Hours Charges:</td> 
+                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px;color:#D48344"><b>${delivertTypePrice}</b></td> 
+                                 </tr> 
+                                 <tr style="border-collapse:collapse"> 
+                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px"><strong>Amount Paid:</strong></td> 
+                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px;color:#D48344"><strong>${totalCost}</strong></td> 
+                                 </tr> 
+                               </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:17px;color:#333333"><br></p></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table> 
+               <table cellpadding="0" cellspacing="0" class="es-footer" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td align="center" style="padding:0;Margin:0"> 
+                   <table class="es-footer-body" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FEF5E4;width:680px"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="padding:20px;Margin:0"> 
+                       <!--[if mso]><table style="width:640px" cellpadding="0" cellspacing="0"><tr><td style="width:218px" valign="top"><![endif]--> 
+                       <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:218px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td class="es-m-p0l es-m-txt-c" align="left" style="padding:0;Margin:0;font-size:0px"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" alt="Petshop logo" title="Petshop logo" width="108" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></td> 
+                             </tr> 
+                             <tr style="border-collapse:collapse"> 
+                              <td class="es-m-txt-c" align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333"><br></p></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table> 
+                       <!--[if mso]></td><td style="width:20px"></td><td style="width:402px" valign="top"><![endif]--> 
+                       <table cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td align="left" style="padding:0;Margin:0;width:402px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td class="es-m-p0l es-m-txt-c" align="right" style="padding:0;Margin:0;font-size:0px"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Petshop logo" title="Petshop logo" width="108" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table> 
+                       <!--[if mso]></td></tr></table><![endif]--></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table> 
+               <table class="es-content" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%"> 
+                 <tr style="border-collapse:collapse"> 
+                  <td align="center" style="padding:0;Margin:0"> 
+                   <table class="es-content-body" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;width:680px" cellspacing="0" cellpadding="0" align="center"> 
+                     <tr style="border-collapse:collapse"> 
+                      <td align="left" style="Margin:0;padding-left:20px;padding-right:20px;padding-top:30px;padding-bottom:30px"> 
+                       <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                         <tr style="border-collapse:collapse"> 
+                          <td valign="top" align="center" style="padding:0;Margin:0;width:640px"> 
+                           <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
+                             <tr style="border-collapse:collapse"> 
+                              <td align="center" style="padding:0;Margin:0;display:none"></td> 
+                             </tr> 
+                           </table></td> 
+                         </tr> 
+                       </table></td> 
+                     </tr> 
+                   </table></td> 
+                 </tr> 
+               </table></td> 
+             </tr> 
+           </table> 
+          </div>  
+         </body>
+        </html>
+
+
+
         `;
 
         try {
