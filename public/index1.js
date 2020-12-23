@@ -8,9 +8,9 @@ let CUSTOMERS = [];
 let PRODUCTS = [];
 let CAT = [];
 
-const allOrdersHTML = document.querySelector('#all-orders');
-const allIncomeHTML = document.querySelector('#all-income');
-const ordersDetailsHTML = document.querySelector('#orders-details');
+const allOrdersHTML = document.querySelector("#all-orders");
+const allIncomeHTML = document.querySelector("#all-income");
+const ordersDetailsHTML = document.querySelector("#orders-details");
 
 const displayOrdersInfo = () => {
   let locAdminOrders = window.localStorage.getItem("locAdminOrders");
@@ -19,10 +19,10 @@ const displayOrdersInfo = () => {
     // console.log(locAdminOrders);
     allOrdersHTML.innerHTML = locAdminOrders.totalOrders;
     allIncomeHTML.innerHTML = `₹ ${locAdminOrders.totalIncome}`;
-    let row = '';
-    for(let o of locAdminOrders.details) {
+    let row = "";
+    for (let o of locAdminOrders.details) {
       // console.log(o);
-      let orderStatus = '';
+      let orderStatus = "";
       if ("completed" === o.status) {
         orderStatus = `<span class="badge badge-success">Completed</span>`;
       } else if ("rejected" === o.status) {
@@ -46,8 +46,8 @@ const displayOrdersInfo = () => {
 };
 displayOrdersInfo();
 
-const allCutomersHTML = document.querySelector('#all-cutomers');
-const cutomerDetailsHTML = document.querySelector('#cutomer-details');
+const allCutomersHTML = document.querySelector("#all-cutomers");
+const cutomerDetailsHTML = document.querySelector("#cutomer-details");
 
 const displayCustomerssInfo = () => {
   let locAdminCustomers = window.localStorage.getItem("locAdminCustomers");
@@ -55,11 +55,11 @@ const displayCustomerssInfo = () => {
     locAdminCustomers = JSON.parse(locAdminCustomers);
     // console.log(locAdminCustomers);
     allCutomersHTML.innerHTML = locAdminCustomers.totalCustomers;
-    let row = '';
-    for(let c of locAdminCustomers.details) {
+    let row = "";
+    for (let c of locAdminCustomers.details) {
       // console.log(c);
       let img;
-      if(c.Image === 'null') {
+      if (c.Image === "null") {
         img = `<img src="./assets/images/logo.png" style="width: 150px;" alt="User Image">`;
       } else {
         img = `<img src="${c.Image}" style="width: 150px;" alt="User Image">`;
@@ -71,21 +71,21 @@ const displayCustomerssInfo = () => {
         <p class="users-list-name" href="#">${c.Email}</p>
         <span class="users-list-date">${c.Phone}</span>
       </li>
-      `; 
+      `;
     }
     cutomerDetailsHTML.innerHTML = row;
   }
 };
 displayCustomerssInfo();
 
-let productsDetailsHTML = document.querySelector('#products-details');
+let productsDetailsHTML = document.querySelector("#products-details");
 const displayProductssInfo = () => {
   let locAdminProducts = window.localStorage.getItem("locAdminProducts");
   if (locAdminProducts) {
     locAdminProducts = JSON.parse(locAdminProducts);
     // console.log(locAdminProducts);
-    let row = '';
-    for(let p of locAdminProducts) {
+    let row = "";
+    for (let p of locAdminProducts) {
       // console.log(p);
       row += `
       <tr>
@@ -99,77 +99,84 @@ const displayProductssInfo = () => {
 };
 displayProductssInfo();
 
-const allVisitorsHTML = document.querySelector('#all-visitors');
-db.collection('miscellaneous').doc('visitors').onSnapshot(visitorDoc => {
-  let visitorData = visitorDoc.data();
-  allVisitorsHTML.innerHTML = visitorData.count;
-})
+const allVisitorsHTML = document.querySelector("#all-visitors");
+db.collection("miscellaneous")
+  .doc("visitors")
+  .onSnapshot((visitorDoc) => {
+    let visitorData = visitorDoc.data();
+    allVisitorsHTML.innerHTML = visitorData.count;
+  });
 
-db.collection("orders")
-  .onSnapshot((orderSnaps) => {
-    let orderSnapsDocs = orderSnaps.docs;
-    let totalIncome = 0;
-    let totalOrders = 0;
-    for (let o of orderSnapsDocs) {
-      let oData = o.data();
-      totalIncome += oData.total;
-      ORDERS.push(oData);
-      totalOrders++;
-    }
-    function compare(a, b) {
-      let o1 = a.timeStamp;
-      let o2 = b.timeStamp;
+db.collection("orders").onSnapshot((orderSnaps) => {
+  let orderSnapsDocs = orderSnaps.docs;
+  let totalIncome = 0;
+  let totalOrders = 0;
+  for (let o of orderSnapsDocs) {
+    let oData = o.data();
+    totalIncome += oData.total;
+    ORDERS.push(oData);
+    totalOrders++;
+  }
+  function compare(a, b) {
+    let o1 = a.timeStamp;
+    let o2 = b.timeStamp;
 
-      return o2 - o1;
-    }
-    ORDERS.sort(compare);
+    return o2 - o1;
+  }
+  ORDERS.sort(compare);
+  if (ORDERS.length > 8) {
     ORDERS.length = 8;
-    // console.log(ORDERS);
-    let ordersData = {
-      details: ORDERS,
-      totalOrders: totalOrders,
-      totalIncome: totalIncome,
-    };
-    window.localStorage.setItem("locAdminOrders", JSON.stringify(ordersData));
-    displayOrdersInfo();
-  });
+  }
+  // console.log(ORDERS);
+  let ordersData = {
+    details: ORDERS,
+    totalOrders: totalOrders,
+    totalIncome: totalIncome,
+  };
+  window.localStorage.setItem("locAdminOrders", JSON.stringify(ordersData));
+  displayOrdersInfo();
+});
 
-db.collection("Customers")
-  .onSnapshot((customerSnaps) => {
-    let customerSnapsDocs = customerSnaps.docs;
-    let totalCustomers = 0;
-    for (let c of customerSnapsDocs) {
-      let cData = c.data();
-      totalCustomers++;
-      CUSTOMERS.push(cData);
-    }
+db.collection("Customers").onSnapshot((customerSnaps) => {
+  let customerSnapsDocs = customerSnaps.docs;
+  let totalCustomers = 0;
+  for (let c of customerSnapsDocs) {
+    let cData = c.data();
+    totalCustomers++;
+    CUSTOMERS.push(cData);
+  }
 
-    function compare(a, b) {
-      let c1 = a.createdDtm;
-      let c2 = b.createdDtm;
+  function compare(a, b) {
+    let c1 = a.createdDtm;
+    let c2 = b.createdDtm;
 
-      return c2 - c1;
-    }
-    CUSTOMERS.sort(compare);
+    return c2 - c1;
+  }
+  CUSTOMERS.sort(compare);
+  if (CUSTOMERS.length > 8) {
+    console.log('aaaa');
     CUSTOMERS.length = 8;
-    let customersData = {
-      details: CUSTOMERS,
-      totalCustomers: totalCustomers
-    }
-    window.localStorage.setItem("locAdminCustomers", JSON.stringify(customersData));
+  }
+  let customersData = {
+    details: CUSTOMERS,
+    totalCustomers: totalCustomers,
+  };
+  window.localStorage.setItem(
+    "locAdminCustomers",
+    JSON.stringify(customersData)
+  );
 
-    displayCustomerssInfo();
-  });
+  displayCustomerssInfo();
+});
 
-db.collection("categories")
-  .onSnapshot((catSnaps) => {
-    let catSnapsDocs = catSnaps.docs;
+db.collection("categories").onSnapshot((catSnaps) => {
+  let catSnapsDocs = catSnaps.docs;
 
-    for (let cat of catSnapsDocs) {
-      CAT.push({ id: cat.id, data: cat.data() });
-    }
-    extractProducts();
-  });
+  for (let cat of catSnapsDocs) {
+    CAT.push({ id: cat.id, data: cat.data() });
+  }
+  extractProducts();
+});
 
 const extractProducts = async () => {
   for (let cat of CAT) {
@@ -187,4 +194,3 @@ const extractProducts = async () => {
   window.localStorage.setItem("locAdminProducts", JSON.stringify(PRODUCTS));
   displayProductssInfo();
 };
-

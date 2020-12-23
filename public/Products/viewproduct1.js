@@ -74,10 +74,11 @@ async function displayRows(snapshotDocs, allCatData) {
     // console.log(catId, scatId, ccatId);
 
     let catData = catDetails(catId, scatId, ccatId);
-   
+
     let imgUrl = docData.mainImgUrl;
-    if(!imgUrl){
-      imgUrl="https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+    if (!imgUrl) {
+      imgUrl =
+        "https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png";
     }
     tRows += `
     <tr role="row" class="odd parent" id="main-row-${id}">
@@ -124,7 +125,7 @@ async function displayRows(snapshotDocs, allCatData) {
       </tr>`;
   }
   // console.log(tRows);
-  
+
   return tRows;
 }
 
@@ -193,7 +194,6 @@ const deleteProduct = (e) => {
         // console.log('all deleted');
         // extractData();
         document.querySelector(`#main-row-${docId}`).remove();
-
       })
       .catch((error) => {
         alert("error", error);
@@ -280,12 +280,21 @@ const displayTables = async () => {
       });
     if (tRows != "") {
       tbodys.innerHTML = tRows;
+<<<<<<< HEAD
       // setTimeout(function(){
       //   $('#myTable' +cat.id).DataTable({
       //     "responsive": true,
       //     "autoWidth": false,
       //   });
       // },4000)
+=======
+      setTimeout(function () {
+        $("#myTable" + cat.id).DataTable({
+          responsive: true,
+          autoWidth: false,
+        });
+      }, 4000);
+>>>>>>> dc093921efdd7c1fedf9e3c3384e41a5773d4bbd
     } else {
       $("#tbodys").empty();
       tbodys.innerHTML =
@@ -537,7 +546,7 @@ const editDetails = async (e) => {
       await subCatSelect(wscat);
       await childCatSelect(ccat);
       if (isCake) {
-        document.querySelector('#is-cake').checked = true;
+        document.querySelector("#is-cake").checked = true;
         document.getElementById("cake-attributes").style.display = "block";
         if (doc.weights) {
           doc.weights.map((weight) => {
@@ -610,7 +619,7 @@ const editDetails = async (e) => {
                 editProduct["cake-flavour-pineapple"].checked = true;
               } else if (flav == "Strawberry") {
                 editProduct["cake-flavour-strawberry"].checked = true;
-              }else {
+              } else {
                 // console.log("invalid");
               }
             });
@@ -624,15 +633,13 @@ const editDetails = async (e) => {
       }
 
       if (pIsGift) {
-        document.querySelector('#gift-type').checked = true;
+        document.querySelector("#gift-type").checked = true;
         document.getElementById("gift-attributes").style.display = "block";
         if (doc.personalized === true) {
           console.log(doc.personalized);
           editProduct["gift-type"].checked = true;
         }
-        if (doc.title === true) {
-          editProduct["gift-title"].checked = true;
-        }
+        editProduct["gift-title"].value = doc.title;
         if (doc.imgs) {
           editProduct["img-no"].value = doc.imgs;
         }
@@ -663,8 +670,9 @@ const editDetails = async (e) => {
         }
       }
       let mImgUrl = doc.mainImgUrl;
-      if(!mImgUrl){
-        mImgUrl="https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png"
+      if (!mImgUrl) {
+        mImgUrl =
+          "https://www.nicomatic.com/themes/custom/jango_sub/img/no-image.png";
       }
       let mImg = `
       <img id="putImage" src="${mImgUrl}" alt=" image" />
@@ -702,7 +710,7 @@ const editDetails = async (e) => {
         doc.policy = doc.policy.replace("<p></p>", "");
       }
 
-      if (doc.descriptions !== "<p><br></p>" && doc.descriptions !== '') {
+      if (doc.descriptions !== "<p><br></p>" && doc.descriptions !== "") {
         $("#productDesc").summernote("editor.pasteHTML", doc.descriptions);
       }
 
@@ -941,12 +949,13 @@ const submitEditForm = (event) => {
     });
   }
 
-  let fondant = 'false'; 
-  if(editProduct.querySelector('input[name="cake-type-fondant"]:checked')) {
-    console.log(editProduct.querySelector('input[name="cake-type-fondant"]:checked'));
-    fondant = 'true';
+  let fondant = "false";
+  if (editProduct.querySelector('input[name="cake-type-fondant"]:checked')) {
+    console.log(
+      editProduct.querySelector('input[name="cake-type-fondant"]:checked')
+    );
+    fondant = "true";
   }
-
 
   let wholeProduct = {
     name: productName,
@@ -989,10 +998,9 @@ const submitEditForm = (event) => {
     if (pIsGift) {
       wholeProduct.personalized = true;
       wholeProduct.imgs = editProduct["img-no"].value;
-      wholeProduct.title = false;
-      if (editProduct.querySelector('input[name="gift-title"]:checked')) {
-        wholeProduct.title = true;
-      }
+      wholeProduct.title = editProduct.querySelector(
+        'input[name="gift-title"]'
+      ).value;
     }
   }
 
@@ -1319,22 +1327,20 @@ $(document).ready(function () {
 //     });
 // };
 
-
-
 // db.collection('categories').get().then(async(snps) => {
-  // let snapDocs = snps.docs;
-  // for(let sd of snapDocs) {
-    // let sdId = sd.id;
-    // let sdd  = sd.data();
-    //  db.collection('C0ab0eaGzmtjCKQMnvh5').get().then(async(ps) => {
-    //   let psd = ps.docs;
-    //   for(let pd of psd) {
-    //     let pdR = await db.collection('C0ab0eaGzmtjCKQMnvh5').doc(pd.id);
-    //     let pdd = pd.data();
-    //     pdd.fondant = 'false';
-    //     await pdR.update(pdd)
-    //     console.log('done');
-    //   }
-    // })
-  // }
+// let snapDocs = snps.docs;
+// for(let sd of snapDocs) {
+// let sdId = sd.id;
+// let sdd  = sd.data();
+//  db.collection('C0ab0eaGzmtjCKQMnvh5').get().then(async(ps) => {
+//   let psd = ps.docs;
+//   for(let pd of psd) {
+//     let pdR = await db.collection('C0ab0eaGzmtjCKQMnvh5').doc(pd.id);
+//     let pdd = pd.data();
+//     pdd.fondant = 'false';
+//     await pdR.update(pdd)
+//     console.log('done');
+//   }
+// })
+// }
 // })
