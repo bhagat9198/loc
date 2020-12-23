@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
   <link rel="stylesheet" href="../assets//css/randomStyles.css">
   <link rel="stylesheet" href="../assets/css/animate.css">
-
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDSAu8plckC5Scz05U3MlqYRpnEiGQB-V8"></script>
   <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <link rel="stylesheet" href="assets/css/animation.css">
@@ -2296,3 +2296,27 @@
 </div>
 
 </html>
+<script>
+  function initialize() {
+  var input = document.getElementById('locality');
+  var options = {
+    types: ['address'],
+    componentRestrictions: {
+      country: 'us'
+    }
+  };
+  autocomplete = new google.maps.places.Autocomplete(input, options);
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    var place = autocomplete.getPlace();
+    for (var i = 0; i < place.address_components.length; i++) {
+      for (var j = 0; j < place.address_components[i].types.length; j++) {
+        if (place.address_components[i].types[j] == "postal_code") {
+          document.getElementById('postal_code').innerHTML = place.address_components[i].long_name;
+
+        }
+      }
+    }
+  })
+}
+google.maps.event.addDomListener(window, "load", initialize);
+</script>
