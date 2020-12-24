@@ -360,7 +360,7 @@ if (localStorage.getItem("locLoggedInUser")) {
               });
           }
           cartModalProds += `
-      <div onclick="redirectToCart()" class="dropdown-cart-action">
+      <div onclick="redirectToCart()" class="dropdown-cart-action" style="padding:15px !important">
             <a href="" onclick="redirectToCart()" class="mybtn1" style="background-color: red;margin-left:auto;margin-right:auto;">View In Cart</a>
           </div>
         </div>
