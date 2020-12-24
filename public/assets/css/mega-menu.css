@@ -9,7 +9,7 @@
 	
 	/* border:1px solid black; */
 	border-radius: 2px;
-	background:#fffff;
+	background:#ffffff;
 	padding: 0px;
 
 }
@@ -114,6 +114,7 @@
 	list-style: none;
 	box-sizing: border-box;
 	box-shadow: 0 7px 7px -1px rgba(0, 0, 0, 0.3);
+	z-index: 999;;
 
 
 }
