@@ -1184,7 +1184,7 @@ exports.sendEmailAfterConfirmation = functions.firestore
                        <tr style="border-collapse:collapse"> 
                         <td style="padding:0;Margin:0">${opData.name}<br><br></td> 
                         <td style="padding:0;Margin:0;width:60px;text-align:center">${op.qty}</td> 
-                        <td style="padding:0;Margin:0;width:100px;text-align:center"><strong><span>${cake} Message : ${op.message}</span></strong><br></td> 
+                
                        </tr> 
                      </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333"><br></p></td> 
                    </tr> 
@@ -1517,12 +1517,12 @@ exports.sendEmailAfterConfirmation = functions.firestore
                                <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="left" role="presentation"> 
                                  <tr style="border-collapse:collapse"> 
                                   <td style="padding:0;Margin:0;font-size:12px;line-height:18px">Deliver By :</td> 
-                                  <td style="padding:0;Margin:0;font-size:13px;line-height:20px">${timeDate}
+                                  <td style="padding:0;Margin:0;font-size:13px;line-height:20px">
                                   ${dTime}</td> 
                                  </tr> 
                                  <tr style="border-collapse:collapse"> 
                                   <td style="padding:0;Margin:0;font-size:12px;line-height:18px">Amount Paid:</td> 
-                                  <td style="padding:0;Margin:0;font-size:14px;line-height:21px"><span style="font-size:13px">Rs</span><span style="font-size:13px">${totalCost}</span></td> 
+                                  <td style="padding:0;Margin:0;font-size:14px;line-height:21px"><span style="font-size:13px">Rs</span><span style="font-size:13px">&nbsp;&nbsp;${totalCost}</span></td> 
                                  </tr> 
                                </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333"><br><br><br></p></td> 
                              </tr> 
@@ -1551,7 +1551,7 @@ exports.sendEmailAfterConfirmation = functions.firestore
                                 }
                               </p>
                               <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">Lucknow - ${shippingData.zip}</p>
-                              <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">Lucknow , Uttar Pradesh <br>ass</p></td> 
+                              <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">Lucknow , Uttar Pradesh</p></td> 
                              </tr> 
                            </table></td> 
                          </tr> 
@@ -1589,7 +1589,7 @@ exports.sendEmailAfterConfirmation = functions.firestore
                                  <tr style="border-collapse:collapse"> 
                                   <td style="padding:0;Margin:0;font-size:13px">NAME</td> 
                                   <td style="padding:0;Margin:0;width:60px;font-size:13px;line-height:13px;text-align:center">QTY</td> 
-                                  <td style="padding:0;Margin:0;width:100px;font-size:13px;line-height:13px;text-align:center"><strong>Addition Details</strong></td> 
+        
                                  </tr> 
                                </table></td> 
                              </tr> 
@@ -1640,7 +1640,7 @@ exports.sendEmailAfterConfirmation = functions.firestore
                                  </tr> 
                                  <tr style="border-collapse:collapse"> 
                                   <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px"><strong>Amount Paid:</strong></td> 
-                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px;color:#D48344"><strong>${totalCost}</strong></td> 
+                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px;color:#D48344"><strong>${totalCost + delivertTypePrice}</strong></td> 
                                  </tr> 
                                </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:17px;color:#333333"><br></p></td> 
                              </tr> 
