@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Lake of Cakes | All Reminders</title>
+
+    <!-- Font Awesome Icons -->
+    <!-- <link href="../assets/css/dark-side-style.css" rel="stylesheet" /> -->
+    <link href="../assets/css/waves.min.css" rel="stylesheet" />
+
+    <link href="../assets/css/plugin.css" rel="stylesheet" />
+
+    <link href="../assets/css/jquery.tagit.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/bootstrap-coloroicker.css">
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+    <link href="../assets/css/responsive.css" rel="stylesheet" />
+    <link href="../assets/css//Common.css" rel="stylesheet" />
+    <link href="../assets/css/product.css" rel="stylesheet" />
+    <link href="../assets/css/jquery.Jcrop.css" rel="stylesheet" />
+    <link href="../assets/css/Jcrop-style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/plugins/summernote/summernote-bs4.css">
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <div class="wrapper">
+        <section id="admin-nav-load"></section>
+        <section class="wrapper">
+            <div class="content-wrapper">
+                <h4 style="padding: 10px;font-weight: bold;">Reminders</h4>
+                <div class="col-lg-12">
+                    <div class="add-product-content">
+                        <h4 class="MainHeading">Reminders</h4>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="product-description">
+                                    <div class="body-area">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-responsiv">
+                                                    <table id="example2" class="table table-hover dt-responsive"
+                                                        cellspacing="0" width="100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Email</th>
+                                                                <th>Reminder Type</th>
+                                                                <th>Dated</th>
+                                                                <th>Created on
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="reminderData">
+                                                            <tr role="row" class="odd parent">
+                                                                <td tabindex="0">Email</td>
+                                                                <td>Birthday</td>
+                                                                <td> Date
+                                                                </td>
+                                                                <td>
+                                                                    Action
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+
+            </div>
+
+
+
+        </section>
+        <section id="admin-footer-load"></section>
+    </div>
+
+    <script src="../assets/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $('#admin-nav-load').load('/Common/navbar.html');
+        $('#admin-footer-load').load('/Common/footer.html');
+    </script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/adminlte.js"></script>
+
+
+
+    <!-- Bootstrap -->
+    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+
+
+
+    <!-- PAGE PLUGINS -->
+    <!-- jQuery Mapael -->
+
+    <script src="../assets/js/jquery-1.12.4.min.js"></script>
+    t>
+
+
+    <script src="../assets/js/adminlte.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../assets/js/adminlte.js"></script>
+
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="../assets/js/demo.js"></script>
+
+    <!-- PAGE PLUGINS -->
+    <!-- jQuery Mapael -->
+
+    <script src="../assets/js/jquery-1.12.4.min.js"></script>
+    <!-- <script src="../assets/js/vue.js"></script> -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jqueryui.min.js"></script>
+    <!-- Fullside-menu Js-->
+    <!-- <script src="../assets/js/jquery.slimscroll.min.js"></script>
+  <script src="../assets/js/waves.min.js"></script> -->
+
+    <script src="../assets/js/plugin.js"></script>
+
+    <!-- ChartJS -->
+    <!-- <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script> -->
+    <!-- <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script> -->
+    <!-- <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script> -->
+    <!-- Summernote -->
+
+    <!-- PAGE SCRIPTS -->
+    <!-- <script src="../assets/dist/js/pages/dashboard2.js"></script> -->
+    <script type="text/javascript">
+
+    // Gallery Section Insert
+
+
+
+    // Gallery Section Insert Ends
+    </script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+            authDomain: "lake-of-cakes.firebaseapp.com",
+            databaseURL: "https://lake-of-cakes.firebaseio.com",
+            projectId: "lake-of-cakes",
+            storageBucket: "lake-of-cakes.appspot.com",
+            messagingSenderId: "779843608951",
+            appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+            measurementId: "G-5ER0QF0FDW"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+        db.collection("reminder").onSnapshot((snapshot) => {
+            if (snapshot.docs == "") {
+                document.getElementById("reminderData").innerHTML += `
+        <tr role="row" class="odd parent">
+          <td tabindex="0">----</td>
+          <td>----</td>
+          <td>---
+          </td>
+          <td>
+          ----
+          </td>
+        </tr>
+          `
+            }
+
+            let snapshotDocs = snapshot.docs;
+            let count = 1;
+            let status = "loading.."
+            $('#reminderData').empty()
+            for (let i of snapshotDocs) {
+            
+            document.getElementById("reminderData").innerHTML += `
+                <tr role="row" class="odd parent">
+                <td tabindex="0">`+ i.data().emailId + `</td>
+                <td>`+ i.data().type + `</td>
+                <td> `+ i.data().date + `
+                </td>
+                <td>
+                
+                    <div class="godropdown"><button class="go-dropdown-toggle" onclick=deleteReminder("`+i.id+ `")>
+                        Remove
+                    </div>
+                </td>
+                </tr>
+    
+               `
+
+            }
+            $('#example2').DataTable({
+
+                "responsive": true,
+                "autoWidth": false,
+            });
+
+
+
+        });
+
+        function deleteReminder(id) {
+    
+            db.collection("reminder").doc(id).delete().then(function () {
+                console.log("Document successfully deleted!");
+            }).catch(function (error) {
+                console.error("Error removing document: ", error);
+            });
+        }
+    </script>
+
+
+</body>
+
+</html>

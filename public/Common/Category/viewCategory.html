@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Lake of Cakes | View-Category</title>
+
+  <!-- Font Awesome Icons -->
+  <!-- <link href="../../assets/css/dark-side-style.css" rel="stylesheet" /> -->
+  <link href="../../assets/css/waves.min.css" rel="stylesheet" />
+
+  <link href="../../assets/css/plugin.css" rel="stylesheet" />
+
+  <link href="../../assets/css/jquery.tagit.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/bootstrap-coloroicker.css">
+  <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../assets/css/adminlte.min.css">
+  <link href="../../assets/css/style.css" rel="stylesheet" />
+  <link href="../../assets/css/custom.css" rel="stylesheet" />
+  <link href="../../assets/css/responsive.css" rel="stylesheet" />
+  <link href="../../assets/css//Common.css" rel="stylesheet" />
+  <link href="../../assets/css/product.css" rel="stylesheet" />
+  <link href="../../assets/css/jquery.Jcrop.css" rel="stylesheet" />
+  <link href="../../assets/css/Jcrop-style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/plugins/summernote/summernote-bs4.css">
+
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <section id="admin-nav-load"></section>
+
+    <section class="wrapper">
+      <div class="content-wrapper">
+        <h4 style="padding: 10px;font-weight: bold;">LOC Categories</h4>
+
+        <div class="col-lg-12">
+          <div class="add-product-content">
+            <h4 class="MainHeading">All Main Categories</h4>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="product-description">
+                  <div class="body-area">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="table-responsive">
+                          <table id="" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                            <div class="alert alert-success validation" style="display: none;">
+                              <button type="button" class="close alert-close"><span>×</span></button>
+                              <p class="text-left"></p>
+                            </div>
+                            <div class="alert alert-danger validation" style="display: none;">
+                              <button type="button" class="close alert-close"><span>×</span></button>
+                              <ul class="text-left">
+                              </ul>
+                            </div>
+                            
+                            <div class="row">
+                              <div class="col-lg-12">
+                                <h3 id="successMainCat"
+                                  style="text-align: center;background-color: rgb(89, 151, 89);padding: 5px;border-radius: 20px;display:none ;">
+                                  Category Added Sucessfully</h3>
+                              </div>
+                            </div>
+
+                            <thead>
+                              <tr>
+                                <th>Category Name</th>
+                                <th>Image</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody class="main-category">
+                              <!-- <tr role="row" class="odd parent">
+                                <td tabindex="0"> <input type="text" class="editField" value="Cake">
+                                  <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
+                                <td><img src="../../assets/images/logo.png">
+                                  <br>
+                                  <input type="file" class="mybtn2" accept="image/*">
+                                </td>
+                                <td>
+                                  <div class="action-list">
+                                    <select class="process  drop-success" style="display: block;">
+                                      <option data-val="1" value="" selected="">Activated</option>
+                                      <option data-val="0" value="">
+                                        Deactivated</option>
+                                    </select>
+
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="godropdown"><button class="go-dropdown-toggle">
+                                      Delete
+                                  </div>
+                                </td>
+                              </tr> -->
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-lg-12">
+          <div class="add-product-content">
+            <h4 class="MainHeading">All Sub Categories</h4>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="product-description">
+                  <div class="body-area">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="table-responsive">
+
+                          <table id="example2" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                            <div class="alert alert-success validation" style="display: none;">
+                              <button type="button" class="close alert-close"><span>×</span></button>
+                              <p class="text-left"></p>
+                            </div>
+                            <div class="alert alert-danger validation" style="display: none;">
+                              <button type="button" class="close alert-close"><span>×</span></button>
+                              <ul class="text-left">
+                              </ul>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-lg-12">
+                                <h3 id="successSubCat"
+                                  style="text-align: center;background-color: rgb(89, 151, 89);padding: 5px;border-radius: 20px;display:none ;">
+                                  Category Added Sucessfully</h3>
+                              </div>
+                            </div>
+
+                            <thead>
+                              <tr>
+                                <th>Sub-Category Name</th>
+                                <th>Main Category</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody class="sub-category">
+                              <!-- <tr role="row" class="odd parent">
+                                <td><input type="text" class="editField" value="By Name">
+                                  <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
+                                <td tabindex="0">Flower</i> </td>
+
+                                <td>
+                                  <div class="action-list">
+                                    <select class="process  drop-success" style="display: block;">
+                                      <option data-val="1" value="" selected="">Activated</option>
+                                      <option data-val="0" value="">
+                                        Deactivated</option>
+                                    </select>
+
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="godropdown"><button class="go-dropdown-toggle">
+                                      Delete
+                                  </div>
+
+                                </td>
+                              </tr> -->
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-lg-12">
+          <div class="add-product-content">
+            <h4 class="MainHeading">All Child Categories</h4>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="product-description">
+                  <div class="body-area">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="table-responsive">
+                          <table id="example3" class="table table-hover dt-responsive" cellspacing="0" width="100%">
+                            <div class="alert alert-success validation" style="display: none;">
+                              <button type="button" class="close alert-close"><span>×</span></button>
+                              <p class="text-left"></p>
+                            </div>
+                            <div class="alert alert-danger validation" style="display: none;">
+                              <button type="button" class="close alert-close"><span>×</span></button>
+                              <ul class="text-left">
+                              </ul>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-lg-12">
+                                <h3 id="successChildCat"
+                                  style="text-align: center;background-color: rgb(89, 151, 89);padding: 5px;border-radius: 20px;display:none ;">
+                                  Category Added Sucessfully</h3>
+                              </div>
+                            </div>
+
+                            <thead>
+                              <tr>
+                                <th>Child-Category Name</th>
+                                <th>Sub-Category</th>
+                                <th>Main Category </th>
+                                <th>Status</th>
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+                            <tbody class="child-category" id="child-tbody">
+                              <!-- <tr role="row" class="odd parent">
+                                <td><input type="text" class="editField" value="Cupcake">
+                                  <i class="fas fa-check" style="margin: 3%;cursor: pointer;"></i> </td>
+                                <td tabindex="0">By Name </td>
+                                <td>Cake </td>
+
+                                <td>
+                                  <div class="action-list">
+                                    <select class="process  drop-success" style="display: block;">
+                                      <option data-val="1" value="" selected="">Activated</option>
+                                      <option data-val="0" value="">
+                                        Deactivated</option>
+                                    </select>
+
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="godropdown"><button class="go-dropdown-toggle">
+                                      Delete
+                                  </div>
+                                </td>
+                              </tr> -->
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="admin-footer-load"></section>
+  </div>
+
+  <script src="../../assets/js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript">
+    $('#admin-nav-load').load('/Common/navbar.html');
+    $('#admin-footer-load').load('/Common/footer.html');
+  </script>
+  
+  <script src="../../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/adminlte.js"></script>
+
+  <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+  <!-- <script src="../assets/js/demo.js"></script> -->
+
+  <script type="text/javascript">
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#blah')
+            .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    // Gallery Section Insert
+    // $('#example2').DataTable({
+
+    //   "responsive": true,
+    //   "autoWidth": false,
+    // });
+    
+   
+
+
+    // Gallery Section Insert Ends
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+      authDomain: "lake-of-cakes.firebaseapp.com",
+      databaseURL: "https://lake-of-cakes.firebaseio.com",
+      projectId: "lake-of-cakes",
+      storageBucket: "lake-of-cakes.appspot.com",
+      messagingSenderId: "779843608951",
+      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+      measurementId: "G-5ER0QF0FDW"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+  <script src="./viewCategory1.js"></script>
+</body>
+
+</html>
