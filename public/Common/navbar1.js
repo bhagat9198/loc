@@ -459,7 +459,7 @@ db.collection('miscellaneous').doc('siteStatus').onSnapshot(siteDoc => {
                           </a>
                         </li> &nbsp; |
 
-                        <li><a href="#" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
+                        <li><a href="/Common/coupans.html" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
                                 class="fa fa-gift" aria-hidden="true" style="color: rgb(235, 48, 79);"></i>
                               COUPONS</span> </a>
                         </li> &nbsp; |
