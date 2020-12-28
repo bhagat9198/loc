@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
   <link rel="stylesheet" href="../assets//css/randomStyles.css">
   <link rel="stylesheet" href="../assets/css/animate.css">
-
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDSAu8plckC5Scz05U3MlqYRpnEiGQB-V8"></script>
   <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <link rel="stylesheet" href="assets/css/animation.css">
@@ -1082,9 +1082,12 @@
                               readonly="readonly">
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control pin-lucknow" min="226000" max="226999" onkeyup="checkPin(event, this)" type="text" name="zip" id="locality" placeholder="Pin Code"
-                              value="226" required>
-                            <div id="postal_code"></div>
+                            <input class="form-control pin-lucknow" min="226000" max="226999" type="text" name="zip" id="locality" value="" placeholder="Pin Code " 
+                               required>
+                                <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeError">Please enter a pincode of lucknow</p>
+                                <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeUndefined">Please select an area/street to fetch pincode</p>
+                                <input class="form-control pin-lucknow"  type="text"  id="postal_code" placeholder="Pin Code " style="display: none;">
+                                <div id="showZip" style="color: green;font-weight: 700;"></div>
                           </div>
                         </div>
                       </div>
@@ -1128,9 +1131,10 @@
                               value="Lucknow" readonly="readonly">
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control ship_input" min="226000" max="226999"  onkeyup="checkPin(event, this)" type="text" name="shipping_zip" value="226"
+                            <input class="form-control ship_input" min="226000" max="226999" type="text" name="shipping_zip" value="226"
                               id="shippingPostal_code" placeholder="Pin Code">
-                            <div id="postal_code"></div>
+                              <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeError2">Please enter a pincode of lucknow</p>
+                              <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeUndefined2">Please select an area/street to fetch pincode</p>
                           </div>
                         </div>
                       </div>
@@ -1438,8 +1442,42 @@
               </div>
             </div>
           </div>
+
+
+    
         </div>
 
+          <!-- <div class="modal" id="myModalPin">
+            <div class="">
+              <div class="modal-content">
+                <div class="modal-header" style="background-color: rgb(228, 15, 15);padding: 10px !important;">
+                  <h4 class="modal-title text-center tb" style="color:#fff;font-weight: 700;">Find your area pincode
+                  
+                  </h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" >
+                  <div class="container-fluid">
+                    <div class="">
+                      <div class="row">
+                        <div class="col-md-12 mt-3" style="background-color: rgba(212, 221, 202, 0.4);">
+                          <div class="form-group">
+                            <label style="font-weight: 700;padding: 10px !important;">Enter your Street or Locality</label>
+                            <input type="text"  id="find_my_pin" placeholder="Enter City Name"
+                               class="">
+                               <div id="postal_code"></div>
+                          </div>
+                     
+                        </div>
+                   
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div> -->
         <!-- -------------------------   PRICING    ------------------------------ -->
         <div class="col-lg-4 col-sm-push-8">
           <div class="right-area">
@@ -1850,6 +1888,56 @@
       this.value = this.value.replace(reg, '');
     }
   });
+  var google_pincode="";
+  function initialize() {
+  var input = document.getElementById('locality');
+  var input2=document.getElementById("shippingPostal_code");
+  var options = {
+    types: ['geocode'],
+    componentRestrictions: {
+      country: 'in'
+    }
+  };
+
+  autocomplete = new google.maps.places.Autocomplete(input, options);
+  autocomplete2 = new google.maps.places.Autocomplete(input2, options);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+  document.getElementById("pincodeError").style.display="none"
+  let place = autocomplete.getPlace();
+    for (var i = 0; i < place.address_components.length; i++) {
+      for (var j = 0; j < place.address_components[i].types.length; j++) {
+      
+         if(place.address_components[i].types[j]=="postal_code"){
+          
+          google_pincode=place.address_components[i].long_name
+          document.querySelector('#postal_code').value = place.address_components[i].long_name;
+          
+          document.querySelector('#showZip').innerHTML = place.address_components[i].long_name;
+         }
+      }
+    }
+  })
+
+  google.maps.event.addListener(autocomplete2, 'place_changed', function() {
+  document.getElementById("pincodeError").style.display="none"
+  let place = autocomplete2.getPlace();
+    for (var i = 0; i < place.address_components.length; i++) {
+      for (var j = 0; j < place.address_components[i].types.length; j++) {
+      
+         if(place.address_components[i].types[j]=="postal_code"){
+          
+          google_pincode2=place.address_components[i].long_name
+          document.querySelector('#shippingPostal_code').value = place.address_components[i].long_name;
+          
+          // document.querySelector('#showZip').innerHTML = place.address_components[i].long_name;
+         }
+      }
+    }
+  })
+
+}
+google.maps.event.addDomListener(window, "load", initialize);
   var btnc = 0;
   var modalVisited = 0;
   $("#proceed1Btn").click(function () {
@@ -1873,23 +1961,42 @@
         if (altAddSelected==1) {
           if (a_name != "" && a_phone != "" && a_address != "" && a_postal != "") {
             
+            if(google_pincode2==undefined){
+            document.getElementById("pincodeUndefined2").style.display="block"
+            }
+            else{
+              if(google_pincode2.startsWith("2260")||((document.querySelector('#shippingPostal_code').value).startsWith("2260")))
+              {
+              
+                if (document.getElementById("free-shepping1").checked) {
+                  $("#myModal1").modal('show');
+                  document.getElementById("free-hours").style.display = "block"
+                  modalVisited = 1;
+                }
+                else if (document.getElementById("free-shepping2").checked) {
+                  $("#myModal1").modal('show');
+                  document.getElementById("perfect-hours").style.display = "block"
+                  modalVisited = 1
+                } else {
+                  $("#myModal1").modal('show');
+                  document.getElementById("midnight-hours").style.display = "block"
+                  modalVisited = 1
+                }
+              }else{
+                document.getElementById("pincodeError2").style.display="block"
+              }
+              }
+            }
+          } else {
+          
+          if(google_pincode==undefined){
+            document.getElementById("pincodeUndefined").style.display="block"
+
+          }else{
+            if(google_pincode.startsWith("2260")||((document.querySelector('#locality').value).startsWith("2260"))){
+            
+            document.querySelector('#postal_code').value = document.querySelector('#locality').value.substring(0,6);
             if (document.getElementById("free-shepping1").checked) {
-              $("#myModal1").modal('show');
-              document.getElementById("free-hours").style.display = "block"
-              modalVisited = 1;
-            }
-            else if (document.getElementById("free-shepping2").checked) {
-              $("#myModal1").modal('show');
-              document.getElementById("perfect-hours").style.display = "block"
-              modalVisited = 1
-            } else {
-              $("#myModal1").modal('show');
-              document.getElementById("midnight-hours").style.display = "block"
-              modalVisited = 1
-            }
-          }
-        } else {
-          if (document.getElementById("free-shepping1").checked) {
             $("#myModal1").modal('show');
             document.getElementById("free-hours").style.display = "block"
             modalVisited = 1;
@@ -1903,6 +2010,13 @@
             document.getElementById("midnight-hours").style.display = "block"
             modalVisited = 1
           }
+          }else{
+           document.getElementById("pincodeError").style.display="block"
+          }
+
+          }
+   
+      
         } 
       }
     // }
@@ -1972,7 +2086,7 @@
     measurementId: "G-5ER0QF0FDW"
   };
   firebase.initializeApp(firebaseConfig);
-  // firebase.analytics();
+   firebase.analytics();
 </script>
 
 <script src="./checkout1.js"></script>
@@ -2269,22 +2383,16 @@
   }
 </style>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" data-backdrop="static" data-keyboard="false" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Successfull Placed</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+   
       <div class="modal-body">
         <div class="thank-you-pop">
           <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
-          <h1 style="text-align: center;">Thank You!</h1>
+          <h3 style="margin-left: auto;margin-right: auto;display: block;">Thank You!</h3>
           <p>Your order has been placed successfully . You can track your order from <b>All Orders</b> section under customer profile tab</p>
-          <h3 class="cupon-pop">Please wait ... <span>Redirecting to the index page</span></h3>
+          <h3 class="cupon-pop">Please wait ... <span>Redirecting to the Home page</span></h3>
           
          </div>
       </div>
@@ -2294,3 +2402,7 @@
 </div>
 
 </html>
+<script>
+ 
+ 
+</script>

@@ -9,7 +9,7 @@
 	
 	/* border:1px solid black; */
 	border-radius: 2px;
-	background:#fffff;
+	background:#ffffff;
 	padding: 0px;
 
 }
@@ -90,7 +90,7 @@
 	text-decoration: none;
 	padding-left: 30px;
 	padding-right: 30px;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 	padding-top: 10px;
 	font-size: 15px;
 	display: block;
@@ -114,6 +114,7 @@
 	list-style: none;
 	box-sizing: border-box;
 	box-shadow: 0 7px 7px -1px rgba(0, 0, 0, 0.3);
+	z-index: 999;;
 
 
 }

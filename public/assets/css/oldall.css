@@ -21404,7 +21404,7 @@ Logo Header Area Start
 .logo-header .helpful-links ul li.my-dropdown .cart .icon span {
     width: 20px;
     height: 20px;
-    background: #ff5500;
+    background: red;
     border-radius: 50px;
     display: inline-block;
     position: absolute;

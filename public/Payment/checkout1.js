@@ -353,7 +353,7 @@ const form1 = (e) => {
   const landmark = form1ShippingHTML["landmark"].value;
   const customer_country = form1ShippingHTML["customer_country"].value;
   const city = form1ShippingHTML["city"].value;
-  const zip = form1ShippingHTML["zip"].value;
+  const zip = document.querySelector("#postal_code").value;
 
   const shipDiffAddress = form1ShippingHTML.querySelector("#ship-diff-address");
   if (shipDiffAddress.checked) {
@@ -1063,9 +1063,20 @@ const exeRazPay = (e) => {
 };
 
 const orderComplete = (data) => {
+<<<<<<< HEAD
   $("#exampleModal").modal("show");
   //   let userValid=localStorage.getItem("locLoggedInUser")
   //   var dbupdate = db.collection("Customers").doc(userValid);
+=======
+  $('#exampleModal').modal('show')
+  $('#exampleModal').modal({
+    backdrop: 'static',
+    keyboard: false
+})
+//   let userValid=localStorage.getItem("locLoggedInUser")
+//   var dbupdate = db.collection("Customers").doc(userValid);
+
+>>>>>>> 04f9c87d6d921be956f8bdea5bfe95f49d51150d
 
   // return dbupdate.update({
   //       : true

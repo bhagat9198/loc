@@ -32,8 +32,18 @@ const displayCart = async () => {
   // console.log(USER_DETAILS);
   let index = -1;
   var count=0;
+
   var type="odd"
+  
+  if(USER_DETAILS.cart==undefined || USER_DETAILS.cart.length==0){
+  
+    cartBodyHTML.innerHTML=`<h5 style="text-align: center;font-size: 14px ; font-weight: 700px; padding: 20px;">Your bag is empty ! <a href="/index.html">Click here to add products now</h5>`
+  }
+  if(USER_DETAILS.cart.length>0){
+
+  
   for (let prod of USER_DETAILS.cart) {
+    
     count++;
     // console.log(prod);
     if(count%2!=0){
@@ -60,9 +70,7 @@ const displayCart = async () => {
         }
       });
     if (product) {
-      console.log(product);
-      console.log(allProdPrice);
-      console.log(allProdPrice[index]);
+    
       if (prod.pricing.weight) {
         for (let cw of product.weights) {
 
@@ -207,11 +215,11 @@ ${prod.personalizedGift ? personalizedGiftDetails : ''}
         
             
         <div class="cartSection">
-        <h5 style="font-size:13px" class="cartSection " data-index="${index}" id="subprice_${rand}">${prodPrice}</h5>
+        <h5 style="font-size:13px;font-weight:800" class="cartSection " data-index="${index}" id="subprice_${rand}">${prodPrice}</h5>
         </div>
       
-        <div class="cartSection " >
-        <span class="qtplus1 adding" style="cursor:pointer" style="padding:10px" data-id="${rand}" data-index="${index}" data-cartid="${
+        <div class="cartSection" >
+        <span class="qtplus1 adding cartSection" style="cursor:pointer" style="padding:10px" data-id="${rand}" data-index="${index}" data-cartid="${
           prod.cartId
         }" onclick="deleteCartProd(event)">
               <i class="fa fa-trash" data-cartid="${
@@ -219,17 +227,21 @@ ${prod.personalizedGift ? personalizedGiftDetails : ''}
              }" data-index="${index}" data-id="${rand}"></i></span>
             </span>
        </div>
-       <div class="cartSection " ">
-        <input type="checkbox" class="styled-checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;width:20px;height:20px">
+       <div class="cartSection" style="margin-top:3% ">
+        <input type="checkbox" class="cartSection" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;width:20px;height:20px;">
         </div>
         </div>
       </div>
       </div>
     </li>
       `;
+    }else{
+     
     }
   }
+ 
   cartBodyHTML.innerHTML = item;
+}
 };
 
 const deleteCartProd = (e) => {
