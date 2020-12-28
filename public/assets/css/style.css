@@ -207,7 +207,7 @@ select:focus {
 }
 
 .mybtn1:hover {
-  color: #fff;
+  color: black !important;
 }
 
 .editField{
