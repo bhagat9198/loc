@@ -171,9 +171,10 @@ const displayCart = async () => {
           <p class="itemNumber">${product.sno}</p>
           <a href="../Product/product.html?prod=${
             prod.prodId
-          }&&cat=${prod.cat}"><h5 class="resTxtMob" style="font-size:14px">${product.name}</h5></a>
+          }&&cat=${prod.cat}"><h5 class="resTxtMob" style="font-size:13px;width:290px">${product.name}</h5></a>
  
           <span id="eachprice__${rand}">₹${prodPrice}</span>
+          <br>
           <small>
           ${prod.pricing.weight ? cakeDetails : ""}
 ${prod.personalizedGift ? personalizedGiftDetails : ''}

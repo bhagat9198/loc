@@ -582,7 +582,7 @@ const displayWeights = (makedWeight) => {
           <img class="productimg respCircle"
             src="${PROD_DETAILS.mainImgUrl}"
             alt="Lake of cakes"
-            style="border-radius: 50%;border: 1px solid black ;width: 70px ;height:70px;object-fit: cover;">
+            style="border-radius: 50%; ;width: 70px ;height:70px;object-fit: cover;">
           <label class="custom-control-label" for="${rand}" style="font-weight: 400;">${weightNum} kg</label>
         </div>
         `;
@@ -1385,7 +1385,7 @@ const displaySuggestions = async () => {
           <div class="info">
             <br />
             <h5 style="font-size: 1em;color: black;">${locProds[i].prodData.name}</h5>
-            <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${locProds[i].prodData.totalPrice} <small><del>₹ ${mrp}</del>(${dis}% OFF)</small></h4>
+            <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${locProds[i].prodData.totalPrice}&nbsp;<small><del>₹ ${mrp}</small><small style="color:green"></del>(${dis}% OFF)</small></h4>
           </div>
         </a>
         `;
