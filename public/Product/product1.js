@@ -1021,7 +1021,7 @@ const buyProd = async (e) => {
           cake.heart = HEART;
           cake.eggless = EGGLESS;
           cake.weight = WEIGHT_PRICE.weight;
-          // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
+          //cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
           cake.flavour = f;
         }
 
@@ -1030,6 +1030,7 @@ const buyProd = async (e) => {
           totalCost: document.querySelector("#cost-with-addons").innerHTML,
           status: "cancelled",
           orginTimeStamp: new Date(),
+          isEmailSent:false,
           type: "single",
           addons: addonsSelected,
           products: [
@@ -1083,6 +1084,7 @@ const buyProd = async (e) => {
           orderId: orderId,
           status: "cancelled",
           orginTimeStamp: new Date(),
+          isEmailSent:false,
           totalCost: document.querySelector("#cost-with-addons").innerHTML,
           type: "single",
           addons: addonsSelected,
@@ -1163,6 +1165,7 @@ const buyProd = async (e) => {
       orderId: orderId,
       status: "cancelled",
       orginTimeStamp: new Date(),
+      isEmailSent:false,
       totalCost: document.querySelector("#cost-with-addons").innerHTML,
       type: "single",
       addons: addonsSelected,

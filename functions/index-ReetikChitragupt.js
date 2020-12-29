@@ -13,6 +13,7 @@ require("firebase/auth");
 require("firebase/database");
 require("firebase/storage");
 
+
 var firebaseConfig = {
   apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
   authDomain: "lake-of-cakes.firebaseapp.com",
@@ -23,6 +24,7 @@ var firebaseConfig = {
   appId: "1:779843608951:web:48c6afe1773e2b395e8172",
   measurementId: "G-5ER0QF0FDW",
 };
+
 
 firebase.initializeApp(firebaseConfig);
 
@@ -52,6 +54,7 @@ const calBill = async (
       "only authenticated users can add requests"
     );
   }
+
 
   let zipFlag = false;
   console.log(optional.formData);
@@ -451,246 +454,231 @@ var transporter = nodemailer.createTransport({
 });
 
 // Email Service
-exports.sendEmailAfterReject = functions.firestore
-  .document("Customers/{userId}")
-  .onUpdate(async (change) => {
-    const newValue = change.after.data();
+// exports.sendEmailAfterReject = functions.firestore
+//   .document("Customers/{userId}")
+//   .onUpdate(async (change) => {
+//     const newValue = change.after.data();
 
-    // ...or the previous value before this update
-    const previousValue = change.before.data();
+//     // ...or the previous value before this update
+//     const previousValue = change.before.data();
 
-    // access a particular field as you would any JS property
-    const name = newValue.UserName;
+//     // access a particular field as you would any JS property
+//     const name = newValue.UserName;
 
-    //Create an options object that contains the time to live for the notification and the priority
-    const mailOptions = {
-      from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
-      to: newValue.Email,
-    };
-    // Building Email message.
+//     //Create an options object that contains the time to live for the notification and the priority
+//     const mailOptions = {
+//       from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
+//       to: newValue.Email,
+//     };
+//     // Building Email message.
 
-    //for example
-    let duplicate = `<tr style="padding: 20px;margin: 15%;">
-    <th>Product Image</th>
-    <th>Name</th>
-  </tr>`;
+//     //for example
+//     let duplicate = `<tr style="padding: 20px;margin: 15%;">
+//     <th>Product Image</th>
+//     <th>Name</th>
+//   </tr>`;
 
-    for (let o of newValue.orders) {
-      if (o.status == "cancelled") {
-        console.log("CAME")
-        console.log(o.isEmailSent)
-        if(o.isEmailSent == false){
+//     for (let o of newValue.orders) {
+//       if (o.status == "cancelled") {
+//         for (op of o.products) {
+//           let opRef = admin.firestore().collection(op.cat).doc(op.prodId);
+//           await opRef.get().then((opDoc) => {
+//             let cake = "";
 
-          console.log("INSIDE")
-        for (op of o.products) {
-          let opRef = admin.firestore().collection(op.cat).doc(op.prodId);
-          await opRef.get().then((opDoc) => {
-            let cake = "";
-
-            let opData = opDoc.data();
-            duplicate += `
-          <tr style="padding: 20px;margin: 15%;">
-          <td style="padding: 20px;margin: 15%;border:1px solid black"><img src="${opData.mainImgUrl}" width="90" alt=""></td>
-          <td style="padding: 20px;margin: 15%;border:1px solid black">${opData.name} ${cake}</td>
+//             let opData = opDoc.data();
+//             duplicate += `
+//           <tr style="padding: 20px;margin: 15%;">
+//           <td style="padding: 20px;margin: 15%;border:1px solid black"><img src="${opData.mainImgUrl}" width="90" alt=""></td>
+//           <td style="padding: 20px;margin: 15%;border:1px solid black">${opData.name} ${cake}</td>
       
-          </tr>
+//           </tr>
 
 
 
 
-          `;
-          });
-        }
-
-        mailOptions.subject =
-          "Have you any problem faced while placing your shopping on Lake of Cakes?";
-        //for example
-        mailOptions.html =
-          `
-  <style type="text/css">
-  /* Default CSS */
-  body,#body_style {margin: 0; padding: 0; background: #f9f9f9; font-size: 14px; color: #5b656e;}
-  a {color: #09c;}
-  a img {border: none; text-decoration: none;}
-  table, table td {border-collapse: collapse;}
-  td, h1, h2, h3 {font-family: tahoma, geneva, sans-serif; color: #313a42;}
-  h1, h2, h3, h4 {color: #313a42 !important; font-weight: normal; line-height: 1.2;}
-  h1 {font-size: 24px;}
-  h2 {font-size: 18px;}
-  h3 {font-size: 16px;}
-  p {margin: 0 0 1.6em 0;}
+//           `;
+//           });
+//         }
+//       }
+//     }
+//     // Building Email message.
+//     mailOptions.subject =
+//       "Have you any problem faced while placing your shopping on Lake of Cakes?";
+//     //for example
+//     mailOptions.html =
+//       `
+//   <style type="text/css">
+//   /* Default CSS */
+//   body,#body_style {margin: 0; padding: 0; background: #f9f9f9; font-size: 14px; color: #5b656e;}
+//   a {color: #09c;}
+//   a img {border: none; text-decoration: none;}
+//   table, table td {border-collapse: collapse;}
+//   td, h1, h2, h3 {font-family: tahoma, geneva, sans-serif; color: #313a42;}
+//   h1, h2, h3, h4 {color: #313a42 !important; font-weight: normal; line-height: 1.2;}
+//   h1 {font-size: 24px;}
+//   h2 {font-size: 18px;}
+//   h3 {font-size: 16px;}
+//   p {margin: 0 0 1.6em 0;}
   
-  /* Force Outlook to provide a "view in browser" menu link. */
-  #outlook a {padding:0;}
+//   /* Force Outlook to provide a "view in browser" menu link. */
+//   #outlook a {padding:0;}
   
-  /* Preheader and webversion */
-  .preheader {background-color: #5b656e;}
-  .preheaderContent,.webversion,.webversion a {color: white; font-size: 10px;}
-  .preheaderContent{width: 440px;}
-  .preheaderContent,.webversion {padding: 5px 10px;}
-  .webversion {width: 200px; text-align: right;}
-  .webversion a {text-decoration: underline;}
-  .webversion,.webversion a {color: #ffffff; font-size: 10px;}
+//   /* Preheader and webversion */
+//   .preheader {background-color: #5b656e;}
+//   .preheaderContent,.webversion,.webversion a {color: white; font-size: 10px;}
+//   .preheaderContent{width: 440px;}
+//   .preheaderContent,.webversion {padding: 5px 10px;}
+//   .webversion {width: 200px; text-align: right;}
+//   .webversion a {text-decoration: underline;}
+//   .webversion,.webversion a {color: #ffffff; font-size: 10px;}
   
-  /* Topheader */
-  .topHeader {background: #ffffff;}
+//   /* Topheader */
+//   .topHeader {background: #ffffff;}
   
-  /* Logo (branding) */
-  .logoContainer {padding: 20px 0 10px 0px; width: 320px;}
-  .logoContainer a {color: #ffffff;}
+//   /* Logo (branding) */
+//   .logoContainer {padding: 20px 0 10px 0px; width: 320px;}
+//   .logoContainer a {color: #ffffff;}
   
-  /* Whitespace (imageless spacer) and divider */
-  .whitespace, .whitespaceDivider {font-family: 0px; line-height: 0px;}
-  .whitespaceDivider {border-bottom: 1px solid #cccccc;}
+//   /* Whitespace (imageless spacer) and divider */
+//   .whitespace, .whitespaceDivider {font-family: 0px; line-height: 0px;}
+//   .whitespaceDivider {border-bottom: 1px solid #cccccc;}
   
-  /* Button */
-  .buttonContainer {padding: 10px 0px 10px 0px;}
-  .button {padding: 5px 5px 5px 5px; text-align: center; background-color: #51c4d4}
-  .button a {color: #ffffff; text-decoration: none; font-size: 13px;}
+//   /* Button */
+//   .buttonContainer {padding: 10px 0px 10px 0px;}
+//   .button {padding: 5px 5px 5px 5px; text-align: center; background-color: #51c4d4}
+//   .button a {color: #ffffff; text-decoration: none; font-size: 13px;}
   
-  /* Section */
-  .sectionMainTitle{font-family: Tahoma, sans-serif; font-size: 16px; padding: 0px 0px 5px 0;}
-  .sectionArticleTitle, .sectionMainTitle {color: #5b656e;}
+//   /* Section */
+//   .sectionMainTitle{font-family: Tahoma, sans-serif; font-size: 16px; padding: 0px 0px 5px 0;}
+//   .sectionArticleTitle, .sectionMainTitle {color: #5b656e;}
   
-  /* An article */
-  .sectionArticleTitle, .sectionArticleContent {text-align: center; padding: 0px 5px 0px 5px;}
-  .sectionArticleTitle {font-size: 12px; font-weight: bold;}
-  .sectionArticleContent {font-size: 10px; line-height: 12px;}
-  .sectionArticleImage {padding: 8px 0px 0px 0px;}
-  .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
+//   /* An article */
+//   .sectionArticleTitle, .sectionArticleContent {text-align: center; padding: 0px 5px 0px 5px;}
+//   .sectionArticleTitle {font-size: 12px; font-weight: bold;}
+//   .sectionArticleContent {font-size: 10px; line-height: 12px;}
+//   .sectionArticleImage {padding: 8px 0px 0px 0px;}
+//   .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
   
-  /* Footer and Social media */
-  .footer {background-color: #51c4d4;}
-  .footNotes {padding: 0px 20px 0px 20px;}
-  .footNotes a {color: #ffffff; font-size: 13px;}
-  .socialMedia {background: #5b656e;}
+//   /* Footer and Social media */
+//   .footer {background-color: #51c4d4;}
+//   .footNotes {padding: 0px 20px 0px 20px;}
+//   .footNotes a {color: #ffffff; font-size: 13px;}
+//   .socialMedia {background: #5b656e;}
   
-  /* Article image */
-  .sectionArticleImage {padding: 8px 0px 0px 0px;}
-  .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
+//   /* Article image */
+//   .sectionArticleImage {padding: 8px 0px 0px 0px;}
+//   .sectionArticleImage img {padding: 0px 0px 10px 0px; -ms-interpolation-mode: bicubic; display: block;}
   
-  /* Product card */
-  .card {background-color: #ffffff; border-bottom: 2px solid #5b656e;}
+//   /* Product card */
+//   .card {background-color: #ffffff; border-bottom: 2px solid #5b656e;}
   
-  /* Column */
-  .column {padding-bottom: 20px;}
+//   /* Column */
+//   .column {padding-bottom: 20px;}
   
   
-  /* CSS for specific screen width(s) */
-  @media only screen and (max-width: 480px) {
-      body[yahoofix] table {width: 100% !important;}
-      body[yahoofix] .webversion {display: none; font-size: 0; max-height: 0; line-height: 0; mso-hide: all;}
-      body[yahoofix] .logoContainer {text-align: center;}
-      body[yahoofix] .logo {width: 80%;}
-      body[yahoofix] .buttonContainer {padding: 0px 20px 0px 20px;}
-      body[yahoofix] .column {float: left; width: 100%; margin: 0px 0px 30px 0px;}
-      body[yahoofix] .card {padding: 20px 0px;}
-    }
-</style>
-<h3><b>Complete your order with 10% discount</b>&nbsp;</h3>
-<p><br></p>
-<div style="text-align: center;"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" style="width: 263.921px; height: 65.1px;"></div>
-<div style="text-align: center; "><br></div>
-<div style="text-align: center; "><br></div>
-<div "="">
-<div style="text-align: center;"><b>Hi ` +
-          newValue.UserName +
-          `</b></div>
-  <div style="text-align: center;"><b><br></b></div>
-  <div style="text-align: center;">You were trying to shopping with us and to place an order for a gift for your
-      loved ones. Have&nbsp;</div>
-  <div style="text-align: center;">you faced any issue in doing so? In case you came across any issue or concern,
-      just reply back&nbsp;</div>
-  <div style="text-align: center; ">to this email. We would be happy to resolve your issue.</div>
-  <h4 style="text-align: center; "><b><span style="font-family: &quot;Times New Roman&quot;;">While visiting our
-              website for place your order and get 10% off by entering</span><br><span style="font-family: &quot;Times New Roman&quot;;">LOC10 coupon code (order value 499 &amp;
-              above)</span></b></h4>
+//   /* CSS for specific screen width(s) */
+//   @media only screen and (max-width: 480px) {
+//       body[yahoofix] table {width: 100% !important;}
+//       body[yahoofix] .webversion {display: none; font-size: 0; max-height: 0; line-height: 0; mso-hide: all;}
+//       body[yahoofix] .logoContainer {text-align: center;}
+//       body[yahoofix] .logo {width: 80%;}
+//       body[yahoofix] .buttonContainer {padding: 0px 20px 0px 20px;}
+//       body[yahoofix] .column {float: left; width: 100%; margin: 0px 0px 30px 0px;}
+//       body[yahoofix] .card {padding: 20px 0px;}
+//     }
+// </style>
+// <h3><b>Complete your order with 10% discount</b>&nbsp;</h3>
+// <p><br></p>
+// <div style="text-align: center;"><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/logo.png?alt=media&amp;token=2068ec5a-00e3-4828-94cd-60c5c1346fc6" style="width: 263.921px; height: 65.1px;"></div>
+// <div style="text-align: center; "><br></div>
+// <div style="text-align: center; "><br></div>
+// <div "="">
+// <div style="text-align: center;"><b>Hi ` +
+//       newValue.UserName +
+//       `</b></div>
+//   <div style="text-align: center;"><b><br></b></div>
+//   <div style="text-align: center;">You were trying to shopping with us and to place an order for a gift for your
+//       loved ones. Have&nbsp;</div>
+//   <div style="text-align: center;">you faced any issue in doing so? In case you came across any issue or concern,
+//       just reply back&nbsp;</div>
+//   <div style="text-align: center; ">to this email. We would be happy to resolve your issue.</div>
+//   <h4 style="text-align: center; "><b><span style="font-family: &quot;Times New Roman&quot;;">While visiting our
+//               website for place your order and get 10% off by entering</span><br><span style="font-family: &quot;Times New Roman&quot;;">LOC10 coupon code (order value 499 &amp;
+//               above)</span></b></h4>
  
-</div>
-<center>
+// </div>
+// <center>
   
     
-    <table style="border: 2px solid red;padding: 30px;">
-      <tbody>
+//     <table style="border: 2px solid red;padding: 30px;">
+//       <tbody>
       
       
-      ` +
-          duplicate +
-          `
-      </tbody>
-      </table>
-    <a href="https://lakeofcakes.com/UserDash/cart.html"><h3 style="background-color: red;color: white;margin-left: auto;margin-right: auto;display: block;width:50%;cursor:pointer">Complete Your Order Now</h3></a>
-    <small>*Please ignore this Mail if order already placed.</small>
-    <br>
-    <h4 style="font-weight: 800;">Call +91 - 9598891097</h4>
-</center>
-<table border="0" cellspacing="0" summary="" width="640" align="center" style="background-color: #ffffff;">
-    <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
-    <tr>
-      <td class="column" width="20%" align="center">
-        <img width="60px;object-fit:cover" src="https://cdn4.iconfinder.com/data/icons/time-line/512/night_time-256.png" alt="Lorem ipsum">
-      </td>
-       <td class="column" width="20%" align="center">
-        <img width="60px;object-fit:cover" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/24-hour-delivery-1563082-1323854.png">
-      </td>
-       <td class="column" width="20%" align="center">
-        <img width="60px;object-fit:cover" src="https://th.bing.com/th/id/OIP.fngT3b4XqWvCecpkH6LOJwHaHa?pid=Api&amp;rs=1">
-      </td>
-    </tr>
-  </tbody></table>
-  <br>
-<p style="text-align: center; "><b><font color="#000000" style="">Please contact us if you have any query or need any assistance. Keep visiting lakeofcakes.com for make
-      your day memorable. </font></b></p>
-  <!-- Social media -->
-  <table border="0" cellspacing="0" cellpadding="0" width="100%" summary="" class="socialMedia">
-    <tbody><tr><td class="whitespace" height="20">&nbsp;</td></tr>
-    <tr>
-      <td>
-        <table border="0" cellspacing="0" cellpadding="0" width="120" align="center" summary="">
-          <tbody><tr>
-            <td align="center" width="32">
-              <a href="https://www.facebook.com/Lake-Of-Cakes-100900995221365" title="Twitter"><img src="https://www.windowscentral.com/sites/wpcentral.com/files/topic_images/2016/new-instagram-icon-topic.png" width="29" alt="Twitter"></a>
-            </td>
-            <td align="center" width="32">
-              <a href="https://www.instagram.com/lake_of_cakes/" title="Facebook"><img src="https://www.expectmorearizona.org/wp-content/uploads/2016/11/facebook-png-icon-follow-us-facebook-1.png" width="29" alt="Facebook"></a>
-            </td>
-          </tr>
-        </tbody></table>
-      </td>
-    </tr>
-    <tr><td class="whitespace" height="10">&nbsp;</td></tr>
-  </tbody></table>
+//       ` +
+//       duplicate +
+//       `
+//       </tbody>
+//       </table>
+//     <a href="https://lakeofcakes.com/UserDash/cart.html"><h3 style="background-color: red;color: white;margin-left: auto;margin-right: auto;display: block;width:50%;cursor:pointer">Complete Your Order Now</h3></a>
+//     <small>*Please ignore this Mail if order already placed.</small>
+//     <br>
+//     <h4 style="font-weight: 800;">Call +91 - 9598891097</h4>
+// </center>
+// <table border="0" cellspacing="0" summary="" width="640" align="center" style="background-color: #ffffff;">
+//     <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
+//     <tr>
+//       <td class="column" width="20%" align="center">
+//         <img width="60px;object-fit:cover" src="https://cdn4.iconfinder.com/data/icons/time-line/512/night_time-256.png" alt="Lorem ipsum">
+//       </td>
+//        <td class="column" width="20%" align="center">
+//         <img width="60px;object-fit:cover" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/24-hour-delivery-1563082-1323854.png">
+//       </td>
+//        <td class="column" width="20%" align="center">
+//         <img width="60px;object-fit:cover" src="https://th.bing.com/th/id/OIP.fngT3b4XqWvCecpkH6LOJwHaHa?pid=Api&amp;rs=1">
+//       </td>
+//     </tr>
+//   </tbody></table>
+//   <br>
+// <p style="text-align: center; "><b><font color="#000000" style="">Please contact us if you have any query or need any assistance. Keep visiting lakeofcakes.com for make
+//       your day memorable. </font></b></p>
+//   <!-- Social media -->
+//   <table border="0" cellspacing="0" cellpadding="0" width="100%" summary="" class="socialMedia">
+//     <tbody><tr><td class="whitespace" height="20">&nbsp;</td></tr>
+//     <tr>
+//       <td>
+//         <table border="0" cellspacing="0" cellpadding="0" width="120" align="center" summary="">
+//           <tbody><tr>
+//             <td align="center" width="32">
+//               <a href="https://www.facebook.com/Lake-Of-Cakes-100900995221365" title="Twitter"><img src="https://www.windowscentral.com/sites/wpcentral.com/files/topic_images/2016/new-instagram-icon-topic.png" width="29" alt="Twitter"></a>
+//             </td>
+//             <td align="center" width="32">
+//               <a href="https://www.instagram.com/lake_of_cakes/" title="Facebook"><img src="https://www.expectmorearizona.org/wp-content/uploads/2016/11/facebook-png-icon-follow-us-facebook-1.png" width="29" alt="Facebook"></a>
+//             </td>
+//           </tr>
+//         </tbody></table>
+//       </td>
+//     </tr>
+//     <tr><td class="whitespace" height="10">&nbsp;</td></tr>
+//   </tbody></table>
 
  
 
-  `;
-    console.log("REETIKKKKKKKKKKKKKKKKKKKKKKKKKKK")
-    setTimeout(async function(){
-      console.log("NOW CAME")
-     
-      
-      try {
-        // console.log("Inside try")
-        // cron.schedule('0 4 * * *', () => {
-        transporter.sendMail(mailOptions);
-        console.log("email sent to:", newValue.Email);
-        transporter.close();
-        await admin.firestore().collection("Customers").update(o.isEmailSent,true)
-        // });
-        // console.log(newValue.Email)
-      } catch (error) {
-        console.error(
-          "There was an error while sending the email:" + newValue.Email,
-          error
-        );
-      }
-    },2*60*1000);
-    
-      }
-    }
-  }
-    // Building Email message.
-  });
+//   `;
+//     try {
+//       // console.log("Inside try")
+//       // cron.schedule('0 4 * * *', () => {
+//       transporter.sendMail(mailOptions);
+//       console.log("email sent to:", newValue.Email);
+//       transporter.close();
+//       // });
+//       // console.log(newValue.Email)
+//     } catch (error) {
+//       console.error(
+//         "There was an error while sending the email:" + newValue.Email,
+//         error
+//       );
+//     }
+//   });
 
 exports.sendEmailForgetPass = functions.firestore
   .document("Customers/{userId}")
@@ -868,24 +856,33 @@ exports.sendEmailForgetPass = functions.firestore
     // Building Email message.
   });
 
-// exports.scheduledFunctionForRejected =
-// functions.pubsub.schedule('every 5 minutes').onRun((context) => {
 
-//   db.collection("Customers").get().then(function(querySnapshot) {
-//     querySnapshot.forEach(function(doc) {
-//         // doc.data() is never undefined for query doc snapshots
-//         console.log(doc.id, " => ", doc.data());
+exports.scheduledFunctionForRejected =
+functions.pubsub.schedule('every 1 minutes').onRun(async (context) => {
 
-//         for (let o of doc.data().orders) {
-//           if(o.orginTimeStamp){
-//             console.log(o.orginTimeStamp.getTime()+"///////////////////////////////////////////")
-//           }
-//         }
-//     });
-//   });
+  await admin.firestore().collection("Customers").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        // console.log(doc.id, " => ", doc.data());
 
-//     console.log('This will be run every 5 minutes!');
-// });
+        for (let o of doc.data().orders) {
+          if(o.orginTimeStamp!="SENT"){
+            console.log(new Date(o.orginTimeStamp)+"**********************");
+            console.log((o.orginTimeStamp)+"@@@@@@@@@@@@@@@@@@@@@@@@@@@2");
+            let diff=new Date().getMinutes()-new Date(o.orginTimeStamp).getMinutes();
+            console.log("THE DIFFERENCE IS "+diff)
+            if(diff>5){
+              console.log("Came INTO REMINDER PART");
+              admin.firestore().collection("Customers").update(o.orginTimeStamp,"SENT")
+            }
+          }
+        }
+    });
+  });
+
+
+    console.log('This will be run every 1 minutes!');
+});
 exports.createUser = functions.firestore
   .document("Customers/{userId}")
   .onCreate((snap, context) => {
@@ -1575,20 +1572,12 @@ exports.sendEmailAfterConfirmation = functions.firestore
                                   ? shippingData.alt_name
                                   : shippingData.name
                               }
+                              ${shippingData.differtAddress ? shippingData.alt_address : shippingData.address}
                               ${
-                                shippingData.differtAddress
-                                  ? shippingData.alt_address
-                                  : shippingData.address
-                              }
-                              ${
-                                shippingData.differtAddress
-                                  ? shippingData.alt_zip
-                                  : shippingData.zip
-                              }
+                                 shippingData.differtAddress ? shippingData.alt_zip : shippingData.zip
+                                }
                               </p>
-                              <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">Lucknow - ${
-                                shippingData.zip
-                              }</p>
+                              <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">Lucknow - ${shippingData.zip}</p>
                               <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333">Lucknow , Uttar Pradesh</p></td> 
                              </tr> 
                            </table></td> 
@@ -1670,9 +1659,7 @@ exports.sendEmailAfterConfirmation = functions.firestore
                                <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:500px" class="cke_show_border" cellspacing="1" cellpadding="1" border="0" align="right" role="presentation"> 
                                  <tr style="border-collapse:collapse"> 
                                   <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px">Item(s) total (Including GST):</td> 
-                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px">${
-                                    totalCost - delivertTypePrice
-                                  }</td> 
+                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px">${totalCost - delivertTypePrice}</td> 
                                  </tr> 
                                  <tr style="border-collapse:collapse"> 
                                   <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px">Perfect Hours Charges:</td> 
@@ -1680,9 +1667,7 @@ exports.sendEmailAfterConfirmation = functions.firestore
                                  </tr> 
                                  <tr style="border-collapse:collapse"> 
                                   <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px"><strong>Amount Paid:</strong></td> 
-                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px;color:#D48344"><strong>${
-                                    totalCost + delivertTypePrice
-                                  }</strong></td> 
+                                  <td style="padding:0;Margin:0;text-align:right;font-size:14px;line-height:21px;color:#D48344"><strong>${totalCost + delivertTypePrice}</strong></td> 
                                  </tr> 
                                </table><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:14px;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:17px;color:#333333"><br></p></td> 
                              </tr> 
@@ -1774,9 +1759,3 @@ exports.sendEmailAfterConfirmation = functions.firestore
       }
     }
   });
-
-
-exports.scheduledEmails = functions.pubsub.schedule("every day 00:00").onRun((context) => {
-  console.log('This will be run every day ay 12AM!');
-  return null;
-});

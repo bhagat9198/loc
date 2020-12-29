@@ -20689,7 +20689,7 @@ select:focus {
 
 .mybtn1:hover {
     background: none;
-    color: #ff5500!important;
+    color: black !important;
 }
 
 .mybtn2 {

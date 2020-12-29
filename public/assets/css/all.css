@@ -22483,7 +22483,8 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, in
 
 .mybtn1:hover {
     background: none;
-    color: #ff5500!important;
+    color: black !important;
+    /* color: #ff5500!important; */
 }
 
 .mybtn2 {
@@ -34623,4 +34624,8 @@ section.phone-and-accessories.categori-item {
     width: 40px;
     height: 40px;
    }
+}
+.mybtn1:hover{
+ 
+color: black !important;
 }
