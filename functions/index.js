@@ -675,7 +675,7 @@ exports.sendEmailAfterReject = functions.firestore
         transporter.sendMail(mailOptions);
         console.log("email sent to:", newValue.Email);
         transporter.close();
-        await admin.firestore().collection("Customers").update(o.isEmailSent,true)
+        await admin.firestore().collection("Customers").doc(newValue.userId).update(o.isEmailSent,true)
         // });
         // console.log(newValue.Email)
       } catch (error) {
