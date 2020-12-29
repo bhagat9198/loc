@@ -1118,7 +1118,7 @@
                               id="shipping_address" placeholder="Address" >
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control" type="text" name="shipping_landmark" placeholder="Landmark">
+                            <input class="form-control notRequired" type="text" name="shipping_landmark" required="false" placeholder="Landmark">
                           </div>
                           <div class="col-lg-6">
                             <input type="text" readonly="readonly" class="form-control ship_input customer_country"
@@ -1131,7 +1131,7 @@
                               value="Lucknow" readonly="readonly">
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control ship_input" min="226000" max="226999" type="text" name="shipping_zip" value="226"
+                            <input class="form-control ship_input" min="226000" max="226999" type="text" name="shipping_zip" value=""
                               id="shippingPostal_code" placeholder="Pin Code">
                               <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeError2">Please enter a pincode of lucknow</p>
                               <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeUndefined2">Please select an area/street to fetch pincode</p>
@@ -1715,6 +1715,7 @@
       altAddSelected = 1;
       $('.ship-diff-addres-area').removeClass('d-none');
       $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', true);
+   
     } else {
       altAddSelected = 0;
       $('.ship-diff-addres-area').addClass('d-none');
@@ -2065,7 +2066,7 @@ google.maps.event.addDomListener(window, "load", initialize);
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
@@ -2086,7 +2087,7 @@ google.maps.event.addDomListener(window, "load", initialize);
     measurementId: "G-5ER0QF0FDW"
   };
   firebase.initializeApp(firebaseConfig);
-   firebase.analytics();
+  firebase.analytics();
 </script>
 
 <script src="./checkout1.js"></script>

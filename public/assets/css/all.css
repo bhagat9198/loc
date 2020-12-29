@@ -22467,8 +22467,8 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, in
     border-radius: 50px;
     display: inline-block;
     color: #fff!important;
-    background: #ff5500;
-    border: 1px solid #ff5500;
+    background: red;
+    border: 1px solid red;
     -webkit-box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.15);
     -webkit-transition: 0.3s;
@@ -23187,7 +23187,7 @@ Logo Header Area Start
 .logo-header .helpful-links ul li.my-dropdown .cart .icon span {
     width: 20px;
     height: 20px;
-    background: #ff5500;
+    background: red;
     border-radius: 50px;
     display: inline-block;
     position: absolute;
@@ -34629,3 +34629,9 @@ section.phone-and-accessories.categori-item {
  
 color: black !important;
 }
+
+input[type="checkbox"]:checked {
+        
+                 background-color: red !important;
+                 color: red ;
+            }

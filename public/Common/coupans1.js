@@ -43,7 +43,7 @@ const displayCard = (docData) => {
   <div class="col-12 col-sm-6 col-md-6 col-lg-4">
     <div class="card h-100 mb-4">
       <div class="card-header">
-        <h5 class="card-title m-0 p-0 font-weight-bolder" id="${docData.name}">#${docData.name}
+        <h5 class="card-title m-0 p-0 font-weight-bolder" id="${docData.name}">${docData.name}
         </h5>
       </div>
       <div class="card-body text-left">

@@ -961,6 +961,7 @@ const checkAuth = async () => {
 };
 
 const buyProd = async (e) => {
+  loader("start");
   let addonsSelected = [];
   addons_details.map((el) => {
     if (el.checked) {
@@ -1197,6 +1198,8 @@ prodWithAddonsHTML.addEventListener("click", buyProd);
 const addToCartBtnHTML = document.querySelector("#addToCartBtn");
 
 const addToCart = async (e) => {
+  loader("start");
+
   await checkAuth();
   const cartId = Math.random();
   await userRef.get().then(async (doc) => {
@@ -1277,6 +1280,7 @@ const addToCart = async (e) => {
       document.getElementById("success").style.display = "none";
     }, 2000);
   });
+  loader("end");
 };
 
 addToCartBtnHTML.addEventListener("click", addToCart);
@@ -1475,3 +1479,10 @@ const displayReviews = () => {
     // attch cards with parentHTML element
   });
 };
+function loader(loaderState){
+  if(loaderState=="start")
+  document.querySelector('#overlay9898').style.display="inline-block"
+  else{
+    document.querySelector('#overlay9898').style.display="none"  
+  }
+}

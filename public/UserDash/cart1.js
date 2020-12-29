@@ -167,7 +167,7 @@ const displayCart = async () => {
 
       <div class="infoWrap">
         <div class="cartSection">
-          <img src="${product.mainImgUrl}" alt="" class="itemImg" />
+          <img src="${product.mainImgUrl}" alt="" class="itemImg" style="height:160px;object-fit:contain" />
           <p class="itemNumber">${product.sno}</p>
           <a href="../Product/product.html?prod=${
             prod.prodId
@@ -229,7 +229,7 @@ ${prod.personalizedGift ? personalizedGiftDetails : ''}
             </span>
        </div>
        <div class="cartSection" style="margin-top:3% ">
-        <input type="checkbox" class="cartSection" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;width:20px;height:20px;">
+        <input type="checkbox" id="checkbox1" class="cartSection styled-checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;width:20px;height:20px;">
         </div>
         </div>
       </div>

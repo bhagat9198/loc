@@ -54,10 +54,15 @@ getParams(window.location.href).then(async (response) => {
   } else {
     allProductsHTML.innerHTML = "No products Found";
   }
-  displayTopSuggest();
+
+  await settingLocalStorage();
+  
 });
 
 const displayToHeading = () => {
+  let totalp = allProductsArr.length;
+  console.log(totalp);
+
   let prodHeading;
   let locCats = JSON.parse(localStorage.getItem("locCats"));
   if (CAT) {
@@ -82,7 +87,7 @@ const displayToHeading = () => {
           }
         }
         prodHeading = c.data.name;
-        productHeadingHTML.innerHTML = prodHeading;
+        productHeadingHTML.innerHTML = `${prodHeading} - ${totalp}`;
         return;
       }
     }
@@ -259,9 +264,6 @@ const starRating = (starsNum) => {
 };
 
 const displayProds = async (arrProds) => {
-  let totalp = arrProds.length;
-  console.log(totalp);
-  productHeadingHTML.innerHTML += `  - ${totalp}`;
 
   // console.log(arrProds);
   let card = "";
