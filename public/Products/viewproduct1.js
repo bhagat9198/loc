@@ -427,11 +427,11 @@ const subCatSelect = async (data) => {
     .get()
     .then((snapshot) => {
       let doc = snapshot.data();
-      console.log(doc);
+      // console.log(doc);
       let options = "<option >Select Sub Category*</option>";
       doc.subCategory.map((sc) => {
         if (+sc.id === +scId) {
-          console.log(docId);
+          // console.log(docId);
           options += `
           <option  selected value="${docId}__${sc.id}__${sc.name}">${sc.name}</option>
           `;
@@ -525,6 +525,9 @@ const editDetails = async (e) => {
       editProduct["product-type-color-end"].value =
         doc.bannerTypeColorEnd || "";
       editProduct["product-sno"].value = doc.sno;
+      
+      editProduct["days-num"].value = doc.extraTime.days;
+      editProduct["hours-num"].value = doc.extraTime.hours;
 
       let isCake = doc.isCake;
       let pIsGift = doc.pIsGift;
@@ -948,6 +951,12 @@ const submitEditForm = (event) => {
     fondant = "true";
   }
 
+  let extraTime = {
+    days : editProduct['days-num'].value,
+    hours : editProduct['hours-num'].value,
+  }
+
+
   let wholeProduct = {
     name: productName,
     bannerType: bannerType,
@@ -972,6 +981,7 @@ const submitEditForm = (event) => {
     lastModified: `${new Date()}`,
     pIsGift: pIsGift,
     isCake: isCake,
+    extraTime: extraTime
   };
   // console.log(editProduct.querySelector('input[name=cake-prevPrice-half]').value);
   // console.log(wholeProduct);
@@ -1318,20 +1328,32 @@ $(document).ready(function () {
 //     });
 // };
 
+
+
+// ////////////////////////////////////////////////////////////////////////////////////////////////
 // db.collection('categories').get().then(async(snps) => {
-// let snapDocs = snps.docs;
-// for(let sd of snapDocs) {
-// let sdId = sd.id;
-// let sdd  = sd.data();
-//  db.collection('C0ab0eaGzmtjCKQMnvh5').get().then(async(ps) => {
-//   let psd = ps.docs;
-//   for(let pd of psd) {
-//     let pdR = await db.collection('C0ab0eaGzmtjCKQMnvh5').doc(pd.id);
-//     let pdd = pd.data();
-//     pdd.fondant = 'false';
-//     await pdR.update(pdd)
-//     console.log('done');
+//   let snapDocs = snps.docs;
+//   for(let sd of snapDocs) {
+//     let sdId = sd.id;
+//     let sdd  = sd.data();
+//     db.collection(sdId).get().then(async(ps) => {
+//       let psd = ps.docs;
+//       for(let pd of psd) {
+//         let pdR = await db.collection(sdId).doc(pd.id);
+//         let pdd = pd.data();
+//         // console.log(pdd.fondant);
+//         let extraTime = {};
+//         if(pdd.fondant === 'true') {
+//           extraTime.days = '0';
+//           extraTime.hours = '6';
+//         } else {
+//           extraTime.days = '0';
+//           extraTime.hours = '0';
+//         }
+//         pdd.extraTime = extraTime;
+//         await pdR.update(pdd)
+//         console.log('done');
+//       }
+//     })
 //   }
-// })
-// }
 // })
