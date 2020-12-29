@@ -8,6 +8,8 @@ let TOTAL_COST = 0;
 let INDEX = -1;
 const prodDetails = [];
 const prodRefs = [];
+let MAX_DAYS = 0;
+let MAX_HOURS = 0;
 
 if (localStorage.getItem("locLoggedInUser") == "null") {
   window.location.href = "./../Auth/login.html";
@@ -68,6 +70,13 @@ const allProductsDetails = async () => {
     await prodRef.get().then((doc) => {
       let docData = doc.data();
       p.pdata = docData;
+      if (MAX_DAYS < +docData.extraTime.days) {
+        MAX_DAYS = +docData.extraTime.days;
+      }
+      if (MAX_HOURS < +docData.extraTime.hours) {
+        MAX_HOURS = +docData.extraTime.hours;
+      }
+
       // console.log(docData);
       if (docData.fondant) {
         // console.log(docData);
@@ -278,7 +287,9 @@ const checkCoupon = async (e) => {
   let coupanDetails;
   let flag = false;
   // const code = checkCouponFormHTML['code'].value;
-  const code = document.querySelector("#code").value;
+  let code = document.querySelector("#code").value;
+  // console.log(code);
+  code =  code.trim();
   let totalSubTotal = document.querySelector("#sub-total-cost").innerHTML;
   totalSubTotal = Number(totalSubTotal.substring(2));
 
@@ -396,7 +407,7 @@ const form1 = (e) => {
   } else {
     SHIPPING_DATA.differtAddress = false;
   }
-  console.log("submitted");
+  // console.log("submitted");
 };
 
 form1ShippingHTML.addEventListener("submit", form1);
@@ -410,35 +421,108 @@ const timeErrorHTML = document.querySelector("#time-error");
 
 let shippingType;
 const date = new Date();
-let year = date.getFullYear();
-let month = date.getMonth() + 1;
-let day = date.getDate();
-let hours = date.getHours();
-// let hours = 19;
+let year;
+let month;
+let day;
+let hours;
 
-// console.log(typeof(year), year.toString().length);
-if (year.toString().length !== 4) {
-  window.location.href = `../index.html`;
-}
-if (month.toString().length < 2) {
-  month = `0${month}`;
-  // month = Number(month);
-}
-if (day.toString().length < 2) {
-  day = `0${day}`;
-  console.log(day);
-  // day = Number(day);
-  // console.log(day);
-}
-// console.log(year, month, day);
+const validateDateAndTime = () => {
+  // console.log("validateDateAndTime");
+  hours = Number(hours);
+  day = Number(day);
+  month = Number(month);
+  year = Number(year);
+  while (hours > 24) {
+    let diffHours = hours - 24;
+    hours = diffHours;
+    day = day + 1;
+  }
+
+  let maxMonthDays = 0;
+  // console.log(month, typeof(month));
+  if (month === 1) {
+    maxMonthDays = 31;
+  } else if (month === 2) {
+    let leapYear = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0;
+    if (leapYear) {
+      maxMonthDays = 29;
+    } else {
+      maxMonthDays = 28;
+    }
+  } else if (month === 3) {
+    maxMonthDays = 31;
+  } else if (month === 4) {
+    maxMonthDays = 30;
+  } else if (month === 5) {
+    maxMonthDays = 31;
+  } else if (month === 6) {
+    maxMonthDays = 30;
+  } else if (month === 7) {
+    maxMonthDays = 31;
+  } else if (month === 8) {
+    maxMonthDays = 31;
+  } else if (month === 9) {
+    maxMonthDays = 30;
+  } else if (month === 10) {
+    maxMonthDays = 31;
+  } else if (month === 11) {
+    maxMonthDays = 30;
+  } else if (month === 12) {
+    maxMonthDays = 31;
+  } else {
+    // nothing
+  }
+
+  while (day > maxMonthDays) {
+    let diffDays = day - maxMonthDays;
+    day = diffDays;
+    month += 1;
+  }
+
+  if (month > 12) {
+    let diffMonth = month - 12;
+    month = diffMonth;
+    year += 1;
+  }
+
+  if (year.toString().length !== 4) {
+    window.location.href = `../index.html`;
+  }
+  if (month.toString().length < 2) {
+    month = `0${month}`;
+    // month = Number(month);
+  }
+  if (day.toString().length < 2) {
+    day = `0${day}`;
+  }
+
+  hours = hours.toString();
+  day = day.toString();
+  month = month.toString();
+  year = year.toString();
+  // console.log(year, month, day, hours);
+  // if (year.toString().length !== 4) {
+  //   window.location.href = `../index.html`;
+  // }
+  // if (month.toString().length < 2) {
+  //   month = `0${month}`;
+  //   // month = Number(month);
+  // }
+  // if (day.toString().length < 2) {
+  //   day = `0${day}`;
+  // }
+};
 
 const setDateAndTime = () => {
+  // console.log("setDateAndTime");
   // alert(1);
   year = date.getFullYear();
   month = date.getMonth() + 1;
-  day = date.getDate();
-  hours = date.getHours();
+  day = date.getDate() + MAX_DAYS;
+  hours = date.getHours() + MAX_HOURS;
   // let hours = 19;
+  validateDateAndTime();
+  // console.log(year, month, day, hours);
 
   // console.log(typeof(year), year.toString().length);
   if (year.toString().length !== 4) {
@@ -450,71 +534,54 @@ const setDateAndTime = () => {
   }
   if (day.toString().length < 2) {
     day = `0${day}`;
-    // console.log(day);
-    // day = Number(day);
-    // console.log(day);
   }
-  // console.log(SHIPPING_DATA);
-  // $("input[type=date]").val("");
-  // hours = 19;
-  // console.log(shippingDateHTML);
-  // alert(year, month, day);
-  // console.log(year, month, day);
+  // console.log(year, month, day, hours);
 
   shippingDateHTML.value = `${year}-${month}-${day}`;
+  // shippingDateHTML.min = `${year}-${month}-${day}`;
   shippingDateHTML.setAttribute("min", `${year}-${month}-${day}`);
-  shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
+  // shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
   // console.log(shippingDateHTML);
-  let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked').value;
+  let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked')
+    .value;
   shippingType = shipVal;
-  // console.log(shipVal);
 
-  let foudantHours = 0;
-  let foudantHoursPerfect = 0;
-  if (FOUDANT) {
-    foudantHours = 6;
-    foudantHoursPerfect = 4;
+  // console.log(MAX_DAYS, MAX_HOURS);
+  if (MAX_HOURS) {
+    foudantHoursPerfect = -2;
   }
 
   function updateDay(d) {
     d = Number(d);
     d = d + 1;
+    validateDateAndTime();
     if (d.toString().length < 2) {
       d = `0${d}`;
-      // console.log(d);
-      // d = Number(d);
-      // console.log(d);
     }
     return d;
   }
+  // console.log(year, month, day, hours);
   if (shipVal === "free") {
-    shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
-    // console.log(hours);
     perfectHoursHTML.style.display = "none";
     midnightHoursHTML.style.display = "none";
     freeHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
 
-    if (hours + foudantHours < 17) {
-      // shippingDateHTML.setAttribute("value", `${year}-${month}-${day}`);
-      shippingDateHTML.value = `${year}-${month}-${day}`;
+    if (hours < 17) {
       freeHoursHTML.style.display = "block";
     } else {
-      // console.log('book for next day');
       let updatedDay = updateDay(day);
       shippingDateHTML.setAttribute("min", `${year}-${month}-${updatedDay}`);
       timeErrorHTML.style.display = "block";
     }
   } else if (shipVal === "perfect") {
-    shippingDateHTML.value = `${year}-${month}-${day}`;
-    // console.log("perfect");
     freeHoursHTML.style.display = "none";
     midnightHoursHTML.style.display = "none";
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
     if (hours + foudantHoursPerfect < 19) {
       perfectHoursHTML.style.display = "block";
-      shippingDateHTML.value = `${year}-${month}-${day}`;
+
       if (hours + foudantHoursPerfect < 8) {
       } else if (hours + foudantHoursPerfect < 9) {
         // document.querySelector("#perfect_10").disabled = true;
@@ -678,22 +745,30 @@ const setDateAndTime = () => {
     } else {
       let updatedDay = updateDay(day);
       shippingDateHTML.setAttribute("min", `${year}-${month}-${updatedDay}`);
+      // shippingDateHTML.value = `${year}-${month}-${updatedDay}`;
+      // shippingDateHTML.min = `${year}-${month}-${updatedDay}`;
       timeErrorHTML.style.display = "block";
     }
   } else if (shipVal === "midnight") {
     finalCostHTML.innerHTML = ``;
-    shippingDateHTML.value = `${year}-${month}-${day}`;
+    // shippingDateHTML.value = `${year}-${month}-${day}`;
+    // shippingDateHTML.value = `${year}-${month}-${day}`;
+    // shippingDateHTML.min = `${year}-${month}-${day}`;
     freeHoursHTML.style.display = "none";
     midnightHoursHTML.style.display = "none";
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
 
-    if (hours + foudantHours < 20) {
+    if (hours < 20) {
       midnightHoursHTML.style.display = "block";
-      shippingDateHTML.value = `${year}-${month}-${day}`;
+      // shippingDateHTML.value = `${year}-${month}-${day}`;
+      // shippingDateHTML.value = `${year}-${month}-${day}`;
+      // shippingDateHTML.min = `${year}-${month}-${day}`;
     } else {
       let updatedDay = updateDay(day);
       shippingDateHTML.setAttribute("min", `${year}-${month}-${updatedDay}`);
+      // shippingDateHTML.value = `${year}-${month}-${updatedDay}`;
+      // shippingDateHTML.min = `${year}-${month}-${updatedDay}`;
       timeErrorHTML.style.display = "block";
     }
   } else {
@@ -1063,20 +1138,13 @@ const exeRazPay = (e) => {
 };
 
 const orderComplete = (data) => {
-<<<<<<< HEAD
   $("#exampleModal").modal("show");
+  $("#exampleModal").modal({
+    backdrop: "static",
+    keyboard: false,
+  });
   //   let userValid=localStorage.getItem("locLoggedInUser")
   //   var dbupdate = db.collection("Customers").doc(userValid);
-=======
-  $('#exampleModal').modal('show')
-  $('#exampleModal').modal({
-    backdrop: 'static',
-    keyboard: false
-})
-//   let userValid=localStorage.getItem("locLoggedInUser")
-//   var dbupdate = db.collection("Customers").doc(userValid);
-
->>>>>>> 04f9c87d6d921be956f8bdea5bfe95f49d51150d
 
   // return dbupdate.update({
   //       : true
