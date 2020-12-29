@@ -3464,7 +3464,7 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 
 .custom-control-inputEgg:checked~.custom-control-label::before {
     color: #fff;
-    border-color: #007bff;
+    border-color: transparent !important;
     background-color: green;
 }
 
