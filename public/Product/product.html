@@ -418,6 +418,8 @@
         }
 
       }
+
+
     </style>
 
 
@@ -781,6 +783,13 @@
       </div>
     </section>
 
+
+    <!-- loader -->
+
+  
+    <!-- loading end -->
+
+
     <div class="mainmenu-area mainmenu-bb">
 
 
@@ -800,7 +809,13 @@
 
 
   </section>
+
   <section class="product-details-page" style="background: whitesmoke;">
+    <div>
+      <!-- <img src="loading.gif" alt="Loading" /> -->
+     
+      <!-- <h4  style="display:none;">Loading</h4> -->
+    </div>
     <div class="container" style="background: white; padding:16px 18px; border-radius: 5px;">
       <div class="row">
         <div class="col-lg-9">
@@ -995,7 +1010,7 @@
                         style="border-radius: 5px;line-height: 35px;;width: 30%;background:  #09192c; border: 1px solid #ac2664; color:#fff;"
                         class="btn btn-primary btns responsive-btn">Add to Cart
                       </button>
-
+                    
                       <button type="button" id="buyNowBtn" disabled
                         style="border-radius: 5px;line-height: 35px;; width:30%;background: rgb(60,179,36); border: 1px solid rgb(230, 10, 10); color:#fff;"
                         class="btn btn-primary btns responsive-btn" data-toggle="modal" data-target="#addonsModal">Buy
@@ -1003,10 +1018,15 @@
 
 
 
-
+                        <div class="content" id="overlay9898C" style="display: none;">
+                          <div class="spinner-border"></div>
+                       </div>
                       <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;"
                         id="success">Added To Cart Successfully <i class="fa fa-check"></i>
                       </h5>
+                      <h5 style="font-weight:500;font-size: 15px;padding: 20px;color: red;display: none;"
+                      id="fail">Please add photos to continue <i class="fa fa-exclamation-triangle"></i>
+                    </h5>
                       <div class="modal fade" id="addonsModal" tabindex="-1" role="dialog">
                         <div class="modal-dialog modal-lg ">
                           <div class="modalAdd modal-content ">
@@ -1073,7 +1093,11 @@
                                 <button type="button" class="btn btn-secondary resTxt2" id="prod_with_addons"
                                   style="background-color: rgb(197, 42, 42);">Continue Without
                                   Addons</button>
+                                
                               </a>
+                              <div class="content" id="overlay9898" style="display: none;">
+                                <div class="spinner-border"></div>
+                             </div>
                             </div>
                           </div>
                         </div>
@@ -1240,7 +1264,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
           </div>
         </div>
       </div>
-
+      
       <div style="background: #ffffff; border-radius: 5px; margin-top: 5px;padding: 5px;     ">
         <div class="row">
           <div class="col-lg-12">
@@ -1373,7 +1397,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
       </div>
     </div>
 
-
+    
   </section>
   <!--Modal: modalDiscount-->
 
@@ -1452,6 +1476,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
   </div>
 
   <!-- Modal: modalAbandonedCart-->
+
+ 
 
 </body>
 
@@ -1684,7 +1710,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', end
   });
 
 
-
+  
 
 
   function redirectLogin() {
