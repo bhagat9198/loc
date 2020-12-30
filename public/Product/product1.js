@@ -41,7 +41,7 @@ const extractProdDetails = () => {
     .get()
     .then((doc) => {
       let docData = doc.data();
-      console.log(docData);
+      // console.log(docData);
       return docData;
     });
 };
@@ -263,7 +263,7 @@ const displayProduct = (prodData) => {
 
   if (prodData.flavours) {
     if (prodData.flavours.length > 0) {
-      document.querySelector('#all-flav').style.display = 'block';
+      document.querySelector("#all-flav").style.display = "block";
       const cakeFlavourHTML = document.querySelector("#cake-flavour");
       let card = "";
       prodData.flavours.map((flav) => {
@@ -283,9 +283,9 @@ const displayProduct = (prodData) => {
 
   let personlizeHeadHTML = document.querySelector("#personlize-head");
   let allTitlesHTML = document.querySelector("#all-titles");
+
   if (prodData.pIsGift) {
     if (prodData.personalized === true) {
-     
       document.getElementById("customizedBtn").style.display = "inline-block";
       let pTitle = +prodData.title;
       if (pTitle > 0) {
@@ -307,7 +307,7 @@ const displayProduct = (prodData) => {
             <input class="w3-input w3-padding-16" type="text" placeholder="Title ${
               c + 1
             }"
-              id="title-img-${c}" required name="title-img-${c}" style="border: 1px solid gray;">
+              id="title-img-${c}"  required name="title-img-${c}" maxlength="25" style="border: 1px solid gray;">
           </div>
           `;
         }
@@ -328,7 +328,7 @@ const displayProduct = (prodData) => {
       personalizedGift = true;
       // document.querySelector("#pqty").style.display = "none";
       // document.querySelector("#qty-btns").style.display = "none";
-      document.getElementById("fail").style.display="inline-block"
+      document.getElementById("fail").style.display = "inline-block";
       document.querySelector("#buyNowBtn").disabled = true;
       document.querySelector("#addToCartBtn").disabled = true;
       let customizedImgsHTML = document.querySelector("#customizedImgs");
@@ -345,8 +345,8 @@ const displayProduct = (prodData) => {
                 style="margin-left:140%;margin-right: auto;margin-top: 130%;margin-bottom: auto;z-index: 999;"
                 class="fa fa-plus"></i></label>
             <input id="file-${imgCounter}" style="display: none;" class="file-preview" type="file"
-              accept="image/jpg, image/jpeg, image/png" data-select="single-select"
-              onchange="readURL(this,'imgBlock-file-${imgCounter}');">
+              accept="image/jpg, image/jpeg, image/png" data-select="single-select" 
+              onchange="checkFileSize(event, this);" data-imgnameid="imgBlock-file-${imgCounter}">
             <img id="imgBlock-file-${imgCounter}" class="customizedImage" src="" >
           </div>
         </div>
@@ -392,26 +392,43 @@ const displayProduct = (prodData) => {
   prodPolicyHTML.innerHTML = `${prodData.policy}`;
 };
 
+const checkFileSize = (e, current) => {
+  let filePassStatus = false;
+  let filesizeInKb = e.target.files[0].size / 1000;
+  let filesizeInMb = e.target.files[0].size / 1024 / 1024;
+  if (filesizeInMb <= 10 && filesizeInKb >= 10) {
+    filePassStatus = true;
+    let imgnameid = e.target.dataset.imgnameid;
+    readURL(current, imgnameid);
+  }
+  return filePassStatus;
+};
+
 let imgInputHTML = document.querySelector("#img-input");
 let IMGS_ARRAY = [];
 let TITLE_ARRAY = [];
 let imgCounter = 0;
 const imgUploader = async (e) => {
-  console.log(e);
+  // console.log(e);
   for (let img of e.target.files) {
     // console.log(imgCounter, imgNo);
-    IMGS_ARRAY.push(img);
-    if (imgCounter >= imgNo) {
-      imgCounter = 0;
-    }
-    // console.log(document.querySelector(`#imgBlock-file-${imgCounter}`));
     // console.log(img);
-    document.querySelector(
-      `#imgBlock-file-${imgCounter}`
-    ).src = URL.createObjectURL(img);
-    document.querySelector(`#imgBlock-file-${imgCounter}`).style.display =
-      "block";
-    imgCounter++;
+    let filesizeInKb = img.size / 1000;
+    let filesizeInMb = img.size / 1024 / 1024;
+    if (filesizeInMb <= 10 && filesizeInKb >= 10) {
+      IMGS_ARRAY.push(img);
+      if (imgCounter >= imgNo) {
+        imgCounter = 0;
+      }
+      // console.log(document.querySelector(`#imgBlock-file-${imgCounter}`));
+      // console.log(img);
+      document.querySelector(
+        `#imgBlock-file-${imgCounter}`
+      ).src = URL.createObjectURL(img);
+      document.querySelector(`#imgBlock-file-${imgCounter}`).style.display =
+        "block";
+      imgCounter++;
+    }
   }
   imgInputHTML.value = "";
 };
@@ -437,15 +454,16 @@ const personlizedImgsHTML = document.querySelector("#personlized-imgs");
 
 personlizedImgsHTML.addEventListener("click", (e) => {
   if (IMGS_ARRAY.length >= imgNo) {
-    for(let t = 0; t < titleNo; t++) {
+    for (let t = 0; t < titleNo; t++) {
       console.log(document.querySelector(`#title-img-${t}`));
+
       let val = document.querySelector(`#title-img-${t}`).value;
-      if(val) {
+      if (val) {
         TITLE_ARRAY.push(val);
       }
     }
     if (TITLE_ARRAY.length >= titleNo) {
-      document.getElementById("fail").style.display="none"
+      document.getElementById("fail").style.display = "none";
       document.querySelector("#buyNowBtn").disabled = false;
       document.querySelector("#addToCartBtn").disabled = false;
     }
@@ -599,9 +617,11 @@ const displayWeights = (makedWeight) => {
 
 const calPreviousPrice = (pq) => {
   // console.log(+PROD_DETAILS.totalPrice, +PROD_DETAILS.mrp, Math.round(100 - ((+PROD_DETAILS.totalPrice/+PROD_DETAILS.mrp)*100)));
-    let pDis = Math.round(100 - (((+PROD_DETAILS.totalPrice * pq)/(+PROD_DETAILS.mrp * pq))*100));
-    disPercentHTML.innerHTML = `(${pDis}% OFF)`;
-}
+  let pDis = Math.round(
+    100 - ((+PROD_DETAILS.totalPrice * pq) / (+PROD_DETAILS.mrp * pq)) * 100
+  );
+  disPercentHTML.innerHTML = `(${pDis}% OFF)`;
+};
 
 const decQty = (e) => {
   // console.log(e);
@@ -610,7 +630,7 @@ const decQty = (e) => {
     document.querySelector("#prod-qty").innerHTML = "";
     document.querySelector("#prod-qty").innerHTML = PROD_QTY;
     calculatePrice();
-    if(!PROD_DETAILS.isCake) {
+    if (!PROD_DETAILS.isCake) {
       calPreviousPrice(PROD_QTY);
     }
   }
@@ -621,7 +641,7 @@ const incQty = (e) => {
   PROD_QTY++;
   document.querySelector("#prod-qty").innerHTML = PROD_QTY;
   calculatePrice();
-  if(!PROD_DETAILS.isCake) {
+  if (!PROD_DETAILS.isCake) {
     calPreviousPrice(PROD_QTY);
   }
 };
@@ -834,7 +854,6 @@ reviewFormHTML.addEventListener("keypress", enterKeyFun);
 const buyNowBtnHTML = document.querySelector("#buyNowBtn");
 
 buyNowBtnHTML.addEventListener("click", () => {
-  
   costWithAddonsHTML.innerHTML = TOTAL_COST;
 });
 
@@ -1049,7 +1068,7 @@ const buyProd = async (e) => {
           totalCost: document.querySelector("#cost-with-addons").innerHTML,
           status: "cancelled",
           orginTimeStamp: new Date(),
-          isEmailSent:false,
+          isEmailSent: false,
           type: "single",
           addons: addonsSelected,
           products: [
@@ -1074,9 +1093,9 @@ const buyProd = async (e) => {
         docData.orders = [];
         let cake = null;
         let message = "";
-          if (document.querySelector("#prodMsg")) {
-            message = document.querySelector("#prodMsg").value;
-          }
+        if (document.querySelector("#prodMsg")) {
+          message = document.querySelector("#prodMsg").value;
+        }
         if (WEIGHT_PRICE.weight) {
           let f;
           if (WEIGHT_PRICE.weight) {
@@ -1090,7 +1109,7 @@ const buyProd = async (e) => {
           } else {
             f = false;
           }
-          
+
           cake = {};
           cake.heart = HEART;
           cake.eggless = EGGLESS;
@@ -1098,12 +1117,12 @@ const buyProd = async (e) => {
           // cake.flavour = document.querySelector('input[name=cake-flavour]:checked').value;
           cake.flavour = f;
         }
-        
+
         let orderData = {
           orderId: orderId,
           status: "cancelled",
           orginTimeStamp: new Date(),
-          isEmailSent:false,
+          isEmailSent: false,
           totalCost: document.querySelector("#cost-with-addons").innerHTML,
           type: "single",
           addons: addonsSelected,
@@ -1111,7 +1130,7 @@ const buyProd = async (e) => {
             {
               prodId: PRODUCT_ID,
               cat: CATEGORY_ID,
-              message: message ? message : '',
+              message: message ? message : "",
               qty: PROD_QTY,
             },
           ],
@@ -1151,7 +1170,6 @@ const buyProd = async (e) => {
           });
         personalizedGiftDetails.imgs.push(imgUrl);
         personalizedGiftDetails.titles = TITLE_ARRAY;
-
       }
     }
 
@@ -1184,7 +1202,7 @@ const buyProd = async (e) => {
       orderId: orderId,
       status: "cancelled",
       orginTimeStamp: new Date(),
-      isEmailSent:false,
+      isEmailSent: false,
       totalCost: document.querySelector("#cost-with-addons").innerHTML,
       type: "single",
       addons: addonsSelected,
@@ -1497,17 +1515,17 @@ const displayReviews = () => {
     // attch cards with parentHTML element
   });
 };
-function loader(loaderState){
-  if(loaderState=="start")
-  document.querySelector('#overlay9898').style.display="inline-block"
-  else{
-    document.querySelector('#overlay9898').style.display="none"  
+function loader(loaderState) {
+  if (loaderState == "start")
+    document.querySelector("#overlay9898").style.display = "inline-block";
+  else {
+    document.querySelector("#overlay9898").style.display = "none";
   }
 }
-function loaderCart(loaderState){
-  if(loaderState=="start")
-  document.querySelector('#overlay9898C').style.display="inline-block"
-  else{
-    document.querySelector('#overlay9898C').style.display="none"  
+function loaderCart(loaderState) {
+  if (loaderState == "start")
+    document.querySelector("#overlay9898C").style.display = "inline-block";
+  else {
+    document.querySelector("#overlay9898C").style.display = "none";
   }
 }
