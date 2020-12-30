@@ -1014,7 +1014,7 @@ const form4 = async (e) => {
     // console.log(docData);
     docData.prodIds = userInputs;
     docData.title = f4Title;
-    console.log(docData);
+    // console.log(docData);
     await docRef.update(docData);
     // console.log("updated");
   });
