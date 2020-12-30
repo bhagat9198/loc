@@ -427,7 +427,7 @@
       window.location = "/AdminUsers/login.html"
     }
   }
-
+  
   db.collection("orders").onSnapshot((snapshots) => {
   const audio = new Audio("../assets/audio/ntf.mp3");
   let snapshotsDocs = snapshots.docs;
