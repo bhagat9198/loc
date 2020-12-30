@@ -280,21 +280,12 @@ const displayTables = async () => {
       });
     if (tRows != "") {
       tbodys.innerHTML = tRows;
-<<<<<<< HEAD
       // setTimeout(function(){
       //   $('#myTable' +cat.id).DataTable({
       //     "responsive": true,
       //     "autoWidth": false,
       //   });
       // },4000)
-=======
-      setTimeout(function () {
-        $("#myTable" + cat.id).DataTable({
-          responsive: true,
-          autoWidth: false,
-        });
-      }, 4000);
->>>>>>> dc093921efdd7c1fedf9e3c3384e41a5773d4bbd
     } else {
       $("#tbodys").empty();
       tbodys.innerHTML =
