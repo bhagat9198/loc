@@ -167,7 +167,7 @@ const displayCart = async () => {
 
       <div class="infoWrap">
         <div class="cartSection">
-          <img src="${product.mainImgUrl}" alt="" class="itemImg" style="height:160px;width:160px;object-fit:cover";border-radius:5px !important />
+          <img src="${product.mainImgUrl}" alt="" class="itemImg" style="height:190px;width:160px;object-fit:cover";border-radius:5px !important />
           <p class="itemNumber">${product.sno}</p>
           <a href="../Product/product.html?prod=${
             prod.prodId

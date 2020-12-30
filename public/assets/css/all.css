@@ -34590,7 +34590,7 @@ section.phone-and-accessories.categori-item {
         flex-wrap: wrap;
     }
     .imgresponsive {
-        object-fit: contain !important;
+        object-fit: cover !important;
     }
 }
 
