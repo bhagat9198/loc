@@ -560,6 +560,7 @@ const setDateAndTime = () => {
     }
     return d;
   }
+  hours = Number(hours);
   // console.log(year, month, day, hours);
   if (shipVal === "free") {
     perfectHoursHTML.style.display = "none";
@@ -579,6 +580,7 @@ const setDateAndTime = () => {
     midnightHoursHTML.style.display = "none";
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
+    console.log(hours , foudantHoursPerfect);
     if (hours + foudantHoursPerfect < 19) {
       perfectHoursHTML.style.display = "block";
 
@@ -615,6 +617,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_2").parentElement.remove();
       } else if (hours + foudantHoursPerfect < 14) {
         // document.querySelector("#perfect_10").disabled = true;
+        
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
