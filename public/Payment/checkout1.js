@@ -518,7 +518,7 @@ const setDateAndTime = () => {
   month = date.getMonth() + 1;
   day = date.getDate() + MAX_DAYS;
   hours = date.getHours() + MAX_HOURS;
-  hours = 19;
+  // hours = 19;
   validateDateAndTime();
   
   let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked')
