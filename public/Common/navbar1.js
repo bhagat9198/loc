@@ -339,7 +339,7 @@ if (localStorage.getItem("locLoggedInUser")) {
                     <div class="product-details">
                       <div class="co">
                         <a href="#!">
-                          <h4 class="product-title" style="text-align:left;padding:5px;font-size:14px !important;margin-left:10% !important">${pData.name}</h4>
+                          <h4 class="product-title" style="text-align:left;padding:5px;font-size:14px !important;margin-left:10% !important;width:200px">${pData.name}</h4>
                         </a>
                         <span class="cart-product-info">
                           <span class="cart-product-qty" id="cqt3461"><span style="margin-left:11%;font-size:12px">Qty - </span>${cartProd.qty}</span>

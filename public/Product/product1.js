@@ -191,6 +191,7 @@ const displayProduct = (prodData) => {
       In Stock
     </p>
     `;
+    // document.getElementById("fail").style.display="inline-block"
     document.querySelector("#buyNowBtn").disabled = false;
     document.querySelector("#addToCartBtn").disabled = false;
   } else {
@@ -326,6 +327,7 @@ const displayProduct = (prodData) => {
       personalizedGift = true;
       // document.querySelector("#pqty").style.display = "none";
       // document.querySelector("#qty-btns").style.display = "none";
+      document.getElementById("fail").style.display="inline-block"
       document.querySelector("#buyNowBtn").disabled = true;
       document.querySelector("#addToCartBtn").disabled = true;
       let customizedImgsHTML = document.querySelector("#customizedImgs");
@@ -442,6 +444,7 @@ personlizedImgsHTML.addEventListener("click", (e) => {
       }
     }
     if (TITLE_ARRAY.length >= titleNo) {
+      document.getElementById("fail").style.display="none"
       document.querySelector("#buyNowBtn").disabled = false;
       document.querySelector("#addToCartBtn").disabled = false;
     }
@@ -818,6 +821,7 @@ reviewFormHTML.addEventListener("keypress", enterKeyFun);
 const buyNowBtnHTML = document.querySelector("#buyNowBtn");
 
 buyNowBtnHTML.addEventListener("click", () => {
+  
   costWithAddonsHTML.innerHTML = TOTAL_COST;
 });
 
@@ -950,7 +954,6 @@ const checkAuth = async () => {
   let userStatus = false;
   console.log(user);
   if (!user || user == null || user == "null") {
-    // console.log(user);
     window.location.href = "/Auth/login.html";
   } else {
     userStatus = true;
@@ -963,6 +966,7 @@ const checkAuth = async () => {
 };
 
 const buyProd = async (e) => {
+  loader("start");
   let addonsSelected = [];
   addons_details.map((el) => {
     if (el.checked) {
@@ -1199,6 +1203,8 @@ prodWithAddonsHTML.addEventListener("click", buyProd);
 const addToCartBtnHTML = document.querySelector("#addToCartBtn");
 
 const addToCart = async (e) => {
+  loaderCart("start");
+
   await checkAuth();
   const cartId = Math.random();
   await userRef.get().then(async (doc) => {
@@ -1279,6 +1285,7 @@ const addToCart = async (e) => {
       document.getElementById("success").style.display = "none";
     }, 2000);
   });
+  loaderCart("end");
 };
 
 addToCartBtnHTML.addEventListener("click", addToCart);
@@ -1477,3 +1484,17 @@ const displayReviews = () => {
     // attch cards with parentHTML element
   });
 };
+function loader(loaderState){
+  if(loaderState=="start")
+  document.querySelector('#overlay9898').style.display="inline-block"
+  else{
+    document.querySelector('#overlay9898').style.display="none"  
+  }
+}
+function loaderCart(loaderState){
+  if(loaderState=="start")
+  document.querySelector('#overlay9898C').style.display="inline-block"
+  else{
+    document.querySelector('#overlay9898C').style.display="none"  
+  }
+}
