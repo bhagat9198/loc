@@ -34635,3 +34635,7 @@ input[type="checkbox"]:checked {
                  background-color: red !important;
                  color: red ;
             }
+
+.nav-collapsible{
+    font-size: 13px;
+}

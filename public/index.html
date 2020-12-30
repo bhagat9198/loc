@@ -346,7 +346,7 @@
                   </label>
                                 </a>
                             </div>
-                            <div class="nav-collapsible">
+                            <div class="nav-collapsible" >
                                 <a href="#">
                                     <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
@@ -2106,12 +2106,16 @@
 
 <script>
     $(".drobt").click(function() {
+     
         if ($('.drobt0').hasClass('drobt1')) {
+          // $('.drobt1').transform="translateX(0%)"
             $('.drobt0').removeClass('drobt1');
             $('.drobt0').addClass('drobt2');
         } else {
+         
             $('.drobt0').removeClass('drobt2');
             $('.drobt0').addClass('drobt1');
+            // $('.drobt1').transform="translateX(0%)"
         }
     });
 </script>
@@ -2299,7 +2303,7 @@
 
 <style>
     .drobt1 {
-        transform: translateX(-101%);
+        transform: translate(-100%);
     }
     
     .drobt2 {
