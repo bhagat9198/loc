@@ -195,11 +195,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   const db = firebase.firestore();
  
-
+  window.localStorage.setItem("isGoogleAuthUser",user)
   var counter = 0;
   let getUserStatus=window.localStorage.getItem("locLoggedInUser")
-  
-  if (user!=null && user!="null") {
+
+  if (user!=null && user!="null" && getUserStatus!=null) {
    
     db.collection("Customers").onSnapshot(async (snapshots) => {
       
@@ -228,7 +228,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             if(goTo=="index.html"){
               window.location="/index.html"
             }else if(goTo.includes("product.html")){
+              
               let buyNowProd = window.sessionStorage.getItem('buyNowProd');
+              
               if(buyNowProd) {
                 buyNowProd = JSON.parse(buyNowProd);
                 if(USER_DATA.orders) {
@@ -244,6 +246,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                 window.location = `/Payment/checkout.html?checkout=${orderId}`;
                 // console.log(doc.data());
                 // let userRef = await db.collection("Customers").doc(userId);
+              }else{
+                window.location=goTo;
               }
              
             }else{
@@ -276,7 +280,7 @@ firebase.auth().onAuthStateChanged(function(user) {
           token:"newUser",
           Phone :user.phoneNumber
         });
-        user ? handleSignedInUser(user) : handleSignedOutUser();
+     
 
       }
 
@@ -286,7 +290,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
   } else {
  
-   
     // window.localStorage.clear("locLoggedInUser")
 
     if( getUserStatus=="null" || getUserStatus==null){
@@ -335,7 +338,7 @@ var deleteAccount = function () {
     }
   });
 };
-
+// alert(firebase.auth().currentUser)
 
 /**
  * Handles when the user changes the reCAPTCHA or email signInMethod config.

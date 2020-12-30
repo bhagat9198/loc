@@ -530,7 +530,7 @@
 
             <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               <div class="d-flex justify-content-between">
-                <a href="#!" class="btn btn-sm btn-info ">Delete Account</a>
+                <a href="#!" class="btn btn-sm btn-info " onclick="deleteMyAccount()">Delete Account</a>
 
                 <label for="fileSubmit2" class="btn btn-sm btn-default float-right"
                   style="display: inline-block;background-color: rgb(170, 90, 90);color: #ffffff;">Update
@@ -790,9 +790,7 @@
     // })
   </script>
   <script type="text/javascript">
-    setTimeout(() => {
-      // $('#footer-section-loader').load('../Common/files.html');
-    }, 3000);
+ 
   </script>
 
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
@@ -800,27 +798,16 @@
   <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script> -->
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
   <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebaseui.js"></script> -->
   <!-- <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script> -->
 
   <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
-      authDomain: "lake-of-cakes.firebaseapp.com",
-      databaseURL: "https://lake-of-cakes.firebaseio.com",
-      projectId: "lake-of-cakes",
-      storageBucket: "lake-of-cakes.appspot.com",
-      messagingSenderId: "779843608951",
-      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
-      measurementId: "G-5ER0QF0FDW"
-    };
-    firebase.initializeApp(firebaseConfig);
-     firebase.analytics();
-    var db = firebase.firestore();
+
   </script>
 
   <!-- <script src="../index1.js"></script> -->
-  <script src="../Common/navbar1.js"></script>
+ 
   <script>
     $(".drobt").click(function () {
       if ($('.drobt0').hasClass('drobt1')) {
@@ -842,9 +829,22 @@
       $('.drobt0').removeClass('colapse');
     }
   </script>
-  <script src="/Auth/app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+  
+
   <script>
+        var firebaseConfig = {
+      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+      authDomain: "lake-of-cakes.firebaseapp.com",
+      databaseURL: "https://lake-of-cakes.firebaseio.com",
+      projectId: "lake-of-cakes",
+      storageBucket: "lake-of-cakes.appspot.com",
+      messagingSenderId: "779843608951",
+      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+      measurementId: "G-5ER0QF0FDW"
+    };
+    firebase.initializeApp(firebaseConfig);
+  
+    var db = firebase.firestore();
     db.collection("offers").onSnapshot(async (snapshots) => {
 
       let snapshotDocs = snapshots.docs;
@@ -930,7 +930,7 @@
     });
 
 
-
+    
 
 
     function redirectLogin() {
@@ -950,17 +950,9 @@
       });
     }
   </script>
+      <script src="/Auth/app.js"></script>
+      <script src="../Common/navbar1.js"></script>
 
-
-  <style>
-    .drobt1 {
-      transform: translateX(-101%);
-    }
-
-    .drobt2 {
-      transform: translateX(0%);
-    }
-  </style>
 
   <script>
     db.collection("offers").onSnapshot(async (snapshots) => {
@@ -1282,8 +1274,38 @@
         reader.readAsDataURL(input.files[0]);
       }
     }
+    
+ 
+  
+    function deleteMyAccount(){
+      let ans=confirm("Are you sire to delete account?")
+      if(ans){
+        db.collection("Customers").doc(checkUser).delete().then(function() {
+        firebase.auth().signOut();
+        window.location="../index.html"
+        window.localStorage.setItem("locLoggedInUser","null")
+      }).catch(function(error) {
+        alert(error)
+          console.error("Error removing document: ", error);
+      });
+      }
+      
+      
+        }
+    
+  
+    
   </script>
 
+<style>
+  .drobt1 {
+    transform: translateX(-101%);
+  }
+
+  .drobt2 {
+    transform: translateX(0%);
+  }
+</style>
 
   <script src="./customerProfile1.js"></script>
 
