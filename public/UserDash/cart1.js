@@ -396,8 +396,9 @@ const addonModal = (e) => {
     <div class="col-md-3 col-6 mt-3">
       <a class="item"
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-        <input type="checkbox" id="addons-checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
-          style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
+        <input type="checkbox"  id="addons-checkbox${index}" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
+          style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;display:none">
+          <label for="addons-checkbox${index}">Select</label>
         <div class="item-img"style="max-height:170px ;">
           <img class="img-fluid"
             src="${docData.imgUrl}"

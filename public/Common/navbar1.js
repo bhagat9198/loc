@@ -460,17 +460,17 @@ db.collection('miscellaneous').doc('siteStatus').onSnapshot(siteDoc => {
                         </li> &nbsp; |
 
                         <li><a href="/Common/coupans.html" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
-                                class="fa fa-gift" aria-hidden="true" style="color: rgb(235, 48, 79);"></i>
+                                class="fa fa-gift" aria-hidden="true" style="color: red;"></i>
                               COUPONS</span> </a>
                         </li> &nbsp; |
                         <li><a href="tel:9598891097" class="track-btn"><span class="sign-in"
                               style="font-size: 14px; color: #000;"><i class="fa fa-phone" aria-hidden="true"
-                                style="color: rgb(235, 48, 79);"></i>
+                                style="color: red;"></i>
                               9598891097</span> </a>
                         </li> &nbsp; |
                         <li><a href="mailto:lakeofcakess@gmail.com" class="track-btn"><span class="sign-in"
                               style="font-size: 14px; color: #000;"><i class="fa fa-envelope" aria-hidden="true"
-                                style="color: rgb(235, 48, 79);"></i>
+                                style="color: red;"></i>
                               Email</span> </a>
                         </li> &nbsp;
                       </ul>
