@@ -953,7 +953,7 @@ user = localStorage.getItem("locLoggedInUser");
 const checkAuth = async () => {
   let userStatus = false;
   if (!user || user == null || user == "null") {
-    // window.location.href = "/Auth/login.html";
+    window.location.href = "/Auth/login.html";
   } else {
     userStatus = true;
     let uid = user;
