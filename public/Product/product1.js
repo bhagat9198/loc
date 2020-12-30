@@ -238,6 +238,7 @@ const displayProduct = (prodData) => {
       displayWeights(prodData.weights[0].cakeWeight);
     }
   } else {
+    calPreviousPrice(1);
     document.querySelectorAll(".cake-attribute").forEach((el) => {
       el.style.display = "none";
     });
@@ -596,6 +597,12 @@ const displayWeights = (makedWeight) => {
   }
 };
 
+const calPreviousPrice = (pq) => {
+  // console.log(+PROD_DETAILS.totalPrice, +PROD_DETAILS.mrp, Math.round(100 - ((+PROD_DETAILS.totalPrice/+PROD_DETAILS.mrp)*100)));
+    let pDis = Math.round(100 - (((+PROD_DETAILS.totalPrice * pq)/(+PROD_DETAILS.mrp * pq))*100));
+    disPercentHTML.innerHTML = `(${pDis}% OFF)`;
+}
+
 const decQty = (e) => {
   // console.log(e);
   if (PROD_QTY >= 2) {
@@ -603,6 +610,9 @@ const decQty = (e) => {
     document.querySelector("#prod-qty").innerHTML = "";
     document.querySelector("#prod-qty").innerHTML = PROD_QTY;
     calculatePrice();
+    if(!PROD_DETAILS.isCake) {
+      calPreviousPrice(PROD_QTY);
+    }
   }
 };
 
@@ -611,6 +621,9 @@ const incQty = (e) => {
   PROD_QTY++;
   document.querySelector("#prod-qty").innerHTML = PROD_QTY;
   calculatePrice();
+  if(!PROD_DETAILS.isCake) {
+    calPreviousPrice(PROD_QTY);
+  }
 };
 
 const cakeType = (e, current) => {
