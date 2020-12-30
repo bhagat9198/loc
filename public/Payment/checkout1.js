@@ -437,7 +437,7 @@ const validateDateAndTime = () => {
     let diffHours = hours - 24;
     hours = diffHours;
     console.log(hours);
-    alert(hours);
+    // alert(hours);
     day = day + 1;
   }
 
@@ -480,7 +480,7 @@ const validateDateAndTime = () => {
     console.log('while', day, maxMonthDays);
     let diffDays = day - maxMonthDays;
     day = diffDays;
-    console.log('whileend', day, diffDays);
+
     month += 1;
   }
 
@@ -518,7 +518,7 @@ const setDateAndTime = () => {
   month = date.getMonth() + 1;
   day = date.getDate() + MAX_DAYS;
   hours = date.getHours() + MAX_HOURS;
-  hours = 19;
+  // hours = 19;
   validateDateAndTime();
   
   let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked')
@@ -562,7 +562,7 @@ const setDateAndTime = () => {
     midnightHoursHTML.style.display = "none";
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
-    console.log(hours , foudantHoursPerfect);
+    // console.log(hours , foudantHoursPerfect);
     if (hours + foudantHoursPerfect < 19) {
       perfectHoursHTML.style.display = "block";
       if (hours + foudantHoursPerfect < 8) {
