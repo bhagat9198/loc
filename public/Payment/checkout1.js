@@ -512,13 +512,20 @@ const validateDateAndTime = () => {
 };
 
 const setDateAndTime = () => {
-  // console.log("setDateAndTime");
-  // alert(1);
+
   year = date.getFullYear();
   month = date.getMonth() + 1;
   day = date.getDate() + MAX_DAYS;
-  hours = date.getHours() + MAX_HOURS;
-  // hours = 19;
+
+  hours = date.getHours();
+  if(hours < 10) {
+    console.log(hours);
+    hours = 10 + MAX_HOURS;
+  } else {
+    console.log(hours);
+    hours = hours + MAX_HOURS;
+  }
+
   validateDateAndTime();
   
   let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked')
