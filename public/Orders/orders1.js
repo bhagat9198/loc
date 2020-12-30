@@ -5,7 +5,7 @@ const storageService = firebase.storage();
 
 let ORDERS = [];
 let prvious = 0;
-db.collection("orders").onSnapshot((snapshots) => {
+db.collection("orders").onSnapshot(async(snapshots) => {
   const audio = new Audio("../assets/audio/ntf.mp3");
   let snapshotsDocs = snapshots.docs;
   prvious = snapshotsDocs.length;
@@ -14,7 +14,7 @@ db.collection("orders").onSnapshot((snapshots) => {
     audio.play();
   }
   ORDERS = [];
-  snapshotsDocs.map((doc) => {
+  await snapshotsDocs.map((doc) => {
     let docData = doc.data();
     docData.docId = doc.id;
     ORDERS.push(docData);
@@ -26,8 +26,10 @@ db.collection("orders").onSnapshot((snapshots) => {
     // console.log(o1, o2);
     return o2 - o1;
   }
+  // console.log(ORDERS);
+  await ORDERS.sort(compare);
+  // console.log(ORDERS);
 
-  ORDERS.sort(compare);
   displayOrdersTable();
 });
 

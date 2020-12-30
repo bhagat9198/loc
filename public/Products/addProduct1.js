@@ -317,6 +317,11 @@ const addProductForm = (event) => {
     }
   }
 
+  let extraTime = {
+    days : addProduct['days-num'].value,
+    hours : addProduct['hours-num'].value,
+  }
+
   if (mainImg) {
     productMainImg = `${Math.random()}_${mainImg.name}`;
   } else {
@@ -355,6 +360,7 @@ const addProductForm = (event) => {
     createdAt: `${new Date()}`,
     pIsGift: pIsGift,
     isCake: isCake,
+    extraTime :  extraTime,
   };
 
   if (isCake) {

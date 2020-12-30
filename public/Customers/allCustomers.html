@@ -59,7 +59,7 @@
                                 <th>User Name</th>
                                 <th>Email</th>
                                 <th>Ph.No</th>
-                                <th>Details</th>
+                                <!-- <th>Details</th> -->
                               </tr>
                             </thead>
                             <tbody id="userData">
@@ -68,11 +68,11 @@
                                 <td>rc@gmail.com</td>
                                 <td> 9876789876
                                 </td>
-                                <td>
+                                <!-- <td>
                                   <div class="godropdown"><button class="go-dropdown-toggle" data-toggle="modal" data-target=`#gridSystemModal${i}`>
                                       Expand
                                   </div>
-                                </td>
+                                </td> -->
                               </tr>
                             </tbody>
                           </table>
@@ -109,7 +109,6 @@
   <script src="../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
   <script src="../assets/js/jquery-1.12.4.min.js"></script>
-  t>
 
 
   <script src="../assets/js/adminlte.min.js"></script>
@@ -216,12 +215,12 @@
           <td>`+ i.data().Email + `</td>
           <td> `+ i.data().Phone + `
           </td>
-          <td>
+          <!-- <td>
             <div class="godropdown"><button class="go-dropdown-toggle" data-toggle="modal`+i+`"
                 data-target="#gridSystemModal`+i+`">
                 Expand
             </div>
-          </td>
+          </td> -->
         </tr>
         <div id="gridSystemModal`+i+`" class="modal`+i+` fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel">
           <div class="modal-dialog modal-lg .modal-dialog-scrollable " role="document">

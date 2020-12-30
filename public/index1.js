@@ -11,6 +11,8 @@ let CAT = [];
 const allOrdersHTML = document.querySelector("#all-orders");
 const allIncomeHTML = document.querySelector("#all-income");
 const ordersDetailsHTML = document.querySelector("#orders-details");
+const allPendingOrdersHTML = document.querySelector("#all-pending-orders");
+const allCompletedOrdersHTML = document.querySelector("#all-completed-orders");
 
 const displayOrdersInfo = () => {
   let locAdminOrders = window.localStorage.getItem("locAdminOrders");
@@ -19,16 +21,22 @@ const displayOrdersInfo = () => {
     // console.log(locAdminOrders);
     allOrdersHTML.innerHTML = locAdminOrders.totalOrders;
     allIncomeHTML.innerHTML = `₹ ${locAdminOrders.totalIncome}`;
+    allPendingOrdersHTML.innerHTML = locAdminOrders.pendingOrders;
+    allCompletedOrdersHTML.innerHTML = locAdminOrders.completedOrders;
+
     let row = "";
     for (let o of locAdminOrders.details) {
       // console.log(o);
+
       let orderStatus = "";
       if ("completed" === o.status) {
         orderStatus = `<span class="badge badge-success">Completed</span>`;
       } else if ("rejected" === o.status) {
         orderStatus = ` <span class="badge badge-danger">Rejected</span>`;
-      } else {
+      } else if ("pending" === o.status) {
         orderStatus = ` <span class="badge badge-warning">Pending</span>`;
+      } else {
+        // nothing
       }
       row += `
       <tr>
@@ -111,8 +119,18 @@ db.collection("orders").onSnapshot((orderSnaps) => {
   let orderSnapsDocs = orderSnaps.docs;
   let totalIncome = 0;
   let totalOrders = 0;
+  let completedOrders = 0;
+  let pendingOrders = 0;
   for (let o of orderSnapsDocs) {
     let oData = o.data();
+    // console.log(oData.status);
+    if (oData.status === "pending") {
+      pendingOrders++;
+    } else if (oData.status === "completed") {
+      completedOrders++;
+    }else {
+      // nothing
+    }
     totalIncome += oData.total;
     ORDERS.push(oData);
     totalOrders++;
@@ -125,13 +143,15 @@ db.collection("orders").onSnapshot((orderSnaps) => {
   }
   ORDERS.sort(compare);
   if (ORDERS.length > 8) {
-    ORDERS.length = 8;
+    ORDERS.length = 12;
   }
   // console.log(ORDERS);
   let ordersData = {
     details: ORDERS,
     totalOrders: totalOrders,
     totalIncome: totalIncome,
+    pendingOrders: pendingOrders,
+    completedOrders: completedOrders,
   };
   window.localStorage.setItem("locAdminOrders", JSON.stringify(ordersData));
   displayOrdersInfo();
@@ -154,7 +174,7 @@ db.collection("Customers").onSnapshot((customerSnaps) => {
   }
   CUSTOMERS.sort(compare);
   if (CUSTOMERS.length > 8) {
-    console.log('aaaa');
+    console.log("aaaa");
     CUSTOMERS.length = 8;
   }
   let customersData = {
