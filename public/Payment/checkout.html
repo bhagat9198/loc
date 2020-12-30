@@ -1714,7 +1714,7 @@
     if (this.checked) {
       altAddSelected = 1;
       $('.ship-diff-addres-area').removeClass('d-none');
-      $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', true);
+      $('.ship-diff-addres-area input, .ship-diff-addres-area select').prop('required', false);
    
     } else {
       altAddSelected = 0;
@@ -1890,6 +1890,7 @@
     }
   });
   var google_pincode="";
+  var google_pincode2="";
   function initialize() {
   var input = document.getElementById('locality');
   var input2=document.getElementById("shippingPostal_code");
@@ -1921,13 +1922,14 @@
   })
 
   google.maps.event.addListener(autocomplete2, 'place_changed', function() {
-  document.getElementById("pincodeError").style.display="none"
+  // document.getElementById("pincodeError").style.display="none"
+  document.getElementById("pincodeError2").style.display="none"
   let place = autocomplete2.getPlace();
     for (var i = 0; i < place.address_components.length; i++) {
       for (var j = 0; j < place.address_components[i].types.length; j++) {
       
          if(place.address_components[i].types[j]=="postal_code"){
-          
+         
           google_pincode2=place.address_components[i].long_name
           document.querySelector('#shippingPostal_code').value = place.address_components[i].long_name;
           
@@ -1942,7 +1944,9 @@ google.maps.event.addDomListener(window, "load", initialize);
   var btnc = 0;
   var modalVisited = 0;
   $("#proceed1Btn").click(function () {
-    console.log('proceed1Btn');
+
+
+    
     // if (btnc == 0) {
       let name = document.querySelector('#uname').value;
       let email = document.querySelector('#uemail').value;
@@ -1961,34 +1965,72 @@ google.maps.event.addDomListener(window, "load", initialize);
         
         if (altAddSelected==1) {
           if (a_name != "" && a_phone != "" && a_address != "" && a_postal != "") {
+            document.querySelector('#shippingFull_name').style.borderColor="gray";
+            document.querySelector('#shipingPhone_number').style.borderColor="gray"
+
+            document.querySelector('#shipping_address').style.borderColor="gray"
+            document.querySelector('#shippingPostal_code').style.borderColor="gray"
             
             if(google_pincode2==undefined){
             document.getElementById("pincodeUndefined2").style.display="block"
             }
             else{
-              if(google_pincode2.startsWith("2260")||((document.querySelector('#shippingPostal_code').value).startsWith("2260")))
+              if((google_pincode.startsWith("2260")||((document.querySelector('#locality').value).startsWith("2260"))))
               {
-              
-                if (document.getElementById("free-shepping1").checked) {
-                  $("#myModal1").modal('show');
-                  document.getElementById("free-hours").style.display = "block"
-                  modalVisited = 1;
-                }
-                else if (document.getElementById("free-shepping2").checked) {
-                  $("#myModal1").modal('show');
-                  document.getElementById("perfect-hours").style.display = "block"
-                  modalVisited = 1
-                } else {
-                  $("#myModal1").modal('show');
-                  document.getElementById("midnight-hours").style.display = "block"
-                  modalVisited = 1
+                if((google_pincode2.startsWith("2260")||((document.querySelector('#shippingPostal_code').value).startsWith("2260"))))
+                {
+                
+                  if (document.getElementById("free-shepping1").checked) {
+                    $("#myModal1").modal('show');
+                    document.getElementById("free-hours").style.display = "block"
+                    modalVisited = 1;
+                  }
+                  else if (document.getElementById("free-shepping2").checked) {
+                    $("#myModal1").modal('show');
+                    document.getElementById("perfect-hours").style.display = "block"
+                    modalVisited = 1
+                  } else {
+                    $("#myModal1").modal('show');
+                    document.getElementById("midnight-hours").style.display = "block"
+                    modalVisited = 1
+                  }
+                }else{
+                  document.getElementById("pincodeError2").style.display="block"
                 }
               }else{
-                document.getElementById("pincodeError2").style.display="block"
-              }
+                document.getElementById("pincodeError").style.display="block"
               }
             }
-          } else {
+          }else{
+            if(!a_name){
+              document.querySelector('#shippingFull_name').style.borderColor="red"
+            }else{
+              
+              document.querySelector('#shippingFull_name').style.borderColor="green"
+            }
+             
+            if(!a_phone){
+              
+              document.querySelector('#shipingPhone_number').style.borderColor="red"
+            }else{
+              document.querySelector('#shipingPhone_number').style.borderColor="green"
+            }
+             
+            if(!a_address){
+              document.querySelector('#shipping_address').style.borderColor="red"
+            }else{
+              
+              document.querySelector('#shipping_address').style.borderColor="green"
+            }
+             
+            if(!a_postal){
+              document.querySelector('#shippingPostal_code').style.borderColor="red"
+            }else{
+              document.querySelector('#shippingPostal_code').style.borderColor="green"
+            }
+             
+          }
+        }else {
           
           if(google_pincode==undefined){
             document.getElementById("pincodeUndefined").style.display="block"
@@ -2015,16 +2057,10 @@ google.maps.event.addDomListener(window, "load", initialize);
            document.getElementById("pincodeError").style.display="block"
           }
 
-          }
+        }
    
-      
-        } 
-      }
-    // }
-
-
-
-
+      } 
+    }
   });
 
   $(".contn").click(function () {

@@ -191,7 +191,7 @@ const displayProduct = (prodData) => {
       In Stock
     </p>
     `;
-    document.getElementById("fail").style.display="inline-block"
+    // document.getElementById("fail").style.display="inline-block"
     document.querySelector("#buyNowBtn").disabled = false;
     document.querySelector("#addToCartBtn").disabled = false;
   } else {

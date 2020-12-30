@@ -1526,6 +1526,7 @@ exports.sendEmailAfterConfirmation = functions.firestore
   });
 
 const mailOnProductReject = async () =>{
+  console.log("came in scheduler")
   db.collection("Customers").get().then(async function(querySnapshot) {
     querySnapshot.forEach(async function(doc) {
         // doc.data() is never undefined for query doc snapshots
@@ -1773,7 +1774,7 @@ exports.scheduledEmails12AM = functions.pubsub.schedule("every day 00:00").onRun
   console.log('This will be run every day ay 12AM!');
   // mailOnProductReject();
 });
-exports.scheduledEmailsTry = functions.pubsub.schedule("every day 02:22").onRun((context) => {
+exports.scheduledEmailsTry = functions.pubsub.schedule("every day 03:00").onRun((context) => {
   console.log('This will be run every day ay 1:55AM!');
   mailOnProductReject();
 });
