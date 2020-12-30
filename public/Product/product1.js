@@ -41,7 +41,7 @@ const extractProdDetails = () => {
     .get()
     .then((doc) => {
       let docData = doc.data();
-      console.log(docData);
+      // console.log(docData);
       return docData;
     });
 };
@@ -409,10 +409,10 @@ let IMGS_ARRAY = [];
 let TITLE_ARRAY = [];
 let imgCounter = 0;
 const imgUploader = async (e) => {
-  console.log(e);
+  // console.log(e);
   for (let img of e.target.files) {
     // console.log(imgCounter, imgNo);
-    console.log(img);
+    // console.log(img);
     let filesizeInKb = img.size / 1000;
     let filesizeInMb = img.size / 1024 / 1024;
     if (filesizeInMb <= 10 && filesizeInKb >= 10) {
