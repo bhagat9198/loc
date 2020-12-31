@@ -344,7 +344,7 @@ const displayProduct = (prodData) => {
             <label for="file-${imgCounter}" style="display:inline-block;"><i
                 style="margin-left:140%;margin-right: auto;margin-top: 130%;margin-bottom: auto;z-index: 999;"
                 class="fa fa-plus"></i></label>
-            <input id="file-${imgCounter}" style="display: none;" class="file-preview" type="file"
+            <input id="file-${imgCounter}" style="display: none;height:100px" class="file-preview" type="file"
               accept="image/jpg, image/jpeg, image/png" data-select="single-select" 
               onchange="checkFileSize(event, this);" data-imgnameid="imgBlock-file-${imgCounter}">
             <img id="imgBlock-file-${imgCounter}" class="customizedImage" src="" >

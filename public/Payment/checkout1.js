@@ -476,7 +476,7 @@ const validateDateAndTime = () => {
     // nothing
   }
 
-  while (day > maxMonthDays) {
+  if (day > maxMonthDays) {
     console.log('while', day, maxMonthDays);
     let diffDays = day - maxMonthDays;
     day = diffDays;
