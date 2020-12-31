@@ -518,13 +518,7 @@ const setDateAndTime = () => {
   day = date.getDate() + MAX_DAYS;
 
   hours = date.getHours();
-  if(hours < 10) {
-    console.log(hours);
-    hours = 10 + MAX_HOURS;
-  } else {
-    console.log(hours);
-    hours = hours + MAX_HOURS;
-  }
+  
 
   validateDateAndTime();
   
@@ -532,7 +526,15 @@ const setDateAndTime = () => {
     .value;
   shippingType = shipVal;
 
+  let foudantHoursPerfect = 0;
   if (MAX_HOURS || MAX_DAYS) {
+    if(hours < 9) {
+      hours = 10 + MAX_HOURS;
+      // console.log(hours);
+    } else {
+      // console.log(hours);
+      hours = hours + MAX_HOURS;
+    }
     foudantHoursPerfect = -2;
   }
 
