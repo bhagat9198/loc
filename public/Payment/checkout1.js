@@ -91,7 +91,7 @@ const allProductsDetails = async () => {
   }
 
   calculateBill();
-  document.querySelector('#proceed1Btn').disabled = false;
+  document.querySelector("#proceed1Btn").disabled = false;
 };
 
 // const bpHTML = document.querySelector("#bp");
@@ -290,7 +290,7 @@ const checkCoupon = async (e) => {
   // const code = checkCouponFormHTML['code'].value;
   let code = document.querySelector("#code").value;
   // console.log(code);
-  code =  code.trim();
+  code = code.trim();
   let totalSubTotal = document.querySelector("#sub-total-cost").innerHTML;
   totalSubTotal = Number(totalSubTotal.substring(2));
 
@@ -476,15 +476,15 @@ const validateDateAndTime = () => {
     // nothing
   }
 
-  if (day > maxMonthDays) {
-    console.log('while', day, maxMonthDays);
+  while (day > maxMonthDays) {
+    // console.log("while", day, maxMonthDays);
     let diffDays = day - maxMonthDays;
     day = diffDays;
 
     month += 1;
   }
 
-  if (month > 12) {
+  while (month > 12) {
     let diffMonth = month - 12;
     month = diffMonth;
     year += 1;
@@ -512,31 +512,39 @@ const validateDateAndTime = () => {
 };
 
 const setDateAndTime = () => {
-
   year = date.getFullYear();
   month = date.getMonth() + 1;
   day = date.getDate() + MAX_DAYS;
 
   hours = date.getHours();
-  
+  // console.log(hours);
 
   validateDateAndTime();
-  
+
   let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked')
     .value;
   shippingType = shipVal;
 
   let foudantHoursPerfect = 0;
+  hours = Number(hours);
+  // console.log(MAX_DAYS, MAX_HOURS);
   if (MAX_HOURS || MAX_DAYS) {
-    if(hours < 9) {
+    // console.log(hours);
+
+    if (hours < 9) {
       hours = 10 + MAX_HOURS;
+      // console.log(hours);
+
       // console.log(hours);
     } else {
       // console.log(hours);
       hours = hours + MAX_HOURS;
+      // console.log(hours);
     }
     foudantHoursPerfect = -2;
   }
+  // console.log(hours);
+  validateDateAndTime();
 
   function updateDay() {
     day = Number(day);
@@ -571,7 +579,7 @@ const setDateAndTime = () => {
     midnightHoursHTML.style.display = "none";
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
-    // console.log(hours , foudantHoursPerfect);
+    console.log(hours, foudantHoursPerfect);
     if (hours + foudantHoursPerfect < 19) {
       perfectHoursHTML.style.display = "block";
       if (hours + foudantHoursPerfect < 8) {
@@ -607,7 +615,7 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_2").parentElement.remove();
       } else if (hours + foudantHoursPerfect < 14) {
         // document.querySelector("#perfect_10").disabled = true;
-        
+
         document.querySelector("#perfect_11").disabled = true;
         document.querySelector("#perfect_11").parentElement.remove();
         document.querySelector("#perfect_12").disabled = true;
@@ -766,6 +774,7 @@ const setDateAndTime = () => {
   if (shipVal === "free") {
     shipValFree();
   } else if (shipVal === "perfect") {
+    console.log(hours);
     shipValPerfect();
   } else if (shipVal === "midnight") {
     shipValMidNight();
