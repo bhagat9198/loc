@@ -47,7 +47,7 @@ let allCatArr = [];
 
 db.collection('midnight').doc('fixed1').onSnapshot(async(doc) => {
   let data = doc.data();
-  if(data.prodIds.length > 0) {
+  if(data.title) {
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -81,31 +81,26 @@ db.collection('midnight').doc('fixed1').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      await db.collection(p.cat.split('__')[0]).doc(p.id).get().then(pdoc => {
-        let prodData = pdoc.data();
-        // console.log(prodData);
-        let dis = 100 - ((+prodData.totalPrice/+prodData.mrp) * 100);
+
+        let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
             <a href="./Product/product.html?cat=${p.cat.split('__')[0]}&&prod=${p.id}" class="item" style="background:#fff;">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}" alt="Lake of cakes">
+                <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
                 <div class="stars mt-3" style="height:40px;">
 
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹ ${prodData.mrp}</del>(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h5 class="name">${p.name}</h5>
               </div>
             </a>
           </div>
           `;
           eachSection = startSection + row + endSection;
-      }).catch(error => {
-        console.log(error);
-      });
     }
     document.querySelector('#fixed1').innerHTML = eachSection;
   }
@@ -117,7 +112,7 @@ db.collection('midnight').doc('fixed1').onSnapshot(async(doc) => {
 
 db.collection('midnight').doc('fixed2').onSnapshot(async(doc) => {
   let data = doc.data();
-  if(data.prodIds.length > 0) {
+  if(data.title) {
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -151,31 +146,25 @@ db.collection('midnight').doc('fixed2').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      await db.collection(p.cat.split('__')[0]).doc(p.id).get().then(pdoc => {
-        let prodData = pdoc.data();
-        // console.log(prodData);
-        let dis = 100 - ((+prodData.totalPrice/+prodData.mrp) * 100);
+      let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
             <a href="./Product/product.html?cat=${p.cat.split('__')[0]}&&prod=${p.id}" class="item" style="background:#fff;">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}" alt="Lake of cakes">
+                <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
                 <div class="stars mt-3" style="height:40px;">
 
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹ ${prodData.mrp}</del>(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h5 class="name">${p.name}</h5>
               </div>
             </a>
           </div>
           `;
           eachSection = startSection + row + endSection;
-      }).catch(error => {
-        console.log(error);
-      });
     }
     document.querySelector('#fixed2').innerHTML += eachSection;
   }
@@ -187,7 +176,7 @@ db.collection('midnight').doc('fixed2').onSnapshot(async(doc) => {
 
 db.collection('midnight').doc('fixed3').onSnapshot(async(doc) => {
   let data = doc.data();
-  if(data.prodIds.length > 0) {
+  if(data.title) {
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -221,31 +210,25 @@ db.collection('midnight').doc('fixed3').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      await db.collection(p.cat.split('__')[0]).doc(p.id).get().then(pdoc => {
-        let prodData = pdoc.data();
-        // console.log(prodData);
-        let dis = 100 - ((+prodData.totalPrice/+prodData.mrp) * 100);
+      let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
             <a href="./Product/product.html?cat=${p.cat.split('__')[0]}&&prod=${p.id}" class="item" style="background:#fff;">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}" alt="Lake of cakes">
+                <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
                 <div class="stars mt-3" style="height:40px;">
 
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹ ${prodData.mrp}</del>(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h5 class="name">${p.name}</h5>
               </div>
             </a>
           </div>
           `;
           eachSection = startSection + row + endSection;
-      }).catch(error => {
-        console.log(error);
-      });
     }
     document.querySelector('#fixed3').innerHTML += eachSection;
   }
@@ -256,7 +239,7 @@ db.collection('midnight').doc('fixed3').onSnapshot(async(doc) => {
 
 db.collection('midnight').doc('fixed4').onSnapshot(async(doc) => {
   let data = doc.data();
-  if(data.prodIds.length > 0) {
+  if(data.title) {
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -290,31 +273,25 @@ db.collection('midnight').doc('fixed4').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      await db.collection(p.cat.split('__')[0]).doc(p.id).get().then(pdoc => {
-        let prodData = pdoc.data();
-        // console.log(prodData);
-        let dis = 100 - ((+prodData.totalPrice/+prodData.mrp) * 100);
+      let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
             <a href="./Product/product.html?cat=${p.cat.split('__')[0]}&&prod=${p.id}" class="item" style="background:#fff;">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}" alt="Lake of cakes">
+                <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
                 <div class="stars mt-3" style="height:40px;">
 
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹ ${prodData.mrp}</del>(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h5 class="name">${p.name}</h5>
               </div>
             </a>
           </div>
           `;
           eachSection = startSection + row + endSection;
-      }).catch(error => {
-        console.log(error);
-      });
     }
     document.querySelector('#fixed4').innerHTML += eachSection;
   }
@@ -326,7 +303,7 @@ db.collection('midnight').doc('fixed4').onSnapshot(async(doc) => {
 
 db.collection('midnight').doc('fixed5').onSnapshot(async(doc) => {
   let data = doc.data();
-  if(data.prodIds.length > 0) {
+  if(data.title) {
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -360,31 +337,25 @@ db.collection('midnight').doc('fixed5').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      await db.collection(p.cat.split('__')[0]).doc(p.id).get().then(pdoc => {
-        let prodData = pdoc.data();
-        // console.log(prodData);
-        let dis = 100 - ((+prodData.totalPrice/+prodData.mrp) * 100);
+      let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
             <a href="./Product/product.html?cat=${p.cat.split('__')[0]}&&prod=${p.id}" class="item" style="background:#fff;">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}" alt="Lake of cakes">
+                <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
                 <div class="stars mt-3" style="height:40px;">
 
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹ ${prodData.mrp}</del>(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h5 class="name">${p.name}</h5>
               </div>
             </a>
           </div>
           `;
           eachSection = startSection + row + endSection;
-      }).catch(error => {
-        console.log(error);
-      });
     }
     document.querySelector('#fixed5').innerHTML += eachSection;
   }
@@ -396,7 +367,7 @@ db.collection('midnight').doc('fixed5').onSnapshot(async(doc) => {
 
 db.collection('midnight').doc('fixed6').onSnapshot(async(doc) => {
   let data = doc.data();
-  if(data.prodIds.length > 0) {
+  if(data.title) {
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -430,31 +401,25 @@ db.collection('midnight').doc('fixed6').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      await db.collection(p.cat.split('__')[0]).doc(p.id).get().then(pdoc => {
-        let prodData = pdoc.data();
-        // console.log(prodData);
-        let dis = 100 - ((+prodData.totalPrice/+prodData.mrp) * 100);
+      let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
             <a href="./Product/product.html?cat=${p.cat.split('__')[0]}&&prod=${p.id}" class="item" style="background:#fff;">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}" alt="Lake of cakes">
+                <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
                 <div class="stars mt-3" style="height:40px;">
 
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹ ${prodData.mrp}</del>(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h5 class="name">${p.name}</h5>
               </div>
             </a>
           </div>
           `;
           eachSection = startSection + row + endSection;
-      }).catch(error => {
-        console.log(error);
-      });
     }
     document.querySelector('#fixed6').innerHTML += eachSection;
   }
@@ -466,7 +431,7 @@ db.collection('midnight').doc('fixed6').onSnapshot(async(doc) => {
 
 db.collection('midnight').doc('fixed7').onSnapshot(async(doc) => {
   let data = doc.data();
-  if(data.prodIds.length > 0) {
+  if(data.title) {
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -500,31 +465,25 @@ db.collection('midnight').doc('fixed7').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      await db.collection(p.cat.split('__')[0]).doc(p.id).get().then(pdoc => {
-        let prodData = pdoc.data();
-        // console.log(prodData);
-        let dis = 100 - ((+prodData.totalPrice/+prodData.mrp) * 100);
+      let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
             <a href="./Product/product.html?cat=${p.cat.split('__')[0]}&&prod=${p.id}" class="item" style="background:#fff;">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}" alt="Lake of cakes">
+                <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
                 <div class="stars mt-3" style="height:40px;">
 
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹ ${prodData.mrp}</del>(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h5 class="name">${p.name}</h5>
               </div>
             </a>
           </div>
           `;
           eachSection = startSection + row + endSection;
-      }).catch(error => {
-        console.log(error);
-      });
     }
     document.querySelector('#fixed7').innerHTML += eachSection;
   }
@@ -536,7 +495,7 @@ db.collection('midnight').doc('fixed7').onSnapshot(async(doc) => {
 
 db.collection('midnight').doc('fixed8').onSnapshot(async(doc) => {
   let data = doc.data();
-  if(data.prodIds.length > 0) {
+  if(data.title) {
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -570,31 +529,25 @@ db.collection('midnight').doc('fixed8').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      await db.collection(p.cat.split('__')[0]).doc(p.id).get().then(pdoc => {
-        let prodData = pdoc.data();
-        // console.log(prodData);
-        let dis = 100 - ((+prodData.totalPrice/+prodData.mrp) * 100);
+      let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
             <a href="./Product/product.html?cat=${p.cat.split('__')[0]}&&prod=${p.id}" class="item" style="background:#fff;">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}" alt="Lake of cakes">
+                <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
                 <div class="stars mt-3" style="height:40px;">
 
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹ ${prodData.mrp}</del>(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h5 class="name">${p.name}</h5>
               </div>
             </a>
           </div>
           `;
           eachSection = startSection + row + endSection;
-      }).catch(error => {
-        console.log(error);
-      });
     }
     document.querySelector('#fixed8').innerHTML += eachSection;
   }
@@ -606,7 +559,7 @@ db.collection('midnight').doc('fixed8').onSnapshot(async(doc) => {
 
 db.collection('midnight').doc('fixed9').onSnapshot(async(doc) => {
   let data = doc.data();
-  if(data.prodIds.length > 0) {
+  if(data.title) {
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -640,31 +593,25 @@ db.collection('midnight').doc('fixed9').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      await db.collection(p.cat.split('__')[0]).doc(p.id).get().then(pdoc => {
-        let prodData = pdoc.data();
-        // console.log(prodData);
-        let dis = 100 - ((+prodData.totalPrice/+prodData.mrp) * 100);
+      let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
             <a href="./Product/product.html?cat=${p.cat.split('__')[0]}&&prod=${p.id}" class="item" style="background:#fff;">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}" alt="Lake of cakes">
+                <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
                 <div class="stars mt-3" style="height:40px;">
 
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹ ${prodData.mrp}</del>(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h5 class="name">${p.name}</h5>
               </div>
             </a>
           </div>
           `;
           eachSection = startSection + row + endSection;
-      }).catch(error => {
-        console.log(error);
-      });
     }
     document.querySelector('#fixed9').innerHTML += eachSection;
   }
@@ -676,7 +623,7 @@ db.collection('midnight').doc('fixed9').onSnapshot(async(doc) => {
 
 db.collection('midnight').doc('fixed10').onSnapshot(async(doc) => {
   let data = doc.data();
-  if(data.prodIds.length > 0) {
+  if(data.title) {
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -710,31 +657,25 @@ db.collection('midnight').doc('fixed10').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      await db.collection(p.cat.split('__')[0]).doc(p.id).get().then(pdoc => {
-        let prodData = pdoc.data();
-        // console.log(prodData);
-        let dis = 100 - ((+prodData.totalPrice/+prodData.mrp) * 100);
+      let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
             <a href="./Product/product.html?cat=${p.cat.split('__')[0]}&&prod=${p.id}" class="item" style="background:#fff;">
               <div class="item-img">
-                <img class="img-fluid" src="${prodData.mainImgUrl}" alt="Lake of cakes">
+                <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
                 <div class="stars mt-3" style="height:40px;">
 
                 </div>
-                <h4 class="price">₹${prodData.totalPrice} <small><del>₹ ${prodData.mrp}</del>(${dis}% OFF)</small></h4>
-                <h5 class="name">${prodData.name}</h5>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h5 class="name">${p.name}</h5>
               </div>
             </a>
           </div>
           `;
           eachSection = startSection + row + endSection;
-      }).catch(error => {
-        console.log(error);
-      });
     }
     document.querySelector('#fixed10').innerHTML += eachSection;
   }

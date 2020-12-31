@@ -67,10 +67,11 @@ const displayCart = async () => {
           index++;
           // console.log(prodData);
           product = prodData;
+
         }
       });
     if (product) {
-    
+      // console.log(prod);
       if (prod.pricing.weight) {
         for (let cw of product.weights) {
 
@@ -151,11 +152,13 @@ const displayCart = async () => {
       let gst = +prodPrice * (+product.gst / 100);
       prodPrice = prodPrice + gst;
       prodPrice = +Math.round(prodPrice);
+      let priceWithQty = prodPrice * prod.qty;
       allProdPrice.push({
-        price: prodPrice,
+        price: prodPrice ,
         name: product.name,
-        qty: 1,
+        qty: prod.qty,
         cartId: prod.cartId,
+        
       });
       console.log(allProdPrice);
       // console.log(prod.cartId);
@@ -211,12 +214,11 @@ ${prod.personalizedGift ? personalizedGiftDetails : ''}
               </li>
             </ul>
           </div>
-
         </div>
         
             
         <div class="cartSection">
-        <h5 style="font-size:13px;font-weight:800" class="cartSection " data-index="${index}" id="subprice_${rand}">${prodPrice}</h5>
+        <h5 style="font-size:13px;font-weight:800" class="cartSection " data-index="${index}" id="subprice_${rand}">${priceWithQty}</h5>
         </div>
       
         <div class="cartSection" >
@@ -318,6 +320,7 @@ const decQty = (e) => {
     updateSelectedProds(cartId, qty);
   }
 };
+
 
 const incQty = (e) => {
   // console.log(e.target.dataset.id);
