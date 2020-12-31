@@ -2,24 +2,29 @@
 <html lang="en">
 
 <head>
+
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Lake">
+  <meta name="author" content="CrossHex_ BHAGAT SINGH _ REETIK CHITRAGUPT">
   <title>Lake of Cakes | Coupons</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
+  <meta name="theme-color" content="#a15a55">
   <link rel="stylesheet" href="../assets/css/all.css">
   <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/styles.css">
+  <!-- <link rel="stylesheet" href="../assets/css/styles.php"> -->
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
-  <link rel="stylesheet" href="../assets//css/randomStyles.css">
-  <link rel="stylesheet" href="../assets/css/animate.css">
-  <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
-  <link rel="stylesheet" href="assets/css/animation.css">
+  <!-- <link rel="stylesheet" href="../assets/css/products.css"> -->
+
+  <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
-	<script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+  <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
 </head>
 <style>
@@ -43,7 +48,7 @@
   }
 
 
-  section {
+  .mainCoupans {
     background-image: url(https://png.pngtree.com/thumb_back/fw800/back_our/20190625/ourmid/pngtree-pink-flat-taobao-e-commerce-coupon-background-image_262557.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -276,53 +281,92 @@
 </style>
 
 <body style="overflow-x: hidden !important; ">
+
   <section id="nav-section-loader">
-    <section class="top-header top-nav" style="background: #f1f1f1;">
-      <div class="container-fluid remove-padding topnaves" style="background: #f1f1f1;;
-        background-size: 617px; background-image: url();height: 28px !important;padding: 0px !important;margin-bottom: 0.3%;">
-        <div class="container topcnt">
-          <div class="row" style="justify-content: flex-end;">
-            <div class="">
-              <div class="content">
-                <div class="left-content">
-                </div>
-                <div class="right-content">
-                  <div class="list" style="padding: 6px 10px 100px;">
-                    <ul style="padding-right: 10px;">
-                      <li>
-                        <a type="button" data-toggle="modal" data-target="#topoffer"
-                          style=" position: relative;">
-                          <span class="sign-in" data-toggle="modal" data-target="#modalYT"
-                            style="font-size: 14px; color: rgb(10, 10, 10);">
-                            <i style="color: red !important;" class="fa fa-gift" aria-hidden="true" ></i> OFFER</span>
-                        </a>
-                      </li> &nbsp; |
-  
-                      <li><a href="#" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
-                              class="fa fa-gift" aria-hidden="true" style="color: red;"></i>
-                            COUPONS</span> </a>
-                      </li> &nbsp; |
-                      <li><a href="tel:9598891097" class="track-btn"><span class="sign-in"
-                            style="font-size: 14px; color: #000;"><i class="fa fa-phone" aria-hidden="true"
-                              style="color: red;"></i>
-                            9598891097</span> </a>
-                      </li> &nbsp; |
-                      <li><a href="mailto:lakeofcakess@gmail.com" class="track-btn"><span class="sign-in"
-                            style="font-size: 14px; color: #000;"><i class="fa fa-envelope" aria-hidden="true"
-                              style="color: red;"></i>
-                            Email</span> </a>
-                      </li> &nbsp; 
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+    <style>
+      .autocomplete {
+        position: relative;
+        display: inline-block !important;
+      }
+
+      input {
+        border: 1px solid transparent;
+        background-color: #f1f1f1;
+        padding: 10px;
+        font-size: 16px;
+
+      }
+
+      input[type=text] {
+        background-color: #f1f1f1;
+        width: 100%;
+
+      }
+
+      input[type=submit] {
+        background-color: DodgerBlue;
+        color: rgb(131, 56, 56);
+        cursor: pointer;
+      }
+
+      .autocomplete-items {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        border-bottom: none;
+        border-top: none;
+        z-index: 99;
+        /*position the autocomplete items to be the same width as the container:*/
+        top: 100%;
+        left: 0;
+        right: 0;
+        /* font-style: italic; */
+      }
+
+      .autocomplete-items div {
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+        /* font-style: italic; */
+      }
+
+      /*when hovering an item:*/
+      .autocomplete-items div:hover {
+        background-color: #e9e9e9;
+      }
+
+      /*when navigating through the items using the arrow keys:*/
+      .autocomplete-active {
+        background-color: DodgerBlue !important;
+        color: #ffffff;
+      }
+
+      /* @media only screen and (max-width: 600px) {
+        .responsiveIcon1 {
+          margin: auto;
+				padding: 0px;
+
+        }
+
+      } */
+
+      @media only screen and (min-width:700px) {
+        .responsiveIcon2 {
+          display: block !important;
+        }
+
+      }
+
+
+    </style>
+
+
+    <section id="top-alert">
+      <!-- code -->
     </section>
-  
-  
+
+
     <section class="logo-header">
       <div class="container-fluid logoheder">
         <div class="row ">
@@ -434,22 +478,22 @@
                 </label>
               </a>
             </div> -->
-            <div class="nav-collapsible">
-              <a href="/UserDash/customerProfile.html">
-                <label for="nav-collapsible-1" style="width: 100%;">
-                  <div class="row pl-3">
-                    <div class="col-10 col-sm-10 col-md-10 p-0">
-                      <span style="position: relative; top: 4px;">Your Account </span>
+              <div class="nav-collapsible">
+                <a href="/UserDash/customerProfile.html">
+                  <label for="nav-collapsible-1" style="width: 100%;">
+                    <div class="row pl-3">
+                      <div class="col-10 col-sm-10 col-md-10 p-0">
+                        <span style="position: relative; top: 4px;">Your Account </span>
+                      </div>
+                      <div class="col-2 col-sm-2 col-md-2 p-0">
+                        <span style="position: relative; top: 8px;">
+                          <i class="fas fa-chevron-right"></i>
+                        </span>
+                      </div>
                     </div>
-                    <div class="col-2 col-sm-2 col-md-2 p-0">
-                      <span style="position: relative; top: 8px;">
-                        <i class="fas fa-chevron-right"></i>
-                      </span>
-                    </div>
-                  </div>
-                </label>
-              </a>
-            </div>
+                  </label>
+                </a>
+              </div>
               <div class="nav-collapsible">
                 <a href="#">
                   <label for="nav-collapsible-1" style="width: 100%;">
@@ -677,9 +721,17 @@
         </div>
       </div>
     </section>
+    
+
+    <!-- loader -->
+
+  
+    <!-- loading end -->
+
+
     <div class="mainmenu-area mainmenu-bb">
-  
-  
+
+
       <div class="col-lg-12 col-md-12 categorimenu-wrapper p-0" style="z-index: 5;">
         <div class="desktopmenu">
           <div class="menu-container">
@@ -692,13 +744,11 @@
         </div>
       </div>
     </div>
-  
+
+
+
   </section>
 
-  <!-- SLIDER -->
-
-
-  <!-- SECTION1 -->
   <div class="container">
     <div class="row">
       <div class="mx-auto">
@@ -709,7 +759,7 @@
     </div>
   </div>
   
-  <section>
+  <section class="mainCoupans">
     <!-- heading -->
     <!-- cards -->
     <div class="container">
@@ -748,23 +798,32 @@
     </div>
   </section>
 
-  <footer class="footer" id="footer-section-loader" style="background:rgba(0);"></footer>
-  
+  <!--Modal: modalDiscount-->
+
+  <!--Modal: modalDiscount-->
+
+
+
+  <footer class="footer" id="footer-section-loader"></footer>
   <div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
+
       <!--Content-->
       <div class="modal-content">
+
         <!--Body-->
         <div class="modal-body mb-0 p-0">
+
           <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 600px;">
             <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: cover;" id="showOffer" src=""
               allowfullscreen>
           </div>
+
         </div>
 
         <!--Footer-->
         <div class="modal-footer justify-content-center flex-column flex-md-row">
-       
+
           <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
             data-dismiss="modal">Close</button>
         </div>
@@ -774,7 +833,6 @@
 
     </div>
   </div>
-
   <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="reminderModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -815,114 +873,103 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal: modalAbandonedCart-->
+
+ 
+
 </body>
 
-  <script src="../assets/js/jquery.js"></script>
-  <script src="/assets/js/popper.min.js"></script>
-  
-  </script>
-  <script type="text/javascript">
-    setTimeout(() => {
- 
-      $('#footer-section-loader').load('./footer.html');
-    }, 1000);
 
-    function copyToClipboard(rand1, rand2) {
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/jquery-ui.min.js"></script>
 
-      
-      document.getElementById(rand2).style.display = "block";
-      setTimeout(function () {
-        document.getElementById(rand2).style.display = "none";
-      }, 1000)
+<!-- <script src="../assets/js/main.js"></script> -->
 
-      var $temp = $("<input>");
-      $("body").append($temp);
-      let tempEl = `#${rand1}`;
-      tempEl = tempEl.trim();
-      $temp.val($(tempEl).text()).select();
-      document.execCommand("copy");
-    
-      $temp.remove();
-      $('[data-toggle="tooltip"]').tooltip();
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+</script>
+<script type="text/javascript">
+  // $('#footer-section-loader').load('../Common/files.html');
+  $('#footer-section-loader').load('../Common/footer.html');
+</script>
+
+
+
+
+<script src="https://github.hubspot.com/odometer/odometer.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+<script>
+  window.localStorage.setItem("redirectURL", window.location.href)
+  var firebaseConfig = {
+    apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+    authDomain: "lake-of-cakes.firebaseapp.com",
+    databaseURL: "https://lake-of-cakes.firebaseio.com",
+    projectId: "lake-of-cakes",
+    storageBucket: "lake-of-cakes.appspot.com",
+    messagingSenderId: "779843608951",
+    appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+    measurementId: "G-5ER0QF0FDW"
+  };
+  firebase.initializeApp(firebaseConfig);
+   firebase.analytics();
+</script>
+
+<script src="./coupans1.js"></script>
+<script src="/Common/navbar1.js"></script>
+
+
+<script>
+  $(".drobt").click(function () {
+    if ($('.drobt0').hasClass('drobt1')) {
+      $('.drobt0').removeClass('drobt1');
+      $('.drobt0').addClass('drobt2');
+    } else {
+      $('.drobt0').removeClass('drobt2');
+      $('.drobt0').addClass('drobt1');
     }
-  </script>
+  });
+</script>
+<script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
+<script>
+  function hidenavigation() {
+    $('.drobt0').addClass('colapse');
+  }
 
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
-      authDomain: "lake-of-cakes.firebaseapp.com",
-      databaseURL: "https://lake-of-cakes.firebaseio.com",
-      projectId: "lake-of-cakes",
-      storageBucket: "lake-of-cakes.appspot.com",
-      messagingSenderId: "779843608951",
-      appId: "1:779843608951:web:48c6afe1773e2b395e8172",
-      measurementId: "G-5ER0QF0FDW"
-    };
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  </script>
-  
-  <script src="coupans1.js"></script>
-  <script src="./navbar1.js"></script>
+  function shownavigation() {
+    $('.drobt0').removeClass('colapse');
+  }
 
-  <script>
-    $(".drobt").click(function () {
-      if ($('.drobt0').hasClass('drobt1')) {
-        $('.drobt0').removeClass('drobt1');
-        $('.drobt0').addClass('drobt2');
-      } else {
-        $('.drobt0').removeClass('drobt2');
-        $('.drobt0').addClass('drobt1');
-      }
-    });
-  </script>
-  <script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
-  <script>
-    function hidenavigation() {
-      $('.drobt0').addClass('colapse');
-    }
-  
-    function shownavigation() {
-      $('.drobt0').removeClass('colapse');
-    }
-  
-    function sendReminder() {
-      let date = document.querySelector("#reminder-date").value;
-      let type = document.querySelector("#reminder-type").value;
-      let emailId = document.querySelector("#reminder-email").value;
-      if (date) {
-        if (type) {
-  
-          if (emailId.includes("@") && emailId) {
-            if (type != "") {
-              db.collection("reminder").add({
-                date: date,
-                type: type,
-                emailId: emailId
-              }).then(function (docRef) {
-                document.getElementById("reminderMessage").innerHTML = "Notifications enabled successfully"
-                document.getElementById("reminderMessage").style.display = "block"
-                document.getElementById("reminderMessage").style.color = "green"
-                setTimeout(function () {
-                  document.getElementById("reminderMessage").style.display = "none"
-                  $("#reminderModal").modal('hide');
-                }, 2000)
-              })
-            } else {
-              document.getElementById("reminderMessage").innerHTML = "Server error !! Please try again"
+  function sendReminder() {
+    let date = document.querySelector("#reminder-date").value;
+    let type = document.querySelector("#reminder-type").value;
+    let emailId = document.querySelector("#reminder-email").value;
+    if (date) {
+      if (type) {
+
+        if (emailId.includes("@") && emailId) {
+          if (type != "") {
+            db.collection("reminder").add({
+              date: date,
+              type: type,
+              emailId: emailId
+            }).then(function (docRef) {
+              document.getElementById("reminderMessage").innerHTML = "Notifications enabled successfully"
               document.getElementById("reminderMessage").style.display = "block"
-              document.getElementById("reminderMessage").style.color = "red"
+              document.getElementById("reminderMessage").style.color = "green"
               setTimeout(function () {
                 document.getElementById("reminderMessage").style.display = "none"
+                $("#reminderModal").modal('hide');
               }, 2000)
-            }
+            })
           } else {
-            document.getElementById("reminderMessage").innerHTML = "Please enter a valid email id"
+            document.getElementById("reminderMessage").innerHTML = "Server error !! Please try again"
             document.getElementById("reminderMessage").style.display = "block"
             document.getElementById("reminderMessage").style.color = "red"
             setTimeout(function () {
@@ -930,142 +977,197 @@
             }, 2000)
           }
         } else {
-          document.getElementById("reminderMessage").innerHTML = "Please input an occasion type"
+          document.getElementById("reminderMessage").innerHTML = "Please enter a valid email id"
           document.getElementById("reminderMessage").style.display = "block"
           document.getElementById("reminderMessage").style.color = "red"
           setTimeout(function () {
             document.getElementById("reminderMessage").style.display = "none"
           }, 2000)
         }
-  
       } else {
-        document.getElementById("reminderMessage").innerHTML = "Please select a date"
+        document.getElementById("reminderMessage").innerHTML = "Please input an occasion type"
         document.getElementById("reminderMessage").style.display = "block"
         document.getElementById("reminderMessage").style.color = "red"
         setTimeout(function () {
           document.getElementById("reminderMessage").style.display = "none"
         }, 2000)
       }
-  
-  
-  
-    }
-  </script>
-  <script src="/Auth/app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
-  <script>
-    db.collection("offers").onSnapshot(async (snapshots) => {
-  
-      let snapshotDocs = snapshots.docs;
-  
-      // var dbref = db.collection('Customers');
-      for (let doc of snapshotDocs) {
-        userDoc = doc.data();
-        if (userDoc.isActivated) {
-          document.getElementById("showOffer").src = userDoc.imgUrl;
-        }
-      }
-  
-    });
-  
-    var checkUser;
-    checkUser = window.localStorage.getItem("locLoggedInUser");
-  
-    var timecount = 0;
-    function checkifUser(location) {
-      if (checkUser == null || checkUser == "null") {
-        window.location = "/Auth/login.html"
-      } else {
-        
-        window.location = location
-      }
-    }
-  
-    function redirectToCart() {
-      if (checkUser == null || checkUser == "null") {
-        window.location = "/Auth/login.html"
-      } else {
-        window.location = "/UserDash/cart.html"
-      }
-    }
-  
-    var counter = 0;
-    document.getElementById("hideLogOut").style.display = "none";
-    // const db = firebase.firestore();
-    var docData, userDoc;
-  
-    db.collection("Customers").onSnapshot(async (snapshots) => {
-  
-      checkUser = window.localStorage.getItem("locLoggedInUser");
-  
-      let snapshotDocs = snapshots.docs;
-  
-      // var dbref = db.collection('Customers');
-      for (let doc of snapshotDocs) {
-  
-        if (checkUser == doc.data().userId) {
-  
-          counter++;
-  
-          userDoc = doc.data();
-          if (userDoc.cart != undefined && userDoc.cart != "undefined") {
-            document.getElementById("cart-count").innerHTML = userDoc.cart.length;
-          } else {
-            document.getElementById("cart-count").innerHTML = 0;
-          }
-  
-          if (userDoc.UserName == null) {
-            userDoc.UserName = "User@LOC";
-          }
-  
-          if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
-            userDoc.Image = "../assets/images/userIcon.png"
-          }
-  
-          document.getElementById("logInBtn").style.display = "none";
-          document.getElementById("hideLogOut").style.display = "block";
-          document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
-          document.getElementById("userImg").src = userDoc.Image;
-          break;
-        }
-      }
-  
-      if (counter == 0) {
-  
-        document.getElementById("hideLogOut").style.display = "none";
-        document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
-        document.getElementById("logInBtn").style.display = "block";
-      }
-  
-    });
-  
-  
-  
-  
-  
-    function redirectLogin() {
-      window.location = "/Auth/login.html"
-    }
-  
-    function logOut() {
-      let dbref = db.collection('Customers');
-      // firebase.auth().signOut();
-      dbref.doc(checkUser).update({
-        token: "null"
-  
-      }).then(function () {
-        window.localStorage.removeItem("locLoggedInUser")
-        firebase.auth().signOut();
-        location.reload();
-      });
-    }
-  </script>
-  
 
-  
+    } else {
+      document.getElementById("reminderMessage").innerHTML = "Please select a date"
+      document.getElementById("reminderMessage").style.display = "block"
+      document.getElementById("reminderMessage").style.color = "red"
+      setTimeout(function () {
+        document.getElementById("reminderMessage").style.display = "none"
+      }, 2000)
+    }
 
+
+
+  }
+</script>
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+<script>
+  db.collection("offers").onSnapshot(async (snapshots) => {
+
+    let snapshotDocs = snapshots.docs;
+
+    // var dbref = db.collection('Customers');
+    for (let doc of snapshotDocs) {
+      userDoc = doc.data();
+      if (userDoc.isActivated) {
+        document.getElementById("showOffer").src = userDoc.imgUrl;
+      }
+    }
+
+  });
+
+  var checkUser;
+  checkUser = window.localStorage.getItem("locLoggedInUser");
+
+  var timecount = 0;
+
+  function checkifUser(location) {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+
+      window.location = location
+    }
+  }
+
+  function redirectToCart() {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      window.location = "/UserDash/cart.html"
+    }
+  }
+
+  var counter = 0;
+  document.getElementById("hideLogOut").style.display = "none";
+  // const db = firebase.firestore();
+  var docData, userDoc;
+
+  db.collection("Customers").onSnapshot(async (snapshots) => {
+
+    checkUser = window.localStorage.getItem("locLoggedInUser");
+
+    let snapshotDocs = snapshots.docs;
+
+    // var dbref = db.collection('Customers');
+    for (let doc of snapshotDocs) {
+
+      if (checkUser == doc.data().userId) {
+
+        counter++;
+
+        userDoc = doc.data();
+        if (userDoc.cart != undefined && userDoc.cart != "undefined") {
+          document.getElementById("cart-count").innerHTML = userDoc.cart.length;
+        } else {
+          document.getElementById("cart-count").innerHTML = 0;
+        }
+
+        if (userDoc.UserName == null) {
+          userDoc.UserName = "User@LOC";
+        }
+
+        if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
+          userDoc.Image = "../assets/images/userIcon.png"
+        }
+
+        document.getElementById("logInBtn").style.display = "none";
+        document.getElementById("hideLogOut").style.display = "block";
+        document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
+        document.getElementById("userImg").src = userDoc.Image;
+        break;
+      }
+    }
+
+    if (counter == 0) {
+
+      document.getElementById("hideLogOut").style.display = "none";
+      document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
+      document.getElementById("logInBtn").style.display = "block";
+    }
+
+  });
+
+
+  
+
+
+  function redirectLogin() {
+    window.location = "/Auth/login.html"
+  }
+
+  function logOut() {
+    let dbref = db.collection('Customers');
+    // firebase.auth().signOut();
+    dbref.doc(checkUser).update({
+      token: "null"
+
+    }).then(function () {
+      window.localStorage.removeItem("locLoggedInUser")
+      firebase.auth().signOut();
+      location.reload();
+    });
+  }
+</script>
+
+
+
+<style>
+  .drobt1 {
+    transform: translateX(-101%);
+  }
+
+  .drobt2 {
+    transform: translateX(0%);
+  }
+</style>
+<script>
+  $(document).ready(function () {
+    $(".nav-tabs a").click(function () {
+      $(this).tab('show');
+    });
+    $('.nav-tabs a').on('shown.bs.tab', function (event) {
+      var x = $(event.target).text(); // active tab
+      var y = $(event.relatedTarget).text(); // previous tab
+      $(".act span").text(x);
+      $(".prev span").text(y);
+    });
+  });
+
+  function openTab(data) {
+    var i;
+    var x = document.getElementsByClassName("city");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    // document.getElementById(data).innerHTML = ``;
+    document.getElementById(data).style.display = "block";
+    // document.getElementById(data).style.listStyle = "inside";
+  }
+
+  function openMenu(evt, menuName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("menu22");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    // console.log(tablinks);
+    for (i = 0; i < x.length; i++) {
+      // console.log(tablinks[i]);
+      tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+    }
+    document.getElementById(menuName).style.display = "block";
+    evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+  }
+</script>
 
 
 </html>
