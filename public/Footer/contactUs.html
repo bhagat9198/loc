@@ -406,7 +406,7 @@
       <br>
       <div style="margin-right: auto;margin-left: auto;display: block;text-align: center;">
         <a href="mailto:lakeofcakess@gmail.com"><button type="button" id="buyNowBtn"
-        style="border-radius: 5px;line-height: 35px;;background: rgb(179, 36, 131); border: 1px solid rgb(230, 10, 10); color:#fff;"
+        style="border-radius: 5px;line-height: 35px;;background: red; border: 1px solid rgb(230, 10, 10); color:#fff;"
         class="btn btn-primary btns responsive-btn" ><i class="fa fa-envelope"></i>&nbsp;Write To Us</button></a>
       </div>
       <br>
@@ -416,7 +416,7 @@
       <br>
       <div style="margin-right: auto;margin-left: auto;display: block;text-align: center;">
         <a href="tel:9598891097"><button type="button" id="buyNowBtn"
-        style="border-radius: 5px;line-height: 35px;;background: rgb(179, 36, 131); border: 1px solid rgb(230, 10, 10); color:#fff;"
+        style="border-radius: 5px;line-height: 35px;;background:red; border: 1px solid rgb(230, 10, 10); color:#fff;"
         class="btn btn-primary btns responsive-btn" ><i class="fa fa-phone" style="transform: rotate(80deg);"></i>&nbsp;Call Us</button></a>
       </div>
 
@@ -716,7 +716,7 @@
       token: "null"
 
     }).then(function () {
-      window.localStorage.removeItem("locLoggedInUser")
+      window.localStorage.setItem("locLoggedInUser","null")
       firebase.auth().signOut();
       location.reload();
     });

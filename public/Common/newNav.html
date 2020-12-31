@@ -921,7 +921,7 @@
         token: "null"
   
       }).then(function () {
-        window.localStorage.removeItem("locLoggedInUser")
+        window.localStorage.setItem("locLoggedInUser","null")
         firebase.auth().signOut();
         location.reload();
       });

@@ -2333,7 +2333,7 @@ google.maps.event.addDomListener(window, "load", initialize);
       token: "null"
 
     }).then(function () {
-      window.localStorage.removeItem("locLoggedInUser")
+      window.localStorage.setItem("locLoggedInUser","null")
       firebase.auth().signOut();
       location.reload();
     });
@@ -2422,7 +2422,7 @@ google.maps.event.addDomListener(window, "load", initialize);
       token: "null"
 
     }).then(function () {
-      window.localStorage.removeItem("locLoggedInUser")
+      window.localStorage.setItem("locLoggedInUser","null")
       firebase.auth().signOut();
       location.reload();
     });

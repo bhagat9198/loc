@@ -35,7 +35,10 @@
   .darkmode-toggle {
     z-index: 999 !important;
   }
-
+   h3 {
+    color:white !important;
+    font-family: "Open Sans", sans-serif;
+}
   @media only screen and (max-width: 370px) {
     .scres {
       padding: 5px 0px 0px 20px !important;
@@ -946,15 +949,25 @@
   </div>
 
   <!-- <section id="all-sections"></section> -->
+  <br>
   <section id="fixed1"></section>
+  <br>
   <section id="fixed2"></section>
+  <br>
   <section id="fixed3"></section>
+  <br>
   <section id="fixed4"></section>
+  <br>
   <section id="fixed5"></section>
+  <br>
   <section id="fixed6"></section>
+  <br>
   <section id="fixed7"></section>
+  <br>
   <section id="fixed8"></section>
+  <br>
   <section id="fixed9"></section>
+  <br>
   <section id="fixed10"></section>
 
   <!-- <section class="clothing-and-Apparel-Area">
@@ -1226,7 +1239,7 @@
       token: "null"
 
     }).then(function () {
-      window.localStorage.removeItem("locLoggedInUser")
+      window.localStorage.setItem("locLoggedInUser","null")
       firebase.auth().signOut();
       location.reload();
     });
