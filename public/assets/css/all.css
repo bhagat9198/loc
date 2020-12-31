@@ -289,7 +289,7 @@ button {
 
 button:focus {
     outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color
+    /* outline: 5px auto -webkit-focus-ring-color */
 }
 
 button, input, optgroup, select, textarea {
@@ -2356,7 +2356,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #ee2011;
+    background-color: red;
     border-color: red
 }
 
@@ -5758,6 +5758,7 @@ a.close.disabled {
     }
     .modal-content {
         width: 80%;
+        padding: 15px !important;
     }
 }
 
@@ -13128,6 +13129,9 @@ a.text-dark:focus, a.text-dark:hover {
 @media (max-width:920px) {
     .core-nav.fullscreen .wrap-core-nav-list .nav-container .core-nav-toggle {
         display: none
+    }
+    .embed-responsive{
+        height: 400px !important;
     }
 }
 
@@ -34590,7 +34594,7 @@ section.phone-and-accessories.categori-item {
         flex-wrap: wrap;
     }
     .imgresponsive {
-        object-fit: contain !important;
+        object-fit: cover !important;
     }
 }
 

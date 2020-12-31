@@ -344,7 +344,7 @@ const displayProduct = (prodData) => {
             <label for="file-${imgCounter}" style="display:inline-block;"><i
                 style="margin-left:140%;margin-right: auto;margin-top: 130%;margin-bottom: auto;z-index: 999;"
                 class="fa fa-plus"></i></label>
-            <input id="file-${imgCounter}" style="display: none;" class="file-preview" type="file"
+            <input id="file-${imgCounter}" style="display: none;height:100px" class="file-preview" type="file"
               accept="image/jpg, image/jpeg, image/png" data-select="single-select" 
               onchange="checkFileSize(event, this);" data-imgnameid="imgBlock-file-${imgCounter}">
             <img id="imgBlock-file-${imgCounter}" class="customizedImage" src="" >
@@ -397,9 +397,12 @@ const checkFileSize = (e, current) => {
   let filesizeInKb = e.target.files[0].size / 1000;
   let filesizeInMb = e.target.files[0].size / 1024 / 1024;
   if (filesizeInMb <= 10 && filesizeInKb >= 10) {
+     document.getElementById("showError").style.display="none"
     filePassStatus = true;
     let imgnameid = e.target.dataset.imgnameid;
     readURL(current, imgnameid);
+  }else{
+     document.getElementById("showError").style.display="block"
   }
   return filePassStatus;
 };
@@ -416,6 +419,7 @@ const imgUploader = async (e) => {
     let filesizeInKb = img.size / 1000;
     let filesizeInMb = img.size / 1024 / 1024;
     if (filesizeInMb <= 10 && filesizeInKb >= 10) {
+       document.getElementById("showError").style.display="none"
       IMGS_ARRAY.push(img);
       if (imgCounter >= imgNo) {
         imgCounter = 0;
@@ -428,6 +432,8 @@ const imgUploader = async (e) => {
       document.querySelector(`#imgBlock-file-${imgCounter}`).style.display =
         "block";
       imgCounter++;
+    }else{
+       document.getElementById("showError").style.display="block"
     }
   }
   imgInputHTML.value = "";
@@ -880,9 +886,11 @@ db.collection("addons")
       <div class="col-md-3 col-6 mt-3">
       <a class="item"
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-        <input type="checkbox" name="add_addons" class="add_addons product-addons" value="${index}" onchange="buyAddon(event, this)"
-          style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;height:20px;width:30px;">
+        <input type="checkbox" id="addonck${index}" name="add_addons" class="add_addons product-addons" value="${index}" onchange="buyAddon(event, this)"
+          style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;height:20px;width:30px;display:none">
+          <label for="addonck${index}">Select</label>
         <div class="item-imgAdd" style="max-height:220px ;">
+ 
           <img class="img-fluid" 
             src="${docData.imgUrl}"
             alt="Lake of cakes" style="width:100%;object-fit: contain;">

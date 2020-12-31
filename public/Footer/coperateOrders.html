@@ -468,8 +468,7 @@
                   name="Name"></p>
               <p><input class="w3-input w3-padding-16" type="email" placeholder="Your Email" id="email" required
                   name="Email"></p>
-              <p><input class="w3-input w3-padding-16" type="number" placeholder="Phone No." id="number" required
-                  name="Phone"></p>
+                  <p><input class="w3-input w3-padding-16" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number"  placeholder="Phone No." id="number"  required name="Phone" maxlength="10"></p>
               <p><input class="w3-input w3-padding-16" type="text" placeholder="Company Name" id="company" required
                   name="Company"></p>
               <!-- <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p> -->

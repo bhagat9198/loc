@@ -650,7 +650,7 @@
               </div>
               <hr>
               <div class="nav-collapsible">
-                <a href="#">
+                <a href="/midNight.html">
                   <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-2 col-sm-2 col-md-2 p-0">
@@ -880,7 +880,7 @@
             class="col-lg-4 col-sm-12 col-12 text-center remove-padding order-last order-sm-2 order-md-2 text-right resmid">
             <ul style="display: inline-flex;">
               <li>
-                <a href="#">
+                <a href="/midNight.html">
                   <div class="text-center">
                     <img src="/assets/images/MidnightDelivery.png" style="width:50px;object-fit: cover;">
                     <div
@@ -1082,9 +1082,9 @@
                               readonly="readonly">
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control pin-lucknow" min="226000" max="226999" type="text" name="zip" id="locality" value="" placeholder="Pin Code " 
+                            <input class="form-control pin-lucknow" min="226000" max="226999" type="text" name="zip" id="locality" value="" placeholder="Pin Code/Your Area " 
                                required>
-                                <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeError">Please enter a pincode of lucknow</p>
+                                <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeError">Sorry! we dont deliver in this area</p>
                                 <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeUndefined">Please select an area/street to fetch pincode</p>
                                 <input class="form-control pin-lucknow"  type="text"  id="postal_code" placeholder="Pin Code " style="display: none;">
                                 <div id="showZip" style="color: green;font-weight: 700;"></div>
@@ -1132,8 +1132,8 @@
                           </div>
                           <div class="col-lg-6">
                             <input class="form-control ship_input" min="226000" max="226999" type="text" name="shipping_zip" value=""
-                              id="shippingPostal_code" placeholder="Pin Code">
-                              <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeError2">Please enter a pincode of lucknow</p>
+                              id="shippingPostal_code" placeholder="Pin Code/Your Area">
+                              <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeError2">Sorry! we dont deliver in this area</p>
                               <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeUndefined2">Please select an area/street to fetch pincode</p>
                           </div>
                         </div>
@@ -1148,8 +1148,8 @@
                       </div>
                       <div class="row">
                         <div class="col-lg-12  mt-3">
-                          <div class="bottom-area paystack-area-btn">
-                            <button type="submit " id="proceed1Btn" class="mybtn1 2 responsive-sec2" disabled>Proceed </button>
+                          <div class="bottom-area " style="border:none !important">
+                            <button type="submit " id="proceed1Btn" class="mybtn1 2 responsive-sec2" style="border:none !important" disabled>Proceed </button>
                           </div>
                         </div>
                       </div>
@@ -1624,8 +1624,8 @@
       <div class="modal-content">
         <!--Body-->
         <div class="modal-body mb-0 p-0">
-          <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 300px;">
-            <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: fill;" id="showOffer" src=""
+          <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 600px;">
+            <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: cover;" id="showOffer" src=""
               allowfullscreen>
           </div>
         </div>
@@ -1905,6 +1905,7 @@
   autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    document.querySelector('#showZip').innerHTML ="";
   document.getElementById("pincodeError").style.display="none"
   let place = autocomplete.getPlace();
     for (var i = 0; i < place.address_components.length; i++) {
@@ -1914,7 +1915,9 @@
           
           google_pincode=place.address_components[i].long_name
           document.querySelector('#postal_code').value = place.address_components[i].long_name;
-          
+          if(!place.address_components[i].long_name){
+            alert(8)
+          }
           document.querySelector('#showZip').innerHTML = place.address_components[i].long_name;
          }
       }
@@ -2140,7 +2143,7 @@ google.maps.event.addDomListener(window, "load", initialize);
     }
   });
 </script>
-<script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
+<script src="//code.tidio.co/kjoezjioh2sy6yyxktwjnazd6lfyynyr.js" async></script>
 <script>
   function hidenavigation() {
     $('.drobt0').addClass('colapse');
@@ -2319,7 +2322,7 @@ google.maps.event.addDomListener(window, "load", initialize);
     });
   }
 </script>
-<script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
+<script src="//code.tidio.co/kjoezjioh2sy6yyxktwjnazd6lfyynyr.js" async></script>
 
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
