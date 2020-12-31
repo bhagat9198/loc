@@ -820,7 +820,7 @@ db.collection("sections")
       `</h3>
          
           <p style="color:#fff; font-size: 17px; margin-top: 9%;">Magnificent Gift For Loved Ones </p>
-          <a href="./Products/products.html?cat=${docData.mainImg.cat.split("__")[0]}&&sub=${docData.mainImg.subCat.split("__")[0]}&&child=${docData.mainImg.childCat.split("__")[0]}">
+          <a href="./Products/products.html">
             <button type="button" class="btn btn-light wewre" style="font-size: 15px;
               font-weight: 700; margin-top: 5px;">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                 aria-hidden="true"></i></button>
@@ -850,7 +850,7 @@ db.collection("sections")
       `</h3>
            
             <p style="color:#fff; font-size: 17px; margin-top: 9%;">Magnificent Gift For Loved Ones </p>
-            <a href="./Products/products.html?cat=${docData.mainImg.cat.split("__")[0]}&&sub=${docData.mainImg.subCat.split("__")[0]}&&child=${docData.mainImg.childCat.split("__")[0]}">
+            <a href="./Products/products.html">
               <button type="button" class="btn btn-light" style="font-size: 15px;
                     font-weight: 700; margin-top: 5px;margin-bottom:2%">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
                   aria-hidden="true"></i></button>
@@ -921,7 +921,7 @@ db.collection("sections")
       `</h3>
        
         <p style="color:#000; font-size: 17px; margin-top: 9%;">Magnificent Gift For Family </p>
-        <a href="./Products/products.html?cat=${docData.mainImg.cat.split("__")[0]}&&sub=${docData.mainImg.subCat.split("__")[0]}&&child=${docData.mainImg.childCat.split("__")[0]}">
+        <a href="./Products/products.html">
           <button type="button" class="btn btn-light" style="font-size: 15px;
                 font-weight: 700; margin-top: 5px; margin-bottom:2%">Shop Now &nbsp; &nbsp; <i class="fa fa-angle-right"
               aria-hidden="true"></i></button>
