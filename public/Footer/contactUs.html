@@ -9,14 +9,23 @@
   <title>Lake of Cakes | Contact Us</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../assets/css/mega-menu.css">
+  <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
+  <meta name="theme-color" content="#a15a55">
   <link rel="stylesheet" href="../assets/css/all.css">
   <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/styles.css">
+  <!-- <link rel="stylesheet" href="../assets/css/styles.php"> -->
   <link rel="stylesheet" href="../assets/css/mega-menu.css">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <!-- <link rel="stylesheet" href="./assets//css/randomStyles.css"> -->
+  <link rel="stylesheet" href="../assets/css/products.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+  <!-- <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-default.css"> -->
+
 </head>
+
+<body style="overflow-x: hidden !important; ">
+
+
 <style>
   @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic);
 
@@ -29,12 +38,6 @@
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-  }
-
-  .listDisp {
-    padding: 10px;
-    /* color: white; */
-    text-align: left;
   }
 
   .product-navbar .product-navbar-centered {
@@ -97,11 +100,11 @@
 
   #about-main .jumbotron {
     width: 100%;
-    height: 410px;
+    height: 450px;
     background: #171b23;
-    background-image: url(https://ribbonsandballoons.com/frontassets/images/slider/1.jpg);
+    /* background-image: url(https://www.chokola.in/images/cake-banner-new-chokola.png); */
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     position: relative;
     margin: 0;
     z-index: 3;
@@ -185,7 +188,7 @@
 
   @media (max-width: 1401px) {
     #about-main .jumbotron {
-      height: 595px !important;
+      height: 395px !important;
     }
 
     #about-main .jumbotron .jumbotron-inner {
@@ -225,17 +228,16 @@
     #about-main .jumbotron {
       height: 300px !important;
     }
+    .mobileHidden{
+      display: none;
+    }
 
     #about-main .jumbotron .jumbotron-inner {
       max-width: 550px;
       padding: 0 20px;
     }
 
-    /* #about-main .jumbotron .img-1,
-    #about-main .jumbotron .img-2,
-    #about-main .jumbotron .team-image {
-      display: none;
-    } */
+
   }
 
   @media (max-width: 420px) {
@@ -262,7 +264,7 @@
   #about-main .story-container {
     height: 100%;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 150px;
   }
 
   @media (max-width: 640px) {
@@ -361,17 +363,18 @@
 </style>
 
 <body style="overflow-x: hidden !important; ">
-
-
+  <section id="nav-section-loader"></section>
   <div id="about-main">
-    <div class="jumbotron">
+    <div class="jumbotron" id="heroImg" style="background-image: url(https://www.chokola.in/images/cake-banner-new-chokola.png);">
       <div class="jumbotron-inner">
         <div class="top-box">
           <div class="content-box">
             <h1>
               Contact Us
             </h1>
-
+            <p class="mobileHidden" style="text-align: center !important;">
+              <!-- <b> Lake of Cakes Make your day memorable !! </b> -->
+            </p> 
           </div>
         </div>
       </div>
@@ -392,213 +395,123 @@
         </div>
       </div>
     </div>
-    <div class="story-container">
-     
-      <div class="row" style="padding: 20px;">
-
-        <div class="col-lg-12" style="background-color:rgb(235, 230, 223);">
-          <h2 style="text-align: center;font-weight: 900;">Fill out the form below</h2>
-          <div class="w3-container w3-padding-64" id="contact">
-
-            <!-- <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact us.</p>
-            <p class="w3-text-blue-grey w3-large"><b>Catering Service, 42nd Living St, 43043 New York, NY</b></p>
-            <p>You can also contact us by phone 00553123-2323 or email catering@catering.com, or you can send us a message here:</p> -->
-
-              <p><input class="w3-input w3-padding-16" type="text" placeholder="Your Name" id="name" required
-                  name="Name"></p>
-              <p><input class="w3-input w3-padding-16" type="email" placeholder="Your Email" id="email" required
-                  name="Email"></p>
-              <p><input class="w3-input w3-padding-16" type="number" placeholder="Phone No." id="number" required
-                  name="Phone"></p>
-              <textarea style="height: 10em" class="w3-input w3-padding-16" type="text" placeholder="Your Query" id="query" required
-                  name="Company"></textarea>
-              <!-- <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required name="date" value="2017-11-16T20:00"></p> -->
-              
-              <p><button class="w3-button w3-light-grey w3-section w3-center" style="margin-left:auto ;margin-right: auto;display: block;" onclick="sendCoperate()" type="submit">SEND
-                  MESSAGE</button></p>
-           
-          </div>
-        </div>
+    <br><br><br>
+    <div class="story-container" id="" style="width: 90%; margin: auto;">
+   
+      <h3 style="text-align: center;font-weight: 700;font-size:30px !important;background-color: lightgray !important;padding: 15px;">How Can We Help ?</h3>
+      <br>
+      <br>
+      <h3 style="text-align: center;font-weight: 700;font-size:1.5em !important;">Happy To Help</h3>
+      <small><h3 style="text-align: center;font-weight: 500;font-size:0.9em !important;">8 AM To 9 PM</h3></small>
+      <br>
+      <div style="margin-right: auto;margin-left: auto;display: block;text-align: center;">
+        <a href="mailto:lakeofcakess@gmail.com"><button type="button" id="buyNowBtn"
+        style="border-radius: 5px;line-height: 35px;;background: rgb(179, 36, 131); border: 1px solid rgb(230, 10, 10); color:#fff;"
+        class="btn btn-primary btns responsive-btn" ><i class="fa fa-envelope"></i>&nbsp;Write To Us</button></a>
+      </div>
+      <br>
+      <br>
+      <h3 style="text-align: center;font-weight: 700;font-size:1.5em !important;">Talk To Us</h3>
+      <small><h3 style="text-align: center;font-weight: 500;font-size:0.9em !important;">8 AM To 9 PM</h3></small>
+      <br>
+      <div style="margin-right: auto;margin-left: auto;display: block;text-align: center;">
+        <a href="tel:9598891097"><button type="button" id="buyNowBtn"
+        style="border-radius: 5px;line-height: 35px;;background: rgb(179, 36, 131); border: 1px solid rgb(230, 10, 10); color:#fff;"
+        class="btn btn-primary btns responsive-btn" ><i class="fa fa-phone" style="transform: rotate(80deg);"></i>&nbsp;Call Us</button></a>
       </div>
 
+    </div>
+
+  </div>
+  <br /><br /><br />
+
+  <footer class="footer" id="footer-section-loader" style="background:rgba(0);"></footer>
+  
+  <div class="modal fade" id="modalYT" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Body-->
+        <div class="modal-body mb-0 p-0">
+          <div class="embed-responsive embed-responsive-16by9 z-depth-1-half" style="height: 600px;">
+            <img class="img-fluid embed-responsive-item imgresponsive" style="object-fit: cover;" id="showOffer" src=""
+              allowfullscreen>
+          </div>
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer justify-content-center flex-column flex-md-row">
+       
+          <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4"
+            data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+      <!--/.Content-->
 
     </div>
-    <footer class="footer" id="footer" style="background:rgba(0);"></footer>
+  </div>
 
-    <script src="./assets/js/jquery.js"></script>
-    <script src="./assets/js/jquery-ui.min.js"></script>
+  <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="reminderModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content container">
+        <div class="modal-header reminderHeader" style="width: 100%;">
+          <h5 class="modal-title" id="reminderModalLabel"
+            style="padding: 10px;text-align: center !important;font-weight: 800;">We will notify you on the selected day
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Select a Date</label>
+              <input type="date" required class="form-control" id="reminder-date">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Type of Occasion</label>
+              <input type="text" required placeholder="Birthday , Aniversary, etc...." class="form-control"
+                id="reminder-type">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Enter a Email id</label>
+              <input type="email" required placeholder="must include @" class="form-control" id="reminder-email">
+            </div>
+          </form>
+        </div>
+        <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="reminderMessage">
+          Notification Enabled Successfully<i class="fa fa-check"></i>
+        </h5>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="sendReminder()">Notify Me</button>
 
-    <script type="text/javascript">
-      // $(document).ready(() => {
-      // $('#nav-section-loader').load('./common/navbar.html');
-      $('#footer').load('./common/footer.html');
-      $('#footer').load('./common/files.html');
-    // })
-    </script>
-
-
-
-
-    <!-- nav -->
-
-
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-    <script>
-      var firebaseConfig = {
-        apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
-        authDomain: "lake-of-cakes.firebaseapp.com",
-        databaseURL: "https://lake-of-cakes.firebaseio.com",
-        projectId: "lake-of-cakes",
-        storageBucket: "lake-of-cakes.appspot.com",
-        messagingSenderId: "779843608951",
-        appId: "1:779843608951:web:48c6afe1773e2b395e8172",
-        measurementId: "G-5ER0QF0FDW"
-      };
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-     
-    </script>
-
-    <script>
-      function sendCoperate() {
-      
-        let name = document.querySelector('#name').value;
-        let email = document.querySelector('#email').value;
-        let number = document.querySelector('#number').value;
-        let company = document.querySelector('#company').value;
-        let message = document.querySelector('#message').value;
-
-        if (name) {
-        
-          if (email && email.includes('@')) {
-    
-            if (number && number.length == 10) {
-             
-              if (company) {
-                if (message) {
-                  db.collection("coperate").add({
-                    name: name,
-                    email: email,
-                    number: number,
-                    company :company,
-                    message :message
-                  })
-                    .then(function () {
-                      alert("Request Sent Successfully")
-                      console.log("Document successfully written!");
-                    })
-                    .catch(function (error) {
-                      alert("Server Error")
-                      console.error("Error writing document: ", error);
-                    });
-                }
-                else{
-                  alert("Message is required ")
-                }
-              }
-              else{
-                alert("Please enter your comapny name")
-              }
-            }else{
-              alert("Invalid Ponenumber")
-            }
-          }else{
-            alert("Please enter your name")
-          }
-        }
-      }
-    </script>
-    <script src="./index1.js"></script>
-    <!-- <script src="./common/navbar1.js"></script> -->
-
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
-
-
-
-
-
-
-
-
-
-
-<footer class="footer" id="footer" style="background:rgba(0);"></footer>
-
 <script src="../assets/js/jquery.js"></script>
-<script src="../assets/js/jquery-ui.min.js"></script>
+
 
 <script type="text/javascript">
-  // $(document).ready(() => {
-  $('#nav-section-loader').load('./navbar.html');
-  $('#footer').load('./footer.html');
-    //   $('#footer').load('./files.html');
-    // })
-</script>
-
-
-
-
-<!-- nav -->
-<script src="../assets/js/popper.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/plugin.js"></script>
-
-
-<script src="../assets/js/main.js"></script>
-<!--  
-  <script src="./assets/js/custom.js"></script> -->
-<script src="../assets/js/bootsnav.js"></script>
-
-<script>
-
-    // $('body').click(function(evt){
-    //     alert('hellow');
-    //     if(!$(evt.target).is('#drobt0')) {
-    //          $('.drobt0').removeClass('drobt2');
-    //       $('.drobt0').addClass('drobt1');
-    //     }
-    // });
-</script>
-<style>
-  .drobt1 {
-    transform: translateX(-101%);
-  }
-
-  .drobt2 {
-    transform: translateX(0%);
-  }
-</style>
-<script>
-  //     var myPlayer;
-  //     jQuery(function () {
-  //       myPlayer = jQuery("#bgndVideo").YTPlayer({useOnMobile:true, mobileFallbackImage:"assets/mask-4.png"});
-  //     });
-  //
-  'use strict';
-
-  $(document).ready(function () {
-    $(window).bind('scroll', function (e) {
-      parallaxScroll();
-    });
+  $(document).ready(() => {
+  
   });
-
-  function parallaxScroll() {
-    const scrolled = $(window).scrollTop();
-    $('#team-image').css('top', (0 - (scrolled * .20)) + 'px');
-    $('.img-1').css('top', (0 - (scrolled * .35)) + 'px');
-    $('.img-2').css('top', (0 - (scrolled * .05)) + 'px');
-  }
 </script>
-
+<script type="text/javascript">
+  setTimeout(() => {
+    // $('#footer-section-loader').load('../Common/files.html');
+    $('#footer-section-loader').load('../Common/footer.html');
+  }, 1000);
+</script>
 
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script> -->
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
 <script>
@@ -613,12 +526,202 @@
     measurementId: "G-5ER0QF0FDW"
   };
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+   firebase.analytics();
 </script>
 
-<script src="../index1.js"></script>
-<script src="navbar1.js"></script>
+<!-- <script src="./aboutUs1.js"></script>
+<script src="../Common/navbar1.js"></script> -->
 
-</body>
+<script>
+  $(".drobt").click(function () {
+    if ($('.drobt0').hasClass('drobt1')) {
+      $('.drobt0').removeClass('drobt1');
+      $('.drobt0').addClass('drobt2');
+    } else {
+      $('.drobt0').removeClass('drobt2');
+      $('.drobt0').addClass('drobt1');
+    }
+  });
+</script>
+<script src="//code.tidio.co/kjoezjioh2sy6yyxktwjnazd6lfyynyr.js" async></script>
+<script>
+  function hidenavigation() {
+    $('.drobt0').addClass('colapse');
+  }
+
+  function shownavigation() {
+    $('.drobt0').removeClass('colapse');
+  }
+
+  function sendReminder() {
+    let date = document.querySelector("#reminder-date").value;
+    let type = document.querySelector("#reminder-type").value;
+    let emailId = document.querySelector("#reminder-email").value;
+    if (date) {
+      if (type) {
+
+        if (emailId.includes("@") && emailId) {
+          if (type != "") {
+            db.collection("reminder").add({
+              date: date,
+              type: type,
+              emailId: emailId
+            }).then(function (docRef) {
+              document.getElementById("reminderMessage").innerHTML = "Notifications enabled successfully"
+              document.getElementById("reminderMessage").style.display = "block"
+              document.getElementById("reminderMessage").style.color = "green"
+              setTimeout(function () {
+                document.getElementById("reminderMessage").style.display = "none"
+                $("#reminderModal").modal('hide');
+              }, 2000)
+            })
+          } else {
+            document.getElementById("reminderMessage").innerHTML = "Server error !! Please try again"
+            document.getElementById("reminderMessage").style.display = "block"
+            document.getElementById("reminderMessage").style.color = "red"
+            setTimeout(function () {
+              document.getElementById("reminderMessage").style.display = "none"
+            }, 2000)
+          }
+        } else {
+          document.getElementById("reminderMessage").innerHTML = "Please enter a valid email id"
+          document.getElementById("reminderMessage").style.display = "block"
+          document.getElementById("reminderMessage").style.color = "red"
+          setTimeout(function () {
+            document.getElementById("reminderMessage").style.display = "none"
+          }, 2000)
+        }
+      } else {
+        document.getElementById("reminderMessage").innerHTML = "Please input an occasion type"
+        document.getElementById("reminderMessage").style.display = "block"
+        document.getElementById("reminderMessage").style.color = "red"
+        setTimeout(function () {
+          document.getElementById("reminderMessage").style.display = "none"
+        }, 2000)
+      }
+
+    } else {
+      document.getElementById("reminderMessage").innerHTML = "Please select a date"
+      document.getElementById("reminderMessage").style.display = "block"
+      document.getElementById("reminderMessage").style.color = "red"
+      setTimeout(function () {
+        document.getElementById("reminderMessage").style.display = "none"
+      }, 2000)
+    }
+
+
+
+  }
+</script>
+<script src="/Auth/app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>
+<script>
+  db.collection("offers").onSnapshot(async (snapshots) => {
+
+    let snapshotDocs = snapshots.docs;
+
+    // var dbref = db.collection('Customers');
+    for (let doc of snapshotDocs) {
+      userDoc = doc.data();
+      if (userDoc.isActivated) {
+        document.getElementById("showOffer").src = userDoc.imgUrl;
+      }
+    }
+
+  });
+
+  var checkUser;
+  checkUser = window.localStorage.getItem("locLoggedInUser");
+
+  var timecount = 0;
+  function checkifUser(location) {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      
+      window.location = location
+    }
+  }
+
+  function redirectToCart() {
+    if (checkUser == null || checkUser == "null") {
+      window.location = "/Auth/login.html"
+    } else {
+      window.location = "/UserDash/cart.html"
+    }
+  }
+
+  var counter = 0;
+ 
+  // const db = firebase.firestore();
+  var docData, userDoc;
+
+  db.collection("Customers").onSnapshot(async (snapshots) => {
+
+    checkUser = window.localStorage.getItem("locLoggedInUser");
+
+    let snapshotDocs = snapshots.docs;
+
+    // var dbref = db.collection('Customers');
+    for (let doc of snapshotDocs) {
+
+      if (checkUser == doc.data().userId) {
+
+        counter++;
+
+        userDoc = doc.data();
+        if (userDoc.cart != undefined && userDoc.cart != "undefined") {
+          document.getElementById("cart-count").innerHTML = userDoc.cart.length;
+        } else {
+          document.getElementById("cart-count").innerHTML = 0;
+        }
+
+        if (userDoc.UserName == null) {
+          userDoc.UserName = "User@LOC";
+        }
+
+        if (userDoc.Image == null || userDoc.Image == "null" || userDoc.Image == undefined) {
+          userDoc.Image = "../assets/images/userIcon.png"
+        }
+
+        document.getElementById("logInBtn").style.display = "none";
+        document.getElementById("hideLogOut").style.display = "block";
+        document.getElementById("showLoggedIn").innerHTML = userDoc.UserName;
+        document.getElementById("userImg").src = userDoc.Image;
+        break;
+      }
+    }
+
+    if (counter == 0) {
+
+      document.getElementById("hideLogOut").style.display = "none";
+      document.getElementById("showLoggedIn").innerHTML = "Hi Guest! Login to continue";
+      document.getElementById("logInBtn").style.display = "block";
+    }
+
+  });
+
+
+
+
+
+  function redirectLogin() {
+    window.location = "/Auth/login.html"
+  }
+
+  function logOut() {
+    let dbref = db.collection('Customers');
+    // firebase.auth().signOut();
+    dbref.doc(checkUser).update({
+      token: "null"
+
+    }).then(function () {
+      window.localStorage.removeItem("locLoggedInUser")
+      firebase.auth().signOut();
+      location.reload();
+    });
+  }
+</script>
+
 
 </html>
