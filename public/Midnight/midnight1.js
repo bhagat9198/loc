@@ -81,6 +81,16 @@ const form1 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType || "";
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -101,7 +111,6 @@ const form1 = async (e) => {
     fForm1HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
-
   });
 
   // console.log('done');
@@ -115,24 +124,25 @@ const displayForm1 = () => {
     .onSnapshot((doc) => {
       let docData = doc.data();
       // console.log(docData);
-      fForm1HTML["f1-title"].value = docData.title || "No Title";
-      fForm1HTML["f1-cat1"].value = docData.prodIds[0].cat;
-      fForm1HTML["f1-cat2"].value = docData.prodIds[1].cat;
-      fForm1HTML["f1-cat3"].value = docData.prodIds[2].cat;
-      fForm1HTML["f1-cat4"].value = docData.prodIds[3].cat;
-      fForm1HTML["f1-cat5"].value = docData.prodIds[4].cat;
-      fForm1HTML["f1-cat6"].value = docData.prodIds[5].cat;
-      fForm1HTML["f1-id1"].value = docData.prodIds[0].sno;
-      fForm1HTML["f1-id2"].value = docData.prodIds[1].sno;
-      fForm1HTML["f1-id3"].value = docData.prodIds[2].sno;
-      fForm1HTML["f1-id4"].value = docData.prodIds[3].sno;
-      fForm1HTML["f1-id5"].value = docData.prodIds[4].sno;
-      fForm1HTML["f1-id6"].value = docData.prodIds[5].sno;
+      fForm1HTML["f1-title"].value = docData.title || "Section Empty";
+      if (docData.title) {
+        fForm1HTML["f1-cat1"].value = docData.prodIds[0].cat;
+        fForm1HTML["f1-cat2"].value = docData.prodIds[1].cat;
+        fForm1HTML["f1-cat3"].value = docData.prodIds[2].cat;
+        fForm1HTML["f1-cat4"].value = docData.prodIds[3].cat;
+        fForm1HTML["f1-cat5"].value = docData.prodIds[4].cat;
+        fForm1HTML["f1-cat6"].value = docData.prodIds[5].cat;
+        fForm1HTML["f1-id1"].value = docData.prodIds[0].sno;
+        fForm1HTML["f1-id2"].value = docData.prodIds[1].sno;
+        fForm1HTML["f1-id3"].value = docData.prodIds[2].sno;
+        fForm1HTML["f1-id4"].value = docData.prodIds[3].sno;
+        fForm1HTML["f1-id5"].value = docData.prodIds[4].sno;
+        fForm1HTML["f1-id6"].value = docData.prodIds[5].sno;
+      }
     });
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 const fForm2HTML = document.querySelector("#fForm2");
 const form2 = async (e) => {
@@ -177,6 +187,16 @@ const form2 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType || "";
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -197,7 +217,6 @@ const form2 = async (e) => {
     fForm2HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
-
   });
 
   // console.log('done');
@@ -211,22 +230,23 @@ const displayForm2 = () => {
     .onSnapshot((doc) => {
       let docData = doc.data();
       // console.log(docData);
-      fForm2HTML["f2-title"].value = docData.title || "No Title";
-      fForm2HTML["f2-cat1"].value = docData.prodIds[0].cat;
-      fForm2HTML["f2-cat2"].value = docData.prodIds[1].cat;
-      fForm2HTML["f2-cat3"].value = docData.prodIds[2].cat;
-      fForm2HTML["f2-cat4"].value = docData.prodIds[3].cat;
-      fForm2HTML["f2-cat5"].value = docData.prodIds[4].cat;
-      fForm2HTML["f2-cat6"].value = docData.prodIds[5].cat;
-      fForm2HTML["f2-id1"].value = docData.prodIds[0].sno;
-      fForm2HTML["f2-id2"].value = docData.prodIds[1].sno;
-      fForm2HTML["f2-id3"].value = docData.prodIds[2].sno;
-      fForm2HTML["f2-id4"].value = docData.prodIds[3].sno;
-      fForm2HTML["f2-id5"].value = docData.prodIds[4].sno;
-      fForm2HTML["f2-id6"].value = docData.prodIds[5].sno;
+      fForm2HTML["f2-title"].value = docData.title || "Section Empty";
+      if (docData.title) {
+        fForm2HTML["f2-cat1"].value = docData.prodIds[0].cat;
+        fForm2HTML["f2-cat2"].value = docData.prodIds[1].cat;
+        fForm2HTML["f2-cat3"].value = docData.prodIds[2].cat;
+        fForm2HTML["f2-cat4"].value = docData.prodIds[3].cat;
+        fForm2HTML["f2-cat5"].value = docData.prodIds[4].cat;
+        fForm2HTML["f2-cat6"].value = docData.prodIds[5].cat;
+        fForm2HTML["f2-id1"].value = docData.prodIds[0].sno;
+        fForm2HTML["f2-id2"].value = docData.prodIds[1].sno;
+        fForm2HTML["f2-id3"].value = docData.prodIds[2].sno;
+        fForm2HTML["f2-id4"].value = docData.prodIds[3].sno;
+        fForm2HTML["f2-id5"].value = docData.prodIds[4].sno;
+        fForm2HTML["f2-id6"].value = docData.prodIds[5].sno;
+      }
     });
 };
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -274,6 +294,16 @@ const form3 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType || "";
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -294,7 +324,6 @@ const form3 = async (e) => {
     fForm3HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
-
   });
 
   // console.log('done');
@@ -308,24 +337,25 @@ const displayForm3 = () => {
     .onSnapshot((doc) => {
       let docData = doc.data();
       // console.log(docData);
-      fForm3HTML["f3-title"].value = docData.title || "No Title";
-      fForm3HTML["f3-cat1"].value = docData.prodIds[0].cat;
-      fForm3HTML["f3-cat2"].value = docData.prodIds[1].cat;
-      fForm3HTML["f3-cat3"].value = docData.prodIds[2].cat;
-      fForm3HTML["f3-cat4"].value = docData.prodIds[3].cat;
-      fForm3HTML["f3-cat5"].value = docData.prodIds[4].cat;
-      fForm3HTML["f3-cat6"].value = docData.prodIds[5].cat;
-      fForm3HTML["f3-id1"].value = docData.prodIds[0].sno;
-      fForm3HTML["f3-id2"].value = docData.prodIds[1].sno;
-      fForm3HTML["f3-id3"].value = docData.prodIds[2].sno;
-      fForm3HTML["f3-id4"].value = docData.prodIds[3].sno;
-      fForm3HTML["f3-id5"].value = docData.prodIds[4].sno;
-      fForm3HTML["f3-id6"].value = docData.prodIds[5].sno;
+      fForm3HTML["f3-title"].value = docData.title || "Section Empty";
+      if (docData.title) {
+        fForm3HTML["f3-cat1"].value = docData.prodIds[0].cat;
+        fForm3HTML["f3-cat2"].value = docData.prodIds[1].cat;
+        fForm3HTML["f3-cat3"].value = docData.prodIds[2].cat;
+        fForm3HTML["f3-cat4"].value = docData.prodIds[3].cat;
+        fForm3HTML["f3-cat5"].value = docData.prodIds[4].cat;
+        fForm3HTML["f3-cat6"].value = docData.prodIds[5].cat;
+        fForm3HTML["f3-id1"].value = docData.prodIds[0].sno;
+        fForm3HTML["f3-id2"].value = docData.prodIds[1].sno;
+        fForm3HTML["f3-id3"].value = docData.prodIds[2].sno;
+        fForm3HTML["f3-id4"].value = docData.prodIds[3].sno;
+        fForm3HTML["f3-id5"].value = docData.prodIds[4].sno;
+        fForm3HTML["f3-id6"].value = docData.prodIds[5].sno;
+      }
     });
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 const fForm4HTML = document.querySelector("#fForm4");
 const form4 = async (e) => {
@@ -371,6 +401,16 @@ const form4 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType || "";
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -391,7 +431,6 @@ const form4 = async (e) => {
     fForm4HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
-
   });
 
   // console.log('done');
@@ -405,24 +444,25 @@ const displayForm4 = () => {
     .onSnapshot((doc) => {
       let docData = doc.data();
       // console.log(docData);
-      fForm4HTML["f4-title"].value = docData.title || "No Title";
-      fForm4HTML["f4-cat1"].value = docData.prodIds[0].cat;
-      fForm4HTML["f4-cat2"].value = docData.prodIds[1].cat;
-      fForm4HTML["f4-cat3"].value = docData.prodIds[2].cat;
-      fForm4HTML["f4-cat4"].value = docData.prodIds[3].cat;
-      fForm4HTML["f4-cat5"].value = docData.prodIds[4].cat;
-      fForm4HTML["f4-cat6"].value = docData.prodIds[5].cat;
-      fForm4HTML["f4-id1"].value = docData.prodIds[0].sno;
-      fForm4HTML["f4-id2"].value = docData.prodIds[1].sno;
-      fForm4HTML["f4-id3"].value = docData.prodIds[2].sno;
-      fForm4HTML["f4-id4"].value = docData.prodIds[3].sno;
-      fForm4HTML["f4-id5"].value = docData.prodIds[4].sno;
-      fForm4HTML["f4-id6"].value = docData.prodIds[5].sno;
+      fForm4HTML["f4-title"].value = docData.title || "Section Empty";
+      if (docData.title) {
+        fForm4HTML["f4-cat1"].value = docData.prodIds[0].cat;
+        fForm4HTML["f4-cat2"].value = docData.prodIds[1].cat;
+        fForm4HTML["f4-cat3"].value = docData.prodIds[2].cat;
+        fForm4HTML["f4-cat4"].value = docData.prodIds[3].cat;
+        fForm4HTML["f4-cat5"].value = docData.prodIds[4].cat;
+        fForm4HTML["f4-cat6"].value = docData.prodIds[5].cat;
+        fForm4HTML["f4-id1"].value = docData.prodIds[0].sno;
+        fForm4HTML["f4-id2"].value = docData.prodIds[1].sno;
+        fForm4HTML["f4-id3"].value = docData.prodIds[2].sno;
+        fForm4HTML["f4-id4"].value = docData.prodIds[3].sno;
+        fForm4HTML["f4-id5"].value = docData.prodIds[4].sno;
+        fForm4HTML["f4-id6"].value = docData.prodIds[5].sno;
+      }
     });
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 const fForm5HTML = document.querySelector("#fForm5");
 const form5 = async (e) => {
@@ -468,6 +508,16 @@ const form5 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType || "";
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -488,7 +538,6 @@ const form5 = async (e) => {
     fForm5HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
-
   });
 
   // console.log('done');
@@ -502,31 +551,32 @@ const displayForm5 = () => {
     .onSnapshot((doc) => {
       let docData = doc.data();
       // console.log(docData);
-      fForm5HTML["f5-title"].value = docData.title || "No Title";
-      fForm5HTML["f5-cat1"].value = docData.prodIds[0].cat;
-      fForm5HTML["f5-cat2"].value = docData.prodIds[1].cat;
-      fForm5HTML["f5-cat3"].value = docData.prodIds[2].cat;
-      fForm5HTML["f5-cat4"].value = docData.prodIds[3].cat;
-      fForm5HTML["f5-cat5"].value = docData.prodIds[4].cat;
-      fForm5HTML["f5-cat6"].value = docData.prodIds[5].cat;
-      fForm5HTML["f5-id1"].value = docData.prodIds[0].sno;
-      fForm5HTML["f5-id2"].value = docData.prodIds[1].sno;
-      fForm5HTML["f5-id3"].value = docData.prodIds[2].sno;
-      fForm5HTML["f5-id4"].value = docData.prodIds[3].sno;
-      fForm5HTML["f5-id5"].value = docData.prodIds[4].sno;
-      fForm5HTML["f5-id6"].value = docData.prodIds[5].sno;
+      fForm5HTML["f5-title"].value = docData.title || "Section Empty";
+      if (docData.title) {
+        fForm5HTML["f5-cat1"].value = docData.prodIds[0].cat;
+        fForm5HTML["f5-cat2"].value = docData.prodIds[1].cat;
+        fForm5HTML["f5-cat3"].value = docData.prodIds[2].cat;
+        fForm5HTML["f5-cat4"].value = docData.prodIds[3].cat;
+        fForm5HTML["f5-cat5"].value = docData.prodIds[4].cat;
+        fForm5HTML["f5-cat6"].value = docData.prodIds[5].cat;
+        fForm5HTML["f5-id1"].value = docData.prodIds[0].sno;
+        fForm5HTML["f5-id2"].value = docData.prodIds[1].sno;
+        fForm5HTML["f5-id3"].value = docData.prodIds[2].sno;
+        fForm5HTML["f5-id4"].value = docData.prodIds[3].sno;
+        fForm5HTML["f5-id5"].value = docData.prodIds[4].sno;
+        fForm5HTML["f5-id6"].value = docData.prodIds[5].sno;
+      }
     });
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 const fForm6HTML = document.querySelector("#fForm6");
 const form6 = async (e) => {
   e.preventDefault();
   let docRef = await db.collection("midnight").doc("fixed6");
 
-  const f6Title = fForm6HTML["f6-title"].value;
+  const f6Title = fForm6HTML["f6-title"].value + ' ';
   const f6Id1 = fForm6HTML["f6-id1"].value;
   const f6Id2 = fForm6HTML["f6-id2"].value;
   const f6Id3 = fForm6HTML["f6-id3"].value;
@@ -565,6 +615,16 @@ const form6 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType || "";
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -585,7 +645,6 @@ const form6 = async (e) => {
     fForm6HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
-
   });
 
   // console.log('done');
@@ -599,25 +658,25 @@ const displayForm6 = () => {
     .onSnapshot((doc) => {
       let docData = doc.data();
       // console.log(docData);
-      fForm6HTML["f6-title"].value = docData.title || "No Title";
-      fForm6HTML["f6-cat1"].value = docData.prodIds[0].cat;
-      fForm6HTML["f6-cat2"].value = docData.prodIds[1].cat;
-      fForm6HTML["f6-cat3"].value = docData.prodIds[2].cat;
-      fForm6HTML["f6-cat4"].value = docData.prodIds[3].cat;
-      fForm6HTML["f6-cat5"].value = docData.prodIds[4].cat;
-      fForm6HTML["f6-cat6"].value = docData.prodIds[5].cat;
-      fForm6HTML["f6-id1"].value = docData.prodIds[0].sno;
-      fForm6HTML["f6-id2"].value = docData.prodIds[1].sno;
-      fForm6HTML["f6-id3"].value = docData.prodIds[2].sno;
-      fForm6HTML["f6-id4"].value = docData.prodIds[3].sno;
-      fForm6HTML["f6-id5"].value = docData.prodIds[4].sno;
-      fForm6HTML["f6-id6"].value = docData.prodIds[5].sno;
+      fForm6HTML["f6-title"].value = docData.title || "Section Empty";
+      if (docData.title) {
+        fForm6HTML["f6-cat1"].value = docData.prodIds[0].cat;
+        fForm6HTML["f6-cat2"].value = docData.prodIds[1].cat;
+        fForm6HTML["f6-cat3"].value = docData.prodIds[2].cat;
+        fForm6HTML["f6-cat4"].value = docData.prodIds[3].cat;
+        fForm6HTML["f6-cat5"].value = docData.prodIds[4].cat;
+        fForm6HTML["f6-cat6"].value = docData.prodIds[5].cat;
+        fForm6HTML["f6-id1"].value = docData.prodIds[0].sno;
+        fForm6HTML["f6-id2"].value = docData.prodIds[1].sno;
+        fForm6HTML["f6-id3"].value = docData.prodIds[2].sno;
+        fForm6HTML["f6-id4"].value = docData.prodIds[3].sno;
+        fForm6HTML["f6-id5"].value = docData.prodIds[4].sno;
+        fForm6HTML["f6-id6"].value = docData.prodIds[5].sno;
+      }
     });
 };
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 const fForm7HTML = document.querySelector("#fForm7");
 const form7 = async (e) => {
@@ -663,6 +722,16 @@ const form7 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType || "";
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -683,7 +752,6 @@ const form7 = async (e) => {
     fForm7HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
-
   });
 
   // console.log('done');
@@ -697,24 +765,25 @@ const displayForm7 = () => {
     .onSnapshot((doc) => {
       let docData = doc.data();
       // console.log(docData);
-      fForm7HTML["f7-title"].value = docData.title || "No Title";
-      fForm7HTML["f7-cat1"].value = docData.prodIds[0].cat;
-      fForm7HTML["f7-cat2"].value = docData.prodIds[1].cat;
-      fForm7HTML["f7-cat3"].value = docData.prodIds[2].cat;
-      fForm7HTML["f7-cat4"].value = docData.prodIds[3].cat;
-      fForm7HTML["f7-cat5"].value = docData.prodIds[4].cat;
-      fForm7HTML["f7-cat6"].value = docData.prodIds[5].cat;
-      fForm7HTML["f7-id1"].value = docData.prodIds[0].sno;
-      fForm7HTML["f7-id2"].value = docData.prodIds[1].sno;
-      fForm7HTML["f7-id3"].value = docData.prodIds[2].sno;
-      fForm7HTML["f7-id4"].value = docData.prodIds[3].sno;
-      fForm7HTML["f7-id5"].value = docData.prodIds[4].sno;
-      fForm7HTML["f7-id6"].value = docData.prodIds[5].sno;
+      fForm7HTML["f7-title"].value = docData.title || "Section Empty";
+      if (docData.title) {
+        fForm7HTML["f7-cat1"].value = docData.prodIds[0].cat;
+        fForm7HTML["f7-cat2"].value = docData.prodIds[1].cat;
+        fForm7HTML["f7-cat3"].value = docData.prodIds[2].cat;
+        fForm7HTML["f7-cat4"].value = docData.prodIds[3].cat;
+        fForm7HTML["f7-cat5"].value = docData.prodIds[4].cat;
+        fForm7HTML["f7-cat6"].value = docData.prodIds[5].cat;
+        fForm7HTML["f7-id1"].value = docData.prodIds[0].sno;
+        fForm7HTML["f7-id2"].value = docData.prodIds[1].sno;
+        fForm7HTML["f7-id3"].value = docData.prodIds[2].sno;
+        fForm7HTML["f7-id4"].value = docData.prodIds[3].sno;
+        fForm7HTML["f7-id5"].value = docData.prodIds[4].sno;
+        fForm7HTML["f7-id6"].value = docData.prodIds[5].sno;
+      }
     });
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 const fForm8HTML = document.querySelector("#fForm8");
 const form8 = async (e) => {
@@ -760,6 +829,16 @@ const form8 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType || "";
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -780,7 +859,6 @@ const form8 = async (e) => {
     fForm8HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
-
   });
 
   // console.log('done');
@@ -794,24 +872,25 @@ const displayForm8 = () => {
     .onSnapshot((doc) => {
       let docData = doc.data();
       // console.log(docData);
-      fForm8HTML["f8-title"].value = docData.title || "No Title";
-      fForm8HTML["f8-cat1"].value = docData.prodIds[0].cat;
-      fForm8HTML["f8-cat2"].value = docData.prodIds[1].cat;
-      fForm8HTML["f8-cat3"].value = docData.prodIds[2].cat;
-      fForm8HTML["f8-cat4"].value = docData.prodIds[3].cat;
-      fForm8HTML["f8-cat5"].value = docData.prodIds[4].cat;
-      fForm8HTML["f8-cat6"].value = docData.prodIds[5].cat;
-      fForm8HTML["f8-id1"].value = docData.prodIds[0].sno;
-      fForm8HTML["f8-id2"].value = docData.prodIds[1].sno;
-      fForm8HTML["f8-id3"].value = docData.prodIds[2].sno;
-      fForm8HTML["f8-id4"].value = docData.prodIds[3].sno;
-      fForm8HTML["f8-id5"].value = docData.prodIds[4].sno;
-      fForm8HTML["f8-id6"].value = docData.prodIds[5].sno;
+      fForm8HTML["f8-title"].value = docData.title || "Section Empty";
+      if (docData.title) {
+        fForm8HTML["f8-cat1"].value = docData.prodIds[0].cat;
+        fForm8HTML["f8-cat2"].value = docData.prodIds[1].cat;
+        fForm8HTML["f8-cat3"].value = docData.prodIds[2].cat;
+        fForm8HTML["f8-cat4"].value = docData.prodIds[3].cat;
+        fForm8HTML["f8-cat5"].value = docData.prodIds[4].cat;
+        fForm8HTML["f8-cat6"].value = docData.prodIds[5].cat;
+        fForm8HTML["f8-id1"].value = docData.prodIds[0].sno;
+        fForm8HTML["f8-id2"].value = docData.prodIds[1].sno;
+        fForm8HTML["f8-id3"].value = docData.prodIds[2].sno;
+        fForm8HTML["f8-id4"].value = docData.prodIds[3].sno;
+        fForm8HTML["f8-id5"].value = docData.prodIds[4].sno;
+        fForm8HTML["f8-id6"].value = docData.prodIds[5].sno;
+      }
     });
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 const fForm9HTML = document.querySelector("#fForm9");
 const form9 = async (e) => {
@@ -857,6 +936,16 @@ const form9 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType || "";
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -877,7 +966,6 @@ const form9 = async (e) => {
     fForm9HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
-
   });
 
   // console.log('done');
@@ -891,24 +979,25 @@ const displayForm9 = () => {
     .onSnapshot((doc) => {
       let docData = doc.data();
       // console.log(docData);
-      fForm9HTML["f9-title"].value = docData.title || "No Title";
-      fForm9HTML["f9-cat1"].value = docData.prodIds[0].cat;
-      fForm9HTML["f9-cat2"].value = docData.prodIds[1].cat;
-      fForm9HTML["f9-cat3"].value = docData.prodIds[2].cat;
-      fForm9HTML["f9-cat4"].value = docData.prodIds[3].cat;
-      fForm9HTML["f9-cat5"].value = docData.prodIds[4].cat;
-      fForm9HTML["f9-cat6"].value = docData.prodIds[5].cat;
-      fForm9HTML["f9-id1"].value = docData.prodIds[0].sno;
-      fForm9HTML["f9-id2"].value = docData.prodIds[1].sno;
-      fForm9HTML["f9-id3"].value = docData.prodIds[2].sno;
-      fForm9HTML["f9-id4"].value = docData.prodIds[3].sno;
-      fForm9HTML["f9-id5"].value = docData.prodIds[4].sno;
-      fForm9HTML["f9-id6"].value = docData.prodIds[5].sno;
+      fForm9HTML["f9-title"].value = docData.title || "Section Empty";
+      if (docData.title) {
+        fForm9HTML["f9-cat1"].value = docData.prodIds[0].cat;
+        fForm9HTML["f9-cat2"].value = docData.prodIds[1].cat;
+        fForm9HTML["f9-cat3"].value = docData.prodIds[2].cat;
+        fForm9HTML["f9-cat4"].value = docData.prodIds[3].cat;
+        fForm9HTML["f9-cat5"].value = docData.prodIds[4].cat;
+        fForm9HTML["f9-cat6"].value = docData.prodIds[5].cat;
+        fForm9HTML["f9-id1"].value = docData.prodIds[0].sno;
+        fForm9HTML["f9-id2"].value = docData.prodIds[1].sno;
+        fForm9HTML["f9-id3"].value = docData.prodIds[2].sno;
+        fForm9HTML["f9-id4"].value = docData.prodIds[3].sno;
+        fForm9HTML["f9-id5"].value = docData.prodIds[4].sno;
+        fForm9HTML["f9-id6"].value = docData.prodIds[5].sno;
+      }
     });
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 const fForm10HTML = document.querySelector("#fForm10");
 const form10 = async (e) => {
@@ -954,6 +1043,16 @@ const form10 = async (e) => {
           // console.log(docData.category, docData.sno);
           if (docData.sno === ui.sno) {
             ui.id = doc.id;
+            ui.name = docData.name;
+            ui.sno = docData.sno;
+            ui.bannerType = docData.bannerType || "";
+            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+            ui.gst = docData.gst;
+            ui.mainImgUrl = docData.mainImgUrl;
+            ui.mrp = docData.mrp;
+            ui.stars = docData.stars;
+            ui.totalPrice = docData.totalPrice;
             break;
           } else {
             ui.id = "na";
@@ -974,7 +1073,6 @@ const form10 = async (e) => {
     fForm10HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
-
   });
 
   // console.log('done');
@@ -987,20 +1085,22 @@ const displayForm10 = () => {
     .doc("fixed10")
     .onSnapshot((doc) => {
       let docData = doc.data();
-      // console.log(docData);
-      fForm10HTML["f10-title"].value = docData.title || "No Title";
-      fForm10HTML["f10-cat1"].value = docData.prodIds[0].cat;
-      fForm10HTML["f10-cat2"].value = docData.prodIds[1].cat;
-      fForm10HTML["f10-cat3"].value = docData.prodIds[2].cat;
-      fForm10HTML["f10-cat4"].value = docData.prodIds[3].cat;
-      fForm10HTML["f10-cat5"].value = docData.prodIds[4].cat;
-      fForm10HTML["f10-cat6"].value = docData.prodIds[5].cat;
-      fForm10HTML["f10-id1"].value = docData.prodIds[0].sno;
-      fForm10HTML["f10-id2"].value = docData.prodIds[1].sno;
-      fForm10HTML["f10-id3"].value = docData.prodIds[2].sno;
-      fForm10HTML["f10-id4"].value = docData.prodIds[3].sno;
-      fForm10HTML["f10-id5"].value = docData.prodIds[4].sno;
-      fForm10HTML["f10-id6"].value = docData.prodIds[5].sno;
+      fForm10HTML["f10-title"].value = docData.title || "Section Empty";
+      if (docData.title) {
+        // console.log(docData);
+        fForm10HTML["f10-cat1"].value = docData.prodIds[0].cat;
+        fForm10HTML["f10-cat2"].value = docData.prodIds[1].cat;
+        fForm10HTML["f10-cat3"].value = docData.prodIds[2].cat;
+        fForm10HTML["f10-cat4"].value = docData.prodIds[3].cat;
+        fForm10HTML["f10-cat5"].value = docData.prodIds[4].cat;
+        fForm10HTML["f10-cat6"].value = docData.prodIds[5].cat;
+        fForm10HTML["f10-id1"].value = docData.prodIds[0].sno;
+        fForm10HTML["f10-id2"].value = docData.prodIds[1].sno;
+        fForm10HTML["f10-id3"].value = docData.prodIds[2].sno;
+        fForm10HTML["f10-id4"].value = docData.prodIds[3].sno;
+        fForm10HTML["f10-id5"].value = docData.prodIds[4].sno;
+        fForm10HTML["f10-id6"].value = docData.prodIds[5].sno;
+      }
     });
 };
 

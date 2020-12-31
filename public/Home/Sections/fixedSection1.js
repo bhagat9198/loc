@@ -1443,8 +1443,8 @@ db.collection("sections")
 const fForm7HTML = document.querySelector("#fForm7");
 
 const form7 = async (e) => {
+  alert(1)
   e.preventDefault();
-
   let docRef = await db.collection("sections").doc("fixed7");
 
   const f7Title = fForm7HTML["f7-title"].value;
@@ -1470,6 +1470,7 @@ const form7 = async (e) => {
     { sno: f7Id5, cat: f7Cat5 },
     { sno: f7Id6, cat: f7Cat6 },
   ];
+  // console.log(userInputs);
 
   for (let ui of userInputs) {
     let c = ui.cat.split("__")[0];
@@ -1481,6 +1482,7 @@ const form7 = async (e) => {
         for (let doc of snapshotDocs) {
           let docData = doc.data();
           if (docData.sno === ui.sno) {
+            // console.log(docData);
             ui.id = doc.id;
             ui.name = docData.name;
             ui.sno = docData.sno;
