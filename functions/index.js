@@ -637,6 +637,27 @@ exports.sendEmailForgetPass = functions.firestore
 //     console.log('This will be run every 5 minutes!');
 // });
 exports.createUser = functions.firestore
+  .document("emailNotifications/{userId}")
+  .onCreate((snap, context) => {
+    const newValue = snap.data();
+
+    // ...or the previous value before this update
+    // const previousValue = change.before.data();
+
+    // access a particular field as you would any JS property
+    const template = newValue.template;
+    const status =newValue.status;
+    //Create an options object that contains the time to live for the notification and the priority
+    const mailOptions = {
+      from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
+      to: newValue.Email,
+    };
+    // Building Email message.
+    mailOptions.subject = "Welcome to lakeofcakes";
+  });
+
+
+exports.createUser = functions.firestore
   .document("Customers/{userId}")
   .onCreate((snap, context) => {
     const newValue = snap.data();
