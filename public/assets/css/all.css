@@ -22488,7 +22488,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, in
 .mybtn1:hover {
     background: none;
     color: black !important;
-    /* color: #ff5500!important; */
+    /* color: red!important; */
 }
 
 .mybtn2 {
@@ -22499,9 +22499,9 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, in
     text-align: center;
     border-radius: 50px;
     display: inline-block;
-    color: #ff5500!important;
+    color: red!important;
     background: #fff;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     -webkit-box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.10);
     box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.10);
     -webkit-transition: 0.3s;
@@ -22511,7 +22511,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, in
 }
 
 .mybtn2:hover {
-    background: #ff5500;
+    background: red;
     color: #fff!important;
 }
 
@@ -22679,7 +22679,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, in
     content: "";
     width: 100%;
     height: 3px;
-    background: #ff5500;
+    background: red;
     left: 0;
     bottom: -2px;
 }
@@ -22689,8 +22689,8 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, in
     font-size: 14px;
     font-weight: 600;
     color: #fff;
-    background: #ff5500;
-    border: 1px solid #ff5500;
+    background: red;
+    border: 1px solid red;
     padding: 0px 12px;
     height: 28px;
     line-height: 28px;
@@ -22704,7 +22704,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, in
 
 .section-top .link:hover {
     background: none;
-    color: #ff5500;
+    color: red;
 }
 
 .background {
@@ -22790,31 +22790,31 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, in
 }
 
 .input-field.error {
-    border: 1px solid #ff5500;
+    border: 1px solid red;
 }
 
 .input-field.error::-webkit-input-placeholder {
     /* WebKit browsers */
-    color: #ff5500;
+    color: red;
 }
 
 .input-field.error:-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
-    color: #ff5500;
+    color: red;
 }
 
 .input-field.error::-moz-placeholder {
     /* Mozilla Firefox 19+ */
-    color: #ff5500;
+    color: red;
 }
 
 .input-field.error:-ms-input-placeholder {
     /* Internet Explorer 10+ */
-    color: #ff5500;
+    color: red;
 }
 
 .input-field.error:focus {
-    border-color: #ff5500;
+    border-color: red;
 }
 
 .video-play-btn {
@@ -22981,7 +22981,7 @@ Breadcrumb Area Start
 }
 
 .breadcrumb-area .pages li a:hover {
-    color: #ff5500;
+    color: red;
 }
 
 .breadcrumb-area .pages li:last-child a::after {
@@ -23091,7 +23091,7 @@ Logo Header Area Start
 }
 
 .logo-header .search-box .categori-container .categoris option:hover {
-    background: #ff5500;
+    background: red;
 }
 
 .logo-header .search-box .search-form {
@@ -23231,7 +23231,7 @@ Logo Header Area Start
 .logo-header .helpful-links ul li.compare .compare-product .icon span {
     width: 20px;
     height: 20px;
-    background: #ff5500;
+    background: red;
     border-radius: 50px;
     display: inline-block;
     position: absolute;
@@ -23399,7 +23399,7 @@ Logo Header Area Start
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 14px;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
 }
 
 .logo-header .helpful-links ul li .wish i {
@@ -23745,7 +23745,7 @@ Logo Header Area Start
 }
 
 .categorie_sub_menu ul li a:hover {
-    color: #ff5500;
+    color: red;
 }
 
 /*home two categorie css here*/
@@ -23924,7 +23924,7 @@ nav button {
 .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-1 .title {
     font-size: 36px;
     font-weight: 700;
-    color: #ff5500;
+    color: red;
 }
 
 .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-2 .text {
@@ -23938,12 +23938,12 @@ nav button {
 .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-3 a {
     margin-top: 15px;
     text-align: center;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
 }
 
 .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-3 a:hover {
     background: #fff;
-    color: #ff5500;
+    color: red;
 }
 
 .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-3 a i {
@@ -23993,7 +23993,7 @@ nav button {
 /* hero Slider dot design End */
 
 .info-area {
-    background: #ff5500;
+    background: red;
 }
 
 .info-area .info-big-box {
@@ -24080,7 +24080,7 @@ nav button {
 }
 
 .trending li.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-active a {
-    color: #ff5500;
+    color: red;
 }
 
 .trending li.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-active a i {
@@ -24100,8 +24100,8 @@ nav button {
     height: 25px;
     line-height: 24px;
     opacity: 1;
-    background: #ff5500;
-    border: 1px solid #ff5500;
+    background: red;
+    border: 1px solid red;
     border-radius: 50%;
     color: #fff;
     -webkit-box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
@@ -24114,7 +24114,7 @@ nav button {
 
 .trending .owl-carousel .owl-controls .owl-nav .owl-prev:hover, .trending .owl-carousel .owl-controls .owl-nav .owl-next:hover {
     background: #fff!important;
-    color: #ff5500;
+    color: red;
 }
 
 .trending .owl-carousel .owl-controls .owl-nav .owl-prev {
@@ -24276,11 +24276,11 @@ nav button {
     border-radius: 50px;
     font-size: 14px;
     margin-bottom: 7px;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     display: inline-block;
     text-align: center;
     color: #fff;
-    background: #ff5500;
+    background: red;
     -webkit-transition: 0.3s ease-in;
     -moz-transition: 0.3s ease-in;
     -o-transition: 0.3s ease-in;
@@ -24288,8 +24288,8 @@ nav button {
 }
 
 .item .item-img .extra-list ul li span:hover {
-    background: #ff5500;
-    border-color: #ff5500;
+    background: red;
+    border-color: red;
     color: #fff;
     
 }
@@ -24325,7 +24325,7 @@ nav button {
 
 .item .info .stars ul li i {
     font-size: 12px;
-    color: #ff5500;
+    color: red;
 }
 
 .item .info .price {
@@ -24390,7 +24390,7 @@ nav button {
     font-weight: 600;
     background: none;
     color: #000;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     padding: 3px 0px;
     width: 140px;
     display: block;
@@ -24407,7 +24407,7 @@ nav button {
 
 .item .add-to-cart-btn:hover {
     background: none;
-    color: #ff5500;
+    color: red;
 }
 
 .item:hover .add-to-cart-btn {
@@ -24504,7 +24504,7 @@ nav button {
 }
 
 .flash-deals .flas-deal-slider .item .price .new-price {
-    color: #ff5500;
+    color: red;
     font-size: 20px;
     font-weight: 600;
 }
@@ -24525,7 +24525,7 @@ nav button {
     font-weight: 700;
     font-size: 24px;
     line-height: 28px;
-    color: #ff5500;
+    color: red;
 }
 
 .flash-deals .flas-deal-slider .item .deal-counter span:last-child {
@@ -24551,8 +24551,8 @@ nav button {
     height: 25px;
     line-height: 24px;
     opacity: 1;
-    background: #ff5500;
-    border: 1px solid #ff5500;
+    background: red;
+    border: 1px solid red;
     border-radius: 50%;
     color: #fff;
     -webkit-box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
@@ -24565,7 +24565,7 @@ nav button {
 
 .flash-deals .owl-carousel .owl-controls .owl-nav .owl-prev:hover, .flash-deals .owl-carousel .owl-controls .owl-nav .owl-next:hover {
     background: #fff!important;
-    color: #ff5500;
+    color: red;
 }
 
 .flash-deals .owl-carousel .owl-controls .owl-nav .owl-prev {
@@ -24665,7 +24665,7 @@ nav button {
 
 .hot-and-new-item .categori .item-list li .single-box .right-area .stars ul li i {
     font-size: 12px;
-    color: #ff5500;
+    color: red;
 }
 
 .hot-and-new-item .categori .item-list li .single-box .right-area .price {
@@ -24701,9 +24701,9 @@ nav button {
     line-height: 19px;
     opacity: 1;
     background: #fff;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     border-radius: 50%;
-    color: #ff5500;
+    color: red;
     -webkit-box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
     -webkit-transition: 0.3s ease-in;
@@ -24713,7 +24713,7 @@ nav button {
 }
 
 .hot-and-new-item .owl-carousel .owl-controls .owl-nav .owl-prev:hover, .hot-and-new-item .owl-carousel .owl-controls .owl-nav .owl-next:hover {
-    background: #ff5500!important;
+    background: red!important;
     color: #fff;
 }
 
@@ -24923,7 +24923,7 @@ nav button {
 
 .blog-area .aside .slider-wrapper .slide-item .top-area .left img {
     height: auto;
-    border: 2px solid #ff5500;
+    border: 2px solid red;
     border-radius: 50%;
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.18);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.18);
@@ -25004,7 +25004,7 @@ nav button {
 }
 
 .blog-area .aside .slider-wrapper .owl-controls .owl-dots .owl-dot.active {
-    background: #ff5500;
+    background: red;
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
     transform: scale(1.2);
@@ -25052,7 +25052,7 @@ nav button {
 
 .blog-area .blog-box .blog-images .img .date {
     position: absolute;
-    background: #ff5500;
+    background: red;
     z-index: 2;
     bottom: 0;
     left: 0;
@@ -25089,9 +25089,9 @@ nav button {
     text-transform: uppercase;
     font-weight: 400;
     color: #fff;
-    background: #ff5500;
+    background: red;
     padding: 7px 20px;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     border-radius: 50px;
     -webkit-transition: 0.3s ease-in;
     -moz-transition: 0.3s ease-in;
@@ -25101,7 +25101,7 @@ nav button {
 
 .blog-area .blog-box .details .read-more-btn:hover {
     background: none;
-    color: #ff5500;
+    color: red;
 }
 
 .blog-area .blog-box:hover {
@@ -25178,8 +25178,8 @@ nav button {
 }
 
 .footer .fotter-social-links ul li a:hover {
-    background: #ff5500;
-    border-color: #ff5500;
+    background: red;
+    border-color: red;
     color: #fff;
 }
 
@@ -25198,7 +25198,7 @@ nav button {
     font-size: 14px;
     line-height: 24px;
     margin-bottom: 0px;
-    color: #ff5500;
+    color: red;
 }
 
 .footer .footer-widget .title {
@@ -25226,7 +25226,7 @@ nav button {
 }
 
 .footer .footer-widget ul li a:hover {
-    color: #ff5500;
+    color: red;
 }
 
 .footer .footer-widget ul li i {
@@ -25258,11 +25258,11 @@ nav button {
 }
 
 .info-link-widget .link-list li a:hover {
-    color: #ff5500;
+    color: red;
 }
 
 .info-link-widget .link-list li a:hover i {
-    color: #ff5500;
+    color: red;
 }
 
 .info-link-widget .link-list li i.fas {
@@ -25360,7 +25360,7 @@ nav button {
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     z-index: 2;
-    background: #ff5500;
+    background: red;
     text-align: center;
     color: #fff;
     width: 30px;
@@ -25385,7 +25385,7 @@ nav button {
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
     z-index: 2;
-    background: #ff5500;
+    background: red;
     text-align: center;
     width: 30px;
     line-height: 30px;
@@ -25469,7 +25469,7 @@ nav button {
 }
 
 .product-details-page .right-area .product-info .info-meta-1 ul li .stars li i {
-    color: #ff5500;
+    color: red;
     margin: 0px;
     padding: 0px;
 }
@@ -25486,7 +25486,7 @@ nav button {
     font-size: 16px;
     line-height: 26px;
     font-weight: 600;
-    color: #ff5500;
+    color: red;
     display: inline-block;
     margin-right: 10px;
 }
@@ -25502,7 +25502,7 @@ nav button {
 
 .product-details-page .right-area .product-info .contact-seller .list li a {
     font-size: 13px;
-    color: #ff5500;
+    color: red;
     display: inline-block;
     border: 1px solid #b8c1ca;
     padding: 4px 9px;
@@ -25517,8 +25517,8 @@ nav button {
 }
 
 .product-details-page .right-area .product-info .contact-seller .list li a:hover {
-    background: #ff5500;
-    border-color: #ff5500;
+    background: red;
+    border-color: red;
     color: #fff;
 }
 
@@ -25595,7 +25595,7 @@ nav button {
 }
 
 .product-details-page .right-area .product-info .product-size .siz-list li.active .box {
-    border: 1px solid #ff5500;
+    border: 1px solid red;
 }
 
 .product-details-page .right-area .product-info .mproduct-size {
@@ -25629,7 +25629,7 @@ nav button {
 }
 
 .product-details-page .right-area .product-info .mproduct-size .siz-list li.active .box {
-    border: 1px solid #ff5500;
+    border: 1px solid red;
 }
 
 .product-details-page .right-area .product-info .product-color {
@@ -25760,8 +25760,8 @@ nav button {
     height: 25px;
     line-height: 24px;
     opacity: 1;
-    background: #ff5500;
-    border: 1px solid #ff5500;
+    background: red;
+    border: 1px solid red;
     border-radius: 50%;
     color: #fff;
     -webkit-box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
@@ -25774,7 +25774,7 @@ nav button {
 
 .product-details-page .xzoom-container .owl-carousel .owl-controls .owl-nav .owl-prev:hover, .product-details-page .xzoom-container .owl-carousel .owl-controls .owl-nav .owl-next:hover {
     background: #fff!important;
-    color: #ff5500;
+    color: red;
 }
 
 .product-details-page .xzoom-container .owl-carousel .owl-controls .owl-nav .owl-prev {
@@ -25846,8 +25846,8 @@ nav button {
     font-size: 14px;
     color: #fff;
     display: inline-block;
-    border: 1px solid #ff5500;
-    background: #ff5500;
+    border: 1px solid red;
+    background: red;
     padding: 0px 18px;
     height: 30px;
     line-height: 30px;
@@ -25865,7 +25865,7 @@ nav button {
 
 .product-details-page .right-area .product-info .info-meta-3 .meta-list li.addtocart a:hover {
     background: #fff;
-    color: #ff5500;
+    color: red;
 }
 
 .product-details-page .right-area .product-info .info-meta-3 .meta-list li.favorite, .product-details-page .right-area .product-info .info-meta-3 .meta-list li.compare {
@@ -25876,8 +25876,8 @@ nav button {
     font-size: 12px;
     color: #fff;
     display: inline-block;
-    border: 1px solid #ff5500;
-    background: #ff5500;
+    border: 1px solid red;
+    background: red;
     height: 30px;
     width: 30px;
     border-radius: 50%;
@@ -25892,7 +25892,7 @@ nav button {
 
 .product-details-page .right-area .product-info .info-meta-3 .meta-list li.favorite a:hover, .product-details-page .right-area .product-info .info-meta-3 .meta-list li.compare a:hover {
     background: #fff;
-    color: #ff5500;
+    color: red;
 }
 
 .product-details-page .right-area .product-info .info-meta-3 .meta-list li:last-child {
@@ -26012,7 +26012,7 @@ nav button {
 
 .product-details-page #product-details-tab.ui-tabs .ui-tabs-panel .heading-area .reating-area .stars {
     font-size: 12px;
-    background: #ff5500;
+    background: red;
     color: #fff;
     display: inline-block;
     padding: 1px 5px;
@@ -26157,7 +26157,7 @@ nav button {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 2px solid #ff5500;
+    border: 2px solid red;
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
 }
@@ -26316,14 +26316,14 @@ nav button {
 }
 
 #product-details-tab #replay-area .write-comment-area .submit-btn {
-    background: #ff5500;
+    background: red;
     border: 0px;
     color: #fff;
     padding: 14px 30px 11px;
     border-radius: 50px;
     font-size: 14px;
     font-weight: 600;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     cursor: pointer;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
@@ -26332,7 +26332,7 @@ nav button {
 
 #product-details-tab #replay-area .write-comment-area .submit-btn:hover {
     background: none;
-    color: #ff5500;
+    color: red;
 }
 
 #product-details-tab #replay-area .write-comment-area .submit-btn:focus {
@@ -26387,7 +26387,7 @@ nav button {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 2px solid #ff5500;
+    border: 2px solid red;
     -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
 }
@@ -26471,7 +26471,7 @@ nav button {
     height: 40px;
     line-height: 40px;
     border: 0px;
-    background: #ff5500;
+    background: red;
     color: #fff;
     font-weight: 600;
     border-radius: 50px;
@@ -26569,7 +26569,7 @@ nav button {
 }
 
 #product-details-tab #comment-area .write-comment-area .submit-btn {
-    background: #ff5500;
+    background: red;
     border: 0px;
     color: #fff;
     padding: 14px 30px;
@@ -26577,7 +26577,7 @@ nav button {
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
@@ -26585,7 +26585,7 @@ nav button {
 
 #product-details-tab #comment-area .write-comment-area .submit-btn:hover {
     background: none;
-    color: #ff5500;
+    color: red;
 }
 
 #product-details-tab #comment-area .write-comment-area .submit-btn:focus {
@@ -26656,7 +26656,7 @@ nav button {
 
 .product-details-page .categori .item-list li .single-box .right-area .stars ul li i {
     font-size: 12px;
-    color: #ff5500;
+    color: red;
 }
 
 .product-details-page .categori .item-list li .single-box .right-area .price {
@@ -26692,9 +26692,9 @@ nav button {
     line-height: 19px;
     opacity: 1;
     background: #fff;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     border-radius: 50%;
-    color: #ff5500;
+    color: red;
     -webkit-box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
     -webkit-transition: 0.3s ease-in;
@@ -26704,7 +26704,7 @@ nav button {
 }
 
 .product-details-page .categori .owl-carousel .owl-controls .owl-nav .owl-prev:hover, .product-details-page .categori .owl-carousel .owl-controls .owl-nav .owl-next:hover {
-    background: #ff5500!important;
+    background: red!important;
     color: #fff;
 }
 
@@ -26739,7 +26739,7 @@ nav button {
     font-weight: 400;
     line-height: 24px;
     margin-bottom: 0px;
-    color: #ff5500;
+    color: red;
 }
 
 .seller-info .content .stor-name {
@@ -26765,7 +26765,7 @@ nav button {
     font-size: 29px;
     line-height: 24px;
     font-weight: 700;
-    color: #ff5500;
+    color: red;
 }
 
 .seller-info .content .total-product span {
@@ -26780,7 +26780,7 @@ nav button {
 }
 
 .seller-info .view-stor {
-    background: #ff5500;
+    background: red;
     display: inline-block;
     text-align: center;
     color: #fff;
@@ -26789,7 +26789,7 @@ nav button {
     width: 100%;
     border-radius: 50px;
     margin: 0 auto 5px;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
@@ -26798,7 +26798,7 @@ nav button {
 
 .seller-info .view-stor:hover {
     background: #fff;
-    color: #ff5500;
+    color: red;
 }
 
 /*-----------------------------
@@ -26821,7 +26821,7 @@ nav button {
 }
 
 .ui-widget-header {
-    background: #ff5500;
+    background: red;
 }
 
 .price-range-search {
@@ -26860,7 +26860,7 @@ nav button {
     z-index: 2;
     width: 18px;
     height: 18px;
-    background: #ff5500;
+    background: red;
     border-radius: 50%;
     cursor: default;
     -ms-touch-action: none;
@@ -26994,11 +26994,11 @@ nav button {
     font-size: 14px;
     text-transform: uppercase;
     color: #fff;
-    background: #ff5500;
+    background: red;
     border: 0px;
     border-radius: 50px;
     display: block;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     margin: 0 auto;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
@@ -27008,7 +27008,7 @@ nav button {
 
 .sub-categori .left-area .filter-result-area .body-area .filter-btn:hover {
     background: none;
-    color: #ff5500;
+    color: red;
 }
 
 .sub-categori .left-area .filter-result-area .body-area .filter-btn:focus {
@@ -27143,7 +27143,7 @@ nav button {
 }
 
 .sub-categori .left-area .tags-area .body-area .taglist li a:hover {
-    background: #ff5500;
+    background: red;
     color: #fff;
 }
 
@@ -27256,7 +27256,7 @@ nav button {
 
 .sub-categori .left-area .service-center .body-area .list li i {
     font-size: 25px;
-    color: #ff5500;
+    color: red;
     margin-right: 7px;
 }
 
@@ -27284,7 +27284,7 @@ nav button {
 }
 
 .sub-categori .left-area .service-center .footer-area .list li a:hover {
-    color: #ff5500;
+    color: red;
 }
 
 .sub-categori .right-area .item-filter {
@@ -27333,7 +27333,7 @@ nav button {
     border: none;
     text-align: center;
     text-align: center;
-    color: #ff5500;
+    color: red;
     font-size: 14px;
     margin: 0px 4px 0px;
     border-radius: 3px;
@@ -27353,7 +27353,7 @@ nav button {
 }
 
 .sub-categori .right-area .pagination-area .pagination .page-item .page-link.active, .sub-categori .right-area .pagination-area .pagination .page-item .page-link:hover {
-    background: #ff5500;
+    background: red;
     color: #fff;
 }
 
@@ -27385,7 +27385,7 @@ nav button {
 }
 
 .message-modal .modal .modal-dialog .modal-header {
-    background: #ff5500;
+    background: red;
     padding: 12px 30px!important;
     text-align: right;
 }
@@ -27422,7 +27422,7 @@ nav button {
 
 .message-modal .modal .contact-form ul li .input-field:focus {
     border: 0px !important;
-    border-bottom: 1px solid #ff5500 !important;
+    border-bottom: 1px solid red !important;
 }
 
 .message-modal .modal .contact-form ul li .input-field.textarea {
@@ -27432,7 +27432,7 @@ nav button {
 .message-modal .modal .contact-form .submit-btn {
     width: 100%;
     height: 50px;
-    background: #ff5500;
+    background: red;
     color: #fff;
     font-size: 14px;
     line-height: 50px;
@@ -27571,9 +27571,9 @@ nav button {
 }
 
 .cartpage .left-area .table tbody tr td.quantity .qty ul li .qtminus1:hover, .cartpage .left-area .table tbody tr td.quantity .qty ul li .qtplus1:hover {
-    background: #ff5500;
+    background: red;
     color: #fff;
-    border-color: #ff5500;
+    border-color: red;
 }
 
 .cartpage .left-area .table tbody tr td.quantity .qty ul li .qttotal {
@@ -27694,9 +27694,9 @@ nav button {
 }
 
 .cupon-box #coupon-form button:hover {
-    background: #ff5500;
+    background: red;
     color: #fff;
-    border-color: #ff5500;
+    border-color: red;
 }
 
 .cupon-box #check-coupon-form {
@@ -27730,9 +27730,9 @@ nav button {
 }
 
 .cupon-box #check-coupon-form button:hover {
-    background: #ff5500;
+    background: red;
     color: #fff;
-    border-color: #ff5500;
+    border-color: red;
 }
 
 .order-box .order-btn {
@@ -27740,7 +27740,7 @@ nav button {
     height: 40px;
     line-height: 40px;
     color: #fff;
-    background: #ff5500;
+    background: red;
     display: block;
     margin-bottom: 0px;
     text-align: center;
@@ -27799,7 +27799,7 @@ nav button {
 
 .blogpagearea .blog-box .blog-images .img .date {
     position: absolute;
-    background: #ff5500;
+    background: red;
     z-index: 2;
     bottom: 0;
     left: 0;
@@ -27834,10 +27834,10 @@ nav button {
     text-transform: uppercase;
     font-weight: 400;
     color: #fff;
-    background: #ff5500;
+    background: red;
     padding: 7px 20px;
     border: solid;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     border-radius: 50px;
     -webkit-transition: 0.3s ease-in;
     -moz-transition: 0.3s ease-in;
@@ -27847,7 +27847,7 @@ nav button {
 
 .blogpagearea .blog-box .details .read-more-btn:hover {
     background: none;
-    color: #ff5500;
+    color: red;
 }
 
 .blogpagearea .blog-box:hover {
@@ -27900,7 +27900,7 @@ nav button {
 }
 
 .blog-details .blog-content .content .post-meta li a:hover {
-    color: #ff5500;
+    color: red;
 }
 
 .blog-details .blog-content .content p {
@@ -27923,10 +27923,10 @@ nav button {
 .blog-details .blog-content .content blockquote {
     margin-top: 50px;
     background: #f3f6ff;
-    border-left: 5px solid #ff5500;
+    border-left: 5px solid red;
     padding: 25px 30px 28px;
     font-size: 16px;
-    color: #ff5500;
+    color: red;
     font-weight: 600;
     display: block;
 }
@@ -27980,7 +27980,7 @@ nav button {
     display: inline-block;
     color: #fff;
     margin-left: 2px;
-    background: #ff5500;
+    background: red;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
@@ -28029,7 +28029,7 @@ nav button {
     width: 65px;
     height: 65px;
     border-radius: 50%;
-    border: 2px solid #ff5500;
+    border: 2px solid red;
     overflow: hidden;
     margin-bottom: 19px;
     -webkit-box-shadow: 0px 5px 10px 0px rgba(43, 43, 43, 0.3);
@@ -28048,7 +28048,7 @@ nav button {
     line-height: 25px;
     display: inline-block;
     color: #fff;
-    background: #ff5500;
+    background: red;
     font-size: 13px;
     font-weight: 600;
     text-transform: uppercase;
@@ -28058,7 +28058,7 @@ nav button {
 }
 
 .blog-details .comments .comment-box-area li .comment-box .left .replay:hover {
-    background: #ff5500;
+    background: red;
 }
 
 .blog-details .comments .comment-box-area li .comment-box .right {
@@ -28111,8 +28111,8 @@ nav button {
 }
 
 .blog-details .comments .comment-box-area li .replay-form .replay-form-close:hover {
-    background: #ff5500;
-    border-color: #ff5500;
+    background: red;
+    border-color: red;
     color: #fff;
 }
 
@@ -28128,7 +28128,7 @@ nav button {
     height: 60px;
     text-align: center;
     line-height: 60px;
-    background: #ff5500;
+    background: red;
     border: 0px;
     border-radius: 5px;
     color: #fff;
@@ -28142,7 +28142,7 @@ nav button {
 }
 
 .blog-details .comments .comment-box-area li .replay-form .replay-comment-btn:hover {
-    background: #ff5500;
+    background: red;
 }
 
 .blog-details .comments .comment-box-area li:last-child {
@@ -28178,7 +28178,7 @@ nav button {
 .blog-details .write-comment .submit-btn {
     width: 225px;
     height: 60px;
-    background: #ff5500;
+    background: red;
     color: #fff;
     font-size: 16px;
     line-height: 60px;
@@ -28195,7 +28195,7 @@ nav button {
 }
 
 .blog-details .write-comment .submit-btn:hover {
-    background: #ff5500;
+    background: red;
 }
 
 .blog-details .blog-aside .serch-form {
@@ -28273,7 +28273,7 @@ nav button {
 }
 
 .blog-details .blog-aside .categori .categori-list li a:hover, .blog-details .blog-aside .categori .categori-list li a.active {
-    color: #ff5500;
+    color: red;
     padding-left: 5px;
 }
 
@@ -28339,7 +28339,7 @@ nav button {
 }
 
 .blog-details .blog-aside .recent-post-widget .post-list li .post .post-details .post-title:hover {
-    color: #ff5500;
+    color: red;
 }
 
 .blog-details .blog-aside .recent-post-widget .post-list li .post .post-details .date {
@@ -28402,7 +28402,7 @@ nav button {
 }
 
 .blog-details .blog-aside .archives .archives-list li a:hover {
-    color: #ff5500;
+    color: red;
 }
 
 .blog-details .blog-aside .tags {
@@ -28457,8 +28457,8 @@ nav button {
 }
 
 .blog-details .blog-aside .tags .tags-list li a:hover {
-    background: #ff5500;
-    border-color: #ff5500;
+    background: red;
+    border-color: red;
     color: #fff;
     -webkit-box-shadow: 0px 10px 10px 0px rgba(245, 127, 23, 0.3);
     box-shadow: 0px 10px 10px 0px rgba(245, 127, 23, 0.3);
@@ -28481,7 +28481,7 @@ nav button {
 }
 
 .contact-us .contact-section-title .title {
-    color: #ff5500;
+    color: red;
     font-size: 40px;
     line-height: 50px;
     font-weight: 600;
@@ -28544,7 +28544,7 @@ nav button {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     left: 15px;
-    color: #ff5500;
+    color: red;
 }
 
 .contact-us .left-area .contact-form ul li .input-field.textarea {
@@ -28574,18 +28574,18 @@ nav button {
 
 .contact-us .left-area .contact-form .captcha-area li .input-field:focus {
     border: 0px !important;
-    border-bottom: 1px solid #ff5500 !important;
+    border-bottom: 1px solid red !important;
 }
 
 .contact-us .left-area .contact-form .submit-btn {
     width: 213px;
     height: 50px;
-    background: #ff5500;
+    background: red;
     color: #fff;
     font-size: 16px;
     line-height: 47px;
     text-align: center;
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     border-radius: 50px;
     cursor: pointer;
     -webkit-box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.15);
@@ -28597,7 +28597,7 @@ nav button {
 
 .contact-us .left-area .contact-form .submit-btn:hover {
     background: none;
-    color: #ff5500;
+    color: red;
 }
 
 .contact-us .right-area .top-content {
@@ -28619,7 +28619,7 @@ nav button {
 .contact-us .right-area .contact-info {
     -webkit-box-shadow: 0px 0px 5px 0px rgba(14, 35, 107, 0.15);
     box-shadow: 0px 0px 5px 0px rgba(14, 35, 107, 0.15);
-    border-bottom: 2px solid #ff5500;
+    border-bottom: 2px solid red;
     padding: 30px 30px;
     margin-bottom: 20px;
     -webkit-transition: all 0.3s ease-in;
@@ -28639,7 +28639,7 @@ nav button {
 .contact-us .right-area .contact-info .left .icon {
     width: 70px;
     height: 70px;
-    background: #ff5500;
+    background: red;
     text-align: center;
     line-height: 70px;
     font-size: 28px;
@@ -28733,7 +28733,7 @@ nav button {
     font-size: 30px;
     font-weight: 700;
     line-height: 40px;
-    color: #ff5500;
+    color: red;
 }
 
 .login-area .header-area .text {
@@ -28771,7 +28771,7 @@ nav button {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     left: 15px;
-    color: #ff5500;
+    color: red;
 }
 
 .login-area .form-forgot-pass {
@@ -28792,7 +28792,7 @@ nav button {
     width: 100%;
     height: 50px;
     text-align: center;
-    background: #ff5500;
+    background: red;
     border: 0px;
     color: #fff;
     font-weight: 700;
@@ -28816,7 +28816,7 @@ nav button {
     font-size: 20px;
     font-weight: 600;
     display: inline-block;
-    color: #ff5500;
+    color: red;
     position: relative;
 }
 
@@ -28902,7 +28902,7 @@ nav button {
     padding: 10px 0px;
     width: 50%;
     text-align: center;
-    background: #ff5500;
+    background: red;
     border-radius: 0px;
     color: #fff;
 }
@@ -28935,7 +28935,7 @@ nav button {
     font-size: 30px;
     font-weight: 700;
     line-height: 40px;
-    color: #ff5500;
+    color: red;
 }
 
 .login-area .header-area .text {
@@ -28964,7 +28964,7 @@ nav button {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     left: 15px;
-    color: #ff5500;
+    color: red;
 }
 
 .login-area .form-forgot-pass {
@@ -28985,7 +28985,7 @@ nav button {
     width: 100%;
     height: 50px;
     text-align: center;
-    background: #ff5500;
+    background: red;
     border: 0px;
     color: #fff;
     font-weight: 700;
@@ -29009,7 +29009,7 @@ nav button {
     font-size: 20px;
     font-weight: 600;
     display: inline-block;
-    color: #ff5500;
+    color: red;
     position: relative;
 }
 
@@ -29095,7 +29095,7 @@ nav button {
     padding: 10px 0px;
     width: 50%;
     text-align: center;
-    background: #ff5500;
+    background: red;
     border-radius: 0px;
     color: #fff;
 }
@@ -29131,7 +29131,7 @@ nav button {
     font-weight: 700;
     text-transform: uppercase;
     line-height: 40px;
-    color: #ff5500;
+    color: red;
 }
 
 .login-area .header-area .text {
@@ -29160,7 +29160,7 @@ nav button {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     left: 15px;
-    color: #ff5500;
+    color: red;
 }
 
 .login-area .form-forgot-pass {
@@ -29181,7 +29181,7 @@ nav button {
     width: 100%;
     height: 50px;
     text-align: center;
-    background: #ff5500;
+    background: red;
     border: 0px;
     color: #fff;
     font-weight: 700;
@@ -29207,7 +29207,7 @@ nav button {
     text-transform: uppercase;
     font-weight: 600;
     display: inline-block;
-    color: #ff5500;
+    color: red;
     position: relative;
 }
 
@@ -29293,7 +29293,7 @@ nav button {
     padding: 10px 0px;
     width: 50%;
     text-align: center;
-    background: #ff5500;
+    background: red;
     border-radius: 0px;
     color: #fff;
 }
@@ -29313,7 +29313,7 @@ Faq Page Start
 .ui-accordion .ui-accordion-header {
     padding: 16px 40px 16px;
     margin-top: 20px !important;
-    background: #ff5500;
+    background: red;
     color: #fff;
     font-weight: 600;
     border: 0px;
@@ -29392,7 +29392,7 @@ Faq Page Start
 
 .vendor-top-header .content .single-box .icon {
     font-size: 38px;
-    color: #ff5500;
+    color: red;
     margin-right: 10px;
 }
 
@@ -29488,7 +29488,7 @@ Faq Page Start
 }
 
 .compare-page-content-wrap .pro-ratting i {
-    color: #ff5500;
+    color: red;
 }
 
 .compare-page-content-wrap .table-bordered td, .compare-page-content-wrap .table-bordered th {
@@ -29496,7 +29496,7 @@ Faq Page Start
 }
 
 .compare-page-content-wrap .btn__bg {
-    background: #ff5500;
+    background: red;
     font-size: 14px;
     text-transform: uppercase;
     color: #fff;
@@ -29547,7 +29547,7 @@ Faq Page Start
 }
 
 .user-dashbord .user-profile-info-area .links li.active a, .user-dashbord .user-profile-info-area .links li:hover a {
-    color: #ff5500;
+    color: red;
     -webkit-transition: all .3s linear;
     -o-transition: all .3s linear;
     transition: all .3s linear;
@@ -29573,11 +29573,11 @@ Faq Page Start
     justify-content: space-between;
     position: relative;
     overflow: hidden;
-    background: #ff5500;
-    background-image: -webkit-gradient(linear, left top, right top, from(#ff5500), to(#fac0a2));
-    background-image: -webkit-linear-gradient(left, #ff5500, #fac0a2);
-    background-image: -o-linear-gradient(left, #ff5500, #fac0a2);
-    background-image: linear-gradient(to right, #ff5500, #fac0a2);
+    background: red;
+    background-image: -webkit-gradient(linear, left top, right top, from(red), to(#fac0a2));
+    background-image: -webkit-linear-gradient(left, red, #fac0a2);
+    background-image: -o-linear-gradient(left, red, #fac0a2);
+    background-image: linear-gradient(to right, red, #fac0a2);
 }
 
 .user-dashbord .user-profile-details .mycard .left {
@@ -29692,7 +29692,7 @@ Faq Page Start
 
 .user-dashbord .user-profile-details .account-info .edit-info-area .edit-info-area-form .input-field:focus {
     border: 0px !important;
-    border-bottom: 1px solid #ff5500 !important;
+    border-bottom: 1px solid red !important;
 }
 
 .user-dashbord .user-profile-details .account-info .edit-info-area .edit-info-area-form .input-field.textarea {
@@ -29724,13 +29724,13 @@ Faq Page Start
 }
 
 .user-dashbord .user-profile-details .account-info .edit-info-area .edit-info-area-form .back:hover {
-    background: #ff5500;
+    background: red;
 }
 
 .user-dashbord .user-profile-details .account-info .edit-info-area .edit-info-area-form .submit-btn {
     width: 120px;
     height: 50px;
-    background: #ff5500;
+    background: red;
     color: #fff;
     font-size: 14px;
     line-height: 50px;
@@ -29831,7 +29831,7 @@ Faq Page Start
 }
 
 .user-dashbord .user-profile-details .order-details .view-order-page .print-order a {
-    background: #ff5500;
+    background: red;
     color: #fff;
     padding: 10px 20px;
 }
@@ -29907,7 +29907,7 @@ Faq Page Start
     left: 0;
     width: 150px !important;
     height: 40px;
-    background: #ff5500;
+    background: red;
     z-index: -1;
     cursor: pointer;
     text-align: center;
@@ -29988,7 +29988,7 @@ Faq Page Start
 
 .thankyou .content .icon {
     font-size: 90px;
-    color: #ff5500;
+    color: red;
 }
 
 .thankyou .content .heading {
@@ -30074,7 +30074,7 @@ Faq Page Start
 
 .single-wish .remove:hover {
     color: #fff;
-    background: #ff5500;
+    background: red;
 }
 
 .single-wish .left {
@@ -30106,7 +30106,7 @@ Faq Page Start
 
 .single-wish .right .stars li i {
     font-size: 14px;
-    color: #ff5500;
+    color: red;
 }
 
 .single-wish .right .price {
@@ -30127,7 +30127,7 @@ Faq Page Start
 }
 
 .single-wish .right .store-name i {
-    color: #ff5500;
+    color: red;
     margin-right: 2px;
 }
 
@@ -30381,7 +30381,7 @@ li#example_previous {
 .category-page .bg-white .sub-category-menu .category-name a {
     font-size: 20px;
     font-weight: 700;
-    color: #ff5500;
+    color: red;
     border-bottom: 1px solid #ddd;
     padding-bottom: 8px;
     display: block;
@@ -30433,11 +30433,11 @@ li#example_previous {
 }
 
 .category-page .bg-white .sub-category-menu ul li a:hover {
-    color: #ff5500;
+    color: red;
 }
 
 .category-page .bg-white .sub-category-menu ul li ul li a:hover i, .category-page .bg-white .sub-category-menu ul li ul li a:hover {
-    color: #ff5500;
+    color: red;
 }
 
 .category-page .bg-white .sub-category-menu ul li ul li a:hover {
@@ -30524,21 +30524,21 @@ li#example_previous {
 }
 
 .checkout-area .checkout-process li a:hover {
-    background: #ff5500;
+    background: red;
     color: #fff;
 }
 
 .checkout-area .checkout-process li a:hover::before {
-    border-left: 20px solid #ff5500;
+    border-left: 20px solid red;
 }
 
 .checkout-area .checkout-process li a.active {
-    background: #ff5500;
+    background: red;
     color: #fff;
 }
 
 .checkout-area .checkout-process li a.active::before {
-    border-left: 20px solid #ff5500;
+    border-left: 20px solid red;
 }
 
 .checkout-area .checkout-process li a span {
@@ -30747,7 +30747,7 @@ li#example_previous {
     position: absolute;
     left: 0px;
     top: -1px;
-    color: #ff5500;
+    color: red;
     line-height: 30px;
     font-size: 14px;
 }
@@ -30794,7 +30794,7 @@ li#example_previous {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #ff5500;
+    background: red;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
@@ -30863,8 +30863,8 @@ input[type=checkbox]+label:active:before {
 }
 
 input[type=checkbox]:checked+label:before {
-    background-color: #ff5500;
-    border-color: #ff5500;
+    background-color: red;
+    border-color: red;
     color: #fff;
 }
 
@@ -30946,7 +30946,7 @@ input[type=checkbox]:checked:disabled+label:before {
     left: 50%;
     z-index: 99;
     transform: translate(-50%, -50%);
-    background: #ff5500;
+    background: red;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
@@ -31099,7 +31099,7 @@ input[type=checkbox]:checked:disabled+label:before {
 
 .process-steps li.done:after, .process-steps li.active:after, .process-steps li.active .icon {
     color: #fff;
-    background: #ff5500;
+    background: red;
 }
 
 .process-steps li.done .icon:before {
@@ -31132,7 +31132,7 @@ input[type=checkbox]:checked:disabled+label:before {
 }
 
 .order-tracking-content .tracking-form .mybtn1 {
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     margin-left: 30px;
 }
 
@@ -31152,7 +31152,7 @@ input[type=checkbox]:checked:disabled+label:before {
 }
 
 .order-tracking-content .track-form .mybtn1 {
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     margin-left: 30px;
 }
 
@@ -31216,7 +31216,7 @@ input[type=checkbox]:checked:disabled+label:before {
 
 .tracking-steps li.done:after, .tracking-steps li.active:after, .tracking-steps li.active .icon {
     color: #fff;
-    background: #ff5500;
+    background: red;
 }
 
 .tracking-steps li:last-child {
@@ -31433,7 +31433,7 @@ input[type=checkbox]:checked:disabled+label:before {
 .page-center ul.pagination li {
     width: 35px;
     height: 35px;
-    background: #ff55001a;
+    background: red1a;
     border-radius: 50%;
     text-align: center;
     font-size: 14px;
@@ -31455,7 +31455,7 @@ input[type=checkbox]:checked:disabled+label:before {
 }
 
 .page-center ul.pagination li.active {
-    background: #ff5500;
+    background: red;
     color: #fff;
     cursor: no-drop;
 }
@@ -31546,7 +31546,7 @@ ul.pagination li.disabled {
     font-size: 16px;
     padding: 0 1px;
     cursor: pointer;
-    color: #ff5500;
+    color: red;
     text-decoration: none;
 }
 
@@ -31570,7 +31570,7 @@ ul.pagination li.disabled {
     top: 0;
     white-space: nowrap;
     overflow: hidden;
-    color: #ff5500;
+    color: red;
 }
 
 .empty-stars:before, .full-stars:before {
@@ -31584,7 +31584,7 @@ ul.pagination li.disabled {
 }
 
 .full-stars:before {
-    -webkit-text-stroke: 1px #ff5500;
+    -webkit-text-stroke: 1px red;
 }
 
 /* Webkit-text-stroke is not supported on firefox or IE */
@@ -31593,12 +31593,12 @@ ul.pagination li.disabled {
 
 @-moz-document url-prefix() {
     .full-stars {
-        color: #ff5500;
+        color: red;
     }
 }
 
 .full-stars {
-    color: #ff5500;
+    color: red;
 }
 
 .edit-info-area .upload-img .img img {
@@ -31610,8 +31610,8 @@ ul.pagination li.disabled {
 .login-btn {
     color: #fff !important;
     cursor: pointer;
-    background-color: #ff5500;
-    border-color: #ff5500;
+    background-color: red;
+    border-color: red;
     padding: 8px 12px;
 }
 
@@ -31634,7 +31634,7 @@ ul.pagination li.disabled {
 }
 
 .taglist a.active {
-    background: #ff5500;
+    background: red;
     color: #fff !important;
 }
 
@@ -32411,7 +32411,7 @@ a.sell-btn {
 }
 
 #product-details-tab #comment-area .write-comment-area .submit-btn {
-    border: 1px solid #ff5500;
+    border: 1px solid red;
     border-radius: 50px;
     padding: 12px 30px;
 }
@@ -32501,7 +32501,7 @@ nav .menu li a {
 }
 
 .top-header .content .right-content .list li .track-btn:hover {
-    background: #ff5500;
+    background: red;
     -webkit-transition: all 0.3s ease-in;
     -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
