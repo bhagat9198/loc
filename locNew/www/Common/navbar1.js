@@ -63,7 +63,7 @@ db.collection("categories").onSnapshot(async (snapshots) => {
       `;
     liMob += `
       <li >
-        <a href="#!" ><span onclick="navigateTo('/Products/products.html?cat=${data.dId}')">${data.d.name}</span><i class="fa fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
+        <a href="#!" ><span onclick="navigateTo('../Products/products.html?cat=${data.dId}')">${data.d.name}</span><i class="fa fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
         <ul>
           ${subCat}
           <li>
