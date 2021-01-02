@@ -71,7 +71,6 @@
                               placeholder="Ex: New Year Offers  "
                               id="subject"
                               required
-                              
                             />
                           </div>
                         </div>
@@ -93,6 +92,71 @@
                                   padding: 10px;
                                 "
                               ></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <input
+                            type="file"
+                            name="product-sub-imgs"
+                            class="hidden"
+                            id="product-sub-imgs"
+                            accept="image/*"
+                            multiple
+                          />
+                          <br />
+                          <div class="row mb-4">
+                            <div class="col-lg-12 mb-4">
+                              <div class="left-area">
+                                <h4 class="mainHeading">Email Images</h4>
+                              </div>
+                            </div>
+                            <div class="col-lg-12" style="padding: 20px">
+                              <div
+                                class="modal-body"
+                                style="border: 1px solid black; padding: 10px"
+                              >
+                                <div class="top-area">
+                                  <div class="row">
+                                    <div class="col-sm-6 text-right">
+                                      <div
+                                        class="upload-img-btn"
+                                        style="cursor: pointer"
+                                      >
+                                        <label
+                                          for="image-upload"
+                                          id="prod_gallery"
+                                          style="cursor: pointer"
+                                          ><i class="fas fa-upload"></i>Upload
+                                          File</label
+                                        >
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <a
+                                        href="javascript:;"
+                                        class="upload-done"
+                                        data-dismiss="modal"
+                                      >
+                                        <i class="fas fa-check"></i> Done</a
+                                      >
+                                    </div>
+                                    <div class="col-sm-12 text-center">
+                                      (
+                                      <small
+                                        >You can upload multiple images at
+                                        once.</small
+                                      >
+                                      )
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="gallery-images">
+                                  <div class="selected-image">
+                                    <div class="row"></div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -161,6 +225,56 @@
       };
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
+      let productSubImgs = [];
+      product-sub-imgs.addEventListener("change", uploadSubImgs);
+      const uploadSubImgs = (e) => {
+        subImgs = e.target.files;
+        // console.log(subImgs);
+      };
+      $(document).on("click", ".remove-img", function () {
+        var id = $(this).find("input[type=hidden]").val();
+        $("#galval" + id).remove();
+        $(this).parent().parent().remove();
+      });
+
+      $(document).on("click", "#prod_gallery", function () {
+        $("#product-sub-imgs").click();
+        $(".selected-image .row").html("");
+        $("#add-product").find(".removegal").val(0);
+      });
+
+      $("#product-sub-imgs").change(function () {
+        var total_file = document.getElementById("product-sub-imgs").files
+          .length;
+        for (var i = 0; i < total_file; i++) {
+          $(".selected-image .row").append(
+            '<div class="col-sm-6">' +
+              '<div class="img gallery-img" style="width:100px;object-fit:cover">' +
+              '<span class="remove-img"><i class="fas fa-times"></i>' +
+              '<input type="hidden" value="' +
+              i +
+              '">' +
+              "</span>" +
+              '<a href="' +
+              URL.createObjectURL(event.target.files[i]) +
+              '" target="_blank">' +
+              '<img src="' +
+              URL.createObjectURL(event.target.files[i]) +
+              '" alt="gallery image" style="width:300px;object-fit:cover">' +
+              "</a>" +
+              "</div>" +
+              "</div> "
+          );
+
+          $("#add-product").append(
+            '<input type="hidden" name="galval[]" id="galval' +
+              i +
+              '" class="removegal" value="' +
+              i +
+              '">'
+          );
+        }
+      });
       let db = firebase.firestore();
       $(function () {
         $(".textarea1").summernote();
@@ -168,7 +282,7 @@
       function getData() {
         let template = $(".textarea1").summernote("code");
         let subject = document.querySelector("#subject").value;
-    
+
         if (subject) {
           let ans = confirm("Are you sure to send the email");
           if (ans) {
@@ -176,15 +290,15 @@
               .add({
                 template: template,
                 status: "pending",
-                subject:subject,
+                subject: subject,
                 createdAt: new Date(),
               })
               .then(function () {
                 alert("Email Sent Successfully");
               });
           }
-        }else{
-            alert("Subject is Required")
+        } else {
+          alert("Subject is Required");
         }
       }
     </script>
