@@ -462,6 +462,7 @@ const buyAddon = (e, current) => {
   let tAddons = 0;
   document.querySelectorAll(".addons-checkbox").forEach((el) => {
     if (el.checked) {
+      // tAddons++;
       tAddons++;
     }
   });
