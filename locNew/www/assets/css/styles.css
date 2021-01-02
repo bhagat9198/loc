@@ -1,0 +1,714 @@
+
+
+
+.top-header .content .right-content .list ul li .language-selector .language {
+  background: #ffffff;}
+.top-header .content .right-content .list ul li .currency-selector .currency {
+  background: #ffffff;}
+
+.logo-header {
+  background: #ffffff; }
+  
+.logo-header .search-box .categori-container .categoris option {
+  background: #ffffff; }
+
+
+
+.autocomplete-items div {
+  background: #ffffff;
+  border: 0.5px solid #ffffff;
+}
+
+
+
+
+
+.footer {
+  background: #f2f2f2 !important;
+}
+
+
+
+.footer .copy-bg {
+    background: #ffffff; }
+
+.mybtn1,
+.bottomtotop i,
+.logo-header .search-box .categori-container .categoris option:hover,
+.logo-header .helpful-links ul li.my-dropdown .cart .icon span,
+.trending .item .item-img .time,
+.hero-area .hero-area-slider .intro-carousel.owl-carousel .owl-controls .owl-nav .owl-prev:hover,
+.hero-area .hero-area-slider .intro-carousel.owl-carousel .owl-controls .owl-nav .owl-next:hover,
+.hero-area .info-box:hover .icon,
+.trending .item .item-img .sale,
+.trending .item .item-img .discount,
+.trending .item .item-img .extra-list ul li a ,
+.trending .item .item-img .extra-list ul li a:hover,
+.categori-item .item .item-img .sale,
+.categori-item .item .item-img .discount,
+.categori-item .item .item-img .extra-list ul li a,
+.categori-item .item .item-img .extra-list ul li a:hover,
+.flash-deals .flas-deal-slider .item .item-img .discount,
+.flash-deals .flas-deal-slider .owl-controls .owl-dots .owl-dot.active,
+.hot-and-new-item .categori .section-top .section-title::after,
+.blog-area .aside .slider-wrapper .owl-controls .owl-dots .owl-dot.active,
+.blog-area .blog-box .blog-images .img .date,
+.blog-area .blog-box .details .read-more-btn,
+.footer .fotter-social-links ul li a:hover,
+.product-details-page .all-item .slidPrv4.slick-arrow,
+.product-details-page .all-item .slidNext4.slick-arrow,
+.product-details-page .right-area .product-info .contact-seller .list li a:hover,
+.product-details-page .right-area .product-info .info-meta-3 .meta-list li.compare a:hover,
+.product-details-page #coment-area .all-comments li .single-comment .right-area .replaybtn:hover,
+.product-details-page #coment-area .write-comment-area .submit-btn,
+.ui-widget-header,
+.ui-slider .ui-slider-handle,
+.sub-categori .left-area .filter-result-area .body-area .filter-btn,
+.sub-categori .left-area .tags-area .body-area .taglist li a:hover,
+.sub-categori .right-area .categori-item-area .item .item-img .time,
+.sub-categori .right-area .categori-item-area .item .item-img .sale,
+.sub-categori .right-area .categori-item-area .item .item-img .discount,
+.sub-categori .right-area .categori-item-area .item .item-img .extra-list ul li a:hover,
+.sub-categori .right-area .pagination-area .pagination .page-item .page-link.active, 
+.sub-categori .right-area .pagination-area .pagination .page-item .page-link:hover,
+.sub-categori .modal .modal-dialog .modal-header,
+.sub-categori .modal .contact-form .submit-btn,
+.cartpage .left-area .table tbody tr td.quantity .qty ul li .qtminus:hover, 
+.cartpage .left-area .table tbody tr td.quantity .qty ul li .qtplus:hover,
+.cartpage .right-area .order-box .cupon-box #coupon-form button:hover,
+.cartpage .right-area .order-box .order-btn,
+.blogpagearea .blog-box .blog-images .img .date,
+.blogpagearea .blog-box .details .read-more-btn,
+.blog-details .blog-content .content .tag-social-link .social-links li a,
+.blog-details .comments .comment-box-area li .comment-box .left .replay,
+.blog-details .comments .comment-box-area li .comment-box .left .replay:hover,
+.blog-details .comments .comment-box-area li .replay-form .replay-form-close:hover,
+.blog-details .comments .comment-box-area li .replay-form .replay-comment-btn,
+.blog-details .comments .comment-box-area li .replay-form .replay-comment-btn:hover,
+.blog-details .write-comment .submit-btn,
+.blog-details .write-comment .submit-btn:hover,
+.blog-details .blog-aside .tags .tags-list li a:hover,
+.contact-us .left-area .contact-form .submit-btn,
+.contact-us .right-area .contact-info .left .icon,
+.contact-us .right-area .social-links ul li a,
+.contact-us .right-area .social-links ul li a:hover,
+.login-signup .login-area .submit-btn,
+.ui-accordion .ui-accordion-header,
+.compare-page-content-wrap .btn__bg,
+.user-dashbord .user-profile-details .mycard,
+.user-dashbord .user-profile-details .account-info .edit-info-area .edit-info-area-form .back:hover,
+.user-dashbord .user-profile-details .account-info .edit-info-area .edit-info-area-form .submit-btn,
+.single-wish .remove:hover,
+.sub-categori .right-area .categori-item-area .item .item-img .extra-list ul li a 
+ {
+    background: #ff0000;
+}
+
+.section-top .link,
+.input-field.error:-ms-input-placeholder,
+.input-field.error::-moz-placeholder,
+.input-field.error::-webkit-input-placeholder,
+.breadcrumb-area .pages li a:hover,
+.categories_menu_inner > ul > li > ul.categories_mega_menu > li > a:hover,
+.categorie_sub_menu ul li a:hover,
+nav .menu li a:hover,
+nav .menu li.dropdown.open > a,
+.hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-1 .title,
+.trending li.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-active a,
+.hero-area .info-box .icon,
+.trending .item .info .stars ul li i,
+.categori-item .item .info .stars ul li i,
+.flash-deals .flas-deal-slider .item .stars ul li i,
+.flash-deals .flas-deal-slider .item .price .new-price,
+.hot-and-new-item .categori .item-list li .single-box .right-area .stars ul li i,
+.footer .copy-bg .content .content a,
+.footer .footer-widget ul li a:hover,
+.info-link-widget .link-list li a:hover,
+.info-link-widget .link-list li a:hover i,
+.product-details-page .right-area .product-info .info-meta-1 ul li .stars li i,
+.product-details-page .right-area .product-info .contact-seller .title,
+.product-details-page .right-area .product-info .contact-seller .list li a,
+.product-details-page .right-area .product-info .product-price .price,
+ .product-details-page .right-area .product-info .info-meta-3 .meta-list li.compare a,
+ .product-details-page #product-details-tab li.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-active a,
+ .product-details-page #product-details-tab ul li a i,
+ .product-details-page #product-details-tab ul li a:hover,
+ .product-details-page #coment-area .all-comments li .single-comment .right-area .header-area .posttime,
+ .sub-categori .left-area .service-center .body-area .list li i,
+ .sub-categori .left-area .service-center .footer-area .list li a:hover,
+ .sub-categori .right-area .categori-item-area .item .info .stars ul li i,
+ .sub-categori .right-area .pagination-area .pagination .page-item .page-link,
+ .blog-details .blog-content .content .post-meta li a:hover,
+ .blog-details .blog-content .content blockquote,
+ .blog-details .blog-aside .categori .categori-list li a:hover,
+  .blog-details .blog-aside .categori .categori-list li a.active,
+  .blog-details .blog-aside .recent-post-widget .post-list li .post .post-details .post-title:hover,
+  .blog-details .blog-aside .archives .archives-list li a:hover,
+  .contact-us .contact-section-title .title,
+  .login-signup .login-area .header-area .title,
+  .login-signup .login-area .form-input i,
+  .login-signup .login-area .social-area .title,
+  .vendor-top-header .content .single-box .icon,
+  .compare-page-content-wrap .pro-ratting i,
+  .user-dashbord .user-profile-info-area .links li.active a, 
+  .user-dashbord .user-profile-info-area .links li:hover a,
+  .thankyou .content .icon,
+  .single-wish .right .stars li i,
+  .single-wish .right .store-name i
+{
+    color: #ff0000;
+}
+
+
+.input-field.error,
+.trending .item .item-img .extra-list ul li a,
+.categori-item .item .item-img .extra-list ul li a,
+.product-details-page li.slick-slide,
+.product-details-page .right-area .product-info .product-size .siz-list li.active .box,
+.sub-categori .right-area .categori-item-area .item .item-img .extra-list ul li a 
+{
+    border: 1px solid #ff0000;;
+}
+
+.input-field.error:focus,
+.trending .item .item-img .extra-list ul li a:hover,
+.categori-item .item .item-img .extra-list ul li a:hover,
+.footer .fotter-social-links ul li a:hover,
+.product-details-page .right-area .product-info .contact-seller .list li a:hover,
+.product-details-page .right-area .product-info .info-meta-3 .meta-list li.compare a:hover,
+.product-details-page #product-details-tab li.ui-tabs-tab.ui-corner-top.ui-state-default.ui-tab.ui-tabs-active.ui-state-active a,
+.sub-categori .right-area .categori-item-area .item .item-img .extra-list ul li a:hover,
+.cartpage .left-area .table tbody tr td.quantity .qty ul li .qtminus:hover, 
+.cartpage .left-area .table tbody tr td.quantity .qty ul li .qtplus:hover,
+.cartpage .right-area .order-box .cupon-box #coupon-form button:hover,
+.blog-details .comments .comment-box-area li .replay-form .replay-form-close:hover,
+.blog-details .blog-aside .tags .tags-list li a:hover
+{
+    border-color: #ff0000;
+}
+.loader-1 .loader-outter,
+.loader-1 .loader-inner
+ {
+    border: 4px solid #ff0000;
+ }
+ 
+
+  
+ 
+
+ .trending .item .item-img .sale::before,
+ .trending .item .item-img .discount::before,
+ .categori-item .item .item-img .sale::before,
+ .categori-item .item .item-img .discount::before,
+ .sub-categori .right-area .categori-item-area .item .item-img .sale::before,
+ .sub-categori .right-area .categori-item-area .item .item-img .discount::before 
+  {
+    border-bottom: 22px solid #ff0000;
+ }
+ .flash-deals .flas-deal-slider .item .item-img .discount::before {
+    border-bottom: 30px solid #ff0000;
+}
+.blog-area .aside .slider-wrapper .slide-item .top-area .left img {
+    border: 2px solid #ff0000;
+}
+.sub-categori .modal .contact-form ul li .input-field:focus,
+.contact-us .left-area .contact-form ul li .input-field:focus,
+.contact-us .left-area .contact-form .captcha-area li .input-field:focus,
+.user-dashbord .user-profile-details .account-info .edit-info-area .edit-info-area-form .input-field:focus 
+ {
+    border-bottom: 1px solid #ff0000 !important; 
+}
+
+.blog-details .blog-content .content blockquote {
+    border-left: 5px solid #ff0000;
+}
+.blog-details .comments .comment-box-area li .comment-box .left .img {
+    border: 2px solid #ff0000;
+ }
+ .contact-us .right-area .contact-info {
+    border-bottom: 2px solid #ff0000;
+}
+.page-center ul.pagination li {
+    background: #ff00001a;
+}
+
+.page-center ul.pagination li.active {
+    background: #ff0000;
+}
+.logo-header .helpful-links ul li.compare .compare-product .icon span {
+  background: #ff0000;
+}
+.hero-area .info-box .icon {
+    background: #ff0000;
+    }
+
+
+.video-play-btn {
+  background-color: #ff0000;
+
+  }
+
+    .product-details-page .right-area .product-info .contact-seller .title {
+      color: #ff0000;}
+
+        .product-details-page .right-area .product-info .contact-seller .list li a {
+          color: #ff0000; }
+          .product-details-page .right-area .product-info .contact-seller .list li a:hover {
+            background: #ff0000;
+            border-color: #ff0000; }
+    .product-details-page .right-area .product-info .product-price .price {
+      color: #ff0000;}
+        .product-details-page .right-area .product-info .product-size .siz-list li.active .box {
+          border: 1px solid #ff0000; }
+
+
+
+          .product-details-page .right-area .product-info .product-color .color-list li .box.color5 {
+            background:#ff0000; }
+
+
+
+
+
+
+      
+          .product-details-page #product-details-tab.ui-tabs .ui-tabs-panel .heading-area .reating-area .stars {
+            background: #ff0000;}
+        .login-btn {
+            background-color: #ff0000; 
+            border-color: #ff0000;
+        }
+        .product-details-page #product-details-tab .top-menu-area ul li a::after {
+          background: #ff0000;}
+
+        .trending .item .item-img .extra-list ul li span {
+          border: 1px solid #ff0000;
+          background: #ff0000;}
+
+      .item .item-img .extra-list ul li span {
+        border: 1px solid #ff0000;
+        background: #ff0000;
+         }
+      .item .item-img .extra-list ul li span:hover {
+        background: #ff0000;
+        border-color: #ff0000;}
+      .flash-deals .flas-deal-slider .item .price .new-price {
+        color: #ff0000;}
+        .footer .footer-widget ul li a:hover {
+          color: #ff0000; }
+        .info-link-widget .link-list li a:hover i {
+          color: #ff0000; }
+      .footer .copy-bg .content .content a {
+        color: #ff0000; }
+
+       .login-area .header-area .title {
+        color: #ff0000; }
+      .login-area .form-input i {
+        color: #ff0000; }
+      .login-area .social-area .title {
+        color: #ff0000;
+      }
+          .blog-details .blog-aside .categori .categori-list li a:hover, .blog-details .blog-aside .categori .categori-list li a.active {
+            color: #ff0000; }
+              .blog-details .blog-aside .recent-post-widget .post-list li .post .post-details .post-title:hover {
+                color: #ff0000; }
+          .blog-details .blog-aside .archives .archives-list li a:hover {
+            color: #ff0000; }
+
+.taglist a.active {
+   background: #ff0000;
+}
+     .login-area .submit-btn {
+      background:#ff0000; }
+
+  .comment-log-reg-tabmenu .nav-tabs .nav-link {
+    background: #143250; }
+.comment-log-reg-tabmenu .nav-tabs .nav-link.active {
+    background: #ff0000;
+}
+    
+          .trending .item .item-img .extra-list ul li span:hover {
+            background: #ff0000;
+            border-color: #ff0000; }
+
+        .user-dashbord .user-profile-info-area .links li.active a, .user-dashbord .user-profile-info-area .links li:hover a {
+          color: #ff0000;
+  }
+    .user-dashbord .user-profile-details .order-details .view-order-page .print-order a {
+      background: #ff0000; }
+
+      .upload-img .file-upload-area .upload-file span {
+        background: #ff0000; }
+    .thankyou .content .icon {
+      color: #ff0000; }
+
+  #product-details-tab #replay-area .write-comment-area .submit-btn {
+    background: #ff0000;
+}
+  #product-details-tab #comment-area .write-comment-area .submit-btn {
+    background: #ff0000;
+ }
+ #style-switcher h2 a {
+  background: #ff0000;
+}
+.categorie_sub_menu ul li a:hover {
+  color: #ff0000; }
+
+  .elegant-pricing-tables h3 .price-sticker,
+.elegant-pricing-tables:hover,
+.elegant-pricing-tables.active,
+.elegant-pricing-tables:hover .price,
+.elegant-pricing-tables.active .price,
+.elegant-pricing-tables.style-2 .price,
+.elegant-pricing-tables .btn {
+    background: #ff0000;
+}
+ .logo-header .helpful-links ul li.my-dropdown.profilearea  .profile .img img{
+  border: 2px solid #ff0000;
+ }
+ a.sell-btn {
+    background: #ff0000;
+}
+ .top-header .content .right-content .list ul li a.sell-btn:hover {
+ transition: 0.3s;
+ background: #fff;
+color: #ff0000;
+}
+.sub-categori .left-area .service-center .body-area .list li i {
+  color: #ff0000; 
+}
+.sub-categori .left-area .service-center .footer-area .list li a:hover {
+  color: #ff0000; }
+.breadcrumb-area .pages li a:hover {
+  color: #ff0000; }
+.cartpage .left-area .table tbody tr td.quantity .qty ul li .qtminus1:hover, .cartpage .left-area .table tbody tr td.quantity .qty ul li .qtplus1:hover {
+  background: #ff0000;
+  border-color: #ff0000; }
+.cupon-box #coupon-form button:hover {
+  background: #ff0000;
+  border-color: #ff0000; }
+.cupon-box #check-coupon-form button:hover {
+  background: #ff0000;
+  border-color: #ff0000; }
+  .categories_menu_inner > ul > li > ul.categories_mega_menu > li > a:hover {
+  color: #ff0000; }
+              .contact-us .left-area .contact-form .form-input i {
+              color: #ff0000; 
+            }
+      .message-modal .modal .modal-dialog .modal-header {
+        background:  #ff0000; }
+
+      .message-modal .modal .contact-form .submit-btn {
+        background:  #ff0000; }
+
+
+
+.logo-header .search-box .categori-container .categoris option:focus{
+  background: #ff0000;
+}
+        .product-details-page .right-area .product-info .mproduct-size .siz-list li.active .box {
+          border: 1px solid #ff0000; }
+ 
+  .trending .owl-carousel .owl-controls .owl-nav .owl-prev,
+  .trending .owl-carousel .owl-controls .owl-nav .owl-next {
+
+    background: #ff0000;
+    border: 1px solid #ff0000;
+    }
+    .trending .owl-carousel .owl-controls .owl-nav .owl-prev:hover,
+    .trending .owl-carousel .owl-controls .owl-nav .owl-next:hover {
+      color: #ff0000;
+    }
+    .section-top .section-title::after{
+      background: #ff0000;
+    }
+    .item .add-to-cart-btn{
+      background: #ff0000;
+      border: 1px solid #ff0000;
+    }
+    .item .add-to-cart-btn:hover {
+      color: #ff0000;
+  }    
+  .flash-deals .owl-carousel .owl-controls .owl-nav .owl-prev,
+  .flash-deals .owl-carousel .owl-controls .owl-nav .owl-next {
+    background: #ff0000;
+    border: 1px solid #ff0000;
+    }
+    .flash-deals .owl-carousel .owl-controls .owl-nav .owl-prev:hover,
+    .flash-deals .owl-carousel .owl-controls .owl-nav .owl-next:hover {
+      color: #ff0000;
+    }
+      .flash-deals .flas-deal-slider .item .price .new-price {
+        color: #ff0000;}
+
+        .flash-deals .flas-deal-slider .item .deal-counter span {
+          color: #ff0000;
+          }
+          .hot-and-new-item .owl-carousel .owl-controls .owl-nav .owl-prev,
+          .hot-and-new-item .owl-carousel .owl-controls .owl-nav .owl-next {
+            border: 1px solid #ff0000;
+            color: #ff0000;
+            }
+            .hot-and-new-item .owl-carousel .owl-controls .owl-nav .owl-prev:hover,
+            .hot-and-new-item .owl-carousel .owl-controls .owl-nav .owl-next:hover {
+              background: #ff0000!important;
+
+            }
+
+        .product-details-page .right-area .product-info .info-meta-3 .meta-list li.addtocart a {
+
+          border: 1px solid #ff5500;
+          background: #ff0000; }
+          .product-details-page .right-area .product-info .info-meta-3 .meta-list li.addtocart a:hover {
+            color: #ff0000; }
+        .product-details-page .right-area .product-info .info-meta-3 .meta-list li.addtocart a {
+          border: 1px solid #ff0000;
+          background: #ff0000;
+          }
+          .product-details-page .right-area .product-info .info-meta-3 .meta-list li.addtocart a:hover {
+            color: #ff0000; }
+
+        .product-details-page .right-area .product-info .info-meta-3 .meta-list li.favorite a, .product-details-page .right-area .product-info .info-meta-3 .meta-list li.compare a {
+          border: 1px solid #ff0000;
+          background: #ff0000;}
+          .product-details-page .right-area .product-info .info-meta-3 .meta-list li.favorite a:hover, .product-details-page .right-area .product-info .info-meta-3 .meta-list li.compare a:hover {
+                      background: #fff;
+            color: #ff0000; }
+
+                .seller-info .content .title {
+                  color: #ff0000;
+                 }
+
+
+                  .seller-info .content .total-product p {
+                    color: #ff0000;
+                   }
+
+
+              .seller-info .view-stor {
+                background: #ff0000;
+
+                border: 1px solid #ff0000;
+
+                }
+                .seller-info .view-stor:hover{
+                  background: #fff;
+                  color: #ff0000;
+                }
+          .product-details-page .categori .owl-carousel .owl-controls .owl-nav .owl-prev,
+          .product-details-page .categori .owl-carousel .owl-controls .owl-nav .owl-next {
+            color: #ff0000;
+                border: 1px solid #ff0000;
+            }
+  .product-details-page .xzoom-container .owl-carousel .owl-controls .owl-nav .owl-prev,
+  .product-details-page .xzoom-container .owl-carousel .owl-controls .owl-nav .owl-next {
+
+    background: #ff0000;
+    border: 1px solid #ff0000;
+
+    }
+            
+
+            .subscribePreloader__text {
+    background: #ff0000c7;
+}
+
+          .logo-header .helpful-links ul li.my-dropdown .my-dropdown-menu .dropdownmenu-wrapper .dropdown-cart-action .mybtn1 {
+
+            border: 1px solid  #ff0000;
+          }
+  .mybtn1:hover {
+    color: #ff0000 !important;
+      border: 1px solid #ff0000;
+    }
+    .mybtn2:hover {
+      background: #ff0000;
+      border: 1px solid #ff0000;
+    }
+.top-header .content .right-content .list li .track-btn:hover{
+  background: #ff0000;
+}
+input[type=checkbox]:checked + label:before {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+    .radio-design .checkmark::after{
+      background: #ff0000;
+    }
+     .order-box .order-btn {
+      background: #ff0000;
+ }
+.mybtn1 {
+  border: 1px solid #ff0000;
+  }
+  .mybtn2 {
+    color: #ff0000 !important;
+  border: 1px solid #ff0000;
+  }
+
+.checkout-area .checkout-process li a:hover{
+  background: #ff0000;
+
+}
+.checkout-area .checkout-process li a:hover::before{
+  border-left: 20px solid #ff0000;
+}
+.checkout-area .checkout-process li a.active{
+  background: #ac0404;
+
+}
+.checkout-area .checkout-process li a.active::before{
+  border-left: 20px solid #f30b0b;
+}
+.checkout-area  .content-box .content .billing-info-area .info-list li p i{
+   color: #ee0f0f;
+}
+  .checkout-area  .content-box .content .payment-information .nav a span::after{
+    background:#ac0404 ;
+  }
+      .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-3 a {
+      border: 1px solid #ff0000;
+    }
+    .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-3 a:hover {
+      border: 1px solid #ff0000;
+      color: #ff0000;
+    }    
+
+  .order-tracking-content .track-form .mybtn1{
+    border: 1px solid #ff0000;
+
+  }  
+  .order-tracking-content .tracking-form .mybtn1{
+    border: 1px solid  #ff0000;
+  }
+  .tracking-steps li.done:after,
+  .tracking-steps li.active:after,
+  .tracking-steps li.active .icon{
+  background: #ff0000;
+  }
+  .modal-header .close:hover {
+  background-color: #ff0000;
+}
+.logo-header .helpful-links ul li.wishlist .wish span {
+          background: #ff0000;
+          }
+          .top-header {
+  background: #ff0000;
+
+  }
+  .logo-header .search-box .search-form button {
+        background: #ff0000;
+        }
+  .categories_title {
+  background: #ff0000;
+ }
+ nav .menu li:last-child a{
+    color: #ff0000;
+  }
+
+  .blog-area .blog-box .details .read-more-btn:hover {
+    color: #ff0000;
+}
+.blog-area .blog-box .details .read-more-btn {
+
+        border: 1px solid #ff0000;
+        }
+        .info-area {
+    background: #ff0000;
+  }
+  .blogpagearea .blog-box .details .read-more-btn {
+        border: 1px solid #ff0000;
+
+        }
+        .blogpagearea .blog-box .details .read-more-btn:hover {
+          color: #ff0000;
+        }
+        .contact-us .left-area .contact-form .submit-btn {
+        border: 1px solid #ff0000;
+        }
+        .contact-us .left-area .contact-form .submit-btn:hover {
+          color: #ff0000;
+          }
+          .process-steps li.done:after,
+  .process-steps li.active:after,
+  .process-steps li.active .icon{
+  background: #ff0000;
+  }
+  .sub-categori .left-area .filter-result-area .body-area .filter-btn {
+        border: 1px solid #ff0000;
+        }
+        .sub-categori .left-area .filter-result-area .body-area .filter-btn:hover {
+          color: #ff0000;
+          }
+          .category-page  .bg-white .sub-category-menu .category-name a{
+  color: #ff0000;
+
+}
+.category-page  .bg-white .sub-category-menu ul li a:hover{
+  color: #ff0000;
+}
+.category-page  .bg-white .sub-category-menu ul li ul li a:hover i,
+.category-page  .bg-white .sub-category-menu ul li ul li a:hover 
+{
+  color: #ff0000;
+}
+#product-details-tab #comment-area .write-comment-area .submit-btn{
+    border: 1px solid #ff0000;
+}
+#product-details-tab #replay-area .write-comment-area .submit-btn {
+    border: 1px solid #ff0000;
+}
+#product-details-tab #replay-area .write-comment-area .submit-btn:hover {
+      color: #ff0000;
+      }
+      #product-details-tab #comment-area .write-comment-area .submit-btn:hover {
+      color: #ff0000;
+      }
+
+      @media (max-width: 991px) {
+      nav .nav-header .toggle-bar {
+        color: #ff0000;
+        }      
+    }
+
+    .product-details-page .xzoom-container .owl-carousel .owl-controls .owl-nav .owl-prev:hover,
+    .product-details-page .xzoom-container .owl-carousel .owl-controls .owl-nav .owl-next:hover {
+      color: #ff0000;
+    }
+
+    .product-details-page .categori .owl-carousel .owl-controls .owl-nav .owl-prev:hover,
+.product-details-page .categori .owl-carousel .owl-controls .owl-nav .owl-next:hover {
+  background: #ff0000 !important;
+
+}
+.slider-buttom-category .single-category::before {
+  background: #ff0000;
+
+}
+.custom-control-input:checked~.custom-control-label::before {
+    border-color: #ff0000;
+    background-color: #ff0000;
+}
+        #product-details-tab #comment-area .all-comment li .single-comment .left-area img {
+
+          border: 2px solid #ff0000;
+ }
+
+         #product-details-tab #replay-area .all-replay li .single-review .left-area img {
+
+          border: 2px solid #ff0000;
+}
+
+.wholesell-details-page{
+  background: #ff00000f;
+}
+.sub-categori .left-area .filter-result-area .body-area .filter-list li a:hover{
+  color: #ff0000;
+}
+      .contact-us .right-area .contact-info .content a:hover {
+    color: #ff0000;
+ }
+        #product-details-tab #comment-area .all-comment li .replay-area button {
+        background: #ff0000;
+
+        }

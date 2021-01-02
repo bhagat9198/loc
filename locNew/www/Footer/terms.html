@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>Online Cake Delivery | #1 Online Cake,Flowers & Gifts in Lucknow | Lake of Cakes | Terms</title>
+
+  <!-- Font Awesome Icons -->
+  <!-- <link href="../assets/css/dark-side-style.css" rel="stylesheet" /> -->
+  <link href="../assets/css/waves.min.css" rel="stylesheet" />
+
+  <link href="../assets/css/plugin.css" rel="stylesheet" />
+
+  <link href="../assets/css/jquery.tagit.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/bootstrap-coloroicker.css">
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="../assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <link href="../assets/css/custom.css" rel="stylesheet" />
+  <link href="../assets/css/responsive.css" rel="stylesheet" />
+  <link href="../assets/css//Common.css" rel="stylesheet" />
+  <link href="../assets/css/product.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.css"
+    integrity="sha512-KbfxGgOkkFXdpDCVkrlTYYNXbF2TwlCecJjq1gK5B+BYwVk7DGbpYi4d4+Vulz9h+1wgzJMWqnyHQ+RDAlp8Dw=="
+    crossorigin="anonymous" />
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<style>
+  .paragraph {
+    color: rgb(0, 0, 0) !important;
+    font-weight: 900 !important;
+  }
+
+  @media (min-width: 986px) {
+    .modal-dialog {
+
+      width: 1000px;
+    }
+  }
+
+  @media (max-width: 786px) {
+    .card-body {
+      overflow: scroll;
+
+    }
+  }
+
+
+  @media print {
+    .page {
+      border: initial;
+      border-radius: initial;
+      width: initial;
+      min-height: initial;
+      box-shadow: initial;
+      background: initial;
+      page-break-after: always;
+    }
+
+    table {
+      page-break-inside: auto;
+    }
+
+    tr.last-row {
+      background-color: rgb(209, 183, 32) !important;
+    }
+
+    tr.last-row>th,
+    tr.last-row>td {
+      background-color: unset !important;
+    }
+
+    div.page-break {
+      page-break-before: auto;
+    }
+  }
+
+  .gray {
+    color: #333;
+  }
+
+  .gray-ish {
+    color: #666;
+  }
+
+  .almost-gray {
+    color: #999;
+  }
+
+
+
+  div.container {
+    background-color: white;
+    border-radius: 10px;
+    height: 100%;
+    position: relative;
+    margin-top: 50px;
+  }
+
+  div.invoice-header {
+    background-color: rgb(216, 166, 29);
+    color: white;
+    border-bottom: 3px solid rgb(255, 77, 77);
+  }
+
+  div.invoice-header>div>p {
+    font-size: 1.2rem;
+    font-weight: 350;
+  }
+
+  div.invoice-header>div>h1 {
+    font-size: 4rem;
+  }
+
+  div.invoice-table {
+    border-top: 3px solid rgb(255, 77, 77);
+  }
+
+  div.invoice-table>table.table>thead,
+  div.invoice-table>table.table>thead.thead>tr,
+  div.invoice-table>table.table>thead.thead>tr>th {
+    border-top: none;
+  }
+
+  div.total-field {
+    position: relative;
+  }
+
+  h5.due-date {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+  }
+
+  div.sub-table {
+    border-left: 3px solid rgb(255, 77, 77);
+    padding-left: 0;
+  }
+
+  div.sub-table>table {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  tr.last-row {
+    margin-top: 25px;
+    background-color: #555;
+    color: white;
+    border-top: 3px solid rgb(255, 77, 77);
+  }
+
+  .topright {
+    position: absolute;
+    top: 25px;
+    right: 16px;
+    font-size: 18px;
+  }
+
+  p.footer {
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding-top: 15px;
+    border-top: 3px solid red;
+  }
+</style>
+
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  <div class="wrapper">
+    <section id="admin-nav-load"></section>
+
+    <section class="wrapper">
+      <div class="content-wrapper">
+        <h4 style="padding: 10px;font-weight: bold;">Footer</h4>
+        <div class="col-lg-12">
+          <form id="about-form">
+            <div class="add-product-content">
+              <h4 class="MainHeading">Edit About Page</h4>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="product-description">
+                    <div class="body-area">
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <input class="summernote" type="text" id="about-text" name="about-text"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="left-area">
+                  <h4 class="heading" style="text-align: center; padding: 10px;">Head Image</h4>
+                </div>
+                <div class="text-center">
+                  <input type='file' id="slider-file" name="slider-file" class="mybtn1" onchange="readURL(this);" />
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="panel panel-body" style="background-color:gray">
+                  <div class="span4  text-center" id=""
+                    style="width: 100%; height: 426px; border: 1px dashed #ddd; background: #f1f1f1;">
+                    <i class="icofont-upload-alt"></i>
+                    <img id="img-preview" src="../../assets/images/slide1.jpeg"
+                      style="width:1280px;height: 426px;object-fit: contain;" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 text-center">
+                <button class="addProductSubmit-btn" type="submit" style="padding: 10px; margin: 10px;">Push Data</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <section id="admin-footer-load"></section>
+  </div>
+
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript">
+    $('#admin-nav-load').load('/Common/navbar.html');
+    $('#admin-footer-load').load('/Common/footer.html');
+  </script>
+  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../assets/js/adminlte.js"></script>
+
+  <!-- OPTIONAL SCRIPTS -->
+  <script src="../assets/js/demo.js"></script>
+
+  <!-- PAGE PLUGINS -->
+  <!-- jQuery Mapael -->
+
+  <script src="../assets/js/jquery-1.12.4.min.js"></script>
+  <!-- <script src="../assets/js/vue.js"></script> -->
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/jqueryui.min.js"></script>
+  <!-- Fullside-menu Js-->
+  <!-- <script src="../assets/js/jquery.slimscroll.min.js"></script>
+  <script src="../assets/js/waves.min.js"></script> -->
+
+  <script src="../assets/js/plugin.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.js"
+    integrity="sha512-kZv5Zq4Cj/9aTpjyYFrt7CmyTUlvBday8NGjD9MxJyOY/f2UfRYluKsFzek26XWQaiAp7SZ0ekE7ooL9IYMM2A=="
+    crossorigin="anonymous"></script>
+
+  <!-- <script src="../assets/js/jquery.Jcrop.js"></script>
+  <script src="../assets/js/jquery.SimpleCropper.js"></script> -->
+  <!-- ChartJS -->
+  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+  <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <!-- <script src="../assets/plugins/chart.js/Chart.min.js"></script> -->
+
+  <!-- PAGE SCRIPTS -->
+  <!-- <script src="../assets/dist/js/pages/dashboard2.js"></script> -->
+  <script type="text/javascript">
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#blah')
+            .attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+    $(document).on('click', '.godropdown .go-dropdown-toggle', function () {
+      $('.godropdown .action-list').hide();
+      var $this = $(this);
+      $this.next('.action-list').toggle();
+
+    });
+    // Gallery Section Insert
+    $(document).ready(function () {
+      $('.summernote').summernote();
+    });
+  </script>
+</body>
+
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+    authDomain: "lake-of-cakes.firebaseapp.com",
+    databaseURL: "https://lake-of-cakes.firebaseio.com",
+    projectId: "lake-of-cakes",
+    storageBucket: "lake-of-cakes.appspot.com",
+    messagingSenderId: "779843608951",
+    appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+    measurementId: "G-5ER0QF0FDW"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<script src="./terms1.js"></script>
+
+</html>
