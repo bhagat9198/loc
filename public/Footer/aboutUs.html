@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lake of Cakes | About Us</title>
+  <title>Online Cake Delivery | #1 Online Cake,Flowers & Gifts in Lucknow | Lake of Cakes | About Us</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
  
   <meta name="theme-color" content="#a15a55">
@@ -742,7 +742,7 @@
       token: "null"
 
     }).then(function () {
-      window.localStorage.removeItem("locLoggedInUser")
+      window.localStorage.setItem("locLoggedInUser","null")
       firebase.auth().signOut();
       location.reload();
     });

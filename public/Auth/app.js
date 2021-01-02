@@ -198,7 +198,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   window.localStorage.setItem("isGoogleAuthUser",user)
   var counter = 0;
   let getUserStatus=window.localStorage.getItem("locLoggedInUser")
-
+  
   if (user!=null && user!="null" && getUserStatus!=null) {
    
     db.collection("Customers").onSnapshot(async (snapshots) => {
@@ -251,6 +251,7 @@ firebase.auth().onAuthStateChanged(function(user) {
               }
              
             }else{
+              
                window.location=goTo;
             }
         

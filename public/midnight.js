@@ -91,9 +91,7 @@ db.collection('midnight').doc('fixed1').onSnapshot(async(doc) => {
                 <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
-                <div class="stars mt-3" style="height:40px;">
-
-                </div>
+                
                 <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
@@ -155,9 +153,7 @@ db.collection('midnight').doc('fixed2').onSnapshot(async(doc) => {
                 <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
-                <div class="stars mt-3" style="height:40px;">
-
-                </div>
+                
                 <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
@@ -219,9 +215,7 @@ db.collection('midnight').doc('fixed3').onSnapshot(async(doc) => {
                 <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
-                <div class="stars mt-3" style="height:40px;">
-
-                </div>
+                
                 <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
@@ -282,9 +276,7 @@ db.collection('midnight').doc('fixed4').onSnapshot(async(doc) => {
                 <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
-                <div class="stars mt-3" style="height:40px;">
-
-                </div>
+                
                 <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
@@ -346,9 +338,7 @@ db.collection('midnight').doc('fixed5').onSnapshot(async(doc) => {
                 <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
-                <div class="stars mt-3" style="height:40px;">
-
-                </div>
+                
                 <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
@@ -410,9 +400,7 @@ db.collection('midnight').doc('fixed6').onSnapshot(async(doc) => {
                 <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
-                <div class="stars mt-3" style="height:40px;">
-
-                </div>
+                
                 <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
@@ -474,9 +462,7 @@ db.collection('midnight').doc('fixed7').onSnapshot(async(doc) => {
                 <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
-                <div class="stars mt-3" style="height:40px;">
-
-                </div>
+                
                 <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
@@ -538,9 +524,7 @@ db.collection('midnight').doc('fixed8').onSnapshot(async(doc) => {
                 <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
-                <div class="stars mt-3" style="height:40px;">
-
-                </div>
+                
                 <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
@@ -602,9 +586,7 @@ db.collection('midnight').doc('fixed9').onSnapshot(async(doc) => {
                 <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
-                <div class="stars mt-3" style="height:40px;">
-
-                </div>
+                
                 <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
@@ -666,9 +648,7 @@ db.collection('midnight').doc('fixed10').onSnapshot(async(doc) => {
                 <img class="img-fluid" src="${p.mainImgUrl}" alt="Lake of cakes">
               </div>
               <div class="info">
-                <div class="stars mt-3" style="height:40px;">
-
-                </div>
+                
                 <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>

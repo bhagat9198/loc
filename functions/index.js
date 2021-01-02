@@ -577,13 +577,13 @@ exports.sendEmailForgetPass = functions.firestore
       <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
       <tr>
         <td class="column" width="20%" align="center">
-          <img width="60px;object-fit:cover" src="https://cdn4.iconfinder.com/data/icons/time-line/512/night_time-256.png" alt="Lorem ipsum">
+          <img width="60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(2).jpeg?alt=media&token=a263cfa0-38b2-4071-931e-e6bcec0677b5" alt="Lorem ipsum">
         </td>
          <td class="column" width="20%" align="center">
-          <img width="60px;object-fit:cover" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/24-hour-delivery-1563082-1323854.png">
+          <img width="60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(1).jpeg?alt=media&token=8f225388-dab5-4d49-a567-cd918f64d7fc">
         </td>
          <td class="column" width="20%" align="center">
-          <img width="60px;object-fit:cover" src="https://th.bing.com/th/id/OIP.fngT3b4XqWvCecpkH6LOJwHaHa?pid=Api&amp;rs=1">
+          <img width="60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.05.jpeg?alt=media&token=2bdb4c6e-2d26-422b-8d7c-5f09c5d67ed4">
         </td>
       </tr>
     </tbody></table>
@@ -636,6 +636,62 @@ exports.sendEmailForgetPass = functions.firestore
 
 //     console.log('This will be run every 5 minutes!');
 // });
+exports.sendEmailNotifications = functions.firestore
+  .document("emailNotifications/{userId}")
+  .onCreate(async (snap, context)=> {
+
+
+
+    let newValue = snap.data();
+
+    var template = newValue.template;
+    var status =newValue.status;
+    var subject =newValue.subject;
+
+    console.log(status +"---------------"+subject)
+    await admin.firestore().collection("Customers").get().then(async function(querySnapshot) {
+      querySnapshot.forEach(async function(doc2) {
+          // doc2.data() is never undefined for query doc2 snapshots
+          console.log(doc2.data().Email)
+          if(status=="pending"){
+
+            var email = doc2.data().Email;
+            console.log(email +"ffffffffffffffffffffffffffffffffffffffff")
+            // const mailOptions = {
+            //   from: '"Lake of Cakes " <lakeofcakess@gmail.com>',
+            //   to:email,
+            // };
+            // // Building Email message.
+            // mailOptions.subject =subject;
+
+            // mailOptions.html=template;
+
+            // try {
+            //   transporter.sendMail(mailOptions);
+            //   console.log("email sent to:", email);
+            //   await admin.firestore().collection("emailNotifications").doc(doc2.id).update({
+            //     status: "Sent"
+            //   });
+            //   transporter.close();
+            //   // console.log(newValue.Email)
+            // } catch (error) {
+            //   console.error(
+            //     "There was an error while sending the email:" + email,
+            //     error
+            //   );
+            // }
+
+          }else{
+            console.log("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
+          }
+         
+      });
+    })
+    //Create an options object that contains the time to live for the notification and the priority
+
+  });
+
+
 exports.createUser = functions.firestore
   .document("Customers/{userId}")
   .onCreate((snap, context) => {
@@ -751,7 +807,7 @@ exports.createUser = functions.firestore
 </span></li></ul><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><b>Further Help : 
 </b></span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;">email us – info@lakeofcakes.com or call at +91 9598891097</span></div><div><span style="font-size: 10.02pt; font-family: &quot;Times New Roman&quot;;"><br></span></div><div style="text-align: center; "><span style="font-family: TimesNewRoman, Bold; font-size: 12pt; font-weight: bold;">Explore Our Categories&nbsp;</span></div><div style="text-align: center;"><br></div>
 
-<a href="https://lakeofcakes.com/Products/products.html?cat=yli4KpHGbARJakJfZdVr"></a><br><br><table border="0" cellspacing="0" summary="" width="640" align="center" style="background-color: #ffffff;">
+<a href="https://lakeofcakes.com/Products/products.html?cat=C0ab0eaGzmtjCKQMnvh5&&tag="></a><br><br><table border="0" cellspacing="0" summary="" width="640" align="center" style="background-color: #ffffff;">
     <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
     <tr>
       <td class="column" width="20%" align="center">
@@ -767,7 +823,7 @@ exports.createUser = functions.firestore
        </p></a>
       </td>
        <td class="column" width="20%" align="center">
-        <a href="https://lakeofcakes.com/Products/products.html?cat=H6gtdNb9j9gMDbtI2dl2"><img src="https://res.cloudinary.com/groceryncart/image/upload/v1563106438/Stores/Store50/Product/Premium-Cake-combo-red-carnation-flowers6231758431555.png" alt="Mountains" width="70" height="70">&nbsp;
+        <a href="https://lakeofcakes.com/Products/products.html?cat=X6zGkffjLRkw1lL5IzPM"><img src="https://res.cloudinary.com/groceryncart/image/upload/v1563106438/Stores/Store50/Product/Premium-Cake-combo-red-carnation-flowers6231758431555.png" alt="Mountains" width="70" height="70">&nbsp;
        <p style="text-align: center;border:1px solid red">
          Combos
           </p></a>
@@ -787,7 +843,7 @@ exports.createUser = functions.firestore
       </p></a>
       </td>
      <td class="column" width="20%" align="center">
-      <a href="https://lakeofcakes.com/Products/products.html?cat=kTrnO3gHeFlnt9iyj0fd"><img src="https://cdn0.iconfinder.com/data/icons/party-human-1/66/50-512.png" alt="Snow" width="70" height="70">&nbsp;
+      <a href="https://lakeofcakes.com/Products/products.html?cat=UrAAKMYXo4I8ZwXruHUJ"><img src="https://cdn0.iconfinder.com/data/icons/party-human-1/66/50-512.png" alt="Snow" width="70" height="70">&nbsp;
       <p style="text-align: center;border:1px solid red">
         Aniversary
       </p></a>
@@ -812,13 +868,13 @@ exports.createUser = functions.firestore
     <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
     <tr>
       <td class="column" width="20%" align="center">
-        <img width="60px;object-fit:cover" src="https://cdn4.iconfinder.com/data/icons/time-line/512/night_time-256.png" alt="Lorem ipsum">
+        <img width="60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(2).jpeg?alt=media&token=a263cfa0-38b2-4071-931e-e6bcec0677b5" alt="Lorem ipsum">
       </td>
        <td class="column" width="20%" align="center">
-        <img width="60px;object-fit:cover" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/24-hour-delivery-1563082-1323854.png">
+        <img width="60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(1).jpeg?alt=media&token=8f225388-dab5-4d49-a567-cd918f64d7fc">
       </td>
        <td class="column" width="20%" align="center">
-        <img width="60px;object-fit:cover" src="https://th.bing.com/th/id/OIP.fngT3b4XqWvCecpkH6LOJwHaHa?pid=Api&amp;rs=1">
+        <img width="60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.05.jpeg?alt=media&token=2bdb4c6e-2d26-422b-8d7c-5f09c5d67ed4">
       </td>
     </tr>
   </tbody></table>
@@ -1700,13 +1756,13 @@ const mailOnProductReject = async () =>{
         <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
         <tr>
           <td class="column" width="20%" align="center">
-            <img width="60px;object-fit:cover" src="https://cdn4.iconfinder.com/data/icons/time-line/512/night_time-256.png" alt="Lorem ipsum">
+            <img width="60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(2).jpeg?alt=media&token=a263cfa0-38b2-4071-931e-e6bcec0677b5" alt="Lorem ipsum">
           </td>
            <td class="column" width="20%" align="center">
-            <img width="60px;object-fit:cover" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/24-hour-delivery-1563082-1323854.png">
+            <img width="60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(1).jpeg?alt=media&token=8f225388-dab5-4d49-a567-cd918f64d7fc">
           </td>
            <td class="column" width="20%" align="center">
-            <img width="60px;object-fit:cover" src="https://th.bing.com/th/id/OIP.fngT3b4XqWvCecpkH6LOJwHaHa?pid=Api&amp;rs=1">
+            <img width="60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.05.jpeg?alt=media&token=2bdb4c6e-2d26-422b-8d7c-5f09c5d67ed4">
           </td>
         </tr>
       </tbody></table>

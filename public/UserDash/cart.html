@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lake of Cakes | Cart</title>
+    <title>Online Cake Delivery | #1 Online Cake,Flowers & Gifts in Lucknow | Lake of Cakes | Cart</title>
     <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/all.css">
@@ -1008,7 +1008,7 @@
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header"
-                                            style="background-color: rgb(231, 50, 18);padding: 10px !important;">
+                                            style="background-color: red;padding: 10px !important;">
                                             <h4 class="modal-title text-center tb"
                                                 style="color:#fff;font-weight: 800;margin-left: auto;margin-right: auto;">
                                                 Add Extra Love For Your Loved Ones
@@ -1073,7 +1073,7 @@
                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                                 <button type="button" class="btn btn-secondary resTxt2"
                                                     id="prod_with_addons"
-                                                    style="background-color: rgb(197, 42, 42);">Continue Without
+                                                    style="background-color: red;">Continue Without
                                                     Addons</button>
 
 
@@ -1398,7 +1398,7 @@
             token: "null"
 
         }).then(function () {
-            window.localStorage.removeItem("locLoggedInUser")
+            window.localStorage.setItem("locLoggedInUser","null")
             firebase.auth().signOut();
             location.reload();
         });
@@ -1525,7 +1525,7 @@
             token: "null"
 
         }).then(function () {
-            window.localStorage.removeItem("locLoggedInUser")
+            window.localStorage.setItem("locLoggedInUser","null")
             firebase.auth().signOut();
             location.reload();
         });
