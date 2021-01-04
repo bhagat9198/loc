@@ -281,14 +281,19 @@ const displayProduct = (prodData) => {
 
   // /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  
   let personlizeHeadHTML = document.querySelector("#personlize-head");
   let allTitlesHTML = document.querySelector("#all-titles");
 
+  
+
   if (prodData.pIsGift) {
+    
     if (prodData.personalized === true) {
       document.getElementById("customizedBtn").style.display = "inline-block";
       let pTitle = +prodData.title;
       if (pTitle > 0) {
+        document.querySelector('#warrning-title-info').innerHTML = `<i class="fa fa-warning"></i> Please add your title on next tab in order to proceede. `;
         personlizeHeadHTML.innerHTML = `
         <div class="w3-row w3-center w3-card w3-padding ">
           <a href="javascript:void(0)" onclick="openMenu(event, 'img');" id="myLink">
@@ -304,7 +309,7 @@ const displayProduct = (prodData) => {
         for (let c = 0; c < pTitle; c++) {
           input += `
           <div class="col-lg-6" >
-            <input class="w3-input w3-padding-16" type="text" placeholder="Title ${
+            <input class="w3-input w3-padding-16 title-input-box" onkeyup="checkTitleBoxes()" type="text" placeholder="Title ${
               c + 1
             }"
               id="title-img-${c}"  required name="title-img-${c}" maxlength="25" style="border: 1px solid gray;">
@@ -312,6 +317,14 @@ const displayProduct = (prodData) => {
           `;
         }
         allTitlesHTML.innerHTML = input;
+
+        // document.querySelectorAll('.title-input-box').forEach(el => {
+        //   console.log(el);
+        //   el.addEventListener('onchange', () => {
+        //     console.log('aaa');
+        //   })
+        // })
+
       } else {
         personlizeHeadHTML.innerHTML = `
         <div class="w3-row w3-center w3-card w3-padding" >
@@ -354,6 +367,8 @@ const displayProduct = (prodData) => {
     }
   }
 
+  
+
   while (
     prodData.descriptions.includes("<p><br></p>") ||
     prodData.descriptions.startsWith("<p><br></p>")
@@ -390,6 +405,24 @@ const displayProduct = (prodData) => {
   prodPolicyHTML.innerHTML = `${prodData.policy}`;
 };
 
+const checkTitleBoxes = () => {
+  let allFilled = true;
+  document.querySelectorAll('.title-input-box').forEach(el => {
+    // console.log(el.value);
+    let v = el.value.trim();
+    if(!v) {
+      // console.log(el.value);
+      allFilled = false;
+    }
+  })
+
+  if(allFilled && IMGS_ARRAY.length >= imgNo) {
+    document.querySelector('#personlized-imgs').disabled = false;
+  } else {
+    document.querySelector('#personlized-imgs').disabled = true;
+  }
+}
+
 const checkFileSize = (e, current) => {
   let filePassStatus = false;
   let filesizeInKb = e.target.files[0].size / 1000;
@@ -402,8 +435,28 @@ const checkFileSize = (e, current) => {
   }else{
      document.getElementById("showError").style.display="block"
   }
+  checkAllImgs();
   return filePassStatus;
 };
+
+const checkAllImgs = () => {
+  if (IMGS_ARRAY.length >= imgNo) { 
+    let allFilled = true;
+    document.querySelectorAll('.title-input-box').forEach(el => {
+      // console.log(el.value);
+      let v = el.value.trim();
+      if(!v) {
+        // console.log(el.value);
+        allFilled = false;
+      }
+    })
+    if(allFilled) {
+      document.querySelector('#personlized-imgs').disabled = false;
+    } 
+  } else {
+    document.querySelector('#personlized-imgs').disabled = true;
+  }
+}
 
 let imgInputHTML = document.querySelector("#img-input");
 let IMGS_ARRAY = [];
@@ -434,6 +487,7 @@ const imgUploader = async (e) => {
        document.getElementById("showError").style.display="block"
     }
   }
+  checkAllImgs();
   imgInputHTML.value = "";
 };
 
@@ -469,6 +523,7 @@ personlizedImgsHTML.addEventListener("click", (e) => {
     if (TITLE_ARRAY.length >= titleNo) {
       document.getElementById("fail").style.display = "none";
       document.querySelector("#buyNowBtn").disabled = false;
+      
       document.querySelector("#addToCartBtn").disabled = false;
     }
   }
