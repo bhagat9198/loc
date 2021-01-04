@@ -1275,26 +1275,26 @@ function navigateTo(location) {
 // const searchProd = (e, current) => {
 //   if (e.keyCode === 13) {
 
-//     window.location.href = `/Products/products.html?user=${current}`;
+//     window.location.href = `./Products/products.html?user=${current}`;
 //   } else {
 
-//     window.location.href = `/Products/products.html?user=${current}`;
+//     window.location.href = `./Products/products.html?user=${current}`;
 //   }
 // }
 
 // function searchIfvalue(e) {
 
 //   if (e.key == "Enter") {
-//     window.location.href = `/Products/products.html?user=${e.target.value}`;
+//     window.location.href = `./Products/products.html?user=${e.target.value}`;
 //   }
 // }
 // function searchByBtn(id) {
 
 //   let val = document.querySelector("#" + id).value;
 
-//   window.location.href = `/Products/products.html?user=${val}`;
+//   window.location.href = `./Products/products.html?user=${val}`;
 //   // if(e.key=="Enter"){
-//   //   window.location.href = `/Products/products.html?user=${e.target.value}`;
+//   //   window.location.href = `./Products/products.html?user=${e.target.value}`;
 //   // }
 // }
 // function autocomplete(inp, arr) {
@@ -1536,7 +1536,7 @@ const searchByUserInput = (e) => {
   // console.log(val);
   if (e.keyCode === 13) {
     // console.log('enter');
-    window.location.href = `/Products/products.html?user=${val}`;
+    window.location.href = `./Products/products.html?user=${val}`;
   }
 };
 
@@ -1551,7 +1551,7 @@ const searchByUserInputBtn = (event) => {
   event.preventDefault();
   let val = document.querySelector("#searchBar").value;
   console.log(val);
-  window.location.href = `/Products/products.html?user=${val}`;
+  window.location.href = `./Products/products.html?user=${val}`;
 };
 var checkUser2 = window.localStorage.getItem("locLoggedInUser");
 

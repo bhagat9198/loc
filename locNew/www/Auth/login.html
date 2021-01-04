@@ -381,7 +381,7 @@
             await userRef.update(udata);
             let orderId = buyNowProd.orderId;
             await sessionStorage.removeItem("buyNowProd");
-            window.location = `/Payment/checkout.html?checkout=${orderId}`;
+            window.location = `../Payment/checkout.html?checkout=${orderId}`;
           })
         } else {
           setTimeout(function () {
