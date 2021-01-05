@@ -270,7 +270,7 @@ const displayProduct = (prodData) => {
         card += `
         <div class="custom-control custom-radio" style="margin-right:auto;text-align:justify;display:inline-block;margin-left:auto:display:block">
           <input type="radio"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
-          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px ;padding:5px !important">${flav}</label>
+          <label class="custom-control-label" for="flavour-${flav}" style="width:100px;font-weight: 700;font-size:12px ;padding:5px !important">${flav}</label>
         </div>
         `;
       });
@@ -354,7 +354,7 @@ const displayProduct = (prodData) => {
         <div class="image-tile">
           <div class="upload-tile file-upload file-options personalizedImage invalid"
             data-value="" data-props-idx="0">
-            <label for="file-${imgCounter}" style="display:inline-block;z-index:9999"><img src="../assets/images/plusImage.png" style="z-index:999;visibility:visible" id="plusImage"></label>
+            <label for="file-${imgCounter}" style="display:inline-block;z-index:9999"><img src="../assets/images/plusImage.PNG" style="z-index:999;visibility:visible" id="plusImage"></label>
             <input id="file-${imgCounter}" style="display: none;height:100px;z-index:9999" class="file-preview" type="file"
               accept="image/jpg, image/jpeg, image/png" data-select="single-select" 
               onchange="checkFileSize(event, this);" data-imgnameid="imgBlock-file-${imgCounter}">
@@ -1286,6 +1286,7 @@ const buyProd = async (e) => {
     }
     // console.log("uuuu");
     await sessionStorage.setItem("buyNowProd", JSON.stringify(buyNowData));
+
     window.location.href = "../Auth/login.html";
   }
 };
