@@ -54,6 +54,7 @@ const reviewCountHTML = document.querySelector(".review-count");
 const prodPriceHTML = document.querySelector("#sizeprice");
 const prodPrevPriceHTML = document.querySelector("#prod-prevPrice");
 const disPercentHTML = document.querySelector("#disPercent");
+let customizedImgsHTML = document.querySelector("#customizedImgs");
 
 let PROD_QTY = 1;
 let TOTAL_COST = 0,
@@ -270,7 +271,7 @@ const displayProduct = (prodData) => {
         card += `
         <div class="custom-control custom-radio" style="margin-right:auto;text-align:justify;display:inline-block;margin-left:auto:display:block">
           <input type="radio"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
-          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px ;padding:5px !important">${flav}</label>
+          <label class="custom-control-label" for="flavour-${flav}" style="width:100px;font-weight: 700;font-size:12px ;padding:5px !important">${flav}</label>
         </div>
         `;
       });
@@ -279,95 +280,7 @@ const displayProduct = (prodData) => {
     }
   }
 
-  // /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  
-  let personlizeHeadHTML = document.querySelector("#personlize-head");
-  let allTitlesHTML = document.querySelector("#all-titles");
-
-  
-
-  if (prodData.pIsGift) {
-    
-    if (prodData.personalized === true) {
-      document.getElementById("customizedBtn").style.display = "inline-block";
-      let pTitle = +prodData.title;
-      if (pTitle > 0) {
-        document.querySelector('#warrning-title-info').innerHTML = `<i class="fa fa-warning"></i> Please add your title on next tab in order to proceede. `;
-        personlizeHeadHTML.innerHTML = `
-        <div class="w3-row w3-center w3-card w3-padding ">
-          <a href="javascript:void(0)" onclick="openMenu(event, 'img');" id="myLink">
-            <div class="w3-col s6 tablink w3-dark-grey">Upload Photos</div>
-          </a>
-          <a href="javascript:void(0)" onclick="openMenu(event, 'title');">
-            <div class="w3-col s6 tablink">Add Title Texts</div>
-          </a>
-        </div>
-        `;
-
-        let input = "";
-        for (let c = 0; c < pTitle; c++) {
-          input += `
-          <div class="col-lg-6" >
-            <input class="w3-input w3-padding-16 title-input-box" onkeyup="checkTitleBoxes()" type="text" placeholder="Title ${
-              c + 1
-            }"
-              id="title-img-${c}"  required name="title-img-${c}" maxlength="25" style="border: 1px solid gray;">
-          </div>
-          `;
-        }
-        allTitlesHTML.innerHTML = input;
-
-        // document.querySelectorAll('.title-input-box').forEach(el => {
-        //   console.log(el);
-        //   el.addEventListener('onchange', () => {
-        //     console.log('aaa');
-        //   })
-        // })
-
-      } else {
-        personlizeHeadHTML.innerHTML = `
-        <div class="w3-row w3-center w3-card w3-padding" >
-          <a href="javascript:void(0)" onclick="openMenu(event, 'img');" id="myLink">
-            <div class="w3-col s6 tablink">Upload Photos</div>
-          </a>
-          <a href="javascript:void(0)" onclick="openMenu(event, 'title');" style="display: none">
-            <div class="w3-col s6 tablink">Add Title Texts</div>
-          </a>
-        </div>
-        `;
-      }
-
-      personalizedGift = true;
-      // document.querySelector("#pqty").style.display = "none";
-      // document.querySelector("#qty-btns").style.display = "none";
-      document.getElementById("fail").style.display = "inline-block";
-      document.querySelector("#buyNowBtn").disabled = true;
-      document.querySelector("#addToCartBtn").disabled = true;
-      let customizedImgsHTML = document.querySelector("#customizedImgs");
-
-      imgNo = +prodData.imgs;
-      titleNo = +prodData.title;
-      let imgHolder = "";
-      for (let imgCounter = 0; imgCounter < imgNo; imgCounter++) {
-        imgHolder += `
-        <div class="image-tile">
-          <div class="upload-tile file-upload file-options personalizedImage invalid"
-            data-value="" data-props-idx="0">
-            <label for="file-${imgCounter}" style="display:inline-block;z-index:9999"><img src="../assets/images/plusImage.png" style="z-index:999;visibility:visible" id="plusImage"></label>
-            <input id="file-${imgCounter}" style="display: none;height:100px;z-index:9999" class="file-preview" type="file"
-              accept="image/jpg, image/jpeg, image/png" data-select="single-select" 
-              onchange="checkFileSize(event, this);" data-imgnameid="imgBlock-file-${imgCounter}">
-            <img id="imgBlock-file-${imgCounter}" class="customizedImage" src="" >
-          </div>
-        </div>
-        `;
-      }
-      customizedImgsHTML.innerHTML = imgHolder;
-    }
-  }
-
-  
+  // ////////////////////////////////////////////////////////////////////////////////////
 
   while (
     prodData.descriptions.includes("<p><br></p>") ||
@@ -403,65 +316,148 @@ const displayProduct = (prodData) => {
   prodDescHTML.innerHTML = `${prodData.descriptions}`;
   const prodPolicyHTML = document.querySelector("#prod-policy");
   prodPolicyHTML.innerHTML = `${prodData.policy}`;
+
+  // /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  let personlizeHeadHTML = document.querySelector("#personlize-head");
+  let allTitlesHTML = document.querySelector("#all-titles");
+
+  if (prodData.pIsGift) {
+    if (prodData.personalized === true) {
+      document.getElementById("customizedBtn").style.display = "inline-block";
+      let pTitle = +prodData.title;
+      if (pTitle > 0) {
+        document.querySelector(
+          "#warrning-title-info"
+        ).innerHTML = `<i class="fa fa-warning"></i> Please add your title on next tab in order to proceed. `;
+        personlizeHeadHTML.innerHTML = `
+        <div class="w3-row w3-center w3-card w3-padding ">
+          <a href="javascript:void(0)" onclick="openMenu(event, 'img');" id="myLink">
+            <div class="w3-col s6 tablink w3-dark-grey">Upload Photos</div>
+          </a>
+          <a href="javascript:void(0)" onclick="openMenu(event, 'title');">
+            <div class="w3-col s6 tablink">Add Title Texts</div>
+          </a>
+        </div>
+        `;
+
+        let input = "";
+        for (let c = 0; c < pTitle; c++) {
+          input += `
+          <div class="col-lg-6" >
+            <input class="w3-input w3-padding-16 title-input-box" onkeyup="checkTitleBoxes()" type="text" placeholder="Title ${
+              c + 1
+            }"
+              id="title-img-${c}"  required name="title-img-${c}" maxlength="25" style="border: 1px solid gray;">
+          </div>
+          `;
+        }
+        allTitlesHTML.innerHTML = input;
+      } else {
+        personlizeHeadHTML.innerHTML = `
+        <div class="w3-row w3-center w3-card w3-padding" >
+          <a href="javascript:void(0)" onclick="openMenu(event, 'img');" id="myLink">
+            <div class="w3-col s6 tablink">Upload Photos</div>
+          </a>
+          <a href="javascript:void(0)" onclick="openMenu(event, 'title');" style="display: none">
+            <div class="w3-col s6 tablink">Add Title Texts</div>
+          </a>
+        </div>
+        `;
+      }
+
+      personalizedGift = true;
+      document.getElementById("fail").style.display = "inline-block";
+      document.querySelector("#buyNowBtn").disabled = true;
+      document.querySelector("#addToCartBtn").disabled = true;
+      
+
+      imgNo = +prodData.imgs;
+      titleNo = +prodData.title;
+      let imgHolder = "";
+      function displayImgHolders() {
+        console.log('displayImgHolders');
+        for (let imgCounter = 0; imgCounter < imgNo; imgCounter++) {
+          imgHolder += `
+        <div class="image-tile">
+          <div class="upload-tile file-upload file-options personalizedImage invalid"
+            data-value="" data-props-idx="0">
+            <label for="file-${imgCounter}" style="display:inline-block;z-index:9999"><img src="../assets/images/plusImage.PNG" style="z-index:999;visibility:visible" id="plusImage"></label>
+            <input id="file-${imgCounter}" style="display: none;height:100px;z-index:9999" class="file-preview" type="file"
+              accept="image/jpg, image/jpeg, image/png" data-select="single-select" 
+              onchange="checkFileSize(event, this);" data-imgnameid="imgBlock-file-${imgCounter}">
+            <img id="imgBlock-file-${imgCounter}" class="customizedImage" src="" >
+          </div>
+        </div>
+        `;
+        }
+        customizedImgsHTML.innerHTML = imgHolder;
+      }
+      displayImgHolders();
+    }
+  }
 };
 
 const checkTitleBoxes = () => {
   let allFilled = true;
-  document.querySelectorAll('.title-input-box').forEach(el => {
+  document.querySelectorAll(".title-input-box").forEach((el) => {
     // console.log(el.value);
     let v = el.value.trim();
-    if(!v) {
+    if (!v) {
       // console.log(el.value);
       allFilled = false;
     }
-  })
+  });
 
-  if(allFilled && IMGS_ARRAY.length >= imgNo) {
-    document.querySelector('#personlized-imgs').disabled = false;
+  if (allFilled && IMGS_ARRAY.length >= imgNo) {
+    document.querySelector("#personlized-imgs").disabled = false;
   } else {
-    document.querySelector('#personlized-imgs').disabled = true;
+    document.querySelector("#personlized-imgs").disabled = true;
   }
-}
+};
 
 const checkFileSize = (e, current) => {
   let filePassStatus = false;
   let filesizeInKb = e.target.files[0].size / 1000;
   let filesizeInMb = e.target.files[0].size / 1024 / 1024;
   if (filesizeInMb <= 10 && filesizeInKb >= 10) {
-     document.getElementById("showError").style.display="none"
+    document.getElementById("showError").style.display = "none";
     filePassStatus = true;
     let imgnameid = e.target.dataset.imgnameid;
     readURL(current, imgnameid);
-  }else{
-     document.getElementById("showError").style.display="block"
+  } else {
+    document.getElementById("showError").style.display = "block";
   }
   checkAllImgs();
   return filePassStatus;
 };
 
 const checkAllImgs = () => {
-  if (IMGS_ARRAY.length >= imgNo) { 
+  // console.log('checkAllImgs');
+  if (IMGS_ARRAY.length >= imgNo) {
     let allFilled = true;
-    document.querySelectorAll('.title-input-box').forEach(el => {
+    document.querySelectorAll(".title-input-box").forEach((el) => {
       // console.log(el.value);
       let v = el.value.trim();
-      if(!v) {
+      if (!v) {
         // console.log(el.value);
         allFilled = false;
       }
-    })
-    if(allFilled) {
-      document.querySelector('#personlized-imgs').disabled = false;
-    } 
+    });
+    if (allFilled) {
+      document.querySelector("#personlized-imgs").disabled = false;
+    }
   } else {
-    document.querySelector('#personlized-imgs').disabled = true;
+    document.querySelector("#personlized-imgs").disabled = true;
+    // console.log( document.querySelector("#personlized-imgs"));
   }
-}
+};
 
 let imgInputHTML = document.querySelector("#img-input");
 let IMGS_ARRAY = [];
 let TITLE_ARRAY = [];
 let imgCounter = 0;
+
 const imgUploader = async (e) => {
   // console.log(e);
   for (let img of e.target.files) {
@@ -470,21 +466,19 @@ const imgUploader = async (e) => {
     let filesizeInKb = img.size / 1000;
     let filesizeInMb = img.size / 1024 / 1024;
     if (filesizeInMb <= 10 && filesizeInKb >= 10) {
-       document.getElementById("showError").style.display="none"
+      document.getElementById("showError").style.display = "none";
       IMGS_ARRAY.push(img);
       if (imgCounter >= imgNo) {
         imgCounter = 0;
       }
-      // console.log(document.querySelector(`#imgBlock-file-${imgCounter}`));
-      // console.log(img);
       document.querySelector(
         `#imgBlock-file-${imgCounter}`
       ).src = URL.createObjectURL(img);
       document.querySelector(`#imgBlock-file-${imgCounter}`).style.display =
         "block";
       imgCounter++;
-    }else{
-       document.getElementById("showError").style.display="block"
+    } else {
+      document.getElementById("showError").style.display = "block";
     }
   }
   checkAllImgs();
@@ -514,7 +508,6 @@ personlizedImgsHTML.addEventListener("click", (e) => {
   if (IMGS_ARRAY.length >= imgNo) {
     for (let t = 0; t < titleNo; t++) {
       console.log(document.querySelector(`#title-img-${t}`));
-
       let val = document.querySelector(`#title-img-${t}`).value;
       if (val) {
         TITLE_ARRAY.push(val);
@@ -523,7 +516,6 @@ personlizedImgsHTML.addEventListener("click", (e) => {
     if (TITLE_ARRAY.length >= titleNo) {
       document.getElementById("fail").style.display = "none";
       document.querySelector("#buyNowBtn").disabled = false;
-      
       document.querySelector("#addToCartBtn").disabled = false;
     }
   }
@@ -1047,7 +1039,8 @@ const checkAuth = async () => {
   let userStatus = false;
   console.log(user);
   if (!user || user == null || user == "null") {
-    window.location.href = "/Auth/login.html";
+    // alert(123)
+    // window.location.href = "/Auth/login.html";
   } else {
     userStatus = true;
     let uid = user;
@@ -1068,8 +1061,11 @@ const buyProd = async (e) => {
   });
 
   let uStatus = await checkAuth();
+  // alert(uStatus);
+  console.log(uStatus);
   const orderId = Math.random();
   if (uStatus) {
+    // alert('1065 if');
     await userRef.get().then(async (doc) => {
       let personalizedGiftDetails = {};
       personalizedGiftDetails.imgs = [];
@@ -1209,11 +1205,12 @@ const buyProd = async (e) => {
     });
     window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
   } else {
+    console.log('1205 else')
     let personalizedGiftDetails = {};
     personalizedGiftDetails.imgs = [];
     if (personalizedGift) {
       let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
-      // console.log(finalImgs);
+      console.log(finalImgs);
       for (let img of finalImgs) {
         let imgName = `${new Date().valueOf()}__${img.name}`;
         let imgUrl;
@@ -1284,8 +1281,11 @@ const buyProd = async (e) => {
       buyNowData.products[0].personalized = true;
       buyNowData.products[0].personalizedGiftDetails = personalizedGiftDetails;
     }
-    // console.log("uuuu");
+    console.log("uuuu");
     await sessionStorage.setItem("buyNowProd", JSON.stringify(buyNowData));
+    // console.log(buyNowData);
+    console.log(sessionStorage.getItem('buyNowProd'));
+    // alert('lol end')
     window.location.href = "../Auth/login.html";
   }
 };
@@ -1429,16 +1429,6 @@ const displaySuggestions = async () => {
   const trendingItemsHTML = document.querySelector(".trending-item-slider");
   // console.log(CATEGORY_ID);
   let allProds = [];
-  // let r = db.collection(CATEGORY_ID);
-  // r.get().then(async (prodSnaps) => {
-  //   let prodSnapsDocs = prodSnaps.docs;
-  //   let snapSize = prodSnapsDocs.length;
-  //   // console.log(prodSnapsDocs.length);
-  //   let rand = Math.floor(Math.random() * (snapSize - 8 + 0 + 1));
-  //   // console.log(rand);
-  //   prodSnapsDocs.map((p) => {
-  //     allProds.push(p.id);
-  //   });
 
   let locProds = JSON.parse(localStorage.getItem("locProds"));
   if (!locProds) {
@@ -1546,7 +1536,7 @@ const displayReviews = () => {
     reviewSnapsDocs.map((reviewDoc) => {
       if (reviewDoc.exists) {
         let reviewData = reviewDoc.data();
-        console.log(reviewData);
+        // console.log(reviewData);
         // display info of each card
         let starsDiv = starRating(+reviewData.rating.split("__")[0]);
 
@@ -1590,3 +1580,33 @@ function loaderCart(loaderState) {
     document.querySelector("#overlay9898C").style.display = "none";
   }
 }
+
+// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const resetImgsHTML = document.querySelector("#resetImgs");
+
+const resetImgs = (e) => {
+  console.log('resetImgs');
+  IMGS_ARRAY.length = 0;
+  checkAllImgs();
+  // displayImgHolders();
+  let imgNo = +PROD_DETAILS.imgs;
+  let imgHolder = '';
+  for (let imgCounter = 0; imgCounter < imgNo; imgCounter++) {
+    imgHolder += `
+  <div class="image-tile">
+    <div class="upload-tile file-upload file-options personalizedImage invalid"
+      data-value="" data-props-idx="0">
+      <label for="file-${imgCounter}" style="display:inline-block;z-index:9999"><img src="../assets/images/plusImage.PNG" style="z-index:999;visibility:visible" id="plusImage"></label>
+      <input id="file-${imgCounter}" style="display: none;height:100px;z-index:9999" class="file-preview" type="file"
+        accept="image/jpg, image/jpeg, image/png" data-select="single-select" 
+        onchange="checkFileSize(event, this);" data-imgnameid="imgBlock-file-${imgCounter}">
+      <img id="imgBlock-file-${imgCounter}" class="customizedImage" src="" >
+    </div>
+  </div>
+  `;
+  }
+  customizedImgsHTML.innerHTML = imgHolder;
+};
+
+resetImgsHTML.addEventListener("click", resetImgs);

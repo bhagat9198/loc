@@ -1252,7 +1252,8 @@ const orderComplete = (data) => {
 // })
 
 const checkPin = (e, current) => {
-  // console.log(current.value);
+  console.log(current.value);
+  alert(current.value)
   let val = current.value;
   valArr = val.split("");
   if (valArr[0] == 2 || valArr[0] == "" || valArr[0] == undefined) {

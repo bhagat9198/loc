@@ -1082,9 +1082,10 @@
                               readonly="readonly">
                           </div>
                           <div class="col-lg-6">
-                            <input class="form-control pin-lucknow" min="226000" max="226999" type="text" name="zip" id="locality" value="" placeholder="Pin Code/Your Area " 
+                            <input class="form-control pin-lucknow" min="226000" max="226999" type="text"  name="zip" id="locality" value="" placeholder="Pin Code/Your Area " 
                                required>
                                 <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeError">Sorry! we dont deliver in this area</p>
+                                <p style="font-size: 13px;font-weight: 700;color: orange;display: none;" id="pincodeUndefined1">Please select a location within <b>Lucknow</b> </p>
                                 <p style="font-size: 13px;font-weight: 700;color: red;display: none;" id="pincodeUndefined">Insufficient information ! Select an area/street to fetch pincode</p>
                                 <input class="form-control pin-lucknow"  type="text"  id="postal_code" placeholder="Pin Code " style="display: none;">
                                 <div id="showZip" style="color: green;font-weight: 700;"></div>
@@ -1705,6 +1706,7 @@
 </script>
 
 <script>
+  sessionStorage.removeItem("buyNowProd");
   $("input[type='date']").keydown(function (event) {
     event.preventDefault();
   });
@@ -1904,31 +1906,44 @@
   autocomplete = new google.maps.places.Autocomplete(input, options);
   autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+  google.maps.event.addListener(autocomplete, 'place_changed', function(res) {
+    console.log(res);
     document.querySelector('#showZip').innerHTML ="";
   document.getElementById("pincodeError").style.display="none"
   let counter1=0,counter2=0;
   let place = autocomplete.getPlace();
+  console.log(place);
     for (var i = 0; i < place.address_components.length; i++) {
       for (var j = 0; j < place.address_components[i].types.length; j++) {
+        console.log(counter1);
         
          if(place.address_components[i].types[j]=="postal_code"){
-          counter1++;
+          
           document.getElementById("pincodeUndefined").style.display="none"
           google_pincode=place.address_components[i].long_name
           console.log(place.address_components[i].long_name)
-          document.querySelector('#postal_code').value = place.address_components[i].long_name;
-          
-          document.querySelector('#showZip').innerHTML = place.address_components[i].long_name;
-          document.getElementById("pincodeUndefined").style.display="none"
+          if(place.address_components[i].long_name.startsWith('226')) {
+    
+            document.querySelector('#postal_code').value = place.address_components[i].long_name;
+            
+            document.querySelector('#showZip').innerHTML = place.address_components[i].long_name;
+            document.getElementById("pincodeUndefined").style.display="none"
+          } else {
+            counter1 = 20;
+          }
+          break;
          }
       }
     }
     if(counter1==0){
-    
-        
         document.getElementById("pincodeUndefined").style.display="block"
-      
+        document.getElementById("pincodeUndefined1").style.display="none"
+        document.getElementById("showZip").style.display="none"
+    }
+    if(counter1==20){
+      document.getElementById("pincodeUndefined1").style.display="block";
+      document.getElementById("pincodeUndefined").style.display="none";
+      document.getElementById("showZip").style.display="none";
     }
   })
 
