@@ -92,7 +92,7 @@ db.collection('midnight').doc('fixed1').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
