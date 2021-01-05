@@ -1469,6 +1469,7 @@ const displaySuggestions = async () => {
     dis = Math.round(dis);
     card += `
         <a href="./product.html?prod=${locProds[i].prodId}&&cat=${locProds[i].catId}" class="item">
+        
           <div class="item-img">
 
             <img class="img-fluid" style="width: 500px !important; height:200px " src="${locProds[i].prodData.mainImgUrl}" alt="LAKE OF CAKES">

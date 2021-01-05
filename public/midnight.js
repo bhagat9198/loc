@@ -60,7 +60,7 @@ db.collection('midnight').doc('fixed1').onSnapshot(async(doc) => {
                 </h3>
               </div>
               <div class="text-right mt-3">
-                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger" style="background:#ff0000;">View More</button></a>
+                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger desktopBtn " style="background:#ff0000;">View All</button></a>
               </div>
             </div>
           </div>
@@ -74,6 +74,7 @@ db.collection('midnight').doc('fixed1').onSnapshot(async(doc) => {
             </div>
           </div>
         </div>
+        <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger mobileBtn " style="background:#ff0000;">View All</button></a>
       </section>
       `;
     let row = '';
@@ -123,7 +124,7 @@ db.collection('midnight').doc('fixed2').onSnapshot(async(doc) => {
                 </h3>
               </div>
               <div class="text-right mt-3">
-                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger" style="background:#ff0000;">View More</button></a>
+                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger desktopBtn" style="background:#ff0000;">View All</button></a>
               </div>
             </div>
           </div>
@@ -137,6 +138,7 @@ db.collection('midnight').doc('fixed2').onSnapshot(async(doc) => {
             </div>
           </div>
         </div>
+        <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger mobileBtn " style="background:#ff0000;">View All</button></a>
       </section>
       `;
     let row = '';
@@ -154,7 +156,7 @@ db.collection('midnight').doc('fixed2').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
@@ -185,7 +187,7 @@ db.collection('midnight').doc('fixed3').onSnapshot(async(doc) => {
                 </h3>
               </div>
               <div class="text-right mt-3">
-                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger" style="background:#ff0000;">View More</button></a>
+                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger desktopBtn" style="background:#ff0000;">View All</button></a>
               </div>
             </div>
           </div>
@@ -199,6 +201,7 @@ db.collection('midnight').doc('fixed3').onSnapshot(async(doc) => {
             </div>
           </div>
         </div>
+        <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger mobileBtn " style="background:#ff0000;">View All</button></a>
       </section>
       `;
     let row = '';
@@ -216,7 +219,7 @@ db.collection('midnight').doc('fixed3').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
@@ -246,7 +249,7 @@ db.collection('midnight').doc('fixed4').onSnapshot(async(doc) => {
                 </h3>
               </div>
               <div class="text-right mt-3">
-                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger" style="background:#ff0000;">View More</button></a>
+                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger desktopBtn" style="background:#ff0000;">View All</button></a>
               </div>
             </div>
           </div>
@@ -260,6 +263,7 @@ db.collection('midnight').doc('fixed4').onSnapshot(async(doc) => {
             </div>
           </div>
         </div>
+        <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger mobileBtn " style="background:#ff0000;">View All</button></a>
       </section>
       `;
     let row = '';
@@ -277,7 +281,7 @@ db.collection('midnight').doc('fixed4').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
@@ -308,7 +312,7 @@ db.collection('midnight').doc('fixed5').onSnapshot(async(doc) => {
                 </h3>
               </div>
               <div class="text-right mt-3">
-                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger" style="background:#ff0000;">View More</button></a>
+                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger desktopBtn" style="background:#ff0000;">View All</button></a>
               </div>
             </div>
           </div>
@@ -322,6 +326,7 @@ db.collection('midnight').doc('fixed5').onSnapshot(async(doc) => {
             </div>
           </div>
         </div>
+        <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger mobileBtn " style="background:#ff0000;">View All</button></a>
       </section>
       `;
     let row = '';
@@ -339,7 +344,7 @@ db.collection('midnight').doc('fixed5').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
@@ -370,7 +375,7 @@ db.collection('midnight').doc('fixed6').onSnapshot(async(doc) => {
                 </h3>
               </div>
               <div class="text-right mt-3">
-                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger" style="background:#ff0000;">View More</button></a>
+                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger desktopBtn" style="background:#ff0000;">View All</button></a>
               </div>
             </div>
           </div>
@@ -384,6 +389,7 @@ db.collection('midnight').doc('fixed6').onSnapshot(async(doc) => {
             </div>
           </div>
         </div>
+        <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger mobileBtn " style="background:#ff0000;">View All</button></a>
       </section>
       `;
     let row = '';
@@ -401,7 +407,7 @@ db.collection('midnight').doc('fixed6').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
@@ -432,7 +438,7 @@ db.collection('midnight').doc('fixed7').onSnapshot(async(doc) => {
                 </h3>
               </div>
               <div class="text-right mt-3">
-                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger" style="background:#ff0000;">View More</button></a>
+                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger desktopBtn" style="background:#ff0000;">View All</button></a>
               </div>
             </div>
           </div>
@@ -446,6 +452,7 @@ db.collection('midnight').doc('fixed7').onSnapshot(async(doc) => {
             </div>
           </div>
         </div>
+        <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger mobileBtn " style="background:#ff0000;">View All</button></a>
       </section>
       `;
     let row = '';
@@ -463,7 +470,7 @@ db.collection('midnight').doc('fixed7').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
@@ -494,7 +501,7 @@ db.collection('midnight').doc('fixed8').onSnapshot(async(doc) => {
                 </h3>
               </div>
               <div class="text-right mt-3">
-                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger" style="background:#ff0000;">View More</button></a>
+                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger desktopBtn" style="background:#ff0000;">View All</button></a>
               </div>
             </div>
           </div>
@@ -508,6 +515,7 @@ db.collection('midnight').doc('fixed8').onSnapshot(async(doc) => {
             </div>
           </div>
         </div>
+        <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger mobileBtn " style="background:#ff0000;">View All</button></a>
       </section>
       `;
     let row = '';
@@ -525,7 +533,7 @@ db.collection('midnight').doc('fixed8').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
@@ -556,7 +564,7 @@ db.collection('midnight').doc('fixed9').onSnapshot(async(doc) => {
                 </h3>
               </div>
               <div class="text-right mt-3">
-                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger" style="background:#ff0000;">View More</button></a>
+                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger desktopBtn" style="background:#ff0000;">View All</button></a>
               </div>
             </div>
           </div>
@@ -570,6 +578,7 @@ db.collection('midnight').doc('fixed9').onSnapshot(async(doc) => {
             </div>
           </div>
         </div>
+        <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger mobileBtn " style="background:#ff0000;">View All</button></a>
       </section>
       `;
     let row = '';
@@ -587,7 +596,7 @@ db.collection('midnight').doc('fixed9').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
@@ -618,7 +627,7 @@ db.collection('midnight').doc('fixed10').onSnapshot(async(doc) => {
                 </h3>
               </div>
               <div class="text-right mt-3">
-                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger" style="background:#ff0000;">View More</button></a>
+                <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger desktopBtn" style="background:#ff0000;">View All</button></a>
               </div>
             </div>
           </div>
@@ -632,6 +641,7 @@ db.collection('midnight').doc('fixed10').onSnapshot(async(doc) => {
             </div>
           </div>
         </div>
+        <a href="./Products/products.html?cat=${data.prodIds[0].cat.split('__')[0]}"><button type="button" class="btn btn-danger mobileBtn " style="background:#ff0000;">View All</button></a>
       </section>
       `;
     let row = '';
@@ -649,7 +659,7 @@ db.collection('midnight').doc('fixed10').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del>(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
