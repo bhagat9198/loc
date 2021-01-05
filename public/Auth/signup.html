@@ -139,7 +139,20 @@
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script> -->
 <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-
+<script>
+   var firebaseConfig = {
+    apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+    authDomain: "lake-of-cakes.firebaseapp.com",
+    databaseURL: "https://lake-of-cakes.firebaseio.com",
+    projectId: "lake-of-cakes",
+    storageBucket: "lake-of-cakes.appspot.com",
+    messagingSenderId: "779843608951",
+    appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+    measurementId: "G-5ER0QF0FDW"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 <script src="config.js"></script>
 <script src="common.js"></script>
 <script src="firebaseui.js"></script>
