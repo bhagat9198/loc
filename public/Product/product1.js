@@ -270,7 +270,7 @@ const displayProduct = (prodData) => {
         card += `
         <div class="custom-control custom-radio" style="margin-right:auto;text-align:justify;display:inline-block;margin-left:auto:display:block">
           <input type="radio"  id="flavour-${flav}" name="cake-flavour" class="custom-control-input product-attr" value="${flav}">
-          <label class="custom-control-label" for="flavour-${flav}" style="font-weight: 700;font-size:12px ;padding:5px !important">${flav}</label>
+          <label class="custom-control-label" for="flavour-${flav}" style="width:100px;font-weight: 700;font-size:12px ;padding:5px !important">${flav}</label>
         </div>
         `;
       });
@@ -1286,6 +1286,7 @@ const buyProd = async (e) => {
     }
     // console.log("uuuu");
     await sessionStorage.setItem("buyNowProd", JSON.stringify(buyNowData));
+
     window.location.href = "../Auth/login.html";
   }
 };

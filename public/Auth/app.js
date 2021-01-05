@@ -232,10 +232,10 @@ firebase.auth().onAuthStateChanged(function(user) {
               let buyNowProd = window.sessionStorage.getItem('buyNowProd');
               
               if(buyNowProd) {
-              
+
                 buyNowProd = JSON.parse(buyNowProd);
                 if(USER_DATA.orders) {
-                
+           
                   USER_DATA.orders.push(buyNowProd);
                 } else {
               
@@ -245,14 +245,13 @@ firebase.auth().onAuthStateChanged(function(user) {
                 }
                 await dbref.doc(doc.id).update(USER_DATA);
                 let orderId = buyNowProd.orderId;
-            
-        
+         
                 window.location = `/Payment/checkout.html?checkout=${orderId}`;
              
                 // console.log(doc.data());
                 // let userRef = await db.collection("Customers").doc(userId);
               }else{
-           
+                alert("CAME 5")
                 window.location=goTo;
               }
              
