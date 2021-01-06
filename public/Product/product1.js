@@ -1297,7 +1297,10 @@ const addToCartBtnHTML = document.querySelector("#addToCartBtn");
 const addToCart = async (e) => {
   loaderCart("start");
 
-  await checkAuth();
+  let checkAuthStatus =  await checkAuth();
+  if(!checkAuthStatus) {
+    window.location.href = "/Auth/login.html";
+  }
   const cartId = Math.random();
   await userRef.get().then(async (doc) => {
     let docData = doc.data();
