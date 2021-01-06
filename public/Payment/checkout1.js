@@ -1038,7 +1038,7 @@ const displayShippingInfo = (e) => {
     date: document.querySelector("input[name=shipping_date]").value,
     time: document.querySelector("input[name=shipping_time]:checked").value,
   };
-
+  console.log(document.querySelector("input[name=shipping_time]:checked"));
   const checkoutReqData = {
     ...shipData,
     userId: USER_ID,
@@ -1252,8 +1252,8 @@ const orderComplete = (data) => {
 // })
 
 const checkPin = (e, current) => {
-  console.log(current.value);
-  alert(current.value)
+  // console.log(current.value);
+  // alert(current.value)
   let val = current.value;
   valArr = val.split("");
   if (valArr[0] == 2 || valArr[0] == "" || valArr[0] == undefined) {
