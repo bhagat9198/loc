@@ -53,22 +53,22 @@ const calBill = async (
     );
   }
 
-  let zipFlag = false;
-  console.log(optional.formData);
-  if (!optional.formData.zip.startsWith("226")) {
-    zipFlag = true;
-  }
-  if (optional.formData.differtAddress) {
-    if (!optional.formData.alt_zip.startsWith("226")) {
-      zipFlag = true;
-    }
-  }
-  if (zipFlag) {
-    throw new functions.https.HttpsError(
-      "unauthenticated",
-      "only authenticated users can add requests"
-    );
-  }
+  // let zipFlag = false;
+  // console.log(optional.formData);
+  // if (!optional.formData.zip.startsWith("226")) {
+  //   zipFlag = true;
+  // }
+  // if (optional.formData.differtAddress) {
+  //   if (!optional.formData.alt_zip.startsWith("226")) {
+  //     zipFlag = true;
+  //   }
+  // }
+  // if (zipFlag) {
+  //   throw new functions.https.HttpsError(
+  //     "unauthenticated",
+  //     "only authenticated users can add requests"
+  //   );
+  // }
 
   let index = -1;
   for (let o of userDetails.orders) {
@@ -344,8 +344,8 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
   // });
 
   const instance = new Razorpay({
-    key_id: "rzp_test_nGNzxazP9gvHAE",
-    key_secret: "YWfbldEONyvUQcRZUSvGxGp6",
+    key_id: "rzp_test_Fuh4G4ofp9Ftsg",
+    key_secret: "u2cENGMbGQMQdwzcIQaqrwJf",
   });
 
   // console.log(data);
@@ -406,7 +406,7 @@ exports.payemnetStatus = functions.https.onCall(async (data, context) => {
   const shipTime = data.time;
 
   const dataKey = razorpay_order_id + "|" + razorpay_payment_id;
-  const expectSig = cryptoHmac("sha256", "YWfbldEONyvUQcRZUSvGxGp6")
+  const expectSig = cryptoHmac("sha256", "u2cENGMbGQMQdwzcIQaqrwJf")
     .update(dataKey.toString())
     .digest("hex");
   let status = false;
@@ -1826,19 +1826,20 @@ const mailOnProductReject = async () =>{
     });
   });
 }
-exports.scheduledEmails12AM = functions.pubsub.schedule("every day 00:00").onRun((context) => {
-  console.log('This will be run every day ay 12AM!');
-  // mailOnProductReject();
-});
-exports.scheduledEmailsTry = functions.pubsub.schedule("every day 03:00").onRun((context) => {
-  console.log('This will be run every day ay 1:55AM!');
-  mailOnProductReject();
-});
-exports.scheduledEmails3PM = functions.pubsub.schedule("every day 15:00").onRun((context) => {
-  console.log('This will be run every day ay 15PM!');
-  mailOnProductReject();
-});
-exports.scheduledEmails8PM = functions.pubsub.schedule("every day 20:00").onRun((context) => {
-  console.log('This will be run every day ay 20PM!');
-  mailOnProductReject();
-});
+
+// exports.scheduledEmails12AM = functions.pubsub.schedule("every day 00:00").onRun((context) => {
+//   console.log('This will be run every day ay 12AM!');
+//   // mailOnProductReject();
+// });
+// exports.scheduledEmailsTry = functions.pubsub.schedule("every day 03:00").onRun((context) => {
+//   console.log('This will be run every day ay 1:55AM!');
+//   mailOnProductReject();
+// });
+// exports.scheduledEmails3PM = functions.pubsub.schedule("every day 15:00").onRun((context) => {
+//   console.log('This will be run every day ay 15PM!');
+//   mailOnProductReject();
+// });
+// exports.scheduledEmails8PM = functions.pubsub.schedule("every day 20:00").onRun((context) => {
+//   console.log('This will be run every day ay 20PM!');
+//   mailOnProductReject();
+// });
