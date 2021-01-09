@@ -433,7 +433,8 @@ const validateDateAndTime = () => {
   day = Number(day);
   month = Number(month);
   year = Number(year);
-  while (hours > 24) {
+  
+  if (hours > 24) {
     let diffHours = hours - 24;
     hours = diffHours;
     console.log(hours);
@@ -518,6 +519,7 @@ const setDateAndTime = () => {
 
   hours = date.getHours();
   // console.log(hours);
+  // hours = 16;
 
   validateDateAndTime();
 
@@ -531,12 +533,17 @@ const setDateAndTime = () => {
   if (MAX_HOURS || MAX_DAYS) {
     // console.log(hours);
 
-    if (hours < 9) {
-      hours = 10 + MAX_HOURS;
+    if (hours < 9 || hours > 20) {
+      hours = 9 + MAX_HOURS;
+      // console.log(hours);
       // console.log(hours);
 
       // console.log(hours);
-    } else {
+    } else if(hours > 15) {
+      hours = 6 + MAX_HOURS;
+      // console.log(hours);
+
+    }  else {
       // console.log(hours);
       hours = hours + MAX_HOURS;
       // console.log(hours);
@@ -545,6 +552,7 @@ const setDateAndTime = () => {
   }
   // console.log(hours);
   validateDateAndTime();
+  // console.log(hours);
 
   function updateDay() {
     day = Number(day);
@@ -579,7 +587,7 @@ const setDateAndTime = () => {
     midnightHoursHTML.style.display = "none";
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
-    console.log(hours, foudantHoursPerfect);
+    // console.log(hours, foudantHoursPerfect);
     if (hours + foudantHoursPerfect < 19) {
       perfectHoursHTML.style.display = "block";
       if (hours + foudantHoursPerfect < 8) {
@@ -774,7 +782,7 @@ const setDateAndTime = () => {
   if (shipVal === "free") {
     shipValFree();
   } else if (shipVal === "perfect") {
-    console.log(hours);
+    // console.log(hours);
     shipValPerfect();
   } else if (shipVal === "midnight") {
     shipValMidNight();
