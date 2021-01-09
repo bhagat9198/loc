@@ -344,8 +344,8 @@ exports.checkoutReq = functions.https.onCall(async (data, context) => {
   // });
 
   const instance = new Razorpay({
-    key_id: "rzp_test_Fuh4G4ofp9Ftsg",
-    key_secret: "u2cENGMbGQMQdwzcIQaqrwJf",
+    key_id: "rzp_test_INM18DDvwnKIdH",
+    key_secret: "1XXxJyXC6rxk3syDwm4nG1rx",
   });
 
   // console.log(data);
@@ -406,7 +406,7 @@ exports.payemnetStatus = functions.https.onCall(async (data, context) => {
   const shipTime = data.time;
 
   const dataKey = razorpay_order_id + "|" + razorpay_payment_id;
-  const expectSig = cryptoHmac("sha256", "u2cENGMbGQMQdwzcIQaqrwJf")
+  const expectSig = cryptoHmac("sha256", "1XXxJyXC6rxk3syDwm4nG1rx")
     .update(dataKey.toString())
     .digest("hex");
   let status = false;
