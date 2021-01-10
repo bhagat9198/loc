@@ -1,0 +1,56 @@
+[debug] [2021-01-10T12:56:11.582Z] ----------------------------------------------------------------------
+[debug] [2021-01-10T12:56:11.585Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\reeti\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2021-01-10T12:56:11.585Z] CLI Version:   9.1.0
+[debug] [2021-01-10T12:56:11.585Z] Platform:      win32
+[debug] [2021-01-10T12:56:11.586Z] Node Version:  v15.5.0
+[debug] [2021-01-10T12:56:11.592Z] Time:          Sun Jan 10 2021 18:26:11 GMT+0530 (India Standard Time)
+[debug] [2021-01-10T12:56:11.593Z] ----------------------------------------------------------------------
+[debug] [2021-01-10T12:56:11.593Z] 
+[debug] [2021-01-10T12:56:11.603Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-01-10T12:56:11.603Z] > authorizing via signed-in user
+[debug] [2021-01-10T12:56:11.603Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-01-10T12:56:11.606Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-01-10T12:56:11.607Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-01-10T12:56:11.999Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Sun, 10 Jan 2021 12:56:10 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-01-10T12:56:12.014Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lake-of-cakes:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-01-10T12:56:13.677Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 10 Jan 2021 12:56:11 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1173","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-01-10T12:56:13.681Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lake-of-cakes  
+ 
+[debug] [2021-01-10T12:56:14.407Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 10 Jan 2021 12:56:12 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-01-10T12:56:15.168Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at new NodeError (node:internal/errors:278:15)
+    at validateString (node:internal/validators:123:11)
+    at Object.join (node:path:397:7)
+    at Object.checkFunctionsSDKVersion [as fn] (C:\Users\reeti\AppData\Roaming\npm\node_modules\firebase-tools\lib\checkFirebaseSDKVersion.js:34:28)
+    at C:\Users\reeti\AppData\Roaming\npm\node_modules\firebase-tools\lib\command.js:161:30
+    at processTicksAndRejections (node:internal/process/task_queues:93:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2021-01-10T12:56:25.387Z] ----------------------------------------------------------------------
+[debug] [2021-01-10T12:56:25.390Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\reeti\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2021-01-10T12:56:25.390Z] CLI Version:   9.1.0
+[debug] [2021-01-10T12:56:25.391Z] Platform:      win32
+[debug] [2021-01-10T12:56:25.391Z] Node Version:  v15.5.0
+[debug] [2021-01-10T12:56:25.391Z] Time:          Sun Jan 10 2021 18:26:25 GMT+0530 (India Standard Time)
+[debug] [2021-01-10T12:56:25.392Z] ----------------------------------------------------------------------
+[debug] [2021-01-10T12:56:25.392Z] 
+[debug] [2021-01-10T12:56:25.403Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-01-10T12:56:25.403Z] > authorizing via signed-in user
+[debug] [2021-01-10T12:56:25.403Z] [iam] checking project lake-of-cakes for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-01-10T12:56:25.407Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lake-of-cakes:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-01-10T12:56:26.984Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 10 Jan 2021 12:56:25 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=1198","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-01-10T12:56:26.993Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/lake-of-cakes  
+ 
+[debug] [2021-01-10T12:56:27.540Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sun, 10 Jan 2021 12:56:25 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-01-10T12:56:27.786Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at new NodeError (node:internal/errors:278:15)
+    at validateString (node:internal/validators:123:11)
+    at Object.join (node:path:397:7)
+    at Object.checkFunctionsSDKVersion [as fn] (C:\Users\reeti\AppData\Roaming\npm\node_modules\firebase-tools\lib\checkFirebaseSDKVersion.js:34:28)
+    at C:\Users\reeti\AppData\Roaming\npm\node_modules\firebase-tools\lib\command.js:161:30
+    at processTicksAndRejections (node:internal/process/task_queues:93:5)
+[error] 
+[error] Error: An unexpected error has occurred.
