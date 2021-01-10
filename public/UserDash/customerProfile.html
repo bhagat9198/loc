@@ -550,19 +550,19 @@
                 <div class="col" style="background-color: transparent !important;color: black !important;">
                   <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                     <div>
-                      <span class="heading" id="totalOrders">10</span>
+                      <span class="heading" id="totalOrders">0</span>
                       <span class="description">Placed Orders</span>
                     </div>
                     <div>
-                      <span class="heading" id="orderCompleted">5</span>
+                      <span class="heading" id="orderCompleted">0</span>
                       <span class="description">Completed Orders</span>
                     </div>
                     <div>
-                      <span class="heading" id="ordersPending">5</span>
+                      <span class="heading" id="ordersPending">0</span>
                       <span class="description">Pending Orders</span>
                     </div>
                     <div>
-                      <span class="heading" id="totaCart">5</span>
+                      <span class="heading" id="totaCart">0</span>
                       <span class="description">Cart Items</span>
                     </div>
                   </div>
@@ -775,6 +775,47 @@
 
     </div>
   </div>
+  <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="reminderModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content container">
+      <div class="modal-header reminderHeader" style="width: 100%;">
+        <h5 class="modal-title" id="reminderModalLabel"
+          style="padding: 10px;text-align: center !important;font-weight: 800;">We will notify you on the selected day
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Select a Date</label>
+            <input type="date" required class="form-control" id="reminder-date">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Type of Occasion</label>
+            <input type="text" required placeholder="Birthday , Aniversary, etc...." class="form-control"
+              id="reminder-type">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Enter a Email id</label>
+            <input type="email" required placeholder="must include @" class="form-control" id="reminder-email">
+          </div>
+        </form>
+      </div>
+      <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="reminderMessage">
+        Notification Enabled Successfully<i class="fa fa-check"></i>
+      </h5>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="sendReminder()">Notify Me</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
   <footer class="footer" id="footer-section-loader" style="background:rgba(0);"></footer>

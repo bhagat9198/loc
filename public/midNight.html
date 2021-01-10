@@ -1040,6 +1040,46 @@
  -->
 
 
+ <div class="modal fade" id="reminderModal" tabindex="-1" role="dialog" aria-labelledby="reminderModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content container">
+     <div class="modal-header reminderHeader" style="width: 100%;">
+       <h5 class="modal-title" id="reminderModalLabel"
+         style="padding: 10px;text-align: center !important;font-weight: 800;">We will notify you on the selected day
+       </h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <form>
+         <div class="form-group">
+           <label for="recipient-name" class="col-form-label">Select a Date</label>
+           <input type="date" required class="form-control" id="reminder-date">
+         </div>
+         <div class="form-group">
+           <label for="message-text" class="col-form-label">Type of Occasion</label>
+           <input type="text" required placeholder="Birthday , Aniversary, etc...." class="form-control"
+             id="reminder-type">
+         </div>
+         <div class="form-group">
+           <label for="message-text" class="col-form-label">Enter a Email id</label>
+           <input type="email" required placeholder="must include @" class="form-control" id="reminder-email">
+         </div>
+       </form>
+     </div>
+     <h5 style="font-weight:500;font-size: 15px;padding: 20px;display: none;color: green;" id="reminderMessage">
+       Notification Enabled Successfully<i class="fa fa-check"></i>
+     </h5>
+     <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       <button type="button" class="btn btn-primary" onclick="sendReminder()">Notify Me</button>
+
+     </div>
+   </div>
+ </div>
+</div>
 
 
   <footer class="footer" id="footer-section-loader" style="background:rgba(0);"></footer>
@@ -1128,14 +1168,14 @@
 
 <script src="./assets/js/jquery.js"></script>
 <script src="/assets/js/popper.min.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/plugin.js"></script>
 <script src="/assets/js/xzoom.min.js"></script>
 <script src="/assets/js/jquery.hammer.min.js"></script>
 <script src="/assets/js/setup.js"></script>
 <script src="/assets/js/main.js"></script>
-<script src="/assets/js/custom.js"></script> -->
+<script src="/assets/js/custom.js"></script>
 
 
 <script src="./midnight.js"></script>
@@ -1162,6 +1202,66 @@
   function shownavigation() {
     $('.drobt0').removeClass('colapse');
   }
+
+  function sendReminder() {
+      let date = document.querySelector("#reminder-date").value;
+      let type = document.querySelector("#reminder-type").value;
+      let emailId = document.querySelector("#reminder-email").value;
+      if (date) {
+        if (type) {
+  
+          if (emailId.includes("@") && emailId) {
+            if (type != "") {
+              db.collection("reminder").add({
+                date: date,
+                type: type,
+                emailId: emailId
+              }).then(function (docRef) {
+                document.getElementById("reminderMessage").innerHTML = "Notifications enabled successfully"
+                document.getElementById("reminderMessage").style.display = "block"
+                document.getElementById("reminderMessage").style.color = "green"
+                setTimeout(function () {
+                  document.getElementById("reminderMessage").style.display = "none"
+                  $("#reminderModal").modal('hide');
+                }, 2000)
+              })
+            } else {
+              document.getElementById("reminderMessage").innerHTML = "Server error !! Please try again"
+              document.getElementById("reminderMessage").style.display = "block"
+              document.getElementById("reminderMessage").style.color = "red"
+              setTimeout(function () {
+                document.getElementById("reminderMessage").style.display = "none"
+              }, 2000)
+            }
+          } else {
+            document.getElementById("reminderMessage").innerHTML = "Please enter a valid email id"
+            document.getElementById("reminderMessage").style.display = "block"
+            document.getElementById("reminderMessage").style.color = "red"
+            setTimeout(function () {
+              document.getElementById("reminderMessage").style.display = "none"
+            }, 2000)
+          }
+        } else {
+          document.getElementById("reminderMessage").innerHTML = "Please input an occasion type"
+          document.getElementById("reminderMessage").style.display = "block"
+          document.getElementById("reminderMessage").style.color = "red"
+          setTimeout(function () {
+            document.getElementById("reminderMessage").style.display = "none"
+          }, 2000)
+        }
+  
+      } else {
+        document.getElementById("reminderMessage").innerHTML = "Please select a date"
+        document.getElementById("reminderMessage").style.display = "block"
+        document.getElementById("reminderMessage").style.color = "red"
+        setTimeout(function () {
+          document.getElementById("reminderMessage").style.display = "none"
+        }, 2000)
+      }
+  
+  
+  
+    }
 </script>
 <script src="/Auth/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-auth.js"></script>

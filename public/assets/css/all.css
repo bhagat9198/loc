@@ -34643,3 +34643,6 @@ input[type="checkbox"]:checked {
 .nav-collapsible{
     font-size: 13px;
 }
+#showOffer{
+    object-fit: contain !important;
+}
