@@ -1085,7 +1085,7 @@ $(document).on('click','#comment-area .remove',function(){
      var message = $(".message_cart").val();
      var qty = $('.qttotal').html();
      var pid = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().find("#product_id").val();
-     console.log({"pid":pid});
+    //  console.log({"pid":pid});
      var message = $(".message_cart").val();
 
     if($('.product-attr').length > 0)
@@ -1115,7 +1115,7 @@ $(document).on('click','#comment-area .remove',function(){
           url:mainurl+"/addnumcart",
           data:{id:pid,qty:qty,size:sizes,color:colors,size_qty:size_qty,size_price:size_price,size_key:size_key,keys:keys,values:values,prices:prices,message:message},
           success:function(data){
-              console.log({data:data});
+              // console.log({data:data});
 
             if(data == 'digital') {
                 toastr.error(langg.already_cart);
@@ -1186,15 +1186,15 @@ $(document).on('click','#comment-area .remove',function(){
     });
      
      $(document).off("click", ".add_addons").on("click", ".add_addons" , function(){
-         console.log("u nsjhdbs");
+        //  console.log("u nsjhdbs");
         
         var token = $('meta[name="csrf-token"]').attr('content');
          var selectedLanguage = new Array();
          $('.add_addons:checked').each(function() {
             selectedLanguage.push(this.value);
-            console.log(this.value);
+            // console.log(this.value);
             });
-            console.log(selectedLanguage);
+            // console.log(selectedLanguage);
             $.ajax({
                     method: "GET",
                     url:mainurl+"/addaddons",
@@ -1206,7 +1206,7 @@ $(document).on('click','#comment-area .remove',function(){
                 
                     },
                     success:function(data){
-                        console.log(data);
+                        // console.log(data);
                       }
               });
      });
@@ -1278,7 +1278,7 @@ $(document).on('click','#comment-area .remove',function(){
         var stck = $("#stock"+itemid).val();
         var qty = $("#qty"+itemid).html();
         var addons_price = $(".addonss_price").val();
-        console.log({qty:qty});
+        // console.log({qty:qty});
         
         if(qty <= 1)
          {
@@ -1312,7 +1312,7 @@ $(document).on('click','#comment-area .remove',function(){
         var qty = $(this).closest('ul').find('.qttotal1').text();
         var addons_price = $(".addonss_price").val();
         var cart_total = $(".ctt").text();
-        console.log({cartt:cart_total});
+        // console.log({cartt:cart_total});
         var main_total = $(".main-total").text();
         var $t = $(this);
         
@@ -1321,7 +1321,7 @@ $(document).on('click','#comment-area .remove',function(){
                     url:mainurl+"/addbyoneAddons",
                     data:{aid:aid},
                     success:function(data){
-                        console.log(data);
+                        // console.log(data);
                         // JSON.parse(data);
                         // alert(data.main_amount);
                         if(data == 0)
@@ -1355,7 +1355,7 @@ $(document).on('click','#comment-area .remove',function(){
         if(Number(qty)=='1'){
             return false;
         }
-        console.log({qty:qty});
+        // console.log({qty:qty});
         var addons_price = $(".addonss_price").val();
         // var cart_total = $(".cart-total").text();
         var cart_total = $(".ctt").text();
@@ -1370,7 +1370,7 @@ $(document).on('click','#comment-area .remove',function(){
                     url:mainurl+"/reducebyoneAddons",
                     data:{aid:aid},
                     success:function(data){
-                        console.log(data);
+                        // console.log(data);
                         // JSON.parse(data);
                         // alert(data.main_total);
                         if(data.main_amount>0){
@@ -1400,13 +1400,13 @@ $(document).on('click','#comment-area .remove',function(){
         var val = $("#code").val();
         var total = $("#grandtotal").val();
         var addonss_price = $(".addonss_price").val();
-        console.log(addonss_price);
+        // console.log(addonss_price);
             $.ajax({
                     type: "GET",
                     url:mainurl+"/carts/coupon",
                     data:{code:val, total:total},
                     success:function(data){
-                        console.log({coupon:data});
+                        // console.log({coupon:data});
                         if(data == 0)
                         {
                                         toastr.error(langg.no_coupon);

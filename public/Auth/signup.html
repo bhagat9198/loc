@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="keywords" content="Lake">
   <meta name="author" content="GeniusOcean">
-  <title>Lake of Cakes | Signup</title>
+  <title>Online Cake Delivery | #1 Online Cake,Flowers & Gifts in Lucknow | Lake of Cakes | Signup</title>
 
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
@@ -134,12 +134,25 @@
 </body>
 
 
-<!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
 <!-- <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-functions.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script> -->
 <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
-
+<script>
+   var firebaseConfig = {
+    apiKey: "AIzaSyATUjzcsSQMIKlEeBQqMGTy_4zugRTPILg",
+    authDomain: "lake-of-cakes.firebaseapp.com",
+    databaseURL: "https://lake-of-cakes.firebaseio.com",
+    projectId: "lake-of-cakes",
+    storageBucket: "lake-of-cakes.appspot.com",
+    messagingSenderId: "779843608951",
+    appId: "1:779843608951:web:48c6afe1773e2b395e8172",
+    measurementId: "G-5ER0QF0FDW"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 <script src="config.js"></script>
 <script src="common.js"></script>
 <script src="firebaseui.js"></script>
@@ -148,8 +161,8 @@
   var auth = window.localStorage.getItem('locLoggedInUser');
 
   setInterval(function () {
-    
-    if (auth !="null") {
+
+    if (auth != "null") {
 
       window.location = "/index.html"
     }
@@ -190,40 +203,55 @@
               document.getElementById("AddCustomer").style.backgroundColor = "green"
 
               db.collection("Customers").add({
-                UserName: name,
-                Email: email,
-                Password: btoa(pass),
-                createdDtm: timestamp,
-                Phone :phone,
-                token: "null",
-                Image: "null"
-              })
+                  UserName: name,
+                  Email: email,
+                  Password: btoa(pass),
+                  createdDtm: timestamp,
+                  Phone: phone,
+                  token: "null",
+                  Image: "null"
+                })
                 .then(async function (docRef) {
-
                   document.getElementById("AddCustomer").innerHTML = "Account Created Successfully"
                   db.collection("Customers").onSnapshot(async (snapshots) => {
                     var dbref = db.collection('Customers');
                     let snapshotDocs = snapshots.docs;
-
                     for (let doc of snapshotDocs) {
-
                       let docData = doc.data();
                       if (docData.Email == email) {
                         await dbref.doc(doc.id).update({
-
                           userId: doc.id,
-
-
                         });
-                        window.localStorage.setItem("locLoggedInUser", doc.id)
-                        window.location = "../UserDash/customerProfile.html"
+                        window.localStorage.setItem("locLoggedInUser", doc.id);
+                        // /////////////////////////////////////////////////////////////////////////////////
+                        let uId = window.localStorage.getItem('locLoggedInUser');
+                        let buyNowProd = window.sessionStorage.getItem('buyNowProd');
+                        if (buyNowProd) {
+                          let uRef = db.collection('Customers').doc(uId);
+                          uRef.get().then(async (udoc) => {
+                            let udata = udoc.data();
+                            buyNowProd = JSON.parse(buyNowProd);
+                            if (udata.orders) {
+                              udata.orders.push(buyNowProd);
+                            } else {
+                              let orders = [];
+                              orders.push(buyNowProd);
+                              udata.orders = orders;
+                            }
+                            await dbref.doc(doc.id).update(udata);
+                            let orderId = buyNowProd.orderId;
+                            await sessionStorage.removeItem("buyNowProd");
+                            window.location = `/Payment/checkout.html?checkout=${orderId}`;
+                          })
+
+                          /////////////////////////////////////////////////////////////////////////////////////////
+                        } else {
+                          window.location = "../UserDash/customerProfile.html";
+                        }
                         break;
-
                       }
-
                     }
                   });
-
                 })
                 .catch(function (error) {
                   console.error("Error adding document: ", error);
@@ -267,7 +295,6 @@
       }, 1000)
     }
   });
-
 </script>
 
 </html>

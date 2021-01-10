@@ -122,10 +122,10 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
         container: false,
         dropdownEvent: 'hover',
         onOpenDropdown: function(){
-            console.log('open');
+            // console.log('open');
         },
         onCloseDropdown: function(){
-            console.log('close');
+            // console.log('close');
         }
     });
 
@@ -194,13 +194,12 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
                 nav: false,
                 dots: true,
                 autoplay: true,
-                autoplayTimeout: 8000,
-                animateOut: 'fadeOut',
-                animateIn: 'fadeIn',
-                smartSpeed: 1000,
-                onInitialized: startProgressBar,
-                onTranslate: resetProgressBar,
-                onTranslated: startProgressBar,
+                
+                animateIn: 'fadeIn', // add this,
+                animateOut: 'fadeIn', // and this
+                autoplayTimeout: 6000,
+                smartSpeed: 3000,
+            
                 responsive: {
                     0: {
                         dots: false,

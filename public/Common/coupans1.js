@@ -1,4 +1,4 @@
-console.log("coupans1.js");
+// console.log("coupans1.js");
 
 const db = firebase.firestore();
 const allcoupansHTML = document.querySelector('#allcoupans');
@@ -6,21 +6,44 @@ const allcoupansHTML = document.querySelector('#allcoupans');
 db.collection('coupans').onSnapshot(snapshots => {
   let snapshotDocs = snapshots.docs;
   let card = '';
-  snapshotDocs.map(doc => {
+  for(doc of snapshotDocs) {
     let docData = doc.data();
+    let d = new Date();
+    let cyear = docData.validTill.substring(0,4);
+    let cmonth = docData.validTill.substring(5,7);
+    let cday = docData.validTill.substring(8,10);
+    let newDate = new Date(`${cyear}-${cmonth}-${cday}`);
+
+    let diff = (+newDate.getTime() - +d.getTime()) / (1000 * 3600 * 24);
+
+    if(diff <= 0) {
+      deleteCoupan(doc.id);
+      continue;
+    }
     card += displayCard(docData);
-  })
+  }
   allcoupansHTML.innerHTML = card;
 })
 
+const deleteCoupan = id => {
+  let coupanRef = db.collection('coupans').doc(id);
+  coupanRef.delete().then(deleted => {
+    // console.log(deleted);
+  }).catch(error => {
+    console.log(error);
+  })
+}
+
 const displayCard = (docData) => {
+  // console.log(docData);
+
   let rand1 = Math.random().toString();
   let rand2 = Math.random();
   return `
   <div class="col-12 col-sm-6 col-md-6 col-lg-4">
     <div class="card h-100 mb-4">
       <div class="card-header">
-        <h5 class="card-title m-0 p-0 font-weight-bolder" id="${docData.name}">#${docData.name}
+        <h5 class="card-title m-0 p-0 font-weight-bolder" id="${docData.name}">${docData.name}
         </h5>
       </div>
       <div class="card-body text-left">

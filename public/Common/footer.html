@@ -1,11 +1,26 @@
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+</head>
+
+<style>
+  /* .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, 
+  .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1,
+   .col-lg-10, .col-lg-11, .col-lg-2, 
+     .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+    position: relative;
+    width: 100% !important;
+    padding-right: 15px;
+    padding-left: 15px;
+} */
+</style>
 <div class="container-fluid" >
   <div class="mt-4">
     <div class="row">
-      <div class="col-lg-2 col-md-6 col-6">
+      <div class="col-lg-2">
         <div class="footer-info-area">
-          <div class="footer-logo">
+          <div class="footer-logo responsive-sec2 " style="display: none;">
             <a href="m" class="logo-link">
-              <img class="img-fluid" src="" alt=""
+              <img class="img-fluid" src="../assets/images/logofoot.png" alt=""
                 style="max-width: 150px !important;">
             </a>
           </div>
@@ -23,29 +38,29 @@
           </h4>
           <ul class="link-list">
             <li>
-              <a href="">
+              <a href="/index.html">
                 <i class="fas fa-angle-double-right"></i>Home
               </a>
             </li>
 
             <li>
-              <a href="/about">
+              <a href="/Footer/aboutUs.html">
                 <i class="fas fa-angle-double-right"></i>About Us
               </a>
             </li>
             <li>
-              <a href="/privacy">
+              <a href="/Footer/privacyPolicy.html">
                 <i class="fas fa-angle-double-right"></i>Privacy &amp; Policy
               </a>
             </li>
             <li>
-              <a href="/terms">
+              <a href="/Footer/termsCondition.html">
                 <i class="fas fa-angle-double-right"></i>Terms &amp; Condition
               </a>
             </li>
 
             <li>
-              <a href="/contact">
+              <a href="/Footer/contactUs.html">
                 <i class="fas fa-angle-double-right"></i>Contact Us
               </a>
             </li>
@@ -59,28 +74,28 @@
             services
           </h4>
           <ul class="link-list">
-            <li>
+            <!-- <li>
               <a style="color:#fff;" href="">
                 <i class="fas fa-angle-double-right"></i> Blog
               </a>
-            </li>
+            </li> -->
             <li>
-              <a style="color:#fff;" href="">
+              <a style="color:#fff;" href="/Footer/FAQ.html">
                 <i class="fas fa-angle-double-right"></i> FAQ
               </a>
             </li>
-            <li>
-              <a style="color:#fff;" href="">
-                <i class="fas fa-angle-double-right"></i> Login/Register
+            <li style="display: none !important;" id="authway">
+              <a style="color:#fff;" href="/Auth/login.html" >
+                <i class="fas fa-angle-double-right" ></i> Login/Register
               </a>
             </li>
             <li>
-              <a style="color:#fff;" href="/contact">
+              <a style="color:#fff;" href="/Footer/deliveryReturn.html">
                 <i class="fas fa-angle-double-right"></i> Delivery & Returns
               </a>
             </li>
             <li>
-              <a style="color:#fff;" href="/contact">
+              <a style="color:#fff;" href="/Footer/paymentSecurity.html">
                 <i class="fas fa-angle-double-right"></i> Payments And Security
               </a>
             </li>
@@ -90,45 +105,49 @@
       <div class="col-lg-2 col-md-6 col-6">
         <div class="footer-widget info-link-widget">
           <h4 class="title" style="font-size: 20px;">
-
             Store
           </h4>
           <ul class="link-list">
             <li>
-              <a href="">
+              <a href="#!" id="showModalOffer"data-toggle="modal" data-target="#modalYT">
                 <i class="fas fa-angle-double-right"></i> Offers
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="/Common/coupans.html"  >
                 <i class="fas fa-angle-double-right"></i> Coupons
               </a>
             </li>
             <li>
+              <a href="/Common/coperateOrders.html"  >
+                <i class="fas fa-angle-double-right"></i> Corporate Gifts
+              </a>
+            </li>
+            <!-- <li>
               <a href="">
                 <i class="fas fa-angle-double-right"></i> Corporate Gift
               </a>
-            </li>
+            </li> -->
 
           </ul>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-6">
-        <h4 class="title" style="font-size: 20px; font-weight: 700; color: #000">
+      <div class=" col-lg-3 col-md-6 col-6">
+        <h4 class="title responsiveText" style="font-size: 20px; font-weight: 700; color: #000">
           CONNECT WITH US
         </h4>
-        <div class="fotter-social-links">
+        <div class="fotter-social-links resIcon" >
           <ul>
 
             <li>
-              <a href="//www.facebook.com/" class="facebook" target="_blank"
+              <a href="https://www.facebook.com/Lake-Of-Cakes-100900995221365" class="facebook" target="_blank"
                 style="background: #3b5999; color: #ffffff; border: 1px solid #3b5999;">
                 <i class="fab fa-facebook-f"></i>
               </a>
             </li>
 
             <li>
-              <a href="//plus.google.com/" class="google-plus" target="_blank"
+              <a href="https://www.instagram.com/lake_of_cakes/" class="google-plus" target="_blank"
                 style=" color: #ffffff; border: 1px solid #d62651; background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); ">
                 <i class="fab fa-instagram" aria-hidden="true"></i>
               </a>
@@ -143,23 +162,23 @@
 
 
           </ul>
-          <img class="mt-3" src="="max-width: 56%;">
+          
         </div>
       </div>
-
       <div class="col-md-12 col-lg-12 mb-3 text-center" style="border-top: 1px solid #251d34;">
-        <img class="mt-3" src=" style="max-width: 56%;">
+        <img class="responsiveFooter mt-3" src="../assets/images/footericons.png "  alt=""
+          style="max-width: 36%;">
       </div>
     </div>
   </div>
 </div>
 
-<div class="copy-bg" style="background:rgba(10, 46, 100, 0.6);">
+<div class="copy-bg" style="background:rgba(180, 187, 199, 0.6);height:30px ;">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <p class="mb-0" style="color:#fff;"> <strong>COPYRIGHT © 2020Lake of Cakes </strong><br><span
-            style="color:white;">Designed by <strong style="color:rgb(207, 44, 53);">CrossHex</strong></span></p>
+        <p class="" style="color:rgb(14, 13, 13);padding: 5px !important;font-size: 11px;margin-top: auto;margin-bottom: auto;"> <strong>COPYRIGHT © 2021 Lake of Cakes </strong>|| <span
+            style="color:rgb(12, 12, 12);">❤  By <strong style="color:rgb(243, 35, 8);">CrossHex</strong></span></p>
         <!--<div class="content">-->
 
 
@@ -168,7 +187,9 @@
     </div>
   </div>
 </div>
-
 <script>
-  console.log('footer.html');
+  let user=window.localStorage.getItem("locLoggedInUser")
+  if((!user) ||user =="null" ||user==null){
+    document.getElementById("authway").style.display="block"
+  }
 </script>

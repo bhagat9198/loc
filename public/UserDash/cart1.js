@@ -1,5 +1,3 @@
-console.log("cart1.js");
-
 const db = firebase.firestore();
 const storageService = firebase.storage;
 
@@ -33,121 +31,165 @@ const displayCart = async () => {
   let item = "";
   // console.log(USER_DETAILS);
   let index = -1;
+  var count=0;
+
+  var type="odd"
+  
+  if(USER_DETAILS.cart==undefined || USER_DETAILS.cart.length==0){
+  
+    cartBodyHTML.innerHTML=`<h5 style="text-align: center;font-size: 14px ; font-weight: 700px; padding: 20px;">Your bag is empty ! <a href="/index.html">Click here to add products now</h5>`
+  }
+  if(USER_DETAILS.cart.length>0){
+
+  
   for (let prod of USER_DETAILS.cart) {
-    index++;
+    
+    count++;
+    // console.log(prod);
+    if(count%2!=0){
+      type="odd"
+    }else{
+      type="even"
+    }
     let product;
     let prodPrice = 0;
     let cakeWeight = "";
+
     await db
       .collection(prod.cat)
       .doc(prod.prodId)
       .get()
       .then((prodDoc) => {
+        // console.log(prodDoc);
         let prodData = prodDoc.data();
-        product = prodData;
-      });
+        // console.log(prodData);
+        if (prodData) {
+          index++;
+          // console.log(prodData);
+          product = prodData;
 
-    if (prod.pricing.weight) {
-      for (let cw of product.weights) {
-        if (cw.cakeWeight === "half") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 0.5;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "one") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 1;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "oneHalf") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 1.5;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "two") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 2;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "three") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 3;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "four") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 4;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "five") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 5;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else if (cw.cakeWeight === "six") {
-          if (cw.cakeWeight === prod.pricing.weight) {
-            cakeWeight = 6;
-            prodPrice = +cw.weightPrice;
-            break;
-          }
-        } else {
-          console.log("invalid");
         }
-      }
-    } else {
-      prodPrice = prodPrice + +product.sp;
-    }
+      });
+    if (product) {
+      // console.log(prod);
+      if (prod.pricing.weight) {
+        for (let cw of product.weights) {
 
-    let cakeDetails = `
+          if (cw.cakeWeight === "half") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 0.5;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "one") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 1;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "oneHalf") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 1.5;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "two") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 2;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "three") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 3;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "four") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 4;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "five") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 5;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else if (cw.cakeWeight === "six") {
+            if (cw.cakeWeight === prod.pricing.weight) {
+              cakeWeight = 6;
+              prodPrice = +cw.weightPrice;
+              break;
+            }
+          } else {
+            // console.log("invalid");
+          }
+        }
+      } else {
+        prodPrice = prodPrice + +product.sp;
+      }
+
+      let cakeDetails = `
     <b>Weight : </b> ${cakeWeight} Kg<br>
     <b>Shape :</b> ${prod.heart ? "Heart" : "Round"}<br>
     <b>Eggless :</b> ${prod.eggless ? "Yes" : "No"}<br>
     <b>Flavour :</b>${prod.flavour}<br>`;
 
-    if (prod.heart) {
-      prodPrice += +product.shapes[0].shapePrice;
-    }
+      const personalizedGiftDetails = `
+      <b>Personalized Gift : </b> Yes <br>
+    `;
 
-    if (prod.eggless) {
-      prodPrice += +product.type.price;
-    }
+      if (prod.heart) {
+        prodPrice += +product.shapes[0].shapePrice;
+      }
 
-    let gst = +prodPrice * (+product.gst / 100);
-    prodPrice = prodPrice + gst;
-    prodPrice = +Math.round(prodPrice);
-    allProdPrice.push({
-      price: prodPrice,
-      name: product.name,
-      qty: 1,
-      cartId: prod.cartId,
-    });
-    // console.log(prod.cartId);
-    let rand = new Date().valueOf();
-    item += `
-    <tr class="cremove3831" id="row__${rand}">
-      <td >
-          <img
-            src="${product.mainImgUrl}"
-            alt="Lake of Lakes " class=" crtimg responsiveImage">
-          <p class="pname"><a class="pname" href="../Product/product.html?prod=${
+      if (prod.eggless) {
+        prodPrice += +product.type.price;
+      }
+
+      let gst = +prodPrice * (+product.gst / 100);
+      prodPrice = prodPrice + gst;
+      prodPrice = +Math.round(prodPrice);
+      let priceWithQty = prodPrice * prod.qty;
+      allProdPrice.push({
+        price: prodPrice ,
+        name: product.name,
+        qty: prod.qty,
+        cartId: prod.cartId,
+        
+      });
+      console.log(allProdPrice);
+      // console.log(prod.cartId);
+      let rand = new Date().valueOf();
+
+      item += `
+    
+      <li class="items `+type+`" id="row__${rand}">
+
+      <div class="infoWrap">
+        <div class="cartSection">
+          <img src="${product.mainImgUrl}" alt="" class="itemImg" style="height:190px;width:160px;object-fit:cover";border-radius:5px !important />
+          <p class="itemNumber">${product.sno}</p>
+          <a href="../Product/product.html?prod=${
             prod.prodId
-          }&&cat=${prod.cat}">${product.name}</a></p>
-      </td>
-      <td class="responsiveTags" style="text-align: center;">
-        ${prod.pricing.weight ? cakeDetails : ""}
-        <b>Cost :</b> <span id="eachprice__${rand}">₹${prodPrice}</span>
-      </td>
-      <td class="unit-price quantity names">
-        <div class="qty">
-          <ul>
-            <li>
+          }&&cat=${prod.cat}"><h5 class="resTxtMob" style="font-size:13px;width:290px">${product.name}</h5></a>
+ 
+          <span id="eachprice__${rand}">₹${prodPrice}</span>
+          <br>
+          <small>
+          ${prod.pricing.weight ? cakeDetails : ""}
+${prod.personalizedGift ? personalizedGiftDetails : ''}
+          </small>
+   
+        </div>
+        <div style="width:100%;paadding:20px">
+        <div class=" cartSection">
+      
+          <div class="qty">
+            <ul style="display:flex">
+              <li style="padding:10px">
               <span class="qtminus1 reducing" data-cartid="${
                 prod.cartId
               }" data-index="${index}" data-id="minus__${rand}" onclick="decQty(event)">
@@ -155,13 +197,13 @@ const displayCart = async () => {
                   prod.cartId
                 }" data-index="${index}" data-id="minus__${rand}"></i>
               </span>
-            </li>
-            <li>
+              </li>
+              <li style="padding:10px">
               <span class="qttotal1" id="total__${rand}" >${
-      allProdPrice[index].qty
-    }</span>
-            </li>
-            <li>
+                allProdPrice[index].qty
+                }</span>
+              </li>
+              <li style="padding:10px">
               <span class="qtplus1 adding" data-cartid="${
                 prod.cartId
               }" data-index="${index}" data-id="plus__${rand}" onclick="incQty(event)">
@@ -169,47 +211,52 @@ const displayCart = async () => {
                   prod.cartId
                 }" data-index="${index}" data-id="plus__${rand}"></i>
               </span>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-      </td>
-      <td class="total-price">
-        <p data-index="${index}" id="subprice_${rand}">${prodPrice}</p>
-      </td>
-      <td>
-        <span class="qtplus1 adding" style="cursor:pointer" data-id="${rand}" data-index="${index}" data-cartid="${
-      prod.cartId
-    }" onclick="deleteCartProd(event)">
-         <center> <i class="fa fa-trash" data-cartid="${
-           prod.cartId
-         }" data-index="${index}" data-id="${rand}"></i> </center></span>
-        </span>
-      </td>
-      <td>
-       <center> <input type="checkbox" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style="background-color: red; display: block;"></center>
-      </td>
-    </tr>
-    `;
+        
+            
+        <div class="cartSection">
+        <h5 style="font-size:13px;font-weight:800" class="cartSection " data-index="${index}" id="subprice_${rand}">${priceWithQty}</h5>
+        </div>
+      
+        <div class="cartSection" >
+        <span class="qtplus1 adding cartSection" style="cursor:pointer" style="padding:10px" data-id="${rand}" data-index="${index}" data-cartid="${
+          prod.cartId
+        }" onclick="deleteCartProd(event)">
+              <i class="fa fa-trash" data-cartid="${
+               prod.cartId
+             }" data-index="${index}" data-id="${rand}"></i></span>
+            </span>
+       </div>
+       <div class="cartSection" style="margin-top:3% ">
+        <input class="styled-checkbox" type="checkbox" id="select${index}" name="selectProd" onchange="selectProds(event, this)" data-index="${index}"   style=" display:none;width:20px;height:20px;">
+        <label for="select${index}" ></label>
+        </div>
+        </div>
+      </div>
+      </div>
+    </li>
+      `;
+    }else{
+     
+    }
   }
+ 
   cartBodyHTML.innerHTML = item;
+}
 };
 
 const deleteCartProd = (e) => {
   const cartId = e.target.dataset.cartid;
-  console.log(cartId);
   let counter = e.target.dataset.index;
   let id = e.target.dataset.id;
-  console.log(id);
   if (+counter === 0 || +counter < USER_DETAILS.cart.length) {
-    console.log(counter);
     let tempCart = USER_DETAILS.cart;
-    console.log(tempCart);
     tempCart.splice(counter, 1);
-    console.log(tempCart);
     USER_REF.update("cart", tempCart);
-    console.log("updated");
   }
-  console.log("done");
   document.querySelector(`#row__${id}`).remove();
   updateSelectedProds(cartId, 0, "del");
 };
@@ -219,10 +266,8 @@ const SELECTED_PRODS = [];
 const selectProds = (e, current) => {
   let counter = e.target.dataset.index;
   if (e.target.checked) {
-    console.log(counter);
     SELECTED_PRODS.push({ ...allProdPrice[counter] });
   } else {
-    console.log(counter);
     SELECTED_PRODS.splice(counter, 1);
   }
   // console.log(SELECTED_PRODS.length);
@@ -231,7 +276,6 @@ const selectProds = (e, current) => {
 };
 
 const updateSelectedProds = (id, qty, del = "data") => {
-  console.log(qty);
   let c = -1;
   for (let sp of SELECTED_PRODS) {
     // console.log(sp.cartId, id)
@@ -257,7 +301,6 @@ const calculateSubPrice = (id) => {
   // console.log(counter);
   let cost = allProdPrice[counter].price;
   let qty = document.querySelector(`#total__${id}`).innerHTML;
-  console.log(cost, qty);
   let totalCost = +cost * +qty;
   subPriceHTML.innerHTML = totalCost;
 };
@@ -277,6 +320,7 @@ const decQty = (e) => {
     updateSelectedProds(cartId, qty);
   }
 };
+
 
 const incQty = (e) => {
   // console.log(e.target.dataset.id);
@@ -299,16 +343,13 @@ const orderBoxHTML = document.querySelector(".order-box");
 let TOTAL = 0;
 
 const displayCheckout = () => {
-  console.log(SELECTED_PRODS);
   if (SELECTED_PRODS.length > 0) {
     emptyCheckoutHTML.style.display = "none";
     checkoutBtnHTML.disabled = false;
     // orderBoxHTML.style.display = 'block';
     let li = "";
-    console.log(SELECTED_PRODS);
     TOTAL = 0;
     SELECTED_PRODS.map((p) => {
-      console.log(p);
       let pPrice = +p.qty * +p.price;
       TOTAL = TOTAL + pPrice;
       li += `
@@ -358,14 +399,15 @@ const addonModal = (e) => {
     <div class="col-md-3 col-6 mt-3">
       <a class="item"
         style="width: 100%; ; padding: 0px; border-radius:1px; background: #fff;border:1px solid black !important;">
-        <input type="checkbox" name="add_addons" class="add_addons" value="${index}" onchange="buyAddon(event, this)"
-          style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;">
-        <div class="item-img" style="max-height:150px ;" style="max-height:150px ;">
+        <input type="checkbox"  id="addons-checkbox${index}" name="add_addons" class="add_addons addons-checkbox" value="${index}" onchange="buyAddon(event, this)"
+          style="display:block; position: absolute !important; top: 3px !important; z-index: 4 !important;display:none">
+          <label for="addons-checkbox${index}">Select</label>
+        <div class="item-img"style="max-height:170px ;">
           <img class="img-fluid"
             src="${docData.imgUrl}"
-            alt="" style="width:100%;object-fit: cover;">
+            alt="lake of cakes" style="width:100%;object-fit: contain;">
         </div>
-        <div class="info" style="height: 88px; ">
+        <div class="info" style="height: 120px; ">
           <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">
             ${docData.name}
           </h5>
@@ -376,7 +418,7 @@ const addonModal = (e) => {
             <div class="qty">
               <ul>
                 <li>
-                  <span class="qtminus" data-id="addon__minus__${doc.id}" data-index="${index}" onclick="decAddon(event)">
+                  <span  class="qtminus" data-id="addon__minus__${doc.id}" data-index="${index}" onclick="decAddon(event)">
                     <i class="fa fa-minus" data-id="addon__minus__${doc.id}" data-index="${index}"></i>
                   </span>
                 </li>
@@ -410,16 +452,31 @@ const calAddonPrice = () => {
       totalAddonPrice += el.price * el.qty;
     }
   });
-  console.log(totalAddonPrice, TOTAL);
   costWithAddonsHTML.innerHTML = +totalAddonPrice + +TOTAL;
 };
 
 const buyAddon = (e, current) => {
+  // console.log('buyAddon');
   let index = e.target.value;
-  console.log(ADDONS_DETAILS);
-  console.log(ADDONS_DETAILS[index]);
   ADDONS_DETAILS[index].checked = current.checked;
-  console.log(TOTAL);
+  let tAddons = 0;
+  document.querySelectorAll(".addons-checkbox").forEach((el) => {
+    if (el.checked) {
+      // tAddons++;
+      tAddons++;
+    }
+  });
+  if (tAddons > 0) {
+    // console.log('tAddons');
+    document.querySelector(
+      "#prod_with_addons"
+    ).innerHTML = `Checkout With ${tAddons} Addons`;
+  } else {
+    // console.log('else');
+    document.querySelector(
+      "#prod_with_addons"
+    ).innerHTML = `Checkout Without Addons`;
+  }
   calAddonPrice();
 };
 
@@ -445,8 +502,8 @@ const decAddon = (e) => {
 
 const prodWithAddonsHTML = document.querySelector("#prod_with_addons");
 
-const checkoutProds = async(e) => {
-  // console.log(SELECTED_PRODS);
+const checkoutProds = async (e) => {
+  console.log(SELECTED_PRODS);
   let addonsSelected = [];
   ADDONS_DETAILS.map((el) => {
     if (el.checked) {
@@ -459,8 +516,9 @@ const checkoutProds = async(e) => {
   if (SELECTED_PRODS.length > 0) {
     checkoutCart = {
       orderId: orderId,
-      status: "selected",
+      status: "cancelled",
       type: "cart",
+      totalCost: costWithAddonsHTML.innerHTML,
       addons: addonsSelected,
       products: [],
     };
@@ -485,15 +543,22 @@ const checkoutProds = async(e) => {
           cake.heart = c.heart;
           cake.eggless = c.eggless;
           cake.weight = c.pricing.weight;
-          // cake.flavour = c.flavour;
+          cake.flavour = c.flavour;
           pdata.cake = cake;
+        }
+        if (c.personalizedGift) {
+          // personalizedGiftDetails = c.personalizedGiftDetails;
+          pdata.personalized = true;
+          pdata.personalizedGiftDetails = c.personalizedGiftDetails;
+        } else {
+          pdata.personalized = false;
         }
         checkoutCart.products.push(pdata);
       }
     }
   });
 
-  if(USER_DETAILS.orders) {
+  if (USER_DETAILS.orders) {
     USER_DETAILS.orders.push(checkoutCart);
   } else {
     USER_DETAILS.orders = [];
@@ -502,7 +567,6 @@ const checkoutProds = async(e) => {
   await USER_REF.update(USER_DETAILS);
   // console.log(USER_DETAILS);
   window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
-  
 };
 
 prodWithAddonsHTML.addEventListener("click", checkoutProds);

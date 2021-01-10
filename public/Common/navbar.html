@@ -60,7 +60,7 @@
     .responsiveIcon1 {
       /* margin: auto;
       padding: 0px; */
-      margin-left: 32%;
+      
     }
 
   }
@@ -96,17 +96,17 @@
                   </li>
 
                   <li><a href="#" class="track-btn"><span class="sign-in" style="font-size: 14px; color: #000;"><i
-                          class="fa fa-gift" aria-hidden="true" style="color: rgb(235, 48, 79);"></i>
+                          class="fa fa-gift" aria-hidden="true" style="color: red;"></i>
                         COUPONS</span> </a>
                   </li> &nbsp;
                   <li><a href="tel:9598891097" class="track-btn"><span class="sign-in"
                         style="font-size: 14px; color: #000;"><i class="fa fa-phone" aria-hidden="true"
-                          style="color: rgb(235, 48, 79);"></i>
+                          style="color: red;"></i>
                         9598891097</span> </a>
                   </li> &nbsp;
                   <li><a href="mailto:lakeofcakess@gmail.com" class="track-btn"><span class="sign-in"
                         style="font-size: 14px; color: #000;"><i class="fa fa-envelope" aria-hidden="true"
-                          style="color: rgb(235, 48, 79);"></i>
+                          style="color: red;"></i>
                           Email</span> </a>
                   </li> &nbsp;
 
@@ -185,7 +185,7 @@
                     </span>
                   </div>
                   <div class="col-8 col-sm-8 col-md-8 p-0">
-                    <span style="position: relative; top: 4px;">Be A Chef </span>
+                    <span style="position: relative; top: 4px;"><marquee scrolldelay="200" style="height: 13px;">Coming Soon</marquee> </span>
                   </div>
                   <div class="col-2 col-sm-2 col-md-2 p-0">
                     <span style="position: relative; top: 8px;">
@@ -357,7 +357,7 @@
                   <input class="form-control" style="width: 100% !important;
                   border: none;
                   border-bottom: 1px solid ;
-                  border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeyup=searchIfvalue(event) name="searchBar"
+                  border-radius: unset;background-color: transparent;" type="text" id="searchBar" onkeyup=searchByUserInput(event) name="searchBar"
                     placeholder="Search: Cakes , Flowers ,Gifts..."
                    >
                 </div>
@@ -392,7 +392,7 @@
               <img src="/assets/images/chef.png" style="width:50px;object-fit: cover;">
               <div
                 style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
-                BE A CHEF</div>
+                <marquee scrolldelay="200" style="height: 13px;">Coming Soon</marquee></div>
             </a>
           </li>
           <li>
@@ -814,7 +814,7 @@
   </div>
 </div>
 
-<script src="//code.tidio.co/cyue2ir0la5ro7xhnjizuzqimq4gpbae.js" async></script>
+<script src="//code.tidio.co/kjoezjioh2sy6yyxktwjnazd6lfyynyr.js" async></script>
 <script>
 
   function hidenavigation() {
@@ -913,7 +913,7 @@
       token: "null"
 
     }).then(function () {
-      window.localStorage.removeItem("locLoggedInUser")
+      window.localStorage.setItem("locLoggedInUser","null")
       firebase.auth().signOut();
       location.reload();
     });

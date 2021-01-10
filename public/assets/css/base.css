@@ -157,7 +157,7 @@ div.ruby-menu-demo-header {
   font-size: 22px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #ffffff !important;
+  color: #143250 !important;
   font-weight: 800;
 }
 
@@ -449,7 +449,7 @@ div.ruby-menu-demo-header {
     width: 129px !important;
   }
   .col.l4.s4 {
-    display: none;
+    /* display: none; */
   }
   .topnaves {
     display: none;
@@ -463,7 +463,7 @@ div.ruby-menu-demo-header {
   }
   .col {
     width: 40%;
-    height: 90% !important;
+    height: 100% !important;
     text-align: center;
     color: white;
     line-height: 25px;
@@ -509,7 +509,8 @@ div.ruby-menu-demo-header {
   }
   .cartres {
     position: relative;
-    right: -110px;
+    right: -140px;
+    top:-5px;
   }
   .logoheder {
     height: 99px;
@@ -540,6 +541,7 @@ div.ruby-menu-demo-header {
     width: 100% !important;
   }
   .logo img {
+    margin-top: 3%;
     /* max-width: 188px !important; */
   }
   .socialdiv {
@@ -800,3 +802,23 @@ h1 {
   z-index: 999;
   padding: 5px;
 }
+@media only screen and (max-width:768px) {
+  .dropdown{
+    display: none !important;
+  }
+  .responsiveIcon2{
+    display: block !important;
+  }
+  
+}
+@media only screen and (min-width:768px) {
+  .dropdown{
+    display: block !important;
+  }
+  .responsiveIcon2{
+    display: none !important;
+  }
+  
+}
+
+

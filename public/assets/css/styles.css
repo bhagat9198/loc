@@ -24,7 +24,7 @@
 
 
 .footer {
-  background: #65798a !important;
+  background: #f2f2f2 !important;
 }
 
 
@@ -554,17 +554,17 @@ input[type=checkbox]:checked + label:before {
   border-left: 20px solid #ff0000;
 }
 .checkout-area .checkout-process li a.active{
-  background: #ac8d04;
+  background: #ac0404;
 
 }
 .checkout-area .checkout-process li a.active::before{
-  border-left: 20px solid #ac8d04;
+  border-left: 20px solid #f30b0b;
 }
 .checkout-area  .content-box .content .billing-info-area .info-list li p i{
-   color: #ac8d04;
+   color: #ee0f0f;
 }
   .checkout-area  .content-box .content .payment-information .nav a span::after{
-    background:#ac8d04 ;
+    background:#ac0404 ;
   }
       .hero-area .hero-area-slider .intro-carousel .intro-content .slider-content .layer-3 a {
       border: 1px solid #ff0000;

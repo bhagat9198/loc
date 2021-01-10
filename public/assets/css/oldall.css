@@ -591,6 +591,13 @@ kbd kbd {
     .container {
         max-width: 100%;
     }
+    .responsive-sec2 {
+        display: block !important;
+    }
+    .onlyInPc{
+        padding: 30px !important;
+        
+    }
 }
 
 @media (min-width:992px) {
@@ -20682,7 +20689,7 @@ select:focus {
 
 .mybtn1:hover {
     background: none;
-    color: #ff5500!important;
+    color: black !important;
 }
 
 .mybtn2 {
@@ -21362,7 +21369,7 @@ Logo Header Area Start
 .logo-header .helpful-links ul li {
     display: inline-block;
     text-align: center;
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 
 .logo-header .helpful-links ul li a {
@@ -21397,7 +21404,7 @@ Logo Header Area Start
 .logo-header .helpful-links ul li.my-dropdown .cart .icon span {
     width: 20px;
     height: 20px;
-    background: #ff5500;
+    background: red;
     border-radius: 50px;
     display: inline-block;
     position: absolute;
@@ -22390,6 +22397,7 @@ nav button {
     overflow: hidden;
     display: block;
     position: relative;
+    
     z-index: 9;
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
@@ -22473,6 +22481,7 @@ nav button {
     background: #ff5500;
     border-color: #ff5500;
     color: #fff;
+    
 }
 
 .item .info {
@@ -32880,4 +32889,24 @@ section.phone-and-accessories.categori-item {
       width: 70px !important;
     }
 }
+@media only screen and (max-width:380px){
+    .responsiveIcon1{
+       margin-right: 320px;
+        
+        
+    }
+    .cartres{
+        right: -120px !important;
+        top:-5px !important;
+    }
+}
 
+@media  only screen and (width:1280px){
+    .responsiveIcon1{
+        width: 20px !important;
+        /* height:20px !important; */
+        object-fit: contain;
+        
+        
+    }
+}

@@ -22,9 +22,9 @@
 } */
 .navimage{
 	width: 600px !important;
-	height: 250px !important;
+	/* height: 250px !important; */
 	object-fit: cover;
-
+	margin-top: 13%;
 	
 }
 
@@ -90,7 +90,7 @@
 	text-decoration: none;
 	padding-left: 30px;
 	padding-right: 30px;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
 	padding-top: 10px;
 	font-size: 15px;
 	display: block;
@@ -108,12 +108,14 @@
 	background: #ffffff;
 	padding: 10px;
 	position: absolute;
-	z-index: 99;
+	z-index: 999;
 	left: 0;
 	margin: 0;
 	list-style: none;
 	box-sizing: border-box;
 	box-shadow: 0 7px 7px -1px rgba(0, 0, 0, 0.3);
+	z-index: 999;;
+
 
 }
 ::-webkit-scrollbar {
@@ -152,6 +154,7 @@
 	overflow: auto;
 	
 	
+	
 
 }
 
@@ -162,6 +165,7 @@
 	display: block;
 	border-bottom: 1px solid #ccc;
 	padding: 0px;
+	
 
 }
 
@@ -175,7 +179,9 @@
 	margin: 10px 0 0;
 	list-style: none;
 	box-sizing: border-box;
+
 }
+
 
 .menu>ul>li>ul>li>ul:before, .menu>ul>li>ul>li>ul:after {
 	content: "";
@@ -268,6 +274,7 @@ Mobile style's
 		padding: 1em;
 		width: 100%;
 		display: block;
+		font-size: 12px;
 	}
 	.menu>ul>li>ul {
 		position: relative;
