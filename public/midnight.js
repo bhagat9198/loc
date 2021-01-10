@@ -14,7 +14,7 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
       img += `
       <a href="./Products/products.html?cat=${docData.cat}">
         <div class="intro-content slide-one">
-          <img class=""
+          <img class="sliderPc" style="width:1600px"
             src="${docData.imgUrl}">
             <div class="container">
             <div class="row">

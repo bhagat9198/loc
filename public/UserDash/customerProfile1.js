@@ -77,9 +77,20 @@ let USER_DETAILS;
 let userRef = db.collection('Customers').doc(USER_ID);
 
 userRef.onSnapshot(userDoc => {
+  
   let userData = userDoc.data();
-  totalOrders = userData.orders.length;
-  totalCart = userData.cart.length;
+
+
+
+  if(userData.cart){
+    
+    var totalCart = userData.cart.length;
+    
+  }
+
+  if(userData.orders){
+    var totalOrders = userData.orders.length;
+  
 
   let row = '';
   userData.orders.map(order => {
@@ -104,6 +115,9 @@ userRef.onSnapshot(userDoc => {
   })
   ordersSummeryHTML.innerHTML = row;
   totalOrdersHTML.innerHTML = totalOrders;
+}
+
+
   totalCartHTML.innerHTML = totalCart;
   ordersPendingHTML.innerHTML = ordersPending;
   orderCompletedHTML.innerHTML = ordersCompleted;
