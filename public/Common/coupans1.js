@@ -1,4 +1,4 @@
-console.log("coupans1.js");
+// console.log("coupans1.js");
 
 const db = firebase.firestore();
 const allcoupansHTML = document.querySelector('#allcoupans');
@@ -73,19 +73,4 @@ const displayDisAmt = (coupanCat, amt) => {
       discountAmt = `${amt}%`;
     }
   return discountAmt;
-}
-
-const copyToClipboard = (rand1, rand2) => {
-  document.getElementById(rand2).style.display = "block";
-  setTimeout(function () {
-    document.getElementById(rand2).style.display = "none";
-  }, 1000)
-  var $temp = $("<input>");
-  $("body").append($temp);
-  let tempEl = `#${rand1}`;
-  
-  $temp.val($(tempEl).text()).select();
-  document.execCommand("copy");
-  $temp.remove();
-  $('[data-toggle="tooltip"]').tooltip();
 }
