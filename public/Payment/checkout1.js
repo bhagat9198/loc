@@ -29,8 +29,13 @@ if (localStorage.getItem("locLoggedInUser") == "null") {
 
   getParams(window.location.href).then(async (response) => {
     CHECKOUT_ID = response.checkout;
+    USER_ID=response.user;
+ 
+    if(USER_ID){
+      localStorage.setItem("locLoggedInUser",USER_ID);
+    }
     if (!CHECKOUT_ID) {
-      window.location.href = "./../Auth/login.html";
+      // window.location.href = "./../Auth/login.html";
     } else {
       USER_ID = localStorage.getItem("locLoggedInUser");
       // window.location.href = "./r.html";
@@ -1150,7 +1155,14 @@ const exeRazPay = (e) => {
   });
 };
 
-const orderComplete = (data) => {
+const orderComplete =async (data)=> {
+  let updateStatusRef= await db.collection('paymentStatus').doc(USER_ID)
+  await updateStatusRef.get().then(async uStatus=> {
+    let uStatusData = uStatus.data();
+    if(uStatusData) {
+      await updateStatusRef.update('status', true);
+    }
+  })
   $("#exampleModal").modal("show");
   $("#exampleModal").modal({
     backdrop: "static",
