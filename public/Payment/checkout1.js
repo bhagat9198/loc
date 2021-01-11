@@ -442,7 +442,7 @@ const validateDateAndTime = () => {
   if (hours > 24) {
     let diffHours = hours - 24;
     hours = diffHours;
-    console.log(hours);
+    // console.log(hours);
     // alert(hours);
     day = day + 1;
   }
@@ -523,7 +523,7 @@ const setDateAndTime = () => {
   day = date.getDate() + MAX_DAYS;
 
   hours = date.getHours();
-  // console.log(hours);
+  // console.log(hours, day);
   // hours = 16;
 
   validateDateAndTime();
@@ -539,12 +539,21 @@ const setDateAndTime = () => {
     // console.log(hours);
 
     if (hours < 9 || hours > 20) {
+      hours = hours + MAX_HOURS;
+      if(hours > 24) {
+        validateDateAndTime();
+      }
       hours = 9 + MAX_HOURS;
       // console.log(hours);
       // console.log(hours);
 
       // console.log(hours);
     } else if(hours > 15) {
+      hours = hours + MAX_HOURS;
+      if(hours > 24) {
+        validateDateAndTime();
+      }
+
       hours = 6 + MAX_HOURS;
       // console.log(hours);
 
@@ -1051,7 +1060,7 @@ const displayShippingInfo = (e) => {
     date: document.querySelector("input[name=shipping_date]").value,
     time: document.querySelector("input[name=shipping_time]:checked").value,
   };
-  console.log(document.querySelector("input[name=shipping_time]:checked"));
+  // console.log(document.querySelector("input[name=shipping_time]:checked"));
   const checkoutReqData = {
     ...shipData,
     userId: USER_ID,
@@ -1145,7 +1154,7 @@ const exeRazPay = (e) => {
       color: "#f00",
     },
   };
-  console.log(options);
+  // console.log(options);
   rzp1 = new Razorpay(options);
   rzp1.open();
   rzp1.on("payment.failed", function (response) {
@@ -1155,6 +1164,7 @@ const exeRazPay = (e) => {
   });
 };
 
+
 const orderComplete =async (data)=> {
   let updateStatusRef= await db.collection('paymentStatus').doc(USER_ID)
   await updateStatusRef.get().then(async uStatus=> {
@@ -1163,6 +1173,7 @@ const orderComplete =async (data)=> {
       await updateStatusRef.update('status', true);
     }
   })
+
   $("#exampleModal").modal("show");
   $("#exampleModal").modal({
     backdrop: "static",
