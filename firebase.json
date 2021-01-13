@@ -13,6 +13,11 @@
   },
   "storage": {
     "rules": "storage.rules"
+<<<<<<< HEAD
   }
  
+=======
+  },
+  "functions": {}
+>>>>>>> 3b7155d56b731f2ac0a55c3d0cac8134bebf4329
 }
