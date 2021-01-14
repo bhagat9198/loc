@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+node_modules
+=======
 functions
 locNew
 .firebase
 .vscode
+>>>>>>> 46f5549d5dac69e1788f57239e278e4e3a071883

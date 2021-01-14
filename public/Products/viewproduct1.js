@@ -280,12 +280,12 @@ const displayTables = async () => {
       });
     if (tRows != "") {
       tbodys.innerHTML = tRows;
-      setTimeout(function () {
-        $("#myTable" + cat.id).DataTable({
-          responsive: true,
-          autoWidth: false,
-        });
-      }, 4000);
+      // setTimeout(function(){
+      //   $('#myTable' +cat.id).DataTable({
+      //     "responsive": true,
+      //     "autoWidth": false,
+      //   });
+      // },4000)
     } else {
       $("#tbodys").empty();
       tbodys.innerHTML =

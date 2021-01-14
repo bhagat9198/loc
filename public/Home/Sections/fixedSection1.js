@@ -1,6 +1,6 @@
 console.log("fixedSection1.js");
 
-const db = firebase.firestore();
+var db = firebase.firestore();
 const storageService = firebase.storage();
 
 const allCategories = [];
