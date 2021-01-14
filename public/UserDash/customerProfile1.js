@@ -104,15 +104,7 @@ userRef.onSnapshot(async userDoc => {
         if(doc.data().mainImgUrl){
         
           imageRow+=`
-          <div class="row">
-              <div class="co"> <img class="img-fluid" style="width:300px;object-fir:cover" src="${doc.data().mainImgUrl}"> </div>
-              <div class="col-xs-6" style="padding-top: 2vh;">
-              <ul type="none">
-                  <li>Name- ${doc.data().name}</li>
-                  <li>Sno- ${doc.data().sno}</li>
-              </ul>
-                </div>
-            </div>
+         
           `
          
         }
@@ -156,11 +148,46 @@ userRef.onSnapshot(async userDoc => {
             </div> <!-- Modal body -->
             <div class="modal-body">
                 <div class="container">
-                    <h6>Item Details</h6>
-                    <div id="imageDisp`+oId+`" >
-                      `+imgData+`
-                     
+                  <h6>Item Details</h6>
+                   
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="row">
+                        <div class="col-xs-6"> 
+                          <img class="img-fluid" style="width:100px;height:100px;object-fit:cover" src="https://i.pinimg.com/originals/ab/67/53/ab6753ec1cef75f1cc2052487b1f4059.jpg">
+                        </div>
+                        <div class="col-xs-6" style="padding-top: 2vh;">
+                          <ul type="none">
+                              <li>Name- Cake </li>
+                              <li>Sno- LOC23</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6"> 
+                          <img class="img-fluid" style="width:100px;height:100px;object-fit:cover" src="https://i.pinimg.com/originals/ab/67/53/ab6753ec1cef75f1cc2052487b1f4059.jpg">
+                        </div>
+                        <div class="col-xs-6" style="padding-top: 2vh;">
+                          <ul type="none">
+                              <li>Name- Cake </li>
+                              <li>Sno- LOC23</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-xs-6"> 
+                          <img class="img-fluid" style="width:100px;height:100px;object-fit:cover" src="https://i.pinimg.com/originals/ab/67/53/ab6753ec1cef75f1cc2052487b1f4059.jpg">
+                        </div>
+                        <div class="col-xs-6" style="padding-top: 2vh;">
+                          <ul type="none">
+                              <li>Name- Cake </li>
+                              <li>Sno- LOC23</li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+              
                     <hr>
                     <h6>Order Details</h6>
                     <div class="row">
@@ -199,7 +226,7 @@ userRef.onSnapshot(async userDoc => {
                     </div>
                 </div>
             </div> <!-- Modal footer -->
-            <div class="modal-footer"> <button type="button" class="btn">Track order</button> </div>
+           
         </div>
     </div>
 </div>
