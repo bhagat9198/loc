@@ -76,11 +76,11 @@ console.log(USER_ID);
 let USER_DETAILS;
 let userRef = db.collection('Customers').doc(USER_ID);
 
-userRef.onSnapshot(userDoc => {
+userRef.onSnapshot(async userDoc => {
   
   let userData = userDoc.data();
 
-
+  var imageRow='';
 
   if(userData.cart){
     
@@ -91,29 +91,126 @@ userRef.onSnapshot(userDoc => {
   if(userData.orders){
     var totalOrders = userData.orders.length;
   
-
+  
   let row = '';
-  userData.orders.map(order => {
+  let i=0;
+ 
+  await userData.orders.map(async order => {
+    i++;
     let oId = '';
+
+    await order.products.map(async data =>{
+      var docRef =await db.collection(data.cat).doc(data.prodId).get().then(function(doc){
+        if(doc.data().mainImgUrl){
+        
+          imageRow+=`
+          <div class="row">
+              <div class="co"> <img class="img-fluid" style="width:300px;object-fir:cover" src="${doc.data().mainImgUrl}"> </div>
+              <div class="col-xs-6" style="padding-top: 2vh;">
+              <ul type="none">
+                  <li>Name- ${doc.data().name}</li>
+                  <li>Sno- ${doc.data().sno}</li>
+              </ul>
+                </div>
+            </div>
+          `
+         
+        }
+        
+      })
+     
+    });
+
     if(order.status === 'success') {
+
+
       ordersPending++;
       oId = order.successOrderId;
+     
     } else if(order.status === 'completed') {
       ordersCompleted++;
       oId = order.successOrderId;
     } else {
+     
+      var imgData;
+
+      
       oId = order.orderId;
+   
     }
+    
     row += `
     <tr>
       <td>${oId}</td>
-      <td>${order.type.charAt(0).toUpperCase() + order.type.slice(1)}</td>
+      <td><label  class="btn btn-sm btn-default "
+      style="display: inline-block;background-color: green;color: #ffffff;" data-toggle="modal" data-target="#modal1`+i+`">View Order</label></td>
       <td>₹${order.totalCost}</td>
       <td>${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</td>
     </tr>
+    <div class="modal fade" id="modal1`+i+`">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">${oId}</h4> <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div> <!-- Modal body -->
+            <div class="modal-body">
+                <div class="container">
+                    <h6>Item Details</h6>
+                    <div id="imageDisp`+oId+`" >
+                      `+imgData+`
+                     
+                    </div>
+                    <hr>
+                    <h6>Order Details</h6>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <ul type="none" class="displayOrder">
+                                <li class="left">Order number:</li>
+                                <li class="left">Date:</li>
+                                <li class="left">Price:</li>
+                                <li class="left">Shipping:</li>
+                                <li class="left">Total Price:</li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6">
+                            <ul class="right displayOrder" type="none" >
+                                <li class="right">#BBRT-3456981</li>
+                                <li class="right">19-03-2020</li>
+                                <li class="right">$690</li>
+                                <li class="right">$30</li>
+                                <li class="right">$720</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <h6>Shipment</h6>
+                    <div class="row" style="border-bottom: none">
+                        <div class="col-xs-6">
+                            <ul type="none">
+                                <li class="left">Estimated arrival</li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6">
+                            <ul type="none">
+                                <li class="right">25-03-2020</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- Modal footer -->
+            <div class="modal-footer"> <button type="button" class="btn">Track order</button> </div>
+        </div>
+    </div>
+</div>
+</div>
+
     `;
+
+    // document.getElementById("imageDisp"+oId).innerHTML="gg"
   })
   ordersSummeryHTML.innerHTML = row;
+  
   totalOrdersHTML.innerHTML = totalOrders;
 }
 
