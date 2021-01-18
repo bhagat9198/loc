@@ -256,7 +256,7 @@ let personalisedHTML = document.querySelector("#personalised");
 const OrderDetailsModal = async (e) => {
   $("#OrderDetailsModal").modal();
   const index = e.target.dataset.index;
-  console.log(ORDERS[index]);
+  // console.log(ORDERS[index]);
   // console.log(index);
   let row = "";
   let prodSummery = [];
@@ -285,12 +285,15 @@ const OrderDetailsModal = async (e) => {
         <td>---</td>
         <td>---</td>
         <td>---</td>
+        <td>---</td>
         `;
       if (prod.cake) {
+        // console.log(prod.cake);
         pInfo = `
             <td>${prod.cake.heart ? "Heart" : "Round"}</td>
             <td>${prod.cake.flavour}</td>
             <td>${prod.cake.eggless ? "Opted" : "Not Opted"}</td>
+            <td>${prod.cake.weight}</td>
             `;
       }
       row += `
@@ -402,13 +405,14 @@ const OrderDetailsModal = async (e) => {
     }
     discountedPrice = prodBasic - prodDiscount;
     let prodGst = +ORDERS[index].gstArr[i];
+    let prodGstStr = ORDERS[index].gstArr[i].toFixed(2);
     let prodTotal = Math.round(discountedPrice + prodGst);
     priceRow = `
     <tr>
       <td>₹ ${prodBasic}</td>
       <td>₹ ${prodDiscount}</td>
       <td>₹ ${discountedPrice}</td>
-      <td>₹ ${prodGst}</td>
+      <td>₹ ${prodGstStr}</td>
       <td>₹ ${prodTotal}</td>
     </tr>
     `;
