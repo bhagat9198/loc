@@ -77,8 +77,9 @@
 
     <link rel="stylesheet" href="./assets/css/animate.css">
 
+    <link href="http://www.owlcarousel.owlgraphic.com/assets/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="assets/css/animation.css">
+    <link rel="stylesheet" href="./assets/css/animation.css">
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
@@ -228,7 +229,7 @@
     }
 </style>
 
-<body style="overflow-x: hidden !important; ">
+<body style="">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB2GP8L"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -423,7 +424,7 @@
                         </span>
                       </div>
                       <div class="col-8 col-sm-8 col-md-8 p-0">
-                        <span style="position: relative; top: 4px;"><marquee scrolldelay="200" style="height: 13px;">Coming Soon</marquee> </span>
+                        <span style="position: relative; top: 4px;"><marquee scrolldelay="200" style="">Coming Soon</marquee> </span>
                       </div>
                       <div class="col-2 col-sm-2 col-md-2 p-0">
                         <span style="position: relative; top: 8px;">
@@ -527,7 +528,7 @@
                                     <label for="nav-collapsible-1" style="width: 100%;">
                     <div class="row pl-3">
                       <div class="col-10 col-sm-10 col-md-10 p-0">
-                        <span style="position: relative; top: 4px;" data-toggle="modal" data-target="#modalYT">Offers
+                        <span style="position: relative; top: 4px;" data-toggle="modal" data-target="#modalYT" data-toggle="collapse"  >Offers
                         </span>
                       </div>
                       <div class="col-2 col-sm-2 col-md-2 p-0">
@@ -630,7 +631,7 @@
                                 <a href="#">
                                     <img src="/assets/images/chef.png" style="width:50px;object-fit: cover;">
                                     <div style="margin-top: 5px; width: 80px; background: #f00; padding: 0px 10px; color: #FFF; font-size: 12px; text-align: center;">
-                                        <marquee scrolldelay="200" style="height: 13px;">Coming Soon</marquee></div>
+                                        <marquee scrolldelay="200" style="height: unset;">Coming Soon</marquee></div>
                                 </a>
                             </li>
                             <li>
@@ -954,7 +955,7 @@
 
     <section class="hero-area">
 
-        <div class="hero-area-slider">
+        <div class="hero-area-slider ">
             <div class="intro-carousel post">
                 <a href="#">
                     <div class="intro-content slide-one avatar">
@@ -2155,13 +2156,18 @@
 <script src="/assets/js/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js">
 </script>
+
 <script src="/assets/js/bootstrap.min.js"></script>
+
 <script src="/assets/js/plugin.js"></script>
 <script src="/assets/js/xzoom.min.js"></script>
 <script src="/assets/js/jquery.hammer.min.js"></script>
 <script src="/assets/js/setup.js"></script>
 <script src="/assets/js/main.js"></script>
+
 <script src="/assets/js/custom.js"></script>
+
+
 
 
 <script src="./index1.js"></script>
@@ -2174,10 +2180,13 @@
           // $('.drobt1').transform="translateX(0%)"
             $('.drobt0').removeClass('drobt1');
             $('.drobt0').addClass('drobt2');
+            $('body').addClass("fixed-position");
+
         } else {
-         
+
             $('.drobt0').removeClass('drobt2');
             $('.drobt0').addClass('drobt1');
+            $('body').css('overflow', 'hidden');
             // $('.drobt1').transform="translateX(0%)"
         }
     });
@@ -2186,9 +2195,11 @@
 <script>
     function hidenavigation() {
         $('.drobt0').addClass('colapse');
+        $('body').removeClass("fixed-position");
     }
 
     function shownavigation() {
+      $('body').addClass("fixed-position");
         $('.drobt0').removeClass('colapse');
     }
 
@@ -2366,7 +2377,7 @@
 
 <style>
     .drobt1 {
-        transform: translate(-100%);
+        transform: translate(0%);
     }
     
     .drobt2 {

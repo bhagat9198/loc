@@ -2615,6 +2615,7 @@ $(".drobt").click(function(){
     if($('.drobt0').hasClass('drobt1')){
        $('.drobt0').removeClass('drobt1');
        $('.drobt0').addClass('drobt2');
+            $('body').addClass("fixed-position");
     }else{
         $('.drobt0').removeClass('drobt2');
        $('.drobt0').addClass('drobt1');
@@ -2630,7 +2631,7 @@ $(".drobt").click(function(){
 </script>
 <style>
     .drobt1{
-    transform: translateX(-101%);
+    transform: translateX(0%);
     }
     .drobt2{
     transform: translateX(0%);
