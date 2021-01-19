@@ -184,7 +184,7 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
 
    
         var $mainSlider = $('.intro-carousel');
-        setInterval(function(){
+       
         // setInterval(() => {
             if($('.intro-content').length > 1)
              {
@@ -194,11 +194,7 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
                 nav: false,
                 dots: true,
                 autoplay: true,
-                
-                animateIn: 'fadeIn', // add this,
-                animateOut: 'fadeIn', // and this
-                autoplayTimeout: 6000,
-                smartSpeed: 3000,
+                animateOut:'fadeIn', // and this
             
                 responsive: {
                     0: {
@@ -212,7 +208,7 @@ $(".categories_menu_inner > ul > li.dropdown_list .link-area > a").each(function
         
             });
         }
-    },1000);
+  
         
     
         if($('.intro-content').length > 1)
