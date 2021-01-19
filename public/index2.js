@@ -578,14 +578,14 @@ exports.sendEmailForgetPass = functions.firestore
       <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
       <tr>
         <td class="column" width="20%" align="center">
-          <p><img width="60px;height:60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(2).jpeg?alt=media&token=a263cfa0-38b2-4071-931e-e6bcec0677b5" alt="Lorem ipsum"><p>
+          <p><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(2).jpeg?alt=media&amp;token=a263cfa0-38b2-4071-931e-e6bcec0677b5" alt="Lorem ipsum" style="width:60px !important;height:60px !important;object-fit:cover"></p> 
           <p>Midnight Delivery</p>
         </td>
          <td class="column" width="20%" align="center">
-          <p><img width="60px;height:60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(1).jpeg?alt=media&token=8f225388-dab5-4d49-a567-cd918f64d7fc"></p><p>Fast Delivery</p>
+          <p><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(1).jpeg?alt=media&amp;token=8f225388-dab5-4d49-a567-cd918f64d7fc" style="width:60px !important;height:60px !important;object-fit:cover"></p><p>Fast Delivery</p>
         </td>
          <td class="column" width="20%" align="center">
-          <p><img width="60px;height:60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.05.jpeg?alt=media&token=2bdb4c6e-2d26-422b-8d7c-5f09c5d67ed4"></p><p>Free Delivery</p>
+          <p><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.05.jpeg?alt=media&amp;token=2bdb4c6e-2d26-422b-8d7c-5f09c5d67ed4" style="width:60px !important;height:60px !important;object-fit:cover"></p><p>Free Delivery</p>
         </td>
       </tr>
     </tbody></table>
@@ -833,10 +833,10 @@ Gifts
       <p>Midnight Delivery</p>
       </td>
        <td class="column" width="20%" align="center">
-        <p><img width="60px;height:60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(1).jpeg?alt=media&token=8f225388-dab5-4d49-a567-cd918f64d7fc"></p><p>Fast Delivery</p>
+        <p><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(1).jpeg?alt=media&amp;token=8f225388-dab5-4d49-a567-cd918f64d7fc" style="width:60px !important;height:60px !important;object-fit:cover"></p><p>Fast Delivery</p>
       </td>
        <td class="column" width="20%" align="center">
-        <p><img width="60px;height:60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.05.jpeg?alt=media&token=2bdb4c6e-2d26-422b-8d7c-5f09c5d67ed4"></p><p>Free Delivery</p>
+        <p><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.05.jpeg?alt=media&amp;token=2bdb4c6e-2d26-422b-8d7c-5f09c5d67ed4" style="width:60px !important;height:60px !important;object-fit:cover"></p><p>Free Delivery</p>
       </td>
     </tr>
   </tbody></table>
@@ -1713,14 +1713,14 @@ exports.mailOnProductReject = functions.firestore
       <tbody><tr><td colspan="2" class="whitespace" height="20">&nbsp;</td></tr>
       <tr>
         <td class="column" width="20%" align="center">
-          <p><img width="60px;height:60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(2).jpeg?alt=media&token=a263cfa0-38b2-4071-931e-e6bcec0677b5" alt="Lorem ipsum"><p>
+          <p><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(2).jpeg?alt=media&amp;token=a263cfa0-38b2-4071-931e-e6bcec0677b5" alt="Lorem ipsum" style="width:60px !important;height:60px !important;object-fit:cover"></p> 
           <p>Midnight Delivery</p>
         </td>
           <td class="column" width="20%" align="center">
-          <p><img width="60px;height:60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(1).jpeg?alt=media&token=8f225388-dab5-4d49-a567-cd918f64d7fc"></p><p>Fast Delivery</p>
+          <p><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.04%20(1).jpeg?alt=media&amp;token=8f225388-dab5-4d49-a567-cd918f64d7fc" style="width:60px !important;height:60px !important;object-fit:cover"></p><p>Fast Delivery</p>
         </td>
           <td class="column" width="20%" align="center">
-          <p><img width="60px;height:60px;object-fit:cover" src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.05.jpeg?alt=media&token=2bdb4c6e-2d26-422b-8d7c-5f09c5d67ed4"></p><p>Free Delivery</p>
+          <p><img src="https://firebasestorage.googleapis.com/v0/b/lake-of-cakes.appspot.com/o/emailImages%2FWhatsApp%20Image%202020-12-31%20at%2018.32.05.jpeg?alt=media&amp;token=2bdb4c6e-2d26-422b-8d7c-5f09c5d67ed4" style="width:60px !important;height:60px !important;object-fit:cover"></p><p>Free Delivery</p>
         </td>
       </tr>
     </tbody></table>
