@@ -63,7 +63,9 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
     }
   }
 
+  console.log(introCarouselHTML)
   introCarouselHTML.innerHTML = img;
+  console.log(introCarouselHTML)
 });
 
 // fixed section 1
@@ -190,10 +192,10 @@ userSilderRef.get().then(async (sliderSnaps) => {
           nav: false,
           dots: true,
           autoplay: true,
-          animateOut:'fadeIn', 
-          animateOut:'fadeIn', 
-          autoplayTimeout:4000,
-          smartSpeed: 100,
+          // animateOut:'fadeIn', 
+          // animateOut:'fadeIn', 
+          autoplayTimeout:3000,
+          smartSpeed: 3000,
       
           responsive: {
               0: {

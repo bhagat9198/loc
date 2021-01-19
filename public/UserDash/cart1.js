@@ -411,6 +411,7 @@ const addonModal = (e) => {
           <h5 class="name responsiveName" style="text-align: center !important;float: inherit;font-size: 12px;">
             ${docData.name}
           </h5>
+          
           <h4 class="price"
             style="text-align: center !important;float: inherit;font-size: 13px;">₹ ${docData.price}
           </h4>
