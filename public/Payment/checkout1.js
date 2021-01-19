@@ -10,6 +10,7 @@ const prodDetails = [];
 const prodRefs = [];
 let MAX_DAYS = 0;
 let MAX_HOURS = 0;
+let IS_CAKE = false;
 
 if (localStorage.getItem("locLoggedInUser") == "null") {
   window.location.href = "./../Auth/login.html";
@@ -80,6 +81,9 @@ const allProductsDetails = async () => {
       }
       if (MAX_HOURS < +docData.extraTime.hours) {
         MAX_HOURS = +docData.extraTime.hours;
+      }
+      if(docData.isCake) {
+        IS_CAKE = true;
       }
 
       // console.log(docData);
@@ -438,7 +442,7 @@ const validateDateAndTime = () => {
   day = Number(day);
   month = Number(month);
   year = Number(year);
-  
+  // console.log(hours, day, month, year);
   if (hours > 24) {
     let diffHours = hours - 24;
     hours = diffHours;
@@ -446,9 +450,9 @@ const validateDateAndTime = () => {
     // alert(hours);
     day = day + 1;
   }
+  // console.log(hours, day, month, year);
 
   let maxMonthDays = 0;
-  // console.log(month, typeof(month));
   if (month === 1) {
     maxMonthDays = 31;
   } else if (month === 2) {
@@ -481,40 +485,54 @@ const validateDateAndTime = () => {
   } else {
     // nothing
   }
+  // console.log(hours, day, month, year);
 
-  while (day > maxMonthDays) {
+  if (day > maxMonthDays) {
     // console.log("while", day, maxMonthDays);
     let diffDays = day - maxMonthDays;
     day = diffDays;
 
     month += 1;
   }
+  // console.log(hours, day, month, year);
 
-  while (month > 12) {
+  if (month > 12) {
     let diffMonth = month - 12;
     month = diffMonth;
     year += 1;
   }
+  // console.log(hours, day, month, year);
 
   if (year.toString().length !== 4) {
     window.location.href = `../index.html`;
   }
+  // console.log(hours, day, month, year);
+
   if (month.toString().length < 2) {
     month = `0${month}`;
     // month = Number(month);
   }
+  // console.log(hours, day, month, year);
+
   if (day.toString().length < 2) {
     day = `0${day}`;
   }
+  // console.log(hours, day, month, year);
 
   hours = hours.toString();
   day = day.toString();
   month = month.toString();
   year = year.toString();
+  // console.log(hours, day, month, year);
+
   // console.log(day);
   shippingDateHTML.value = `${year}-${month}-${day}`;
   // shippingDateHTML.min = `${year}-${month}-${day}`;
   shippingDateHTML.setAttribute("min", `${year}-${month}-${day}`);
+
+  
+  // console.log(hours, day, month, year);  
+
 };
 
 const setDateAndTime = () => {
@@ -525,7 +543,7 @@ const setDateAndTime = () => {
   hours = date.getHours();
   // console.log(hours, day);
   // hours = 16;
-
+  // console.log(day);
   validateDateAndTime();
 
   let shipVal = packingAreaHTML.querySelector('input[name="shipping"]:checked')
@@ -543,7 +561,9 @@ const setDateAndTime = () => {
       if(hours > 24) {
         validateDateAndTime();
       }
-      hours = 9 + MAX_HOURS;
+      if(IS_CAKE) {
+        hours = 9 + MAX_HOURS;
+      }
       // console.log(hours);
       // console.log(hours);
 
@@ -564,7 +584,6 @@ const setDateAndTime = () => {
     }
     foudantHoursPerfect = -2;
   }
-  // console.log(hours);
   validateDateAndTime();
   // console.log(hours);
 
@@ -601,7 +620,7 @@ const setDateAndTime = () => {
     midnightHoursHTML.style.display = "none";
     perfectHoursHTML.style.display = "none";
     timeErrorHTML.style.display = "none";
-    // console.log(hours, foudantHoursPerfect);
+    hours = Number(hours);
     if (hours + foudantHoursPerfect < 19) {
       perfectHoursHTML.style.display = "block";
       if (hours + foudantHoursPerfect < 8) {
@@ -763,10 +782,11 @@ const setDateAndTime = () => {
         document.querySelector("#perfect_9").disabled = true;
         document.querySelector("#perfect_9").parentElement.remove();
       } else {
-        console.log("invalid");
+        // console.log("invalid");
       }
     } else {
       let updatedDay = updateDay();
+      // console.log('updateeeeeeee', updatedDay, s);
       shipValPerfect();
       shippingDateHTML.setAttribute("min", `${year}-${month}-${updatedDay}`);
       // shippingDateHTML.value = `${year}-${month}-${updatedDay}`;
@@ -796,7 +816,7 @@ const setDateAndTime = () => {
   if (shipVal === "free") {
     shipValFree();
   } else if (shipVal === "perfect") {
-    // console.log(hours);
+    console.log('perfecttttttttttttttttt');
     shipValPerfect();
   } else if (shipVal === "midnight") {
     shipValMidNight();
