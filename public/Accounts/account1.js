@@ -260,7 +260,7 @@ const displayOrder = (data, counter) => {
 
   let tr = `
   <tr class="main-tr">
-    <th scope="row">${counter + 1}<br><br> ${data.orderAt.split(',')[0]}<br> ${data.orderAt.split(',')[1]} </th>
+    <th scope="row" style="font-size: smaller;">${counter + 1}<br><br> ${data.orderAt.split(',')[0]}<br> ${data.orderAt.split(',')[1]} <br> ${data.orderId} </th>
     <td>
       <table class="table-un-striped">
         <tbody style="border-bottom: 1px solid gray">
