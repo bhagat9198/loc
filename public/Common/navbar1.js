@@ -7,7 +7,7 @@ const extractChildCat = (data, subId, docId) => {
   data.childCategories.map((doc) => {
     // let docData = doc.data();
     childLi += `
-      <li><a href="/Products/products.html?cat=${docId}&&sub=${subId}&&child=${doc.id}">${doc.name}</a></li>
+      <li><a  href="/Products/products.html?cat=${docId}&&sub=${subId}&&child=${doc.id}">${doc.name}</a></li>
     `;
   });
   // console.log(childLi);
@@ -22,7 +22,7 @@ const extractSubCat = (data, docId) => {
 
     subLi += `
     <li >
-      <a style="top:0;padding:5px !important;position:sticky;z-index:999 !important;background:white !important" href="/Products/products.html?cat=${docId}&&sub=${doc.id}">${doc.name}</a>
+      <a  style="top:0;padding:5px !important;position:sticky;z-index:999 !important;background:white !important" href="/Products/products.html?cat=${docId}&&sub=${doc.id}">${doc.name}</a>
       <ul style="z-index:0 !important" > ${childCat}</ul>
     </li>
     `;
@@ -50,7 +50,7 @@ db.collection("categories").onSnapshot(async (snapshots) => {
     let subCat = extractSubCat(data.d, data.dId);
     li += `
       <li >
-        <a href="/Products/products.html?cat=${data.dId}">${data.d.name}</a>
+        <a  href="/Products/products.html?cat=${data.dId}">${data.d.name}</a>
         <ul>
           ${subCat}
           <li>
@@ -63,7 +63,7 @@ db.collection("categories").onSnapshot(async (snapshots) => {
       `;
     liMob += `
       <li >
-        <a href="#!" ><span onclick="navigateTo('/Products/products.html?cat=${data.dId}')">${data.d.name}</span><i class="fa fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
+        <a  href="#!" ><span onclick="navigateTo('/Products/products.html?cat=${data.dId}')">${data.d.name}</span><i class="fa fa-chevron-down" style="margin-left: 10%;float: right;"></i></a>
         <ul>
           ${subCat}
           <li>
@@ -81,6 +81,7 @@ db.collection("categories").onSnapshot(async (snapshots) => {
   );
   wholeNavigationMobile.innerHTML = liMob;
   $(".menu > ul > li").hover(function (e) {
+    
     if ($(window).width() > 943) {
       $(this).children("ul").stop(true, false).fadeToggle(150);
       e.preventDefault();
@@ -93,6 +94,7 @@ db.collection("categories").onSnapshot(async (snapshots) => {
   });
   $(".menu-mobile").click(function (e) {
     $(".menu > ul").toggleClass("show-on-mobile");
+    
     e.preventDefault();
   });
 
@@ -104,6 +106,10 @@ db.collection("categories").onSnapshot(async (snapshots) => {
 function navigateTo(location) {
   window.location = location;
 }
+$('.nav-collapsible>a>span').on('click', function(){
+
+  $('.navbar-collapse').collapse('hide');
+});
 
 
 

@@ -1219,6 +1219,7 @@
         if ($('.drobt0').hasClass('drobt1')) {
             $('.drobt0').removeClass('drobt1');
             $('.drobt0').addClass('drobt2');
+            $('body').addClass("fixed-position");
         } else {
             $('.drobt0').removeClass('drobt2');
             $('.drobt0').addClass('drobt1');
@@ -1229,6 +1230,7 @@
 <script>
     function hidenavigation() {
         $('.drobt0').addClass('colapse');
+        $('body').removeClass("fixed-position");
     }
 
     function shownavigation() {
@@ -1409,7 +1411,7 @@
 
 <style>
     .drobt1 {
-        transform: translateX(-101%);
+        transform: translateX(0%);
     }
 
     .drobt2 {
@@ -1536,7 +1538,7 @@
 
 <style>
     .drobt1 {
-        transform: translateX(-101%);
+        transform: translateX(0%);
     }
 
     .drobt2 {

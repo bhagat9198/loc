@@ -178,7 +178,39 @@ userSilderRef.get().then(async (sliderSnaps) => {
     }
   }
   userDefinedSliderHTML.innerHTML = wholeUserSlider;
+  
+  var $mainSlider = $('.intro-carousel');
+       
+  // setInterval(() => {
+      if($('.intro-content').length > 1)
+       {
+      
+      $mainSlider.owlCarousel({
+          loop: true,
+          nav: false,
+          dots: true,
+          autoplay: true,
+          animateOut:'fadeIn', 
+          animateOut:'fadeIn', 
+          autoplayTimeout:4000,
+          smartSpeed: 100,
+      
+          responsive: {
+              0: {
+                  dots: false,
+                  items: 1
+              },
+              768: {
+                  items: 1
+              }
+          },
+  
+      });
+  }
+
+  
   if (datass == "YES") {
+    
     var $trending_slider = $(".trending-item-slider");
     $trending_slider.owlCarousel({
       items: 4,
@@ -188,6 +220,8 @@ userSilderRef.get().then(async (sliderSnaps) => {
       dots: true,
       nav: true,
       center: false,
+      animateIn: 'fadeIn', // add this,
+      animateOut: 'fadeIn', // and this
       autoplayHoverPause: true,
       navText: [
         "<i class='fa fa-angle-left'></i>",
@@ -419,6 +453,7 @@ db.collection("sections")
       dots: true,
       nav: true,
       center: false,
+      
       autoplayHoverPause: true,
       navText: [
         "<i class='fa fa-angle-left'></i>",

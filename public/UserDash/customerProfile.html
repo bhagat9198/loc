@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Online Cake Delivery | #1 Online Cake,Flowers & Gifts in Lucknow | Lake of Cakes | User Profile</title>
-  <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/all.css">
     <link rel="stylesheet" href="../assets/css/base.css">
@@ -20,15 +20,13 @@
     <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
     <link rel="stylesheet" href="assets/css/animation.css">
     <link rel="stylesheet" href="../assets/css/customerProfile.css">
-
     <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
     <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
     <script src="https://kit.fontawesome.com/92b764e504.js" crossorigin="anonymous"></script>
- 
-  
+    
 </head>
 <style>
 
@@ -109,94 +107,6 @@
 
       }
 
-      .mt-100 {
-    margin-top: 150px
-}
-
-.modal-content {
-    border-radius: 0.7rem
-}
-
-@media(width:1024px) {
-    .modal-dialog {
-        max-width: 700px
-    }
-}
-
-.modal-title {
-    text-align: center;
-    font-size: 3vh;
-    font-weight: bold
-}
-
-/* h4 {
-    margin-left: auto
-} */
-
-.modal-header {
-    border-bottom: none;
-    text-align: center;
-    padding-bottom: 0
-}
-
-/* h6 {
-    color: rgb(2, 55, 230);
-    margin-top: 2vh;
-    margin-bottom: 0;
-    font-size: 2vh
-} */
-
-.modal-body {
-    padding: 2vh
-}
-
-.modal-footer {
-    border-top: none;
-    justify-content: center;
-    padding-top: 0
-}
-
-.row {
-    /* border-bottom: 1px solid rgba(0, 0, 0, .2); */
-    padding: 2vh 0 2vh 0;
-    justify-content: space-between;
-    flex-wrap: unset;
-    margin: 0
-}
-
-.displayOrder {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around
-}
-
-/* ul li {
-    font-size: 2vh;
-    font-weight: bold;
-    line-height: 4vh
-} */
-
-.left {
-    float: left;
-    font-weight: normal;
-    color: rgb(126, 123, 123)
-}
-
-.right {
-    float: right;
-    text-align: right
-}
-
-.col {
-    padding-left: 0
-}
-
-@media(min-width:1025px) {
-    img {
-        width: 70%
-    }
-}
 
 /* .btn {
     background-color: rgb(2, 55, 230);
@@ -216,7 +126,12 @@
 }
 
 
-
+@media (min-width: 992px){
+.modal-content {
+    width:auto;
+    padding: 15px !important;
+}
+}
 
    
     </style>
@@ -606,7 +521,7 @@
 
     <!-- Header -->
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-      style="min-height: 200px; background-image: url(https://raw.githack.com/creativetimofficial/argon-dashboard/master/assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+      style="min-height: 200px; background-image: url()">
       <!-- Mask -->
       <span class="mask bg-gradient-default opacity-8"></span>
       <!-- Header container -->
@@ -932,6 +847,11 @@
 </div>
 
 
+<div class="modal fade" id="modal1" >
+
+
+</div>
+
 
   <footer class="footer" id="footer-section-loader" style="background:rgba(0);"></footer>
 
@@ -970,6 +890,7 @@
       if ($('.drobt0').hasClass('drobt1')) {
         $('.drobt0').removeClass('drobt1');
         $('.drobt0').addClass('drobt2');
+        $('body').addClass("fixed-position");
       } else {
         $('.drobt0').removeClass('drobt2');
         $('.drobt0').addClass('drobt1');
@@ -980,6 +901,7 @@
   <script>
     function hidenavigation() {
       $('.drobt0').addClass('colapse');
+        $('body').removeClass("fixed-position");
     }
 
     function shownavigation() {
@@ -1461,7 +1383,7 @@
 
 <style>
   .drobt1 {
-    transform: translateX(-101%);
+    transform: translateX(0%);
   }
 
   .drobt2 {
