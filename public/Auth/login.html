@@ -410,17 +410,36 @@
             window.location = `/Payment/checkout.html?checkout=${orderId}`;
           })
         } else {
-          setTimeout(function () {
-          let goTo = window.localStorage.getItem("redirectURL");
-          if (goTo != null && (goTo != "null"))
-            if (goTo == "index.html") {
-              window.location = "../index.html"
+
+          let cartLocal = window.sessionStorage.getItem('cartLocal');
+          if(cartLocal) {
+            userRef.get().then(async (udoc) => {
+              let udata = udoc.data();
+            cartLocal = JSON.parse(cartLocal);
+            if(udata.cart) {
+              udata.cart.push(cartLocal);
             } else {
-              window.location = goTo;
+              udata.cart = [];
+              udata.cart.push(cartLocal);
             }
-          else
-            window.location = "../index.html"
-        }, 100)
+            await userRef.update(udata);
+            window.location.replace(`./../UserDash/cart.html`);
+          })
+          } else {
+            setTimeout(function () {
+              let goTo = window.localStorage.getItem("redirectURL");
+              if (goTo != null && (goTo != "null"))
+                if (goTo == "index.html") {
+                  window.location = "../index.html"
+                } else {
+                  window.location = goTo;
+                }
+              else
+                window.location = "../index.html"
+            }, 100)
+          }
+
+         
         }
       } else {
         document.getElementById("log").innerHTML = "Invalid Credentials"

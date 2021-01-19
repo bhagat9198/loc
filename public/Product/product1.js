@@ -370,13 +370,12 @@ const displayProduct = (prodData) => {
       document.getElementById("fail").style.display = "inline-block";
       document.querySelector("#buyNowBtn").disabled = true;
       document.querySelector("#addToCartBtn").disabled = true;
-      
 
       imgNo = +prodData.imgs;
       titleNo = +prodData.title;
       let imgHolder = "";
       function displayImgHolders() {
-        console.log('displayImgHolders');
+        console.log("displayImgHolders");
         for (let imgCounter = 0; imgCounter < imgNo; imgCounter++) {
           imgHolder += `
         <div class="image-tile">
@@ -1062,7 +1061,7 @@ const buyProd = async (e) => {
 
   let uStatus = await checkAuth();
   // alert(uStatus);
-  console.log(uStatus);
+  // console.log(uStatus);
   const orderId = Math.random();
   if (uStatus) {
     // alert('1065 if');
@@ -1205,7 +1204,7 @@ const buyProd = async (e) => {
     });
     window.location.href = `./../Payment/checkout.html?checkout=${orderId}`;
   } else {
-    console.log('1205 else')
+    // console.log('1205 else')
     let personalizedGiftDetails = {};
     personalizedGiftDetails.imgs = [];
     if (personalizedGift) {
@@ -1281,10 +1280,10 @@ const buyProd = async (e) => {
       buyNowData.products[0].personalized = true;
       buyNowData.products[0].personalizedGiftDetails = personalizedGiftDetails;
     }
-    console.log("uuuu");
+    // console.log("uuuu");
     await sessionStorage.setItem("buyNowProd", JSON.stringify(buyNowData));
     // console.log(buyNowData);
-    console.log(sessionStorage.getItem('buyNowProd'));
+    // console.log(sessionStorage.getItem('buyNowProd'));
     // alert('lol end')
     window.location.href = "../Auth/login.html";
   }
@@ -1297,13 +1296,92 @@ const addToCartBtnHTML = document.querySelector("#addToCartBtn");
 const addToCart = async (e) => {
   loaderCart("start");
 
-  let checkAuthStatus =  await checkAuth();
-  if(!checkAuthStatus) {
-    window.location.href = "/Auth/login.html";
-  }
+  let checkAuthStatus = await checkAuth();
+  // if(!checkAuthStatus) {
+  //   window.location.href = "/Auth/login.html";
+  // }
   const cartId = Math.random();
-  await userRef.get().then(async (doc) => {
-    let docData = doc.data();
+  if (checkAuthStatus) {
+    await userRef.get().then(async (doc) => {
+      let docData = doc.data();
+      let f;
+      personalizedGiftDetails = {};
+      personalizedGiftDetails.imgs = [];
+      if (personalizedGift) {
+        let finalImgs = IMGS_ARRAY.slice(IMGS_ARRAY.length - imgNo);
+        // console.log(finalImgs);
+        for (let img of finalImgs) {
+          let imgName = `${new Date().valueOf()}__${img.name}`;
+          let imgUrl;
+          await storageService
+            .ref(`Customers/${doc.id}/cart/${cartId}/${imgName}`)
+            .put(img);
+          await storageService
+            .ref(`Customers/${doc.id}/cart/${cartId}/${imgName}`)
+            .getDownloadURL()
+            .then((url) => {
+              imgUrl = url;
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+          personalizedGiftDetails.imgs.push(imgUrl);
+          personalizedGiftDetails.titles = TITLE_ARRAY;
+          // console.log(personalizedGiftDetails);
+        }
+      }
+      if (WEIGHT_PRICE.weight) {
+        if (document.querySelector("input[name=cake-flavour]:checked")) {
+          // user selected the value
+          f = document.querySelector("input[name=cake-flavour]:checked").value;
+        } else {
+          f = "Not Selcted";
+        }
+      } else {
+        f = false;
+      }
+      let message = "";
+      if (document.querySelector("#prodMsg")) {
+        message = document.querySelector("#prodMsg").value;
+      }
+      if (docData.cart) {
+        docData.cart.push({
+          prodId: PRODUCT_ID,
+          cat: CATEGORY_ID,
+          message: message,
+          heart: HEART,
+          eggless: EGGLESS,
+          pricing: WEIGHT_PRICE,
+          qty: PROD_QTY,
+          cartId: cartId,
+          flavour: f,
+          personalizedGift: personalizedGift,
+          personalizedGiftDetails: personalizedGiftDetails,
+        });
+      } else {
+        docData.cart = [];
+        docData.cart.push({
+          prodId: PRODUCT_ID,
+          cat: CATEGORY_ID,
+          message: message,
+          heart: HEART,
+          eggless: EGGLESS,
+          pricing: WEIGHT_PRICE,
+          qty: PROD_QTY,
+          cartId: cartId,
+          flavour: f,
+          personalizedGift: personalizedGift,
+          personalizedGiftDetails: personalizedGiftDetails,
+        });
+      }
+      await userRef.update(docData);
+      document.getElementById("success").style.display = "block";
+      setTimeout(function () {
+        document.getElementById("success").style.display = "none";
+      }, 2000);
+    });
+    loaderCart("end");
+  } else {
     let f;
     personalizedGiftDetails = {};
     personalizedGiftDetails.imgs = [];
@@ -1314,10 +1392,10 @@ const addToCart = async (e) => {
         let imgName = `${new Date().valueOf()}__${img.name}`;
         let imgUrl;
         await storageService
-          .ref(`Customers/${doc.id}/orders/${cartId}/${imgName}`)
+          .ref(`Customers/unknown/cart/${cartId}/${imgName}`)
           .put(img);
         await storageService
-          .ref(`Customers/${doc.id}/orders/${cartId}/${imgName}`)
+          .ref(`Customers/unknown/cart/${cartId}/${imgName}`)
           .getDownloadURL()
           .then((url) => {
             imgUrl = url;
@@ -1344,43 +1422,23 @@ const addToCart = async (e) => {
     if (document.querySelector("#prodMsg")) {
       message = document.querySelector("#prodMsg").value;
     }
-    if (docData.cart) {
-      docData.cart.push({
-        prodId: PRODUCT_ID,
-        cat: CATEGORY_ID,
-        message: message,
-        heart: HEART,
-        eggless: EGGLESS,
-        pricing: WEIGHT_PRICE,
-        qty: PROD_QTY,
-        cartId: cartId,
-        flavour: f,
-        personalizedGift: personalizedGift,
-        personalizedGiftDetails: personalizedGiftDetails,
-      });
-    } else {
-      docData.cart = [];
-      docData.cart.push({
-        prodId: PRODUCT_ID,
-        cat: CATEGORY_ID,
-        message: message,
-        heart: HEART,
-        eggless: EGGLESS,
-        pricing: WEIGHT_PRICE,
-        qty: PROD_QTY,
-        cartId: cartId,
-        flavour: f,
-        personalizedGift: personalizedGift,
-        personalizedGiftDetails: personalizedGiftDetails,
-      });
-    }
-    await userRef.update(docData);
-    document.getElementById("success").style.display = "block";
-    setTimeout(function () {
-      document.getElementById("success").style.display = "none";
-    }, 2000);
-  });
-  loaderCart("end");
+
+    let cartLocal = {
+      prodId: PRODUCT_ID,
+      cat: CATEGORY_ID,
+      message: message,
+      heart: HEART,
+      eggless: EGGLESS,
+      pricing: WEIGHT_PRICE,
+      qty: PROD_QTY,
+      cartId: cartId,
+      flavour: f,
+      personalizedGift: personalizedGift,
+      personalizedGiftDetails: personalizedGiftDetails,
+    };
+    await sessionStorage.setItem("cartLocal", JSON.stringify(cartLocal));
+    window.location.href = "../Auth/login.html";
+  }
 };
 
 addToCartBtnHTML.addEventListener("click", addToCart);
@@ -1590,12 +1648,12 @@ function loaderCart(loaderState) {
 const resetImgsHTML = document.querySelector("#resetImgs");
 
 const resetImgs = (e) => {
-  console.log('resetImgs');
+  console.log("resetImgs");
   IMGS_ARRAY.length = 0;
   checkAllImgs();
   // displayImgHolders();
   let imgNo = +PROD_DETAILS.imgs;
-  let imgHolder = '';
+  let imgHolder = "";
   for (let imgCounter = 0; imgCounter < imgNo; imgCounter++) {
     imgHolder += `
   <div class="image-tile">
