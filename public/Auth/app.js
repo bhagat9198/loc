@@ -228,7 +228,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             if(goTo=="index.html"){
               window.location="/index.html"
             }else if(goTo.includes("product.html")){
-              let buyNowProd = window.sessionStorage.getItem('buyNowProd');
+              let buyNowProd = window.localStorage.getItem('buyNowProd');
               if(buyNowProd) {
                 buyNowProd = JSON.parse(buyNowProd);
                 if(USER_DATA.orders) {
@@ -242,7 +242,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                 let orderId = buyNowProd.orderId;
                 window.location = `/Payment/checkout.html?checkout=${orderId}`;
               }else{
-                let cartLocal = window.sessionStorage.getItem('cartLocal');
+                let cartLocal = window.localStorage.getItem('cartLocal');
                 if(cartLocal) {
                   cartLocal = JSON.parse(cartLocal);
                   if(USER_DATA.cart) {

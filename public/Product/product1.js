@@ -741,8 +741,8 @@ const imgChange = (e, current) => {
   // console.log(document.querySelector("#whole-img-block"));
 };
 
-const updateSessionStorage = async () => {
-  console.log("updateSessionStorage");
+const updateLocalStorage = async () => {
+  console.log("updateLocalStorage");
   let AllProds = [];
   await db
     .collection("categories")
@@ -778,7 +778,7 @@ const updateSessionStorage = async () => {
             console.log(catDoc.id);
           });
       }
-      sessionStorage.setItem("locProds", JSON.stringify(AllProds));
+      localStorage.setItem("locProds", JSON.stringify(AllProds));
     });
   return;
 };
@@ -870,11 +870,11 @@ const reviewForm = async (e) => {
 
         await pRef.update(pData);
 
-        let locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
+        let locProds1 = JSON.parse(localStorage.getItem("locProds"));
         // console.log(typeof(locProds1), locProds1);
         if (!locProds1) {
-          await updateSessionStorage().then((res) => {
-            locProds1 = JSON.parse(sessionStorage.getItem("locProds"));
+          await updateLocalStorage().then((res) => {
+            locProds1 = JSON.parse(localStorage.getItem("locProds"));
           });
         }
         console.log(locProds1);
@@ -886,7 +886,7 @@ const reviewForm = async (e) => {
             break;
           }
         }
-        sessionStorage.setItem("locProds", JSON.stringify(locProds));
+        localStorage.setItem("locProds", JSON.stringify(locProds));
       });
     });
 };
@@ -1281,9 +1281,9 @@ const buyProd = async (e) => {
       buyNowData.products[0].personalizedGiftDetails = personalizedGiftDetails;
     }
     // console.log("uuuu");
-    await sessionStorage.setItem("buyNowProd", JSON.stringify(buyNowData));
+    await localStorage.setItem("buyNowProd", JSON.stringify(buyNowData));
     // console.log(buyNowData);
-    // console.log(sessionStorage.getItem('buyNowProd'));
+    // console.log(localStorage.getItem('buyNowProd'));
     // alert('lol end')
     window.location.href = "../Auth/login.html";
   }
@@ -1436,7 +1436,7 @@ const addToCart = async (e) => {
       personalizedGift: personalizedGift,
       personalizedGiftDetails: personalizedGiftDetails,
     };
-    await sessionStorage.setItem("cartLocal", JSON.stringify(cartLocal));
+    await localStorage.setItem("cartLocal", JSON.stringify(cartLocal));
     window.location.href = "../Auth/login.html";
   }
 };

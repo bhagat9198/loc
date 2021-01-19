@@ -391,7 +391,7 @@
         window.localStorage.setItem("locLoggedInUser", key.data().userId)
         ////////////////////////////////////////////////////////////////////
         let uId = window.localStorage.getItem('locLoggedInUser');
-        let buyNowProd = window.sessionStorage.getItem('buyNowProd');
+        let buyNowProd = window.localStorage.getItem('buyNowProd');
         if (buyNowProd) {
           // let uRef = db.collection('Customers').doc(uId);
           userRef.get().then(async (udoc) => {
@@ -406,25 +406,25 @@
             }
             await userRef.update(udata);
             let orderId = buyNowProd.orderId;
-            await sessionStorage.removeItem("buyNowProd");
+            await localStorage.removeItem("buyNowProd");
             window.location = `/Payment/checkout.html?checkout=${orderId}`;
           })
         } else {
 
-          let cartLocal = window.sessionStorage.getItem('cartLocal');
+          let cartLocal = window.localStorage.getItem('cartLocal');
           if(cartLocal) {
             userRef.get().then(async (udoc) => {
               let udata = udoc.data();
-            cartLocal = JSON.parse(cartLocal);
-            if(udata.cart) {
-              udata.cart.push(cartLocal);
-            } else {
-              udata.cart = [];
-              udata.cart.push(cartLocal);
-            }
-            await userRef.update(udata);
-            window.location.replace(`./../UserDash/cart.html`);
-          })
+              cartLocal = JSON.parse(cartLocal);
+              if(udata.cart) {
+                udata.cart.push(cartLocal);
+              } else {
+                udata.cart = [];
+                udata.cart.push(cartLocal);
+              }
+              await userRef.update(udata);
+              window.location.replace(`./../UserDash/cart.html`);
+            })
           } else {
             setTimeout(function () {
               let goTo = window.localStorage.getItem("redirectURL");
