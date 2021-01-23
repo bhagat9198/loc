@@ -496,12 +496,21 @@ const form2 = async (e) => {
   const p8 = fForm2HTML["f2-priority-8"].value;
   const c1 = fForm2HTML["f2-cat1"].value;
   const c2 = fForm2HTML["f2-cat2"].value;
-  const c3 = fForm2HTML["f2-cat3"].value;
+  const c3 = fForm2HTML["f2-cat3"].value; 
   const c4 = fForm2HTML["f2-cat4"].value;
   const c5 = fForm2HTML["f2-cat5"].value;
   const c6 = fForm2HTML["f2-cat6"].value;
   const c7 = fForm2HTML["f2-cat7"].value;
   const c8 = fForm2HTML["f2-cat8"].value;
+
+  const n1 = fForm2HTML['f2-iconName1'].value;
+  const n2 = fForm2HTML['f2-iconName2'].value;
+  const n3 = fForm2HTML['f2-iconName3'].value;
+  const n4 = fForm2HTML['f2-iconName4'].value;
+  const n5 = fForm2HTML['f2-iconName5'].value;
+  const n6 = fForm2HTML['f2-iconName6'].value;
+  const n7 = fForm2HTML['f2-iconName7'].value;
+  const n8 = fForm2HTML['f2-iconName8'].value;
 
   if (iconImg1) {
     imgName1 = `${Math.random()}__${iconImg1.name}`;
@@ -563,6 +572,7 @@ const form2 = async (e) => {
       tag: t1,
       cat: c1,
       priority: p1,
+      name: n1,
     };
     docData.card2 = {
       img: imgName2,
@@ -570,6 +580,7 @@ const form2 = async (e) => {
       tag: t2,
       cat: c2,
       priority: p2,
+      name: n2,
     };
     docData.card3 = {
       img: imgName3,
@@ -577,6 +588,7 @@ const form2 = async (e) => {
       tag: t3,
       cat: c3,
       priority: p3,
+      name: n3,
     };
     docData.card4 = {
       img: imgName4,
@@ -584,6 +596,7 @@ const form2 = async (e) => {
       tag: t4,
       cat: c4,
       priority: p4,
+      name: n4,
     };
     docData.card5 = {
       img: imgName5,
@@ -591,6 +604,7 @@ const form2 = async (e) => {
       tag: t5,
       cat: c5,
       priority: p5,
+      name: n5,
     };
     docData.card6 = {
       img: imgName6,
@@ -598,6 +612,7 @@ const form2 = async (e) => {
       tag: t6,
       cat: c6,
       priority: p6,
+      name: n6,
     };
     docData.card7 = {
       img: imgName7,
@@ -605,6 +620,7 @@ const form2 = async (e) => {
       tag: t7,
       cat: c7,
       priority: p7,
+      name: n7,
     };
     docData.card8 = {
       img: imgName8,
@@ -612,9 +628,15 @@ const form2 = async (e) => {
       tag: t8,
       cat: c8,
       priority: p8,
+      name: n8,
     };
     // console.log(docData);
-    await docRef.update(docData);
+    await docRef.update(docData).then(() => {
+      console.log('updated');
+    }).catch(error => {
+      console.log('error', error);
+      console.log('error', error.message);
+    })
     // console.log("updated");
   });
 
@@ -676,6 +698,7 @@ db.collection("sections")
       fForm2HTML["f2-tag1"].value = docData.card1.tag;
       fForm2HTML["f2-priority-1"].value = docData.card1.priority;
       fForm2HTML.querySelector("#f2-img1").src = docData.card1.imgUrl;
+      fForm2HTML['f2-iconName1'].value = docData.card1.name;
     }
 
     if (docData.card2) {
@@ -683,6 +706,7 @@ db.collection("sections")
       fForm2HTML["f2-tag2"].value = docData.card2.tag;
       fForm2HTML["f2-priority-2"].value = docData.card2.priority;
       fForm2HTML.querySelector("#f2-img2").src = docData.card2.imgUrl;
+      fForm2HTML['f2-iconName1'].value = docData.card2.name;
     }
 
     if (docData.card3) {
@@ -690,6 +714,7 @@ db.collection("sections")
       fForm2HTML["f2-tag3"].value = docData.card3.tag;
       fForm2HTML["f2-priority-3"].value = docData.card3.priority;
       fForm2HTML.querySelector("#f2-img3").src = docData.card3.imgUrl;
+      fForm2HTML['f2-iconName1'].value = docData.card3.name;
     }
 
     if (docData.card4) {
@@ -697,6 +722,7 @@ db.collection("sections")
       fForm2HTML["f2-tag4"].value = docData.card4.tag;
       fForm2HTML["f2-priority-4"].value = docData.card4.priority;
       fForm2HTML.querySelector("#f2-img4").src = docData.card4.imgUrl;
+      fForm2HTML['f2-iconName1'].value = docData.card4.name;
     }
 
     if (docData.card5) {
@@ -704,6 +730,7 @@ db.collection("sections")
       fForm2HTML["f2-tag5"].value = docData.card5.tag;
       fForm2HTML["f2-priority-5"].value = docData.card5.priority;
       fForm2HTML.querySelector("#f2-img5").src = docData.card5.imgUrl;
+      fForm2HTML['f2-iconName1'].value = docData.card5.name
     }
 
     if (docData.card6) {
@@ -711,6 +738,7 @@ db.collection("sections")
       fForm2HTML["f2-tag6"].value = docData.card6.tag;
       fForm2HTML["f2-priority-6"].value = docData.card6.priority;
       fForm2HTML.querySelector("#f2-img6").src = docData.card6.imgUrl;
+      fForm2HTML['f2-iconName1'].value = docData.card6.name;
     }
 
     if (docData.card7) {
@@ -718,6 +746,7 @@ db.collection("sections")
       fForm2HTML["f2-tag7"].value = docData.card7.tag;
       fForm2HTML["f2-priority-7"].value = docData.card7.priority;
       fForm2HTML.querySelector("#f2-img7").src = docData.card7.imgUrl;
+      fForm2HTML['f2-iconName1'].value = docData.card7.name;
     }
 
     if (docData.card8) {
@@ -725,6 +754,7 @@ db.collection("sections")
       fForm2HTML["f2-tag8"].value = docData.card8.tag;
       fForm2HTML["f2-priority-8"].value = docData.card8.priority;
       fForm2HTML.querySelector("#f2-img8").src = docData.card8.imgUrl;
+      fForm2HTML['f2-iconName1'].value = docData.card8.name;
     }
   });
 
