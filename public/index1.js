@@ -298,7 +298,7 @@ db.collection("sections")
             </div>
             <div class="card-body cbc text-center">
               <h5 class="card-title" style="font-family: cursive; font-size: 15px;">${
-                card.cat.split("__")[1]
+                card.name
               }</h5>
             </div>
           </a>
