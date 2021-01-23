@@ -339,7 +339,7 @@ var deleteAccount = function () {
         // The timeout allows the message to be displayed after the UI has
         // changed to the signed out state.
         setTimeout(function () {
-          alert('Please sign in again to delete your account.');
+          alert('Please sign in again to delete Your Account/Orders.');
         }, 1);
       });
     }
