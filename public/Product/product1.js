@@ -239,6 +239,7 @@ const displayProduct = (prodData) => {
       displayWeights(prodData.weights[0].cakeWeight);
     }
   } else {
+    
     calPreviousPrice(1);
     document.querySelectorAll(".cake-attribute").forEach((el) => {
       el.style.display = "none";
@@ -666,9 +667,10 @@ const displayWeights = (makedWeight) => {
 };
 
 const calPreviousPrice = (pq) => {
+  // console.log('calPreviousPrice');
   // console.log(+PROD_DETAILS.totalPrice, +PROD_DETAILS.mrp, Math.round(100 - ((+PROD_DETAILS.totalPrice/+PROD_DETAILS.mrp)*100)));
   let pDis = Math.round(
-    100 - ((+PROD_DETAILS.totalPrice * pq) / (+PROD_DETAILS.mrp * pq)) * 100
+    100 - ((+PROD_DETAILS.totalPrice * pq) / ((+PROD_DETAILS.mrp + (+PROD_DETAILS.mrp *( +PROD_DETAILS.gst/100))) * pq)) * 100
   );
   disPercentHTML.innerHTML = `(${pDis}% OFF)`;
 };
@@ -1487,98 +1489,98 @@ const settingLocalStorage = () => {
 };
 
 const displaySuggestions = async () => {
-  const trendingItemsHTML = document.querySelector(".trending-item-slider");
-  // console.log(CATEGORY_ID);
-  let allProds = [];
+//   const trendingItemsHTML = document.querySelector(".trending-item-slider");
+//   // console.log(CATEGORY_ID);
+//   let allProds = [];
 
-  let locProds = JSON.parse(localStorage.getItem("locProds"));
-  if (!locProds) {
-    await settingLocalStorage();
-  }
+//   let locProds = JSON.parse(localStorage.getItem("locProds"));
+//   if (!locProds) {
+//     await settingLocalStorage();
+//   }
 
-  let max = 0;
-  let min = 0;
-  let couter = -1;
-  for (let i = 0; i < locProds.length; i++) {
-    if (locProds[i].catId == CATEGORY_ID) {
-      couter++;
-      if (couter === 0) {
-        min = i;
-      }
-      max = i;
-    }
-  }
+//   let max = 0;
+//   let min = 0;
+//   let couter = -1;
+//   for (let i = 0; i < locProds.length; i++) {
+//     if (locProds[i].catId == CATEGORY_ID) {
+//       couter++;
+//       if (couter === 0) {
+//         min = i;
+//       }
+//       max = i;
+//     }
+//   }
 
-  let rand = Math.floor(Math.random() * (max - (min - 8)) + (min - 8));
+//   let rand = Math.floor(Math.random() * (max - (min - 8)) + (min - 8));
 
-  let card = "";
-  // for (let counter = 0; counter < 8; counter++) {
-  for (let i = rand; i < rand + 7; i++) {
-    // await db
-    //   .collection(CATEGORY_ID)
-    //   .doc(allProds[counter + rand])
-    //   .get()
-    //   .then((pdataRaw) => {
-    //     let pdata = pdataRaw.data();
-    // console.log(pdata.mainImgUrl);
-    // console.log(locProds[i]);
-    let mrp = Math.round(
-      +locProds[i].prodData.mrp +
-        +locProds[i].prodData.mrp * (+locProds[i].prodData.gst / 100)
-    );
-    let dis = 100 - (+locProds[i].prodData.totalPrice / mrp) * 100;
-    dis = Math.round(dis);
-    card += `
-        <a href="./product.html?prod=${locProds[i].prodId}&&cat=${locProds[i].catId}" class="item">
+//   let card = "";
+//   // for (let counter = 0; counter < 8; counter++) {
+//   for (let i = rand; i < rand + 7; i++) {
+//     // await db
+//     //   .collection(CATEGORY_ID)
+//     //   .doc(allProds[counter + rand])
+//     //   .get()
+//     //   .then((pdataRaw) => {
+//     //     let pdata = pdataRaw.data();
+//     // console.log(pdata.mainImgUrl);
+//     // console.log(locProds[i]);
+//     let mrp = Math.round(
+//       +locProds[i].prodData.mrp +
+//         +locProds[i].prodData.mrp * (+locProds[i].prodData.gst / 100)
+//     );
+//     let dis = 100 - (+locProds[i].prodData.totalPrice / mrp) * 100;
+//     dis = Math.round(dis);
+//     card += `
+//         <a href="./product.html?prod=${locProds[i].prodId}&&cat=${locProds[i].catId}" class="item">
         
-          <div class="item-img">
+//           <div class="item-img">
 
-            <img class="img-fluid" style="width: 500px !important; height:200px " src="${locProds[i].prodData.mainImgUrl}" alt="LAKE OF CAKES">
-          </div>
-          <div class="info">
-            <br />
-            <h5 style="font-size: 1em;color: black;">${locProds[i].prodData.name}</h5>
-            <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${locProds[i].prodData.totalPrice}&nbsp;<small><del>₹ ${mrp}</small><small style="color:green"></del>(${dis}% OFF)</small></h4>
-          </div>
-        </a>
-        `;
-    // });
-  }
-  trendingItemsHTML.innerHTML = card;
-  var $trending_slider = $(".trending-item-slider");
-  $trending_slider.owlCarousel({
-    items: 4,
-    autoplay: true,
-    margin: 10,
-    loop: true,
-    dots: true,
-    nav: true,
-    center: false,
-    autoplayHoverPause: true,
-    navText: [
-      "<i class='fa fa-angle-left'></i>",
-      "<i class='fa fa-angle-right'></i>",
-    ],
-    smartSpeed: 600,
-    responsive: {
-      0: {
-        items: 2,
-      },
-      414: {
-        items: 2,
-      },
-      768: {
-        items: 3,
-      },
-      992: {
-        items: 5,
-      },
-      1200: {
-        items: 6,
-      },
-    },
-  });
-  // });
+//             <img class="img-fluid" style="width: 500px !important; height:200px " src="${locProds[i].prodData.mainImgUrl}" alt="LAKE OF CAKES">
+//           </div>
+//           <div class="info">
+//             <br />
+//             <h5 style="font-size: 1em;color: black;">${locProds[i].prodData.name}</h5>
+//             <h4 style="text-align: center;font-size: 1em;font-weight: 600;">₹ ${locProds[i].prodData.totalPrice}&nbsp;<small><del>₹ ${mrp}</small><small style="color:green"></del>(${dis}% OFF)</small></h4>
+//           </div>
+//         </a>
+//         `;
+//     // });
+//   }
+//   trendingItemsHTML.innerHTML = card;
+//   var $trending_slider = $(".trending-item-slider");
+//   $trending_slider.owlCarousel({
+//     items: 4,
+//     autoplay: true,
+//     margin: 10,
+//     loop: true,
+//     dots: true,
+//     nav: true,
+//     center: false,
+//     autoplayHoverPause: true,
+//     navText: [
+//       "<i class='fa fa-angle-left'></i>",
+//       "<i class='fa fa-angle-right'></i>",
+//     ],
+//     smartSpeed: 600,
+//     responsive: {
+//       0: {
+//         items: 2,
+//       },
+//       414: {
+//         items: 2,
+//       },
+//       768: {
+//         items: 3,
+//       },
+//       992: {
+//         items: 5,
+//       },
+//       1200: {
+//         items: 6,
+//       },
+//     },
+//   });
+//   // });
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
