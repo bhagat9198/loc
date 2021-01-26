@@ -224,7 +224,7 @@ const displayProduct = (prodData) => {
     <div>
       <label>Give your message too😍😇</label>
       <input type="text" class="values form-control message_cart" name="message" id="prodMsg"
-        placeholder="Enter Name/Message (30 Ch.)" maxlength="30"
+        placeholder="Enter Name/Message (30 Ch.)" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="30"
         style="height: 3em;width: 82%;">
     </div>
     `;
@@ -239,6 +239,7 @@ const displayProduct = (prodData) => {
       displayWeights(prodData.weights[0].cakeWeight);
     }
   } else {
+    
     calPreviousPrice(1);
     document.querySelectorAll(".cake-attribute").forEach((el) => {
       el.style.display = "none";
@@ -348,7 +349,7 @@ const displayProduct = (prodData) => {
             <input class="w3-input w3-padding-16 title-input-box" onkeyup="checkTitleBoxes()" type="text" placeholder="Title ${
               c + 1
             }"
-              id="title-img-${c}"  required name="title-img-${c}" maxlength="25" style="border: 1px solid gray;">
+              id="title-img-${c}"  required name="title-img-${c}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="25" style="border: 1px solid gray;">
           </div>
           `;
         }
@@ -666,9 +667,10 @@ const displayWeights = (makedWeight) => {
 };
 
 const calPreviousPrice = (pq) => {
+  // console.log('calPreviousPrice');
   // console.log(+PROD_DETAILS.totalPrice, +PROD_DETAILS.mrp, Math.round(100 - ((+PROD_DETAILS.totalPrice/+PROD_DETAILS.mrp)*100)));
   let pDis = Math.round(
-    100 - ((+PROD_DETAILS.totalPrice * pq) / (+PROD_DETAILS.mrp * pq)) * 100
+    100 - ((+PROD_DETAILS.totalPrice * pq) / ((+PROD_DETAILS.mrp + (+PROD_DETAILS.mrp *( +PROD_DETAILS.gst/100))) * pq)) * 100
   );
   disPercentHTML.innerHTML = `(${pDis}% OFF)`;
 };
@@ -1512,16 +1514,7 @@ const displaySuggestions = async () => {
   let rand = Math.floor(Math.random() * (max - (min - 8)) + (min - 8));
 
   let card = "";
-  // for (let counter = 0; counter < 8; counter++) {
   for (let i = rand; i < rand + 7; i++) {
-    // await db
-    //   .collection(CATEGORY_ID)
-    //   .doc(allProds[counter + rand])
-    //   .get()
-    //   .then((pdataRaw) => {
-    //     let pdata = pdataRaw.data();
-    // console.log(pdata.mainImgUrl);
-    // console.log(locProds[i]);
     let mrp = Math.round(
       +locProds[i].prodData.mrp +
         +locProds[i].prodData.mrp * (+locProds[i].prodData.gst / 100)
@@ -1578,7 +1571,6 @@ const displaySuggestions = async () => {
       },
     },
   });
-  // });
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////

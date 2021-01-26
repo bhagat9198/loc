@@ -312,11 +312,23 @@ const checkCoupon = async (e) => {
         // console.log(docData.minAmt, totalSubTotal);
         if (+docData.minAmt <= +totalSubTotal) {
           // console.log(docData.minAmt, totalSubTotal);
-          coupanDetails = docData;
-          COUPAN_ID = doc.id;
-          flag = true;
-          appliedCoupan = code;
-          break;
+          let d = new Date();
+          let cValidFromYear = docData.validFrom.substring(0,4);
+          let cValidFromMonth = docData.validFrom.substring(5,7);
+          let cValidFromDay = docData.validFrom.substring(8,10);
+          let validFromDate = new Date(`${cValidFromYear}-${cValidFromMonth}-${cValidFromDay}`);
+
+          let cValidTillYear = docData.validTill.substring(0,4);
+          let cValidTillMonth = docData.validTill.substring(5,7);
+          let cValidTillDay = docData.validTill.substring(8,10);
+          let validTillDate = new Date(`${cValidTillYear}-${cValidTillMonth}-${cValidTillDay}`);
+          if((d.getTime() > validFromDate.getTime()) && (d.getTime() < validTillDate.getTime())) {
+            coupanDetails = docData;
+            COUPAN_ID = doc.id;
+            flag = true;
+            appliedCoupan = code;
+            break;
+          }
         }
       }
     }

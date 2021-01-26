@@ -61,7 +61,7 @@ getParams(window.location.href).then(async (response) => {
 
 const displayToHeading = () => {
   let totalp = allProductsArr.length;
-  console.log(totalp);
+  // console.log(totalp);
 
   let prodHeading;
   let locCats = JSON.parse(localStorage.getItem("locCats"));
@@ -288,8 +288,8 @@ const displayProds = async (arrProds) => {
     //   console.log(p.prodData.stars);
     starsDiv = starRating(p.prodData.stars);
     // } else {
-    // }
-
+    // }  
+    // console.log(p);
     let previousPriceWithGst =
       +p.prodData.mrp * (+p.prodData.gst / 100) + +p.prodData.mrp;
     previousPriceWithGst = Math.round(previousPriceWithGst);

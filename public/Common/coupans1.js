@@ -8,6 +8,7 @@ db.collection('coupans').onSnapshot(snapshots => {
   let card = '';
   for(doc of snapshotDocs) {
     let docData = doc.data();
+    // console.log(docData);
     let d = new Date();
     let cyear = docData.validTill.substring(0,4);
     let cmonth = docData.validTill.substring(5,7);
@@ -18,6 +19,15 @@ db.collection('coupans').onSnapshot(snapshots => {
 
     if(diff <= 0) {
       deleteCoupan(doc.id);
+      continue;
+    }
+
+    let cValidFromYear = docData.validFrom.substring(0,4);
+    let cValidFromMonth = docData.validFrom.substring(5,7);
+    let cValidFromDay = docData.validFrom.substring(8,10);
+    // console.log(cValidFromDay, cValidFromMonth, cValidFromYear);
+    let validFromDate = new Date(`${cValidFromYear}-${cValidFromMonth}-${cValidFromDay}`);
+    if(d.getTime() < validFromDate.getTime()) {
       continue;
     }
     card += displayCard(docData);
@@ -36,7 +46,6 @@ const deleteCoupan = id => {
 
 const displayCard = (docData) => {
   // console.log(docData);
-
   let rand1 = Math.random().toString();
   let rand2 = Math.random();
   return `
