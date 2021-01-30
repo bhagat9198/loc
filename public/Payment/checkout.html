@@ -45,6 +45,34 @@
     }
   }
 
+  .blink {
+        animation: blinker 0.6s linear infinite;
+        color: #1c87c9;
+        font-size: 30px;
+        font-weight: bold;
+        font-family: sans-serif;
+      }
+      @keyframes blinker {
+        50% {
+          opacity: 0;
+        }
+      }
+      .blink-one {
+        animation: blinker-one 1s linear infinite;
+      }
+      @keyframes blinker-one {
+        0% {
+          opacity: 0;
+        }
+      }
+      .blink-two {
+        animation: blinker-two 1.4s linear infinite;
+      }
+      @keyframes blinker-two {
+        100% {
+          opacity: 0;
+        }
+      }
   .thank-you-pop{
 	width:100%;
  	padding:20px;
@@ -1299,11 +1327,11 @@
                       <div class="col-lg-12 mt-3">
                         <div class="bottom-area">
                           <a href="javascript:;" id="step2-btn" class="mybtn1 mr-3 5">Back</a>
-                          <button disabled id="rzp-button1" onclick="exeRazPay(event)" class="mybtn1 1" disabled>Proceed
+                          <button disabled id="rzp-button1" onclick="exeRazPay(event)" class="mybtn1 1" disabled >Proceed
                             to Pay </button>
 
                         </div>
-                        <h4 style="padding:10px;font-size: 13px;font-weight: 800;color: black;" id="gettingReady">Please
+                        <h4 class="blink" style="padding:10px;font-size: 13px;font-weight: 800;color: black;" id="gettingReady">Please
                           wait getting ready....</h4>
                       </div>
                     </div>
@@ -1795,11 +1823,13 @@
     setTimeout(function () {
       document.getElementById("gettingReady").innerHTML = "Its all set!!Continue to payment ";
       document.getElementById("gettingReady").style.color = "green";
+      document.getElementById("rzp-button1").disabled=false;
+      document.getElementById("rzp-button1").style.display="inline-block"
       // setTimeout(function () {
       //   document.getElementById("gettingReady").style.display = "none"
       // }, 1000)
       // document.getElementById("rzp-button1").style.disabled = false
-    }, 5000)
+    }, 7000)
     if ($('a.payment:first').data('val') == 'paystack') {
       $('.checkoutform').prop('id', 'step1-form');
     }
