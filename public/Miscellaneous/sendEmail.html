@@ -50,7 +50,7 @@
                   <div class="col-lg-12">
                     <div class="product-description">
                       <div class="body-area">
-                        <h3>Send Email To Customers</h3>
+                        <h3>Send Email To  (Dont use this feature now - Fixing some issues)</h3>
                         <div class="row">
                           <div class="col-lg-12">
                             <h4 class="MainHeading">
@@ -80,7 +80,7 @@
                               class="panel panel-body"
                               style="background-color: gray"
                             >
-                              <textarea
+                              <!-- <textarea
                                 class="textarea1"
                                 placeholder="Place some text here"
                                 style="
@@ -91,16 +91,16 @@
                                   border: 1px solid #dddddd;
                                   padding: 10px;
                                 "
-                              ></textarea>
+                              ></textarea> -->
                             </div>
                           </div>
                         </div>
                         <div class="row">
                           <input
                             type="file"
-                            name="product-sub-imgs"
+                            name="subImgs"
                             class="hidden"
-                            id="product-sub-imgs"
+                            id="subImgs"
                             accept="image/*"
                             multiple
                           />
@@ -169,6 +169,7 @@
                             >
                               Push Email
                             </button>
+                            <progress value="0" max = "100" id="uploader" > 0%</progress><p id="demo"></p>
                           </div>
                         </div>
                       </div>
@@ -226,11 +227,13 @@
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
       let productSubImgs = [];
-      product-sub-imgs.addEventListener("change", uploadSubImgs);
+
       const uploadSubImgs = (e) => {
         subImgs = e.target.files;
         // console.log(subImgs);
       };
+      subImgs.addEventListener("change", uploadSubImgs);
+     
       $(document).on("click", ".remove-img", function () {
         var id = $(this).find("input[type=hidden]").val();
         $("#galval" + id).remove();
@@ -238,15 +241,17 @@
       });
 
       $(document).on("click", "#prod_gallery", function () {
-        $("#product-sub-imgs").click();
+        $("#subImgs").click();
         $(".selected-image .row").html("");
         $("#add-product").find(".removegal").val(0);
       });
-
-      $("#product-sub-imgs").change(function () {
-        var total_file = document.getElementById("product-sub-imgs").files
+      var arr=[];
+      $("#subImgs").change(function () {
+        
+        var total_file = document.getElementById("subImgs").files
           .length;
         for (var i = 0; i < total_file; i++) {
+          arr.push(event.target.files[i])
           $(".selected-image .row").append(
             '<div class="col-sm-6">' +
               '<div class="img gallery-img" style="width:100px;object-fit:cover">' +
@@ -265,37 +270,88 @@
               "</div>" +
               "</div> "
           );
-
-          $("#add-product").append(
-            '<input type="hidden" name="galval[]" id="galval' +
-              i +
-              '" class="removegal" value="' +
-              i +
-              '">'
-          );
+          
+          // $("#add-product").append(
+          //   '<input type="hidden" name="galval[]" id="galval' +
+          //     i +
+          //     '" class="removegal" value="' +
+          //     i +
+          //     '">'
+          // );
         }
+       
       });
       let db = firebase.firestore();
-      $(function () {
-        $(".textarea1").summernote();
-      });
+      // $(function () {
+      //   $(".textarea1").summernote();
+      // });
+      var  uploader = document.getElementById('uploader');
       function getData() {
-        let template = $(".textarea1").summernote("code");
         let subject = document.querySelector("#subject").value;
-
+       
+    
         if (subject) {
+
+          for(let j=0;j<arr.length;j++){
+              // let template = $(".textarea1").summernote("code");
+        
+          const  storageService = firebase.storage();
+          var uploadTask=storageService.ref("EmailNotification/"+arr[j].name).put(arr[j]);
+          alert(arr[j].name)
+
+          // console.log(selectedFile.getDownloadURL);
+          uploadTask.on('state_changed', function(snapshot){
+
+          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          uploader.value = percentage;
+
+          // Observe state change events such as progress, pause, and resume
+          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+          progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+          document.getElementById("demo").innerHTML = progress;
+          switch (snapshot.state) {
+          case firebase.storage.TaskState.PAUSED: // or 'paused'
+          document.getElementById("demo").innerHTML = "Upload Paused";
+          console.log('Upload is paused');
+          break;
+          case firebase.storage.TaskState.RUNNING: // or 'running'
+          document.getElementById("demo").innerHTML = "File is uploading"+ " "+progress+"%";
+
+          break;
+          }
+          }, function(error) {
+          console.log(error);
+          // Handle unsuccessful uploads
+          },async function () {
+          document.getElementById("demo").innerHTML = "Uploaded"+ " "+progress+"%";
+          // Handle successful uploads on complete
+          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+          await uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+          console.log('File available at', downloadURL);
+          urls = downloadURL;
+          console.log(urls)
+
+          });
+          });
+        
+        }
+
+
+
+
           let ans = confirm("Are you sure to send the email");
           if (ans) {
-            db.collection("emailNotifications")
-              .add({
-                template: template,
-                status: "pending",
-                subject: subject,
-                createdAt: new Date(),
-              })
-              .then(function () {
-                alert("Email Sent Successfully");
-              });
+            // db.collection("emailNotifications")
+            //   .add({
+            //     template: template,
+            //     status: "pending",
+            //     subject: subject,
+            //     createdAt: new Date(),
+            //   })
+            //   .then(function () {
+            //     alert("Email Sent Successfully");
+            //   });
           }
         } else {
           alert("Subject is Required");

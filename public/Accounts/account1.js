@@ -260,7 +260,7 @@ const displayOrder = (data, counter) => {
 
   let tr = `
   <tr class="main-tr">
-    <th scope="row">${counter + 1}<br><br> ${data.orderAt.split(',')[0]}<br> ${data.orderAt.split(',')[1]} </th>
+    <th scope="row" style="font-size: smaller;">${counter + 1}<br><br> ${data.orderAt.split(',')[0]}<br> ${data.orderAt.split(',')[1]} <br> ${data.orderId} </th>
     <td>
       <table class="table-un-striped">
         <tbody style="border-bottom: 1px solid gray">
@@ -624,9 +624,9 @@ const displayOrders = () => {
 };
 
 const sortOrders = async() => {
-  console.log(ALL_ORDERS);
+  // console.log(ALL_ORDERS);
   ALL_ORDERS.sort((a,b) => {
-    console.log(a);
+    // console.log(a);
     let d1 = a.timeStamp;
     let d2 = b.timeStamp;
     // console.log(d1, d2);
@@ -640,7 +640,7 @@ db.collection("orders").get().then(async(snaps) => {
 
   for (let doc of sanpsDocs) {
     let data = doc.data();
-    console.log(data);
+    // console.log(data);
     ALL_ORDERS.push(data);
   }
   

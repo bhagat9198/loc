@@ -33,32 +33,70 @@
         <section id="admin-nav-load"></section>
         <section class="wrapper">
             <div class="content-wrapper">
-                <form id="add-category-img-form">
+         
                     <div class="col-lg-12">
                         <div class="add-product-content">
                             <h4 class="MainHeading">Send Push Notifications</h4>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="product-description">
-                                        <div class="body-area">
+                                        <div class="body-area" >
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="row">
-                                                        <div class="col-lg-5">
+                                                        <div class="col-lg-12">
                                                             <div class="row" id="Banner-Image">
                                                                 <div class="col-lg-12">
                                                                     <div class="left-area" style="padding: 10px;">
-                                                                        <h4 class="heading">Category Image</h4>
+                                                                        <h4 class="heading">Use Below links to redirect to a perticulalr page :</h4>
+
+                                                                        <ul>
+                                                                            <li>
+                                                                                Products Page (All Product) - Products/products.html 
+                                                                            </li>
+                                                                            <li>
+                                                                                Products Page (Cake) - Products/products.html?cat=C0ab0eaGzmtjCKQMnvh5 
+                                                                            </li>
+                                                                            <li>
+                                                                                Products Page (Flower) - Products/products.html?cat=H6gtdNb9j9gMDbtI2dl2 
+                                                                            </li>
+                                                                            <li>
+                                                                                Products Page (Combos) - Products/products.html?cat=yli4KpHGbARJakJfZdVr 
+                                                                            </li>
+                                                                            <li>
+                                                                                Products Page (Chocolates) - Products/products.html?cat=X6zGkffjLRkw1lL5IzPM 
+                                                                            </li>
+                                                                            <li>
+                                                                                Products Page (Birthday) - Products/products.html?cat=kTrnO3gHeFlnt9iyj0fd 
+                                                                            </li>
+                                                                            <li>
+                                                                                Products Page (Aniversary) - Products/products.html?cat=UrAAKMYXo4I8ZwXruHUJ 
+                                                                            </li>
+                                                                            <li>
+                                                                                Products Page (Occasion) - Products/products.html?cat=JpQvf8VgrtJab6MwlqIZ 
+                                                                            </li>
+                                                                            <li>
+                                                                                Products Page (Gifts) - Products/products.html?cat=M4HMSBiyVbvIjPR9EHNg
+                                                                            </li>
+                                                                            <hr>
+                                                                            <li>
+                                                                                <b>Product Page (Perticular Product)</b> - Product/product.html?prod=id&&cat=id
+                                                                            </li>
+                                                                            <hr>
+                                                                            <li>
+                                                                                <b>Midnight Page </b>- midNight.html
+                                                                            </li>
+                                                                            <hr>
+                                                                            <li>
+                                                                                <b>Coupens Page </b>- Common/coupans.html
+                                                                            </li>
+                                                                        </ul>
                                                                     </div>
-                                                                    <center> <input type='file' class="mybtn1"
-                                                                            name="category-img"  id="fileSubmit" accept="image/*"
-                                                                            onchange="readURL(this);" />
-                                                                            <progress value="0" max = "100" id="uploader" > 0%</progress><p id="demo"></p>
-                                                                    </center>
+                                                                    
 
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
+                                                            <!-- <div class="row">
                                                                 <div class="col-lg-12">
                                                                     <center>
                                                                         <div class="left-area span4 text-center" id=""
@@ -70,9 +108,9 @@
                                                                         </div>
                                                                     </center>
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
-                                                        <div class="col-lg-2">
+                                                        <!-- <div class="col-lg-2">
                                                             <h4 class="heading" style="text-align: center;;">AND</h4>
                                                         </div>
                                                         <div class="col-lg-5">
@@ -91,12 +129,12 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div> -->
                                                                 <div class="row">
                                                                     <div class="col-lg-12 text-center">
-                                                                        <input class="addProductSubmit-btn"
-                                                                            type="submit" value="Push Notification">
-                                                                    </div>
+                                                                     <a href="https://console.firebase.google.com/u/2/project/lake-of-cakes/notification/compose">   <input class="addProductSubmit-btn"
+                                                                            type="submit" value="Click here to redirect">
+                                                                    </div></a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -148,7 +186,7 @@
 
    
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
@@ -187,7 +225,7 @@
         firebase.analytics();
     </script>
 
-    <script src="./pushNotification1.js"></script>
+    <script src="./pushNotification1.js"></script> -->
 
 </body>
 
