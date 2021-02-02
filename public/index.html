@@ -13,7 +13,14 @@
   <link rel="stylesheet" href="assets/css/adminlte.min.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-
+<style>
+.users-list>li {
+    float: left;
+    padding: 10px;
+    text-align: center;
+    width: unset !important;
+}
+</style>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
   style="overflow: scroll">
   <div class="wrapper">
@@ -96,11 +103,22 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-2 col-6">
+          <!-- <div class="col-lg-2 col-6">
             <div class="small-box bg-danger">
               <div class="inner">
                 <h3 id="all-visitors"></h3>
                 <p>Unique Visitors</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+            </div>
+          </div> -->
+          <div class="col-lg-2 col-6">
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3 id="all-mobile"></h3>
+                <p>Android Users</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

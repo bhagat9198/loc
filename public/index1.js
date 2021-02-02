@@ -64,19 +64,29 @@ const displayCustomerssInfo = () => {
     // console.log(locAdminCustomers);
     allCutomersHTML.innerHTML = locAdminCustomers.totalCustomers;
     let row = "";
+
     for (let c of locAdminCustomers.details) {
+      if(c.UserName==null){
+        c.UserName="Mobile User"
+      }
+      if(c.Phone==null){
+        c.Phone="Not Provided"
+      }
+      if(c.Email==null){
+        c.Email="Not Provided"
+      }
       // console.log(c);
       let img;
-      if (c.Image === "null") {
-        img = `<img src="./assets/images/logo.png" style="width: 150px;" alt="User Image">`;
+      if (c.Image === "null" || c.Image ==undefined || c.Image==null) {
+        img = `<img src="./assets/images/logo.png" style="width:80px;" alt="User Image">`;
       } else {
-        img = `<img src="${c.Image}" style="width: 150px;" alt="User Image">`;
+        img = `<img src="${c.Image}" style="width: 80px;" alt="User Image">`;
       }
       row += `
       <li>
         ${img}
         <p class="users-list-name" href="#">${c.UserName}</p>
-        <p class="users-list-name" href="#">${c.Email}</p>
+        <p class="users-list-name" href="#"><b>${c.Email}</b></p>
         <span class="users-list-date">${c.Phone}</span>
       </li>
       `;
@@ -114,6 +124,15 @@ db.collection("miscellaneous")
     let visitorData = visitorDoc.data();
     allVisitorsHTML.innerHTML = visitorData.count;
   });
+  db.collection("androidUsers").get().then(function(querySnapshot) {
+    let acount=0;
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        acount++;
+       
+        document.getElementById("all-mobile").innerHTML=acount;
+    });
+});
 
 db.collection("orders").onSnapshot((orderSnaps) => {
   let orderSnapsDocs = orderSnaps.docs;
@@ -172,10 +191,11 @@ db.collection("Customers").onSnapshot((customerSnaps) => {
 
     return c2 - c1;
   }
+ 
   CUSTOMERS.sort(compare);
-  if (CUSTOMERS.length > 8) {
+  if (CUSTOMERS.length >11) {
     console.log("aaaa");
-    CUSTOMERS.length = 8;
+    CUSTOMERS.length =11;
   }
   let customersData = {
     details: CUSTOMERS,
