@@ -69,6 +69,7 @@ async function displayRows(snapshotDocs, allCatData) {
     let id = d.id;
 
     let catId = docData.wholeCategory.split("__")[0];
+  
     let scatId = docData.wholeSubCategory.split("__")[1];
     let ccatId = docData.wholeChildCategory.split("__")[2];
     // console.log(catId, scatId, ccatId);
@@ -84,7 +85,7 @@ async function displayRows(snapshotDocs, allCatData) {
     <tr role="row" class="odd parent" id="main-row-${id}">
         <td tabindex="0" >${docData.name}<br><small>ID: ${
       docData.sno
-    }</small><br /> <small><strong>CHEX:</strong> ${id}</small></td>
+    }</small><br /> <small><strong>CHEX/Prod:</strong> ${id}</small><br><small><strong>CAT:</strong> ${catId}</small></td>
         <td><img src="${imgUrl}"></td>
         <td>${catData.scname}</td>
         <td>${catData.ccname}</td>
