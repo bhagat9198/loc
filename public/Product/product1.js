@@ -224,7 +224,7 @@ const displayProduct = (prodData) => {
     <div>
       <label>Give your message too😍😇</label>
       <input type="text" class="values form-control message_cart" name="message" id="prodMsg"
-        placeholder="Enter Name/Message (30 Ch.)" maxlength="30"
+        placeholder="Enter Name/Message (30 Ch.)" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="30"
         style="height: 3em;width: 82%;">
     </div>
     `;
@@ -349,7 +349,7 @@ const displayProduct = (prodData) => {
             <input class="w3-input w3-padding-16 title-input-box" onkeyup="checkTitleBoxes()" type="text" placeholder="Title ${
               c + 1
             }"
-              id="title-img-${c}"  required name="title-img-${c}" maxlength="25" style="border: 1px solid gray;">
+              id="title-img-${c}"  required name="title-img-${c}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="25" style="border: 1px solid gray;">
           </div>
           `;
         }
