@@ -50,7 +50,10 @@
                   <div class="col-lg-12">
                     <div class="product-description">
                       <div class="body-area">
-                        <h3>Send Email To  (Dont use this feature now - Fixing some issues)</h3>
+                        <h3>
+                          Send Email To (Dont use this feature now - Fixing some
+                          issues)
+                        </h3>
                         <div class="row">
                           <div class="col-lg-12">
                             <h4 class="MainHeading">
@@ -169,7 +172,10 @@
                             >
                               Push Email
                             </button>
-                            <progress value="0" max = "100" id="uploader" > 0%</progress><p id="demo"></p>
+                            <progress value="0" max="100" id="uploader">
+                              0%
+                            </progress>
+                            <p id="demo"></p>
                           </div>
                         </div>
                       </div>
@@ -233,7 +239,7 @@
         // console.log(subImgs);
       };
       subImgs.addEventListener("change", uploadSubImgs);
-     
+
       $(document).on("click", ".remove-img", function () {
         var id = $(this).find("input[type=hidden]").val();
         $("#galval" + id).remove();
@@ -245,13 +251,11 @@
         $(".selected-image .row").html("");
         $("#add-product").find(".removegal").val(0);
       });
-      var arr=[];
+      var arr = [];
       $("#subImgs").change(function () {
-        
-        var total_file = document.getElementById("subImgs").files
-          .length;
+        var total_file = document.getElementById("subImgs").files.length;
         for (var i = 0; i < total_file; i++) {
-          arr.push(event.target.files[i])
+          arr.push(event.target.files[i]);
           $(".selected-image .row").append(
             '<div class="col-sm-6">' +
               '<div class="img gallery-img" style="width:100px;object-fit:cover">' +
@@ -270,7 +274,7 @@
               "</div>" +
               "</div> "
           );
-          
+
           // $("#add-product").append(
           //   '<input type="hidden" name="galval[]" id="galval' +
           //     i +
@@ -279,79 +283,85 @@
           //     '">'
           // );
         }
-       
       });
       let db = firebase.firestore();
       // $(function () {
       //   $(".textarea1").summernote();
       // });
-      var  uploader = document.getElementById('uploader');
-      function getData() {
+      var uploader = document.getElementById("uploader");
+      var counti=0;
+      async function getData() {
         let subject = document.querySelector("#subject").value;
-       
-    
+
         if (subject) {
-
-          for(let j=0;j<arr.length;j++){
-              // let template = $(".textarea1").summernote("code");
-        
-          const  storageService = firebase.storage();
-          var uploadTask=storageService.ref("EmailNotification/"+arr[j].name).put(arr[j]);
-          alert(arr[j].name)
-
-          // console.log(selectedFile.getDownloadURL);
-          uploadTask.on('state_changed', function(snapshot){
-
-          var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          uploader.value = percentage;
-
-          // Observe state change events such as progress, pause, and resume
-          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-          progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-
-          document.getElementById("demo").innerHTML = progress;
-          switch (snapshot.state) {
-          case firebase.storage.TaskState.PAUSED: // or 'paused'
-          document.getElementById("demo").innerHTML = "Upload Paused";
-          console.log('Upload is paused');
-          break;
-          case firebase.storage.TaskState.RUNNING: // or 'running'
-          document.getElementById("demo").innerHTML = "File is uploading"+ " "+progress+"%";
-
-          break;
-          }
-          }, function(error) {
-          console.log(error);
-          // Handle unsuccessful uploads
-          },async function () {
-          document.getElementById("demo").innerHTML = "Uploaded"+ " "+progress+"%";
-          // Handle successful uploads on complete
-          // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-          await uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          console.log('File available at', downloadURL);
-          urls = downloadURL;
-          console.log(urls)
-
-          });
-          });
-        
-        }
-
-
-
-
           let ans = confirm("Are you sure to send the email");
           if (ans) {
-            // db.collection("emailNotifications")
-            //   .add({
-            //     template: template,
-            //     status: "pending",
-            //     subject: subject,
-            //     createdAt: new Date(),
-            //   })
-            //   .then(function () {
-            //     alert("Email Sent Successfully");
-            //   });
+            for (let img of subImgs) {
+              // let template = $(".textarea1").summernote("code");
+              alert(img.name)
+              const storageService = firebase.storage();
+              var uploadTask = storageService
+                .ref("EmailNotification/" + img.name)
+                .put(img);
+
+              // console.log(selectedFile.getDownloadURL);
+              await uploadTask.on(
+                "state_changed",
+                function (snapshot) {
+                  var percentage =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  uploader.value = percentage;
+
+                  // Observe state change events such as progress, pause, and resume
+                  // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                  progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+                  document.getElementById("demo").innerHTML = progress;
+                  switch (snapshot.state) {
+                    case firebase.storage.TaskState.PAUSED: // or 'paused'
+                      document.getElementById("demo").innerHTML =
+                        "Upload Paused";
+                      console.log("Upload is paused");
+                      break;
+                    case firebase.storage.TaskState.RUNNING: // or 'running'
+                      document.getElementById("demo").innerHTML =
+                        "File is uploading" + " " + progress + "%";
+
+                      break;
+                  }
+                },
+                function (error) {
+                  console.log(error);
+                  // Handle unsuccessful uploads
+                },
+                async function () {
+                  document.getElementById("demo").innerHTML =
+                    "Uploaded" + " " + progress + "%";
+                  // Handle successful uploads on complete
+                  // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                  await uploadTask.snapshot.ref
+                    .getDownloadURL()
+                    .then(function (downloadURL) {
+                      counti++;
+                      // console.log("File available at", downloadURL);
+                      urls = downloadURL;
+                      console.log(urls)
+                    });
+                }
+              );
+            }
+            // db.collection("email-Notifications")
+            //             .add({
+            //               url: urls,
+            //               status: "pending",
+            //               subject: subject,
+            //               createdAt: new Date(),
+            //             })
+            //             .then(function () {
+            //              alert(subImgs.length +"-"+counti)
+            //               // alert("Email Sent Successfully");
+            //             });
           }
         } else {
           alert("Subject is Required");
