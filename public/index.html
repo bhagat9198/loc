@@ -15,10 +15,13 @@
 </head>
 <style>
 .users-list>li {
-    float: left;
+    /* float: left;
     padding: 10px;
     text-align: center;
-    width: unset !important;
+    width: unset !important; */
+}
+body{
+  overflow: auto !important;
 }
 </style>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
@@ -294,7 +297,7 @@
           </div>
 
           <div class="card-body p-0">
-            <ul class="users-list clearfix" id="cutomer-details">
+            <ul class="users-list clearfix" id="cutomer-details" style="">
               <!-- <li>
                 <img src="./assets/images/logo.png" style="width: 150px;" alt="User Image">
                 <p class="users-list-name" href="#">Alexander Pierce</p>
