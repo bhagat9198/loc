@@ -116,7 +116,7 @@
   <!-- overlayScrollbars -->
   <script src="../assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="../assets/js/adminlte.js"></script>
+
 
   <!-- OPTIONAL SCRIPTS -->
   <script src="../assets/js/demo.js"></script>
@@ -126,8 +126,8 @@
 
   <script src="../assets/js/jquery-1.12.4.min.js"></script>
   <!-- <script src="../assets/js/vue.js"></script> -->
-  <script src="../assets/js/bootstrap.min.js"></script>
-  <script src="../assets/js/jqueryui.min.js"></script>
+  <!-- <script src="../assets/js/bootstrap.min.js"></script> -->
+
   <!-- Fullside-menu Js-->
   <!-- <script src="../assets/js/jquery.slimscroll.min.js"></script>
   <script src="../assets/js/waves.min.js"></script> -->
@@ -135,11 +135,11 @@
   <script src="../assets/js/plugin.js"></script>
 
   <!-- ChartJS -->
-  <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+  <!-- <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
   <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="../assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-  <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script> -->
   <!-- Summernote -->
 
   <!-- PAGE SCRIPTS -->
@@ -207,13 +207,24 @@
       let snapshotDocs = snapshot.docs;
       let count = 1;
       let status = "loading.."
-      $('#userData').empty()
+      $('#userData').empty();
+      let ph="Not Provided";
+      let Email="Not Provided"
       for (let i of snapshotDocs) {
+        ph=i.data().Phone;
+        Email=i.data().Email;
+    
+        if(i.data().Phone==undefined || i.data().Phone==null){
+          
+          ph="Not Provided"
+        }if(!i.data().Phone){
+          ph="Not Provided"
+        }
         document.getElementById("userData").innerHTML += `
         <tr role="row" class="odd parent">
           <td tabindex="0">`+ i.data().UserName + `</td>
-          <td>`+ i.data().Email + `</td>
-          <td> `+ i.data().Phone + `
+          <td>`+ Email + `</td>
+          <td> `+ ph + `
           </td>
           <!-- <td>
             <div class="godropdown"><button class="go-dropdown-toggle" data-toggle="modal`+i+`"

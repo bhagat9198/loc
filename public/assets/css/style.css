@@ -86,7 +86,9 @@ padding: 15px;
 font-weight: bold;
 
 }
-
+.content-wrapper{
+  min-height: 94.2px !important;
+}
 .fixedInput{
   width: 100%;
   border: 2px solid brown;

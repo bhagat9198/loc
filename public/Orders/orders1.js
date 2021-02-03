@@ -42,6 +42,7 @@ const displayOrdersTable = () => {
   let rejectedRow = "";
   for (let order of ORDERS) {
     // console.log(order);
+    window.localStorage.setItem("ordersLength",ORDERS.length)
     counter++;
     let orderStatus;
     if ("completed" === order.status) {
@@ -119,6 +120,7 @@ const displayOrdersTable = () => {
     </tr>
     `;
     } else {
+   
       row += `
     <tr role="row" class="odd parent">
       <td tabindex="0">${order.orderId}</td>
