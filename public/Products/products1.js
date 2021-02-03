@@ -66,13 +66,10 @@ getParams(window.location.href).then(async (response) => {
   USER = response.user;
 
   let cStatus = getCookie();
-  if(cStatus) {
-  } else {
-    console.log('lol');
+  if(!cStatus) {
     await settingLocalStorage();
     await setCookie();
   }
-
   if (!USER) {
     await extractRelvantProds();
     displayToHeading();
@@ -154,31 +151,8 @@ const extractRelvantProds = async () => {
       }
     } else {
       allProductsArr = [];
-      // await dbRef.get().then((cateogiers) => {
-      //   let cateogiersDocs = cateogiers.docs;
-      //   cateogiersDocs.map((el) => {
-      //     let elDoc = el.data();
-      //     if (TAG) {
-      //       // console.log(elDoc);
-      //       if (elDoc.tags.includes(TAG)) {
-      //         // console.log(elDoc.tags);
-      //         allProductsArr.push({
-      //           prodId: elDoc.id,
-      //           prodData: elDoc,
-      //           catId: CAT,
-      //         });
-      //       }
-      //     } else {
-      //       allProductsArr.push({
-      //         prodId: el.id,
-      //         prodData: el.data(),
-      //         catId: CAT,
-      //       });
-      //     }
-      //   });
-      // });
       let locProds = JSON.parse(localStorage.getItem("locProds"));
-      console.log(locProds);
+      // console.log(locProds);
       if (!locProds) {
         await settingLocalStorage();
       }
@@ -449,7 +423,7 @@ const displayTopSuggest = async () => {
 };
 
 const settingLocalStorage = async() => {
-  console.log('settingLocalStorage');
+  // console.log('settingLocalStorage');
   let AllProds = [];
   let AllLocCats = [];
   await db.collection("categories").get().then(async (catSnaps) => {
@@ -490,7 +464,7 @@ const settingLocalStorage = async() => {
     localStorage.setItem("locProds", JSON.stringify(AllProds));
     localStorage.setItem("locCats", JSON.stringify(AllLocCats));
   });
-  console.log(localStorage.getItem("locProds"));
+  // console.log(localStorage.getItem("locProds"));
 };
 
 const userSearchProds = async () => {

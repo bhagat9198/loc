@@ -1110,7 +1110,6 @@ let AllProds = [];
 let AllLocCats = [];
 
 const updateProdsLocal = async() => {
-  
   await db.collection("categories")
     .get()
     .then(async (catSnaps) => {
@@ -1172,19 +1171,20 @@ const getCookie = () => {
   return coockieStatus;
 }
 
-const setCookie = () => {
+const setCookie = async() => {
   let d = new Date();
   d.setTime(d.getTime() + (24 * 60 * 60 * 1000));
   let expires =  "expires="+d.toUTCString();
   document.cookie = "g_name=locProdsTime;" + expires + ";path=/";
 }
 
-let cStatus = getCookie();
-if(cStatus) {
-} else {
-  updateProdsLocal();
-  setCookie();
-}
+getCookie().then(async(cStatus) => {
+  if(!cStatus) {
+    await updateProdsLocal();
+    setCookie();
+  }
+})
+
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////
 
