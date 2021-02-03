@@ -15,6 +15,7 @@ const allPendingOrdersHTML = document.querySelector("#all-pending-orders");
 const allCompletedOrdersHTML = document.querySelector("#all-completed-orders");
 
 const displayOrdersInfo = () => {
+  // window.localStorage.removeItem("locAdminOrders")
   let locAdminOrders = window.localStorage.getItem("locAdminOrders");
   if (locAdminOrders) {
     locAdminOrders = JSON.parse(locAdminOrders);
@@ -29,6 +30,8 @@ const displayOrdersInfo = () => {
       // console.log(o);
 
       let orderStatus = "";
+      console.log(o)
+      console.log(o.status)
       if ("completed" === o.status) {
         orderStatus = `<span class="badge badge-success">Completed</span>`;
       } else if ("rejected" === o.status) {
@@ -118,12 +121,12 @@ const displayProductssInfo = () => {
 displayProductssInfo();
 
 const allVisitorsHTML = document.querySelector("#all-visitors");
-db.collection("miscellaneous")
-  .doc("visitors")
-  .onSnapshot((visitorDoc) => {
-    let visitorData = visitorDoc.data();
-    allVisitorsHTML.innerHTML = visitorData.count;
-  });
+// db.collection("miscellaneous")
+//   .doc("visitors")
+//   .onSnapshot((visitorDoc) => {
+//     let visitorData = visitorDoc.data();
+//     allVisitorsHTML.innerHTML = visitorData.count;
+//   });
   db.collection("androidUsers").get().then(function(querySnapshot) {
     let acount=0;
     querySnapshot.forEach(function(doc) {
@@ -172,6 +175,7 @@ db.collection("orders").onSnapshot((orderSnaps) => {
     pendingOrders: pendingOrders,
     completedOrders: completedOrders,
   };
+
   window.localStorage.setItem("locAdminOrders", JSON.stringify(ordersData));
   displayOrdersInfo();
 });
