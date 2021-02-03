@@ -69,8 +69,8 @@ getParams(window.location.href).then(async (response) => {
   if(cStatus) {
   } else {
     console.log('lol');
-    await setCookie();
     await settingLocalStorage();
+    await setCookie();
   }
 
   if (!USER) {
@@ -178,6 +178,7 @@ const extractRelvantProds = async () => {
       //   });
       // });
       let locProds = JSON.parse(localStorage.getItem("locProds"));
+      console.log(locProds);
       if (!locProds) {
         await settingLocalStorage();
       }
@@ -448,7 +449,7 @@ const displayTopSuggest = async () => {
 };
 
 const settingLocalStorage = async() => {
-  // console.log('settingLocalStorage');
+  console.log('settingLocalStorage');
   let AllProds = [];
   let AllLocCats = [];
   await db.collection("categories").get().then(async (catSnaps) => {
@@ -489,6 +490,7 @@ const settingLocalStorage = async() => {
     localStorage.setItem("locProds", JSON.stringify(AllProds));
     localStorage.setItem("locCats", JSON.stringify(AllLocCats));
   });
+  console.log(localStorage.getItem("locProds"));
 };
 
 const userSearchProds = async () => {

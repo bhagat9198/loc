@@ -1109,9 +1109,9 @@ let LOC = {};
 let AllProds = [];
 let AllLocCats = [];
 
-const updateProdsLocal = () => {
+const updateProdsLocal = async() => {
   
-  db.collection("categories")
+  await db.collection("categories")
     .get()
     .then(async (catSnaps) => {
       let catSnapsDocs = catSnaps.docs;
@@ -1182,8 +1182,8 @@ const setCookie = () => {
 let cStatus = getCookie();
 if(cStatus) {
 } else {
-  setCookie();
   updateProdsLocal();
+  setCookie();
 }
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////
