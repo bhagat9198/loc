@@ -63,9 +63,7 @@ db.collection("sliders").onSnapshot(async (snapshots) => {
     }
   }
 
-  console.log(introCarouselHTML)
   introCarouselHTML.innerHTML = img;
-  console.log(introCarouselHTML)
 });
 
 // fixed section 1
@@ -180,39 +178,34 @@ userSilderRef.get().then(async (sliderSnaps) => {
     }
   }
   userDefinedSliderHTML.innerHTML = wholeUserSlider;
-  
-  var $mainSlider = $('.intro-carousel');
-       
+
+  var $mainSlider = $(".intro-carousel");
+
   // setInterval(() => {
-      if($('.intro-content').length > 1)
-       {
-      
-      $mainSlider.owlCarousel({
-          loop: true,
-          nav: false,
-          dots: true,
-          autoplay: true,
-          // animateOut:'fadeIn', 
-          // animateOut:'fadeIn', 
-          autoplayTimeout:3000,
-          smartSpeed: 3000,
-      
-          responsive: {
-              0: {
-                  dots: false,
-                  items: 1
-              },
-              768: {
-                  items: 1
-              }
-          },
-  
-      });
+  if ($(".intro-content").length > 1) {
+    $mainSlider.owlCarousel({
+      loop: true,
+      nav: false,
+      dots: true,
+      autoplay: true,
+      // animateOut:'fadeIn',
+      // animateOut:'fadeIn',
+      autoplayTimeout: 3000,
+      smartSpeed: 3000,
+
+      responsive: {
+        0: {
+          dots: false,
+          items: 1,
+        },
+        768: {
+          items: 1,
+        },
+      },
+    });
   }
 
-  
   if (datass == "YES") {
-    
     var $trending_slider = $(".trending-item-slider");
     $trending_slider.owlCarousel({
       items: 4,
@@ -222,8 +215,8 @@ userSilderRef.get().then(async (sliderSnaps) => {
       dots: true,
       nav: true,
       center: false,
-      animateIn: 'fadeIn', // add this,
-      animateOut: 'fadeIn', // and this
+      animateIn: "fadeIn", // add this,
+      animateOut: "fadeIn", // and this
       autoplayHoverPause: true,
       navText: [
         "<i class='fa fa-angle-left'></i>",
@@ -455,7 +448,7 @@ db.collection("sections")
       dots: true,
       nav: true,
       center: false,
-      
+
       autoplayHoverPause: true,
       navText: [
         "<i class='fa fa-angle-left'></i>",
@@ -903,7 +896,11 @@ db.collection("sections")
           <div class=" col s2 "
           style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
           
-          <a href="./Products/products.html?cat=${i.cat.split("__")[0]}&&sub=${i.subCat.split("__")[0]}&&child=${i.childCat.split("__")[0]}" style="position: relative;display: block;">
+          <a href="./Products/products.html?cat=${i.cat.split("__")[0]}&&sub=${
+          i.subCat.split("__")[0]
+        }&&child=${
+          i.childCat.split("__")[0]
+        }" style="position: relative;display: block;">
             <picture>
               <img class="responsive-img lazyloaded"
                 src="` +
@@ -919,7 +916,11 @@ db.collection("sections")
           <div class=" col s2 "
           style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
           
-          <a href="./Products/products.html?cat=${i.cat.split("__")[0]}&&sub=${i.subCat.split("__")[0]}&&child=${i.childCat.split("__")[0]}" style="position: relative;display: block;">
+          <a href="./Products/products.html?cat=${i.cat.split("__")[0]}&&sub=${
+          i.subCat.split("__")[0]
+        }&&child=${
+          i.childCat.split("__")[0]
+        }" style="position: relative;display: block;">
             <picture>
               <img class="responsive-img lazyloaded"
                 src="` +
@@ -975,7 +976,11 @@ db.collection("sections")
           <div class=" col s2 "
           style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
           
-          <a href="./Products/products.html?cat=${i.cat.split("__")[0]}&&sub=${i.subCat.split("__")[0]}&&child=${i.childCat.split("__")[0]}" style="position: relative;display: block;">
+          <a href="./Products/products.html?cat=${i.cat.split("__")[0]}&&sub=${
+          i.subCat.split("__")[0]
+        }&&child=${
+          i.childCat.split("__")[0]
+        }" style="position: relative;display: block;">
             <picture>
             
               <img class="responsive-img lazyloaded"
@@ -1005,7 +1010,9 @@ db.collection("sections")
       <div class=" col s2 "
       style=" background-color:white;width: 18%;margin-right:-13px;margin-left:2%;;padding: 1% 1%  0.5%  1%;">
       
-      <a href="./Products/products.html?cat=${i.cat.split("__")[0]}&&sub=${i.subCat.split('__')[0]}&&child=${i.childCat.split('__')[0]}       
+      <a href="./Products/products.html?cat=${i.cat.split("__")[0]}&&sub=${
+          i.subCat.split("__")[0]
+        }&&child=${i.childCat.split("__")[0]}       
         " style="position: relative;display: block;">
         <picture>
           <img class="responsive-imgSpeed lazyloaded" style="width:300px;  ;object-fit:cover"
@@ -1088,82 +1095,122 @@ db.collection("sections")
 
 // ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// time of localProds
+const updateTimeLocal = () => {
+  let prodsTime
+}
+
+
+
+
 // storing products in local storage
 
 let LOC = {};
 let AllProds = [];
 let AllLocCats = [];
-db.collection("categories").onSnapshot(async (catSnaps) => {
-  let catSnapsDocs = catSnaps.docs;
-  for (let catDoc of catSnapsDocs) {
-    let catData = catDoc.data();
-    AllLocCats.push({id: catDoc.id, data: catData});
-    await db
-      .collection(catDoc.id)
-      .get()
-      .then((prodSnaps) => {
-        let prodSnapsDocs = prodSnaps.docs;
-        prodSnapsDocs.map((pDoc) => {
-          let pData = pDoc.data();
-          AllProds.push({
-            prodId: pDoc.id,
-            prodData: {
-              cat: catData.name,
-              name: pData.name,
-              totalPrice: pData.totalPrice,
-              mrp: pData.mrp,
-              gst: pData.gst,
-              mainImgUrl: pData.mainImgUrl,
-              stars: pData.stars,
-              bannerType: pData.bannerType,
-              bannerTypeColorEnd: pData.bannerTypeColorEnd,
-              bannerTypeColorStart: pData.bannerTypeColorStart,
-              catId: pData.wholeCategory.split('__')[0],
-              subcatId: pData.wholeSubCategory.split('__')[1],
-              childcatId: pData.wholeChildCategory.split('__')[2],
-            },
-            catId: catDoc.id,
-          });
-        });
-        // console.log(catDoc.id);
-      });
-  }
-  localStorage.setItem("locProds", JSON.stringify(AllProds));
-  localStorage.setItem("locCats", JSON.stringify(AllLocCats));
-});
 
+const updateProdsLocal = () => {
+  
+  db.collection("categories")
+    .get()
+    .then(async (catSnaps) => {
+      let catSnapsDocs = catSnaps.docs;
+      for (let catDoc of catSnapsDocs) {
+        let catData = catDoc.data();
+        AllLocCats.push({ id: catDoc.id, data: catData });
+        await db
+          .collection(catDoc.id)
+          .get()
+          .then((prodSnaps) => {
+            let prodSnapsDocs = prodSnaps.docs;
+            prodSnapsDocs.map((pDoc) => {
+              let pData = pDoc.data();
+              AllProds.push({
+                prodId: pDoc.id,
+                prodData: {
+                  cat: catData.name,
+                  name: pData.name,
+                  totalPrice: pData.totalPrice,
+                  mrp: pData.mrp,
+                  gst: pData.gst,
+                  mainImgUrl: pData.mainImgUrl,
+                  stars: pData.stars,
+                  bannerType: pData.bannerType,
+                  bannerTypeColorEnd: pData.bannerTypeColorEnd,
+                  bannerTypeColorStart: pData.bannerTypeColorStart,
+                  catId: pData.wholeCategory.split("__")[0],
+                  subcatId: pData.wholeSubCategory.split("__")[1],
+                  childcatId: pData.wholeChildCategory.split("__")[2],
+                },
+                catId: catDoc.id,
+              });
+            });
+            // console.log(catDoc.id);
+          });
+      }
+      localStorage.setItem("locProds", JSON.stringify(AllProds));
+      localStorage.setItem("locCats", JSON.stringify(AllLocCats));
+    });
+};
+
+// ///////////////////////////////////////////////////////////////////////////////////////
+// setting cookie 
+
+const getCookie = () => {
+  let name = " g_name=locProdsTime"
+  let ca = document.cookie.split(';');
+  let coockieStatus = false;
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    // console.log(c);
+    if(c === name) {
+      // console.log('aaa');
+      coockieStatus = true;
+      break;
+    }
+  }
+  return coockieStatus;
+}
+
+const setCookie = () => {
+  let d = new Date();
+  d.setTime(d.getTime() + (24 * 60 * 60 * 1000));
+  let expires =  "expires="+d.toUTCString();
+  document.cookie = "g_name=locProdsTime;" + expires + ";path=/";
+}
+
+let cStatus = getCookie();
+if(cStatus) {
+} else {
+  setCookie();
+  updateProdsLocal();
+}
 
 // /////////////////////////////////////////////////////////////////////////////////////////////////
 
-let visiteRef = db.collection('miscellaneous').doc('visitors');
-visiteRef.get().then(visitorsDoc => {
+let visiteRef = db.collection("miscellaneous").doc("visitors");
+visiteRef.get().then((visitorsDoc) => {
   let visitorsDocData = visitorsDoc.data();
-  // console.log(visitorsDocData);
-  let locVisit = JSON.parse(window.localStorage.getItem('locVisit'));
-  // console.log(locVisit);
-  if(locVisit) {
+  let locVisit = JSON.parse(window.localStorage.getItem("locVisit"));
+  if (locVisit) {
     let initialDate = new Date(locVisit.time);
-    // console.log(initialDate);
     let currectDate = new Date();
-    // console.log(currectDate);
-    // let diffTime = (currectDate - new Date(initialDate))
-    // console.log(diffTime);
-    let expectTime = (initialDate.getTime() + (60*60*1000))
-    // console.log(expectTime);
-    if(currectDate >= expectTime) {
+    let expectTime = initialDate.getTime() + 60 * 60 * 1000;
+    if (currectDate >= expectTime) {
       visitorsDocData.count++;
       let data = {
-        time: new Date()
-      }
-      window.localStorage.setItem('locVisit', JSON.stringify(data));
-      visiteRef.update('count', visitorsDocData.count);
+        time: new Date(),
+      };
+      window.localStorage.setItem("locVisit", JSON.stringify(data));
+      visiteRef.update("count", visitorsDocData.count);
     }
   } else {
     let data = {
-      time: new Date()
-    }
+      time: new Date(),
+    };
     visitorsDocData.count++;
-    window.localStorage.setItem('locVisit', JSON.stringify(data));
-    visiteRef.update('count', visitorsDocData.count);
+    window.localStorage.setItem("locVisit", JSON.stringify(data));
+    visiteRef.update("count", visitorsDocData.count);
   }
-})
+});
+

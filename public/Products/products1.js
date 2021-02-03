@@ -8,6 +8,8 @@ const productHeadingHTML = document.querySelector("#productHeading");
 const topSuggestionHTML = document.querySelector("#top-suggestion");
 let CAT, SUB, CHILD, TAG, USER;
 let TEMP_ARR = [];
+let allProductsArr = [];
+let prodHeading;
 
 var getParams = async (url) => {
   var params = {};
@@ -22,28 +24,7 @@ var getParams = async (url) => {
   return params;
 };
 
-let allProductsArr = [];
-let prodHeading;
-
-getParams(window.location.href).then(async (response) => {
-  CAT = response.cat;
-  SUB = response.sub;
-  CHILD = response.child;
-  TAG = response.tag;
-  USER = response.user;
-
-  let locProds = JSON.parse(localStorage.getItem("locProds"));
-  if (!locProds) {
-    await settingLocalStorage();
-  }
-
-  if (!USER) {
-    await extractRelvantProds();
-    displayToHeading();
-  } else {
-    userSearchProds();
-  }
-  // console.log(allProductsArr);
+const prodsMix = () => {
   if (allProductsArr.length > 0) {
     let randAllProdsArr = arrayRandom(allProductsArr);
     TEMP_ARR = randAllProdsArr.slice();
@@ -54,12 +35,57 @@ getParams(window.location.href).then(async (response) => {
   } else {
     allProductsHTML.innerHTML = "No products Found";
   }
+}
 
-  await settingLocalStorage();
+const getCookie = () => {
+  let name = " g_name=locProdsTime"
+  let ca = document.cookie.split(';');
+  let coockieStatus = false;
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    if(c === name) {
+      coockieStatus = true;
+      break;
+    }
+  }
+  return coockieStatus;
+}
+
+const setCookie = () => {
+  let d = new Date();
+  d.setTime(d.getTime() + (24 * 60 * 60 * 1000));
+  let expires =  "expires="+d.toUTCString();
+  document.cookie = "g_name=locProdsTime;" + expires + ";path=/";
+}
+
+getParams(window.location.href).then(async (response) => {
+  CAT = response.cat;
+  SUB = response.sub;
+  CHILD = response.child;
+  TAG = response.tag;
+  USER = response.user;
+
+  let cStatus = getCookie();
+  if(cStatus) {
+  } else {
+    console.log('lol');
+    await setCookie();
+    await settingLocalStorage();
+  }
+
+  if (!USER) {
+    await extractRelvantProds();
+    displayToHeading();
+  } else {
+    userSearchProds();
+  }
+  // console.log(allProductsArr);
+  prodsMix();
   
 });
 
 const displayToHeading = () => {
+  // console.log(allProductsArr);
   let totalp = allProductsArr.length;
   // console.log(totalp);
 
@@ -95,6 +121,7 @@ const displayToHeading = () => {
 };
 
 const extractRelvantProds = async () => {
+  // console.log('extractRelvantProds');
   if (CAT) {
     if (SUB) {
       if (CHILD) {
@@ -183,9 +210,10 @@ const extractAllCat = async () => {
 
 const allCatProds = async () => {
   let locProds = JSON.parse(localStorage.getItem("locProds"));
-  if (!locProds) {
-    await settingLocalStorage();
-  }
+  // if (!locProds) {
+  //   await settingLocalStorage();
+  // }
+  // console.log(locProds);
   allProductsArr = locProds;
 };
 
@@ -419,10 +447,11 @@ const displayTopSuggest = async () => {
   });
 };
 
-const settingLocalStorage = () => {
+const settingLocalStorage = async() => {
+  // console.log('settingLocalStorage');
   let AllProds = [];
   let AllLocCats = [];
-  db.collection("categories").onSnapshot(async (catSnaps) => {
+  await db.collection("categories").get().then(async (catSnaps) => {
     let catSnapsDocs = catSnaps.docs;
     for (let catDoc of catSnapsDocs) {
       let catData = catDoc.data();
