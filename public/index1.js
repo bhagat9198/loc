@@ -1155,7 +1155,7 @@ const updateProdsLocal = async() => {
 // ///////////////////////////////////////////////////////////////////////////////////////
 // setting cookie 
 
-const getCookie = () => {
+const getCookie = async() => {
   let name = " g_name=locProdsTime"
   let ca = document.cookie.split(';');
   let coockieStatus = false;
