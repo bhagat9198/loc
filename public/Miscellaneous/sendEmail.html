@@ -233,9 +233,12 @@
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
       let productSubImgs = [];
-
+      let subFiles=[];
       const uploadSubImgs = (e) => {
-        subImgs = e.target.files;
+        // subImgs = e.target.files;
+        for(let i=0;i<e.target.files.length;i++){
+          subFiles.push(e.target.files[i])
+        }
         // console.log(subImgs);
       };
       subImgs.addEventListener("change", uploadSubImgs);
@@ -296,72 +299,32 @@
         if (subject) {
           let ans = confirm("Are you sure to send the email");
           if (ans) {
-            for (let img of subImgs) {
-              // let template = $(".textarea1").summernote("code");
-              alert(img.name)
+            let imgurls = [];
+            for (let img of subFiles) {
+
               const storageService = firebase.storage();
-              var uploadTask = storageService
+              await storageService
                 .ref("EmailNotification/" + img.name)
                 .put(img);
-
-              // console.log(selectedFile.getDownloadURL);
-              await uploadTask.on(
-                "state_changed",
-                function (snapshot) {
-                  var percentage =
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                  uploader.value = percentage;
-
-                  // Observe state change events such as progress, pause, and resume
-                  // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-                  progress =
-                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-
-                  document.getElementById("demo").innerHTML = progress;
-                  switch (snapshot.state) {
-                    case firebase.storage.TaskState.PAUSED: // or 'paused'
-                      document.getElementById("demo").innerHTML =
-                        "Upload Paused";
-                      console.log("Upload is paused");
-                      break;
-                    case firebase.storage.TaskState.RUNNING: // or 'running'
-                      document.getElementById("demo").innerHTML =
-                        "File is uploading" + " " + progress + "%";
-
-                      break;
-                  }
-                },
-                function (error) {
-                  console.log(error);
-                  // Handle unsuccessful uploads
-                },
-                async function () {
-                  document.getElementById("demo").innerHTML =
-                    "Uploaded" + " " + progress + "%";
-                  // Handle successful uploads on complete
-                  // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-                  await uploadTask.snapshot.ref
-                    .getDownloadURL()
-                    .then(function (downloadURL) {
-                      counti++;
-                      // console.log("File available at", downloadURL);
-                      urls = downloadURL;
-                      console.log(urls)
-                    });
-                }
-              );
+              await storageService.ref("EmailNotification/" + img.name).getDownloadURL().then(url=>{
+          
+              imgurls.push({url:url,name:img.name})
+              }).catch(error=>{
+                console.log("ERROR")
+              })
+                            
             }
-            // db.collection("email-Notifications")
-            //             .add({
-            //               url: urls,
-            //               status: "pending",
-            //               subject: subject,
-            //               createdAt: new Date(),
-            //             })
-            //             .then(function () {
-            //              alert(subImgs.length +"-"+counti)
-            //               // alert("Email Sent Successfully");
-            //             });
+            db.collection("email-Notifications")
+                        .add({
+                          url: imgurls,
+                          status: "pending",
+                          subject: subject,
+                          createdAt: new Date(),
+                        })
+                        .then(function () {
+                        
+                          // alert("Email Sent Successfully");
+                        });
           }
         } else {
           alert("Subject is Required");
