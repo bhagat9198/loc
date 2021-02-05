@@ -401,7 +401,8 @@ db.collection('midnight').doc('fixed6').onSnapshot(async(doc) => {
       if(p.id === 'na') {
         continue;
       }
-      let dis = 100 - ((+p.totalPrice/+p.mrp) * 100);
+      let newMrp = +p.mrp + (+p.mrp * (+p.gst/100))
+        let dis = 100 - ((+p.totalPrice/newMrp) * 100);
         dis = Math.round(dis);
           row += `
           <div class="col-lg-2 col-md-2 col-6 remove-padding">
@@ -411,7 +412,7 @@ db.collection('midnight').doc('fixed6').onSnapshot(async(doc) => {
               </div>
               <div class="info">
                 
-                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${p.mrp}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
+                <h4 class="price">₹${p.totalPrice} <small><del>₹ ${Math.round(newMrp)}</del></small>&nbsp;<small style="color:green">(${dis}% OFF)</small></h4>
                 <h5 class="name">${p.name}</h5>
               </div>
             </a>
