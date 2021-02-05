@@ -113,6 +113,7 @@ const form1 = async (e) => {
     fForm1HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
+    displayForm1();
   });
 
   // console.log('done');
@@ -221,6 +222,7 @@ const form2 = async (e) => {
     fForm2HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
+    displayForm2();
   });
 
   // console.log('done');
@@ -330,6 +332,7 @@ const form3 = async (e) => {
     fForm3HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
+    displayForm3();
   });
 
   // console.log('done');
@@ -438,6 +441,7 @@ const form4 = async (e) => {
     fForm4HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
+    displayForm4();
   });
 
   // console.log('done');
@@ -546,6 +550,7 @@ const form5 = async (e) => {
     fForm5HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
+    displayForm5();
   });
 
   // console.log('done');
@@ -655,6 +660,7 @@ const form6 = async (e) => {
     fForm6HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
+    displayForm6();
   });
 
   // console.log('done');
@@ -764,6 +770,7 @@ const form7 = async (e) => {
     fForm7HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
+    displayForm7();
   });
 
   // console.log('done');
@@ -873,6 +880,7 @@ const form8 = async (e) => {
     fForm8HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
+    displayForm8();
   });
 
   // console.log('done');
@@ -981,6 +989,7 @@ const form9 = async (e) => {
     docData.title = f9Title;
     fForm9HTML.reset();
     await docRef.update(docData);
+    displayForm9();
     // console.log('updated');
   });
 
@@ -1091,6 +1100,7 @@ const form10 = async (e) => {
     fForm10HTML.reset();
     await docRef.update(docData);
     // console.log('updated');
+    displayForm10();
   });
 
   // console.log('done');
