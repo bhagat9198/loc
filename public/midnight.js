@@ -165,7 +165,7 @@ db.collection('midnight').doc('fixed2').onSnapshot(async(doc) => {
           `;
           eachSection = startSection + row + endSection;
     }
-    document.querySelector('#fixed2').innerHTML += eachSection;
+    document.querySelector('#fixed2').innerHTML = eachSection;
   }
 })
 
@@ -229,7 +229,7 @@ db.collection('midnight').doc('fixed3').onSnapshot(async(doc) => {
           `;
           eachSection = startSection + row + endSection;
     }
-    document.querySelector('#fixed3').innerHTML += eachSection;
+    document.querySelector('#fixed3').innerHTML = eachSection;
   }
 })
 
@@ -292,7 +292,7 @@ db.collection('midnight').doc('fixed4').onSnapshot(async(doc) => {
           `;
           eachSection = startSection + row + endSection;
     }
-    document.querySelector('#fixed4').innerHTML += eachSection;
+    document.querySelector('#fixed4').innerHTML = eachSection;
   }
 })
 
@@ -356,7 +356,7 @@ db.collection('midnight').doc('fixed5').onSnapshot(async(doc) => {
           `;
           eachSection = startSection + row + endSection;
     }
-    document.querySelector('#fixed5').innerHTML += eachSection;
+    document.querySelector('#fixed5').innerHTML = eachSection;
   }
 })
 
@@ -420,7 +420,7 @@ db.collection('midnight').doc('fixed6').onSnapshot(async(doc) => {
           `;
           eachSection = startSection + row + endSection;
     }
-    document.querySelector('#fixed6').innerHTML += eachSection;
+    document.querySelector('#fixed6').innerHTML = eachSection;
   }
 })
 
@@ -484,7 +484,7 @@ db.collection('midnight').doc('fixed7').onSnapshot(async(doc) => {
           `;
           eachSection = startSection + row + endSection;
     }
-    document.querySelector('#fixed7').innerHTML += eachSection;
+    document.querySelector('#fixed7').innerHTML = eachSection;
   }
 })
 
@@ -494,7 +494,9 @@ db.collection('midnight').doc('fixed7').onSnapshot(async(doc) => {
 
 db.collection('midnight').doc('fixed8').onSnapshot(async(doc) => {
   let data = doc.data();
+  console.log(data);
   if(data.title) {
+    console.log(data.title);
     let eachSection = "";
       let startSection = `
       <section class="clothing-and-Apparel-Area">
@@ -547,7 +549,7 @@ db.collection('midnight').doc('fixed8').onSnapshot(async(doc) => {
           `;
           eachSection = startSection + row + endSection;
     }
-    document.querySelector('#fixed8').innerHTML += eachSection;
+    document.querySelector('#fixed8').innerHTML = eachSection;
   }
 })
 
@@ -611,7 +613,7 @@ db.collection('midnight').doc('fixed9').onSnapshot(async(doc) => {
           `;
           eachSection = startSection + row + endSection;
     }
-    document.querySelector('#fixed9').innerHTML += eachSection;
+    document.querySelector('#fixed9').innerHTML = eachSection;
   }
 })
 
@@ -675,6 +677,6 @@ db.collection('midnight').doc('fixed10').onSnapshot(async(doc) => {
           `;
           eachSection = startSection + row + endSection;
     }
-    document.querySelector('#fixed10').innerHTML += eachSection;
+    document.querySelector('#fixed10').innerHTML = eachSection;
   }
 })
