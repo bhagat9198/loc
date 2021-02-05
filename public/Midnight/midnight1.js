@@ -69,37 +69,39 @@ const form1 = async (e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for (let ui of userInputs) {
-    let c = ui.cat.split("__")[0];
+    if (ui.cat) {
+      let c = ui.cat.split("__")[0];
 
-    await db
-      .collection(c)
-      .get()
-      .then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        for (let doc of snapshotDocs) {
-          let docData = doc.data();
-          // console.log(docData.category, docData.sno);
-          if (docData.sno === ui.sno) {
-            ui.id = doc.id;
-            ui.name = docData.name;
-            ui.sno = docData.sno;
-            ui.bannerType = docData.bannerType || "";
-            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
-            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
-            ui.gst = docData.gst;
-            ui.mainImgUrl = docData.mainImgUrl;
-            ui.mrp = docData.mrp;
-            ui.stars = docData.stars;
-            ui.totalPrice = docData.totalPrice;
-            break;
-          } else {
-            ui.id = "na";
+      await db
+        .collection(c)
+        .get()
+        .then((snapshots) => {
+          let snapshotDocs = snapshots.docs;
+          for (let doc of snapshotDocs) {
+            let docData = doc.data();
+            // console.log(docData.category, docData.sno);
+            if (docData.sno === ui.sno) {
+              ui.id = doc.id;
+              ui.name = docData.name;
+              ui.sno = docData.sno;
+              ui.bannerType = docData.bannerType || "";
+              ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+              ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+              ui.gst = docData.gst;
+              ui.mainImgUrl = docData.mainImgUrl;
+              ui.mrp = docData.mrp;
+              ui.stars = docData.stars;
+              ui.totalPrice = docData.totalPrice;
+              break;
+            } else {
+              ui.id = "na";
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   // console.log(userInputs);
@@ -175,37 +177,39 @@ const form2 = async (e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for (let ui of userInputs) {
-    let c = ui.cat.split("__")[0];
+    if (ui.cat) {
+      let c = ui.cat.split("__")[0];
 
-    await db
-      .collection(c)
-      .get()
-      .then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        for (let doc of snapshotDocs) {
-          let docData = doc.data();
-          // console.log(docData.category, docData.sno);
-          if (docData.sno === ui.sno) {
-            ui.id = doc.id;
-            ui.name = docData.name;
-            ui.sno = docData.sno;
-            ui.bannerType = docData.bannerType || "";
-            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
-            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
-            ui.gst = docData.gst;
-            ui.mainImgUrl = docData.mainImgUrl;
-            ui.mrp = docData.mrp;
-            ui.stars = docData.stars;
-            ui.totalPrice = docData.totalPrice;
-            break;
-          } else {
-            ui.id = "na";
+      await db
+        .collection(c)
+        .get()
+        .then((snapshots) => {
+          let snapshotDocs = snapshots.docs;
+          for (let doc of snapshotDocs) {
+            let docData = doc.data();
+            // console.log(docData.category, docData.sno);
+            if (docData.sno === ui.sno) {
+              ui.id = doc.id;
+              ui.name = docData.name;
+              ui.sno = docData.sno;
+              ui.bannerType = docData.bannerType || "";
+              ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+              ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+              ui.gst = docData.gst;
+              ui.mainImgUrl = docData.mainImgUrl;
+              ui.mrp = docData.mrp;
+              ui.stars = docData.stars;
+              ui.totalPrice = docData.totalPrice;
+              break;
+            } else {
+              ui.id = "na";
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   // console.log(userInputs);
@@ -282,37 +286,39 @@ const form3 = async (e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for (let ui of userInputs) {
-    let c = ui.cat.split("__")[0];
+    if (ui.cat) {
+      let c = ui.cat.split("__")[0];
 
-    await db
-      .collection(c)
-      .get()
-      .then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        for (let doc of snapshotDocs) {
-          let docData = doc.data();
-          // console.log(docData.category, docData.sno);
-          if (docData.sno === ui.sno) {
-            ui.id = doc.id;
-            ui.name = docData.name;
-            ui.sno = docData.sno;
-            ui.bannerType = docData.bannerType || "";
-            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
-            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
-            ui.gst = docData.gst;
-            ui.mainImgUrl = docData.mainImgUrl;
-            ui.mrp = docData.mrp;
-            ui.stars = docData.stars;
-            ui.totalPrice = docData.totalPrice;
-            break;
-          } else {
-            ui.id = "na";
+      await db
+        .collection(c)
+        .get()
+        .then((snapshots) => {
+          let snapshotDocs = snapshots.docs;
+          for (let doc of snapshotDocs) {
+            let docData = doc.data();
+            // console.log(docData.category, docData.sno);
+            if (docData.sno === ui.sno) {
+              ui.id = doc.id;
+              ui.name = docData.name;
+              ui.sno = docData.sno;
+              ui.bannerType = docData.bannerType || "";
+              ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+              ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+              ui.gst = docData.gst;
+              ui.mainImgUrl = docData.mainImgUrl;
+              ui.mrp = docData.mrp;
+              ui.stars = docData.stars;
+              ui.totalPrice = docData.totalPrice;
+              break;
+            } else {
+              ui.id = "na";
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   // console.log(userInputs);
@@ -389,37 +395,38 @@ const form4 = async (e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for (let ui of userInputs) {
-    let c = ui.cat.split("__")[0];
-
-    await db
-      .collection(c)
-      .get()
-      .then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        for (let doc of snapshotDocs) {
-          let docData = doc.data();
-          // console.log(docData.category, docData.sno);
-          if (docData.sno === ui.sno) {
-            ui.id = doc.id;
-            ui.name = docData.name;
-            ui.sno = docData.sno;
-            ui.bannerType = docData.bannerType || "";
-            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
-            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
-            ui.gst = docData.gst;
-            ui.mainImgUrl = docData.mainImgUrl;
-            ui.mrp = docData.mrp;
-            ui.stars = docData.stars;
-            ui.totalPrice = docData.totalPrice;
-            break;
-          } else {
-            ui.id = "na";
+    if (ui.cat) {
+      let c = ui.cat.split("__")[0];
+      await db
+        .collection(c)
+        .get()
+        .then((snapshots) => {
+          let snapshotDocs = snapshots.docs;
+          for (let doc of snapshotDocs) {
+            let docData = doc.data();
+            // console.log(docData.category, docData.sno);
+            if (docData.sno === ui.sno) {
+              ui.id = doc.id;
+              ui.name = docData.name;
+              ui.sno = docData.sno;
+              ui.bannerType = docData.bannerType || "";
+              ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+              ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+              ui.gst = docData.gst;
+              ui.mainImgUrl = docData.mainImgUrl;
+              ui.mrp = docData.mrp;
+              ui.stars = docData.stars;
+              ui.totalPrice = docData.totalPrice;
+              break;
+            } else {
+              ui.id = "na";
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   // console.log(userInputs);
@@ -496,39 +503,40 @@ const form5 = async (e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for (let ui of userInputs) {
-    let c = ui.cat.split("__")[0];
+    if (ui.cat) {
+      let c = ui.cat.split("__")[0];
 
-    await db
-      .collection(c)
-      .get()
-      .then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        for (let doc of snapshotDocs) {
-          let docData = doc.data();
-          // console.log(docData.category, docData.sno);
-          if (docData.sno === ui.sno) {
-            ui.id = doc.id;
-            ui.name = docData.name;
-            ui.sno = docData.sno;
-            ui.bannerType = docData.bannerType || "";
-            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
-            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
-            ui.gst = docData.gst;
-            ui.mainImgUrl = docData.mainImgUrl;
-            ui.mrp = docData.mrp;
-            ui.stars = docData.stars;
-            ui.totalPrice = docData.totalPrice;
-            break;
-          } else {
-            ui.id = "na";
+      await db
+        .collection(c)
+        .get()
+        .then((snapshots) => {
+          let snapshotDocs = snapshots.docs;
+          for (let doc of snapshotDocs) {
+            let docData = doc.data();
+            // console.log(docData.category, docData.sno);
+            if (docData.sno === ui.sno) {
+              ui.id = doc.id;
+              ui.name = docData.name;
+              ui.sno = docData.sno;
+              ui.bannerType = docData.bannerType || "";
+              ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+              ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+              ui.gst = docData.gst;
+              ui.mainImgUrl = docData.mainImgUrl;
+              ui.mrp = docData.mrp;
+              ui.stars = docData.stars;
+              ui.totalPrice = docData.totalPrice;
+              break;
+            } else {
+              ui.id = "na";
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
-
   // console.log(userInputs);
 
   await docRef.get().then(async (snapshot) => {
@@ -576,7 +584,7 @@ const form6 = async (e) => {
   e.preventDefault();
   let docRef = await db.collection("midnight").doc("fixed6");
 
-  const f6Title = fForm6HTML["f6-title"].value + ' ';
+  const f6Title = fForm6HTML["f6-title"].value + " ";
   const f6Id1 = fForm6HTML["f6-id1"].value;
   const f6Id2 = fForm6HTML["f6-id2"].value;
   const f6Id3 = fForm6HTML["f6-id3"].value;
@@ -603,37 +611,39 @@ const form6 = async (e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for (let ui of userInputs) {
-    let c = ui.cat.split("__")[0];
+    if (ui.cat) {
+      let c = ui.cat.split("__")[0];
 
-    await db
-      .collection(c)
-      .get()
-      .then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        for (let doc of snapshotDocs) {
-          let docData = doc.data();
-          // console.log(docData.category, docData.sno);
-          if (docData.sno === ui.sno) {
-            ui.id = doc.id;
-            ui.name = docData.name;
-            ui.sno = docData.sno;
-            ui.bannerType = docData.bannerType || "";
-            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
-            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
-            ui.gst = docData.gst;
-            ui.mainImgUrl = docData.mainImgUrl;
-            ui.mrp = docData.mrp;
-            ui.stars = docData.stars;
-            ui.totalPrice = docData.totalPrice;
-            break;
-          } else {
-            ui.id = "na";
+      await db
+        .collection(c)
+        .get()
+        .then((snapshots) => {
+          let snapshotDocs = snapshots.docs;
+          for (let doc of snapshotDocs) {
+            let docData = doc.data();
+            // console.log(docData.category, docData.sno);
+            if (docData.sno === ui.sno) {
+              ui.id = doc.id;
+              ui.name = docData.name;
+              ui.sno = docData.sno;
+              ui.bannerType = docData.bannerType || "";
+              ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+              ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+              ui.gst = docData.gst;
+              ui.mainImgUrl = docData.mainImgUrl;
+              ui.mrp = docData.mrp;
+              ui.stars = docData.stars;
+              ui.totalPrice = docData.totalPrice;
+              break;
+            } else {
+              ui.id = "na";
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   // console.log(userInputs);
@@ -710,37 +720,39 @@ const form7 = async (e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for (let ui of userInputs) {
-    let c = ui.cat.split("__")[0];
+    if (ui.cat) {
+      let c = ui.cat.split("__")[0];
 
-    await db
-      .collection(c)
-      .get()
-      .then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        for (let doc of snapshotDocs) {
-          let docData = doc.data();
-          // console.log(docData.category, docData.sno);
-          if (docData.sno === ui.sno) {
-            ui.id = doc.id;
-            ui.name = docData.name;
-            ui.sno = docData.sno;
-            ui.bannerType = docData.bannerType || "";
-            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
-            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
-            ui.gst = docData.gst;
-            ui.mainImgUrl = docData.mainImgUrl;
-            ui.mrp = docData.mrp;
-            ui.stars = docData.stars;
-            ui.totalPrice = docData.totalPrice;
-            break;
-          } else {
-            ui.id = "na";
+      await db
+        .collection(c)
+        .get()
+        .then((snapshots) => {
+          let snapshotDocs = snapshots.docs;
+          for (let doc of snapshotDocs) {
+            let docData = doc.data();
+            // console.log(docData.category, docData.sno);
+            if (docData.sno === ui.sno) {
+              ui.id = doc.id;
+              ui.name = docData.name;
+              ui.sno = docData.sno;
+              ui.bannerType = docData.bannerType || "";
+              ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+              ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+              ui.gst = docData.gst;
+              ui.mainImgUrl = docData.mainImgUrl;
+              ui.mrp = docData.mrp;
+              ui.stars = docData.stars;
+              ui.totalPrice = docData.totalPrice;
+              break;
+            } else {
+              ui.id = "na";
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   // console.log(userInputs);
@@ -817,37 +829,39 @@ const form8 = async (e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for (let ui of userInputs) {
-    let c = ui.cat.split("__")[0];
+    if (ui.cat) {
+      let c = ui.cat.split("__")[0];
 
-    await db
-      .collection(c)
-      .get()
-      .then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        for (let doc of snapshotDocs) {
-          let docData = doc.data();
-          // console.log(docData.category, docData.sno);
-          if (docData.sno === ui.sno) {
-            ui.id = doc.id;
-            ui.name = docData.name;
-            ui.sno = docData.sno;
-            ui.bannerType = docData.bannerType || "";
-            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
-            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
-            ui.gst = docData.gst;
-            ui.mainImgUrl = docData.mainImgUrl;
-            ui.mrp = docData.mrp;
-            ui.stars = docData.stars;
-            ui.totalPrice = docData.totalPrice;
-            break;
-          } else {
-            ui.id = "na";
+      await db
+        .collection(c)
+        .get()
+        .then((snapshots) => {
+          let snapshotDocs = snapshots.docs;
+          for (let doc of snapshotDocs) {
+            let docData = doc.data();
+            // console.log(docData.category, docData.sno);
+            if (docData.sno === ui.sno) {
+              ui.id = doc.id;
+              ui.name = docData.name;
+              ui.sno = docData.sno;
+              ui.bannerType = docData.bannerType || "";
+              ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+              ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+              ui.gst = docData.gst;
+              ui.mainImgUrl = docData.mainImgUrl;
+              ui.mrp = docData.mrp;
+              ui.stars = docData.stars;
+              ui.totalPrice = docData.totalPrice;
+              break;
+            } else {
+              ui.id = "na";
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   // console.log(userInputs);
@@ -924,37 +938,39 @@ const form9 = async (e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for (let ui of userInputs) {
-    let c = ui.cat.split("__")[0];
+    if (ui.cat) {
+      let c = ui.cat.split("__")[0];
 
-    await db
-      .collection(c)
-      .get()
-      .then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        for (let doc of snapshotDocs) {
-          let docData = doc.data();
-          // console.log(docData.category, docData.sno);
-          if (docData.sno === ui.sno) {
-            ui.id = doc.id;
-            ui.name = docData.name;
-            ui.sno = docData.sno;
-            ui.bannerType = docData.bannerType || "";
-            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
-            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
-            ui.gst = docData.gst;
-            ui.mainImgUrl = docData.mainImgUrl;
-            ui.mrp = docData.mrp;
-            ui.stars = docData.stars;
-            ui.totalPrice = docData.totalPrice;
-            break;
-          } else {
-            ui.id = "na";
+      await db
+        .collection(c)
+        .get()
+        .then((snapshots) => {
+          let snapshotDocs = snapshots.docs;
+          for (let doc of snapshotDocs) {
+            let docData = doc.data();
+            // console.log(docData.category, docData.sno);
+            if (docData.sno === ui.sno) {
+              ui.id = doc.id;
+              ui.name = docData.name;
+              ui.sno = docData.sno;
+              ui.bannerType = docData.bannerType || "";
+              ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+              ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+              ui.gst = docData.gst;
+              ui.mainImgUrl = docData.mainImgUrl;
+              ui.mrp = docData.mrp;
+              ui.stars = docData.stars;
+              ui.totalPrice = docData.totalPrice;
+              break;
+            } else {
+              ui.id = "na";
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   // console.log(userInputs);
@@ -1031,37 +1047,39 @@ const form10 = async (e) => {
   // console.log(userInputs);
   // userInputs.map(async(ui) => {
   for (let ui of userInputs) {
-    let c = ui.cat.split("__")[0];
+    if (ui.cat) {
+      let c = ui.cat.split("__")[0];
 
-    await db
-      .collection(c)
-      .get()
-      .then((snapshots) => {
-        let snapshotDocs = snapshots.docs;
-        for (let doc of snapshotDocs) {
-          let docData = doc.data();
-          // console.log(docData.category, docData.sno);
-          if (docData.sno === ui.sno) {
-            ui.id = doc.id;
-            ui.name = docData.name;
-            ui.sno = docData.sno;
-            ui.bannerType = docData.bannerType || "";
-            ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
-            ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
-            ui.gst = docData.gst;
-            ui.mainImgUrl = docData.mainImgUrl;
-            ui.mrp = docData.mrp;
-            ui.stars = docData.stars;
-            ui.totalPrice = docData.totalPrice;
-            break;
-          } else {
-            ui.id = "na";
+      await db
+        .collection(c)
+        .get()
+        .then((snapshots) => {
+          let snapshotDocs = snapshots.docs;
+          for (let doc of snapshotDocs) {
+            let docData = doc.data();
+            // console.log(docData.category, docData.sno);
+            if (docData.sno === ui.sno) {
+              ui.id = doc.id;
+              ui.name = docData.name;
+              ui.sno = docData.sno;
+              ui.bannerType = docData.bannerType || "";
+              ui.bannerTypeColorEnd = docData.bannerTypeColorEnd || "";
+              ui.bannerTypeColorStart = docData.bannerTypeColorStart || "";
+              ui.gst = docData.gst;
+              ui.mainImgUrl = docData.mainImgUrl;
+              ui.mrp = docData.mrp;
+              ui.stars = docData.stars;
+              ui.totalPrice = docData.totalPrice;
+              break;
+            } else {
+              ui.id = "na";
+            }
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   // console.log(userInputs);
