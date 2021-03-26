@@ -553,8 +553,9 @@ const setDateAndTime = () => {
   day = date.getDate() + MAX_DAYS;
 
   hours = date.getHours();
+  
   // console.log(hours, day);
-  // hours = 16;
+  // hours = 17;
   // console.log(day);
   validateDateAndTime();
 
