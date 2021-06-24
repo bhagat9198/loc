@@ -33,7 +33,7 @@ const prodsMix = () => {
     displayProds(randAllProdsArr);
     // displayProds(allProductsArr);
   } else {
-    allProductsHTML.innerHTML = "No products Found";
+    allProductsHTML.innerHTML = "<div style=\"display: flex; alignItems: center; justify-content: center; margin: 30px; flex: 1; color: red \" ><b> Out Of Stock</b> </div>";
   }
 }
 
